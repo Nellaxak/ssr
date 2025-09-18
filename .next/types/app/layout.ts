@@ -1,4 +1,4 @@
-// File: /home/nelka/nasaapi/src/app/layout.js
+// File: /home/nelka/ssr/src/app/layout.js
 import * as entry from '../../../src/app/layout.js'
 import type { ResolvingMetadata, ResolvingViewport } from 'next/dist/lib/metadata/types/metadata-interface.js'
 

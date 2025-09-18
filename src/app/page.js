@@ -25,8 +25,11 @@ export default async function Home() {
   //const viewtype = params.viewtype
   //const items = await http<Item[]>(`http://localhost:3456/${viewtype}`) as Item[];
   const resp = await fetch(`https://api.nasa.gov/neo/rest/v1/feed?start_date=${startDate}&end_date=${endDate}&api_key=3wa5hHgFuqhf6XiefvqzkcDQWZ01aOOK4vNZEXsP`);
-  //const data = await resp.json()
-  console.log('data', resp.status)
+  //console.log('data', resp.status)
+  if (Number(resp.status) === 200) {
+    const data = await resp.json()
+    console.log('data', data)
+  }
   return (
     <ul>
 
