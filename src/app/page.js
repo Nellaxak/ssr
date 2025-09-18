@@ -1,5 +1,6 @@
 import Image from "next/image";
 import styles from "./page.module.css";
+let data=[]
 async function CalcData() {
   let currentDate = new Date()
   currentDate.setDate(currentDate.getDate());//+1
@@ -27,8 +28,8 @@ export default async function Home() {
   const resp = await fetch(`https://api.nasa.gov/neo/rest/v1/feed?start_date=${startDate}&end_date=${endDate}&api_key=3wa5hHgFuqhf6XiefvqzkcDQWZ01aOOK4vNZEXsP`);
   //console.log('data', resp.status)
   if (Number(resp.status) === 200) {
-    const data = await resp.json()
-    console.log('NASA data', data)
+    data = await resp.json()
+    console.log('NASA data', data.length)
   } else {
     console.log('request status',resp.status)
   }
