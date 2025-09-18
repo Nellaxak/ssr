@@ -28,7 +28,7 @@ export default async function Home() {
   //console.log('data', resp.status)
   if (Number(resp.status) === 200) {
     const data = await resp.json()
-    console.log('data', data)
+    console.log('NASA data', data)
   } else {
     console.log('request status',resp.status)
   }
