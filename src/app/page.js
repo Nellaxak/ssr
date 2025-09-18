@@ -29,6 +29,8 @@ export default async function Home() {
   if (Number(resp.status) === 200) {
     const data = await resp.json()
     console.log('data', data)
+  } else {
+    console.log('request status',resp.status)
   }
   return (
     <ul>
