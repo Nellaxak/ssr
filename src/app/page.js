@@ -1,6 +1,6 @@
 import Image from "next/image";
 import styles from "./page.module.css";
-let data=[]
+let data
 async function CalcData() {
   let currentDate = new Date()
   currentDate.setDate(currentDate.getDate());//+1
