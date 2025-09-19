@@ -3,7 +3,7 @@
 //import http from '@/utils/http'
 
 import { NextRequest } from 'next/server';
-import Li from '@/Li';
+import Li from '@/app/Li';
 export async function GET(request,response) {
     //console.log('_____________________basket',await Li.getCount())
     return new Response(JSON.stringify({
