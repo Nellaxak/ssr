@@ -35,7 +35,6 @@
     "**/*.jsx",
     ".next/types/**/*.ts",
     "src/app/layout.jsx",
-    "src/app/sitemap.ts",
     "src/components/ScrollComponent/page.jsx",
     "src/app/categories/[viewtype]/@list/page.jsx"
   ],
