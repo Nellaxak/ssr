@@ -50,9 +50,5 @@ export default async function Home() {
   } else {
     console.log('request status', resp.status)
   }
-  return (
-    <ul>
-
-    </ul>
-  )
+  return await Li.getList()
 }
