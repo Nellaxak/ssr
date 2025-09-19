@@ -114,7 +114,7 @@ class Li {
     </Form>
   }
   static async getList() {
-    console.log('getList', Li.arrResult[0])
+    //console.log('getList', Li.arrResult[0])
     //const resd = Array.from(Li.arrResult.values())
     return Li.arrResult
   }
