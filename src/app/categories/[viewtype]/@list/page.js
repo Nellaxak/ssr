@@ -37,16 +37,7 @@ export default async function Home() {
     const arrObjects = Object.values(list)
     await Promise.all(arrObjects[0].map(
       async (e) => new Li(e, dates[0])
-      //async (e) => elem(e, dates[0])
     ));
-    //data.map((item) => {
-    //console.log('item', item)
-    //const level1 = _.pick(item, ['id', 'name', 'email', 'body']);
-    //console.log('zxxx', level1)
-    //if (!Li.findById(level1.id)) {
-    //new Li(level1)
-    //}
-    //})
   } else {
     console.log('request status', resp.status)
   }
