@@ -2,7 +2,7 @@
 import Li from '@/app/Li'
 
 export async function GET(request, context) {
-  let level1
+  //let level1
   //const sss = await context
   //const ssd = await sss.params
   const resolvedParams = await context.params;
