@@ -1,6 +1,5 @@
 {
   "buildCommand": "next build",
   "outputDirectory": "build",
-  "version": 2, 
-  "rewrites": [{ "source": "/(.*)", "destination": "/app" }]
+  "version": 2
 }
