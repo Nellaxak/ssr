@@ -46,7 +46,7 @@ class Li {
       { key: this.id, className: styles.li }, this.form
       //[this.getId(), this.getDate(), this.getName(), this.getButton()]
     )
-    console.log('constructor',this.id)
+    //console.log('constructor',this.id)
     Li.arrResult.push(Number(this.id), this.result)
     //}
   }
