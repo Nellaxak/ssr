@@ -55,11 +55,12 @@ export default async function Home() {
               // Get the data and send it to the browser via the controller
               controller.enqueue(value);
               // Check chunks by logging to the console
-              console.log('chunk', done, value);
+              //console.log('chunk', done, value);
               const sharedBuffer = new SharedArrayBuffer(value.byteLength);
               sharedUint8Array = new Uint8Array(sharedBuffer);
               // 3. Copy the data from the original Uint8Array to the shared Uint8Array
               sharedUint8Array.set(value);
+              console.log('sharedUint8Array',sharedUint8Array)
               //const decoder = new TextDecoder('utf-8');
               // Decode the Uint8Array into a string
               //const textString = decoder.decode(value);
