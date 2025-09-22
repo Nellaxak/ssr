@@ -89,5 +89,5 @@ export default async function Home() {
     console.log('Nasa api request status', resp.status)
   }
   return await Li.getList()*/
-  return ress
+  return 'ress'
 }
