@@ -80,7 +80,7 @@ class Li {
     return this.status
   }
   async getButton() {
-    const resp = await fetch(`http://localhost:3000/api/item/${this.id}/status`,
+    const resp = await fetch(`@/app/api/item/${this.id}/status`,
       { next: { tags: [`/item/${this.id}/status`] } }
     )
     //const resp = await fetch(`http://localhost:3000/api/item/${this.id}`

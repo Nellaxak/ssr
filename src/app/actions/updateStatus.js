@@ -12,7 +12,7 @@ export async function buttonClick(formData) {
     const oldStatus = Number(await item.getStatus())
     const newStatus = Number(!Boolean(oldStatus))
     console.log('fdddd', id, oldStatus, newStatus)*/
-    const resp = await fetch(`http://localhost:3000/api/item/${id}/status`,{
+    const resp = await fetch(`@/app/api/item/${id}/status`,{
         method:"POST",
         headers: {
             'Content-Type': 'application/json'
