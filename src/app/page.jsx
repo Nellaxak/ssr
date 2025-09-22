@@ -60,7 +60,7 @@ export default async function Home() {
               const textString = decoder.decode(value);
               //console.log('textString', textString)
               TextResult=TextResult+textString
-              streamResult.set(value)
+              //streamResult.set(value)
               push();
             });
           }
@@ -88,6 +88,6 @@ export default async function Home() {
   } else {
     console.log('Nasa api request status', resp.status)
   }*/
-  //return TextResult
-  return streamResult.buffer
+  return TextResult
+  //return streamResult.buffer
 }
