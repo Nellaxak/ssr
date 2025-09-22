@@ -288,14 +288,7 @@
     "configFileName": "next.config.mjs",
     "turbopack": {
       "root": "/home/nelka/ssr"
-    },
-    "_originalRedirects": [
-      {
-        "source": "/",
-        "destination": "/categories/main",
-        "permanent": false
-      }
-    ]
+    }
   },
   "appDir": "/home/nelka/ssr",
   "relativeAppDir": "",

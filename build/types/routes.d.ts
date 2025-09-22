@@ -5,7 +5,7 @@ type AppRoutes = "/categories/[viewtype]"
 type AppRouteHandlerRoutes = "/api/basket" | "/api/item/[item]" | "/api/item/[item]/status" | "/api/items" | "/api/scroll_to"
 type PageRoutes = never
 type LayoutRoutes = "/" | "/categories/[viewtype]"
-type RedirectRoutes = "/"
+type RedirectRoutes = never
 type RewriteRoutes = never
 type Routes = AppRoutes | PageRoutes | LayoutRoutes | RedirectRoutes | RewriteRoutes | AppRouteHandlerRoutes
 

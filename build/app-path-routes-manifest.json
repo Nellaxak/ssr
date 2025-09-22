@@ -1,11 +1,12 @@
 {
   "/api/basket/route": "/api/basket",
-  "/api/item/[item]/route": "/api/item/[item]",
-  "/api/item/[item]/status/route": "/api/item/[item]/status",
-  "/api/items/route": "/api/items",
-  "/api/scroll_to/route": "/api/scroll_to",
   "/_not-found/page": "/_not-found",
+  "/api/item/[item]/route": "/api/item/[item]",
+  "/api/items/route": "/api/items",
   "/favicon.ico/route": "/favicon.ico",
+  "/api/scroll_to/route": "/api/scroll_to",
+  "/api/item/[item]/status/route": "/api/item/[item]/status",
+  "/page": "/",
   "/categories/[viewtype]/@list/page": "/categories/[viewtype]",
   "/categories/[viewtype]/@count/page": "/categories/[viewtype]"
 }

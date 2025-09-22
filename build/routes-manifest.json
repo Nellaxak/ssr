@@ -10,12 +10,6 @@
       "internal": true,
       "statusCode": 308,
       "regex": "^(?:/((?:[^/]+?)(?:/(?:[^/]+?))*))/$"
-    },
-    {
-      "source": "/",
-      "destination": "/categories/main",
-      "statusCode": 307,
-      "regex": "^(?!/_next)/(?:/)?$"
     }
   ],
   "headers": [],
@@ -51,6 +45,12 @@
     }
   ],
   "staticRoutes": [
+    {
+      "page": "/",
+      "regex": "^/(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/(?:/)?$"
+    },
     {
       "page": "/_not-found",
       "regex": "^/_not\\-found(?:/)?$",
