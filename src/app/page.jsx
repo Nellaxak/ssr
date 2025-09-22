@@ -30,10 +30,10 @@ export default async function Home() {
   //const viewtype = params.viewtype
   //const items = await http<Item[]>(`http://localhost:3456/${viewtype}`) as Item[];
   const resp = await fetch(`https://api.nasa.gov/neo/rest/v1/feed?start_date=${startDate}&end_date=${endDate}&api_key=3wa5hHgFuqhf6XiefvqzkcDQWZ01aOOK4vNZEXsP`);
-  console.log('date', startDate, endDate)
+  console.log('date', startDate, endDate,await resp.arrayBuffer())
   //let streamResult=new Uint8Array(99999);
   let TextResult=''
-  await fetch(`https://api.nasa.gov/neo/rest/v1/feed?start_date=${startDate}&end_date=${endDate}&api_key=3wa5hHgFuqhf6XiefvqzkcDQWZ01aOOK4vNZEXsP`)
+  /*await fetch(`https://api.nasa.gov/neo/rest/v1/feed?start_date=${startDate}&end_date=${endDate}&api_key=3wa5hHgFuqhf6XiefvqzkcDQWZ01aOOK4vNZEXsP`)
     .then((response) => response.body)
     .then((rb) => {
       const reader = rb.getReader();
@@ -74,7 +74,7 @@ export default async function Home() {
     .then((result) => {
       // Do things with result
       console.log(result);
-    });
+    });*/
   /*if (Number(resp.status) === 200) {
     data = await resp.json()
     //console.log('NASA data__________', data)
@@ -88,5 +88,5 @@ export default async function Home() {
     console.log('Nasa api request status', resp.status)
   }
   return await Li.getList()*/
-  return TextResult
+  return await resp.arrayBuffer()//TextResult
 }
