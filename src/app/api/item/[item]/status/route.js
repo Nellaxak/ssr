@@ -1,4 +1,4 @@
-import Li from '@/app/api/Li'
+import Li from '@/app/Li'
 
 export async function GET(request, context) {
     const resolvedParams = await context.params;

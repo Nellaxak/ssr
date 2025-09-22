@@ -10,7 +10,7 @@ import { useCallback, useEffect, useRef, useState, useTransition, Suspense } fro
 
 //import { addPage } from '@/app/actions/intersection'
 //const socket = io('ws://localhost:3456')
-import Li from '@/app/api/Li'
+//import Li from '@/app/api/Li'
 import dynamic from 'next/dynamic'
 const options = {
     root: null,

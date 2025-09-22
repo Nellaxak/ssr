@@ -1,4 +1,4 @@
-import Li from '@/app/api/Li'
+//import Li from '@/app/api/Li'
 
 export async function GET(request, response) {
     //detail,click link item
