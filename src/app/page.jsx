@@ -26,14 +26,15 @@ async function CalcData() {
 export default async function Home() {
   let startDate
   let endDate
+  let sharedUint8Array
   [startDate, endDate] = await CalcData()
   //const viewtype = params.viewtype
   //const items = await http<Item[]>(`http://localhost:3456/${viewtype}`) as Item[];
-  const resp = await fetch(`https://api.nasa.gov/neo/rest/v1/feed?start_date=${startDate}&end_date=${endDate}&api_key=3wa5hHgFuqhf6XiefvqzkcDQWZ01aOOK4vNZEXsP`);
-  const ress=await resp.arrayBuffer()
-  console.log('date', startDate, endDate,ress)
+  //const resp = await fetch(`https://api.nasa.gov/neo/rest/v1/feed?start_date=${startDate}&end_date=${endDate}&api_key=3wa5hHgFuqhf6XiefvqzkcDQWZ01aOOK4vNZEXsP`);
+  //const ress=await resp.arrayBuffer()
+  //console.log('date', startDate, endDate,resp.body)
   //let streamResult=new Uint8Array(99999);
-  /*let TextResult=''
+  let TextResult = ''
   await fetch(`https://api.nasa.gov/neo/rest/v1/feed?start_date=${startDate}&end_date=${endDate}&api_key=3wa5hHgFuqhf6XiefvqzkcDQWZ01aOOK4vNZEXsP`)
     .then((response) => response.body)
     .then((rb) => {
@@ -55,11 +56,15 @@ export default async function Home() {
               controller.enqueue(value);
               // Check chunks by logging to the console
               console.log('chunk', done, value);
-              const decoder = new TextDecoder('utf-8');
+              const sharedBuffer = new SharedArrayBuffer(value.byteLength);
+              sharedUint8Array = new Uint8Array(sharedBuffer);
+              // 3. Copy the data from the original Uint8Array to the shared Uint8Array
+              sharedUint8Array.set(value);
+              //const decoder = new TextDecoder('utf-8');
               // Decode the Uint8Array into a string
-              const textString = decoder.decode(value);
+              //const textString = decoder.decode(value);
               //console.log('textString', textString)
-              TextResult=TextResult+textString
+              //TextResult=TextResult+textString
               //streamResult.set(value)
               push();
             });
@@ -75,7 +80,7 @@ export default async function Home() {
     .then((result) => {
       // Do things with result
       console.log(result);
-    });*/
+    });
   /*if (Number(resp.status) === 200) {
     data = await resp.json()
     //console.log('NASA data__________', data)
@@ -89,5 +94,5 @@ export default async function Home() {
     console.log('Nasa api request status', resp.status)
   }
   return await Li.getList()*/
-  return 'ress'
+  return sharedUint8Array//'ress'
 }
