@@ -64,7 +64,6 @@ export default async function Home() {
               push();
             });
           }
-          streamResult.set(value)
           push();
         },
       });
