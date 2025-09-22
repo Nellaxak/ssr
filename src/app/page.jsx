@@ -1,8 +1,10 @@
 import Image from "next/image";
+import Form from 'next/form';
+import { buttonClick } from './actions/updateStatus';
 import styles from "./page.module.css";
 import Li from './Li'
 
-let data = []
+//let data = []
 async function CalcData() {
   let currentDate = new Date()
   currentDate.setDate(currentDate.getDate());//+1
@@ -30,6 +32,7 @@ export default async function Home() {
   //const resp = await fetch(`https://api.nasa.gov/neo/rest/v1/feed?start_date=${startDate}&end_date=${endDate}&api_key=3wa5hHgFuqhf6XiefvqzkcDQWZ01aOOK4vNZEXsP`);
   console.log('date', startDate, endDate)
   let streamResult=[]
+  //const uint8 = new Uint8Array(2);
   let TextResult=''
   await fetch(`https://api.nasa.gov/neo/rest/v1/feed?start_date=${startDate}&end_date=${endDate}&api_key=3wa5hHgFuqhf6XiefvqzkcDQWZ01aOOK4vNZEXsP`)
     .then((response) => response.body)
@@ -57,7 +60,7 @@ export default async function Home() {
               const textString = decoder.decode(value);
               //console.log('textString', textString)
               TextResult=TextResult+textString
-              //streamResult.push(value)
+              streamResult.push(value)
               push();
             });
           }
@@ -86,5 +89,6 @@ export default async function Home() {
   } else {
     console.log('Nasa api request status', resp.status)
   }*/
-  return TextResult//streamResult//'sssssssssssssssssssssssssss'//await Li.getList()
+  //return TextResult
+  return streamResult.buffer
 }
