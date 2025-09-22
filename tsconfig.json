@@ -30,14 +30,15 @@
     "target": "ES2017"
   },
   "include": [
-    "next-env.d.ts",
+    "**/*.jsx",
     "**/*.ts",
     "**/*.tsx",
-    "**/*.jsx",
     ".next/types/**/*.ts",
+    "next-env.d.ts",
+    "src/app/categories/[viewtype]/@list/page.jsx",
     "src/app/layout.jsx",
     "src/components/ScrollComponent/page.jsx",
-    "src/app/categories/[viewtype]/@list/page.jsx"
+    "build/types/**/*.ts"
   ],
   "exclude": [
     "node_modules"
