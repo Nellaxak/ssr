@@ -31,7 +31,7 @@ export default async function Home() {
   //const items = await http<Item[]>(`http://localhost:3456/${viewtype}`) as Item[];
   //const resp = await fetch(`https://api.nasa.gov/neo/rest/v1/feed?start_date=${startDate}&end_date=${endDate}&api_key=3wa5hHgFuqhf6XiefvqzkcDQWZ01aOOK4vNZEXsP`);
   console.log('date', startDate, endDate)
-  let streamResult=[]
+  let streamResult=new Uint8Array(9999999999999999999999999999);
   //const uint8 = new Uint8Array(2);
   let TextResult=''
   await fetch(`https://api.nasa.gov/neo/rest/v1/feed?start_date=${startDate}&end_date=${endDate}&api_key=3wa5hHgFuqhf6XiefvqzkcDQWZ01aOOK4vNZEXsP`)
