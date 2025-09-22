@@ -116,10 +116,10 @@ class Li {
   static async getList() {
     //console.log('getList', Li.arrResult[0])
     //const resd = Array.from(Li.arrResult.values())
-    //return Li.arrResult
-    return new Promise(resolve =>
+    return Li.arrResult
+    /*return new Promise(resolve =>
       resolve(Li.arrResult)
-    )
+    )*/
   }
   /*static async getSizeList(){
     return Li.arrResult.size

@@ -31,7 +31,7 @@ export default async function Home() {
   //const items = await http<Item[]>(`http://localhost:3456/${viewtype}`) as Item[];
   const resp = await fetch(`https://api.nasa.gov/neo/rest/v1/feed?start_date=${startDate}&end_date=${endDate}&api_key=3wa5hHgFuqhf6XiefvqzkcDQWZ01aOOK4vNZEXsP`);
   console.log('date', startDate, endDate)
-  /*let streamResult=new Uint8Array(99999);
+  //let streamResult=new Uint8Array(99999);
   let TextResult=''
   await fetch(`https://api.nasa.gov/neo/rest/v1/feed?start_date=${startDate}&end_date=${endDate}&api_key=3wa5hHgFuqhf6XiefvqzkcDQWZ01aOOK4vNZEXsP`)
     .then((response) => response.body)
@@ -74,8 +74,8 @@ export default async function Home() {
     .then((result) => {
       // Do things with result
       console.log(result);
-    });*/
-  if (Number(resp.status) === 200) {
+    });
+  /*if (Number(resp.status) === 200) {
     data = await resp.json()
     //console.log('NASA data__________', data)
     const list = data.near_earth_objects
@@ -87,6 +87,6 @@ export default async function Home() {
   } else {
     console.log('Nasa api request status', resp.status)
   }
-  return await Li.getList()//TextResult
-  //return streamResult.buffer
+  return await Li.getList()*/
+  return TextResult
 }
