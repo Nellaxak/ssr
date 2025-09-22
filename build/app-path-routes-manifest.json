@@ -1,0 +1,11 @@
+{
+  "/api/basket/route": "/api/basket",
+  "/api/item/[item]/route": "/api/item/[item]",
+  "/api/item/[item]/status/route": "/api/item/[item]/status",
+  "/api/items/route": "/api/items",
+  "/api/scroll_to/route": "/api/scroll_to",
+  "/_not-found/page": "/_not-found",
+  "/favicon.ico/route": "/favicon.ico",
+  "/categories/[viewtype]/@list/page": "/categories/[viewtype]",
+  "/categories/[viewtype]/@count/page": "/categories/[viewtype]"
+}
