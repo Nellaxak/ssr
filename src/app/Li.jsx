@@ -35,7 +35,7 @@ class Li {
   //static countFirstPageSize=0//add getter/setter
   //private result: any;
   constructor(obj,dates) {
-    console.log('_____________________________________________bbb',dates)
+    //console.log('_____________________________________________bbb',dates)
     Object.entries(obj).map(([key, value]) => this[key] = value);
     this.status = 0
     this.form = <Form action={buttonClick}>
