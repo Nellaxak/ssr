@@ -39,7 +39,7 @@ export default async function Home() {
       async (e) => new Li(e, dates[0])
     ));
   } else {
-    console.log('request status', resp.status)
+    console.log('Nasa api request status', resp.status)
   }
   return await Li.getList()
 }
