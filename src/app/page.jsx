@@ -60,7 +60,7 @@ export default async function Home() {
               const textString = decoder.decode(value);
               //console.log('textString', textString)
               TextResult=TextResult+textString
-              streamResult.push(value)
+              streamResult.set(value)
               push();
             });
           }
