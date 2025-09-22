@@ -34,7 +34,7 @@ class Li {
   //static pageSizeItems = 15//for first load
   //static countFirstPageSize=0//add getter/setter
   //private result: any;
-  constructor(obj,dates) {
+  constructor(obj, dates) {
     //console.log('_____________________________________________bbb',dates)
     Object.entries(obj).map(([key, value]) => this[key] = value);
     this.status = 0
@@ -53,7 +53,7 @@ class Li {
   static async deleted(action, col) {
     if (action === 'down') {
       //Li.arrResult.splice(0, Number(col));
-      console.log('after down',Li.arrResult.length)
+      console.log('after down', Li.arrResult.length)
     }
   }
   static async getCount() {
@@ -116,7 +116,10 @@ class Li {
   static async getList() {
     //console.log('getList', Li.arrResult[0])
     //const resd = Array.from(Li.arrResult.values())
-    return Li.arrResult
+    //return Li.arrResult
+    return new Promise(resolve =>
+      resolve(Li.arrResult)
+    )
   }
   /*static async getSizeList(){
     return Li.arrResult.size
