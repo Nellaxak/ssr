@@ -1,5 +1,5 @@
 //import _ from 'lodash';
-import Li from '@/app/Li'
+import Li from '../../Li'
 
 export async function GET(request, context) {
   //let level1

@@ -1,5 +1,5 @@
 import React from 'react';
-import Li from '@/app/Li'
+import Li from '../../Li'
 
 export async function GET(request, response) {
     //detail,click link item

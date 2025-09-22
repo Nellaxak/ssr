@@ -4,7 +4,7 @@ import React, { createElement } from "react";
 //import LiItemLayout from "@/layouts/layout";
 import Link from 'next/link'
 import styles from "./page.module.css";
-import { buttonClick } from "@/app/actions/updateStatus";
+import { buttonClick } from "./actions/updateStatus";
 //import ListItem1 from "@/components/ListItem1/page";
 import Form from 'next/form'
 //import FSM from "./finite-state-machines";

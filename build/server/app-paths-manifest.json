@@ -1,11 +1,11 @@
 {
   "/_not-found/page": "app/_not-found/page.js",
   "/api/basket/route": "app/api/basket/route.js",
-  "/api/scroll_to/route": "app/api/scroll_to/route.js",
+  "/api/item/[item]/route": "app/api/item/[item]/route.js",
   "/api/item/[item]/status/route": "app/api/item/[item]/status/route.js",
   "/api/items/route": "app/api/items/route.js",
+  "/api/scroll_to/route": "app/api/scroll_to/route.js",
   "/favicon.ico/route": "app/favicon.ico/route.js",
-  "/api/item/[item]/route": "app/api/item/[item]/route.js",
   "/page": "app/page.js",
   "/categories/[viewtype]/@list/page": "app/categories/[viewtype]/@list/page.js",
   "/categories/[viewtype]/@count/page": "app/categories/[viewtype]/@count/page.js"

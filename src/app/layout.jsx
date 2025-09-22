@@ -1,7 +1,7 @@
 import { Suspense, createElement } from 'react'
 //import HeaderTop from '@/components/HeaderTop/page';
 import dynamic from 'next/dynamic'
-import ScrollComponent from '@/components/ScrollComponent/page';
+import ScrollComponent from '../components/ScrollComponent/page';
 //import Button from '@/components/Button/page';
 //import { buttonClick } from "@/app/actions/updateStatus";
 //import { getItemData } from "@/app/actions/getItemData";
