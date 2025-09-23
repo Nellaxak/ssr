@@ -105,13 +105,14 @@ export default async function Home() {
               const textString = decoder.decode(value);
               //:{"self":
               const regex = /:{"self":/g; //start li tag// g - глобальный флаг для поиска всех вхождений
-              const regexEnd = /},{"links":/g;
-              const matchesIterator = textString.matchAll(regex);//matchAll->test 
+              //const regexEnd = /},{"links":/g;
+              /*const matchesIterator = textString.matchAll(regex);//matchAll->test 
               const matchesArray = Array.from(matchesIterator); // Преобразование итератора в массив
               const count = matchesArray.length;
-              console.log('count', count)
+              console.log('count', count)*/
+              li=React.createElement('li',null,count)
+              textString.replaceAll(`:{"self":`,li);
               //create many li-for,while?-sync
-              li=`<li>3333</li>`//React.createElement('li',null,count)
               //new Li(e, dates[0])
               TextResult = TextResult + textString
               //streamResult.set(value)
@@ -144,5 +145,5 @@ export default async function Home() {
   }
   return await Li.getList()*/
   console.log('TextResult',TextResult)
-  return li//TextResult
+  return TextResult
 }
