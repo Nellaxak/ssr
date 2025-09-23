@@ -63,8 +63,22 @@ export default async function Home() {
   const resp = await fetch(`https://api.nasa.gov/neo/rest/v1/feed?start_date=${startDate}&end_date=${endDate}&api_key=3wa5hHgFuqhf6XiefvqzkcDQWZ01aOOK4vNZEXsP`);
   const dat = await resp.json()
   console.log('date', startDate, endDate, dat)
-  let descriptor = Object.getOwnPropertyDescriptor(dat, 'element_count');
-  Object.setPrototypeOf(dat, person)
-  console.log('obj', dat.element_count, descriptor,Object.getPrototypeOf(dat))//,dat.near_earth_objects)
+  //let descriptor = Object.getOwnPropertyDescriptor(dat, 'element_count');
+  //Object.setPrototypeOf(dat, person)
+  Object.defineProperty(dat.element_count, 'value', {
+    get: function () {
+      console.log('Получаем значение');
+      return this.value; // Возвращаем внутреннее свойство
+    },
+    set: function (newValue) {
+      console.log('Устанавливаем значение');
+      if (typeof newValue === 'number') {
+        this.value = newValue; // Устанавливаем внутреннее свойство
+      } else {
+        console.error('Значение должно быть числом!');
+      }
+    }
+  });
+  console.log('obj', dat.element_count)//,dat.near_earth_objects)
   return 'sssssssssssss'
 }
