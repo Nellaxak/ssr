@@ -73,7 +73,7 @@ export default async function Home() {
   const dat = await resp.json()
   console.log('date', startDate, endDate, dat)
   const obj = JSON.parse(dat);
-  console.log('obj', obj)
+  console.log('obj', obj.near_earth_objects)
   //let streamResult=new Uint8Array(99999);
   /*let TextResult = ''
   let li
