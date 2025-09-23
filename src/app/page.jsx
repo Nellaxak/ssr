@@ -66,11 +66,11 @@ export default async function Home() {
   //let descriptor = Object.getOwnPropertyDescriptor(dat, 'element_count');
   //Object.setPrototypeOf(dat, person)
   Object.defineProperty(dat.element_count, 'value', {
-    get: function () {
+    get(){
       console.log('Получаем значение');
       return this.value; // Возвращаем внутреннее свойство
     },
-    set: function (newValue) {
+    set(newValue){
       console.log('Устанавливаем значение');
       if (typeof newValue === 'number') {
         this.value = newValue; // Устанавливаем внутреннее свойство
