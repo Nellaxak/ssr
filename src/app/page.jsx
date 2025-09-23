@@ -70,7 +70,7 @@ export default async function Home() {
   //const items = await http<Item[]>(`http://localhost:3456/${viewtype}`) as Item[];
   //const resp = await fetch(`https://api.nasa.gov/neo/rest/v1/feed?start_date=${startDate}&end_date=${endDate}&api_key=3wa5hHgFuqhf6XiefvqzkcDQWZ01aOOK4vNZEXsP`);
   //const ress=await resp.arrayBuffer()
-  //console.log('date', startDate, endDate,resp.body)
+  //console.log('date', startDate, endDate,await resp.json())
   //let streamResult=new Uint8Array(99999);
   let TextResult = ''
   let li
@@ -104,13 +104,15 @@ export default async function Home() {
               // Decode the Uint8Array into a string
               const textString = decoder.decode(value);
               //:{"self":
-              const regex = /:{"self":/g; // g - глобальный флаг для поиска всех вхождений
-              const matchesIterator = textString.matchAll(regex);
+              const regex = /:{"self":/g; //start li tag// g - глобальный флаг для поиска всех вхождений
+              const matchesIterator = textString.matchAll(regex);//matchAll->test 
               const matchesArray = Array.from(matchesIterator); // Преобразование итератора в массив
               const count = matchesArray.length;
               console.log('count', count)
+              //create many li-for,while?-sync
               li=React.createElement('li',null,count)
-              //TextResult = TextResult + textString
+              //new Li(e, dates[0])
+              TextResult = TextResult + textString
               //streamResult.set(value)
               push();
             });
@@ -140,5 +142,6 @@ export default async function Home() {
     console.log('Nasa api request status', resp.status)
   }
   return await Li.getList()*/
+  console.log('TextResult',TextResult)
   return li//TextResult
 }
