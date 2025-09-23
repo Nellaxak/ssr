@@ -66,7 +66,7 @@ export default async function Home() {
   //let descriptor = Object.getOwnPropertyDescriptor(dat, 'element_count');
   //Object.setPrototypeOf(dat, person)
   const obj=dat.near_earth_objects
-  Object.defineProperty(obj, 'value', {
+  Object.defineProperty(obj, startDate, {
     get: function() {
       console.log('Получаем значение');
       return this.value; // Возвращаем внутреннее свойство
