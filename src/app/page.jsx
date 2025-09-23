@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Form from 'next/form';
+import { Transform } from "stream";
 import { buttonClick } from './actions/updateStatus';
 import styles from "./page.module.css";
 import Li from './Li'
@@ -22,6 +23,42 @@ async function CalcData() {
     resolve([startDate, endDate])
   })
   //return { startDate, endDate }
+}
+
+class RegexTransform extends Transform {
+  constructor(regex, replacer) {
+    super();
+    this.regex = regex;
+    this.replacer = replacer;
+    this.buffer = ""; // Buffer to handle partial matches across chunks
+  }
+
+  _transform(chunk, encoding, callback) {
+    this.buffer += chunk.toString(encoding); // Add current chunk to buffer
+
+    // Process the buffer with the regex, potentially multiple times
+    let match;
+    let lastIndex = 0;
+    while ((match = this.regex.exec(this.buffer)) !== null) {
+      // Push the part before the match
+      this.push(this.buffer.substring(lastIndex, match.index));
+      // Push the replaced content
+      this.push(match[0].replace(this.regex, this.replacer));
+      lastIndex = this.regex.lastIndex;
+    }
+
+    // Keep only the un-matched tail of the buffer for the next chunk
+    this.buffer = this.buffer.substring(lastIndex);
+    callback();
+  }
+
+  _flush(callback) {
+    // Push any remaining buffered content
+    if (this.buffer.length > 0) {
+      this.push(this.buffer);
+    }
+    callback();
+  }
 }
 export default async function Home() {
   let startDate
@@ -55,17 +92,22 @@ export default async function Home() {
               // Get the data and send it to the browser via the controller
               controller.enqueue(value);
               // Check chunks by logging to the console
-              //console.log('chunk', done, value);
-              const sharedBuffer = new SharedArrayBuffer(value.byteLength);
-              sharedUint8Array = new Uint8Array(sharedBuffer);
+              console.log('chunk', done, value);
+              //const sharedBuffer = new SharedArrayBuffer(value.byteLength);
+              //sharedUint8Array = new Uint8Array(sharedBuffer);
               // 3. Copy the data from the original Uint8Array to the shared Uint8Array
-              sharedUint8Array.set(value);
-              console.log('sharedUint8Array',sharedUint8Array)
-              //const decoder = new TextDecoder('utf-8');
+              //sharedUint8Array.set(value);
+              //console.log('sharedUint8Array',sharedUint8Array)
+              const decoder = new TextDecoder('utf-8');
               // Decode the Uint8Array into a string
-              //const textString = decoder.decode(value);
-              //console.log('textString', textString)
-              //TextResult=TextResult+textString
+              const textString = decoder.decode(value);
+              //:{"self":
+              const regex = /:{"self":/g; // g - глобальный флаг для поиска всех вхождений
+              const matchesIterator = textString.matchAll(regex);
+              const matchesArray = Array.from(matchesIterator); // Преобразование итератора в массив
+              const count = matchesArray.length;
+              console.log('count', count)
+              TextResult = TextResult + textString
               //streamResult.set(value)
               push();
             });
@@ -95,5 +137,5 @@ export default async function Home() {
     console.log('Nasa api request status', resp.status)
   }
   return await Li.getList()*/
-  return 'ress'
+  return TextResult
 }
