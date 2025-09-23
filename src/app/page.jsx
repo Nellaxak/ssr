@@ -61,29 +61,29 @@ export default async function Home() {
   //const viewtype = params.viewtype
   //const items = await http<Item[]>(`http://localhost:3456/${viewtype}`) as Item[];
   const resp = await fetch(`https://api.nasa.gov/neo/rest/v1/feed?start_date=${startDate}&end_date=${endDate}&api_key=3wa5hHgFuqhf6XiefvqzkcDQWZ01aOOK4vNZEXsP`);
-  if (Number(resp.status)===200){
-  const dat = await resp.json()
-  console.log('date', startDate, endDate, dat)
-  //let descriptor = Object.getOwnPropertyDescriptor(dat, 'element_count');
-  //Object.setPrototypeOf(dat, person)
-  const obj=dat.near_earth_objects
-  Object.defineProperty(obj,"2025-09-23", {
-    get: function() {
-      console.log('Получаем значение');
-      return this.value; // Возвращаем внутреннее свойство
-    },
-    set: function(newValue) {
-      console.log('Устанавливаем значение');
-      if (typeof newValue === 'number') {
-        this.value = newValue; // Устанавливаем внутреннее свойство
-      } else {
-        console.error('Значение должно быть числом!');
+  if (Number(resp.status) === 200) {
+    const dat = await resp.json()
+    console.log('date', startDate, endDate, dat)
+    //let descriptor = Object.getOwnPropertyDescriptor(dat, 'element_count');
+    //Object.setPrototypeOf(dat, person)
+    const obj = dat.near_earth_objects
+    Object.defineProperty(obj, startDate, {
+      get: function () {
+        console.log('Получаем значение');
+        return this.value; // Возвращаем внутреннее свойство
+      },
+      set: function (newValue) {
+        console.log('Устанавливаем значение');
+        if (typeof newValue === 'number') {
+          this.value = newValue; // Устанавливаем внутреннее свойство
+        } else {
+          console.error('Значение должно быть числом!');
+        }
       }
-    }
-  });
-  console.log('obj', obj["2025-09-23"])//,dat.near_earth_objects)
+    });
+    console.log('obj', obj[startDate])//obj["2025-09-23"])//,dat.near_earth_objects)
   } else {
-    console.log('NASA API error fetch status',resp.status)
+    console.log('NASA API error fetch status', resp.status)
   }
   return 'sssssssssssss'
 }
