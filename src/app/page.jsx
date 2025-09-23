@@ -61,6 +61,7 @@ export default async function Home() {
   //const viewtype = params.viewtype
   //const items = await http<Item[]>(`http://localhost:3456/${viewtype}`) as Item[];
   const resp = await fetch(`https://api.nasa.gov/neo/rest/v1/feed?start_date=${startDate}&end_date=${endDate}&api_key=3wa5hHgFuqhf6XiefvqzkcDQWZ01aOOK4vNZEXsP`);
+  if (Number(resp.status)===200){
   const dat = await resp.json()
   console.log('date', startDate, endDate, dat)
   //let descriptor = Object.getOwnPropertyDescriptor(dat, 'element_count');
@@ -81,5 +82,8 @@ export default async function Home() {
     }
   });
   console.log('obj', obj.near_earth_objects)//,dat.near_earth_objects)
+  } else {
+    console.log('NASA API fetch status',resp.status)
+  }
   return 'sssssssssssss'
 }
