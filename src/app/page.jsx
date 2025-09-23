@@ -67,7 +67,7 @@ export default async function Home() {
     //let descriptor = Object.getOwnPropertyDescriptor(dat, 'element_count');
     //Object.setPrototypeOf(dat, person)
     const obj = dat.near_earth_objects
-    Object.defineProperty(obj, startDate, {
+    Object.defineProperty(obj, "2025-09-23", {
       get: function () {
         console.log('Получаем значение');
         return this.value; // Возвращаем внутреннее свойство
@@ -81,7 +81,7 @@ export default async function Home() {
         }
       }
     });
-    console.log('obj', obj[startDate])//obj["2025-09-23"])//,dat.near_earth_objects)
+    console.log('obj', obj["2025-09-23"])//,dat.near_earth_objects)
   } else {
     console.log('NASA API error fetch status', resp.status)
   }
