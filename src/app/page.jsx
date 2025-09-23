@@ -110,7 +110,7 @@ export default async function Home() {
               const matchesArray = Array.from(matchesIterator); // Преобразование итератора в массив
               const count = matchesArray.length;
               console.log('count', count)*/
-              li=React.createElement('li',null,count)
+              li=React.createElement('li',null,'dddd')
               textString.replaceAll(`:{"self":`,li);
               //create many li-for,while?-sync
               //new Li(e, dates[0])
