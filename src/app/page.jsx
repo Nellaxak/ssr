@@ -70,9 +70,9 @@ export default async function Home() {
   //const items = await http<Item[]>(`http://localhost:3456/${viewtype}`) as Item[];
   const resp = await fetch(`https://api.nasa.gov/neo/rest/v1/feed?start_date=${startDate}&end_date=${endDate}&api_key=3wa5hHgFuqhf6XiefvqzkcDQWZ01aOOK4vNZEXsP`);
   //const ress=await resp.arrayBuffer()
-  const dat=await resp.json()
-  const obj = JSON.parse(dat);
-  console.log('date', startDate, endDate,obj)
+  const dat = await resp.json()
+ // const obj = JSON.parse(dat);
+  console.log('date', startDate, endDate, dat)
   //let streamResult=new Uint8Array(99999);
   /*let TextResult = ''
   let li
@@ -112,28 +112,28 @@ export default async function Home() {
               const matchesArray = Array.from(matchesIterator); // Преобразование итератора в массив
               const count = matchesArray.length;
               console.log('count', count)*/
-              /*li=React.createElement('li',null,'dddd')//to Uint8Array
-              console.log()
-              textString.replaceAll(`:{"self":`,li);
-              //create many li-for,while?-sync
-              //new Li(e, dates[0])
-              TextResult = TextResult + textString
-              //streamResult.set(value)
-              push();
-            });
-          }
-          push();
-        },
-      });
-    })
-    .then((stream) =>
-      // Respond with our stream
-      new Response(stream, { headers: { "Content-Type": "text/html" } }).text(),
-    )
-    .then((result) => {
-      // Do things with result
-      console.log(result);
-    });*/
+  /*li=React.createElement('li',null,'dddd')//to Uint8Array
+  console.log()
+  textString.replaceAll(`:{"self":`,li);
+  //create many li-for,while?-sync
+  //new Li(e, dates[0])
+  TextResult = TextResult + textString
+  //streamResult.set(value)
+  push();
+});
+}
+push();
+},
+});
+})
+.then((stream) =>
+// Respond with our stream
+new Response(stream, { headers: { "Content-Type": "text/html" } }).text(),
+)
+.then((result) => {
+// Do things with result
+console.log(result);
+});*/
   /*if (Number(resp.status) === 200) {
     data = await resp.json()
     //console.log('NASA data__________', data)
