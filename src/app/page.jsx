@@ -30,7 +30,14 @@ const person = {
   lastName: "Doe",
   element_count: 0,
   _age: 30, // Conventionally, a leading underscore indicates a private or internal property
-
+  get element_count() {
+    console.log('getter', this.element_count)
+    return this.element_count;
+  },
+  set element_count(value) {
+    console.log('setter', value)
+    this.element_count = value;
+  },
   get fullName() {
     return `${this.firstName} ${this.lastName}`;
   },
@@ -55,12 +62,10 @@ export default async function Home() {
   //const viewtype = params.viewtype
   //const items = await http<Item[]>(`http://localhost:3456/${viewtype}`) as Item[];
   const resp = await fetch(`https://api.nasa.gov/neo/rest/v1/feed?start_date=${startDate}&end_date=${endDate}&api_key=3wa5hHgFuqhf6XiefvqzkcDQWZ01aOOK4vNZEXsP`);
-  //const ress=await resp.arrayBuffer()
   const dat = await resp.json()
   console.log('date', startDate, endDate, dat)
-  //const obj = JSON.parse(dat);
-  Object.setPrototypeOf(dat,person)
+  Object.setPrototypeOf(dat, person)
   console.log('obj', dat.element_count, Object.getPrototypeOf(dat))//,dat.near_earth_objects)
-  
+
   return 'sssssssssssss'
 }
