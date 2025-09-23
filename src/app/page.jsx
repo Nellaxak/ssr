@@ -81,9 +81,9 @@ export default async function Home() {
       }
     }
   });
-  console.log('obj', obj.near_earth_objects)//,dat.near_earth_objects)
+  console.log('obj', obj)//,dat.near_earth_objects)
   } else {
-    console.log('NASA API fetch status',resp.status)
+    console.log('NASA API error fetch status',resp.status)
   }
   return 'sssssssssssss'
 }
