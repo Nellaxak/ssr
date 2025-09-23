@@ -65,13 +65,13 @@ export default async function Home() {
   console.log('date', startDate, endDate, dat)
   //let descriptor = Object.getOwnPropertyDescriptor(dat, 'element_count');
   //Object.setPrototypeOf(dat, person)
-  const obj=dat.element_count
+  const obj=dat.near_earth_objects
   Object.defineProperty(obj, 'value', {
-    get: function () {
+    get: function() {
       console.log('Получаем значение');
       return this.value; // Возвращаем внутреннее свойство
     },
-    set: function (newValue) {
+    set: function(newValue) {
       console.log('Устанавливаем значение');
       if (typeof newValue === 'number') {
         this.value = newValue; // Устанавливаем внутреннее свойство
