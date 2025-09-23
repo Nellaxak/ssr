@@ -68,11 +68,12 @@ export default async function Home() {
   [startDate, endDate] = await CalcData()
   //const viewtype = params.viewtype
   //const items = await http<Item[]>(`http://localhost:3456/${viewtype}`) as Item[];
-  //const resp = await fetch(`https://api.nasa.gov/neo/rest/v1/feed?start_date=${startDate}&end_date=${endDate}&api_key=3wa5hHgFuqhf6XiefvqzkcDQWZ01aOOK4vNZEXsP`);
+  const resp = await fetch(`https://api.nasa.gov/neo/rest/v1/feed?start_date=${startDate}&end_date=${endDate}&api_key=3wa5hHgFuqhf6XiefvqzkcDQWZ01aOOK4vNZEXsP`);
   //const ress=await resp.arrayBuffer()
-  //console.log('date', startDate, endDate,await resp.json())
+  const obj = JSON.parse(await resp.json());
+  console.log('date', startDate, endDate,obj)
   //let streamResult=new Uint8Array(99999);
-  let TextResult = ''
+  /*let TextResult = ''
   let li
   await fetch(`https://api.nasa.gov/neo/rest/v1/feed?start_date=${startDate}&end_date=${endDate}&api_key=3wa5hHgFuqhf6XiefvqzkcDQWZ01aOOK4vNZEXsP`)
     .then((response) => response.body)
@@ -110,7 +111,8 @@ export default async function Home() {
               const matchesArray = Array.from(matchesIterator); // Преобразование итератора в массив
               const count = matchesArray.length;
               console.log('count', count)*/
-              li=React.createElement('li',null,'dddd')
+              /*li=React.createElement('li',null,'dddd')//to Uint8Array
+              console.log()
               textString.replaceAll(`:{"self":`,li);
               //create many li-for,while?-sync
               //new Li(e, dates[0])
@@ -130,7 +132,7 @@ export default async function Home() {
     .then((result) => {
       // Do things with result
       console.log(result);
-    });
+    });*/
   /*if (Number(resp.status) === 200) {
     data = await resp.json()
     //console.log('NASA data__________', data)
@@ -144,6 +146,6 @@ export default async function Home() {
     console.log('Nasa api request status', resp.status)
   }
   return await Li.getList()*/
-  console.log('TextResult',TextResult)
-  return TextResult
+  //console.log('TextResult',TextResult)
+  return 'sssssssssssss'//TextResult
 }
