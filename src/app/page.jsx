@@ -80,6 +80,6 @@ export default async function Home() {
       }
     }
   });
-  console.log('obj', dat.element_count)//,dat.near_earth_objects)
+  console.log('obj', obj.near_earth_objects)//,dat.near_earth_objects)
   return 'sssssssssssss'
 }
