@@ -71,8 +71,9 @@ export default async function Home() {
   const resp = await fetch(`https://api.nasa.gov/neo/rest/v1/feed?start_date=${startDate}&end_date=${endDate}&api_key=3wa5hHgFuqhf6XiefvqzkcDQWZ01aOOK4vNZEXsP`);
   //const ress=await resp.arrayBuffer()
   const dat = await resp.json()
- // const obj = JSON.parse(dat);
   console.log('date', startDate, endDate, dat)
+  const obj = JSON.parse(dat);
+  console.log('obj', obj)
   //let streamResult=new Uint8Array(99999);
   /*let TextResult = ''
   let li
