@@ -1,3 +1,4 @@
+import React from "react";
 import Image from "next/image";
 import Form from 'next/form';
 import { Transform } from "stream";
@@ -72,6 +73,7 @@ export default async function Home() {
   //console.log('date', startDate, endDate,resp.body)
   //let streamResult=new Uint8Array(99999);
   let TextResult = ''
+  let li
   await fetch(`https://api.nasa.gov/neo/rest/v1/feed?start_date=${startDate}&end_date=${endDate}&api_key=3wa5hHgFuqhf6XiefvqzkcDQWZ01aOOK4vNZEXsP`)
     .then((response) => response.body)
     .then((rb) => {
@@ -107,7 +109,8 @@ export default async function Home() {
               const matchesArray = Array.from(matchesIterator); // Преобразование итератора в массив
               const count = matchesArray.length;
               console.log('count', count)
-              TextResult = TextResult + textString
+              li=React.createElement('li',null,count)
+              //TextResult = TextResult + textString
               //streamResult.set(value)
               push();
             });
@@ -137,5 +140,5 @@ export default async function Home() {
     console.log('Nasa api request status', resp.status)
   }
   return await Li.getList()*/
-  return TextResult
+  return li//TextResult
 }
