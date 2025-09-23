@@ -72,8 +72,8 @@ export default async function Home() {
   //const ress=await resp.arrayBuffer()
   const dat = await resp.json()
   console.log('date', startDate, endDate, dat)
-  const obj = JSON.parse(dat);
-  console.log('obj', obj.near_earth_objects)
+  //const obj = JSON.parse(dat);
+  console.log('obj', dat.element_count)//obj.near_earth_objects)
   //let streamResult=new Uint8Array(99999);
   /*let TextResult = ''
   let li
