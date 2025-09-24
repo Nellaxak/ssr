@@ -87,7 +87,8 @@ export default async function Home() {
           return target.length + 1; // Return a modified length
         }
         // Default behavior for other properties/methods
-        return React.createElement('li',null,Reflect.get(target, prop, receiver))
+        const dddd=Reflect.get(target, prop, receiver)
+        return React.createElement('li',null,dddd)
         //return Reflect.get(target, prop, receiver);
       },
 
