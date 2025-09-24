@@ -58,6 +58,7 @@ export default async function Home() {
   let startDate
   let endDate
   [startDate, endDate] = await CalcData()
+  let list
   //const viewtype = params.viewtype
   //const items = await http<Item[]>(`http://localhost:3456/${viewtype}`) as Item[];
   const resp = await fetch(`https://api.nasa.gov/neo/rest/v1/feed?start_date=${startDate}&end_date=${endDate}&api_key=3wa5hHgFuqhf6XiefvqzkcDQWZ01aOOK4vNZEXsP`);
@@ -67,7 +68,7 @@ export default async function Home() {
     //let descriptor = Object.getOwnPropertyDescriptor(dat, 'element_count');
     //Object.setPrototypeOf(dat, person)
     const obj = dat.near_earth_objects
-    let list = Object.values(obj)
+    list = Object.values(obj)
     /*list = new Proxy(list, {
       get(target, prop) {
         console.log('getter list',target[prop])
