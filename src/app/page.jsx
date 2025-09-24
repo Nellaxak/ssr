@@ -88,7 +88,8 @@ export default async function Home() {
         }
         // Default behavior for other properties/methods
         const dddd=Reflect.get(target, prop, receiver)
-        return React.createElement('li',null,dddd)
+        console.log('dddd',dddd)
+        return React.createElement('li',null,'1111111111111111')
         //return Reflect.get(target, prop, receiver);
       },
 
