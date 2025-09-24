@@ -59,6 +59,7 @@ export default async function Home() {
   let endDate
   [startDate, endDate] = await CalcData()
   let list
+  let arrayHandler
   //const viewtype = params.viewtype
   //const items = await http<Item[]>(`http://localhost:3456/${viewtype}`) as Item[];
   const resp = await fetch(`https://api.nasa.gov/neo/rest/v1/feed?start_date=${startDate}&end_date=${endDate}&api_key=3wa5hHgFuqhf6XiefvqzkcDQWZ01aOOK4vNZEXsP`);
@@ -77,7 +78,7 @@ export default async function Home() {
         } else { return 0 }
       }
     })*/
-    const arrayHandler = {
+    arrayHandler = {
       // Intercept 'get' operations (reading properties or calling methods)
       get(target, prop, receiver) {
         console.log(`Getting property: ${String(prop)}`);
