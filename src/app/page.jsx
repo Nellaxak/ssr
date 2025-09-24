@@ -133,5 +133,6 @@ export default async function Home() {
     console.log('NASA API error fetch status', resp.status)
   }
   const proxiedArray = new Proxy(list, arrayHandler);
+  console.log('proxiedArray',proxiedArray[0])
   return proxiedArray
 }
