@@ -81,7 +81,7 @@ export default async function Home() {
     arrayHandler = {
       // Intercept 'get' operations (reading properties or calling methods)
       get(target, prop, receiver) {
-        console.log(`Getting property: ${String(prop)}`,receiver);
+        console.log(`Getting property: ${String(prop)}`);
         // Example: Custom behavior for 'length'
         if (prop === 'length') {
           return target.length + 1; // Return a modified length
