@@ -81,13 +81,14 @@ export default async function Home() {
     arrayHandler = {
       // Intercept 'get' operations (reading properties or calling methods)
       get(target, prop, receiver) {
-        console.log(`Getting property: ${String(prop)}`);
+        console.log(`Getting property: ${String(prop)}`,receiver);
         // Example: Custom behavior for 'length'
         if (prop === 'length') {
           return target.length + 1; // Return a modified length
         }
         // Default behavior for other properties/methods
-        return Reflect.get(target, prop, receiver);
+        return React.createElement('li',null,Reflect.get(target, prop, receiver))
+        //return Reflect.get(target, prop, receiver);
       },
 
       // Intercept 'set' operations (assigning values to properties)
@@ -134,5 +135,5 @@ export default async function Home() {
   }
   const proxiedArray = new Proxy(list, arrayHandler);
   console.log('proxiedArray',proxiedArray[0])
-  return proxiedArray
+  return proxiedArray[0]
 }
