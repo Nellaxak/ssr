@@ -68,15 +68,50 @@ export default async function Home() {
     //Object.setPrototypeOf(dat, person)
     const obj = dat.near_earth_objects
     let list = Object.values(obj)
-    list = new Proxy(list, {
+    /*list = new Proxy(list, {
       get(target, prop) {
         console.log('getter list',target[prop])
         if (prop in target) {
           return target[prop]
         } else { return 0 }
       }
-    })
-    Object.defineProperty(obj, "2025-09-24", {
+    })*/
+    const arrayHandler = {
+      // Intercept 'get' operations (reading properties or calling methods)
+      get(target, prop, receiver) {
+        console.log(`Getting property: ${String(prop)}`);
+        // Example: Custom behavior for 'length'
+        if (prop === 'length') {
+          return target.length + 1; // Return a modified length
+        }
+        // Default behavior for other properties/methods
+        return Reflect.get(target, prop, receiver);
+      },
+
+      // Intercept 'set' operations (assigning values to properties)
+      set(target, prop, value, receiver) {
+        console.log(`Setting property: ${String(prop)} to ${value}`);
+        // Example: Validate that only numbers can be added
+        if (typeof value !== 'number' && typeof prop === 'string' && !isNaN(parseInt(prop))) {
+          console.warn('Warning: Non-numeric value attempted to be added to the array.');
+          return false; // Prevent the assignment
+        }
+        // Default behavior for other assignments
+        return Reflect.set(target, prop, value, receiver);
+      },
+
+      // Intercept 'deleteProperty' operations (deleting properties)
+      deleteProperty(target, prop) {
+        console.log(`Deleting property: ${String(prop)}`);
+        // Example: Prevent deletion of the first element
+        if (prop === '0') {
+          console.warn('Warning: Cannot delete the first element.');
+          return false;
+        }
+        return Reflect.deleteProperty(target, prop);
+      }
+    };
+    /*Object.defineProperty(obj, "2025-09-24", {
       get: function () {
         console.log('Получаем значение');
         return this.value; // Возвращаем внутреннее свойство
@@ -91,8 +126,10 @@ export default async function Home() {
       }
     });
     console.log('obj', obj["2025-09-24"])//,dat.near_earth_objects)
+    */
   } else {
     console.log('NASA API error fetch status', resp.status)
   }
-  return 'sssssssssssss'
+  const proxiedArray = new Proxy(list, arrayHandler);
+  return proxiedArray
 }
