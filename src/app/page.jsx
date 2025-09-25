@@ -82,7 +82,7 @@ export default async function Home() {
    //const myProto = { greeting: "Hi" };
     list.forEach(obj => {
       //Object.setPrototypeOf(obj, myProto);
-      console.log('list item proto',Object.getPrototypeOf(obj));
+      console.log('list item proto',obj,'________',Object.getPrototypeOf(obj));
     });
     arrayHandler = {
       // Intercept 'get' operations (reading properties or calling methods)
