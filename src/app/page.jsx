@@ -57,7 +57,7 @@ const person = {
     return this._age;
   }
 };
-db = await createRxDatabase({
+const db = await createRxDatabase({
     name: 'exampledb',
     storage: getRxStorageMemory(),
     ignoreDuplicate: false,
