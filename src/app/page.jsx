@@ -1,7 +1,7 @@
 import React from "react";
 import Image from "next/image";
-import { createRxDatabase, addRxPlugin } from'rxdb';
-import { getRxStorageMemory } from'rxdb/plugins/storage-memory';
+import { createRxDatabase, addRxPlugin } from 'rxdb';
+import { getRxStorageMemory } from 'rxdb/plugins/storage-memory';
 import { RxDBUpdatePlugin } from 'rxdb/plugins/update';
 import Form from 'next/form';
 import { Transform } from "stream";
@@ -58,43 +58,43 @@ const person = {
   }
 };
 const db = await createRxDatabase({
-    name: 'exampledb',
-    storage: getRxStorageMemory(),
-    ignoreDuplicate: false,
-    eventReduce: true,
-  });
-  recordShema = {
-    title: 'records',
-    type: 'array',
-    primaryKey: 'id',
-    properties: {
-      id: { type: 'string', maxLength: 100 },
-      name: { type: 'string', maxLength: 100 },
-      calc: { type: 'string', maxLength: 100 },
-      links: { type: 'object' },
-      absolute_magnitude_h: { type: 'number' },
-      estimated_diameter: { type: 'object' },
-      is_potentially_hazardous_asteroid: { type: 'boolean' },
-      close_approach_data: { type: 'array' },
-      is_sentry_object: { type: 'boolean' },
-      sentry_data: { type: 'string', maxLength: 100 },
-      dateReq: { type: 'string', maxLength: 100 },
-      result_distance: { type: 'number' },
-      danger: { type: 'number' },
-      km_moon: { type: 'number' },
-      idView: { type: 'string', maxLength: 100 },
-      dateView: { type: 'string', maxLength: 100 },
-      diameterView: { type: 'string', maxLength: 100 },
-      dangerView: { type: 'string' },
-      dateSort: { type: 'number' },
-    },
-  }
-  await db.addCollections({
-    records: {
-      schema: recordShema,
-    },
-  });
-  const newList = []
+  name: 'exampledb',
+  storage: getRxStorageMemory(),
+  ignoreDuplicate: true,
+  eventReduce: true,
+});
+const recordShema = {
+  title: 'records',
+  type: 'array',
+  primaryKey: 'id',
+  properties: {
+    id: { type: 'string', maxLength: 100 },
+    name: { type: 'string', maxLength: 100 },
+    calc: { type: 'string', maxLength: 100 },
+    links: { type: 'object' },
+    absolute_magnitude_h: { type: 'number' },
+    estimated_diameter: { type: 'object' },
+    is_potentially_hazardous_asteroid: { type: 'boolean' },
+    close_approach_data: { type: 'array' },
+    is_sentry_object: { type: 'boolean' },
+    sentry_data: { type: 'string', maxLength: 100 },
+    dateReq: { type: 'string', maxLength: 100 },
+    result_distance: { type: 'number' },
+    danger: { type: 'number' },
+    km_moon: { type: 'number' },
+    idView: { type: 'string', maxLength: 100 },
+    dateView: { type: 'string', maxLength: 100 },
+    diameterView: { type: 'string', maxLength: 100 },
+    dangerView: { type: 'string' },
+    dateSort: { type: 'number' },
+  },
+}
+await db.addCollections({
+  records: {
+    schema: recordShema,
+  },
+});
+const newList = []
 export default async function Home() {
   let startDate
   let endDate
@@ -111,12 +111,12 @@ export default async function Home() {
     //Object.setPrototypeOf(dat, person)
     const obj = dat.near_earth_objects
     const list = data.near_earth_objects
-      const dates = Object.keys(list)
-      const arrObjects = Object.values(list)
-      await Promise.all(arrObjects[0].map(
-        async (e) => elem(e, dates[0])
-      ));
-      const result = await db.records.insert([{id: 'ddhyu'}])//bulkInsert(newList)
+    const dates = Object.keys(list)
+    const arrObjects = Object.values(list)
+    await Promise.all(arrObjects[0].map(
+      async (e) => elem(e, dates[0])
+    ));
+    const result = await db.records.insert([{ id: 'ddhyu' }])//bulkInsert(newList)
     //list = Object.values(obj)
     //console.log('objProto', Object.getPrototypeOf(list), Array.isArray(list))
     /*list = new Proxy(list, {
@@ -127,9 +127,9 @@ export default async function Home() {
         } else { return 0 }
       }
     })*/
-   //const myProto = { greeting: "Hi" };
-   //Object.setPrototypeOf(list,React)
-   //console.log('dddddddd',Object.getPrototypeOf(list))
+    //const myProto = { greeting: "Hi" };
+    //Object.setPrototypeOf(list,React)
+    //console.log('dddddddd',Object.getPrototypeOf(list))
     /*list.forEach(obj => {
       //Object.setPrototypeOf(obj, myProto);
       console.log('list item proto',obj,'________',Object.getPrototypeOf(obj));
