@@ -186,7 +186,7 @@ export default async function Home() {
         }
       }
     });
-    console.log('obj', obj["2025-09-25"])//,dat.near_earth_objects)
+    //console.log('obj', obj["2025-09-25"])//,dat.near_earth_objects)
 
   } else {
     console.log('NASA API error fetch status', resp.status)
