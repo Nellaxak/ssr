@@ -70,7 +70,7 @@ export default async function Home() {
     //Object.setPrototypeOf(dat, person)
     const obj = dat.near_earth_objects
     list = Object.values(obj)
-    console.log('objProto',Object.getPrototypeOf(obj),Array.isArray(list))
+    console.log('objProto', Object.getPrototypeOf(obj), Array.isArray(list))
     /*list = new Proxy(list, {
       get(target, prop) {
         console.log('getter list',target[prop])
@@ -79,6 +79,11 @@ export default async function Home() {
         } else { return 0 }
       }
     })*/
+   //const myProto = { greeting: "Hi" };
+    list.forEach(obj => {
+      //Object.setPrototypeOf(obj, myProto);
+      console.log('list item proto',Object.getPrototypeOf(obj));
+    });
     arrayHandler = {
       // Intercept 'get' operations (reading properties or calling methods)
       get(target, prop, receiver) {
@@ -88,9 +93,9 @@ export default async function Home() {
           return target.length + 1; // Return a modified length
         }
         // Default behavior for other properties/methods
-        const dddd=Reflect.get(target, prop, receiver)
-        console.log('dddd',dddd)//array objects
-        return React.createElement('li',null,'1111111111111111')
+        const dddd = Reflect.get(target, prop, receiver)
+        console.log('dddd', dddd)//array objects
+        return React.createElement('li', null, '1111111111111111')
         //return Reflect.get(target, prop, receiver);
       },
 
@@ -132,7 +137,7 @@ export default async function Home() {
       }
     });
     console.log('obj', obj["2025-09-25"])//,dat.near_earth_objects)
-    
+
   } else {
     console.log('NASA API error fetch status', resp.status)
   }
