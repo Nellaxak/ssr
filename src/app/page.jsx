@@ -198,5 +198,6 @@ export default async function Home() {
   }
   //const proxiedArray = new Proxy(list, arrayHandler);
   //console.log('proxiedArray',proxiedArray[0])
-  return 'ssssss'//proxiedArray[0]
+  const resd=await Li.getList()
+  return resd
 }
