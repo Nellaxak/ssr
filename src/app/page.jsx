@@ -113,10 +113,10 @@ export default async function Home() {
     const list = dat.near_earth_objects
     const dates = Object.keys(list)
     const arrObjects = Object.values(list)
-    await Promise.all(arrObjects[0].map(
+    /*await Promise.all(arrObjects[0].map(s
       async (e) => elem(e, dates[0])
-    ));
-    const result = await db.records.insert([{ id: 'ddhyu' }])//bulkInsert(newList)
+    ));*/
+    const result = await db.records.bulkInsert([{ id: 'ddhyu' }])//bulkInsert(newList)
     //list = Object.values(obj)
     //console.log('objProto', Object.getPrototypeOf(list), Array.isArray(list))
     /*list = new Proxy(list, {
