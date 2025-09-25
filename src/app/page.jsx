@@ -69,8 +69,8 @@ export default async function Home() {
     //let descriptor = Object.getOwnPropertyDescriptor(dat, 'element_count');
     //Object.setPrototypeOf(dat, person)
     const obj = dat.near_earth_objects
-    console.log('objProto',Object.getPrototypeOf(obj),Array.isArray(obj))
     list = Object.values(obj)
+    console.log('objProto',Object.getPrototypeOf(obj),Array.isArray(list))
     /*list = new Proxy(list, {
       get(target, prop) {
         console.log('getter list',target[prop])
