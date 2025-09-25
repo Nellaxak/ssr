@@ -60,7 +60,7 @@ const person = {
 const db = await createRxDatabase({
   name: 'exampledb',
   storage: getRxStorageMemory(),
-  ignoreDuplicate: true,
+  ignoreDuplicate: false,
   eventReduce: true,
 });
 const recordShema = {
