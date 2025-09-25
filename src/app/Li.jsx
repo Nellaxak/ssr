@@ -92,7 +92,7 @@ class Li {
     }*/
     // )
     // console.log('gssssssssss',resp.status)
-    const data = await resp.json()
+    //const data = await resp.json()
     //console.log('button data',data)
     //}
     return createElement('button', { key: 'btn', type: 'submit' }, 0)//data.message)
