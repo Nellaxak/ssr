@@ -172,7 +172,7 @@ export default async function Home() {
         return Reflect.deleteProperty(target, prop);
       }
     };
-    Object.defineProperty(obj, "2025-09-25", {
+    /*Object.defineProperty(obj, "2025-09-25", {
       get: function () {
         console.log('Получаем значение');
         return this.value; // Возвращаем внутреннее свойство
@@ -185,7 +185,7 @@ export default async function Home() {
           console.error('Значение должно быть числом!');
         }
       }
-    });
+    });*/
     //console.log('obj', obj["2025-09-25"])//,dat.near_earth_objects)
 
   } else {
