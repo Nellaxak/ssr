@@ -69,6 +69,7 @@ export default async function Home() {
     //let descriptor = Object.getOwnPropertyDescriptor(dat, 'element_count');
     //Object.setPrototypeOf(dat, person)
     const obj = dat.near_earth_objects
+    console.log('objProto',Object.getPrototypeOf(obj))
     list = Object.values(obj)
     /*list = new Proxy(list, {
       get(target, prop) {
@@ -88,7 +89,7 @@ export default async function Home() {
         }
         // Default behavior for other properties/methods
         const dddd=Reflect.get(target, prop, receiver)
-        console.log('dddd',dddd)
+        console.log('dddd',dddd)//array objects
         return React.createElement('li',null,'1111111111111111')
         //return Reflect.get(target, prop, receiver);
       },
@@ -135,7 +136,7 @@ export default async function Home() {
   } else {
     console.log('NASA API error fetch status', resp.status)
   }
-  const proxiedArray = new Proxy(list, arrayHandler);
-  console.log('proxiedArray',proxiedArray[0])
-  return proxiedArray[0]
+  //const proxiedArray = new Proxy(list, arrayHandler);
+  //console.log('proxiedArray',proxiedArray[0])
+  return 'ssssss'//proxiedArray[0]
 }
