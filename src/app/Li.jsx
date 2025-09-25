@@ -34,7 +34,7 @@ class Li {
   //static pageSizeItems = 15//for first load
   //static countFirstPageSize=0//add getter/setter
   //private result: any;
-  async constructor(obj, dates) {
+  constructor(obj, dates) {
     //console.log('_____________________________________________bbb',dates)
     Object.entries(obj).map(([key, value]) => this[key] = value);
     this.status = 0

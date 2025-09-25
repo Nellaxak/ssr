@@ -114,7 +114,7 @@ export default async function Home() {
     const dates = Object.keys(list)
     const arrObjects = Object.values(list)
     await Promise.all(arrObjects[0].map(
-        async (e) => await new Li(e, dates[0])
+        async (e) => new Li(e, dates[0])
       ));
     /*await Promise.all(arrObjects[0].map(s
       async (e) => elem(e, dates[0])
