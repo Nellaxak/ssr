@@ -117,6 +117,8 @@ export default async function Home() {
       async (e) => elem(e, dates[0])
     ));*/
     const result = await db.records.bulkInsert([{ id: 'ddhyu' }])//bulkInsert(newList)
+    const allDocuments = await db.records.find().exec();
+    console.log('allDocuments',allDocuments)
     //list = Object.values(obj)
     //console.log('objProto', Object.getPrototypeOf(list), Array.isArray(list))
     /*list = new Proxy(list, {
