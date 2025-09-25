@@ -70,7 +70,7 @@ export default async function Home() {
     //Object.setPrototypeOf(dat, person)
     const obj = dat.near_earth_objects
     list = Object.values(obj)
-    console.log('objProto', Object.getPrototypeOf(obj), Array.isArray(list))
+    console.log('objProto', Object.getPrototypeOf(list), Array.isArray(list))
     /*list = new Proxy(list, {
       get(target, prop) {
         console.log('getter list',target[prop])
@@ -80,10 +80,12 @@ export default async function Home() {
       }
     })*/
    //const myProto = { greeting: "Hi" };
-    list.forEach(obj => {
+   Object.setPrototypeOf(list,React)
+   console.log('dddddddd',Object.getPrototypeOf(list))
+    /*list.forEach(obj => {
       //Object.setPrototypeOf(obj, myProto);
       console.log('list item proto',obj,'________',Object.getPrototypeOf(obj));
-    });
+    });*/
     arrayHandler = {
       // Intercept 'get' operations (reading properties or calling methods)
       get(target, prop, receiver) {
