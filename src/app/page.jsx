@@ -109,8 +109,8 @@ export default async function Home() {
     console.log('date', startDate, endDate, dat)
     //let descriptor = Object.getOwnPropertyDescriptor(dat, 'element_count');
     //Object.setPrototypeOf(dat, person)
-    const obj = dat.near_earth_objects
-    const list = data.near_earth_objects
+    //const obj = dat.near_earth_objects
+    const list = dat.near_earth_objects
     const dates = Object.keys(list)
     const arrObjects = Object.values(list)
     await Promise.all(arrObjects[0].map(
