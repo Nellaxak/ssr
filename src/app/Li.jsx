@@ -114,7 +114,7 @@ class Li {
     </Form>
   }
   static async getList(viewtype) {
-    //console.log('getList', Li.arrResult[0])
+    console.log('getList', viewtype)
     //const resd = Array.from(Li.arrResult.values())
     return Li.arrResult
     /*return new Promise(resolve =>
