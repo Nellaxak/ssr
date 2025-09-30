@@ -1,8 +1,5 @@
 import React from "react";
 import Image from "next/image";
-import { createRxDatabase, addRxPlugin } from 'rxdb';
-import { getRxStorageMemory } from 'rxdb/plugins/storage-memory';
-import { RxDBUpdatePlugin } from 'rxdb/plugins/update';
 import Form from 'next/form';
 import { Transform } from "stream";
 import { buttonClick } from './actions/updateStatus';
@@ -57,49 +54,12 @@ const person = {
     return this._age;
   }
 };
-const db = await createRxDatabase({
-  name: 'exampledb',
-  storage: getRxStorageMemory(),
-  ignoreDuplicate: false,
-  eventReduce: true,
-});
-const recordShema = {
-  title: 'records',
-  type: 'array',
-  primaryKey: 'id',
-  properties: {
-    id: { type: 'string', maxLength: 100 },
-    name: { type: 'string', maxLength: 100 },
-    calc: { type: 'string', maxLength: 100 },
-    links: { type: 'object' },
-    absolute_magnitude_h: { type: 'number' },
-    estimated_diameter: { type: 'object' },
-    is_potentially_hazardous_asteroid: { type: 'boolean' },
-    close_approach_data: { type: 'array' },
-    is_sentry_object: { type: 'boolean' },
-    sentry_data: { type: 'string', maxLength: 100 },
-    dateReq: { type: 'string', maxLength: 100 },
-    result_distance: { type: 'number' },
-    danger: { type: 'number' },
-    km_moon: { type: 'number' },
-    idView: { type: 'string', maxLength: 100 },
-    dateView: { type: 'string', maxLength: 100 },
-    diameterView: { type: 'string', maxLength: 100 },
-    dangerView: { type: 'string' },
-    dateSort: { type: 'number' },
-  },
-}
-await db.addCollections({
-  records: {
-    schema: recordShema,
-  },
-});
-const newList = []
+//const newList = []
 export default async function Home() {
   let startDate
   let endDate
   [startDate, endDate] = await CalcData()
-  let list
+  //let list
   let arrayHandler
   //const viewtype = params.viewtype
   //const items = await http<Item[]>(`http://localhost:3456/${viewtype}`) as Item[];
@@ -199,6 +159,6 @@ export default async function Home() {
   //const proxiedArray = new Proxy(list, arrayHandler);
   //console.log('proxiedArray',proxiedArray[0])
   const resd=await Li.getList()
-  console.log('resd',resd)
+  //console.log('resd',resd)
   return resd
 }
