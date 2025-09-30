@@ -13,14 +13,24 @@ export default function ParallelLayout({
   list: React.ReactNode
 }*/) {
   //<SVG />
-
+  <Toggle path={props.path} />
+  //
   return (
-    <div className={styles.wrapLayout}>
-      {children}
-      <main className={styles.wrapRowRight}>
-        {list}
+    <div>
+      <div className={styles.column}>
+        <header className={styles.header}>
+          <span className={styles.h6}>
+            Ближайшие подлёты астероидов
+          </span>
+        </header>
+      </div>
+      <div className={styles.wrapLayout}>
+        {children}
+        <ul className={styles.wrapRowRight}>
+          {list}
+        </ul>
         {count}
-      </main>
+      </div>
     </div>
   )
 }

@@ -53,3 +53,42 @@
      column-gap: 128px;
    }
  }
+ .h6 {
+   padding-top: 8px;
+}
+
+.column {
+   flex: 0 0 104px;
+   display: flex;
+   flex-direction: column;
+   justify-content: space-between;
+   gap: 8px;
+}
+
+.header {
+   font-family: 'Helvetica';
+   font-style: normal;
+   font-weight: 700;
+   font-size: 28px;
+   line-height: 36px;
+   color: var(--color-to-basket);
+}
+
+@media screen and (orientation: portrait) {
+   .column {
+      flex: 0 0 140px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+   }
+}
+
+@media screen and (orientation: landscape) {
+   .column {
+      flex: 0 0 104px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 9px;
+   }
+}

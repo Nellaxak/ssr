@@ -37,9 +37,9 @@ export default function Layout(props) {
             </div>
           </header>
           <Suspense fallback={<span className={'loader'}></span>}>
-              <ul>
+              <main>
                 {props.children}
-              </ul>
+              </main>
           </Suspense>
           <ScrollComponent />
         </div>
