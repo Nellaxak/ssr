@@ -109,7 +109,7 @@
         /*grid-column: 1 / 2;
         grid-row: 2 / 3;*/
         overflow: hidden;
-        grid-area: m;
+        grid-area: m m;
         position: sticky;
         max-width: 100%;
         height: calc(100vmin - 123px - 2em);
@@ -127,7 +127,7 @@
         /*grid-column: 1 / 2;
         grid-row: 2 / 3;*/
         overflow: hidden;
-        grid-area: m;
+        grid-area: m m;
         position: sticky;
         height: 72vh;
         top: 84px;
@@ -144,7 +144,7 @@
         /*grid-column: 1 / 2;
         grid-row: 2 / 3;*/
         overflow: hidden;
-        grid-area: m;
+        grid-area: m m;
         position: sticky;
         height: 74vh;
         top: 84px;
