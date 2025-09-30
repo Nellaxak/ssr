@@ -106,8 +106,9 @@
 
 @media screen and (orientation: landscape) {
     .image_wrapper {
-        grid-column: 1 / 2;
-        grid-row: 2 / 3;
+        /*grid-column: 1 / 2;
+        grid-row: 2 / 3;*/
+        grid-area: m;
         position: sticky;
         max-width: 100%;
         height: calc(100vmin - 123px - 2em);
@@ -122,8 +123,9 @@
 
 @media screen and (((min-width: 925px) or (min-width: 1025px)) and (orientation: landscape)) {
     .image_wrapper {
-        grid-column: 1 / 2;
-        grid-row: 2 / 3;
+        /*grid-column: 1 / 2;
+        grid-row: 2 / 3;*/
+        grid-area: m;
         position: sticky;
         height: 72vh;
         top: 84px;
@@ -137,8 +139,9 @@
 
 @media screen and ((min-width: 1356px) and (orientation: landscape)) {
     .image_wrapper {
-        grid-column: 1 / 2;
-        grid-row: 2 / 3;
+        /*grid-column: 1 / 2;
+        grid-row: 2 / 3;*/
+        grid-area: m;
         position: sticky;
         height: 74vh;
         top: 84px;
