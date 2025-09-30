@@ -108,7 +108,7 @@
     .image_wrapper {
         /*grid-column: 1 / 2;
         grid-row: 2 / 3;*/
-        overflow: hidden;
+        /*overflow: hidden;*/
         grid-area: m m;
         position: sticky;
         max-width: 100%;
@@ -126,7 +126,7 @@
     .image_wrapper {
         /*grid-column: 1 / 2;
         grid-row: 2 / 3;*/
-        overflow: hidden;
+        /*overflow: hidden;*/
         grid-area: m m;
         position: sticky;
         height: 72vh;
@@ -143,7 +143,7 @@
     .image_wrapper {
         /*grid-column: 1 / 2;
         grid-row: 2 / 3;*/
-        overflow: hidden;
+        /*overflow: hidden;*/
         grid-area: m m;
         position: sticky;
         height: 74vh;
