@@ -13,7 +13,6 @@ export default function ParallelLayout({
   list: React.ReactNode
 }*/) {
   //<SVG />
-  //<Toggle path={props.path} />
   return (
     <div>
       <div className={styles.column}>
