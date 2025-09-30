@@ -23,9 +23,9 @@ export default function ParallelLayout({
           </span>
         </header>
 
-        <Link href="/categories/main">в километрах</Link>
+        <Link>в километрах</Link>
         <span>|</span>
-        <Link href="/categories/moon">в лунных орбитах</Link>
+        <Link>в лунных орбитах</Link>
 
       </div>
       <div className={styles.wrapLayout}>
