@@ -20,14 +20,14 @@ async function CalcData() {
     resolve([startDate, endDate])
   })
   //return { startDate, endDate }
-}export default async function Home({params}) {
+} export default async function Home({ params }) {
   let startDate
   let endDate
   [startDate, endDate] = await CalcData()
   //let list
   let arrayHandler
   const viewtype = await params.viewtype
-  console.log('viewtype',viewtype)
+  console.log('viewtype', viewtype)
   //const items = await http<Item[]>(`http://localhost:3456/${viewtype}`) as Item[];
   const resp = await fetch(`https://api.nasa.gov/neo/rest/v1/feed?start_date=${startDate}&end_date=${endDate}&api_key=3wa5hHgFuqhf6XiefvqzkcDQWZ01aOOK4vNZEXsP`);
   if (Number(resp.status) === 200) {
@@ -39,8 +39,9 @@ async function CalcData() {
     const dates = Object.keys(list)
     const arrObjects = Object.values(list)
     await Promise.all(arrObjects[0].map(
-        async (e) => new Li(e, dates[0])
-      ));
+      //change prototype li
+      async (e) => new Li(e, dates[0])
+    ));
     /*await Promise.all(arrObjects[0].map(s
       async (e) => elem(e, dates[0])
     ));*/
@@ -123,7 +124,7 @@ async function CalcData() {
   }
   //const proxiedArray = new Proxy(list, arrayHandler);
   //console.log('proxiedArray',proxiedArray[0])
-  const resd=await Li.getList(viewtype)
+  const resd = await Li.getList(viewtype)
   //console.log('resd',resd)
   return resd
 }
