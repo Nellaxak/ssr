@@ -1,5 +1,6 @@
 //import React from 'React'
 //import SVG from "@/components/SVG/page";
+import Link from "next/link";
 import styles from "./page.module.css";
 //const inter = Inter({ subsets: ['latin'] })
 
@@ -13,13 +14,13 @@ export default function ParallelLayout({
   list: React.ReactNode
 }*/) {
   //<SVG />
-  //<header className={styles.header}>
-  //    <h6 className={styles.h6}></h6>
   return (
     <div className={styles.column}>
-      <span className={styles.h6}>
-        Ближайшие подлёты астероидов
-      </span>
+      <header className={styles.header}>
+        <h6 className={styles.h6}>
+          Ближайшие подлёты астероидов
+        </h6>
+      </header>
       <nav className={styles.labelWrapper} >
         <Link href="/categories/main"
           className={styles.km}>в километрах</Link>
