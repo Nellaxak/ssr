@@ -24,6 +24,8 @@ export const metadata = {
 }
 //<Form action={buttonClick}>
 //<main>
+              //fill //Image
+
 export default function Layout(props) {
   return (
     <html lang="ru">
@@ -42,7 +44,6 @@ export default function Layout(props) {
           </header>
           <div className={styles.image_wrapper}>
             <Image src={bigImage} alt="Earth"
-              fill
             />
           </div>
           <Suspense fallback={<span className={'loader'}></span>}>
