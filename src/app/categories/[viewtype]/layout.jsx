@@ -17,9 +17,9 @@ export default function ParallelLayout({
     <div>
       <div className={styles.column}>
         <header className={styles.header}>
-          <span className={styles.h6}>
+          <h6 className={styles.h6}>
             Ближайшие подлёты астероидов
-          </span>
+          </h6>
         </header>
         <nav className={styles.labelWrapper} >
           <Link href="/categories/main"
