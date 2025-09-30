@@ -13,22 +13,20 @@ export default function ParallelLayout({
   list: React.ReactNode
 }*/) {
   //<SVG />
+  //<header className={styles.header}>
+  //    <h6 className={styles.h6}></h6>
   return (
-    <div>
-      <div className={styles.column}>
-        <header className={styles.header}>
-          <h6 className={styles.h6}>
-            Ближайшие подлёты астероидов
-          </h6>
-        </header>
-        <nav className={styles.labelWrapper} >
-          <Link href="/categories/main"
-            className={styles.km}>в километрах</Link>
-          <span className={styles.space}>|</span>
-          <Link href="/categories/moon"
-            className={styles.moon}>в лунных орбитах</Link>
-        </nav>
-      </div>
+    <div className={styles.column}>
+      <span className={styles.h6}>
+        Ближайшие подлёты астероидов
+      </span>
+      <nav className={styles.labelWrapper} >
+        <Link href="/categories/main"
+          className={styles.km}>в километрах</Link>
+        <span className={styles.space}>|</span>
+        <Link href="/categories/moon"
+          className={styles.moon}>в лунных орбитах</Link>
+      </nav>
       <div className={styles.wrapLayout}>
         {children}
         <ul className={styles.wrapRowRight}>
