@@ -8,6 +8,9 @@ import ScrollComponent from '../components/ScrollComponent/page';
 import styles from "./page.module.css";
 import Form from 'next/form';
 import { buttonClick } from './actions/updateStatus';
+import Image from "next/image";
+import bigImage from "./big.svg";
+
 //import Image from 'next/image';
 //import myGif from '@/styles/8.gif'
 //import Loader from "react-loader-spinner";
@@ -37,6 +40,11 @@ export default function Layout(props) {
               </span>
             </div>
           </header>
+          <div className={styles.image_wrapper}>
+            <Image src={bigImage} alt="Earth"
+              fill
+            />
+          </div>
           <Suspense fallback={<span className={'loader'}></span>}>
             {props.children}
           </Suspense>
