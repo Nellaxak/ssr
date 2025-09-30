@@ -113,7 +113,7 @@ class Li {
       {[await this.getId(), await this.getName(), await this.getButton()]}
     </Form>
   }
-  static async getList() {
+  static async getList(viewtype) {
     //console.log('getList', Li.arrResult[0])
     //const resd = Array.from(Li.arrResult.values())
     return Li.arrResult
