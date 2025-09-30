@@ -22,11 +22,13 @@ export default function ParallelLayout({
             Ближайшие подлёты астероидов
           </span>
         </header>
-
-        <Link>в километрах</Link>
-        <span>|</span>
-        <Link>в лунных орбитах</Link>
-
+        <nav className={styles.labelWrapper} >
+          <Link href="/categories/main"
+            className={styles.km}>в километрах</Link>
+          <span className={styles.space}>|</span>
+          <Link href="/categories/moon"
+            className={styles.moon}>в лунных орбитах</Link>
+        </nav>
       </div>
       <div className={styles.wrapLayout}>
         {children}
