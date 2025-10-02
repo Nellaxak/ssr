@@ -122,6 +122,8 @@
       max-width: 100%;
       height: calc(100vmin - 123px - 2em);
       top: 0px;
+      object-fit: cover;
+      object-position: right 0;
       /*object-fit:contain;*/
     }
 
