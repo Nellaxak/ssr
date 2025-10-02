@@ -116,10 +116,10 @@
         top: 0px;
     }
 
-    .image_wrapper>img {
+    /*.image_wrapper {
         object-fit: cover;
         object-position: right 0;
-    }
+    }*/
 }
 
 @media screen and (((min-width: 925px) or (min-width: 1025px)) and (orientation: landscape)) {
@@ -133,10 +133,10 @@
         top: 84px;
     }
 
-    .image_wrapper>img {
+    /*.image_wrapper {
         object-fit: fill;
         object-position: left 0px;
-    }
+    }*/
 }
 
 @media screen and ((min-width: 1356px) and (orientation: landscape)) {
@@ -150,7 +150,7 @@
         top: 84px;
     }
 
-    .image_wrapper>img {
+    /*.image_wrapper {
         object-position: left 0;
-    }
+    }*/
 }

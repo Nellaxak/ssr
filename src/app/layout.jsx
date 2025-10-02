@@ -25,6 +25,8 @@ export const metadata = {
 }
 //<main>
 //fill
+//<div className={styles.image_wrapper}>
+
 export default function Layout(props) {
   return (
     <html lang="ru">
@@ -41,9 +43,7 @@ export default function Layout(props) {
               </span>
             </div>
           </header>
-          <div className={styles.image_wrapper}>
-            <Image src={bigImage} alt="Earth" fill/>
-          </div>
+          <Image src={bigImage} className={styles.image_wrapper} alt="Earth" fill />
           <Suspense fallback={<span className={'loader'}></span>}>
             {props.children}
           </Suspense>
