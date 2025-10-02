@@ -1,156 +1,162 @@
   /*@import url('https://fonts.googleapis.com/css?family=Passion One');*/
-/*вызывает скачок стриницы при ревалидации*/
-.li {
-  height: 100px;
-  display: flex;
-  flex-direction: column;
-}
-.armageddon {
-  font-family: 'Passion One';
-  font-style: normal;
-  font-weight: 400;
-  font-size: 32px;
-  line-height: 35px;
-  color: var(--bg-color-to-basket);
-}
+  /*вызывает скачок стриницы при ревалидации*/
+  .li {
+    height: 100px;
+    display: flex;
+    flex-direction: column;
+  }
 
-.command {
-  display: flex;
-  flex-direction: column;
-  font-family: 'Helvetica';
-  font-style: normal;
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 24px;
-  color: var(--color-to-basket);
-}
+  .armageddon {
+    font-family: 'Passion One';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 32px;
+    line-height: 35px;
+    color: var(--bg-color-to-basket);
+  }
 
-.header {
-  grid-area: h;
-  /*flex: 0 0 123px;*/
-  /*height: 123px;*/
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  padding: 16px;
-  gap: 8px;
-}
- @media screen and (orientation: portrait) {
-   .wrapLayout {
-     grid-area: m;
-     max-width: 100%;
-     display: grid;
-     grid-template-columns: minmax(48px, 1fr) 279px 1fr;
-     grid-template-rows: 9px 1fr;
-     column-gap: 24px;
-   }
+  .command {
+    display: flex;
+    flex-direction: column;
+    font-family: 'Helvetica';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    color: var(--color-to-basket);
+  }
 
-   .wrapRowRight {
-     grid-column: 2 / 3;
-     grid-row: 1 / 3;
-     display: flex;
-   }
- }
+  .header {
+    grid-area: h;
+    /*flex: 0 0 123px;*/
+    /*height: 123px;*/
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 16px;
+    gap: 8px;
+  }
 
- @media screen and (orientation: landscape) {
-   .wrapLayout {
-     grid-area: m;
-     max-width: 100%;
-     display: grid;
-     grid-template-columns: minmax(48px, 1fr) 402px 150px;
-     grid-template-rows: 9px 1fr;
-     column-gap: 24px;
-   }
+  @media screen and (orientation: portrait) {
+    .wrapLayout {
+      grid-area: m;
+      max-width: 100%;
+      display: grid;
+      grid-template-columns: minmax(48px, 1fr) 279px 1fr;
+      grid-template-rows: 9px 1fr;
+      column-gap: 24px;
+    }
 
-   .wrapRowRight {
-     grid-column: 2 / 3;
-     grid-row: 1 / 3;
-     display: flex;
-   }
- }
+    .wrapRowRight {
+      grid-column: 2 / 3;
+      grid-row: 1 / 3;
+      display: flex;
+      flex-direction: column;
 
- @media screen and (orientation: landscape) and (min-width: 1025px) {
-   .wrapLayout {
-     grid-area: m;
-     max-width: 100%;
-     display: grid;
-     grid-template-columns: minmax(304px, 1fr) 402px 1fr;
-     grid-template-rows: 9px 1fr;
-     column-gap: 58px;
-   }
- }
+    }
+  }
 
- @media screen and (orientation: landscape) and (min-width: 1356px) {
-   .wrapLayout {
-     grid-area: m;
-     max-width: 100%;
-     display: grid;
-     grid-template-columns: minmax(400px, 1fr) 402px 1fr;
-     grid-template-rows: 9px 1fr;
-     column-gap: 128px;
-   }
- }
-@media screen and (orientation: portrait) {
+  @media screen and (orientation: landscape) {
+    .wrapLayout {
+      grid-area: m;
+      max-width: 100%;
+      display: grid;
+      grid-template-columns: minmax(48px, 1fr) 402px 150px;
+      grid-template-rows: 9px 1fr;
+      column-gap: 24px;
+    }
+
+    .wrapRowRight {
+      grid-column: 2 / 3;
+      grid-row: 1 / 3;
+      display: flex;
+      flex-direction: column;
+    }
+  }
+
+  @media screen and (orientation: landscape) and (min-width: 1025px) {
+    .wrapLayout {
+      grid-area: m;
+      max-width: 100%;
+      display: grid;
+      grid-template-columns: minmax(304px, 1fr) 402px 1fr;
+      grid-template-rows: 9px 1fr;
+      column-gap: 58px;
+    }
+  }
+
+  @media screen and (orientation: landscape) and (min-width: 1356px) {
+    .wrapLayout {
+      grid-area: m;
+      max-width: 100%;
+      display: grid;
+      grid-template-columns: minmax(400px, 1fr) 402px 1fr;
+      grid-template-rows: 9px 1fr;
+      column-gap: 128px;
+    }
+  }
+
+  @media screen and (orientation: portrait) {
     .image_wrapper {
-        position: sticky;
-        height: 65vh;
-        top: 0px;
-        flex: 1 1 48px;
+      position: sticky;
+      height: 65vh;
+      top: 0px;
+      flex: 1 1 48px;
     }
 
     /*.image_wrapper>img {
         object-fit: cover;
         object-position: bottom 16px right 0;
     }*/
-}
+  }
 
-@media screen and (orientation: landscape) {
+  @media screen and (orientation: landscape) {
     .image_wrapper {
-        /*grid-column: 1 / 2;
+      /*grid-column: 1 / 2;
         grid-row: 2 / 3;*/
-        overflow: hidden;
-        grid-area: m;
-        position: sticky;
-        max-width: 100%;
-        height: calc(100vmin - 123px - 2em);
-        top: 0px;
+      overflow: hidden;
+      grid-area: m;
+      position: sticky;
+      max-width: 100%;
+      height: calc(100vmin - 123px - 2em);
+      top: 0px;
     }
 
     /*.image_wrapper {
         object-fit: cover;
         object-position: right 0;
     }*/
-}
+  }
 
-@media screen and (((min-width: 925px) or (min-width: 1025px)) and (orientation: landscape)) {
+  @media screen and (((min-width: 925px) or (min-width: 1025px)) and (orientation: landscape)) {
     .image_wrapper {
-        /*grid-column: 1 / 2;
+      /*grid-column: 1 / 2;
         grid-row: 2 / 3;*/
-        overflow: hidden;
-        grid-area: m;
-        position: sticky;
-        height: 72vh;
-        top: 84px;
+      overflow: hidden;
+      grid-area: m;
+      position: sticky;
+      height: 72vh;
+      top: 84px;
     }
 
     /*.image_wrapper {
         object-fit: fill;
         object-position: left 0px;
     }*/
-}
+  }
 
-@media screen and ((min-width: 1356px) and (orientation: landscape)) {
+  @media screen and ((min-width: 1356px) and (orientation: landscape)) {
     .image_wrapper {
-        /*grid-column: 1 / 2;
+      /*grid-column: 1 / 2;
         grid-row: 2 / 3;*/
-        overflow: hidden;
-        grid-area: m;
-        position: sticky;
-        height: 74vh;
-        top: 84px;
+      overflow: hidden;
+      grid-area: m;
+      position: sticky;
+      height: 74vh;
+      top: 84px;
     }
 
     /*.image_wrapper {
         object-position: left 0;
     }*/
-}
+  }
