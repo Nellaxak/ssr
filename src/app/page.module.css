@@ -98,10 +98,10 @@
         flex: 1 1 48px;
     }
 
-    .image_wrapper>img {
+    /*.image_wrapper>img {
         object-fit: cover;
         object-position: bottom 16px right 0;
-    }
+    }*/
 }
 
 @media screen and (orientation: landscape) {
