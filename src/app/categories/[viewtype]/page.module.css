@@ -60,11 +60,11 @@
 
  .column {
    grid-area: m m m m m m m m m m;
-   flex: 0 0 104px;
+   /*flex: 0 0 104px;
    display: flex;
    flex-direction: column;
    justify-content: space-between;
-   gap: 8px;
+   gap: 8px;*/
  }
 
  .header {
@@ -76,7 +76,7 @@
    color: var(--color-to-basket);
  }
 
- @media screen and (orientation: portrait) {
+ /*@media screen and (orientation: portrait) {
    .column {
      flex: 0 0 140px;
      display: flex;
@@ -93,7 +93,7 @@
      justify-content: center;
      gap: 9px;
    }
- }
+ }*/
 
  .select {
    appearance: none;
