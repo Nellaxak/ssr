@@ -25,10 +25,10 @@ body {
 
   #__next {
     display: grid;
-    grid-template-columns: repeat(12, 1fr);
+    grid-template-columns: minmax(48px, 1fr) repeat(11, 1fr);
     grid-template-areas:
       "h h h h h h h h h h h h"
-      "m m g g g g g g g g g g";
+      "m g g g g g g g g g g g";
     column-gap: 24px;
   }
 }

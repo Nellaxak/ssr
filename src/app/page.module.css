@@ -102,6 +102,7 @@
       height: 65vh;
       top: 0px;
       flex: 1 1 48px;
+      object-fit:contain;
     }
 
     /*.image_wrapper>img {
@@ -120,6 +121,7 @@
       max-width: 100%;
       height: calc(100vmin - 123px - 2em);
       top: 0px;
+      object-fit:contain;
     }
 
     /*.image_wrapper {
@@ -137,6 +139,7 @@
       position: sticky;
       height: 72vh;
       top: 84px;
+      object-fit:contain;
     }
 
     /*.image_wrapper {
@@ -154,6 +157,7 @@
       position: sticky;
       height: 74vh;
       top: 84px;
+      object-fit:contain;
     }
 
     /*.image_wrapper {
