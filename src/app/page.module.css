@@ -44,7 +44,7 @@
     position: sticky;
   }
 
-  .image_wrapper {
+  .hidden>img {
     object-fit: fill;
     object-position: right 0px;
   }
