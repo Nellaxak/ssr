@@ -41,10 +41,10 @@
     overflow: hidden;
     grid-area: m;
     max-width: 100%;
-    position: sticky;
+    /*position: sticky;*/
   }
 
   .hidden>img {
-    object-fit: fill;
+    object-fit: cover;
     object-position: right 0px;
   }
