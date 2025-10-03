@@ -45,6 +45,6 @@
   }
 
   .hidden>img {
-    object-fit: cover;
+    object-fit: contain;
     object-position: right 0px;
   }
