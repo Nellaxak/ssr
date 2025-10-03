@@ -45,6 +45,7 @@
   }
 
   .hidden>img {
+    display: block;
     object-fit: contain;
     object-position: right 0px;
   }
