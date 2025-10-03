@@ -38,7 +38,7 @@
   }
 
   .hidden {
-    /*overflow: hidden;*/
+    overflow: hidden;
     grid-area: m;
     /*max-width: 100%;*/
     /*position: sticky;*/
