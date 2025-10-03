@@ -25,7 +25,7 @@ body {
 
   #__next {
     display: grid;
-    grid-template-columns: minmax(48px, 1fr) repeat(11, 1fr);
+    grid-template-columns: minmax(48px, 1fr) minmax(279px, 1fr) repeat(10, 1fr);
     grid-template-areas:
       "h h h h h h h h h h h h"
       "m g g g g g g g g g g g";
