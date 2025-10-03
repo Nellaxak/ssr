@@ -104,6 +104,8 @@
       flex: 1 1 48px;
       max-width: 100%;
       /*object-fit:contain;*/
+      object-fit: cover;
+      object-position: bottom 16px right 0;
     }
 
     /*.image_wrapper>img {
@@ -125,6 +127,9 @@
       object-fit: cover;
       object-position: right 0;
       /*object-fit:contain;*/
+      object-fit: cover;
+      object-position: right 0;
+
     }
 
     /*.image_wrapper {
@@ -144,6 +149,8 @@
       height: 72vh;
       top: 84px;
       /*object-fit:contain;*/
+      object-fit: fill;
+      object-position: left 0px;
     }
 
     /*.image_wrapper {
@@ -163,6 +170,8 @@
       max-width: 100%;
       top: 84px;
       /*object-fit:contain;*/
+      object-fit: fill;
+      object-position: left 0;
     }
 
     /*.image_wrapper {
