@@ -40,7 +40,7 @@
   @media screen and (orientation: portrait) {
     .wrapLayout {
       grid-area: m;
-      max-width: 100%;
+      /*max-width: 100%;*/
       display: grid;
       grid-template-columns: minmax(48px, 1fr) 279px 1fr;
       grid-template-rows: 9px 1fr;
@@ -59,7 +59,7 @@
   @media screen and (orientation: landscape) {
     .wrapLayout {
       grid-area: m;
-      max-width: 100%;
+      /*max-width: 100%;*/
       display: grid;
       grid-template-columns: minmax(48px, 1fr) 402px 150px;
       grid-template-rows: 9px 1fr;
@@ -77,7 +77,7 @@
   @media screen and (orientation: landscape) and (min-width: 1025px) {
     .wrapLayout {
       grid-area: m;
-      max-width: 100%;
+      /*max-width: 100%;*/
       display: grid;
       grid-template-columns: minmax(304px, 1fr) 402px 1fr;
       grid-template-rows: 9px 1fr;
@@ -88,7 +88,7 @@
   @media screen and (orientation: landscape) and (min-width: 1356px) {
     .wrapLayout {
       grid-area: m;
-      max-width: 100%;
+      /*max-width: 100%;*/
       display: grid;
       grid-template-columns: minmax(400px, 1fr) 402px 1fr;
       grid-template-rows: 9px 1fr;
@@ -102,7 +102,7 @@
       height: 65vh;
       top: 0px;
       flex: 1 1 48px;
-      max-width: 100%;
+      /*max-width: 100%;*/
       /*object-fit:contain;*/
       object-fit: cover;
       object-position: bottom 16px right 0;
@@ -121,11 +121,11 @@
       /*overflow: hidden;*/
       grid-area: m;
       position: sticky;
-      max-width: 100%;
+      /*max-width: 100%;*/
       height: calc(100vmin - 123px - 2em);
       top: 0px;
-      object-fit: cover;
-      object-position: right 0;
+      /*object-fit: cover;
+      object-position: right 0;*/
       /*object-fit:contain;*/
       object-fit: cover;
       object-position: right 0;
@@ -145,7 +145,7 @@
       /*overflow: hidden;*/
       grid-area: m;
       position: sticky;
-      max-width: 100%;
+      /*max-width: 100%;*/
       height: 72vh;
       top: 84px;
       /*object-fit:contain;*/
@@ -167,7 +167,7 @@
       grid-area: m;
       position: sticky;
       height: 74vh;
-      max-width: 100%;
+      /*max-width: 100%;*/
       top: 84px;
       /*object-fit:contain;*/
       object-fit: fill;
