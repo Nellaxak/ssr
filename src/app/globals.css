@@ -25,7 +25,7 @@ body {
 
   #__next {
     display: grid;
-    grid-template-columns: auto minmax(279px, 1fr) repeat(10, 1fr);
+    grid-template-columns: minmax(48px, auto) minmax(279px, 1fr) repeat(10, 1fr);
     grid-template-areas:
       "h h h h h h h h h h h h"
       "m g g g g g g g g g g g";
@@ -36,7 +36,7 @@ body {
 @media screen and (orientation: portrait) {
   #__next {
     display: grid;
-    grid-template-columns: auto minmax(279px, 1fr) repeat(10, 1fr);
+    grid-template-columns: minmax(48px, auto) minmax(279px, 1fr) repeat(10, 1fr);
     grid-template-areas:
       "h h h h h h h h h h h h"
       "m g g g g g g g g g g g";
