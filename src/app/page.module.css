@@ -46,5 +46,5 @@
 
   .image_wrapper {
     object-fit: fill;
-    object-position: right;
+    object-position: right 0px;
   }
