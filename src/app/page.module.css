@@ -37,16 +37,32 @@
     gap: 8px;
   }
 
-  .hidden {
-    overflow: hidden;
-    grid-area: m;
-    /*max-width: 100%;*/
-    position: sticky;
+  @media screen and (orientation: portrait) {
+    .hidden {
+      overflow: hidden;
+      grid-area: m;
+      position: sticky;
+    }
+
+    .hidden>img {
+      width: 100%;
+      object-fit: cover;
+      object-position: right 0px;
+      display: block;/* Убирает лишний отступ под SVG */
+    }
   }
 
-  .hidden>img {
-    width: 100%;
-    object-fit: cover;
-    object-position: right 0px;
-    display: block;
+  @media screen and (orientation: landscape) {
+    .hidden {
+      overflow: hidden;
+      grid-area: m;
+      position: sticky;
+    }
+
+    .hidden>img {
+      width: 100%;
+      object-fit: cover;
+      object-position: right 0px;
+      display: block;
+    }
   }
