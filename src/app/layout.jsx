@@ -43,7 +43,9 @@ export default function Layout(props) {
               </span>
             </div>
           </header>
+          <div className={styles.hidden}>
           <Image src={bigImage} className={styles.image_wrapper} alt="Earth"/>
+          </div>
           <Suspense fallback={<span className={'loader'}></span>}>
             {props.children}
           </Suspense>

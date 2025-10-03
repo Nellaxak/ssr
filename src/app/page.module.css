@@ -37,6 +37,10 @@
     gap: 8px;
   }
 
+  .hidden {
+    overflow: hidden;
+  }
+
   @media screen and (orientation: portrait) {
     .wrapRowRight {
       /*grid-column: 2 / 3;
@@ -78,7 +82,7 @@
     .wrapLayout {
       grid-area: m;
       /*max-width: 100%;*/
-      /*display: grid;
+  /*display: grid;
       grid-template-columns: minmax(400px, 1fr) 402px 1fr;
       grid-template-rows: 9px 1fr;
       column-gap: 128px;
