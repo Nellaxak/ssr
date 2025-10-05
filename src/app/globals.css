@@ -43,7 +43,7 @@ body {
     /*height: 100vh;*/
     grid-template-areas:
       "h h h h h h h h h h h h"
-      "m g g g g g g g g g g g";
+      "m g u u u u u u u u u u";
     column-gap: 24px;
     row-gap: 17px;
   }
