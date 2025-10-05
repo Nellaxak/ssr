@@ -42,8 +42,8 @@
       overflow: hidden;
       grid-area: m;
       height: 100vh;
-      position: fixed;
-      /*top: 0px;*/
+      position: sticky;
+      top: 123px;
     }
 
     .hidden>img {
@@ -52,7 +52,6 @@
       object-position: right 0px;
       display: block;
       /* Убирает лишний отступ под SVG */
-
     }
   }
 
