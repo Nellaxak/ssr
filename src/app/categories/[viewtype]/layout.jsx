@@ -19,9 +19,9 @@ export default function ParallelLayout({
   return (
     <div className={styles.column}>
       <header className={styles.header}>
-        <h6 className={styles.h6}>
+        <textarea className={styles.h6}>
           Ближайшие подлёты астероидов
-        </h6>
+        </textarea>
       </header>
       <nav className={styles.labelWrapper} >
         <Link href="/categories/main"
