@@ -78,15 +78,15 @@
    flex-direction: column;
    justify-content: center;*/
    /*flex-basis: 279px;*/
-   display: flex;
-   flex-direction: column;
+   /*display: flex;
+   flex-direction: column;*/
    /*text-align: justify;*/
-   column-count: 1;
    gap: 25px;
    /*overflow-wrap: break-word;*/
  }
 
  .h6 {
+   column-count: 1;
    padding-top: 8px;
    /*text-wrap: wrap;*/
    /*flex: 0 0 104px;*/
