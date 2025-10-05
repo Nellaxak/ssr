@@ -72,11 +72,12 @@
    font-size: 28px;
    line-height: 36px;
    color: var(--color-to-basket);
-   display: block;
+   /*display: block;*/
  }
 
  .h6 {
    padding-top: 8px;
+   overflow-wrap: break-word;
    /*flex: 0 0 104px;*/
    /*grid-template-rows: repeat(3, 1fr);*/
    /*flex-wrap: wrap;
