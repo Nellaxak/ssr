@@ -73,11 +73,12 @@
    line-height: 36px;
    color: var(--color-to-basket);
    /*display: block;*/
-   overflow-wrap: break-word;
+   /*overflow-wrap: break-word;*/
  }
 
  .h6 {
    padding-top: 8px;
+   text-wrap: wrap;
    /*flex: 0 0 104px;*/
    /*grid-template-rows: repeat(3, 1fr);*/
    /*flex-wrap: wrap;
