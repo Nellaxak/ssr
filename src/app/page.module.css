@@ -45,7 +45,7 @@
     }
 
     .hidden>img {
-      width: 100%;
+      /*width: 100%;*/
       object-fit: cover;
       object-position: right 0px;
       display: block;/* Убирает лишний отступ под SVG */
@@ -60,7 +60,7 @@
     }
 
     .hidden>img {
-      width: 100%;
+      /*width: 100%;*/
       object-fit: cover;
       object-position: right 0px;
       display: block;
