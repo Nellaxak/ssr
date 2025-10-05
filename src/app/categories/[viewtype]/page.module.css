@@ -58,6 +58,11 @@
 
  .h6 {
    padding-top: 8px;
+   flex: 0 0 104px;
+   display: flex;
+   flex-direction: column;
+   justify-content: space-between;
+   gap: 8px;
  }
 
  .column {
@@ -76,11 +81,6 @@
    font-size: 28px;
    line-height: 36px;
    color: var(--color-to-basket);
-   flex: 0 0 104px;
-   display: flex;
-   flex-direction: column;
-   justify-content: space-between;
-   gap: 8px;
  }
 
  /*@media screen and (orientation: portrait) {
