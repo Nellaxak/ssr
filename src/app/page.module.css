@@ -42,6 +42,7 @@
       overflow: hidden;
       grid-area: m;
       position: sticky;
+      top:0px;
     }
 
     .hidden>img {
@@ -57,6 +58,7 @@
       overflow: hidden;
       grid-area: m;
       position: sticky;
+      top:0px;
     }
 
     .hidden>img {
