@@ -18,9 +18,11 @@ export default function ParallelLayout({
   //  <textarea className={styles.h6}>
   return (
     <div className={styles.column}>
-      <span className={styles.header}>
-        Ближайшие подлёты астероидов
-      </span>
+      <header className={styles.header}>
+        <h6 className={styles.h6}>
+          Ближайшие подлёты астероидов
+        </h6>
+      </header>
       <nav className={styles.labelWrapper} >
         <Link href="/categories/main"
           className={styles.km}>в километрах</Link>
