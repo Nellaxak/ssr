@@ -60,6 +60,7 @@
    padding-top: 8px;
    flex: 0 0 104px;
    display: flex;
+   flex-wrap: wrap;
    flex-direction: column;
    justify-content: space-between;
    gap: 8px;
