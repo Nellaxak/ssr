@@ -42,8 +42,8 @@
       overflow: hidden;
       grid-area: m;
       height: 100vh;
-      position: sticky;
-      top: 0px;
+      position: fixed;
+      /*top: 0px;*/
     }
 
     .hidden>img {
