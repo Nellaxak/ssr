@@ -87,14 +87,14 @@
 
  .h6 {
    padding-top: 8px;
-
+   column-count: 1;
    /*text-wrap: wrap;*/
    /*flex: 0 0 104px;*/
    /*grid-template-rows: repeat(3, 1fr);*/
    /*flex-wrap: wrap;
    flex-direction: column;
    justify-content: space-between;*/
-   gap: 8px;
+   /*gap: 8px;*/
  }
 
  /*@media screen and (orientation: portrait) {
