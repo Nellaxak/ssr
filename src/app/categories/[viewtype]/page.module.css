@@ -80,14 +80,14 @@
    /*flex-basis: 279px;*/
    display: flex;
    flex-direction: column;
-   text-align: justify;
+   /*text-align: justify;*/
+   column-count: 1;
    gap: 25px;
    /*overflow-wrap: break-word;*/
  }
 
  .h6 {
    padding-top: 8px;
-   column-count: 1;
    /*text-wrap: wrap;*/
    /*flex: 0 0 104px;*/
    /*grid-template-rows: repeat(3, 1fr);*/
