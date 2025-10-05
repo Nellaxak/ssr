@@ -58,7 +58,7 @@
 
  .column {
    grid-area: g;
-   flex: 0 0 104px;
+   /*flex: 0 0 104px;*/
    display: flex;
    flex-direction: column;
    /*justify-content: space-between;*/
