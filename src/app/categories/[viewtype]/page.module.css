@@ -59,11 +59,11 @@
  .h6 {
    padding-top: 8px;
    flex: 0 0 104px;
-   display: grid;
-   grid-template-rows: repeat(3, 1fr);
-   /*flex-wrap: wrap;
+   display: inline-flex;
+   /*grid-template-rows: repeat(3, 1fr);*/
+   flex-wrap: wrap;
    flex-direction: column;
-   justify-content: space-between;*/
+   justify-content: space-between;
    gap: 8px;
  }
 
