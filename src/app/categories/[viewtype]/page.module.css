@@ -61,7 +61,7 @@
    flex: 0 0 104px;
    display: flex;
    flex-direction: column;
-   justify-content: space-between;
+   /*justify-content: space-between;*/
    gap: 8px;
  }
 
@@ -74,10 +74,10 @@
    /*background-color: #000000;*/
    color: var(--color-to-basket);
    /*width: 100%;*/
-   display: flex;
+   /*display: flex;
    flex-direction: column;
-   justify-content: center;
-   /*display: block;*/
+   justify-content: center;*/
+   display: block;
    /*overflow-wrap: break-word;*/
  }
 
