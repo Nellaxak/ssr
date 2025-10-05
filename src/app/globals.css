@@ -26,7 +26,8 @@ body {
   #__next {
     display: grid;
     grid-template-columns: minmax(48px, auto) minmax(279px, 1fr) repeat(10, 1fr);
-    grid-template-rows: auto 1fr;
+    /*grid-template-rows: auto 1fr;*/
+    height: 100%;
     grid-template-areas:
       "h h h h h h h h h h h h"
       "m g g g g g g g g g g g";
@@ -38,7 +39,8 @@ body {
   #__next {
     display: grid;
     grid-template-columns: minmax(48px, auto) minmax(279px, 1fr) repeat(10, 1fr);
-    grid-template-rows: auto 1fr;
+    /*grid-template-rows: auto 1fr;*/
+    height: 100%;
     grid-template-areas:
       "h h h h h h h h h h h h"
       "m g g g g g g g g g g g";
