@@ -80,7 +80,7 @@
    /*flex-basis: 279px;*/
    display: flex;
    flex-direction: column;
-   text-align: left;
+   text-align: match-parent;
    gap: 25px;
    /*overflow-wrap: break-word;*/
  }
