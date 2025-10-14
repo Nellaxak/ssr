@@ -3,6 +3,7 @@
     //export function middleware(request: NextRequest) {
 
     export function middleware(request) {
+      console.log('middleware',request.url)
       //const isAuthenticated = /* your authentication logic here, e.g., check cookie or token */
 
       // Example: Redirect to login page if not authenticated and trying to access a protected route
