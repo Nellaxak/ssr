@@ -13,9 +13,6 @@ export default function ParallelLayout({
   count: React.ReactNode,
   list: React.ReactNode
 }*/) {
-  //<SVG />
-  //   <div className={styles.wrapLayout}>
-  //  <textarea className={styles.h6}>
   return (
     <div className={styles.column}>
       <header className={styles.header}>
