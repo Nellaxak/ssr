@@ -26,7 +26,7 @@ async function CalcData() {
   [startDate, endDate] = await CalcData()
   //let list
   let arrayHandler
-  //const viewtype = await params.viewtype
+  const viewtype = await params.viewtype
   //console.log('viewtype', viewtype)
   //const items = await http<Item[]>(`http://localhost:3456/${viewtype}`) as Item[];
   const resp = await fetch(`https://api.nasa.gov/neo/rest/v1/feed?start_date=${startDate}&end_date=${endDate}&api_key=3wa5hHgFuqhf6XiefvqzkcDQWZ01aOOK4vNZEXsP`);
@@ -124,7 +124,7 @@ async function CalcData() {
   }
   //const proxiedArray = new Proxy(list, arrayHandler);
   //console.log('proxiedArray',proxiedArray[0])
-  const resd = await Li.getList()//viewtype
+  const resd = await Li.getList(viewtype)
   //console.log('resd',resd)
   return resd
 }

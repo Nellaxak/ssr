@@ -49,7 +49,7 @@ export default function Layout(props) {
             </div>
           </header>
           <div className={styles.hidden}>
-            <Image src={bigImage} alt="Earth" />
+            <Image src={bigImage} alt="Earth" priority/>
           </div>
           <Suspense fallback={<span className={'loader'}></span>}>
             {props.children}

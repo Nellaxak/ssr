@@ -6,6 +6,7 @@ import styles from "./page.module.css";
 
 export default function ParallelLayout({
   children,
+  params,
   count,
   list,
 }/*: {
@@ -20,13 +21,6 @@ export default function ParallelLayout({
           Ближайшие подлёты астероидов
         </h6>
       </header>
-      <nav className={styles.labelWrapper} >
-        <Link href="/main"
-          className={styles.km} scroll={false}>в километрах</Link>
-        <span className={styles.space}>|</span>
-        <Link href="/moon"
-          className={styles.moon} scroll={false}>в лунных орбитах</Link>
-      </nav>
       {children}
       <ul className={styles.wrapRowRight}>
         {list}
