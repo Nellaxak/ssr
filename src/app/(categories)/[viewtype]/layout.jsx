@@ -22,10 +22,10 @@ export default function ParallelLayout({
       </header>
       <nav className={styles.labelWrapper} >
         <Link href="/main"
-          className={styles.km}>в километрах</Link>
+          className={styles.km} scroll={false}>в километрах</Link>
         <span className={styles.space}>|</span>
         <Link href="/moon"
-          className={styles.moon}>в лунных орбитах</Link>
+          className={styles.moon} scroll={false}>в лунных орбитах</Link>
       </nav>
       {children}
       <ul className={styles.wrapRowRight}>
