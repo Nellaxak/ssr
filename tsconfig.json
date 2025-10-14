@@ -28,7 +28,7 @@
     "build/types/**/*.ts",
     "**/*.ts",
     "**/*.tsx"
-  ],
+, "middleware.js"  ],
   "exclude": [
     "node_modules"
   ]
