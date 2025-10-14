@@ -13,14 +13,13 @@ import Image from "next/image";
 import bigImage from "./big.svg";
 import { Passion_One } from 'next/font/google';
 
-const passion = Passion_One({ subsets: ['latin'], display: 'swap',
+const passion = Passion_One({
+  subsets: ['latin'],
+  display: 'swap',
   style: "normal",
-  weight: "400" });
-/* font-style: normal;
-  font-weight: 400;
-  font-size: 32px;
-  line-height: 35px;
-  color: var(--bg-color-to-basket);*/
+  weight: "400"
+});
+
 //import Image from 'next/image';
 //import myGif from '@/styles/8.gif'
 //import Loader from "react-loader-spinner";

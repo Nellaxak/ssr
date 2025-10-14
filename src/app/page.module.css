@@ -1,19 +1,8 @@
-  /*@import url('https://fonts.googleapis.com/css?family=Passion One');*/
-  /*вызывает скачок стриницы при ревалидации*/
   .li {
     height: 100px;
     display: flex;
     flex-direction: column;
   }
-
-  /*.armageddon {
-    font-family: 'Passion One';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 32px;
-    line-height: 35px;
-    color: var(--bg-color-to-basket);
-  }*/
 
   .command {
     display: flex;
