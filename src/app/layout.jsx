@@ -11,7 +11,16 @@ import Form from 'next/form';
 import { buttonClick } from './actions/updateStatus';
 import Image from "next/image";
 import bigImage from "./big.svg";
+import { Passion_One } from 'next/font/google';
 
+const passion = Passion_One({ subsets: ['latin'], display: 'swap',
+  style: "normal",
+  weight: "400" });
+/* font-style: normal;
+  font-weight: 400;
+  font-size: 32px;
+  line-height: 35px;
+  color: var(--bg-color-to-basket);*/
 //import Image from 'next/image';
 //import myGif from '@/styles/8.gif'
 //import Loader from "react-loader-spinner";
@@ -33,7 +42,7 @@ export default function Layout(props) {
       <body>
         <div key='next' id='__next'>
           <header className={styles.header}>
-            <h1 className={styles.armageddon}>ARMAGEDDON 2023</h1>
+            <h1 className={passion.className}>ARMAGEDDON 2023</h1>
             <div className={styles.command}>
               <span>
                 ООО “Команда им. Б. Уиллиса”.

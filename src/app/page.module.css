@@ -6,14 +6,14 @@
     flex-direction: column;
   }
 
-  .armageddon {
+  /*.armageddon {
     font-family: 'Passion One';
     font-style: normal;
     font-weight: 400;
     font-size: 32px;
     line-height: 35px;
     color: var(--bg-color-to-basket);
-  }
+  }*/
 
   .command {
     display: flex;
@@ -35,6 +35,7 @@
     align-items: flex-start;
     padding: 16px;
     gap: 8px;
+    color: var(--bg-color-to-basket);
   }
 
   @media screen and (orientation: portrait) {
