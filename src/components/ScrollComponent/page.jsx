@@ -33,7 +33,7 @@ function ScrollComponent() {
 
     const handleScroll = useCallback(async () => {
         const elem = document.querySelector('#header')
-        const rect = elem.getBoundingClientRect()
+        /*const rect = elem.getBoundingClientRect()
         const hh = rect.height
         //console.log('scrollend', rect, vertical, rect.y < vertical)
         let item = Math.abs(rect.y - vertical)
@@ -44,7 +44,7 @@ function ScrollComponent() {
         } else {
             router.push(`?action=up&col=${col}`, { scroll: false });
         }
-        vertical = rect.y
+        vertical = rect.y*/
     }, [])
     useEffect(() => {
         document.addEventListener('scrollend', handleScroll)

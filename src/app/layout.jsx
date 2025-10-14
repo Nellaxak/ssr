@@ -40,7 +40,7 @@ export default function Layout(props) {
     <html lang="ru">
       <body>
         <div key='next' id='__next'>
-          <header className={styles.header}>
+          <header className={styles.header} id='header'>
             <h1 className={passion.className}>ARMAGEDDON 2023</h1>
             <div className={styles.command}>
               <span>
