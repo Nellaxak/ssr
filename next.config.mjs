@@ -1,7 +1,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
     distDir: 'build',
-    async redirects() {
+    basePath: '/categories',
+    /*async redirects() {
         return [
             {
                 source: '/',
@@ -9,6 +10,6 @@ const nextConfig = {
                 permanent: false
             },
         ]
-    },
+    },*/
 };
 export default nextConfig;
