@@ -24,10 +24,10 @@ export default function ParallelLayout({
         </h6>
       </header>
       <nav className={styles.labelWrapper} >
-        <Link href="/main"
+        <Link href="/categories/main"
           className={styles.km}>в километрах</Link>
         <span className={styles.space}>|</span>
-        <Link href="/moon"
+        <Link href="/categories/moon"
           className={styles.moon}>в лунных орбитах</Link>
       </nav>
       {children}
