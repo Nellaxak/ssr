@@ -1,4 +1,4 @@
-//import FooterBasket from '@/components/FooterBasket/page';
+import styles from "./page.module.css";
 //import http from '@/utils/http'
 
 /*export interface Count {
@@ -8,6 +8,6 @@ let value//:number
 async function Page() {
   value = 0//await http<Count>('http://localhost:3456/count') as Count;
 
-  return value
+  return <output className={styles.padding_count}>{value}</output>
 }
 export default Page

@@ -6,18 +6,18 @@ export default async function Home({ params }) {
     const viewtype = viewtypePromise.viewtype
     if (viewtype === 'main') {
         return <nav className={styles.labelWrapper} >
-            <Link href="/main"
+            <Link href="/categories/main"
                 className={styles.km} scroll={false}>в километрах</Link>
             <span className={styles.space}>|</span>
-            <Link href="/moon"
+            <Link href="/categories/moon"
                 className={styles.moon} scroll={false}>в лунных орбитах</Link>
         </nav>
     } else {
         return <nav className={styles.labelWrapper} >
-            <Link href="/main" scroll={false}
+            <Link href="/categories/main" scroll={false}
                 className={styles.moon}>в километрах</Link>
             <span className={styles.space}>|</span>
-            <Link href="/moon" scroll={false}
+            <Link href="/categories/moon" scroll={false}
                 className={styles.km}>в лунных орбитах</Link>
         </nav>
     }
