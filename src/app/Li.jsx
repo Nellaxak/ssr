@@ -80,9 +80,9 @@ class Li {
     return this.status
   }
   async getButton() {
-    /*const resp = await fetch(`@/app/api/item/${this.id}/status`,
+    const resp = await fetch(`@/app/api/item/${this.id}/status`,
       { next: { tags: [`/item/${this.id}/status`] } }
-    )*/
+    )
     //const resp = await fetch(`http://localhost:3000/api/item/${this.id}`
     /*,
      {
@@ -92,8 +92,8 @@ class Li {
     }*/
     // )
     // console.log('gssssssssss',resp.status)
-    //const data = await resp.json()
-    //console.log('button data',data)
+    const data = await resp.json()
+    console.log('button data',data)
     //}
     return createElement('button', { key: 'btn', type: 'submit' }, 0)//data.message)
   }
