@@ -1,16 +1,12 @@
-//import React from 'React'
-//import SVG from "@/components/SVG/page";
-import Link from "next/link";
+import React from 'react';
 import styles from "./page.module.css";
 //const inter = Inter({ subsets: ['latin'] })
 
-export default function ParallelLayout({
+export function Layout({
   children,
-  list,
-}/*: {
+}: {
   children: React.ReactNode,
-  list: React.ReactNode
-}*/) {
+}) {
   return (
     <div className={styles.column}>
       <header className={styles.header}>
@@ -18,9 +14,8 @@ export default function ParallelLayout({
           Заказ отправлен!
         </h6>
       </header>
-      {children}
       <ul className={styles.wrapRowRight}>
-        {list}
+        {children}
       </ul>
       <footer className={styles.footer}>© Все права и планета защищены</footer>
     </div>

@@ -28,7 +28,7 @@
     "build/types/**/*.ts",
     "**/*.ts",
     "**/*.tsx"
-, "middleware.js"  ],
+, "middleware.js", "src/app/marked/default.jsx"  ],
   "exclude": [
     "node_modules"
   ]
