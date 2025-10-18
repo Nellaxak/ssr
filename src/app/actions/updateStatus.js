@@ -19,7 +19,7 @@ export async function buttonClick(formData) {
         },
         body: id//JSON.stringify(postData)
     },
-        { next: { tags: [`/item/${this.id}/status`] } }
+        { next: { tags: [`/item/${id}/status`] } }
     )
     //item.setStatus(newStatus)
     //revalidateTag(`/item/${id}/status`)
