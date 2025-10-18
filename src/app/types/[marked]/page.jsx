@@ -1,5 +1,5 @@
 //import styles from "./page.module.css";
-import Li from '../Li'
+import Li from '../../Li'
 
 export default async function Home({params}) {
   //let resd=['sss','dddd']

@@ -30,7 +30,7 @@ export default function ParallelLayout({
                 <span className={styles.aster}>{count}астероида</span>
             </div>
             <nav className={styles.rrrr}>
-                <Link href="/marked" scroll={false}
+                <Link href="/types/marked" scroll={false}
                     className={styles.button}>
                     <span className={styles.padding}>Отправить</span>
                 </Link>
