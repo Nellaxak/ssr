@@ -1,9 +1,9 @@
 //import styles from "./page.module.css";
 import Li from '../../Li'
 
-export default async function Home({params}) {
+export default function Home({params}) {//async function
   //let resd=['sss','dddd']
-  const resd = await Li.getList('marked')
+  const resd = Li.getList('marked')
   console.log('resd',resd)
   return resd
 }
