@@ -7,21 +7,21 @@ import Li from '../Li';
 export async function buttonClick(formData) {
     //revalidate count
     const id = formData.get('id')
-    const item = await Li.findById(Number(id));
+    /*const item = await Li.findById(Number(id));
     //console.log('find li', id,item)
     const oldStatus = Number(await item.getStatus())
-    const newStatus = Number(!Boolean(oldStatus))
+    const newStatus = Number(!Boolean(oldStatus))*/
     //console.log('fdddd', id, oldStatus, newStatus)
-    /*const resp = await fetch(`api/item/${id}`,{
-        method:"POST",
+    const resp = await fetch(`https://ssr-mu-ecru.vercel.app/api/item/${id}`, {
+        method: "POST",
         headers: {
             'Content-Type': 'application/json'
         },
         body: id//JSON.stringify(postData)
-    }*/
-     // { next: { tags: [`/item/${this.id}/status`] } }
-    //)
-    item.setStatus(newStatus)
+    },
+        { next: { tags: [`/item/${this.id}/status`] } }
+    )
+    //item.setStatus(newStatus)
     //revalidateTag(`/item/${id}/status`)
     revalidateTag(`count`)
     /*revalidateTag(`list`)*/
