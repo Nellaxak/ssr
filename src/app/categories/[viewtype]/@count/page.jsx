@@ -7,7 +7,6 @@ import styles from "./page.module.css";
 let value//:number
 async function Page() {
   value = 0//await http<Count>('http://localhost:3456/count') as Count;
-
-  return <output className={styles.padding_count}>{value}</output>
+  return value
 }
 export default Page
