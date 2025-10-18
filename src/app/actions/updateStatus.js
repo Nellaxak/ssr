@@ -11,7 +11,7 @@ export async function buttonClick(formData) {
     //console.log('find li', id,item)
     const oldStatus = Number(await item.getStatus())
     const newStatus = Number(!Boolean(oldStatus))
-    console.log('fdddd', id, oldStatus, newStatus)
+    //console.log('fdddd', id, oldStatus, newStatus)
     /*const resp = await fetch(`api/item/${id}`,{
         method:"POST",
         headers: {
@@ -21,8 +21,8 @@ export async function buttonClick(formData) {
     }*/
      // { next: { tags: [`/item/${this.id}/status`] } }
     //)
-    //item.status=newStatus
+    item.setStatus(newStatus)
     //revalidateTag(`/item/${id}/status`)
     revalidateTag(`count`)
-    //revalidateTag(`list`)
+    /*revalidateTag(`list`)*/
 }
