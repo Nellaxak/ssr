@@ -7,7 +7,6 @@ export default function Layout({
 }: {
   children: React.ReactNode,
 }) {
-   //<footer className={styles.footer}>© Все права и планета защищены</footer>
   return (
     <div className={styles.column}>
       <header className={styles.header}>
