@@ -25,17 +25,17 @@ export default function ParallelLayout({
         {list}
       </ul>
       <footer className={styles.footer}>
-            <div className={styles.columnFooter}>
-                <span className={styles.h3}>Корзина</span>
-                <span className={styles.aster}>{count}астероида</span>
-            </div>
-            <nav className={styles.rrrr}>
-                <Link href="/types/marked" scroll={false}
-                    className={styles.button}>
-                    <span className={styles.padding}>Отправить</span>
-                </Link>
-            </nav>
-        </footer>
+        <div className={styles.columnFooter}>
+          <span className={styles.h3}>Корзина</span>
+          <span className={styles.aster}>{count}астероида</span>
+        </div>
+        <nav className={styles.rrrr}>
+          <Link href="/marked" scroll={false}
+            className={styles.button}>
+            <span className={styles.padding}>Отправить</span>
+          </Link>
+        </nav>
+      </footer>
     </div>
   )
 }
