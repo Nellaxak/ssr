@@ -12,7 +12,7 @@ export async function buttonClick(formData) {
     const oldStatus = Number(await item.getStatus())
     const newStatus = Number(!Boolean(oldStatus))*/
     //console.log('fdddd', id, oldStatus, newStatus)
-    const resp = await fetch(`https://${process.env.NEXT_PUBLIC_VERCEL_URL}/api/item/${id}`, {
+    const resp = await fetch(`https://${process.env.NEXT_PUBLIC_VERCEL_URL}/app/api/item/${id}`, {
         method: "POST",
         headers: {
             'Content-Type': 'application/json'

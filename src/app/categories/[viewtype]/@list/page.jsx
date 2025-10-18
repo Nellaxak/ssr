@@ -25,6 +25,7 @@ export default async function Home({ params }) {
   let startDate
   let endDate
   [startDate, endDate] = await CalcData()
+  //console.log('sssaaa', process.env)
   const viewtypePromise = await params
   const viewtype = viewtypePromise.viewtype
   //console.log('viewtype list', viewtype)
