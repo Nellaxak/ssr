@@ -80,14 +80,14 @@ class Li {
     return this.status
   }
   async getButton() {
-    //return createElement('button', { key: 'btn', type: 'submit' }, await this.getStatus())
-    const status=await this.getStatus()
+    return createElement('button', { key: 'btn', type: 'submit' }, await this.getStatus())
+    /*const status=await this.getStatus()
     return createElement(Link, {
       key: this.id,
       className: styles.buttonItem,
       prefetch: false,
       href: `/click/${this.id}/status/${status}`,
-    }, status)
+    }, status)*/
     /*<Link href=`/id/${this.id}` scroll={false} className={styles.buttonItem}>
       {await this.getStatus()}</Link>*/
   }
