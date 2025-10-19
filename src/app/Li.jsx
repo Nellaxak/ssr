@@ -80,22 +80,7 @@ class Li {
     return this.status
   }
   async getButton() {
-    /*const resp = await fetch(`https://${process.env.NEXT_PUBLIC_VERCEL_URL}/app/api/item/${this.id}`,
-      { next: { tags: [`/item/${this.id}/status`] } }
-    )*/
-    //const resp = await fetch(`http://localhost:3000/api/item/${this.id}`
-    /*,
-     {
-      next: {
-        tags: ['list'],
-      }
-    }*/
-    // )
-    /*console.log('gssssssssss',resp.status)
-    const data = await resp.json()
-    console.log('button data',data)*/
-    //}
-    return createElement('button', { key: 'btn', type: 'submit' }, await this.getStatus())//data.message)
+    return createElement('button', { key: 'btn', type: 'submit' }, await this.getStatus())
   }
   /*async getDate() {
     return createElement('span', { key: 'date' }, this.date)
@@ -127,7 +112,10 @@ class Li {
   async setStatus(value) {
     console.log('setStatus', value, this.id)
     this.status = value
-
+    this.setForm();
+    this.result = createElement('li',
+      { key: this.id, className: styles.li }, this.form)
+    Li.arrResult.push(Number(this.id), this.result)
   }
 }
 export default Li
