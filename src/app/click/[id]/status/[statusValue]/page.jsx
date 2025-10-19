@@ -4,11 +4,11 @@ import Li from '../../../../Li'
 //import ParallelLayout from '../../../../layouts/layout';
 
 
-let data = []
+//let data = []
 export default async function Home({ params }) {
   //console.log('sssaaa', process.env)
   const viewtypePromise = await params
-  const viewtype = viewtypePromise.viewtype
+  //const viewtype = viewtypePromise.viewtype
   console.log('page list item status', viewtypePromise)
   //const items = await http<Item[]>(`http://localhost:3456/${viewtype}`) as Item[];
   const resd = await Li.getList(viewtype)
