@@ -85,7 +85,7 @@ class Li {
     return createElement(Link, {
       key: this.id,
       className: styles.buttonItem,
-      prefetch: true,
+      prefetch: false,
       href: `/click/${this.id}/status/0`,
     },0)
   }
