@@ -63,3 +63,14 @@
 
     }
   }
+  .buttonItem {
+   height: 48px;
+   width: 120px;
+   border: none;
+   background: var(--bg-color-to-basket);
+   color: var(--color-to-basket);
+   text-decoration: none;
+   border-radius: 24px;
+   display: flex;
+   align-items: center;
+ }
