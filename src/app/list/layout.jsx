@@ -4,7 +4,7 @@ import Link from "next/link";
 import styles from "./page.module.css";
 //const inter = Inter({ subsets: ['latin'] })
 
-export default function ParallelLayout({
+export default async function ParallelLayout({
   children,
   //count,
   //list,
