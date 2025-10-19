@@ -24,6 +24,7 @@ async function CalcData() {
 export default async function Home({ params }) {
   let startDate
   let endDate
+  let resp
   [startDate, endDate] = await CalcData()
   //console.log('sssaaa', process.env)
   const viewtypePromise = await params
@@ -31,7 +32,7 @@ export default async function Home({ params }) {
   console.log('page list', viewtypePromise)
   //const items = await http<Item[]>(`http://localhost:3456/${viewtype}`) as Item[];
   if (viewtype === 'main') {//or moon
-    const resp = await fetch(`https://api.nasa.gov/neo/rest/v1/feed?start_date=${startDate}&end_date=${endDate}&api_key=3wa5hHgFuqhf6XiefvqzkcDQWZ01aOOK4vNZEXsP`
+    resp = await fetch(`https://api.nasa.gov/neo/rest/v1/feed?start_date=${startDate}&end_date=${endDate}&api_key=3wa5hHgFuqhf6XiefvqzkcDQWZ01aOOK4vNZEXsP`
     );
   }
   if (Number(resp.status) === 200) {
