@@ -5,13 +5,13 @@ import Li from '../../../../Li'
 
 
 //let data = []
-export default function Home({ params }) {//async function
+export default async function Home({ params }) {//async function
   //console.log('sssaaa', process.env)
   //const viewtypePromise = await params
   //const viewtype = viewtypePromise.viewtype
   //console.log('page list item status', viewtypePromise)
   //const items = await http<Item[]>(`http://localhost:3456/${viewtype}`) as Item[];
-  const resd = Li.getList()//viewtype await
+  const resd = ['dddd','sxer']//Li.getList()//viewtype await
   //console.log('resd',resd)
   return resd
 }
