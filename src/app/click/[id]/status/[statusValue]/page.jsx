@@ -1,7 +1,7 @@
 import Image from "next/image";
 import styles from "./page.module.css";
 import Li from '../../../../Li'
-import ParallelLayout from '../../../../layouts/layout';
+//import ParallelLayout from '../../../../layouts/layout';
 
 
 let data = []
@@ -15,6 +15,6 @@ export default async function Home({ params }) {
   //console.log('resd',resd)
   return resd
 }
-Home.getLayout = function getLayout(page) {
+/*Home.getLayout = function getLayout(page) {
     return <ParallelLayout>{page}</ParallelLayout>;
-};
+};*/
