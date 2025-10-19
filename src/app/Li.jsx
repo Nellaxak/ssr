@@ -80,14 +80,14 @@ class Li {
     return this.status
   }
   async getButton() {
-    const status=await this.getStatus()
+    //const status=await this.getStatus()
     //return createElement('button', { key: 'btn', type: 'submit' }, status)
     return createElement(Link, {
       key: this.id,
       className: styles.buttonItem,
       prefetch: false,
       href: `/click/${this.id}/status/0`,
-    }, status)
+    },0)
   }
   /*async getDate() {
     return createElement('span', { key: 'date' }, this.date)
