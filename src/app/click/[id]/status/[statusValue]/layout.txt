@@ -6,7 +6,7 @@ import styles from "./page.module.css";
 
 export default function ParallelLayout({
   children,
-  //count,
+  count,
   list,
 }/*: {
   children: React.ReactNode,
@@ -27,7 +27,7 @@ export default function ParallelLayout({
       <footer className={styles.footer}>
         <div className={styles.columnFooter}>
           <span className={styles.h3}>Корзина</span>
-          <span className={styles.aster}>астероида</span>
+          <span className={styles.aster}>{count}астероида</span>
         </div>
         <nav className={styles.rrrr}>
           <Link href="/types/marked" scroll={false}

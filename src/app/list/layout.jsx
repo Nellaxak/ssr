@@ -7,7 +7,7 @@ import styles from "./page.module.css";
 export default function ParallelLayout({
   children,
   //count,
-  list,
+  //list,
 }/*: {
   children: React.ReactNode,
   count: React.ReactNode,
@@ -20,9 +20,8 @@ export default function ParallelLayout({
           Ближайшие подлёты астероидов
         </h6>
       </header>
-      {children}
       <ul className={styles.wrapRowRight}>
-        {list}
+        {children}
       </ul>
       <footer className={styles.footer}>
         <div className={styles.columnFooter}>

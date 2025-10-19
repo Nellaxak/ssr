@@ -1,0 +1,31 @@
+@media screen and (orientation: portrait) {
+  .wrap {
+    display: flex;
+    flex-direction: column;
+    padding: 0px;
+    gap: 24px;
+  }
+
+  .wrapRow {
+    flex-basis: 279px;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+  }
+}
+
+@media screen and (orientation: landscape) {
+  .wrap {
+    display: flex;
+    flex-direction: column;
+    padding: 0px;
+    gap: 24px;
+  }
+
+  .wrapRow {
+    display: flex;
+    flex-direction: column;
+    flex: 0 0 402px;
+    gap: 24px;
+  }
+}
