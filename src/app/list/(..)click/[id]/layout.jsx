@@ -17,7 +17,7 @@ export default async function ParallelLayout({
     <div className={styles.column}>
       <header className={styles.header}>
         <h6 className={styles.h6}>
-          Ближайшие подлёты астероидов
+          Ближайшие подлёты астероидов2222222222222222
         </h6>
       </header>
       <ul className={styles.wrapRowRight}>
