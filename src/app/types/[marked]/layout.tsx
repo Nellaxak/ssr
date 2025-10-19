@@ -2,7 +2,7 @@ import React from 'react';
 import styles from "./page.module.css";
 //const inter = Inter({ subsets: ['latin'] })
 
-export default function Layout({
+export default async function Layout({
   children,
 }: {
   children: React.ReactNode,
