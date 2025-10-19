@@ -1,5 +1,6 @@
 import Link from "next/link";
 import styles from "./page.module.css";
+import ParallelLayout from '../../layouts/layout';
 
 export default async function Home({ params }) {
     const viewtypePromise = await params
@@ -23,3 +24,6 @@ export default async function Home({ params }) {
     }
 
 }
+Home.getLayout = function getLayout(page) {
+    return <ParallelLayout>{page}</ParallelLayout>;
+};
