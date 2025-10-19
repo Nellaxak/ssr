@@ -2,7 +2,7 @@
 const nextConfig = {
     distDir: 'build',
     /*basePath: '/categories',*/
-    async redirects() {
+    /*async redirects() {
         return [
             {
                 source: '/',
@@ -10,6 +10,6 @@ const nextConfig = {
                 permanent: true
             },
         ]
-    },
+    },*/
 };
 export default nextConfig;
