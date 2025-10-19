@@ -33,7 +33,7 @@ export const metadata = {
 }
 //<main>
 
-export default function Layout(props) {
+export default async function Layout(props) {
   return (
     <html lang="ru">
       <body>
