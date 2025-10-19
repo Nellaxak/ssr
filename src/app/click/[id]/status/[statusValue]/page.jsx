@@ -11,7 +11,7 @@ export default async function Home({ params }) {
   //const viewtype = viewtypePromise.viewtype
   console.log('page list item status', viewtypePromise)
   //const items = await http<Item[]>(`http://localhost:3456/${viewtype}`) as Item[];
-  const resd = await Li.getList(viewtype)
+  const resd = await Li.getList()//viewtype
   //console.log('resd',resd)
   return resd
 }
