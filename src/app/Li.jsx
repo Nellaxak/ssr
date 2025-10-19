@@ -86,8 +86,8 @@ class Li {
       key: this.id,
       className: styles.buttonItem,
       prefetch: false,
-      href: `/itemClick/${this.id}/status/${status}`,
-    }, this.name)
+      href: `/categories/click/${this.id}/status/${status}`,
+    }, status)
     /*<Link href=`/id/${this.id}` scroll={false} className={styles.buttonItem}>
       {await this.getStatus()}</Link>*/
   }
