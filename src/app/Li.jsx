@@ -110,9 +110,9 @@ class Li {
   /*static async getSizeList(){
     return Li.arrResult.size
   }*/
-  async setStatus(value) {
+  async setStatus() {
     console.log('setStatus', value, this.id)
-    this.status = value
+    this.status = !this.status;
     //this.setForm();
     this.form = [await this.getName(), await this.getButton()]
     this.result = createElement('li', { key: this.id, className: styles.li }, this.form)
