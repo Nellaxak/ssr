@@ -20,21 +20,6 @@ export default async function ParallelLayout({
           Ближайшие подлёты астероидовrrrrrrrrrrrrrrr
         </h6>
       </header>
-      <ul className={styles.wrapRowRight}>
-        {children}
-      </ul>
-      <footer className={styles.footer}>
-        <div className={styles.columnFooter}>
-          <span className={styles.h3}>Корзина</span>
-          <span className={styles.aster}>астероида</span>
-        </div>
-        <nav className={styles.rrrr}>
-          <Link href="/types/marked" scroll={false}
-            className={styles.button}>
-            <span className={styles.padding}>Отправить</span>
-          </Link>
-        </nav>
-      </footer>
     </div>
   )
 }
