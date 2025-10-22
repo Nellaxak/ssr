@@ -5,7 +5,7 @@ import styles from "./page.module.css";
 //const inter = Inter({ subsets: ['latin'] })
 
 export default async function ParallelLayout({
-  children,
+  children
 }/*: {
   children: React.ReactNode,
 }*/) {
