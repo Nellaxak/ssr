@@ -38,7 +38,7 @@ class Li {
     //console.log('_____________________________________________bbb',dates)
     Object.entries(obj).map(([key, value]) => this[key] = value);
     this.status = 0
-    this.form = [this.getDate(),this.getName(), this.getButton()]
+    this.form = [this.getName(), this.getButton()]
     Li.arrObj.set(Number(this.id), this)
     this.result = createElement('li',{ key: this.id, className: styles.li }, this.form)
     //console.log('constructor',this.id)
@@ -114,7 +114,7 @@ class Li {
     console.log('setStatus', value, this.id)
     this.status = value
     //this.setForm();
-    this.form = [await this.getDate(), await this.getName(), await this.getButton()]
+    this.form = [await this.getName(), await this.getButton()]
     this.result = createElement('li', { key: this.id, className: styles.li }, this.form)
 
     Li.arrResult.push(Number(this.id), this.result)
