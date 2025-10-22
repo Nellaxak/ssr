@@ -4,9 +4,9 @@ import React, { createElement } from "react";
 //import LiItemLayout from "@/layouts/layout";
 import Link from 'next/link'
 import styles from "./page.module.css";
-import { buttonClick } from "./actions/updateStatus";
+//import { buttonClick } from "./actions/updateStatus";
 //import ListItem1 from "@/components/ListItem1/page";
-import Form from 'next/form'
+//import Form from 'next/form'
 //import FSM from "./finite-state-machines";
 //import LiItemLayout from "@/app/categories/[viewtype]/[page]/@list/layout";
 /*import Server from 'socket.io';
@@ -38,11 +38,9 @@ class Li {
     //console.log('_____________________________________________bbb',dates)
     Object.entries(obj).map(([key, value]) => this[key] = value);
     this.status = 0
-    this.form = [this.getId(), this.getName(), this.getButton()]
+    this.form = [this.getDate(),this.getName(), this.getButton()]
     Li.arrObj.set(Number(this.id), this)
-    this.result = createElement('li',
-      { key: this.id, className: styles.li }, this.form
-    )
+    this.result = createElement('li',{ key: this.id, className: styles.li }, this.form)
     //console.log('constructor',this.id)
     Li.arrResult.push(Number(this.id), this.result)
     //}
