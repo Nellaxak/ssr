@@ -75,14 +75,14 @@ class Li {
     return this.status
   }
   async getButton() {
-    let status=!this.status//await this.getStatus()
+    //let status=!this.status//await this.getStatus()
     //return createElement('button', { key: 'btn', type: 'submit' }, status)
     return createElement(Link, {
       key: this.id,
       className: styles.buttonItem,
       prefetch: false,
       href: `/categories/main/click/${this.id}`,//get categories/viewtype? in ssr component
-    }, status)
+    }, !this.status)
   }
   /*async getDate() {
     return createElement('span', { key: 'date' }, this.date)
