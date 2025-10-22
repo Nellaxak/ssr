@@ -82,7 +82,7 @@ class Li {
       className: styles.buttonItem,
       prefetch: false,
       href: `/categories/main/click/${this.id}`,//get categories/viewtype? in ssr component
-    }, !status)
+    }, !Boolean(status))
   }
   /*async getDate() {
     return createElement('span', { key: 'date' }, this.date)
