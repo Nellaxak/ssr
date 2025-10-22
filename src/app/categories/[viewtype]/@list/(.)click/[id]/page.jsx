@@ -11,7 +11,7 @@ export default async function Home({params}) {//
   //const items = await http<Item[]>(`http://localhost:3456/${viewtype}`) as Item[];
   const find=await Li.findById(paramsPromise.id)
   //const oldStatus=await find.getStatus()
-  //find.setStatus()
+  find.setStatus()
   const resd = await Li.getList(paramsPromise)//viewtype
   //console.log('resd',resd)
   return resd
