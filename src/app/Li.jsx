@@ -111,7 +111,7 @@ class Li {
     return Li.arrResult.size
   }*/
   async setStatus() {
-    console.log('setStatus', value, this.id)
+    //console.log('setStatus', value, this.id)
     this.status = !this.status;
     //this.setForm();
     this.form = [await this.getName(), await this.getButton()]
