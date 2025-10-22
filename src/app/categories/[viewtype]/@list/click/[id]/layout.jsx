@@ -9,5 +9,5 @@ export default async function ParallelLayout({
 }/*: {
   children: React.ReactNode,
 }*/) {
-  return 'Ближайшие подлёты астероидовrrrrrrrrrrrrrrr'
+  return children
 }

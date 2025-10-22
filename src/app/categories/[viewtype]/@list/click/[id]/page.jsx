@@ -9,7 +9,7 @@ export default async function Home({params}) {//
   //const viewtype = viewtypePromise.viewtype
   console.log('page list item status', paramsPromise)
   //const items = await http<Item[]>(`http://localhost:3456/${viewtype}`) as Item[];
-  const resd = []//await Li.getList(paramsPromise)//viewtype
+  const resd = 'ssssert'//await Li.getList(paramsPromise)//viewtype
   //console.log('resd',resd)
   return resd
 }
