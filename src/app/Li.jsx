@@ -75,7 +75,7 @@ class Li {
     return this.status
   }
   async getButton() {
-    const status=await this.getStatus()
+    const status=0//await this.getStatus()
     //return createElement('button', { key: 'btn', type: 'submit' }, status)
     return createElement(Link, {
       key: this.id,
@@ -112,12 +112,10 @@ class Li {
   }*/
   async setStatus() {
     //console.log('setStatus', value, this.id)
-    const oldStatus=await this.getStatus()
+    const oldStatus=0//await this.getStatus()
     this.status = !oldStatus;
-    //this.setForm();
     this.form = [await this.getName(), await this.getButton()]
     this.result = createElement('li', { key: this.id, className: styles.li }, this.form)
-
     Li.arrResult.push(Number(this.id), this.result)
   }
 }
