@@ -7,17 +7,15 @@ import styles from "./page.module.css";
 export default function ParallelLayout({
   children,
   //count,
-  list,
+  //list,
 }/*: {
   children: React.ReactNode,
   count: React.ReactNode,
   list: React.ReactNode
 }*/) {
   return (
-    
+    <ul className={styles.wrapRowRight}>
       {children}
-      <ul className={styles.wrapRowRight}>
-        {list}
-      </ul>
+    </ul>
   )
 }
