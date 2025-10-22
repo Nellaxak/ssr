@@ -37,7 +37,7 @@ class Li {
   constructor(obj, dates) {
     //console.log('_____________________________________________bbb',dates)
     Object.entries(obj).map(([key, value]) => this[key] = value);
-    this.status = 0
+    this.status = false
     this.form = [this.getName(), this.getButton()]
     Li.arrObj.set(Number(this.id), this)
     this.result = createElement('li',{ key: this.id, className: styles.li }, this.form)
@@ -75,7 +75,7 @@ class Li {
     return this.status
   }
   async getButton() {
-    const status=!Boolean(0)//await this.getStatus()
+    const status=!this.status//await this.getStatus()
     //return createElement('button', { key: 'btn', type: 'submit' }, status)
     return createElement(Link, {
       key: this.id,
