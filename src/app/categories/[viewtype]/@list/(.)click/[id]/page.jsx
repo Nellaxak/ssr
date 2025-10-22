@@ -5,7 +5,7 @@ import Li from '../../../../../Li'
 
 
 //let data = []
-export default async function Home() {//async function {params}
+export default async function Home() {// {params}
   //console.log('sssaaa', process.env)
   //const viewtypePromise = await params
   //const viewtype = viewtypePromise.viewtype

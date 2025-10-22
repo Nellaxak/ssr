@@ -32,8 +32,8 @@ export default async function Home({ params }) {
   console.log('page list', viewtypePromise)
   //const items = await http<Item[]>(`http://localhost:3456/${viewtype}`) as Item[];
   //if (viewtype === 'main') {//or moon
-    resp = await fetch(`https://api.nasa.gov/neo/rest/v1/feed?start_date=${startDate}&end_date=${endDate}&api_key=3wa5hHgFuqhf6XiefvqzkcDQWZ01aOOK4vNZEXsP`
-    );//tag
+  resp = await fetch(`https://api.nasa.gov/neo/rest/v1/feed?start_date=${startDate}&end_date=${endDate}&api_key=3wa5hHgFuqhf6XiefvqzkcDQWZ01aOOK4vNZEXsP`
+  );//tag
   //}
   if (Number(resp.status) === 200) {
     const dat = await resp.json()
