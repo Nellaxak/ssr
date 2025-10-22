@@ -112,8 +112,8 @@ class Li {
   }*/
   async setStatus() {
     //console.log('setStatus', value, this.id)
-    const oldStatus=0//await this.getStatus()
-    this.status = !Boolean(oldStatus);
+    const oldStatus=await this.getStatus()
+    this.status = !oldStatus;
     this.form = [await this.getName(), await this.getButton()]
     this.result = createElement('li', { key: this.id, className: styles.li }, this.form)
     Li.arrResult.push(Number(this.id), this.result)
