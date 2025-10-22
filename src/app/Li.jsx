@@ -38,13 +38,13 @@ class Li {
     //console.log('_____________________________________________bbb',dates)
     Object.entries(obj).map(([key, value]) => this[key] = value);
     this.status = 0
-    this.form = <Form action={buttonClick}>
+    /*this.form = <Form action={buttonClick}>
       {[this.getId(), this.getName(), this.getButton()]}
-    </Form>
+    </Form>*/
     Li.arrObj.set(Number(this.id), this)
     this.result = createElement('li',
-      { key: this.id, className: styles.li }, this.form
-      //[this.getId(), this.getDate(), this.getName(), this.getButton()]
+      { key: this.id, className: styles.li }, 
+      [this.getDate(), this.getName(), this.getButton()]
     )
     //console.log('constructor',this.id)
     Li.arrResult.push(Number(this.id), this.result)
@@ -64,10 +64,10 @@ class Li {
   static async setCount(value) {
     Li.count = Li.count + value
   }
-  async getId() {
+  /*async getId() {
     return createElement('input',
       { type: "text", key: 'id', defaultValue: this.id, name: 'id' })
-  }
+  }*/
   async getName() {
     return createElement(Link, {
       key: this.id,
@@ -86,7 +86,7 @@ class Li {
       key: this.id,
       className: styles.buttonItem,
       prefetch: false,
-      href: `/categories/main/click/${this.id}`,//get categories/viewtype?
+      href: `/categories/main/click/${this.id}`,//get categories/viewtype? in ssr component
     },0)
   }
   /*async getDate() {
@@ -100,13 +100,12 @@ class Li {
     }
     return resss
   }
-  async setForm() {
+  /*async setForm() {
     this.form = <Form action={buttonClick}>
       {[await this.getId(), await this.getName(), await this.getButton()]}
     </Form>
-  }
+  }*/
   static async getList(viewtype) {
-    console.log('getList', viewtype)
     //const resd = Array.from(Li.arrResult.values())
     return Li.arrResult
     /*return new Promise(resolve =>
@@ -119,9 +118,11 @@ class Li {
   async setStatus(value) {
     console.log('setStatus', value, this.id)
     this.status = value
-    this.setForm();
+    //this.setForm();
     this.result = createElement('li',
-      { key: this.id, className: styles.li }, this.form)
+      { key: this.id, className: styles.li }, 
+      [this.getDate(), this.getName(), this.getButton()]
+    )
     Li.arrResult.push(Number(this.id), this.result)
   }
 }
