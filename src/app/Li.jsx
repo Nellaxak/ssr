@@ -38,13 +38,10 @@ class Li {
     //console.log('_____________________________________________bbb',dates)
     Object.entries(obj).map(([key, value]) => this[key] = value);
     this.status = 0
-    /*this.form = <Form action={buttonClick}>
-      {[this.getId(), this.getName(), this.getButton()]}
-    </Form>*/
+    this.form = [this.getId(), this.getName(), this.getButton()]
     Li.arrObj.set(Number(this.id), this)
     this.result = createElement('li',
-      { key: this.id, className: styles.li }, 
-      [this.getDate(), this.getName(), this.getButton()]
+      { key: this.id, className: styles.li }, this.form
     )
     //console.log('constructor',this.id)
     Li.arrResult.push(Number(this.id), this.result)
@@ -87,7 +84,7 @@ class Li {
       className: styles.buttonItem,
       prefetch: false,
       href: `/categories/main/click/${this.id}`,//get categories/viewtype? in ssr component
-    },0)
+    }, 0)
   }
   /*async getDate() {
     return createElement('span', { key: 'date' }, this.date)
@@ -119,10 +116,9 @@ class Li {
     console.log('setStatus', value, this.id)
     this.status = value
     //this.setForm();
-    this.result = createElement('li',
-      { key: this.id, className: styles.li }, 
-      [this.getDate(), this.getName(), this.getButton()]
-    )
+    this.form = [await this.getDate(), await this.getName(), await this.getButton()]
+    this.result = createElement('li', { key: this.id, className: styles.li }, this.form)
+
     Li.arrResult.push(Number(this.id), this.result)
   }
 }
