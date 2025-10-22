@@ -75,7 +75,7 @@ class Li {
     return this.status
   }
   async getButton() {
-    const status=!0//await this.getStatus()
+    const status=!Boolean(0)//await this.getStatus()
     //return createElement('button', { key: 'btn', type: 'submit' }, status)
     return createElement(Link, {
       key: this.id,
