@@ -41,7 +41,7 @@ class Li {
     this.setForm()
     //this.form = [this.getName(), this.getButton()]
     //Li.arrObj.set(Number(this.id), this)
-    this.result = createElement('li',{ key: this.id, className: styles.li }, this.form)
+    this.result = createElement('li', { key: this.id, className: styles.li }, this.form)
     //console.log('constructor',this.id)
     //Li.arrResult.push(Number(this.id), this.result)
     Li.arrResult.set(Number(this.id), this.result)
@@ -77,7 +77,7 @@ class Li {
     return this.status
   }
   async getButton() {
-    let status=await this.getStatus()
+    let status = await this.getStatus()
     return createElement(Link, {
       key: this.id,
       className: styles.buttonItem,
@@ -109,7 +109,7 @@ class Li {
   async setStatus() {
     this.status = !this.status;
     //this.form = [await this.getName(), await this.getButton()]
-    await this.setForm()
+    this.form = await this.setForm()
     this.result = createElement('li', { key: this.id, className: styles.li }, this.form)
     Li.arrResult.set(Number(this.id), this.result)
   }
