@@ -27,7 +27,7 @@ class Li {
   private updateUserWithId: any;
   private text: any;
   private form: any;*/
-  static arrResult = []//new Map();
+  static arrResult = new Map();
   static arrObj = new Map();
   static count = 0;
   //static hiddenElements = new Map();
@@ -42,7 +42,8 @@ class Li {
     Li.arrObj.set(Number(this.id), this)
     this.result = createElement('li',{ key: this.id, className: styles.li }, this.form)
     //console.log('constructor',this.id)
-    Li.arrResult.push(Number(this.id), this.result)
+    //Li.arrResult.push(Number(this.id), this.result)
+    Li.arrResult.set(Number(this.id), this.result)
     //}
   }
   static async deleted(action, col) {
@@ -107,16 +108,16 @@ class Li {
       resolve(Li.arrResult)
     )*/
   }
-  /*static async getSizeList(){
-    return Li.arrResult.size
-  }*/
   async setStatus() {
     //console.log('setStatus', value, this.id)
     //let oldStatus=await this.getStatus()
     this.status = !this.status;
     this.form = [await this.getName(), await this.getButton()]
     this.result = createElement('li', { key: this.id, className: styles.li }, this.form)
-    Li.arrResult.push(Number(this.id), this.result)
+    //Li.arrResult find+delete 
+    //save order items
+    Li.arrResult.set(Number(this.id), this.result)
+    //Li.arrResult.push(Number(this.id), this.result)
   }
 }
 export default Li
