@@ -88,14 +88,14 @@ class Li {
   /*async getDate() {
     return createElement('span', { key: 'date' }, this.date)
   }*/
-  /*static async findById(ppp) {
+  static async findById(ppp) {
     let resss = false
     resss = Li.arrResult.get(Number(ppp));
     if (resss === undefined) {
       resss = false
     }
     return resss
-  }*/
+  }
   /*async setForm() {
     this.form = [await this.getName(), await this.getButton()]
   }*/
