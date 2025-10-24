@@ -96,9 +96,9 @@ class Li {
     }
     return resss
   }*/
-  async setForm() {
+  /*async setForm() {
     this.form = [await this.getName(), await this.getButton()]
-  }
+  }*/
   static async getList(viewtype) {
     //const resd = Array.from(Li.arrResult.values())
     return Li.arrResult
@@ -108,8 +108,8 @@ class Li {
   }
   async setStatus() {
     this.status = !this.status;
-    //this.form = [await this.getName(), await this.getButton()]
-    await this.setForm()
+    this.form = [await this.getName(), await this.getButton()]
+    //await this.setForm()
     this.result = createElement('li', { key: this.id, className: styles.li }, this.form)
     Li.arrResult.set(Number(this.id), this.result)
   }
