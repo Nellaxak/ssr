@@ -28,7 +28,7 @@ class Li {
   private text: any;
   private form: any;*/
   static arrResult = new Map();
-  //static arrObj = new Map();
+  static arrObj = new Map();
   static count = 0;
   //static hiddenElements = new Map();
   //static pageSizeItems = 15//for first load
@@ -40,7 +40,7 @@ class Li {
     this.status = false
     //this.setForm()
     this.form = [this.getName(), this.getButton()]
-    //Li.arrObj.set(Number(this.id), this)
+    Li.arrObj.set(Number(this.id), this)
     this.result = createElement('li', { key: this.id, className: styles.li }, this.form)
     //console.log('constructor',this.id)
     //Li.arrResult.push(Number(this.id), this.result)
@@ -82,7 +82,7 @@ class Li {
       key: this.id,
       className: styles.buttonItem,
       prefetch: false,
-      href: `/categories/main/click/id/${this.id}`,//get categories/viewtype? in ssr component
+      href: `/categories/main/click/${this.id}`,//get categories/viewtype? in ssr component
     }, String(status))
   }
   /*async getDate() {
@@ -90,7 +90,7 @@ class Li {
   }*/
   static async findById(ppp) {
     let resss = false
-    resss = Li.arrResult.get(Number(ppp));
+    resss = Li.arrObj.get(Number(ppp));
     if (resss === undefined) {
       resss = false
     }
@@ -106,8 +106,9 @@ class Li {
       resolve(Li.arrResult)
     )*/
   }
-  async setStatus() {
-    this.status = !this.status;
+  async setStatus(valueId) {
+    //let findItem=Li.arrObj.get(Number(valueId))
+    this.status = !this.status//findItem.status;
     this.form = [await this.getName(), await this.getButton()]
     //await this.setForm()
     this.result = createElement('li', { key: this.id, className: styles.li }, this.form)
