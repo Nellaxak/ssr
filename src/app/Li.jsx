@@ -82,7 +82,7 @@ class Li {
       key: this.id,
       className: styles.buttonItem,
       prefetch: false,
-      href: `/categories/main/click/${this.id}`,//get categories/viewtype? in ssr component
+      href: `/categories/main/click/id/${this.id}`,//get categories/viewtype? in ssr component
     }, String(status))
   }
   /*async getDate() {
