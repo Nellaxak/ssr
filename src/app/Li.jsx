@@ -28,7 +28,7 @@ class Li {
   private text: any;
   private form: any;*/
   static arrResult = new Map();
-  static arrObj = new Map();
+  //static arrObj = new Map();
   static count = 0;
   //static hiddenElements = new Map();
   //static pageSizeItems = 15//for first load
@@ -38,8 +38,9 @@ class Li {
     //console.log('_____________________________________________bbb',dates)
     Object.entries(obj).map(([key, value]) => this[key] = value);
     this.status = false
-    this.form = [this.getName(), this.getButton()]
-    Li.arrObj.set(Number(this.id), this)
+    this.setForm()
+    //this.form = [this.getName(), this.getButton()]
+    //Li.arrObj.set(Number(this.id), this)
     this.result = createElement('li',{ key: this.id, className: styles.li }, this.form)
     //console.log('constructor',this.id)
     //Li.arrResult.push(Number(this.id), this.result)
@@ -77,7 +78,6 @@ class Li {
   }
   async getButton() {
     let status=await this.getStatus()
-    //return createElement('button', { key: 'btn', type: 'submit' }, status)
     return createElement(Link, {
       key: this.id,
       className: styles.buttonItem,
@@ -88,19 +88,17 @@ class Li {
   /*async getDate() {
     return createElement('span', { key: 'date' }, this.date)
   }*/
-  static async findById(ppp) {
+  /*static async findById(ppp) {
     let resss = false
-    resss = Li.arrObj.get(Number(ppp));
+    resss = Li.arrResult.get(Number(ppp));
     if (resss === undefined) {
       resss = false
     }
     return resss
-  }
-  /*async setForm() {
-    this.form = <Form action={buttonClick}>
-      {[await this.getId(), await this.getName(), await this.getButton()]}
-    </Form>
   }*/
+  async setForm() {
+    this.form = [await this.getName(), await this.getButton()]
+  }
   static async getList(viewtype) {
     //const resd = Array.from(Li.arrResult.values())
     return Li.arrResult
@@ -109,15 +107,11 @@ class Li {
     )*/
   }
   async setStatus() {
-    //console.log('setStatus', value, this.id)
-    //let oldStatus=await this.getStatus()
     this.status = !this.status;
-    this.form = [await this.getName(), await this.getButton()]
+    //this.form = [await this.getName(), await this.getButton()]
+    await this.setForm()
     this.result = createElement('li', { key: this.id, className: styles.li }, this.form)
-    //Li.arrResult find+delete 
-    //save order items
     Li.arrResult.set(Number(this.id), this.result)
-    //Li.arrResult.push(Number(this.id), this.result)
   }
 }
 export default Li
