@@ -30,8 +30,7 @@ class Li {
   static arrResult = new Map();
   static arrObj = new Map();
   static count = 0;
-  static viewtype = 'main'
-
+  static viewtype = 'main'//async getter
   //static hiddenElements = new Map();
   //static pageSizeItems = 15//for first load
   //static countFirstPageSize=0//add getter/setter
@@ -84,13 +83,24 @@ class Li {
   async getButton(value) {
     let status = await this.getStatus()
     //let href=`/categories/${this.viewtype}/click/${this.id}`
-    return createElement(Link, {
-      key: this.id,
-      className: styles.buttonItem,
-      prefetch: false,
-      href: `/categories/${value}/click/${this.id}`,
-      //get categories/viewtype? in ssr component
-    }, String(status))
+    if (value === 'main') {
+      return createElement(Link, {
+        key: this.id,
+        className: styles.buttonItem,
+        prefetch: false,
+        href: `/categories/main/click/${this.id}`,
+        //get categories/viewtype? in ssr component
+      }, String(status))
+    }
+    else {
+      return createElement(Link, {
+        key: this.id,
+        className: styles.buttonItem,
+        prefetch: false,
+        href: `/categories/moon/click/${this.id}`,
+        //get categories/viewtype? in ssr component
+      }, String(status))
+    }
   }
   /*async getDate() {
     return createElement('span', { key: 'date' }, this.date)
