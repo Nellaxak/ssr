@@ -30,6 +30,8 @@ class Li {
   static arrResult = new Map();
   static arrObj = new Map();
   static count = 0;
+  static viewtype = 'main'
+
   //static hiddenElements = new Map();
   //static pageSizeItems = 15//for first load
   //static countFirstPageSize=0//add getter/setter
@@ -37,7 +39,6 @@ class Li {
   constructor(obj, dates) {
     Object.entries(obj).map(([key, value]) => this[key] = value);
     this.status = false
-    this.viewtype='main'
     this.form = [this.getName(), this.getButton()]
     Li.arrObj.set(Number(this.id), this)
     this.result = createElement('li', { key: this.id, className: styles.li }, this.form)
@@ -82,12 +83,12 @@ class Li {
   }
   async getButton() {
     let status = await this.getStatus()
-    let href=`/categories/${this.viewtype}/click/${this.id}`
+    //let href=`/categories/${this.viewtype}/click/${this.id}`
     return createElement(Link, {
       key: this.id,
       className: styles.buttonItem,
       prefetch: false,
-      href: href,//`/categories/main/click/${this.id}`,
+      href: `/categories/${Li.viewtype}/click/${this.id}`,
       //get categories/viewtype? in ssr component
     }, String(status))
   }
@@ -106,7 +107,7 @@ class Li {
     this.form = [await this.getName(), await this.getButton()]
   }
   static async getList(viewtype) {
-    this.viewtype=viewtype
+    Li.viewtype = viewtype
     //const resd = Array.from(Li.arrResult.values())
     return Li.arrResult
     /*return new Promise(resolve =>
