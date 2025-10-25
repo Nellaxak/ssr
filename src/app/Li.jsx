@@ -38,12 +38,9 @@ class Li {
     //console.log('_____________________________________________bbb',dates)
     Object.entries(obj).map(([key, value]) => this[key] = value);
     this.status = false
-    this.setForm()
-    //this.form = [this.getName(), this.getButton()]
+    this.form = [this.getName(), this.getButton()]
     Li.arrObj.set(Number(this.id), this)
     this.result = createElement('li', { key: this.id, className: styles.li }, this.form)
-    //console.log('constructor',this.id)
-    //Li.arrResult.push(Number(this.id), this.result)
     Li.arrResult.set(Number(this.id), this.result)
     //}
   }
@@ -74,7 +71,9 @@ class Li {
     }, this.name)
   }
   async getStatus() {
-    return this.status
+    if (this.status) {
+      return 'в корзине'
+    } else { return 'заказать' }
   }
   async getButton() {
     let status = await this.getStatus()
