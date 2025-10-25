@@ -35,7 +35,6 @@ class Li {
   //static countFirstPageSize=0//add getter/setter
   //private result: any;
   constructor(obj, dates) {
-    //console.log('_____________________________________________bbb',dates)
     Object.entries(obj).map(([key, value]) => this[key] = value);
     this.status = false
     this.viewtype='main'
@@ -87,7 +86,7 @@ class Li {
       key: this.id,
       className: styles.buttonItem,
       prefetch: false,
-      href: `/categories/${String(this.viewtype)}/click/${this.id}`,
+      href: `/categories/${this.viewtype}/click/${this.id}`,
       //get categories/viewtype? in ssr component
     }, String(status))
   }
