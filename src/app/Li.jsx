@@ -71,9 +71,14 @@ class Li {
     }, this.name)
   }
   async getStatus() {
+    //change css
     if (this.status) {
+      await setCount(1)
       return 'в корзине'
-    } else { return 'заказать' }
+    } else {
+      await setCount(-1)
+      return 'заказать'
+    }
   }
   async getButton() {
     let status = await this.getStatus()
@@ -81,7 +86,7 @@ class Li {
       key: this.id,
       className: styles.buttonItem,
       prefetch: false,
-      href: `/categories/main/click/${this.id}`,//get categories/viewtype? in ssr component
+      href: `/categories/${this.viewtype}/click/${this.id}`,//get categories/viewtype? in ssr component
     }, String(status))
   }
   /*async getDate() {
@@ -99,6 +104,7 @@ class Li {
     this.form = [await this.getName(), await this.getButton()]
   }
   static async getList(viewtype) {
+    this.viewtype=viewtype
     //const resd = Array.from(Li.arrResult.values())
     return Li.arrResult
     /*return new Promise(resolve =>
