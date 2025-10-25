@@ -39,7 +39,7 @@ class Li {
   constructor(obj, dates) {
     Object.entries(obj).map(([key, value]) => this[key] = value);
     this.status = false
-    this.form = [this.getName(), this.getButton()]
+    this.form = [this.getName(), this.getButton('main')]
     Li.arrObj.set(Number(this.id), this)
     this.result = createElement('li', { key: this.id, className: styles.li }, this.form)
     Li.arrResult.set(Number(this.id), this.result)
@@ -81,14 +81,14 @@ class Li {
       return 'заказать'
     }
   }
-  async getButton() {
+  async getButton(value) {
     let status = await this.getStatus()
     //let href=`/categories/${this.viewtype}/click/${this.id}`
     return createElement(Link, {
       key: this.id,
       className: styles.buttonItem,
       prefetch: false,
-      href: `/categories/${Li.viewtype}/click/${this.id}`,
+      href: `/categories/${value}/click/${this.id}`,
       //get categories/viewtype? in ssr component
     }, String(status))
   }
@@ -103,8 +103,8 @@ class Li {
     }
     return resss
   }
-  async setForm() {
-    this.form = [await this.getName(), await this.getButton()]
+  async setForm(value) {
+    this.form = [await this.getName(), await this.getButton(value)]
   }
   static async getList(viewtype) {
     Li.viewtype = viewtype
@@ -116,7 +116,7 @@ class Li {
   }
   async setStatus() {
     this.status = !this.status
-    await this.setForm()
+    await this.setForm(Li.viewtype)
     this.result = createElement('li', { key: this.id, className: styles.li }, this.form)
     Li.arrResult.set(Number(this.id), this.result)
   }
