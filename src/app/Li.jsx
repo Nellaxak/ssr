@@ -38,8 +38,8 @@ class Li {
     //console.log('_____________________________________________bbb',dates)
     Object.entries(obj).map(([key, value]) => this[key] = value);
     this.status = false
-    //this.setForm()
-    this.form = [this.getName(), this.getButton()]
+    this.setForm()
+    //this.form = [this.getName(), this.getButton()]
     Li.arrObj.set(Number(this.id), this)
     this.result = createElement('li', { key: this.id, className: styles.li }, this.form)
     //console.log('constructor',this.id)
@@ -107,9 +107,7 @@ class Li {
     )*/
   }
   async setStatus() {
-    //let findItem=Li.arrObj.get(Number(valueId))
-    this.status = !this.status//findItem.status;
-    //this.form = [await this.getName(), await this.getButton()]
+    this.status = !this.status
     await this.setForm()
     this.result = createElement('li', { key: this.id, className: styles.li }, this.form)
     Li.arrResult.set(Number(this.id), this.result)
