@@ -90,9 +90,9 @@ class Li {
   }
   async getButton() {
     let status = await this.getStatus()
-    let viewtype=await Li.asyncValue;
+    let viewtype = await Li.asyncValue;
     //let href=`/categories/${this.viewtype}/click/${this.id}`
-    if (Li.viewtype  === 'main') {
+    /*if (viewtype === 'main') {
       return createElement(Link, {
         key: this.id,
         className: styles.buttonItem,
@@ -101,7 +101,7 @@ class Li {
         //get categories/viewtype? in ssr component
       }, String(status))
     }
-    else {
+    else {*/
       return createElement(Link, {
         key: this.id,
         className: styles.buttonItem,
@@ -109,7 +109,7 @@ class Li {
         href: `/categories/${viewtype}/click/${this.id}`,
         //get categories/viewtype? in ssr component
       }, String(status))
-    }
+    //}
   }
   /*async getDate() {
     return createElement('span', { key: 'date' }, this.date)
