@@ -6,7 +6,7 @@ import Li from '../../../../../Li'
 export default async function Home({ params }) {// 
   //console.log('sssaaa', process.env)
   const paramsPromise = await params
-  const viewtype = viewtypePromise.viewtype
+  //const viewtype = viewtypePromise.viewtype
   //console.log('page list item status interceptor', paramsPromise)
   //const items = await http<Item[]>(`http://localhost:3456/${viewtype}`) as Item[];
   const find = await Li.findById(paramsPromise.id)
