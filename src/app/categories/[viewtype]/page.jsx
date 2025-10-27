@@ -9,8 +9,9 @@ export default async function Home({ params }) {
     if (Li.viewtype !== viewtype) {
         Li.viewtype = String(viewtype)
     }
+    let res
     if (viewtype === 'main') {
-        return <nav className={styles.labelWrapper} >
+        res=<nav className={styles.labelWrapper} >
             <Link href="/categories/main"
                 className={styles.km} scroll={false}>в километрах</Link>
             <span className={styles.space}>|</span>
@@ -18,7 +19,7 @@ export default async function Home({ params }) {
                 className={styles.moon} scroll={false}>в лунных орбитах</Link>
         </nav>
     } else {
-        return <nav className={styles.labelWrapper} >
+        res=<nav className={styles.labelWrapper} >
             <Link href="/categories/main" scroll={false}
                 className={styles.moon}>в километрах</Link>
             <span className={styles.space}>|</span>
@@ -26,6 +27,8 @@ export default async function Home({ params }) {
                 className={styles.km}>в лунных орбитах</Link>
         </nav>
     }
+    const resd = await Li.getList(viewtype)
+    return res+resd
 }
 /*Home.getLayout = function getLayout(page) {
     return <ParallelLayout>{page}</ParallelLayout>;
