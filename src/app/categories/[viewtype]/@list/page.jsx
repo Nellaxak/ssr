@@ -29,7 +29,7 @@ export default async function Home({ params }) {
   //console.log('sssaaa', process.env)
   const viewtypePromise = await params
   const viewtype = viewtypePromise.viewtype
-  console.log('page list', viewtype)
+  console.log('page list', viewtypePromise)
   //const items = await http<Item[]>(`http://localhost:3456/${viewtype}`) as Item[];
   try {
     resp = await fetch(`https://api.nasa.gov/neo/rest/v1/feed?start_date=${startDate}&end_date=${endDate}&api_key=3wa5hHgFuqhf6XiefvqzkcDQWZ01aOOK4vNZEXsP`

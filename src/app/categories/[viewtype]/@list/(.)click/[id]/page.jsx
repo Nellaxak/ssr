@@ -3,15 +3,18 @@
 import Li from '../../../../../Li'
 //import ParallelLayout from '../../../../layouts/layout';
 
-export default async function Home({params}) {// 
+export default async function Home({ params }) {// 
   //console.log('sssaaa', process.env)
   const paramsPromise = await params
-  //const viewtype = viewtypePromise.viewtype
+  const viewtype = viewtypePromise.viewtype
   console.log('page list item status interceptor', paramsPromise)
   //const items = await http<Item[]>(`http://localhost:3456/${viewtype}`) as Item[];
-  const find=await Li.findById(paramsPromise.id)
-  //const oldStatus=await find.getStatus()
-  await find.setStatus(paramsPromise.id)//await
+  const find = await Li.findById(paramsPromise.id)
+  //const oldStatus = find.status
+  //get status from url
+  if (Li.viewtype === viewtype) {
+    await find.setStatus()//await
+  }
   const resd = await Li.getList(paramsPromise)//viewtype
   //console.log('resd',resd)
   return resd

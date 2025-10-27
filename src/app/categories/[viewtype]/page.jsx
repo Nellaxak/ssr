@@ -24,7 +24,6 @@ export default async function Home({ params }) {
                 className={styles.km}>в лунных орбитах</Link>
         </nav>
     }
-
 }
 /*Home.getLayout = function getLayout(page) {
     return <ParallelLayout>{page}</ParallelLayout>;
