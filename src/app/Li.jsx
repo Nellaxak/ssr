@@ -114,8 +114,8 @@ class Li {
       key={this.id}
       className={styles.buttonItem}
       href={{
-        pathname: '/categories/[slug]',
-        query: { slug: 'main' },
+        pathname: '/categories/[slug]/click/[id]',
+        query: ['main', this.id],
       }}
     >
       {String(status)}
