@@ -104,13 +104,22 @@ class Li {
     else {*/
     //<Link href="/route/[slug]?slug=1">link</Link>
     //<Link href="/route/1">link</Link>
-      return createElement(Link, {
-        key: this.id,
-        className: styles.buttonItem,
-        prefetch: false,
-        href: `/categories/[slug]?slug=main/click/${this.id}`,
-        //get categories/viewtype? in ssr component
-      }, String(status))
+    /*return createElement(Link, {
+      key: this.id,
+      className: styles.buttonItem,
+      prefetch: false,
+      href: `/categories/[slug]?slug=main/click/${this.id}`,
+    }, String(status))*/
+    return <Link
+      key={this.id}
+      className={styles.buttonItem}
+      href={{
+        pathname: '/categories/[slug]',
+        query: { slug: 'main' },
+      }}
+    >
+      {String(status)}
+    </Link>
     //}
   }
   /*async getDate() {
