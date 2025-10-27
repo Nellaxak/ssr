@@ -120,7 +120,7 @@ class Li {
     )*/
   }
   async setStatus(oldStatus) {
-    this.status = !Boolean(oldStatus)
+    this.status = Number(!Boolean(oldStatus))
     await this.setForm()
     this.result = createElement('li', { key: this.id, className: styles.li }, this.form)
     Li.arrResult.set(Number(this.id), this.result)
