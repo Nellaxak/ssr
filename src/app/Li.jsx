@@ -91,36 +91,12 @@ class Li {
   async getButton() {
     let status = await this.getStatus()
     //let viewtype = await Li.asyncValue;
-    //let href=`/categories/${this.viewtype}/click/${this.id}`
-    /*if (viewtype === 'main') {
-      return createElement(Link, {
-        key: this.id,
-        className: styles.buttonItem,
-        prefetch: false,
-        href: `/categories/${viewtype}/click/${this.id}`,
-        //get categories/viewtype? in ssr component
-      }, String(status))
-    }
-    else {*/
-    //<Link href="/route/[slug]?slug=1">link</Link>
-    //<Link href="/route/1">link</Link>
     return createElement(Link, {
       key: this.id,
       className: styles.buttonItem,
       prefetch: false,
       href: `/categories/${Li.viewtype}/click/${this.id}`,
     }, String(status))
-    /*return <Link
-      key={this.id}
-      className={styles.buttonItem}
-      href={{
-        pathname: '/categories/main/click/[id]',
-        query: this.id,
-      }}
-    >
-      {String(status)}
-    </Link>*/
-    //}
   }
   /*async getDate() {
     return createElement('span', { key: 'date' }, this.date)
@@ -137,7 +113,7 @@ class Li {
     this.form = [await this.getName(), await this.getButton()]
   }
   static async getList(viewtype) {
-    //Li.viewtype = viewtype
+    Li.viewtype = viewtype
     //const resd = Array.from(Li.arrResult.values())
     return Li.arrResult
     /*return new Promise(resolve =>
