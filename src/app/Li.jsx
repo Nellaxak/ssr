@@ -90,7 +90,7 @@ class Li {
   }
   async getButton() {
     let status = await this.getStatus()
-    let viewtype = await Li.asyncValue;
+    //let viewtype = await Li.asyncValue;
     //let href=`/categories/${this.viewtype}/click/${this.id}`
     /*if (viewtype === 'main') {
       return createElement(Link, {
