@@ -30,7 +30,7 @@ class Li {
   static arrResult = new Map();
   static arrObj = new Map();
   static count = 0;
-  static viewtype = 'main'//async getter
+  //static viewtype = 'main'//async getter
   //static hiddenElements = new Map();
   //static pageSizeItems = 15//for first load
   //static countFirstPageSize=0//add getter/setter
@@ -44,14 +44,14 @@ class Li {
     Li.arrResult.set(Number(this.id), this.result)
     //}
   }
-  static async #getInternalAsyncValue() {
+  /*static async #getInternalAsyncValue() {
     //await new Promise(resolve => setTimeout(resolve, 1000));
     return 'main'//"This is a private async static value.";
   }
 
   static get asyncValue() {
     return Li.#getInternalAsyncValue();
-  }
+  }*/
   static async deleted(action, col) {
     if (action === 'down') {
       //Li.arrResult.splice(0, Number(col));
@@ -108,7 +108,7 @@ class Li {
       key: this.id,
       className: styles.buttonItem,
       prefetch: false,
-      href: `/categories/main/click/${this.id}`,
+      href: `/categories/moon/click/${this.id}`,
     }, String(status))
     /*return <Link
       key={this.id}
@@ -137,7 +137,7 @@ class Li {
     this.form = [await this.getName(), await this.getButton()]
   }
   static async getList(viewtype) {
-    Li.viewtype = viewtype
+    //Li.viewtype = viewtype
     //const resd = Array.from(Li.arrResult.values())
     return Li.arrResult
     /*return new Promise(resolve =>
