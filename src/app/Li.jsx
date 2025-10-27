@@ -104,13 +104,13 @@ class Li {
     else {*/
     //<Link href="/route/[slug]?slug=1">link</Link>
     //<Link href="/route/1">link</Link>
-    /*return createElement(Link, {
+    return createElement(Link, {
       key: this.id,
       className: styles.buttonItem,
       prefetch: false,
-      href: `/categories/[slug]?slug=main/click/${this.id}`,
-    }, String(status))*/
-    return <Link
+      href: `/categories/moon/click/${this.id}`,
+    }, String(status))
+    /*return <Link
       key={this.id}
       className={styles.buttonItem}
       href={{
@@ -119,7 +119,7 @@ class Li {
       }}
     >
       {String(status)}
-    </Link>
+    </Link>*/
     //}
   }
   /*async getDate() {
