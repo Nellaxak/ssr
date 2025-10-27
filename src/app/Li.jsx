@@ -30,7 +30,7 @@ class Li {
   static arrResult = new Map();
   static arrObj = new Map();
   static count = 0;
-  //static viewtype = 'main'//async getter
+  static viewtype = 'main'//async getter
   //static hiddenElements = new Map();
   //static pageSizeItems = 15//for first load
   //static countFirstPageSize=0//add getter/setter
@@ -108,7 +108,7 @@ class Li {
       key: this.id,
       className: styles.buttonItem,
       prefetch: false,
-      href: `/categories/moon/click/${this.id}`,
+      href: `/categories/${Li.viewtype}/click/${this.id}`,
     }, String(status))
     /*return <Link
       key={this.id}
