@@ -81,10 +81,10 @@ class Li {
   async getStatus() {
     //change css
     if (this.status) {
-      await setCount(1)
+      //await setCount(1)
       return 'в корзине'
     } else {
-      await setCount(-1)
+      //await setCount(-1)
       return 'заказать'
     }
   }
@@ -108,7 +108,7 @@ class Li {
       key: this.id,
       className: styles.buttonItem,
       prefetch: false,
-      href: `/categories/main/click/${this.id}`,
+      href: `/categories/moon/click/${this.id}`,
     }, String(status))
     /*return <Link
       key={this.id}
