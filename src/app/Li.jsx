@@ -37,7 +37,7 @@ class Li {
   //private result: any;
   constructor(obj, dates) {
     Object.entries(obj).map(([key, value]) => this[key] = value);
-    this.status = false
+    this.status = 0
     this.form = [this.getName(), this.getButton()]
     Li.arrObj.set(Number(this.id), this)
     this.result = createElement('li', { key: this.id, className: styles.li }, this.form)
