@@ -102,11 +102,13 @@ class Li {
       }, String(status))
     }
     else {*/
+    //<Link href="/route/[slug]?slug=1">link</Link>
+    //<Link href="/route/1">link</Link>
       return createElement(Link, {
         key: this.id,
         className: styles.buttonItem,
         prefetch: false,
-        href: `/categories/[${viewtype}]/click/${this.id}`,
+        href: `/categories/[${viewtype}]?slug=1/click/${this.id}`,
         //get categories/viewtype? in ssr component
       }, String(status))
     //}
