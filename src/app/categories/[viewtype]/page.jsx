@@ -27,8 +27,8 @@ export default async function Home({ params }) {
                 className={styles.km}>в лунных орбитах</Link>
         </nav>
     }
-    const resd = await Li.getList(viewtype)
-    return res+resd
+    //const resd = await Li.getList(viewtype)
+    return res//+resd
 }
 /*Home.getLayout = function getLayout(page) {
     return <ParallelLayout>{page}</ParallelLayout>;
