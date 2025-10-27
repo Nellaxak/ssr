@@ -49,6 +49,12 @@ export default async function Home({ params }) {
   } catch (err) {
       console.log('NASA API error fetch status')
   }
+  //const find = await Li.findById(paramsPromise.id)
+  //const oldStatus = find.status
+  //get status from url
+ // if (Li.viewtype === viewtype) {
+    //await find.setStatus(paramsPromise.value)//await
+  //}
   const resd = await Li.getList(viewtype)
   //console.log('resd',resd)
   return resd
