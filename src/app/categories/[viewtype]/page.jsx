@@ -1,10 +1,12 @@
 import Link from "next/link";
 import styles from "./page.module.css";
+import Li from "../../Li";
 //import ParallelLayout from '../../layouts/layout';
 
 export default async function Home({ params }) {
     const viewtypePromise = await params
     const viewtype = viewtypePromise.viewtype
+    Li.viewtype = String(viewtype)
     if (viewtype === 'main') {
         return <nav className={styles.labelWrapper} >
             <Link href="/categories/main"

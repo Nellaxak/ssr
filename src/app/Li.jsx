@@ -113,7 +113,6 @@ class Li {
     this.form = [await this.getName(), await this.getButton()]
   }
   static async getList(viewtype) {
-    Li.viewtype = String(viewtype)
     //const resd = Array.from(Li.arrResult.values())
     return Li.arrResult
     /*return new Promise(resolve =>
