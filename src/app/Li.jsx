@@ -44,6 +44,14 @@ class Li {
     Li.arrResult.set(Number(this.id), this.result)
     //}
   }
+  static async #getInternalAsyncValue() {
+    //await new Promise(resolve => setTimeout(resolve, 1000));
+    return 'main'//"This is a private async static value.";
+  }
+
+  static get asyncValue() {
+    return Li.#getInternalAsyncValue();
+  }
   static async deleted(action, col) {
     if (action === 'down') {
       //Li.arrResult.splice(0, Number(col));
@@ -82,13 +90,14 @@ class Li {
   }
   async getButton() {
     let status = await this.getStatus()
+    let viewtype=await Li.asyncValue;
     //let href=`/categories/${this.viewtype}/click/${this.id}`
     if (Li.viewtype  === 'main') {
       return createElement(Link, {
         key: this.id,
         className: styles.buttonItem,
         prefetch: false,
-        href: `/categories/main/click/${this.id}`,
+        href: `/categories/${viewtype}/click/${this.id}`,
         //get categories/viewtype? in ssr component
       }, String(status))
     }
@@ -97,7 +106,7 @@ class Li {
         key: this.id,
         className: styles.buttonItem,
         prefetch: false,
-        href: `/categories/moon/click/${this.id}`,
+        href: `/categories/${viewtype}/click/${this.id}`,
         //get categories/viewtype? in ssr component
       }, String(status))
     }
