@@ -12,17 +12,17 @@ export default async function Home({ params }) {
     if (viewtype === 'main') {
         return <nav className={styles.labelWrapper} >
             <Link href="/categories/main"
-                className={styles.km} scroll={false}>в километрах</Link>
+                className={styles.km} scroll={false} shallow={true}>в километрах</Link>
             <span className={styles.space}>|</span>
             <Link href="/categories/moon"
-                className={styles.moon} scroll={false}>в лунных орбитах</Link>
+                className={styles.moon} scroll={false} shallow={true}>в лунных орбитах</Link>
         </nav>
     } else {
         return <nav className={styles.labelWrapper} >
-            <Link href="/categories/main" scroll={false}
+            <Link href="/categories/main" scroll={false} shallow={true}
                 className={styles.moon}>в километрах</Link>
             <span className={styles.space}>|</span>
-            <Link href="/categories/moon" scroll={false}
+            <Link href="/categories/moon" scroll={false} shallow={true}
                 className={styles.km}>в лунных орбитах</Link>
         </nav>
     }
