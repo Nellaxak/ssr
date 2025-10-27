@@ -95,7 +95,7 @@ class Li {
       key: this.id,
       className: styles.buttonItem,
       prefetch: false,
-      href: `/categories/${Li.viewtype}/click/${this.id}`,
+      href: `/categories/${String(Li.viewtype)}/click/${this.id}`,
     }, String(status))
   }
   /*async getDate() {
