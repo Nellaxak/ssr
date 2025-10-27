@@ -106,7 +106,7 @@ class Li {
         key: this.id,
         className: styles.buttonItem,
         prefetch: false,
-        href: `/categories/${viewtype}/click/${this.id}`,
+        href: `/categories/[${viewtype}]/click/${this.id}`,
         //get categories/viewtype? in ssr component
       }, String(status))
     //}
