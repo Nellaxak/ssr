@@ -6,7 +6,9 @@ import Li from "../../Li";
 export default async function Home({ params }) {
     const viewtypePromise = await params
     const viewtype = viewtypePromise.viewtype
-    Li.viewtype = String(viewtype)
+    if (Li.viewtype !== viewtype) {
+        Li.viewtype = String(viewtype)
+    }
     if (viewtype === 'main') {
         return <nav className={styles.labelWrapper} >
             <Link href="/categories/main"

@@ -95,7 +95,7 @@ class Li {
       key: this.id,
       className: styles.buttonItem,
       prefetch: false,
-      href: `/categories/${String(Li.viewtype)}/click/${this.id}`,
+      href: `/categories/${String(Li.viewtype)}/click/${this.id}/status/${this.status}`,
     }, String(status))
   }
   /*async getDate() {
@@ -119,8 +119,8 @@ class Li {
       resolve(Li.arrResult)
     )*/
   }
-  async setStatus() {
-    this.status = !this.status//oldStatus
+  async setStatus(oldStatus) {
+    this.status = !Boolean(oldStatus)
     await this.setForm()
     this.result = createElement('li', { key: this.id, className: styles.li }, this.form)
     Li.arrResult.set(Number(this.id), this.result)
