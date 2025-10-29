@@ -114,7 +114,7 @@ class Li {
   }
   static async getList(viewtype) {
     //const resd = Array.from(Li.arrResult.values())
-    return Li.arrResult
+    return Array.from(Li.arrResult.values())
     /*return new Promise(resolve =>
       resolve(Li.arrResult)
     )*/
