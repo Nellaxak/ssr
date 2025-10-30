@@ -2,9 +2,16 @@ import Link from "next/link";
 import styles from "./page.module.css";
 import Li from "../../Li";
 //import ParallelLayout from '../../layouts/layout';
-let res
+
 let viewtypePromise
 let viewtype1
+let res = <nav className={styles.labelWrapper} >
+    <Link href="/categories/main"
+        className={styles.km} scroll={false}>в километрах</Link>
+    <span className={styles.space}>|</span>
+    <Link href="/categories/moon"
+        className={styles.moon} scroll={false}>в лунных орбитах</Link>
+</nav>
 export default async function Home({ params }) {
     viewtypePromise = await params
     viewtype1 = viewtypePromise.viewtype
@@ -24,14 +31,7 @@ export default async function Home({ params }) {
                     className={styles.km}>в лунных орбитах</Link>
             </nav>
             break;
-        default:
-            res = <nav className={styles.labelWrapper} >
-                <Link href="/categories/main"
-                    className={styles.km} scroll={false}>в километрах</Link>
-                <span className={styles.space}>|</span>
-                <Link href="/categories/moon"
-                    className={styles.moon} scroll={false}>в лунных орбитах</Link>
-            </nav>
+        default: 'default'
     }
     return res
 }
