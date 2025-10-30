@@ -13,7 +13,6 @@ export default async function Home({ params }) {//
   //const oldStatus = find.status
   //get status from url
   // if (Li.viewtype === viewtype) {
-  await Li.initializeData(viewtype)
   await find.setStatus()//paramsPromise.value)
   //}
   const resd = await Li.getList(viewtype)//viewtype
