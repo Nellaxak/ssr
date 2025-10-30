@@ -120,8 +120,8 @@ class Li {
     this.form = [await this.getName(), await this.getButton()]
   }
   static async getList() {
-    //const resd = Array.from(Li.arrResult.values())
-    return Li.arrResult
+    const resd = Array.from(Li.arrResult.values())
+    return resd
     /*return new Promise(resolve =>
       resolve(Li.arrResult)
     )*/
