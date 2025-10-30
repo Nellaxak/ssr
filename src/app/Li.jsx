@@ -1,5 +1,5 @@
 'use server'
-import React, { createElement } from "react";
+import React, { createElement,Suspense} from "react";
 //import Button from "@/components/Button/page";
 //import LiItemLayout from "@/layouts/layout";
 import Link from 'next/link'
@@ -106,7 +106,7 @@ class Li {
       className: styles.buttonItem,
       prefetch: false,
       href: `/categories/${viewtype1}/click/${this.id}/status/${this.status}`,
-    }, String(status))
+    }, <Suspense>{String(status)}</Suspense>)
   }
   /*async getDate() {
     return createElement('span', { key: 'date' }, this.date)
