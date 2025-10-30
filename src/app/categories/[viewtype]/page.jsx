@@ -12,6 +12,13 @@ let res = <nav className={styles.labelWrapper} >
     <Link href="/categories/moon"
         className={styles.moon} scroll={false}>в лунных орбитах</Link>
 </nav>
+let resM = <nav className={styles.labelWrapper} >
+    <Link href="/categories/main" scroll={false}
+        className={styles.moon}>в километрах</Link>
+    <span className={styles.space}>|</span>
+    <Link href="/categories/moon" scroll={false}
+        className={styles.km}>в лунных орбитах</Link>
+</nav>
 export default async function Home({ params }) {
     viewtypePromise = await params
     viewtype1 = viewtypePromise.viewtype
@@ -23,13 +30,7 @@ export default async function Home({ params }) {
     switch (viewtype1) {
         //case 'main':  
         case 'moon':
-            res = <nav className={styles.labelWrapper} >
-                <Link href="/categories/main" scroll={false}
-                    className={styles.moon}>в километрах</Link>
-                <span className={styles.space}>|</span>
-                <Link href="/categories/moon" scroll={false}
-                    className={styles.km}>в лунных орбитах</Link>
-            </nav>
+            res = resM
             break;
         default: 'default'
     }
