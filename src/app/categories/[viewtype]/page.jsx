@@ -8,7 +8,7 @@ export default async function Home({ params }) {
     const viewtype1 = viewtypePromise.viewtype
     console.log('viewtype', viewtype1)
     //if (Li.viewtype !== viewtype) {
-    Li.initializeData(viewtype1)//await not work
+    await Li.initializeData(viewtype1)//await not work
     //Li.viewtype = String(viewtype1)
     //}
     let res

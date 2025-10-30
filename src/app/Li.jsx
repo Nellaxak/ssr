@@ -94,14 +94,14 @@ class Li {
       return 'заказать'
     }
   }
-  async getButton(vvvv) {
+  async getButton() {
     let status = await this.getStatus()
-    //let viewtype = await Li.#getInternalAsyncValue()
+    let viewtype1 = await Li.#getInternalAsyncValue()
     return createElement(Link, {
       key: this.id,
       className: styles.buttonItem,
       prefetch: false,
-      href: `/categories/${String(vvvv)}/click/${this.id}/status/${this.status}`,
+      href: `/categories/${String(viewtype1)}/click/${this.id}/status/${this.status}`,
     }, String(status))
   }
   /*async getDate() {
@@ -115,8 +115,8 @@ class Li {
     }
     return resss
   }
-  async setForm(vvvv) {
-    this.form = [await this.getName(), await this.getButton(vvvv)]
+  async setForm() {
+    this.form = [await this.getName(), await this.getButton()]
   }
   static async getList(viewtype) {
     //const resd = Array.from(Li.arrResult.values())
@@ -125,9 +125,9 @@ class Li {
       resolve(Li.arrResult)
     )*/
   }
-  async setStatus(vvvv) {
+  async setStatus() {
     this.status = Number(!this.status);//Number(!Boolean(oldStatus))
-    await this.setForm(vvvv)
+    await this.setForm()
     this.result = createElement('li', { key: this.id, className: styles.li }, this.form)
     Li.arrResult.set(Number(this.id), this.result)
   }
