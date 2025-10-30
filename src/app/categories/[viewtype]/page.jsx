@@ -1,3 +1,4 @@
+import React, { createElement,Suspense} from "react";
 import Link from "next/link";
 import styles from "./page.module.css";
 import Li from "../../Li";
@@ -34,7 +35,7 @@ export default async function Home({ params }) {
             break;
         default: 'default'
     }
-    return res
+    return <Suspense>{res}</Suspense>
 }
 /*Home.getLayout = function getLayout(page) {
     return <ParallelLayout>{page}</ParallelLayout>;
