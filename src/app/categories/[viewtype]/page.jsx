@@ -11,6 +11,7 @@ export default async function Home({ params }) {
     //Li.initializeData(viewtype1)//await not work
     //Li.viewtype = String(viewtype1)
     //}
+    Li.viewtype =viewtype1
     let res
     if (viewtype1 === 'main') {
         res = <nav className={styles.labelWrapper} >
@@ -29,7 +30,6 @@ export default async function Home({ params }) {
                 className={styles.km}>в лунных орбитах</Link>
         </nav>
     }
-    Li.viewtype =viewtype1
     //const resd = await Li.getList(viewtype)
     return res//+resd
 }
