@@ -28,7 +28,7 @@ export default async function Home({ params }) {
   [startDate, endDate] = await CalcData()
   //console.log('sssaaa', process.env)
   const viewtypePromise = await params
-  //const viewtype = viewtypePromise.viewtype
+  const viewtype = viewtypePromise.viewtype
   console.log('page list', viewtypePromise)
   let resd
   //const items = await http<Item[]>(`http://localhost:3456/${viewtype}`) as Item[];
@@ -48,11 +48,11 @@ export default async function Home({ params }) {
       } else {
         console.log('NASA API error fetch status', resp.status)
       }
-      try {
-        resd = await Li.getList()
-      } catch (err) {
-        console.log('err', err)
-      }
+    }
+    try {
+      resd = await Li.getList()
+    } catch (err) {
+      console.log('err', err)
     }
   } catch (err) {
     console.log('NASA API error fetch status', err)
