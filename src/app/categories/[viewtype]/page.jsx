@@ -6,7 +6,7 @@ import Li from "../../Li";
 export default async function Home({ params }) {
     const viewtypePromise = await params
     const viewtype1 = viewtypePromise.viewtype
-    console.log('viewtype', viewtype1)
+    //console.log('viewtype', viewtype1)
     if (Li.viewtype !== viewtype1) {
         //Li.initializeData(viewtype1)//await not work
         Li.viewtype = String(viewtype1)
