@@ -1,4 +1,6 @@
 import styles from "./page.module.css";
+import React, { createElement,Suspense} from "react";
+
 import Form from "next/form";
 import Link from "next/link";
 //import { marked } from "../../../actions/marked"
@@ -15,6 +17,6 @@ export default function BasketLayout({
     children: React.ReactNode
 }*/) {
     return (
-        <output className={styles.padding_count}>{children}</output>
+        <output className={styles.padding_count}><Suspense>{children}</Suspense></output>
     )
 }
