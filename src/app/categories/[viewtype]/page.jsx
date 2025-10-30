@@ -26,7 +26,7 @@ export default async function Home({ params }) {
     //console.log('viewtype', viewtype1)
     //if (Li.viewtype !== viewtype1) {
     //Li.initializeData(viewtype1)//await not work
-    Li.viewtype = viewtype1
+    //Li.viewtype = viewtype1
     //}
     /*switch (viewtype1) {
         //case 'main':  
