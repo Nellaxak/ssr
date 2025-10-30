@@ -30,7 +30,7 @@ class Li {
   static arrResult = new Map();
   static arrObj = new Map();
   static count = 0;
-  static viewtype = 'default'//async getter
+  static viewtype = 'main'//async getter
   //static hiddenElements = new Map();
   //static pageSizeItems = 15//for first load
   //static countFirstPageSize=0//add getter/setter
