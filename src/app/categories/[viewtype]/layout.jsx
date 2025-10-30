@@ -20,6 +20,13 @@ export default function ParallelLayout({
           Ближайшие подлёты астероидов
         </h6>
       </header>
+      <nav className={styles.labelWrapper} >
+        <Link href="/categories/main"
+          className={styles.km} scroll={false}>в километрах</Link>
+        <span className={styles.space}>|</span>
+        <Link href="/categories/moon"
+          className={styles.moon} scroll={false}>в лунных орбитах</Link>
+      </nav>
       {children}
       <ul className={styles.wrapRowRight}>
         {list}

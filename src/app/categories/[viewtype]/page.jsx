@@ -6,13 +6,7 @@ import Li from "../../Li";
 
 let viewtypePromise
 let viewtype1
-let res = <nav className={styles.labelWrapper} >
-    <Link href="/categories/main"
-        className={styles.km} scroll={false}>в километрах</Link>
-    <span className={styles.space}>|</span>
-    <Link href="/categories/moon"
-        className={styles.moon} scroll={false}>в лунных орбитах</Link>
-</nav>
+let res = 'vvvvvvvvvvvvvvv'
 /*let resM = <nav className={styles.labelWrapper} >
     <Link href="/categories/main" scroll={false}
         className={styles.moon}>в километрах</Link>
@@ -21,7 +15,7 @@ let res = <nav className={styles.labelWrapper} >
         className={styles.km}>в лунных орбитах</Link>
 </nav>*/
 export default async function Home({ params }) {
-    viewtypePromise = await params
+    //viewtypePromise = await params
     //viewtype1 = viewtypePromise.viewtype
     //console.log('viewtype', viewtype1)
     //if (Li.viewtype !== viewtype1) {
@@ -35,7 +29,7 @@ export default async function Home({ params }) {
             break;
         default: 'default'
     }*/
-    return <Suspense>{res}</Suspense>
+    return null//<Suspense>{res}</Suspense>
 }
 /*Home.getLayout = function getLayout(page) {
     return <ParallelLayout>{page}</ParallelLayout>;
