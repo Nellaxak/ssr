@@ -11,7 +11,6 @@ export default async function Home({ params }) {
         //Li.initializeData(viewtype1)//await not work
         Li.viewtype = String(viewtype1)
     }
-    //Li.viewtype =viewtype1
     let res
     switch (viewtype1) {
         case 'main':
@@ -22,7 +21,7 @@ export default async function Home({ params }) {
                 <Link href="/categories/moon"
                     className={styles.moon} scroll={false}>в лунных орбитах</Link>
             </nav>
-            break;
+            //break;
         case 'moon':
             res = <nav className={styles.labelWrapper} >
                 <Link href="/categories/main" scroll={false}
@@ -31,7 +30,7 @@ export default async function Home({ params }) {
                 <Link href="/categories/moon" scroll={false}
                     className={styles.km}>в лунных орбитах</Link>
             </nav>
-            break;
+            //break;
         default:
             res = 'fffffffffffffffff';
     }
