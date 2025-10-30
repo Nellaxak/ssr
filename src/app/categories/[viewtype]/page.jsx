@@ -2,16 +2,17 @@ import Link from "next/link";
 import styles from "./page.module.css";
 import Li from "../../Li";
 //import ParallelLayout from '../../layouts/layout';
-
+let res
+let viewtypePromise
+let viewtype1
 export default async function Home({ params }) {
-    const viewtypePromise = await params
-    const viewtype1 = viewtypePromise.viewtype
+    viewtypePromise = await params
+    viewtype1 = viewtypePromise.viewtype
     //console.log('viewtype', viewtype1)
     if (Li.viewtype !== viewtype1) {
         //Li.initializeData(viewtype1)//await not work
         Li.viewtype = String(viewtype1)
     }
-    let res
     switch (viewtype1) {
         case 'main':
             res = <nav className={styles.labelWrapper} >
@@ -21,7 +22,7 @@ export default async function Home({ params }) {
                 <Link href="/categories/moon"
                     className={styles.moon} scroll={false}>в лунных орбитах</Link>
             </nav>
-            //break;
+            break;
         case 'moon':
             res = <nav className={styles.labelWrapper} >
                 <Link href="/categories/main" scroll={false}
@@ -30,7 +31,7 @@ export default async function Home({ params }) {
                 <Link href="/categories/moon" scroll={false}
                     className={styles.km}>в лунных орбитах</Link>
             </nav>
-            //break;
+            break;
         default:
             res = 'fffffffffffffffff';
     }
