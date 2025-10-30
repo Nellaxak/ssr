@@ -1,5 +1,5 @@
 'use server'
-import React, { createElement,Suspense} from "react";
+import React, { createElement, Suspense } from "react";
 //import Button from "@/components/Button/page";
 //import LiItemLayout from "@/layouts/layout";
 import Link from 'next/link'
@@ -55,12 +55,12 @@ class Li {
   /*static get asyncValue() {
     return Li.#getInternalAsyncValue();
   }*/
-  /*static async initializeData(value) {
+  static async setViewtype(value) {
     // Perform async operations here
     //await new Promise(resolve => setTimeout(resolve, 100)); // Simulate async work
     Li.viewtype = value;
     //console.log(`Static data initialized to: ${MyClass._data}`);
-  }*/
+  }
   static async deleted(action, col) {
     if (action === 'down') {
       //Li.arrResult.splice(0, Number(col));
@@ -106,6 +106,7 @@ class Li {
       className: styles.buttonItem,
       prefetch: false,
       href: `/categories/${viewtype1}/click/${this.id}/status/${this.status}`,
+      prefetch: false,
     }, <Suspense>{String(status)}</Suspense>)
   }
   /*async getDate() {

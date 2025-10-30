@@ -8,7 +8,7 @@ import styles from "./page.module.css";
 
 export default function ParallelLayout({
   children,
-  //count,
+  toggle,
   list,
 }/*: {
   children: React.ReactNode,
@@ -22,6 +22,7 @@ export default function ParallelLayout({
           Ближайшие подлёты астероидов
         </h6>
       </header>
+      {toggle}
       {children}
       <ul className={styles.wrapRowRight}>
         <Suspense>{list}</Suspense>
