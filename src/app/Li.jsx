@@ -44,10 +44,10 @@ class Li {
     Li.arrResult.set(Number(this.id), this.result)
     //}
   }
-  /*static async #getInternalAsyncValue() {
+  static async #getInternalAsyncValue() {
     //await new Promise(resolve => setTimeout(resolve, 1000));
     return Li.viewtype//"This is a private async static value.";
-  }*/
+  }
 
   /*static get asyncValue() {
     return Li.#getInternalAsyncValue();
@@ -96,12 +96,12 @@ class Li {
   }
   async getButton() {
     let status = await this.getStatus()
-    //let viewtype = await Li.asyncValue;
+    let viewtype = await Li.#getInternalAsyncValue()
     return createElement(Link, {
       key: this.id,
       className: styles.buttonItem,
       prefetch: false,
-      href: `/categories/${String(Li.viewtype)}/click/${this.id}/status/${this.status}`,
+      href: `/categories/${String(viewtype)}/click/${this.id}/status/${this.status}`,
     }, String(status))
   }
   /*async getDate() {
