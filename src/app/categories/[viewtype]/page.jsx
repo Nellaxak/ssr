@@ -22,19 +22,19 @@ let res = <nav className={styles.labelWrapper} >
 </nav>*/
 export default async function Home({ params }) {
     viewtypePromise = await params
-    viewtype1 = viewtypePromise.viewtype
+    //viewtype1 = viewtypePromise.viewtype
     //console.log('viewtype', viewtype1)
     //if (Li.viewtype !== viewtype1) {
     //Li.initializeData(viewtype1)//await not work
     Li.viewtype = viewtype1
     //}
-    switch (viewtype1) {
+    /*switch (viewtype1) {
         //case 'main':  
         case 'moon':
             res //= resM
             break;
         default: 'default'
-    }
+    }*/
     return <Suspense>{res}</Suspense>
 }
 /*Home.getLayout = function getLayout(page) {

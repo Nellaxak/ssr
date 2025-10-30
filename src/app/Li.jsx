@@ -124,7 +124,7 @@ class Li {
   }
   static async getList() {
     const resd = Array.from(Li.arrResult.values())
-    return resd
+    return <Suspense>{resd}</Suspense>
     /*return new Promise(resolve =>
       resolve(Li.arrResult)
     )*/
