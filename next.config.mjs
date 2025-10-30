@@ -3,6 +3,9 @@ const nextConfig = {
     distDir: 'build',
     /*reactStrictMode: false,*/
     /*basePath: '/categories',*/
+    experimental: {
+        exposeBusinessErrors: true,
+    },
     async redirects() {
         return [
             {
