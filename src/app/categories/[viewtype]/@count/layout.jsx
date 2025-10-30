@@ -14,8 +14,7 @@ export default function BasketLayout({
 }/*: {
     children: React.ReactNode
 }*/) {
-    //    <output className={styles.padding_count}>{children}</output>
     return (
-        <output>{children}</output>
+        <output className={styles.padding_count}>{children}</output>
     )
 }

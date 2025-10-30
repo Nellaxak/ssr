@@ -5,17 +5,20 @@ import Li from '../../../../../../../Li'
 
 export default async function Home({ params }) {// 
   //console.log('sssaaa', process.env)
-  const paramsPromise = await params
-  const viewtype = viewtypePromise.viewtype
-  //console.log('page list item status interceptor', paramsPromise)
-  //const items = await http<Item[]>(`http://localhost:3456/${viewtype}`) as Item[];
-  const find = await Li.findById(paramsPromise.id)
-  //const oldStatus = find.status
-  //get status from url
-  // if (Li.viewtype === viewtype) {
-  await find.setStatus()//paramsPromise.value)
-  //}
-  const resd = await Li.getList()//viewtype
+  let resd
+  try {
+    const paramsPromise = await params
+    const viewtype = viewtypePromise.viewtype
+    //console.log('page list item status interceptor', paramsPromise)
+    //const items = await http<Item[]>(`http://localhost:3456/${viewtype}`) as Item[];
+    const find = await Li.findById(paramsPromise.id)
+    //const oldStatus = find.status
+    //get status from url
+    // if (Li.viewtype === viewtype) {
+    await find.setStatus()//paramsPromise.value)
+    //}
+    resd = await Li.getList()//viewtype
+  } catch (err) { console.log('err', err) }
   //console.log('resd',resd)
   return resd
 }
