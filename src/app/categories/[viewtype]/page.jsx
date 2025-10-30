@@ -9,20 +9,12 @@ export default async function Home({ params }) {
     viewtypePromise = await params
     viewtype1 = viewtypePromise.viewtype
     //console.log('viewtype', viewtype1)
-    if (Li.viewtype !== viewtype1) {
-        //Li.initializeData(viewtype1)//await not work
-        Li.viewtype = String(viewtype1)
-    }
+    //if (Li.viewtype !== viewtype1) {
+    //Li.initializeData(viewtype1)//await not work
+    Li.viewtype = viewtype1
+    //}
     switch (viewtype1) {
-        case 'main':
-            res = <nav className={styles.labelWrapper} >
-                <Link href="/categories/main"
-                    className={styles.km} scroll={false}>в километрах</Link>
-                <span className={styles.space}>|</span>
-                <Link href="/categories/moon"
-                    className={styles.moon} scroll={false}>в лунных орбитах</Link>
-            </nav>
-            break;
+        //case 'main':  
         case 'moon':
             res = <nav className={styles.labelWrapper} >
                 <Link href="/categories/main" scroll={false}
@@ -33,7 +25,13 @@ export default async function Home({ params }) {
             </nav>
             break;
         default:
-            res = 'fffffffffffffffff';
+            res = <nav className={styles.labelWrapper} >
+                <Link href="/categories/main"
+                    className={styles.km} scroll={false}>в километрах</Link>
+                <span className={styles.space}>|</span>
+                <Link href="/categories/moon"
+                    className={styles.moon} scroll={false}>в лунных орбитах</Link>
+            </nav>
     }
     return res
 }
