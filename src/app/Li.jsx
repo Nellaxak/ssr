@@ -130,7 +130,7 @@ class Li {
     this.status = Number(!this.status);//Number(!Boolean(oldStatus))
     await this.setForm()
     this.result = createElement('li', { key: this.id, className: styles.li }, this.form)
-    Li.arrObj.set(Number(this.id), this)
+    //Li.arrObj.set(Number(this.id), this)
     Li.arrResult.set(Number(this.id), this.result)
   }
 }
