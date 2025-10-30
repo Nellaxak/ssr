@@ -30,6 +30,7 @@ export default async function Home({ params }) {
   const viewtypePromise = await params
   const viewtype = viewtypePromise.viewtype
   console.log('page list', viewtypePromise)
+  let resd
   //const items = await http<Item[]>(`http://localhost:3456/${viewtype}`) as Item[];
   try {
     if (viewtype === 'main') {
@@ -47,8 +48,10 @@ export default async function Home({ params }) {
       } else {
         console.log('NASA API error fetch status', resp.status)
       }
+      resd = await Li.getList()
     }
   } catch (err) {
+
     console.log('NASA API error fetch status')
   }
   //const find = await Li.findById(paramsPromise.id)
@@ -57,7 +60,6 @@ export default async function Home({ params }) {
   // if (Li.viewtype === viewtype) {
   //await find.setStatus(paramsPromise.value)//await
   //}
-  const resd = await Li.getList(viewtype)
   //console.log('resd',resd)
   return resd
 }
