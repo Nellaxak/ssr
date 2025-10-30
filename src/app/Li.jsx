@@ -44,6 +44,9 @@ class Li {
     Li.arrResult.set(Number(this.id), this.result)
     //}
   }
+  static getViewtype() {
+    return Li.viewtype; // Static method to access the static variable
+  }
   /*static async #getInternalAsyncValue() {
     //await new Promise(resolve => setTimeout(resolve, 1000));
     return Li.viewtype//"This is a private async static value.";
@@ -97,7 +100,7 @@ class Li {
   async getButton() {
     let status = await this.getStatus()
     //let viewtype1 = await Li.#getInternalAsyncValue()
-    let viewtype1 = String(Li.viewtype)
+    let viewtype1 = Li.getViewtype()//String(Li.viewtype)
     return createElement(Link, {
       key: this.id,
       className: styles.buttonItem,
