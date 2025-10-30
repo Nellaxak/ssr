@@ -94,9 +94,9 @@ class Li {
       return 'заказать'
     }
   }
-  async getButton() {
+  async getButton(viewtype) {
     let status = await this.getStatus()
-    let viewtype = await Li.#getInternalAsyncValue()
+    //let viewtype = await Li.#getInternalAsyncValue()
     return createElement(Link, {
       key: this.id,
       className: styles.buttonItem,
@@ -115,8 +115,8 @@ class Li {
     }
     return resss
   }
-  async setForm() {
-    this.form = [await this.getName(), await this.getButton()]
+  async setForm(viewtype) {
+    this.form = [await this.getName(), await this.getButton(viewtype)]
   }
   static async getList(viewtype) {
     //const resd = Array.from(Li.arrResult.values())
@@ -125,9 +125,9 @@ class Li {
       resolve(Li.arrResult)
     )*/
   }
-  async setStatus(oldStatus) {
+  async setStatus(viewtype) {
     this.status = Number(!this.status);//Number(!Boolean(oldStatus))
-    await this.setForm()
+    await this.setForm(viewtype)
     this.result = createElement('li', { key: this.id, className: styles.li }, this.form)
     Li.arrResult.set(Number(this.id), this.result)
   }
