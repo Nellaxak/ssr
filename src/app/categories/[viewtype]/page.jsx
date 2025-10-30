@@ -6,13 +6,14 @@ import Li from "../../Li";
 export default async function Home({ params }) {
     const viewtypePromise = await params
     const viewtype1 = viewtypePromise.viewtype
-    console.log('viewtype',viewtype1)
+    console.log('viewtype', viewtype1)
     //if (Li.viewtype !== viewtype) {
-        Li.viewtype = String(viewtype1)
+    //Li.viewtype = String(viewtype1)
+    Li.initializeData(viewtype1)
     //}
     let res
     if (viewtype1 === 'main') {
-        res=<nav className={styles.labelWrapper} >
+        res = <nav className={styles.labelWrapper} >
             <Link href="/categories/main"
                 className={styles.km} scroll={false}>в километрах</Link>
             <span className={styles.space}>|</span>
@@ -20,7 +21,7 @@ export default async function Home({ params }) {
                 className={styles.moon} scroll={false}>в лунных орбитах</Link>
         </nav>
     } else {
-        res=<nav className={styles.labelWrapper} >
+        res = <nav className={styles.labelWrapper} >
             <Link href="/categories/main" scroll={false}
                 className={styles.moon}>в километрах</Link>
             <span className={styles.space}>|</span>

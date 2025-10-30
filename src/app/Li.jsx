@@ -46,12 +46,18 @@ class Li {
   }
   /*static async #getInternalAsyncValue() {
     //await new Promise(resolve => setTimeout(resolve, 1000));
-    return 'main'//"This is a private async static value.";
-  }
+    return Li.viewtype//"This is a private async static value.";
+  }*/
 
-  static get asyncValue() {
+  /*static get asyncValue() {
     return Li.#getInternalAsyncValue();
   }*/
+  static async initializeData(value) {
+    // Perform async operations here
+    //await new Promise(resolve => setTimeout(resolve, 100)); // Simulate async work
+    Li.viewtype = value;
+    //console.log(`Static data initialized to: ${MyClass._data}`);
+  }
   static async deleted(action, col) {
     if (action === 'down') {
       //Li.arrResult.splice(0, Number(col));
