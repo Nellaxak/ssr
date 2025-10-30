@@ -3,6 +3,7 @@
 import Li from '../../../Li'
 
 let data = []
+let resd
 async function CalcData() {
   let currentDate = new Date()
   currentDate.setDate(currentDate.getDate());//+1
@@ -30,7 +31,7 @@ export default async function Home({ params }) {
   const viewtypePromise = await params
   const viewtype = viewtypePromise.viewtype
   console.log('page list', viewtypePromise)
-  let resd
+  //let resd
   //const items = await http<Item[]>(`http://localhost:3456/${viewtype}`) as Item[];
   try {
     if (viewtype === 'main') {
@@ -49,11 +50,7 @@ export default async function Home({ params }) {
         console.log('NASA API error fetch status', resp.status)
       }
     }
-    try {
-      resd = await Li.getList()
-    } catch (err) {
-      console.log('err', err)
-    }
+
   } catch (err) {
     console.log('NASA API error fetch status', err)
   }
@@ -63,6 +60,8 @@ export default async function Home({ params }) {
   // if (Li.viewtype === viewtype) {
   //await find.setStatus(paramsPromise.value)//await
   //}
+
+  resd = await Li.getList()
   //console.log('resd',resd)
   return resd
 }
