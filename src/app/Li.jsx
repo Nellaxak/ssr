@@ -44,20 +44,20 @@ class Li {
     Li.arrResult.set(Number(this.id), this.result)
     //}
   }
-  static async #getInternalAsyncValue() {
+  /*static async #getInternalAsyncValue() {
     //await new Promise(resolve => setTimeout(resolve, 1000));
     return Li.viewtype//"This is a private async static value.";
-  }
+  }*/
 
   /*static get asyncValue() {
     return Li.#getInternalAsyncValue();
   }*/
-  static async initializeData(value) {
+  /*static async initializeData(value) {
     // Perform async operations here
     //await new Promise(resolve => setTimeout(resolve, 100)); // Simulate async work
     Li.viewtype = value;
     //console.log(`Static data initialized to: ${MyClass._data}`);
-  }
+  }*/
   static async deleted(action, col) {
     if (action === 'down') {
       //Li.arrResult.splice(0, Number(col));
@@ -119,7 +119,7 @@ class Li {
   async setForm() {
     this.form = [await this.getName(), await this.getButton()]
   }
-  static async getList(viewtype) {
+  static async getList() {
     //const resd = Array.from(Li.arrResult.values())
     return Array.from(Li.arrResult.values())
     /*return new Promise(resolve =>

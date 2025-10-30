@@ -15,7 +15,7 @@ export default async function Home({ params }) {//
   // if (Li.viewtype === viewtype) {
   await find.setStatus()//paramsPromise.value)
   //}
-  const resd = await Li.getList(viewtype)//viewtype
+  const resd = await Li.getList()//viewtype
   //console.log('resd',resd)
   return resd
 }
