@@ -5,12 +5,13 @@ import Li from "../../Li";
 
 export default async function Home({ params }) {
     const viewtypePromise = await params
-    const viewtype = viewtypePromise.viewtype
+    const viewtype1 = viewtypePromise.viewtype
+    console.log('viewtype',viewtype1)
     //if (Li.viewtype !== viewtype) {
-        Li.viewtype = String(viewtype)
+        Li.viewtype = String(viewtype1)
     //}
     let res
-    if (viewtype === 'main') {
+    if (viewtype1 === 'main') {
         res=<nav className={styles.labelWrapper} >
             <Link href="/categories/main"
                 className={styles.km} scroll={false}>в километрах</Link>
