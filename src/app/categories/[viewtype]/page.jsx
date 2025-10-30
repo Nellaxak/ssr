@@ -9,9 +9,9 @@ export default async function Home({ params }) {
     console.log('viewtype', viewtype1)
     //if (Li.viewtype !== viewtype) {
     //Li.initializeData(viewtype1)//await not work
-    //Li.viewtype = String(viewtype1)
+    Li.viewtype = String(viewtype1)
     //}
-    Li.viewtype =viewtype1
+    //Li.viewtype =viewtype1
     let res
     if (viewtype1 === 'main') {
         res = <nav className={styles.labelWrapper} >
