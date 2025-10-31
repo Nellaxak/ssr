@@ -55,7 +55,7 @@ export default async function Home({ params }) {
             console.log('NASA API error fetch status', resp.status)
         }
 
-        res = <ToggleComponent />
+        //res = <ToggleComponent />
         /*(<nav className={styles.labelWrapper} >
             <Link href="/categories/main" scroll={false}
                 className={styles.km}>в километрах</Link>
@@ -65,7 +65,8 @@ export default async function Home({ params }) {
         </nav>)*/
     }
     else {
-        res = <ToggleComponent /> /*(<nav className={styles.labelWrapper} >
+        //res = <ToggleComponent /> 
+        /*(<nav className={styles.labelWrapper} >
                 <Link href="/categories/main" scroll={false}
                     className={styles.moon}>в километрах</Link>
                 <span className={styles.space}>|</span>
@@ -78,7 +79,7 @@ export default async function Home({ params }) {
 
     return (
         <div>
-            <Suspense>{res}</Suspense>
+            <ToggleComponent />
             <Suspense><ul>{resd}</ul></Suspense>
         </div>)
 }
