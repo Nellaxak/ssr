@@ -9,12 +9,15 @@ import styles from "./page.module.css";
 export default function ParallelLayout({
   children,
   toggle,
-  list,
+  //list,
 }/*: {
   children: React.ReactNode,
   count: React.ReactNode,
   list: React.ReactNode
 }*/) {
+  /*<ul className={styles.wrapRowRight}>
+        <Suspense>{list}</Suspense>
+      </ul>*/
   return (
     <div className={styles.column}>
       <header className={styles.header}>
@@ -24,9 +27,6 @@ export default function ParallelLayout({
       </header>
       {toggle}
       {children}
-      <ul className={styles.wrapRowRight}>
-        <Suspense>{list}</Suspense>
-      </ul>
       <footer className={styles.footer}>
         <div className={styles.columnFooter}>
           <span className={styles.h3}>Корзина</span>

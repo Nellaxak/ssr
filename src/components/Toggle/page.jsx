@@ -2,6 +2,8 @@
 import { useRouter, useParams, useSearchParams } from 'next/navigation';
 import { useCallback, useEffect, useRef, useState, useTransition, Suspense } from "react";
 //import { buttonIO } from "@/app/actions/IntersectionButton";
+import styles from "./page.module.css";
+import Link from "next/link";
 
 //import { throttle } from 'lodash';
 //import io from 'socket.io-client';
@@ -10,7 +12,7 @@ import { useCallback, useEffect, useRef, useState, useTransition, Suspense } fro
 
 //import { addPage } from '@/app/actions/intersection'
 //const socket = io('ws://localhost:3456')
-import Li from '../../app/Li'
+//import Li from '../../app/Li'
 import dynamic from 'next/dynamic'
 
 let observer
@@ -25,10 +27,11 @@ let myProps
 let vertical = 0
 let viewtype1 = 'main'
 let res
-async function ToggleComponent() {
+function ToggleComponent() {
     params = useParams()
-    console.log('useffffffffff', params)
-    //await Li.setViewtype(viewtype1)//await not work
+    //console.log('useffffffffff', params)
+    viewtype1=params.viewtype
+    //Li.setViewtype(viewtype1)
     if (viewtype1 === 'main') {
         res = <nav className={styles.labelWrapper} >
             <Link href="/categories/main" scroll={false}
