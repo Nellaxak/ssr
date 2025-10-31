@@ -18,25 +18,24 @@ export default async function Home({ params }) {
     //console.log('sawefv',viewtype1)
     if (viewtype1 === 'main') {
         return (
-            <Suspense>
-                <nav className={styles.labelWrapper} >
-                    <Link href="/categories/main" scroll={false}
-                        className={styles.km}>в километрах</Link>
-                    <span className={styles.space}>|</span>
-                    <Link href="/categories/moon" scroll={false}
-                        className={styles.moon}>в лунных орбитах</Link>
-                </nav></Suspense>
+            <nav className={styles.labelWrapper} >
+                <Link href="/categories/main" scroll={false}
+                    className={styles.km}>в километрах</Link>
+                <span className={styles.space}>|</span>
+                <Link href="/categories/moon" scroll={false}
+                    className={styles.moon}>в лунных орбитах</Link>
+            </nav>
         )
     }
     else {
-        return (<Suspense>
+        return (
             <nav className={styles.labelWrapper} >
                 <Link href="/categories/main" scroll={false}
                     className={styles.moon}>в километрах</Link>
                 <span className={styles.space}>|</span>
                 <Link href="/categories/moon" scroll={false}
                     className={styles.km}>в лунных орбитах</Link>
-            </nav></Suspense>
+            </nav>
         )
     }
     //return <Suspense>{res}</Suspense>

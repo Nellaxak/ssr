@@ -13,5 +13,5 @@ export default function ParallelLayout({
   count: React.ReactNode,
   list: React.ReactNode
 }*/) {
-  return children
+  return <Suspense>{children}</Suspense>
 }
