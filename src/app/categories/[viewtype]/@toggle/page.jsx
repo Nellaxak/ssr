@@ -62,7 +62,7 @@ export default async function Home({ params }) {
                 className={styles.km}>в километрах</Link>
             <span className={styles.space}>|</span>
             <Link href="/categories/moon" scroll={false}
-                className={styles.moon}>в лунных орбитах</Link>)
+                className={styles.moon}>в лунных орбитах</Link>
         </nav>
     }
     else {
