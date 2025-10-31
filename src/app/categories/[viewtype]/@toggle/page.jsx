@@ -79,10 +79,8 @@ export default async function Home({ params }) {
 
     return (
         <div>
-            {res}
-            <ul>
-                {resd}
-            </ul>
+            <Suspense>{res}</Suspense>
+            <Suspense><ul>{resd}</ul></Suspense>  
         </div>)
 }
 /*Home.getLayout = function getLayout(page) {
