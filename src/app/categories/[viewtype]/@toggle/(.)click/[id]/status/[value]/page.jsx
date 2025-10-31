@@ -1,6 +1,7 @@
 //import Image from "next/image";
 //import styles from "./page.module.css";
 import Li from '../../../../../../../Li'
+import ToggleComponent from '@/components/Toggle/page'
 //import ParallelLayout from '../../../../layouts/layout';
 
 export default async function Home({ params }) {// 
@@ -21,7 +22,10 @@ export default async function Home({ params }) {//
     resd = await Li.getList()//viewtype
   } catch (err) { console.log('err', err) }
   //console.log('resd',resd)
-  return resd
+  return (<div>
+    <ToggleComponent />
+    {resd}
+  </div>)
 }
 /*Home.getLayout = function getLayout(page) {
     return <ParallelLayout>{page}</ParallelLayout>;
