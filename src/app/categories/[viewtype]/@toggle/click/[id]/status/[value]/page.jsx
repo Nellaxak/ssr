@@ -22,7 +22,8 @@ export default async function Home({ params }) {//
     resd = await Li.getList(viewtype)
   } catch (err) { console.log('err', err) }
   //console.log('resd',resd)
-  return (<div>
+  return (
+  <div>
     <ToggleComponent />
     {resd}
   </div>)
