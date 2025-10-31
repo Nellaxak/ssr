@@ -9,7 +9,7 @@ export default async function Home({ params }) {//
   let resd
   try {
     const paramsPromise = await params
-    const viewtype = paramsPromise.viewtype//err
+    const viewtype = paramsPromise.viewtype
     //console.log('page list item status interceptor', paramsPromise)
     //const items = await http<Item[]>(`http://localhost:3456/${viewtype}`) as Item[];
     const find = await Li.findById(paramsPromise.id)
@@ -19,7 +19,7 @@ export default async function Home({ params }) {//
     await find.setStatus()//paramsPromise.value)
     //}
     //add toggle
-    resd = await Li.getList(viewtype)//viewtype
+    resd = await Li.getList(viewtype)
   } catch (err) { console.log('err', err) }
   //console.log('resd',resd)
   return (<div>

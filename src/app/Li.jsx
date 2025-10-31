@@ -100,7 +100,7 @@ class Li {
   async getButton() {
     let status = await this.getStatus()
     //let viewtype1 = await Li.#getInternalAsyncValue()
-    let viewtype1=await Li.getViewtype()//String(Li.viewtype)
+    let viewtype1 = await Li.getViewtype()//String(Li.viewtype)
     return createElement(Link, {
       key: this.id,
       className: styles.buttonItem,
@@ -124,7 +124,7 @@ class Li {
   }
   static async getList() {
     const resd = Array.from(Li.arrResult.values())
-    return <Suspense>{resd}</Suspense>
+    return resd
     /*return new Promise(resolve =>
       resolve(Li.arrResult)
     )*/
@@ -133,7 +133,6 @@ class Li {
     this.status = Number(!this.status);//Number(!Boolean(oldStatus))
     await this.setForm()
     this.result = createElement('li', { key: this.id, className: styles.li }, this.form)
-    //Li.arrObj.set(Number(this.id), this)
     Li.arrResult.set(Number(this.id), this.result)
   }
 }
