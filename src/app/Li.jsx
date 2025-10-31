@@ -100,7 +100,7 @@ class Li {
   async getButton() {
     let status = await this.getStatus()
     //let viewtype1 = await Li.#getInternalAsyncValue()
-    let viewtype1=await Li.getViewtype()//String(Li.viewtype)
+    let viewtype1=String(Li.viewtype)
     return createElement(Link, {
       key: this.id,
       className: styles.buttonItem,
