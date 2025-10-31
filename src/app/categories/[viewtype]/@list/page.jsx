@@ -41,8 +41,8 @@ export default async function Home({ params }) {
       );//tag
       if (Number(resp.status) === 200) {
         const dat = await resp.json()
-        //const filePath = path.join(process.cwd(), 'public', 'data.json');
-        fs.writeFileSync('data.json',dat)
+        const filePath = path.join(process.cwd(), 'public', 'data.json');
+        fs.writeFileSync(filePath,dat)
         //const fileContents = fs.readFileSync(filePath, 'utf8');
         //const data = JSON.parse(fileContents);
 
