@@ -106,7 +106,7 @@ class Li {
       className: styles.buttonItem,
       prefetch: false,
       href: `/categories/${viewtype1}/click/${this.id}/status/${this.status}`,
-    }, String(status))
+    }, status)
   }
   /*async getDate() {
     return createElement('span', { key: 'date' }, this.date)
