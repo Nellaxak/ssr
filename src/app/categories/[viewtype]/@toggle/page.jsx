@@ -32,7 +32,6 @@ export default async function Home({ params }) {
     //console.log('viewtype1111111111111111', params)
     let startDate
     let endDate
-    let resp
     [startDate, endDate] = await CalcData()
     viewtypePromise = await params
     viewtype1 = viewtypePromise.viewtype
@@ -56,23 +55,22 @@ export default async function Home({ params }) {
             console.log('NASA API error fetch status', resp.status)
         }
 
-        res = <nav className={styles.labelWrapper} >
+        res = (<nav className={styles.labelWrapper} >
             <Link href="/categories/main" scroll={false}
                 className={styles.km}>в километрах</Link>
             <span className={styles.space}>|</span>
             <Link href="/categories/moon" scroll={false}
                 className={styles.moon}>в лунных орбитах</Link>
-        </nav>
+        </nav>)
     }
     else {
-        res =
-            <nav className={styles.labelWrapper} >
+        res = (<nav className={styles.labelWrapper} >
                 <Link href="/categories/main" scroll={false}
                     className={styles.moon}>в километрах</Link>
                 <span className={styles.space}>|</span>
                 <Link href="/categories/moon" scroll={false}
                     className={styles.km}>в лунных орбитах</Link>
-            </nav>
+            </nav>)
 
     }
     resd = await Li.getList(viewtype1)
