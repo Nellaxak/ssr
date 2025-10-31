@@ -34,7 +34,7 @@ export default async function Home({ params }) {
   const viewtypePromise = await params
   const viewtype = viewtypePromise.viewtype
   console.log('page list', viewtypePromise)
-  const response = await list();
+  //const response = await list();
   //let resd
   //const items = await http<Item[]>(`http://localhost:3456/${viewtype}`) as Item[];
   try {
