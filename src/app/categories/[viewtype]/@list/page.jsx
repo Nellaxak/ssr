@@ -3,6 +3,7 @@
 import fs from 'fs';
 import path from 'path';
 import Li from '../../../Li'
+import { list,put } from '@vercel/blob';
 
 let data = []
 let resd
@@ -33,6 +34,7 @@ export default async function Home({ params }) {
   const viewtypePromise = await params
   const viewtype = viewtypePromise.viewtype
   console.log('page list', viewtypePromise)
+  const response = await list();
   //let resd
   //const items = await http<Item[]>(`http://localhost:3456/${viewtype}`) as Item[];
   try {
@@ -41,11 +43,10 @@ export default async function Home({ params }) {
       );//tag
       if (Number(resp.status) === 200) {
         const dat = await resp.json()
-        const filePath = path.join(process.cwd(), 'public', 'data.json');
-        fs.writeFileSync(filePath,dat)
+        //const filePath = path.join(process.cwd(), 'public', 'data.json');
+        //fs.writeFileSync(filePath,dat)
         //const fileContents = fs.readFileSync(filePath, 'utf8');
-        //const data = JSON.parse(fileContents);
-
+        //const data = JSON.parse(fileContents)
         const list = dat.near_earth_objects
         const dates = Object.keys(list)
         const arrObjects = Object.values(list)
@@ -55,6 +56,10 @@ export default async function Home({ params }) {
         ));
       } else {
         console.log('NASA API error fetch status', resp.status)
+         /*{response.blobs.map((blob) => (
+          //async (e) => new Li(e, dates[0])
+          <span>'lll'</span>
+      ))}*/
       }
     }
 
