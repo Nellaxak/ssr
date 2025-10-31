@@ -1,5 +1,7 @@
 //import Image from "next/image";
 //import styles from "./page.module.css";
+import fs from 'fs';
+import path from 'path';
 import Li from '../../../Li'
 
 let data = []
@@ -39,6 +41,11 @@ export default async function Home({ params }) {
       );//tag
       if (Number(resp.status) === 200) {
         const dat = await resp.json()
+        const filePath = path.join(process.cwd(), 'public', 'data.json');
+        fs.writeFileSync('data.json',dat)
+        //const fileContents = fs.readFileSync(filePath, 'utf8');
+        //const data = JSON.parse(fileContents);
+
         const list = dat.near_earth_objects
         const dates = Object.keys(list)
         const arrObjects = Object.values(list)
