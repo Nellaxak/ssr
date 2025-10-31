@@ -34,7 +34,7 @@ export default async function Home({ params }) {
     let endDate
     [startDate, endDate] = await CalcData()
     viewtypePromise = await params
-    viewtype1 = viewtypePromise.viewtype
+    viewtype1 = await viewtypePromise.viewtype
     //if (Li.viewtype !== viewtype1) {
     //console.log('sawefv',viewtype1)
     //await Li.setViewtype(viewtype1)//await not work
