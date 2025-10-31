@@ -1,16 +1,5 @@
 {
   "buildCommand": "next build",
   "outputDirectory": "build",
-  "version": 2,
-  "builds": [
-    {
-      "src": "package.json",
-      "use": "@vercel/node",
-      "config": {
-        "includeFiles": [
-          "./data.json"
-        ]
-      }
-    }
-  ]
+  "version": 2
 }
