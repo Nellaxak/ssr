@@ -100,14 +100,14 @@ class Li {
   async getButton() {
     let status = await this.getStatus()
     //let viewtype1 = await Li.#getInternalAsyncValue()
-    let viewtype1 = await Li.getViewtype()//String(Li.viewtype)
+    let viewtype1=await Li.getViewtype()//String(Li.viewtype)
     return createElement(Link, {
       key: this.id,
       className: styles.buttonItem,
       prefetch: false,
       href: `/categories/${viewtype1}/click/${this.id}/status/${this.status}`,
       prefetch: false,
-    }, <Suspense>{String(status)}</Suspense>)
+    }, status)
   }
   /*async getDate() {
     return createElement('span', { key: 'date' }, this.date)
