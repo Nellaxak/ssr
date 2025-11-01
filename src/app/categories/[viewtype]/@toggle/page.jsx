@@ -2,7 +2,7 @@ import React, { createElement, Suspense } from "react";
 import Link from "next/link";
 import styles from "./page.module.css";
 import Li from "../../../Li";
-import ToggleComponent from '../../../../components/Toggle/page'
+//import ToggleComponent from '../../../../components/Toggle/page'
 //import ParallelLayout from '../../layouts/layout';
 
 let viewtypePromise
