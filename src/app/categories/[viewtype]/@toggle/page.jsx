@@ -10,6 +10,7 @@ let viewtype1 = 'main'
 let res
 let resp
 let resd
+let resf
 async function CalcData() {
     let currentDate = new Date()
     currentDate.setDate(currentDate.getDate());//+1
@@ -33,54 +34,49 @@ export default async function Home({ params }) {
     let startDate
     let endDate
     [startDate, endDate] = await CalcData()
-    viewtypePromise = await params
-    viewtype1 = viewtypePromise.viewtype
+    //viewtypePromise = await params//then
+    params.then(async (data) => {
+        console.log('then1', data)
+        if (data.viewtype === 'main') {
+            resp = await fetch(`https://api.nasa.gov/neo/rest/v1/feed?start_date=${startDate}&end_date=${endDate}&api_key=3wa5hHgFuqhf6XiefvqzkcDQWZ01aOOK4vNZEXsP`
+            );//tag
+            if (Number(resp.status) === 200) {
+                const dat = await resp.json()
+                const list = dat.near_earth_objects
+                const dates = Object.keys(list)
+                const arrObjects = Object.values(list)
+                await Promise.all(arrObjects[0].map(
+                    //change prototype li
+                    async (e) => new Li(e, dates[0])
+                ));
+            } else {
+                console.log('NASA API error fetch status', resp.status)
+            }
+        }
+        return data.viewtype
+    }).then((data) => {
+        console.log('then2', data)
+        Li.setViewtype(data)
+        return data
+    }).then(async (data) => {
+        console.log('then3', data)
+        resf = await Li.getList(data)
+        return resf
+    })
+    //viewtype1 = viewtypePromise.viewtype
     //if (Li.viewtype !== viewtype1) {
     //console.log('sawefv',viewtype1)
-    await Li.setViewtype(viewtype1)
+
     //Li.viewtype = viewtype1
-    if (viewtype1 === 'main') {
-        resp = await fetch(`https://api.nasa.gov/neo/rest/v1/feed?start_date=${startDate}&end_date=${endDate}&api_key=3wa5hHgFuqhf6XiefvqzkcDQWZ01aOOK4vNZEXsP`
-        );//tag
-        if (Number(resp.status) === 200) {
-            const dat = await resp.json()
-            const list = dat.near_earth_objects
-            const dates = Object.keys(list)
-            const arrObjects = Object.values(list)
-            await Promise.all(arrObjects[0].map(
-                //change prototype li
-                async (e) => new Li(e, dates[0])
-            ));
-        } else {
-            console.log('NASA API error fetch status', resp.status)
-        }
 
-        //res = <ToggleComponent />
-        /*(<nav className={styles.labelWrapper} >
-            <Link href="/categories/main" scroll={false}
-                className={styles.km}>в километрах</Link>
-            <span className={styles.space}>|</span>
-            <Link href="/categories/moon" scroll={false}
-                className={styles.moon}>в лунных орбитах</Link>
-        </nav>)*/
-    }
-    else {
-        //res = <ToggleComponent /> 
-        /*(<nav className={styles.labelWrapper} >
-                <Link href="/categories/main" scroll={false}
-                    className={styles.moon}>в километрах</Link>
-                <span className={styles.space}>|</span>
-                <Link href="/categories/moon" scroll={false}
-                    className={styles.km}>в лунных орбитах</Link>
-            </nav>)*/
 
-    }
-    resd = await Li.getList(viewtype1)
+    //Li.setViewtype(viewtype1).then(data=>)
+    //resd = await Li.getList(viewtype1)
 
     return (
         <div>
             <ToggleComponent />
-            <Suspense><ul>{resd}</ul></Suspense>
+            <Suspense><ul>{resf}</ul></Suspense>
         </div>)
 }
 /*Home.getLayout = function getLayout(page) {
