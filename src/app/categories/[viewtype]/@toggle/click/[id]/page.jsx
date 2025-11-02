@@ -18,13 +18,12 @@ export default async function Home({ params }) {//
     //if (Li.viewtype === viewtype) {
     await find.setStatus()//paramsPromise.value)
     //}
-    //add toggle
+    //add toggle, then
     resd = await Li.getList(viewtype)
   } catch (err) { console.log('err', err) }
   //console.log('resd',resd)
   return (
   <div>
-    <ToggleComponent />
     {resd}
   </div>)
 }
