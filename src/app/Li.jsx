@@ -101,12 +101,12 @@ class Li {
   async getButton() {
     let status = await this.getStatus()
     //let viewtype1 = await Li.#getInternalAsyncValue()
-    let viewtype1 = await Li.getViewtype()
+    //let viewtype1 = await Li.getViewtype()
     return createElement(Link, {
       key: this.id,
       className: styles.buttonItem,
       prefetch: false,
-      href: `/categories/${viewtype1}/click/${this.id}`,
+      href: `/categories/${Li.viewtype}/click/${this.id}`,
     }, status)
   }
   /*async getDate() {
