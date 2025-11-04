@@ -2,7 +2,7 @@ import React, { createElement, Suspense } from "react";
 import Link from "next/link";
 import styles from "./page.module.css";
 import Li from "../../../Li";
-import { put } from '@vercel/blob';
+//import { put } from '@vercel/blob';
 
 let viewtypePromise
 let viewtype1 = 'main'
@@ -50,9 +50,9 @@ export default async function Home({ params }) {
                 //change prototype li
                 async (e) => new Li(e, dates[0])
             ));
-            const blob = await put('dddddd', resp.body, {
+            /*/const blob = await put('dddddd', resp.body, {
                 access: 'public', // or 'private'
-            });
+            });*/
         } else {
             console.log('NASA API error fetch status', resp.status)
         }
