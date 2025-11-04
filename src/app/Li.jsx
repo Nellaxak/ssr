@@ -57,6 +57,7 @@ class Li {
     return Li.#getInternalAsyncValue();
   }*/
   static async setViewtype(value) {
+    //console.log('setViewtype',value)
     // Perform async operations here
     //await new Promise(resolve => setTimeout(resolve, 100)); // Simulate async work
     Li.viewtype = value;
@@ -101,12 +102,12 @@ class Li {
   async getButton() {
     let status = await this.getStatus()
     //let viewtype1 = await Li.#getInternalAsyncValue()
-    //let viewtype1 = await Li.getViewtype()
+    let viewtype1 = await Li.getViewtype()
     return createElement(Link, {
       key: this.id,
       className: styles.buttonItem,
       prefetch: false,
-      href: `/categories/${Li.viewtype}/click/${this.id}`,
+      href: `/categories/${viewtype1}/click/${this.id}`,
     }, status)
   }
   /*async getDate() {
