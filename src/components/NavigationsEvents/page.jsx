@@ -7,7 +7,7 @@ import { toggleClick } from '../../app/actions/toggleClick'
 import styles from "./page.module.css";
 
 export function NavigationEvents() {
-  const [viewtype, setViewtype] = useState('main');
+  const [viewtype, setViewtype] = useState('start')//'main');
   const router = useRouter()
   useEffect(() => {
     //router.push(`/categories/${viewtype}`);
@@ -15,14 +15,15 @@ export function NavigationEvents() {
     router.refresh()
   }, [viewtype])
   const handleClick = useCallback((viewtypeChange) => {
-    setViewtype(viewtypeChange)
+    //setViewtype(viewtypeChange)
+    setViewtype('start')
   }, [])
   return <Form action={toggleClick} className={styles.labelWrapper} >
     <input type='text' name='viewtype' value={viewtype} onChange={() => handleClick('input')} hidden></input>
-    <button type="submit" className={(viewtype === 'main') ? 'km' : 'moon'}
+    <button type="submit" className={(viewtype === 'start') ? 'km' : 'moon'}
       onClick={() => handleClick('main')}>в километрах</button>
     <span className={'space'}>|</span>
-    <button type="submit" className={(viewtype === 'main') ? 'moon' : 'km'}
+    <button type="submit" className={(viewtype === 'start') ? 'moon' : 'km'}
       onClick={() => handleClick('moon')}>
       в лунных орбитах</button>
   </Form>
