@@ -20,11 +20,6 @@ export default function ParallelLayout({
       </ul>*/
   return (
     <div className={styles.column}>
-      <header className={styles.header}>
-        <h6 className={styles.h6}>
-          Ближайшие подлёты астероидов
-        </h6>
-      </header>
       {toggle}
       {children}
       <footer className={styles.footer}>

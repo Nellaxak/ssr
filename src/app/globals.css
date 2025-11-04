@@ -24,6 +24,38 @@ body {
   color: white;
 }
 
+button {
+  all: unset;
+}
+
+.moon {
+  /*color: inherit; /* Наследует цвет текста от родителя */
+  background-color: black;
+  color: white;
+  /*text-decoration-line: none;*/
+  /*text-decoration-line: underline;
+   /*border-bottom: 1px solid white;*/
+  /*cursor: url('./icons8-pointer_1.svg'), auto;*/
+}
+
+.km {
+  background-color: black;
+  color: red;
+  text-decoration: underline;
+  font-weight: bold;
+  /*text-decoration-line:line-through;*/
+  /*pointer-events: none;*/
+}
+
+.space {
+  font-family: 'Helvetica';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
 @media screen and (orientation: landscape) {
 
   #__next {

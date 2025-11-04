@@ -37,12 +37,13 @@ class Li {
   //private result: any;
   constructor(obj, dates) {
     Object.entries(obj).map(([key, value]) => this[key] = value);
-    this.status = 0
-    this.form = [this.getName(), this.getButton()]
-    Li.arrObj.set(Number(this.id), this)
-    this.result = createElement('li', { key: this.id, className: styles.li }, this.form)
-    Li.arrResult.set(Number(this.id), this.result)
-    //}
+    if (!Li.arrObj.get(Number(this.id))) {
+      this.status = 0
+      this.form = [this.getName(), this.getButton()]
+      Li.arrObj.set(Number(this.id), this)
+      this.result = createElement('li', { key: this.id, className: styles.li }, this.form)
+      Li.arrResult.set(Number(this.id), this.result)
+    }
   }
   static async getViewtype() {
     return Li.viewtype; // Static method to access the static variable
