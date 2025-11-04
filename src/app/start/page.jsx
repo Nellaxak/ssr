@@ -36,7 +36,7 @@ export default async function Home({ params }) {
     [startDate, endDate] = await CalcData()
     //console.log('cdfg',startDate, endDate)
     const promiseParams = await params
-    const viewtype = promiseParams.viewtype
+    //const viewtype = promiseParams.viewtype
     //if (viewtype === 'main') {
         //try {
         resp = await fetch(`https://api.nasa.gov/neo/rest/v1/feed?start_date=${startDate}&end_date=${endDate}&api_key=3wa5hHgFuqhf6XiefvqzkcDQWZ01aOOK4vNZEXsP`
@@ -57,7 +57,7 @@ export default async function Home({ params }) {
             console.log('NASA API error fetch status###########', err)
         }*/
     //}
-    resf = await Li.getList(viewtype)
+    resf = await Li.getList()
     return resf
 }
 /*Home.getLayout = function getLayout(page) {
