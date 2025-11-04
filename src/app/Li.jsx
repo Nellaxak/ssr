@@ -109,7 +109,8 @@ class Li {
       key: this.id,
       className: styles.buttonItem,
       prefetch: false,
-      href: `/categories/${viewtype1}/click/${this.id}`,
+      //href: `/categories/${viewtype1}/click/${this.id}`,
+      href: `/start/click/${this.id}`,
     }, status)
   }
   /*async getDate() {
