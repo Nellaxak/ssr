@@ -61,8 +61,8 @@ class Li {
     // Perform async operations here
     //await new Promise(resolve => setTimeout(resolve, 100)); // Simulate async work
     Li.viewtype = value;
-    let viewtype1 = await Li.getViewtype()
-    console.log('viewtype1', viewtype1)
+    //let viewtype1 = await Li.getViewtype()
+    //console.log('viewtype1', viewtype1)
     //console.log(`Static data initialized to: ${MyClass._data}`);
   }
   static async deleted(action, col) {
@@ -103,9 +103,8 @@ class Li {
   }
   async getButton() {
     let status = await this.getStatus()
-    //let viewtype1 = await Li.#getInternalAsyncValue()
     let viewtype1 = await Li.getViewtype()
-    console.log('getter viewtype', viewtype1)
+    //console.log('getter viewtype', viewtype1)
     return createElement(Link, {
       key: this.id,
       className: styles.buttonItem,
@@ -127,7 +126,8 @@ class Li {
   async setForm() {
     this.form = [await this.getName(), await this.getButton()]
   }
-  static async getList() {
+  static async getList(par) {
+    console.log('getList',par)
     const resd = Array.from(Li.arrResult.values())
     return resd
     /*return new Promise(resolve =>
