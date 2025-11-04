@@ -58,6 +58,7 @@ export default async function Home({ params }) {
         }*/
     //}
     resf = await Li.getList()
+    console.log('arr',resf.length)
     return resf
 }
 /*Home.getLayout = function getLayout(page) {
