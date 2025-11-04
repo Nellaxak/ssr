@@ -12,7 +12,7 @@ export default async function Layout({
             <header className={styles.header}>
                 <h6 className={styles.h6}>
                     Ближайшие подлёты астероидов
-                </h6>
+                </h6>{children}
             </header>
     )
 }
