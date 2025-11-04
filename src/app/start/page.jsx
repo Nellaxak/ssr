@@ -35,7 +35,7 @@ async function CalcData() {
 export default async function Home({ params }) {
     [startDate, endDate] = await CalcData()
     //console.log('cdfg',startDate, endDate)
-    const promiseParams = await params
+    //const promiseParams = await params
     //const viewtype = promiseParams.viewtype
     //if (viewtype === 'main') {
         //try {
