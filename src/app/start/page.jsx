@@ -1,7 +1,7 @@
 import React, { createElement, Suspense } from "react";
 import Link from "next/link";
 import styles from "./page.module.css";
-import Li from "../../../Li";
+import Li from "../../app/Li";
 import { put } from '@vercel/blob';
 
 let viewtypePromise

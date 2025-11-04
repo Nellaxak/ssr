@@ -1,6 +1,6 @@
 //import Image from "next/image";
 //import styles from "./page.module.css";
-import Li from '../../../../../Li'
+import Li from '../../../../app/Li'
 //import ToggleComponent from '../../../../../../../../components/Toggle/page'
 //import ParallelLayout from '../../../../layouts/layout';
 
