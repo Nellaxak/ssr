@@ -39,24 +39,24 @@ export default async function Home({ params }) {
     const promiseParams = await params
     const viewtype = promiseParams.viewtype
     if (viewtype === 'main') {
-        try {
-            resp = await fetch(`https://api.nasa.gov/neo/rest/v1/feed?start_date=${startDate}&end_date=${endDate}&api_key=3wa5hHgFuqhf6XiefvqzkcDQWZ01aOOK4vNZEXsP`
-            );//tag
-            if (Number(resp.status) === 200) {
-                const dat = await resp.json()
-                const list = dat.near_earth_objects
-                const dates = Object.keys(list)
-                const arrObjects = Object.values(list)
-                await Promise.all(arrObjects[0].map(
-                    //change prototype li
-                    async (e) => new Li(e, dates[0])
-                ));
-            } else {
-                console.log('NASA API error fetch status', resp.status)
-            }
-        } catch (err) {
-            console.log('NASA API error fetch status###########', err)
+        //try {
+        resp = await fetch(`https://api.nasa.gov/neo/rest/v1/feed?start_date=${startDate}&end_date=${endDate}&api_key=3wa5hHgFuqhf6XiefvqzkcDQWZ01aOOK4vNZEXsP`
+        );//tag
+        if (Number(resp.status) === 200) {
+            const dat = await resp.json()
+            const list = dat.near_earth_objects
+            const dates = Object.keys(list)
+            const arrObjects = Object.values(list)
+            await Promise.all(arrObjects[0].map(
+                //change prototype li
+                async (e) => new Li(e, dates[0])
+            ));
+        } else {
+            console.log('NASA API error fetch status', resp.status)
         }
+        /*} catch (err) {
+            console.log('NASA API error fetch status###########', err)
+        }*/
     }
     resf = await Li.getList(viewtype)
     return resf
