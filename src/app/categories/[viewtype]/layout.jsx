@@ -9,7 +9,7 @@ import styles from "./page.module.css";
 export default function ParallelLayout({
   children,
   toggle,
-  //count,
+  count,
 }/*: {
   children: React.ReactNode,
   count: React.ReactNode,
