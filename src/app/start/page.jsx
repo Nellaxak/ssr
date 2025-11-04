@@ -37,7 +37,7 @@ export default async function Home({ params }) {
     //console.log('cdfg',startDate, endDate)
     const promiseParams = await params
     const viewtype = promiseParams.viewtype
-    if (viewtype === 'main') {
+    //if (viewtype === 'main') {
         //try {
         resp = await fetch(`https://api.nasa.gov/neo/rest/v1/feed?start_date=${startDate}&end_date=${endDate}&api_key=3wa5hHgFuqhf6XiefvqzkcDQWZ01aOOK4vNZEXsP`
         );//tag
@@ -56,7 +56,7 @@ export default async function Home({ params }) {
         /*} catch (err) {
             console.log('NASA API error fetch status###########', err)
         }*/
-    }
+    //}
     resf = await Li.getList(viewtype)
     return resf
 }
