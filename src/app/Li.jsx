@@ -28,6 +28,7 @@ class Li {
   private text: any;
   private form: any;*/
   static arrResult = new Map();
+  static arrResultMoon = new Map();
   static arrObj = new Map();
   static count = 0;
   static viewtype = 'main'//async getter
@@ -39,10 +40,13 @@ class Li {
     Object.entries(obj).map(([key, value]) => this[key] = value);
     if (!Li.arrObj.get(Number(this.id))) {
       this.status = 0
-      this.form = [this.getName(), this.getButton()]
+      this.form = [this.getName(), this.getButton('main')]
+      this.formMoon = [this.getName(), this.getButton('moon')]
       Li.arrObj.set(Number(this.id), this)
       this.result = createElement('li', { key: this.id, className: styles.li }, this.form)
+      this.resultMoon = createElement('li', { key: this.id, className: styles.li }, this.formMoon)
       Li.arrResult.set(Number(this.id), this.result)
+      Li.arrResultMoon.set(Number(this.id), this.resultMoon)
     }
   }
   static async getViewtype() {
@@ -101,15 +105,15 @@ class Li {
       return 'заказать'
     }
   }
-  async getButton() {
+  async getButton(viewtype) {
     let status = await this.getStatus()
-    let viewtype1 = await Li.getViewtype()
+    //let viewtype1 = await Li.getViewtype()
     //console.log('getter viewtype', viewtype1)
     return createElement(Link, {
       key: this.id,
       className: styles.buttonItem,
       prefetch: false,
-      href: `/categories/${viewtype1}/click/${this.id}`,
+      href: `/categories/${viewtype}/click/${this.id}`,
       //href: `/start/click/${this.id}`,
     }, status)
   }
@@ -128,8 +132,15 @@ class Li {
     this.form = [await this.getName(), await this.getButton()]
   }
   static async getList(par) {
-    console.log('getList',par)
-    const resd = Array.from(Li.arrResult.values())
+    console.log('getList', par)
+    let resd
+    //main
+    if (par === 'main') {
+      resd = Array.from(Li.arrResult.values())
+    } else {
+      resd = Array.from(Li.arrResultMoon.values())
+    }
+    //moon
     return resd
     /*return new Promise(resolve =>
       resolve(Li.arrResult)

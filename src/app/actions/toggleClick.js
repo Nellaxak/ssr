@@ -7,11 +7,5 @@ import Li from '../Li';
 export async function toggleClick(formData) {
     //console.log('toggleClick',formData.get('viewtype'))
     await Li.setViewtype(formData.get('viewtype'))
-    //const viewtype = formData.get('viewtype')
-    /*const item = await Li.findById(Number(id));
-    //console.log('find li', id,item)
-    const oldStatus = Number(await item.getStatus())
-    const newStatus = Number(!Boolean(oldStatus))
-    item.setStatus(newStatus)*/
-    /*revalidateTag(`count`)*/
+    //update all List
 }
