@@ -16,7 +16,7 @@ export default async function Home({ params }) {//
   //const oldStatus = find.status
   //get status from url
   //if (Li.viewtype === viewtype) {
-  await find.setStatus(viewtype)//paramsPromise.value)
+  await find.setStatus()//paramsPromise.value)
   //}
   //add toggle, then
   resd = await Li.getList(viewtype)

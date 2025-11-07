@@ -126,13 +126,13 @@ class Li {
     }
     return resss
   }
-  async setForm(par) {
-    if (par === 'main') {
-      this.form = [await this.getName(), await this.getButton(par)]
-    }
-    else {
-      this.formMoon = [await this.getName(), await this.getButton(par)]
-    }
+  async setForm() {
+    //if (par === 'main') {
+      this.form = [await this.getName(), await this.getButton('main')]
+    //}
+    //else {
+      this.formMoon = [await this.getName(), await this.getButton('moon')]
+   // }
   }
   /*async setFormMoon() {
     this.formMoon = [await this.getName(), await this.getButton('moon')]
@@ -152,10 +152,10 @@ class Li {
       resolve(Li.arrResult)
     )*/
   }
-  async setStatus(viewtype) {
+  async setStatus() {
     this.status = Number(!this.status);//Number(!Boolean(oldStatus))
     //let vvvv = await Li.getViewtype()
-    await this.setForm(viewtype)
+    await this.setForm()
     //await this.setFormMoon()
     this.result = createElement('li', { key: this.id, className: styles.li }, this.form)
     this.resultMoon = createElement('li', { key: this.id, className: styles.li }, this.formMoon)//formMoon
