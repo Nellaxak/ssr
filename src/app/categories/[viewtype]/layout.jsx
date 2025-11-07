@@ -9,7 +9,6 @@ import styles from "./page.module.css";
 export default function ParallelLayout({
   children,
   list,
-  toggle,
   count,
 }/*: {
   children: React.ReactNode,
@@ -18,7 +17,6 @@ export default function ParallelLayout({
 }*/) {
   return (
     <div className={styles.column}>
-      {toggle}
       {list}
       {children}
       <footer className={styles.footer}>
