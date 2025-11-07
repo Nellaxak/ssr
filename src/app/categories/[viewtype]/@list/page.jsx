@@ -2,15 +2,9 @@ import React, { createElement, Suspense } from "react";
 import Link from "next/link";
 import styles from "./page.module.css";
 import Li from "../../../Li";
-//import { put } from '@vercel/blob';
 
-let viewtypePromise
-let viewtype1 = 'main'
-let res
 let resp
-let resd
 let resf
-let arr
 let startDate
 let endDate
 
@@ -37,7 +31,8 @@ export default async function Home({ params }) {
     //console.log('cdfg',startDate, endDate)
     const promiseParams = await params
     const viewtype = promiseParams.viewtype
-    if (viewtype === 'main') {
+    resf = await Li.getList(viewtype)
+    if (viewtype === 'main' && resf.length !== 0) {
         //try {
         resp = await fetch(`https://api.nasa.gov/neo/rest/v1/feed?start_date=${startDate}&end_date=${endDate}&api_key=3wa5hHgFuqhf6XiefvqzkcDQWZ01aOOK4vNZEXsP`
         );//tag
@@ -50,9 +45,7 @@ export default async function Home({ params }) {
                 //change prototype li
                 async (e) => new Li(e, dates[0])
             ));
-            /*/const blob = await put('dddddd', resp.body, {
-                access: 'public', // or 'private'
-            });*/
+            
         } else {
             console.log('NASA API error fetch status', resp.status)
         }

@@ -3,7 +3,7 @@ import { Suspense, createElement } from 'react'
 import dynamic from 'next/dynamic'
 import ScrollComponent from '../components/ScrollComponent/page';
 //import ToggleComponent from '../components/Toggle/page';
-import { NavigationEvents } from '../components/NavigationsEvents/page';
+//import { NavigationEvents } from '../components/NavigationsEvents/page';
 
 //import Button from '@/components/Button/page';
 //import { buttonClick } from "@/app/actions/updateStatus";
