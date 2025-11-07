@@ -41,9 +41,7 @@ class Li {
     if (!Li.arrObj.get(Number(this.id))) {
       this.status = 0
       this.form = [this.getName(), this.getButton('main')]
-      //Li.setViewtype('moon')
       this.formMoon = [this.getName(), this.getButton('moon')]
-      //Li.setViewtype('main')
       Li.arrObj.set(Number(this.id), this)
       this.result = createElement('li', { key: this.id, className: styles.li }, this.form)
       this.resultMoon = createElement('li', { key: this.id, className: styles.li }, this.formMoon)
@@ -51,7 +49,7 @@ class Li {
       Li.arrResultMoon.set(Number(this.id), this.resultMoon)
     }
   }
-  static async getSize(){
+  static async getSize() {
     return Li.arrObj.size
   }
   static async getViewtype() {
@@ -105,7 +103,6 @@ class Li {
     } else {
       dfff = par
     }
-    //par = await Li.getViewtype()
     //console.log('getter viewtype', viewtype1)
     return createElement(Link, {
       key: this.id,
@@ -127,16 +124,9 @@ class Li {
     return resss
   }
   async setForm() {
-    //if (par === 'main') {
-      this.form = [await this.getName(), await this.getButton('main')]
-    //}
-    //else {
-      this.formMoon = [await this.getName(), await this.getButton('moon')]
-   // }
-  }
-  /*async setFormMoon() {
+    this.form = [await this.getName(), await this.getButton('main')]
     this.formMoon = [await this.getName(), await this.getButton('moon')]
-  }*/
+  }
   static async getList(par) {
     //console.log('getList', par)
     let resd
@@ -154,9 +144,7 @@ class Li {
   }
   async setStatus() {
     this.status = Number(!this.status);//Number(!Boolean(oldStatus))
-    //let vvvv = await Li.getViewtype()
     await this.setForm()
-    //await this.setFormMoon()
     this.result = createElement('li', { key: this.id, className: styles.li }, this.form)
     this.resultMoon = createElement('li', { key: this.id, className: styles.li }, this.formMoon)//formMoon
     Li.arrResult.set(Number(this.id), this.result)
