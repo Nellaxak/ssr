@@ -151,6 +151,7 @@ class Li {
     await this.setForm()
     this.result = createElement('li', { key: this.id, className: styles.li }, this.form)
     Li.arrResult.set(Number(this.id), this.result)
+    Li.arrResultMoon.set(Number(this.id), this.result)
   }
 }
 export default Li
