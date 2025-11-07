@@ -120,34 +120,41 @@ class Li {
     }
     return resss
   }
-  async setForm() {
-    this.form = [await this.getName(), await this.getButton('main')]
-  }
-  async setFormMoon() {
-    this.form = [await this.getName(), await this.getButton('moon')]
-  }
-  static async getList(par) {
-    //console.log('getList', par)
-    let resd
-    //main
+  async setForm(par) {
     if (par === 'main') {
-      resd = Array.from(Li.arrResult.values())
-    } else {
-      resd = Array.from(Li.arrResultMoon.values())
+      this.form = [await this.getName(), await this.getButton(par)]
     }
-    //moon
-    return resd
-    /*return new Promise(resolve =>
-      resolve(Li.arrResult)
-    )*/
+    else {
+      this.formMoon = [await this.getName(), await this.getButton(par)]
+    }
   }
+  /*async setFormMoon() {
+    this.formMoon = [await this.getName(), await this.getButton('moon')]
+  }*/
+  static async getList(par) {
+  //console.log('getList', par)
+  let resd
+  //main
+  if (par === 'main') {
+    resd = Array.from(Li.arrResult.values())
+  } else {
+    resd = Array.from(Li.arrResultMoon.values())
+  }
+  //moon
+  return resd
+  /*return new Promise(resolve =>
+    resolve(Li.arrResult)
+  )*/
+}
   async setStatus() {
-    this.status = Number(!this.status);//Number(!Boolean(oldStatus))
-    await this.setForm()
-    await this.setFormMoon()
-    this.result = createElement('li', { key: this.id, className: styles.li }, this.form)
-    Li.arrResult.set(Number(this.id), this.result)
-    Li.arrResultMoon.set(Number(this.id), this.result)
-  }
+  this.status = Number(!this.status);//Number(!Boolean(oldStatus))
+  let vvvv = await Li.getViewtype()
+  await this.setForm(vvvv)
+  //await this.setFormMoon()
+  this.result = createElement('li', { key: this.id, className: styles.li }, this.form)
+  this.resultMoon = createElement('li', { key: this.id, className: styles.li }, this.formMoon)//formMoon
+  Li.arrResult.set(Number(this.id), this.result)
+  Li.arrResultMoon.set(Number(this.id), this.resultMoon)
+}
 }
 export default Li
