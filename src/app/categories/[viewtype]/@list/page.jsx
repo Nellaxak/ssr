@@ -32,7 +32,7 @@ export default async function Home({ params }) {
     const promiseParams = await params
     const viewtype = promiseParams.viewtype
     resf = await Li.getList(viewtype)
-    if (viewtype === 'main' && resf.length !== 0) {
+    if (viewtype === 'main' && resf.length === 0) {
         //try {
         resp = await fetch(`https://api.nasa.gov/neo/rest/v1/feed?start_date=${startDate}&end_date=${endDate}&api_key=3wa5hHgFuqhf6XiefvqzkcDQWZ01aOOK4vNZEXsP`
         );//tag
