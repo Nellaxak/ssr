@@ -99,7 +99,7 @@ class Li {
   async getButton(par) {
     let status = await this.getStatus()
     //let viewtype1 = await Li.getViewtype()
-    let dfff// = par
+    let dfff = 'main'
     if (typeof par === "undefined") {
       dfff = await Li.getViewtype()
     } else {
