@@ -5,6 +5,7 @@ import Li from "../../../Li";
 
 let resp
 let resf
+let viewtype='main'
 let startDate
 let endDate
 
@@ -30,7 +31,7 @@ export default async function Home({ params }) {
     [startDate, endDate] = await CalcData()
     //console.log('cdfg',startDate, endDate)
     const promiseParams = await params
-    const viewtype = promiseParams.viewtype
+    viewtype = promiseParams.viewtype
     const size = await Li.getSize()
     if (viewtype === 'main' && size === 0) {
         //try {
