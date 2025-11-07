@@ -40,8 +40,10 @@ class Li {
     Object.entries(obj).map(([key, value]) => this[key] = value);
     if (!Li.arrObj.get(Number(this.id))) {
       this.status = 0
-      this.form = [this.getName(), this.getButton('main')]
-      this.formMoon = [this.getName(), this.getButton('moon')]
+      this.form = [this.getName(), this.getButton]
+      Li.setViewtype('moon')
+      this.formMoon = [this.getName(), this.getButton()]
+      Li.setViewtype('main')
       Li.arrObj.set(Number(this.id), this)
       this.result = createElement('li', { key: this.id, className: styles.li }, this.form)
       this.resultMoon = createElement('li', { key: this.id, className: styles.li }, this.formMoon)
@@ -105,16 +107,15 @@ class Li {
       return 'заказать'
     }
   }
-  async getButton(viewtype) {
+  async getButton() {
     let status = await this.getStatus()
-    //let viewtype1 = await Li.getViewtype()
+    let viewtype1 = await Li.getViewtype()
     //console.log('getter viewtype', viewtype1)
     return createElement(Link, {
       key: this.id,
       className: styles.buttonItem,
       prefetch: false,
-      href: `/categories/${viewtype}/click/${this.id}`,
-      //href: `/start/click/${this.id}`,
+      href: `/categories/${viewtype1}/click/${this.id}`,
     }, status)
   }
   /*async getDate() {
