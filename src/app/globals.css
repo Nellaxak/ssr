@@ -28,6 +28,10 @@ button {
   all: unset;
 }
 
+a {
+  text-decoration: none;
+}
+
 .moon {
   /*color: inherit; /* Наследует цвет текста от родителя */
   background-color: black;

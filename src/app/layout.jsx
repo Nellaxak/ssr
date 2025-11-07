@@ -3,7 +3,6 @@ import { Suspense, createElement } from 'react'
 import dynamic from 'next/dynamic'
 import ScrollComponent from '../components/ScrollComponent/page';
 //import ToggleComponent from '../components/Toggle/page';
-//import {NavigationsEvents} from '../components/NavigationsEvents/page';
 import { NavigationEvents } from '../components/NavigationsEvents/page';
 
 //import Button from '@/components/Button/page';
@@ -11,7 +10,7 @@ import { NavigationEvents } from '../components/NavigationsEvents/page';
 //import { getItemData } from "@/app/actions/getItemData";
 import './globals.css'
 import styles from "./page.module.css";
-import Form from 'next/form';
+//import Form from 'next/form';
 //import { buttonClick } from './actions/toggleClickjs';
 import Image from "next/image";
 import bigImage from "./big.svg";
@@ -56,7 +55,6 @@ export default async function Layout(props) {
           <div className={styles.hidden}>
             <Image src={bigImage} alt="Earth" priority/>
           </div>
-          <NavigationEvents />
           <Suspense fallback={<span className={'loader'}></span>}>
             {props.children}
           </Suspense>

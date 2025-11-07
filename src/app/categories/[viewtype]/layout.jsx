@@ -8,6 +8,7 @@ import styles from "./page.module.css";
 
 export default function ParallelLayout({
   children,
+  list,
   toggle,
   count,
 }/*: {
@@ -15,12 +16,10 @@ export default function ParallelLayout({
   count: React.ReactNode,
   list: React.ReactNode
 }*/) {
-  /*<ul className={styles.wrapRowRight}>
-        <Suspense>{list}</Suspense>
-      </ul>*/
   return (
     <div className={styles.column}>
       {toggle}
+      {list}
       {children}
       <footer className={styles.footer}>
         <div className={styles.columnFooter}>

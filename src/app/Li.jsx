@@ -132,7 +132,7 @@ class Li {
     this.form = [await this.getName(), await this.getButton()]
   }
   static async getList(par) {
-    console.log('getList', par)
+    //console.log('getList', par)
     let resd
     //main
     if (par === 'main') {
