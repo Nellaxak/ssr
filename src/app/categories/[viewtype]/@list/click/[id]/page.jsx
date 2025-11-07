@@ -1,4 +1,4 @@
-import Li from '../../../../../../Li'
+import Li from '../../../../../Li'
 export default async function Home({ params }) {
   let resd
   const paramsPromise = await params
