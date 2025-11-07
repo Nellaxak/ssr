@@ -52,24 +52,10 @@ class Li {
     }
   }
   static async getViewtype() {
-    return Li.viewtype; // Static method to access the static variable
+    return Li.viewtype;
   }
-  /*static async #getInternalAsyncValue() {
-    //await new Promise(resolve => setTimeout(resolve, 1000));
-    return Li.viewtype//"This is a private async static value.";
-  }*/
-
-  /*static get asyncValue() {
-    return Li.#getInternalAsyncValue();
-  }*/
   static async setViewtype(value) {
-    //console.log('setViewtype',value)
-    // Perform async operations here
-    //await new Promise(resolve => setTimeout(resolve, 100)); // Simulate async work
     Li.viewtype = value;
-    //let viewtype1 = await Li.getViewtype()
-    //console.log('viewtype1', viewtype1)
-    //console.log(`Static data initialized to: ${MyClass._data}`);
   }
   static async deleted(action, col) {
     if (action === 'down') {
@@ -109,13 +95,14 @@ class Li {
   }
   async getButton(par) {
     let status = await this.getStatus()
-    let viewtype1 = await Li.getViewtype()
+    //let viewtype1 = await Li.getViewtype()
+    par = await Li.getViewtype()
     //console.log('getter viewtype', viewtype1)
     return createElement(Link, {
       key: this.id,
       className: styles.buttonItem,
       prefetch: false,
-      href: `/categories/${viewtype1}/click/${this.id}`,
+      href: `/categories/${par}/click/${this.id}`,
     }, status)
   }
   /*async getDate() {
@@ -130,7 +117,10 @@ class Li {
     return resss
   }
   async setForm() {
-    this.form = [await this.getName(), await this.getButton()]
+    this.form = [await this.getName(), await this.getButton('main')]
+  }
+  async setFormMoon() {
+    this.form = [await this.getName(), await this.getButton('moon')]
   }
   static async getList(par) {
     //console.log('getList', par)
@@ -150,6 +140,7 @@ class Li {
   async setStatus() {
     this.status = Number(!this.status);//Number(!Boolean(oldStatus))
     await this.setForm()
+    await this.setFormMoon()
     this.result = createElement('li', { key: this.id, className: styles.li }, this.form)
     Li.arrResult.set(Number(this.id), this.result)
     Li.arrResultMoon.set(Number(this.id), this.result)
