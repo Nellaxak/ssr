@@ -152,10 +152,10 @@ class Li {
       resolve(Li.arrResult)
     )*/
   }
-  async setStatus() {
+  async setStatus(viewtype) {
     this.status = Number(!this.status);//Number(!Boolean(oldStatus))
-    let vvvv = await Li.getViewtype()
-    await this.setForm(vvvv)
+    //let vvvv = await Li.getViewtype()
+    await this.setForm(viewtype)
     //await this.setFormMoon()
     this.result = createElement('li', { key: this.id, className: styles.li }, this.form)
     this.resultMoon = createElement('li', { key: this.id, className: styles.li }, this.formMoon)//formMoon
