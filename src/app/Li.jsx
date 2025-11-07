@@ -40,10 +40,10 @@ class Li {
     Object.entries(obj).map(([key, value]) => this[key] = value);
     if (!Li.arrObj.get(Number(this.id))) {
       this.status = 0
-      this.form = [this.getName(), this.getButton()]
-      Li.setViewtype('moon')
-      this.formMoon = [this.getName(), this.getButton()]
-      Li.setViewtype('main')
+      this.form = [this.getName(), this.getButton('main')]
+      //Li.setViewtype('moon')
+      this.formMoon = [this.getName(), this.getButton('moon')]
+      //Li.setViewtype('main')
       Li.arrObj.set(Number(this.id), this)
       this.result = createElement('li', { key: this.id, className: styles.li }, this.form)
       this.resultMoon = createElement('li', { key: this.id, className: styles.li }, this.formMoon)
