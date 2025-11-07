@@ -5,6 +5,7 @@ import Li from "../../../Li";
 
 let resp
 let resf
+//let viewtype='main'
 let startDate
 let endDate
 
