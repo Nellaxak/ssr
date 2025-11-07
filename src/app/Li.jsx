@@ -51,6 +51,9 @@ class Li {
       Li.arrResultMoon.set(Number(this.id), this.resultMoon)
     }
   }
+  static async getSize(){
+    return Li.arrObj.size
+  }
   static async getViewtype() {
     return Li.viewtype;
   }
@@ -96,9 +99,11 @@ class Li {
   async getButton(par) {
     let status = await this.getStatus()
     //let viewtype1 = await Li.getViewtype()
-    let dfff = par
+    let dfff// = par
     if (typeof par === "undefined") {
       dfff = await Li.getViewtype()
+    } else {
+      dfff = par
     }
     //par = await Li.getViewtype()
     //console.log('getter viewtype', viewtype1)
@@ -132,29 +137,29 @@ class Li {
     this.formMoon = [await this.getName(), await this.getButton('moon')]
   }*/
   static async getList(par) {
-  //console.log('getList', par)
-  let resd
-  //main
-  if (par === 'main') {
-    resd = Array.from(Li.arrResult.values())
-  } else {
-    resd = Array.from(Li.arrResultMoon.values())
+    //console.log('getList', par)
+    let resd
+    //main
+    if (par === 'main') {
+      resd = Array.from(Li.arrResult.values())
+    } else {
+      resd = Array.from(Li.arrResultMoon.values())
+    }
+    //moon
+    return resd
+    /*return new Promise(resolve =>
+      resolve(Li.arrResult)
+    )*/
   }
-  //moon
-  return resd
-  /*return new Promise(resolve =>
-    resolve(Li.arrResult)
-  )*/
-}
   async setStatus() {
-  this.status = Number(!this.status);//Number(!Boolean(oldStatus))
-  let vvvv = await Li.getViewtype()
-  await this.setForm(vvvv)
-  //await this.setFormMoon()
-  this.result = createElement('li', { key: this.id, className: styles.li }, this.form)
-  this.resultMoon = createElement('li', { key: this.id, className: styles.li }, this.formMoon)//formMoon
-  Li.arrResult.set(Number(this.id), this.result)
-  Li.arrResultMoon.set(Number(this.id), this.resultMoon)
-}
+    this.status = Number(!this.status);//Number(!Boolean(oldStatus))
+    let vvvv = await Li.getViewtype()
+    await this.setForm(vvvv)
+    //await this.setFormMoon()
+    this.result = createElement('li', { key: this.id, className: styles.li }, this.form)
+    this.resultMoon = createElement('li', { key: this.id, className: styles.li }, this.formMoon)//formMoon
+    Li.arrResult.set(Number(this.id), this.result)
+    Li.arrResultMoon.set(Number(this.id), this.resultMoon)
+  }
 }
 export default Li
