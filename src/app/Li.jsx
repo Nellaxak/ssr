@@ -96,13 +96,17 @@ class Li {
   async getButton(par) {
     let status = await this.getStatus()
     //let viewtype1 = await Li.getViewtype()
-    par = await Li.getViewtype()
+    let dfff = par
+    if (typeof par === "undefined") {
+      dfff = await Li.getViewtype()
+    }
+    //par = await Li.getViewtype()
     //console.log('getter viewtype', viewtype1)
     return createElement(Link, {
       key: this.id,
       className: styles.buttonItem,
       prefetch: false,
-      href: `/categories/${par}/click/${this.id}`,
+      href: `/categories/${dfff}/click/${this.id}`,
     }, status)
   }
   /*async getDate() {
