@@ -40,7 +40,7 @@ class Li {
     Object.entries(obj).map(([key, value]) => this[key] = value);
     if (!Li.arrObj.get(Number(this.id))) {
       this.status = 0
-      this.form = [this.getName(), this.getButton]
+      this.form = [this.getName(), this.getButton()]
       Li.setViewtype('moon')
       this.formMoon = [this.getName(), this.getButton()]
       Li.setViewtype('main')
@@ -107,7 +107,7 @@ class Li {
       return 'заказать'
     }
   }
-  async getButton() {
+  async getButton(par) {
     let status = await this.getStatus()
     let viewtype1 = await Li.getViewtype()
     //console.log('getter viewtype', viewtype1)
