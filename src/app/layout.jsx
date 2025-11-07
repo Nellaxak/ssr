@@ -55,10 +55,10 @@ export default async function Layout(props) {
           <div className={styles.hidden}>
             <Image src={bigImage} alt="Earth" priority/>
           </div>
+          <NavigationEvents />
           <Suspense fallback={<span className={'loader'}></span>}>
             {props.children}
           </Suspense>
-          <NavigationEvents />
           <ScrollComponent />
         </div>
       </body>
