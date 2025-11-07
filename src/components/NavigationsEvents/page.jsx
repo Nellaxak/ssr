@@ -10,7 +10,7 @@ export function NavigationEvents() {
   const [viewtype, setViewtype] = useState('main');
   const router = useRouter()
   useEffect(() => {
-    router.push(`/categories/${viewtype}`);
+    router.push(`/categories/${viewtype}`,{scroll:false});
     //router.push(`/start`);
     router.refresh()
   }, [viewtype])
