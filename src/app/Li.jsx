@@ -112,6 +112,7 @@ class Li {
       className: styles.buttonItem,
       prefetch: false,
       href: `/categories/${dfff}/click/${this.id}`,
+      scroll: false,
     }, status)
   }
   /*async getDate() {
