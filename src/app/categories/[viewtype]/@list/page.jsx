@@ -2,7 +2,6 @@ import React, { createElement, Suspense } from "react";
 import Link from "next/link";
 import styles from "./page.module.css";
 import Li from "../../../Li";
-import { put } from '@vercel/blob';
 let resp
 let resf
 let startDate
@@ -32,20 +31,20 @@ export default async function Home({ params }) {
     const promiseParams = await params
     const viewtype = promiseParams.viewtype
     const size = await Li.getSize()
+    console.log('size',size)
     if (viewtype === 'main' && size === 0) {
         //try {
         resp = await fetch(`https://api.nasa.gov/neo/rest/v1/feed?start_date=${startDate}&end_date=${endDate}&api_key=3wa5hHgFuqhf6XiefvqzkcDQWZ01aOOK4vNZEXsP`
         );//tag
-        console.log('ccc',process.env.BLOB_READ_WRITE_TOKEN)
         if (Number(resp.status) === 200) {
             const dat = await resp.json()
-            const blob = await put('data.json', resp, {
+            /*const blob = await put('data.json', resp, {
                 contentType: 'application/json',
                 access: 'public',
                 addRandomSuffix: true,
                 token: process.env.BLOB_READ_WRITE_TOKEN,
                 allowOverwrite: true,
-            });
+            });*/
             const list = dat.near_earth_objects
             const dates = Object.keys(list)
             const arrObjects = Object.values(list)
