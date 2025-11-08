@@ -38,7 +38,7 @@ export default async function Home({ params }) {
         );//tag
         if (Number(resp.status) === 200) {
             const dat = await resp.json()
-            const blob = await put('data.json', JSON.stringify(dat), {
+            const blob = await put('data.json', dat, {
                 contentType: 'application/json',
                 access: 'public',
             });
