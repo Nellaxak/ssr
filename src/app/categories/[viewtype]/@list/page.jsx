@@ -38,6 +38,10 @@ export default async function Home({ params }) {
         );//tag
         if (Number(resp.status) === 200) {
             const dat = await resp.json()
+            const blob = await put('data.json', JSON.stringify(dat), {
+                contentType: 'application/json',
+                access: 'public',
+            });
             const list = dat.near_earth_objects
             const dates = Object.keys(list)
             const arrObjects = Object.values(list)
