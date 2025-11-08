@@ -41,6 +41,7 @@ export default async function Home({ params }) {
             const blob = await put('data.json', resp, {
                 contentType: 'application/json',
                 access: 'public',
+                token: process.env.BLOB_READ_WRITE_TOKEN,
                 allowOverwrite: true,
             });
             const list = dat.near_earth_objects
