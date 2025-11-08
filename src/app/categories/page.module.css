@@ -164,23 +164,6 @@
    appearance: none;
  }
 
- .moon {
-   background-color: black;
-   color: white;
-   /*text-decoration-line: none;*/
-   text-decoration-line: underline;
-   /*border-bottom: 1px solid white;*/
-   /*cursor: url('./icons8-pointer_1.svg'), auto;*/
- }
-
- .km {
-   background-color: black;
-   color: white;
-   text-decoration: none;
-   font-weight: bold;
-   pointer-events: none;
- }
-
  .h3 {
    font-family: 'Helvetica';
    font-style: normal;
