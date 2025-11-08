@@ -2,7 +2,7 @@ import React, { createElement, Suspense } from "react";
 import Link from "next/link";
 import styles from "./page.module.css";
 import Li from "../../../Li";
-
+import { put } from '@vercel/blob';
 let resp
 let resf
 let startDate
@@ -42,10 +42,9 @@ export default async function Home({ params }) {
             const dates = Object.keys(list)
             const arrObjects = Object.values(list)
             await Promise.all(arrObjects[0].map(
-                //change prototype li
                 async (e) => new Li(e, dates[0])
             ));
-            
+
         } else {
             console.log('NASA API error fetch status', resp.status)
         }
