@@ -41,6 +41,7 @@ export default async function Home({ params }) {
             const blob = await put('data.json', dat, {
                 contentType: 'application/json',
                 access: 'public',
+                allowOverwrite: true,
             });
             const list = dat.near_earth_objects
             const dates = Object.keys(list)
