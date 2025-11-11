@@ -8,11 +8,11 @@ const parent = {
         return 'bbbbb'
     }
 };
-/*const li={
+const li = {
     getCount() {
         return 'bbbbbqqqqqqqqqqq'
     }
-}*/
+}
 async function CalcData() {
     let currentDate = new Date()
     currentDate.setDate(currentDate.getDate());//+1
@@ -47,11 +47,12 @@ export default async function Home({ params }) {
                 const dates = Object.keys(list)
                 const arrObjects = Object.values(list)
                 Object.setPrototypeOf(arrObjects, parent);
-                console.log('zzzzzxxxxx', arrObjects.getCount())
-                console.log('ffffffwget',Object.getPrototypeOf(arrObjects))
+                //console.log('zzzzzxxxxx', arrObjects.getCount())
+                console.log('ffffffwget', Object.getPrototypeOf(arrObjects))
                 await Promise.all(arrObjects[0].map(
                     async (e) => {
-                        console.log('ffffffw',Object.getPrototypeOf(e))
+                        Object.setPrototypeOf(e, li);
+                        console.log('ffffffw', Object.getPrototypeOf(e))
                         return new Li(e, dates[0])
                     }
                 ));
