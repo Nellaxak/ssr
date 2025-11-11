@@ -46,9 +46,6 @@ export default async function Home({ params }) {
                 const list = dat.near_earth_objects
                 const dates = Object.keys(list)
                 const arrObjects = Object.values(list)
-                Object.setPrototypeOf(arrObjects, parent);
-                //console.log('zzzzzxxxxx', arrObjects.getCount())
-                console.log('ffffffwget', Object.getPrototypeOf(arrObjects))
                 await Promise.all(arrObjects[0].map(
                     async (e) => {
                         Object.setPrototypeOf(e, li);
@@ -56,7 +53,9 @@ export default async function Home({ params }) {
                         new Li(e, dates[0])
                     }
                 ));
-
+                Object.setPrototypeOf(arrObjects, parent);
+                //console.log('zzzzzxxxxx', arrObjects.getCount())
+                console.log('ffffffwget', Object.getPrototypeOf(arrObjects))
             } else {
                 console.log('NASA API error fetch status', resp.status)
             }
