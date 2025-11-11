@@ -4,11 +4,15 @@ let resf
 let startDate
 let endDate
 const parent = {
-  getCount() {
-    console.log("Hello from parent!");
-    return 'bbbbb'
-  }
+    getCount() {
+        return 'bbbbb'
+    }
 };
+/*const li={
+    getCount() {
+        return 'bbbbbqqqqqqqqqqq'
+    }
+}*/
 async function CalcData() {
     let currentDate = new Date()
     currentDate.setDate(currentDate.getDate());//+1
@@ -35,22 +39,24 @@ export default async function Home({ params }) {
     const size = await Li.getSize()
     if (viewtype === 'main' && size === 0) {
         try {
-        resp = await fetch(`https://api.nasa.gov/neo/rest/v1/feed?start_date=${startDate}&end_date=${endDate}&api_key=3wa5hHgFuqhf6XiefvqzkcDQWZ01aOOK4vNZEXsP`
-        );//revalidate tag
-        if (Number(resp.status) === 200) {
-            const dat = await resp.json()
-            Object.setPrototypeOf(dat, parent);
-            console.log('zzzzzxxxxx',dat.getCount())
-            const list = dat.near_earth_objects
-            const dates = Object.keys(list)
-            const arrObjects = Object.values(list)
-            await Promise.all(arrObjects[0].map(
-                async (e) => new Li(e, dates[0])
-            ));
+            resp = await fetch(`https://api.nasa.gov/neo/rest/v1/feed?start_date=${startDate}&end_date=${endDate}&api_key=3wa5hHgFuqhf6XiefvqzkcDQWZ01aOOK4vNZEXsP`
+            );//revalidate tag
+            if (Number(resp.status) === 200) {
+                const dat = await resp.json()
+                const list = dat.near_earth_objects
+                const dates = Object.keys(list)
+                const arrObjects = Object.values(list)
+                Object.setPrototypeOf(arrObjects, parent);
+                console.log('zzzzzxxxxx', arrObjects.getCount())
+                await Promise.all(arrObjects[0].map(
+                    async (e) => {console.log('ffffffw',Object.getPrototypeOf(e))
+                        return new Li(e, dates[0])
+                    }
+                ));
 
-        } else {
-            console.log('NASA API error fetch status', resp.status)
-        }
+            } else {
+                console.log('NASA API error fetch status', resp.status)
+            }
         } catch (err) {
             console.log('NASA API error fetch status###########', err)
         }
