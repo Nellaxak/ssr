@@ -48,8 +48,10 @@ export default async function Home({ params }) {
                 const arrObjects = Object.values(list)
                 Object.setPrototypeOf(arrObjects, parent);
                 console.log('zzzzzxxxxx', arrObjects.getCount())
+                console.log('ffffffwget',Object.getPrototypeOf(arrObjects))
                 await Promise.all(arrObjects[0].map(
-                    async (e) => {console.log('ffffffw',Object.getPrototypeOf(e))
+                    async (e) => {
+                        console.log('ffffffw',Object.getPrototypeOf(e))
                         return new Li(e, dates[0])
                     }
                 ));
