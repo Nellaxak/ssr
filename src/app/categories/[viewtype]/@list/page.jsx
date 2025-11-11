@@ -53,7 +53,7 @@ export default async function Home({ params }) {
                     async (e) => {
                         Object.setPrototypeOf(e, li);
                         console.log('ffffffw', Object.getPrototypeOf(e))
-                        return new Li(e, dates[0])
+                        new Li(e, dates[0])
                     }
                 ));
 
