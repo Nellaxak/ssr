@@ -1,21 +1,8 @@
 'use server'
-import React, { createElement, Suspense } from "react";
-//import Button from "@/components/Button/page";
-//import LiItemLayout from "@/layouts/layout";
+import { createElement } from "react";
 import Link from 'next/link'
 import styles from "./page.module.css";
-//import { buttonClick } from "./actions/updateStatus";
-//import ListItem1 from "@/components/ListItem1/page";
-//import Form from 'next/form'
-//import FSM from "./finite-state-machines";
-//import LiItemLayout from "@/app/categories/[viewtype]/[page]/@list/layout";
-/*import Server from 'socket.io';
-
-Server.on('connection', (socket) => {
-  socket.on('output', async (data) => {
-    console.log('output', data)
-  })
-})*/
+//шаблон стратегия
 class Li {
   /*private date: any;
   private element_count: any;
