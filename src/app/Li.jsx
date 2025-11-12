@@ -120,7 +120,11 @@ class Li {
     //main
     if (par === 'main') {
       resd = Array.from(Li.arrResult.values())
-    } else {
+    }
+    if (par === 'marked') {
+      //resd = Array.from(Li.arrResult.values())
+    }
+    else {
       resd = Array.from(Li.arrResultMoon.values())
     }
     //moon

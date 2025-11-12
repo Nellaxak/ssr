@@ -15,6 +15,12 @@ export default function ParallelLayout({
   count: React.ReactNode,
   list: React.ReactNode
 }*/) {
+  /*<nav className={styles.rrrr}>
+          <Link href="/categories/marked" scroll={false}
+            className={styles.button}>
+            <span className={styles.padding}>Отправить</span>
+          </Link>
+        </nav>*/
   return (
     <div className={styles.column}>
       {list}
@@ -24,12 +30,6 @@ export default function ParallelLayout({
           <span className={styles.h3}>Корзина</span>
           <span className={styles.aster}>астероида</span>
         </div>
-        <nav className={styles.rrrr}>
-          <Link href="/types/marked" scroll={false}
-            className={styles.button}>
-            <span className={styles.padding}>Отправить</span>
-          </Link>
-        </nav>
       </footer>
     </div>
   )

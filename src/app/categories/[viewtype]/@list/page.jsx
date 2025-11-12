@@ -1,4 +1,7 @@
 import Li from "../../../Li";
+import Form from "next/form";
+import styles from "./page.module.css";
+
 let resp
 let resf
 let startDate
@@ -48,14 +51,14 @@ export default async function Home({ params }) {
                 const arrObjects = Object.values(list)
                 await Promise.all(arrObjects[0].map(
                     async (e) => {
-                        Object.setPrototypeOf(e, li);
-                        console.log('ffffffw', Object.getPrototypeOf(e))
+                        //Object.setPrototypeOf(e, li);
+                        //console.log('ffffffw', Object.getPrototypeOf(e))
                         new Li(e, dates[0])
                     }
                 ));
-                Object.setPrototypeOf(arrObjects, parent);
+                //Object.setPrototypeOf(arrObjects, parent);
                 //console.log('zzzzzxxxxx', arrObjects.getCount())
-                console.log('ffffffwget', Object.getPrototypeOf(arrObjects))
+                //console.log('ffffffwget', Object.getPrototypeOf(arrObjects))
             } else {
                 console.log('NASA API error fetch status', resp.status)
             }
