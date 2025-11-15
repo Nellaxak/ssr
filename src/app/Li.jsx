@@ -43,6 +43,7 @@ class Li {
     return Li.viewtype;
   }
   static async setViewtype(value) {
+    //console.log('setViewtype',value)
     Li.viewtype = value;
   }
   static async deleted(action, col) {

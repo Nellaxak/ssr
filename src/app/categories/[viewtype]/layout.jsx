@@ -10,7 +10,7 @@ export default function ParallelLayout({
   children,
   list,
   toggle,
-}/*: {
+  count,}/*: {
   children: React.ReactNode,
   count: React.ReactNode,
   list: React.ReactNode
@@ -20,6 +20,7 @@ export default function ParallelLayout({
       {toggle}
       {list}
       {children}
+      {count}
     </div>
   )
 }
