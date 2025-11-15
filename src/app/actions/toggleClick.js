@@ -5,6 +5,6 @@ import Li from '../Li';
 //import { method } from 'lodash';
 
 export async function toggleClick(formData) {
-    //console.log('toggleClick',formData.get('viewtype'))
+    console.log('toggleClick',formData)
     await Li.setViewtype(formData.get('viewtype'))
 }

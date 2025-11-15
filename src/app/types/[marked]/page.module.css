@@ -85,15 +85,15 @@
    }
  }*/
 
- .column {
+ /*.column {*/
    /*min-height: 100vh;*/
-   grid-area: g;
-   display: flex;
+   /*grid-area: g;
+   display: flex;*/
    /*flex: 1;*/
    /*calc(100vh-19px-);*/
-   flex-direction: column;
+   /*flex-direction: column;
    gap: 8px;
- }
+ }*/
 
  .footer {
    position: fixed;

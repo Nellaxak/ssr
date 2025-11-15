@@ -2,9 +2,9 @@ import { Suspense, createElement } from 'react'
 //import HeaderTop from '@/components/HeaderTop/page';
 import dynamic from 'next/dynamic'
 import ScrollComponent from '../components/ScrollComponent/page';
-//import ToggleComponent from '../components/Toggle/page';
-import { NavigationEvents } from '../components/NavigationsEvents/page';
-
+//import ToggleHeader from '../components/ToggleHeader/page';
+//import { NavigationEvents } from '../components/NavigationsEvents/page';
+import Link from 'next/link';
 //import Button from '@/components/Button/page';
 //import { buttonClick } from "@/app/actions/updateStatus";
 //import { getItemData } from "@/app/actions/getItemData";
@@ -37,6 +37,19 @@ export const metadata = {
 //<main>
 
 export default async function Layout(props) {
+  //<nav className={styles.labelWrapper} >
+  //console.log('rootLayout',params)//undef
+  /*<main className={styles.headerToggle}>
+            <nav>
+              <Link href="/categories/main" scroll={false}
+                className={styles.km}>в километрах</Link>
+              <span className={styles.space}>|</span>
+              <Link href="/categories/moon" scroll={false}
+                className={styles.moon}>в лунных орбитах</Link>
+              <Link href="/categories/marked" scroll={false}
+                className={styles.footer}>Отправить</Link>
+            </nav>
+          </main>*/
   return (
     <html lang="ru">
       <body>
@@ -53,9 +66,8 @@ export default async function Layout(props) {
             </div>
           </header>
           <div className={styles.hidden}>
-            <Image src={bigImage} alt="Earth" priority/>
+            <Image src={bigImage} alt="Earth" priority />
           </div>
-          <NavigationEvents />
           <Suspense fallback={<span className={'loader'}></span>}>
             {props.children}
           </Suspense>

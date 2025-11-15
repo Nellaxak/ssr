@@ -60,10 +60,10 @@ export default async function Home({ params }) {
                 //console.log('zzzzzxxxxx', arrObjects.getCount())
                 //console.log('ffffffwget', Object.getPrototypeOf(arrObjects))
             } else {
-                console.log('NASA API error fetch status', resp.status)
+                //console.log('NASA API error fetch status', resp.status)
             }
         } catch (err) {
-            console.log('NASA API error fetch status###########', err)
+            //console.log('NASA API error fetch status###########', err)
         }
     }
     resf = await Li.getList(viewtype)

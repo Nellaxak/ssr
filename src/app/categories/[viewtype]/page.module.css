@@ -121,12 +121,12 @@
    }
  }
 
- .column {
+/* .column {
    grid-area: g;
    display: flex;
    flex-direction: column;
    gap: 8px;
- }
+ }*/
 
  .header {
    font-family: 'Helvetica';

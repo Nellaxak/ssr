@@ -9,20 +9,15 @@ import styles from "./page.module.css";
 export default function ParallelLayout({
   children,
   list,
-  count,
+  toggle,
 }/*: {
   children: React.ReactNode,
   count: React.ReactNode,
   list: React.ReactNode
 }*/) {
-  /*<nav className={styles.rrrr}>
-          <Link href="/categories/marked" scroll={false}
-            className={styles.button}>
-            <span className={styles.padding}>Отправить</span>
-          </Link>
-        </nav>*/
   return (
     <div className={styles.column}>
+      {toggle}
       {list}
       {children}
     </div>
