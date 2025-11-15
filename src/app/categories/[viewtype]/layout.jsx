@@ -25,12 +25,6 @@ export default function ParallelLayout({
     <div className={styles.column}>
       {list}
       {children}
-      <footer className={styles.footer}>
-        <div className={styles.columnFooter}>
-          <span className={styles.h3}>Корзина</span>
-          <span className={styles.aster}>астероида</span>
-        </div>
-      </footer>
     </div>
   )
 }
