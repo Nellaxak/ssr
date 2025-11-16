@@ -27,8 +27,8 @@ class Li {
     Object.entries(obj).map(([key, value]) => this[key] = value);
     if (!Li.arrObj.get(Number(this.id))) {
       this.status = 0
-      this.form = [this.getName(), this.getButton('main'), this.getDiameter(), this.getHazardous(),this.getDistance()]
-      this.formMoon = [this.getName(), this.getButton('moon'), this.getDiameter(), this.getHazardous(),this.getDistance()]
+      this.form = [this.getName(), this.getButton('main'), this.getDiameter(), this.getHazardous(), this.getDistance()]
+      this.formMoon = [this.getName(), this.getButton('moon'), this.getDiameter(), this.getHazardous(), this.getDistance()]
       Li.arrObj.set(Number(this.id), this)
       this.result = createElement('li', { key: this.id, className: styles.li }, this.form)
       this.resultMoon = createElement('li', { key: this.id, className: styles.li }, this.formMoon)
@@ -74,9 +74,9 @@ class Li {
   }
   async getDistance() {
     if (Li.viewtype === 'main') {
-      return this.close_approach_data[0].miss_distance.kilometers
+      return <output>{this.close_approach_data[0].miss_distance.kilometers}</output>
     } else if (Li.viewtype === 'moon') {
-      return this.close_approach_data[0].miss_distance.lunar
+      return <output>{this.close_approach_data[0].miss_distance.lunar}</output>
     }
   }
   async getDiameter() {
@@ -128,8 +128,8 @@ class Li {
     return resss
   }
   async setForm() {
-    this.form = [await this.getName(), await this.getButton('main'), await getDiameter(), await this.getHazardous(),await this.getDistance()]
-    this.formMoon = [await this.getName(), await this.getButton('moon'), await getDiameter(), await this.getHazardous(),await this.getDistance()]
+    this.form = [await this.getName(), await this.getButton('main'), await this.getDiameter(), await this.getHazardous(), await this.getDistance()]
+    this.formMoon = [await this.getName(), await this.getButton('moon'), await this.getDiameter(), await this.getHazardous(), await this.getDistance()]
   }
   static async getList(par) {
     //console.log('getList', par)
