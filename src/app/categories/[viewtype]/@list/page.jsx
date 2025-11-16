@@ -24,12 +24,19 @@ async function CalcData() {
     })
     //return { startDate, endDate }
 }
+function* getLangs() {
+    yield Li.setViewtype(viewtype);
+    return Li.getList(viewtype);
+    //yield 'rust';
+}
 export default async function Home({ params }) {
     [startDate, endDate] = await CalcData()
     //console.log('cdfg',startDate, endDate)
     const promiseParams = await params
     const viewtype = promiseParams.viewtype
-    await Li.setViewtype(viewtype)
+    //await Li.setViewtype(viewtype)
+    const generator = getLangs()
+    generator.next(viewtype)
     const size = await Li.getSize()
     //promiseParams.params.then(async (data) => {
     if (viewtype === 'main' && size === 0) {
@@ -63,20 +70,20 @@ export default async function Home({ params }) {
     //Li.viewtype=viewtype
     //return data
     // }).then(async (data) => {
-    resf = await Li.getList(viewtype)
+    resf = generator.next(viewtype)//await Li.getList(viewtype)
     //return resf
     //})
     console.log('ggggzzz', size)
     //const resf = await Li.getList(viewtype)
     return <main>
-    {(viewtype !== 'marked') ? <div><h6 className={styles.h6}>Ближайшие подлёты астероидов</h6>
-      <nav>
-        <Link href="/categories/main" scroll={false}
-          className={(viewtype === 'main') ? 'km' : 'moon'}>в километрах</Link>
-        <span className={styles.space}>|</span>
-        <Link href="/categories/moon" scroll={false}
-          className={(viewtype === 'main') ? 'moon' : 'km'}>в лунных орбитах</Link>
-      </nav></div> :<h6 className={styles.h6}>Заказ отправлен!</h6>}
-      <ul>{resf}</ul>
-  </main>
+        {(viewtype !== 'marked') ? <div><h6 className={styles.h6}>Ближайшие подлёты астероидов</h6>
+            <nav>
+                <Link href="/categories/main" scroll={false}
+                    className={(viewtype === 'main') ? 'km' : 'moon'}>в километрах</Link>
+                <span className={styles.space}>|</span>
+                <Link href="/categories/moon" scroll={false}
+                    className={(viewtype === 'main') ? 'moon' : 'km'}>в лунных орбитах</Link>
+            </nav></div> : <h6 className={styles.h6}>Заказ отправлен!</h6>}
+        <ul>{resf}</ul>
+    </main>
 }
