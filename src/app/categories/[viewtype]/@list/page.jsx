@@ -52,7 +52,7 @@ export default async function Home({ params }) {
                 await Promise.all(arrObjects[0].map(
                     async (e) => {
                         //Object.setPrototypeOf(e, li);
-                        //console.log('ffffffw', Object.getPrototypeOf(e))
+                        console.log('ffffffw', e)
                         new Li(e, dates[0])
                     }
                 ));
