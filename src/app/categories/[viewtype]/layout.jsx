@@ -8,7 +8,7 @@ import styles from "./page.module.css";
 
 export default function ParallelLayout({
   children,
-  list,
+  list,toggle,
   }/*: {
   children: React.ReactNode,
   count: React.ReactNode,
@@ -16,6 +16,7 @@ export default function ParallelLayout({
 }*/) {
   return (
     <div className={styles.column}>
+      <Suspense>{toggle}</Suspense>
       <Suspense>{list}</Suspense>
       {children}
     </div>
