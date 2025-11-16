@@ -6,9 +6,10 @@ import Li from "../../../Li";
 /*export interface Count {
   count: number;
 }*/
-async function Page({ params }) {
+async function Page( params ) {
   const paramsPromise = await params
   const viewtype = paramsPromise.viewtype
+  console.log('paramsPromise',paramsPromise)
   await Li.setViewtype(viewtype)
   return <main>
     {(viewtype !== 'marked') ? <div><h6 className={styles.h6}>Ближайшие подлёты астероидов</h6>

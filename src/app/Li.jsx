@@ -134,17 +134,15 @@ class Li {
   static async getList(par) {
     //console.log('getList', par)
     let resd
-    //main
     if (par === 'main') {
-      resd =await  Array.fromAsync(Li.arrResult.values())
+      resd = await Array.fromAsync(Li.arrResult.values())
     }
-    if (par === 'marked') {
-      //resd = Array.from(Li.arrResult.values())
+    else if (par === 'moon') {
+      resd = await Array.fromAsync(Li.arrResultMoon.values())
     }
     else {
-      resd =await Array.fromAsync(Li.arrResultMoon.values())
+      resd = ''//await Array.fromAsync(Li.arrResultMoon.values())
     }
-    //moon
     return resd
     /*return new Promise(resolve =>
       resolve(Li.arrResult)

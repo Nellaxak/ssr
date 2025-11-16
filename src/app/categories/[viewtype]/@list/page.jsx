@@ -3,19 +3,9 @@ import Form from "next/form";
 import styles from "./page.module.css";
 
 let resp
-//let resf
 let startDate
 let endDate
-/*const parent = {
-    getCount() {
-        return 'bbbbb'
-    }
-};
-const li = {
-    getCount() {
-        return 'bbbbbqqqqqqqqqqq'
-    }
-}*/
+let resf
 async function CalcData() {
     let currentDate = new Date()
     currentDate.setDate(currentDate.getDate());//+1
@@ -34,39 +24,48 @@ async function CalcData() {
     })
     //return { startDate, endDate }
 }
-export default async function Home({ params }) {
+export default async function Home(params) {
     [startDate, endDate] = await CalcData()
     //console.log('cdfg',startDate, endDate)
     const promiseParams = await params
-    const viewtype = promiseParams.viewtype
+    //const viewtype = promiseParams.viewtype
     const size = await Li.getSize()
-    if (viewtype === 'main' && size === 0) {
-        try {
-            resp = await fetch(`https://api.nasa.gov/neo/rest/v1/feed?start_date=${startDate}&end_date=${endDate}&api_key=3wa5hHgFuqhf6XiefvqzkcDQWZ01aOOK4vNZEXsP`
-            );//revalidate tag
-            if (Number(resp.status) === 200) {
-                const dat = await resp.json()
-                const list = dat.near_earth_objects
-                const dates = Object.keys(list)
-                const arrObjects = Object.values(list)
-                await Promise.all(arrObjects[0].map(
-                    async (e) => {
-                        //Object.setPrototypeOf(e, li);
-                        console.log('ffffffw', e)
-                        new Li(e, dates[0])
-                    }
-                ));
-                //Object.setPrototypeOf(arrObjects, parent);
-                //console.log('zzzzzxxxxx', arrObjects.getCount())
-                //console.log('ffffffwget', Object.getPrototypeOf(arrObjects))
-            } else {
-                //console.log('NASA API error fetch status', resp.status)
+    promiseParams.params.then(async (data) => {
+        if (data.viewtype === 'main' && size === 0) {
+            try {
+                resp = await fetch(`https://api.nasa.gov/neo/rest/v1/feed?start_date=${startDate}&end_date=${endDate}&api_key=3wa5hHgFuqhf6XiefvqzkcDQWZ01aOOK4vNZEXsP`
+                );//revalidate tag
+                if (Number(resp.status) === 200) {
+                    const dat = await resp.json()
+                    const list = dat.near_earth_objects
+                    const dates = Object.keys(list)
+                    const arrObjects = Object.values(list)
+                    await Promise.all(arrObjects[0].map(
+                        async (e) => {
+                            //Object.setPrototypeOf(e, li);
+                            console.log('ffffffw', e)
+                            new Li(e, dates[0])
+                        }
+                    ));
+                    //Object.setPrototypeOf(arrObjects, parent);
+                    //console.log('zzzzzxxxxx', arrObjects.getCount())
+                    //console.log('ffffffwget', Object.getPrototypeOf(arrObjects))
+                } else {
+                    //console.log('NASA API error fetch status', resp.status)
+                }
+            } catch (err) {
+                //console.log('NASA API error fetch status###########', err)
             }
-        } catch (err) {
-            //console.log('NASA API error fetch status###########', err)
+            return data.viewtype
         }
-    }
-    console.log('ggggzzz',size)
-    const resf = await Li.getList(viewtype)
+    }).then(async (data) => {
+        await Li.setViewtype(data)
+        return data
+    }).then(async (data) => {
+        resf = await Li.getList(data)
+        return resf
+    })
+    console.log('ggggzzz', size, resf)
+    //const resf = await Li.getList(viewtype)
     return resf
 }
