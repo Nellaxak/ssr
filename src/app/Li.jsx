@@ -105,9 +105,9 @@ class Li {
   async getButton(par) {
     let status = await this.getStatus()
     //let viewtype1 = await Li.getViewtype()
-    let dfff //= 'main'
+    //let dfff //= 'main'
     //if (typeof par === "undefined") {
-    dfff = await Li.getViewtype()
+    //dfff = await Li.getViewtype()
     // } else {
     // dfff = par
     //}
@@ -116,7 +116,7 @@ class Li {
       key: this.id,
       className: styles.buttonItem,
       prefetch: false,
-      href: `/categories/${dfff}/click/${this.id}`,
+      href: `/categories/${Li.viewtype}/click/${this.id}`,
       scroll: false,
     }, <Suspense>{status}</Suspense>)
   }
