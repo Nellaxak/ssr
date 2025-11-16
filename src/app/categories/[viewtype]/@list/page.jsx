@@ -29,6 +29,7 @@ export default async function Home({ params }) {
     //console.log('cdfg',startDate, endDate)
     const promiseParams = await params
     const viewtype = promiseParams.viewtype
+    await Li.setViewtype(viewtype)
     const size = await Li.getSize()
     //promiseParams.params.then(async (data) => {
     if (viewtype === 'main' && size === 0) {
@@ -59,9 +60,7 @@ export default async function Home({ params }) {
         //return data.viewtype
     }
     //}).then(async (data) => {
-    //await Li.setViewtype(viewtype)
-
-    Li.viewtype=viewtype
+    //Li.viewtype=viewtype
     //return data
     // }).then(async (data) => {
     resf = await Li.getList(viewtype)
