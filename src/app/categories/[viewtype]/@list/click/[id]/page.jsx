@@ -11,7 +11,8 @@ export default async function Home({ params }) {
   const find = await Li.findById(paramsPromise.id)
   console.log('find', find)
   await find.setStatus()
-  await Li.setViewtype(viewtype)
+  //await Li.setViewtype(viewtype)
+  Li.viewtype = viewtype
   resd = await Li.getList(viewtype)
   return <main>
     {(viewtype !== 'marked') ? <div><h6 className={styles.h6}>Ближайшие подлёты астероидов</h6>

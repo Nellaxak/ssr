@@ -18,7 +18,7 @@ class Li {
   //static arrResultMoon = new Map();
   static arrObj = new Map();
   static count = 0;
-  static viewtype //= 'main'//async getter
+  static viewtype = 'main'//async getter
   //static hiddenElements = new Map();
   //static pageSizeItems = 15//for first load
   //static countFirstPageSize=0//add getter/setter
