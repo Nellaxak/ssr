@@ -67,7 +67,7 @@ export default async function Home({ params }) {
     //})
     console.log('ggggzzz', size)
     //const resf = await Li.getList(viewtype)
-    return <main>
+    return resf/*<main>
     {(viewtype !== 'marked') ? <div><h6 className={styles.h6}>Ближайшие подлёты астероидов</h6>
       <nav>
         <Link href="/categories/main" scroll={false}
@@ -77,5 +77,5 @@ export default async function Home({ params }) {
           className={(viewtype === 'main') ? 'moon' : 'km'}>в лунных орбитах</Link>
       </nav></div> :<h6 className={styles.h6}>Заказ отправлен!</h6>}
       <ul>{resf}</ul>
-  </main>
+  </main>*/
 }
