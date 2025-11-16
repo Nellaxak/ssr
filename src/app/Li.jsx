@@ -27,8 +27,8 @@ class Li {
     Object.entries(obj).map(([key, value]) => this[key] = value);
     if (!Li.arrObj.get(Number(this.id))) {
       this.status = 0
-      this.form = [this.getName(), this.getButton('main')]
-      this.formMoon = [this.getName(), this.getButton('moon')]
+      this.form = [this.getName(), this.getButton('main'),this.getDiameter()]
+      this.formMoon = [this.getName(), this.getButton('moon'),this.getDiameter()]
       Li.arrObj.set(Number(this.id), this)
       this.result = createElement('li', { key: this.id, className: styles.li }, this.form)
       this.resultMoon = createElement('li', { key: this.id, className: styles.li }, this.formMoon)
@@ -72,6 +72,12 @@ class Li {
       href: `/itemDetail/${this.id}`,
     }, this.name)
   }
+  async getDiameter() {
+    return this.absolute_magnitude_h
+  }
+  async getEstimatedDiameter() {
+    return this.estimated_diameter
+  }
   async getStatus() {
     //change css
     if (this.status) {
@@ -112,8 +118,8 @@ class Li {
     return resss
   }
   async setForm() {
-    this.form = [await this.getName(), await this.getButton('main')]
-    this.formMoon = [await this.getName(), await this.getButton('moon')]
+    this.form = [await this.getName(), await this.getButton('main'),await getDiameter()]
+    this.formMoon = [await this.getName(), await this.getButton('moon'),await getDiameter()]
   }
   static async getList(par) {
     //console.log('getList', par)
