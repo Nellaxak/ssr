@@ -36,7 +36,7 @@ export default async function Home({ params }) {
     const viewtype = promiseParams.viewtype
     //await Li.setViewtype(viewtype)
     const generator = getLangs(viewtype)
-    console.log('step1',generator.next())
+    console.log('step1',await generator.next())
     const size = await Li.getSize()
     //promiseParams.params.then(async (data) => {
     if (viewtype === 'main' && size === 0) {
