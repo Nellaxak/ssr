@@ -1,5 +1,7 @@
 import Li from '../../../../../Li'
 import Link from 'next/link'
+import styles from "./page.module.css";
+
 export default async function Home({ params }) {
   let resd
   const paramsPromise = await params
