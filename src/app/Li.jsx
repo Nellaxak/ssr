@@ -1,5 +1,5 @@
 'use server'
-import { createElement,Suspense } from "react";
+import { createElement, Suspense } from "react";
 import Link from 'next/link'
 import styles from "./page.module.css";
 //шаблон стратегия
@@ -15,7 +15,7 @@ class Li {
   private text: any;
   private form: any;*/
   static arrResult = new Map();
-  static arrResultMoon = new Map();
+  //static arrResultMoon = new Map();
   static arrObj = new Map();
   static count = 0;
   static viewtype = 'main'//async getter
@@ -27,13 +27,13 @@ class Li {
     Object.entries(obj).map(([key, value]) => this[key] = value);
     if (!Li.arrObj.get(Number(this.id))) {
       this.status = 0
-      this.form = [this.getName(), this.getButton('main'), this.getDiameter(), this.getHazardous(), this.getDistance()]
-      this.formMoon = [this.getName(), this.getButton('moon'), this.getDiameter(), this.getHazardous(), this.getDistance()]
+      this.form = [this.getName(), this.getButton(), this.getDiameter(), this.getHazardous(), this.getDistance()]
+      //this.formMoon = [this.getName(), this.getButton('moon'), this.getDiameter(), this.getHazardous(), this.getDistance()]
       Li.arrObj.set(Number(this.id), this)
       this.result = createElement('li', { key: this.id, className: styles.li }, this.form)
-      this.resultMoon = createElement('li', { key: this.id, className: styles.li }, this.formMoon)
+      //this.resultMoon = createElement('li', { key: this.id, className: styles.li }, this.formMoon)
       Li.arrResult.set(Number(this.id), this.result)
-      Li.arrResultMoon.set(Number(this.id), this.resultMoon)
+      //Li.arrResultMoon.set(Number(this.id), this.resultMoon)
     }
   }
   static async getSize() {
@@ -76,10 +76,10 @@ class Li {
     if (Li.viewtype === 'main') {
       return <output><Suspense>
         {this.close_approach_data[0].miss_distance.kilometers}
-        </Suspense></output>
+      </Suspense></output>
     } else if (Li.viewtype === 'moon') {
       return <output><Suspense>{this.close_approach_data[0].miss_distance.lunar}</Suspense>
-        </output>
+      </output>
     }
   }
   async getDiameter() {
@@ -92,7 +92,7 @@ class Li {
     return this.is_potentially_hazardous_asteroid
   }
   async getStatus() {
-    console.log('getStatus',this.id,this.status)
+    console.log('getStatus', this.id, this.status)
     //change css
     if (this.status) {
       //await setCount(1)
@@ -106,11 +106,11 @@ class Li {
     let status = await this.getStatus()
     //let viewtype1 = await Li.getViewtype()
     let dfff = 'main'
-    if (typeof par === "undefined") {
-      dfff = await Li.getViewtype()
-    } else {
-      dfff = par
-    }
+    //if (typeof par === "undefined") {
+    dfff = await Li.getViewtype()
+    // } else {
+    // dfff = par
+    //}
     //console.log('getter viewtype', viewtype1)
     return createElement(Link, {
       key: this.id,
@@ -132,21 +132,21 @@ class Li {
     return resss
   }
   async setForm() {
-    this.form = [await this.getName(), await this.getButton('main'), await this.getDiameter(), await this.getHazardous(), await this.getDistance()]
-    this.formMoon = [await this.getName(), await this.getButton('moon'), await this.getDiameter(), await this.getHazardous(), await this.getDistance()]
+    this.form = [await this.getName(), await this.getButton(), await this.getDiameter(), await this.getHazardous(), await this.getDistance()]
+    //this.formMoon = [await this.getName(), await this.getButton('moon'), await this.getDiameter(), await this.getHazardous(), await this.getDistance()]
   }
   static async getList(par) {
     //console.log('getList', par)
     let resd
-    if (par === 'main') {
+    //if (par === 'main') {
       resd = await Array.fromAsync(Li.arrResult.values())
-    }
-    else if (par === 'moon') {
-      resd = await Array.fromAsync(Li.arrResultMoon.values())
-    }
-    else {
-      resd = ''
-    }
+    //}
+    //else if (par === 'moon') {
+      //resd = await Array.fromAsync(Li.arrResultMoon.values())
+    //}
+    //else {
+      //resd = ''
+    //}
     return resd
     /*return new Promise(resolve =>
       resolve(Li.arrResult)
@@ -156,9 +156,9 @@ class Li {
     this.status = Number(!this.status);//Number(!Boolean(oldStatus))
     await this.setForm()
     this.result = createElement('li', { key: this.id, className: styles.li }, this.form)
-    this.resultMoon = createElement('li', { key: this.id, className: styles.li }, this.formMoon)//formMoon
+    //this.resultMoon = createElement('li', { key: this.id, className: styles.li }, this.formMoon)//formMoon
     Li.arrResult.set(Number(this.id), this.result)
-    Li.arrResultMoon.set(Number(this.id), this.resultMoon)
+    //Li.arrResultMoon.set(Number(this.id), this.resultMoon)
   }
 }
 export default Li
