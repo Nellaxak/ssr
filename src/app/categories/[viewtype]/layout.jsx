@@ -9,18 +9,15 @@ import styles from "./page.module.css";
 export default function ParallelLayout({
   children,
   list,
-  toggle,
-  count,}/*: {
+  }/*: {
   children: React.ReactNode,
   count: React.ReactNode,
   list: React.ReactNode
 }*/) {
   return (
     <div className={styles.column}>
-      {toggle}
       {list}
       {children}
-      {count}
     </div>
   )
 }
