@@ -3,10 +3,10 @@ import Form from "next/form";
 import styles from "./page.module.css";
 
 let resp
-let resf
+//let resf
 let startDate
 let endDate
-const parent = {
+/*const parent = {
     getCount() {
         return 'bbbbb'
     }
@@ -15,7 +15,7 @@ const li = {
     getCount() {
         return 'bbbbbqqqqqqqqqqq'
     }
-}
+}*/
 async function CalcData() {
     let currentDate = new Date()
     currentDate.setDate(currentDate.getDate());//+1
@@ -66,7 +66,7 @@ export default async function Home({ params }) {
             //console.log('NASA API error fetch status###########', err)
         }
     }
-    console.log('ggggzzz',await Li.getSize())
-    resf = await Li.getList(viewtype)
+    console.log('ggggzzz',size)
+    const resf = await Li.getList(viewtype)
     return resf
 }
