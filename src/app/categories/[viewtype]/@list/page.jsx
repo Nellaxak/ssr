@@ -73,7 +73,7 @@ export default async function Home({ params }) {
     resf = generator.next()//await Li.getList(viewtype)
     //return resf
     //})
-    console.log('ggggzzz', size)
+    console.log('ggggzzz', size,resf)
     //const resf = await Li.getList(viewtype)
     return <main>
         {(viewtype !== 'marked') ? <div><h6 className={styles.h6}>Ближайшие подлёты астероидов</h6>
