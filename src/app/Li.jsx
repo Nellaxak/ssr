@@ -136,13 +136,13 @@ class Li {
     let resd
     //main
     if (par === 'main') {
-      resd = Array.from(Li.arrResult.values())
+      resd =await  Array.fromAsync(Li.arrResult.values())
     }
     if (par === 'marked') {
       //resd = Array.from(Li.arrResult.values())
     }
     else {
-      resd = Array.from(Li.arrResultMoon.values())
+      resd =await Array.fromAsync(Li.arrResultMoon.values())
     }
     //moon
     return resd
