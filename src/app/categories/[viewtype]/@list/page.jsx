@@ -34,9 +34,9 @@ export default async function Home({ params }) {
     //console.log('cdfg',startDate, endDate)
     const promiseParams = await params
     const viewtype = promiseParams.viewtype
-    //await Li.setViewtype(viewtype)
-    const generator = getLangs(viewtype)
-    console.log('step1',await generator.next())
+    await Li.setViewtype(viewtype)
+    //const generator = getLangs(viewtype)
+    //console.log('step1',generator.next())
     const size = await Li.getSize()
     //promiseParams.params.then(async (data) => {
     if (viewtype === 'main' && size === 0) {
@@ -70,11 +70,11 @@ export default async function Home({ params }) {
     //Li.viewtype=viewtype
     //return data
     // }).then(async (data) => {
-    resf = generator.next().value//await Li.getList(viewtype)
+    //resf = generator.next().value//await Li.getList(viewtype)
     //return resf
     //})
-    console.log('ggggzzz', size,resf)
-    //const resf = await Li.getList(viewtype)
+    console.log('ggggzzz', size)
+    const resf = await Li.getList(viewtype)
     return <main>
         {(viewtype !== 'marked') ? <div><h6 className={styles.h6}>Ближайшие подлёты астероидов</h6>
             <nav>

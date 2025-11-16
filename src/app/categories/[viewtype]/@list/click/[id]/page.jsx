@@ -6,7 +6,7 @@ export default async function Home({ params }) {
   let resd
   const paramsPromise = await params
   const viewtype = paramsPromise.viewtype
-  await Li.setViewtype(viewtype)
+  //await Li.setViewtype(viewtype)
   //console.log('page list item status interceptor', paramsPromise)
   //const items = await http<Item[]>(`http://localhost:3456/${viewtype}`) as Item[];
   const find = await Li.findById(paramsPromise.id)
@@ -14,6 +14,7 @@ export default async function Home({ params }) {
   await find.setStatus()
   //Li.viewtype = viewtype
   resd = await Li.getList(viewtype)
+  //  <ul>{resd}</ul>
   return <main>
     {(viewtype !== 'marked') ? <div><h6 className={styles.h6}>Ближайшие подлёты астероидов</h6>
       <nav>
@@ -23,6 +24,5 @@ export default async function Home({ params }) {
         <Link href="/categories/moon" scroll={false}
           className={(viewtype === 'main') ? 'moon' : 'km'}>в лунных орбитах</Link>
       </nav></div> : <h6 className={styles.h6}>Заказ отправлен!</h6>}
-    <ul>{resd}</ul>
   </main>
 }
