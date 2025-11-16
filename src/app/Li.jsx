@@ -74,9 +74,12 @@ class Li {
   }
   async getDistance() {
     if (Li.viewtype === 'main') {
-      return <output>{this.close_approach_data[0].miss_distance.kilometers}</output>
+      return <output><Suspense>
+        {this.close_approach_data[0].miss_distance.kilometers}
+        </Suspense></output>
     } else if (Li.viewtype === 'moon') {
-      return <output>{this.close_approach_data[0].miss_distance.lunar}</output>
+      return <output><Suspense>{this.close_approach_data[0].miss_distance.lunar}</Suspense>
+        </output>
     }
   }
   async getDiameter() {
