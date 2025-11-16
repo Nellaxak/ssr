@@ -12,7 +12,7 @@ export default async function Home({ params }) {
   console.log('find',find)
   await find.setStatus()
   resd = await Li.getList(viewtype)
-  return resd/*<main>
+  return <main>
     {(viewtype !== 'marked') ? <div><h6 className={styles.h6}>Ближайшие подлёты астероидов</h6>
       <nav>
         <Link href="/categories/main" scroll={false}
@@ -22,5 +22,5 @@ export default async function Home({ params }) {
           className={(viewtype === 'main') ? 'moon' : 'km'}>в лунных орбитах</Link>
       </nav></div> :<h6 className={styles.h6}>Заказ отправлен!</h6>}
       <ul>{resd}</ul>
-  </main>*/
+  </main>
 }
