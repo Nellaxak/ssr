@@ -66,6 +66,7 @@ export default async function Home({ params }) {
             //console.log('NASA API error fetch status###########', err)
         }
     }
+    console.log('ggggzzz',await Li.getSize())
     resf = await Li.getList(viewtype)
     return resf
 }
