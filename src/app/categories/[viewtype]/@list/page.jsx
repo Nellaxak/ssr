@@ -25,9 +25,9 @@ async function CalcData() {
     //return { startDate, endDate }
 }
 function* getLangs(viewtype) {
+    console.log('genn',viewtype)
     yield Li.setViewtype(viewtype);
     return Li.getList(viewtype);
-    //yield 'rust';
 }
 export default async function Home({ params }) {
     [startDate, endDate] = await CalcData()
