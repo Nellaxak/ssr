@@ -24,7 +24,7 @@ async function CalcData() {
     })
     //return { startDate, endDate }
 }
-function* getLangs() {
+function* getLangs(viewtype) {
     yield Li.setViewtype(viewtype);
     return Li.getList(viewtype);
     //yield 'rust';
@@ -35,8 +35,8 @@ export default async function Home({ params }) {
     const promiseParams = await params
     const viewtype = promiseParams.viewtype
     //await Li.setViewtype(viewtype)
-    const generator = getLangs()
-    generator.next(viewtype)
+    const generator = getLangs(viewtype)
+    generator.next()
     const size = await Li.getSize()
     //promiseParams.params.then(async (data) => {
     if (viewtype === 'main' && size === 0) {
@@ -70,7 +70,7 @@ export default async function Home({ params }) {
     //Li.viewtype=viewtype
     //return data
     // }).then(async (data) => {
-    resf = generator.next(viewtype)//await Li.getList(viewtype)
+    resf = generator.next()//await Li.getList(viewtype)
     //return resf
     //})
     console.log('ggggzzz', size)
