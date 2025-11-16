@@ -1,5 +1,5 @@
 'use server'
-import { createElement } from "react";
+import { createElement,Suspense } from "react";
 import Link from 'next/link'
 import styles from "./page.module.css";
 //шаблон стратегия
@@ -114,7 +114,7 @@ class Li {
       prefetch: false,
       href: `/categories/${dfff}/click/${this.id}`,
       scroll: false,
-    }, status)
+    }, <Suspense>{status}</Suspense>)
   }
   /*async getDate() {
     return createElement('span', { key: 'date' }, this.date)
@@ -141,7 +141,7 @@ class Li {
       resd = await Array.fromAsync(Li.arrResultMoon.values())
     }
     else {
-      resd = ''//await Array.fromAsync(Li.arrResultMoon.values())
+      resd = ''
     }
     return resd
     /*return new Promise(resolve =>
