@@ -76,7 +76,7 @@ export default async function Home({ params }) {
     const ersdf=resf.value
     //return resf
     //})
-    console.log('ggggzzz', size,ersdf)
+    console.log('ggggzzz', size)
     //const resf = await Li.getList(viewtype)
     return <main>
         {(viewtype !== 'marked') ? <div><h6 className={styles.h6}>Ближайшие подлёты астероидов</h6>

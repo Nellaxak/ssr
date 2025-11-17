@@ -145,7 +145,7 @@ class Li {
     //this.formMoon = [await this.getName(), await this.getButton('moon'), await this.getDiameter(), await this.getHazardous(), await this.getDistance()]
   }
   static async getList(par) {
-    //console.log('getList', par)
+    console.log('getList', Li.viewtype)
     let resd
     //if (par === 'main') {
     resd = await Array.fromAsync(Li.arrResult.values())
