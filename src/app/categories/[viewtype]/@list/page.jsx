@@ -26,15 +26,15 @@ async function CalcData() {
 }
 async function* getLangs(viewtype) {
     console.log('genn',viewtype)
-    yield await Li.setViewtype(viewtype);
-    return await Li.getList(viewtype);
+    yield Li.setViewtype(viewtype);
+    return Li.getList(viewtype);
 }
 export default async function Home({ params }) {
     [startDate, endDate] = await CalcData()
     //console.log('cdfg',startDate, endDate)
     const promiseParams = await params
     const viewtype = promiseParams.viewtype
-    await Li.setViewtype(viewtype)
+    //await Li.setViewtype(viewtype)
     //Li.viewtype=viewtype
     const generator = getLangs(viewtype)
     console.log('step1',generator.next())
@@ -75,7 +75,7 @@ export default async function Home({ params }) {
     //return resf
     //})
     console.log('ggggzzz', size,resf)
-    const resf = await Li.getList(viewtype)
+    //const resf = await Li.getList(viewtype)
     return <main>
         {(viewtype !== 'marked') ? <div><h6 className={styles.h6}>Ближайшие подлёты астероидов</h6>
             <nav>
