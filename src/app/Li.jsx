@@ -27,7 +27,7 @@ class Li {
     Object.entries(obj).map(([key, value]) => this[key] = value);
     if (!Li.arrObj.get(Number(this.id))) {
       this.status = 0
-      this.form = [this.getName(), this.getButton(), this.getDiameter(), this.getHazardous(), this.getDistance()]
+      this.form = [this.getName(), this.getButton('main'), this.getDiameter(), this.getHazardous(), this.getDistance()]
       this.formMoon = [this.getName(), this.getButton('moon'), this.getDiameter(), this.getHazardous(), this.getDistance()]
       Li.arrObj.set(Number(this.id), this)
       this.result = createElement('li', { key: this.id, className: styles.li }, this.form)
@@ -117,7 +117,7 @@ class Li {
       key: this.id,
       className: styles.buttonItem,
       prefetch: false,
-      href: `/categories/${Li.viewtype}/click/${this.id}`,
+      href: `/categories/${par}/click/${this.id}`,
       scroll: false,
     }, <Suspense>{status}</Suspense>)
   }
@@ -133,7 +133,7 @@ class Li {
     return resss
   }
   async setForm() {
-    this.form = [await this.getName(), await this.getButton(), await this.getDiameter(), await this.getHazardous(), await this.getDistance()]
+    this.form = [await this.getName(), await this.getButton('main'), await this.getDiameter(), await this.getHazardous(), await this.getDistance()]
     this.formMoon = [await this.getName(), await this.getButton('moon'), await this.getDiameter(), await this.getHazardous(), await this.getDistance()]
   }
   static async getList(par) {
