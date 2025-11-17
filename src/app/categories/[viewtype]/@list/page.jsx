@@ -72,7 +72,7 @@ export default async function Home({ params }) {
     //Li.viewtype=viewtype
     //return data
     // }).then(async (data) => {
-    resf = await generator.next().value//await Li.getList(viewtype)
+    resf = await generator.next()//await Li.getList(viewtype)
     const ersdf=resf.value
     //return resf
     //})
