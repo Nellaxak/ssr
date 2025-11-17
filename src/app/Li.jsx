@@ -136,13 +136,13 @@ class Li {
     this.form = [await this.getName(), await this.getButton(), await this.getDiameter(), await this.getHazardous(), await this.getDistance()]
     this.formMoon = [await this.getName(), await this.getButton('moon'), await this.getDiameter(), await this.getHazardous(), await this.getDistance()]
   }
-  static async getList() {
-    console.log('getList', Li.viewtype)
+  static async getList(par) {
+    console.log('getList', par)
     let resd
-    if (Li.viewtype === 'main') {
+    if (par === 'main') {
       resd = await Array.fromAsync(Li.arrResult.values())
     }
-    else if (Li.viewtype === 'moon') {
+    else if (par === 'moon') {
       resd = await Array.fromAsync(Li.arrResultMoon.values())
     }
     //else {
