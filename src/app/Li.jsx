@@ -48,6 +48,7 @@ class Li {
     return Li.arrObj.size
   }
   static async getViewtype() {
+    console.log('getViewtype',Li.viewtype)
     return Li.viewtype;
   }
   static async setViewtype(value) {
