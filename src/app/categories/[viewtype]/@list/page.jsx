@@ -72,10 +72,11 @@ export default async function Home({ params }) {
     //Li.viewtype=viewtype
     //return data
     // }).then(async (data) => {
-    resf = await generator.next()//.value//await Li.getList(viewtype)
+    resf = await generator.next().value//await Li.getList(viewtype)
+    const ersdf=resf.value
     //return resf
     //})
-    console.log('ggggzzz', size,resf)
+    console.log('ggggzzz', size,ersdf)
     //const resf = await Li.getList(viewtype)
     return <main>
         {(viewtype !== 'marked') ? <div><h6 className={styles.h6}>Ближайшие подлёты астероидов</h6>
@@ -86,6 +87,6 @@ export default async function Home({ params }) {
                 <Link href="/categories/moon" scroll={false}
                     className={(viewtype === 'main') ? 'moon' : 'km'}>в лунных орбитах</Link>
             </nav></div> : <h6 className={styles.h6}>Заказ отправлен!</h6>}
-        <ul>{resf}</ul>
+        <ul>{ersdf}</ul>
     </main>
 }
