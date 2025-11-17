@@ -6,7 +6,7 @@ export default async function Home({ params }) {
   let resd
   const paramsPromise = await params
   const viewtype = paramsPromise.viewtype
-  await Li.setViewtype(viewtype)
+  //await Li.setViewtype(viewtype)
   //console.log('page list item status interceptor', paramsPromise)
   //const items = await http<Item[]>(`http://localhost:3456/${viewtype}`) as Item[];
   const find = await Li.findById(paramsPromise.id)

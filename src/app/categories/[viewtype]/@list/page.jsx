@@ -37,8 +37,8 @@ export default async function Home({ params }) {
     const viewtype = promiseParams.viewtype
     //await Li.setViewtype(viewtype)
     //Li.viewtype=viewtype
-    const generator = getLangs(viewtype)
-    console.log('step1', await generator.next())
+    //const generator = getLangs(viewtype)
+    //console.log('step1', await generator.next())
     const size = await Li.getSize()
     //promiseParams.params.then(async (data) => {
     if (viewtype === 'main' && size === 0) {
@@ -72,12 +72,12 @@ export default async function Home({ params }) {
     //Li.viewtype=viewtype
     //return data
     // }).then(async (data) => {
-    resf = await generator.next()
-    const ersdf = resf.value
+    //resf = await generator.next()
+    //const ersdf = resf.value
     //return resf
     //})
     console.log('ggggzzz', size)
-    //const resf = await Li.getList(viewtype)
+    const resf = await Li.getList(viewtype)
     return <main>
         {(viewtype !== 'marked') ? <div><h6 className={styles.h6}>Ближайшие подлёты астероидов</h6>
             <nav>
@@ -87,6 +87,6 @@ export default async function Home({ params }) {
                 <Link href="/categories/moon" scroll={false}
                     className={(viewtype === 'main') ? 'moon' : 'km'}>в лунных орбитах</Link>
             </nav></div> : <h6 className={styles.h6}>Заказ отправлен!</h6>}
-        <ul>{ersdf}</ul>
+        <ul>{resf}</ul>
     </main>
 }
