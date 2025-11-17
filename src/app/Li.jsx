@@ -145,9 +145,9 @@ class Li {
     else if (par === 'moon') {
       resd = await Array.fromAsync(Li.arrResultMoon.values())
     }
-    //else {
+    else {console.log('get list undef')
     //resd = ''
-    //}
+    }
     return resd
     /*return new Promise(resolve =>
       resolve(Li.arrResult)
