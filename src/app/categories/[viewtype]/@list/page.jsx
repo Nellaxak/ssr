@@ -34,7 +34,8 @@ export default async function Home({ params }) {
     //console.log('cdfg',startDate, endDate)
     const promiseParams = await params
     const viewtype = promiseParams.viewtype
-    await Li.setViewtype(viewtype)
+    //await Li.setViewtype(viewtype)
+    Li.viewtype=viewtype
     //const generator = getLangs(viewtype)
     //console.log('step1',generator.next())
     const size = await Li.getSize()

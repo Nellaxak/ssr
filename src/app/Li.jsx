@@ -36,6 +36,10 @@ class Li {
       //Li.arrResultMoon.set(Number(this.id), this.resultMoon)
     }
   }
+  static set viewtype(v){
+    console.log('setter vvvv',v)
+    viewtype=v
+  }
   static async getSize() {
     return Li.arrObj.size
   }
