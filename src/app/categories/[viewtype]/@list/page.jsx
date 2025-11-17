@@ -28,7 +28,7 @@ async function* getLangs(viewtype) {
     console.log('genn',viewtype)
     await Li.setViewtype(viewtype);
     yield await Li.getViewtype();
-    return await Li.getList(viewtype);
+    yield await Li.getList();
 }
 export default async function Home({ params }) {
     [startDate, endDate] = await CalcData()
