@@ -25,7 +25,7 @@ async function CalcData() {
     //return { startDate, endDate }
 }
 async function* getLangs(viewtype) {
-    console.log('genn',viewtype)
+    console.log('genn', viewtype)
     await Li.setViewtype(viewtype);
     yield await Li.getViewtype();
     yield await Li.getList();
@@ -38,7 +38,7 @@ export default async function Home({ params }) {
     //await Li.setViewtype(viewtype)
     //Li.viewtype=viewtype
     const generator = getLangs(viewtype)
-    console.log('step1',await generator.next())
+    console.log('step1', await generator.next())
     const size = await Li.getSize()
     //promiseParams.params.then(async (data) => {
     if (viewtype === 'main' && size === 0) {
@@ -72,8 +72,8 @@ export default async function Home({ params }) {
     //Li.viewtype=viewtype
     //return data
     // }).then(async (data) => {
-    resf = await generator.next()//await Li.getList(viewtype)
-    const ersdf=resf.value
+    resf = await generator.next()
+    const ersdf = resf.value
     //return resf
     //})
     console.log('ggggzzz', size)
