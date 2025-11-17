@@ -101,7 +101,7 @@ class Li {
     return this.is_potentially_hazardous_asteroid
   }
   async getStatus() {
-    console.log('getStatus', this.id, this.status)
+   // console.log('getStatus', this.id, this.status)
     //change css
     if (this.status) {
       //await setCount(1)

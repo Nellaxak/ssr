@@ -53,7 +53,7 @@ export default async function Home({ params }) {
                 await Promise.all(arrObjects[0].map(
                     async (e) => {
                         //Object.setPrototypeOf(e, li);
-                        console.log('ffffffw', e)
+                        //console.log('ffffffw', e)
                         new Li(e, dates[0])
                     }
                 ));
@@ -72,7 +72,7 @@ export default async function Home({ params }) {
     //Li.viewtype=viewtype
     //return data
     // }).then(async (data) => {
-    resf = await generator.next().value//await Li.getList(viewtype)
+    resf = await generator.next()//.value//await Li.getList(viewtype)
     //return resf
     //})
     console.log('ggggzzz', size,resf)
