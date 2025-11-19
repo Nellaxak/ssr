@@ -27,7 +27,7 @@ async function CalcData() {
     })
     //return { startDate, endDate }
 }
-function List({ items, renderItem }) {
+async function List({ items, renderItem }) {
     //const [selectedIndex, setSelectedIndex] = useState(0);
     //console.log('renderItem', renderItem)
     return (
@@ -38,7 +38,7 @@ function List({ items, renderItem }) {
             })}</ul>)
 }
 
-function Row(props) {
+async function Row(props) {
     //console.log('Row', props)
     /*<Form action={toggleClick}>
             <input type='number' name='id' defaultValue={props.obj.id} hidden />
@@ -80,7 +80,7 @@ export default async function Home({ params }) {
         const dates = Object.keys(list)
         const arrObjects = Object.values(list)
         return <List items={arrObjects[0]}
-            renderItem={(product) => {
+            renderItem={async (product) => {
                 //updated status
                 if (statusMap.get(product.id) !== 1) {
                     statusMap.set(product.id, 0)
