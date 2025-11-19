@@ -50,7 +50,7 @@ function Row(props) {
         <span>{props.obj.id}</span>
         <span>{props.obj.absolute_magnitude_h}</span>
         <output>{props.obj.close_approach_data[0].miss_distance.kilometers}</output>
-        <span>{props.obj.is_potentially_hazardous_asteroid}</span>
+        <span>{String(props.obj.is_potentially_hazardous_asteroid)}</span>
     </li>
 }
 export default async function Home({ params }) {
@@ -66,13 +66,6 @@ export default async function Home({ params }) {
         const list = dat.near_earth_objects
         const dates = Object.keys(list)
         const arrObjects = Object.values(list)
-        //arrObjects[0].map(
-        //  async (e) => {
-        //Object.setPrototypeOf(e, li);
-        //console.log('ffffffw', e)
-        //new Li(e, dates[0])
-        //}
-        //);
         return <List items={arrObjects[0]}
             renderItem={(product) =>
                 <Row
