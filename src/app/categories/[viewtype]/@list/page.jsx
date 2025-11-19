@@ -32,9 +32,9 @@ async function List({ items, renderItem }) {
     //console.log('renderItem', renderItem)
     return (
         <ul className="List">
-            {items.map((item, index) => {
+            {items.map(async (item, index) => {
                 //const isHighlighted = index === selectedIndex;
-                return renderItem(item);
+                return await renderItem(item);
             })}</ul>)
 }
 
