@@ -2,7 +2,7 @@ import Li from "../../../Li";
 import Form from "next/form";
 import styles from "./page.module.css";
 import React from "react";
-import toggleClick from '../../../actions/toggleClick'
+import {toggleClick} from '../../../actions/toggleClick'
 
 let resp
 let startDate
