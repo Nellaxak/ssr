@@ -6,17 +6,20 @@ import React, { createElement,Suspense} from "react";
 import styles from "./page.module.css";
 //const inter = Inter({ subsets: ['latin'] })
 
-export default function ParallelLayout({
-  children,
-  list,toggle,
+export default async function ParallelLayout({
+  children,params,
+  list//,toggle,
   }/*: {
   children: React.ReactNode,
   count: React.ReactNode,
   list: React.ReactNode
 }*/) {
+  const paramsPromise = await params
+  const viewtype = paramsPromise.viewtype
+  console.log('layout viewtype',viewtype)
+  //<Suspense>{toggle}</Suspense>
   return (
     <div className={styles.column}>
-      <Suspense>{toggle}</Suspense>
       <Suspense>{list}</Suspense>
       {children}
     </div>
