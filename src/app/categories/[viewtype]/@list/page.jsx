@@ -62,7 +62,7 @@ function Row(props) {
             className={styles.buttonItem}
             prefetch={false}
             href={`/categories/${props.viewtype}/click/${props.obj.id}`}
-            scroll={false}>{status}</Link>
+            scroll={false}>{String(status)}</Link>
     </li>
 }
 export default async function Home({ params }) {
