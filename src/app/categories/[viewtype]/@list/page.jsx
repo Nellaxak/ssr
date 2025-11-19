@@ -50,7 +50,11 @@ function Row(props) {
         <span>{props.obj.name}</span>
         <span>{props.obj.id}</span>
         <span>{props.obj.absolute_magnitude_h}</span>
-        <output>{props.obj.close_approach_data[0].miss_distance.kilometers}</output>
+        <output>
+            {(props.viewtype === 'main') ?
+                props.obj.close_approach_data[0].miss_distance.kilometers :
+                props.obj.close_approach_data[0].miss_distance.lunar
+            }</output>
         <span>{String(props.obj.is_potentially_hazardous_asteroid)}</span>
         <Link key={props.obj.id}
             className={styles.buttonItem}
@@ -65,7 +69,8 @@ export default async function Home({ params }) {
     const viewtype = promiseParams.viewtype
 
     //try {
-    resp = await fetch(`https://api.nasa.gov/neo/rest/v1/feed?start_date=${startDate}&end_date=${endDate}&api_key=3wa5hHgFuqhf6XiefvqzkcDQWZ01aOOK4vNZEXsP`
+    resp = await fetch(`https://api.nasa.gov/neo/rest/v1/feed?start_date=${startDate}&end_date=${endDate}&api_key=3wa5hHgFuqhf6XiefvqzkcDQWZ01aOOK4vNZEXsP`,
+        { next: { tags: ['posts'] } }
     );//revalidate tag change viewtype
     if (Number(resp.status) === 200) {
         const dat = await resp.json()
@@ -74,9 +79,9 @@ export default async function Home({ params }) {
         const arrObjects = Object.values(list)
         return <List items={arrObjects[0]}
             renderItem={(product) => {
-                //if (statusMap.size === 0) {
-                statusMap.set(product.id, 0)
-                //}
+                if (statusMap.get(product.id) !== undefined) {
+                    statusMap.set(product.id, 0)
+                }
                 return <Row
                     key={product.id}
                     obj={product}
