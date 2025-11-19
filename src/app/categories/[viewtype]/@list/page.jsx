@@ -1,7 +1,8 @@
 import Li from "../../../Li";
-import Link from "next/link";
+import Form from "next/form";
 import styles from "./page.module.css";
 import React from "react";
+import toggleClick from '../../../actions/toggleClick'
 
 let resp
 let startDate
@@ -25,12 +26,6 @@ async function CalcData() {
     })
     //return { startDate, endDate }
 }
-/*async function* getLangs(viewtype) {
-    console.log('genn', viewtype)
-    await Li.setViewtype(viewtype);
-    yield await Li.getViewtype();
-    yield await Li.getList(viewtype);
-}*/
 function List({ items, renderItem }) {
     //const [selectedIndex, setSelectedIndex] = useState(0);
     console.log('renderItem', renderItem)
@@ -51,6 +46,10 @@ function Row(props) {
         <span>{props.obj.absolute_magnitude_h}</span>
         <output>{props.obj.close_approach_data[0].miss_distance.kilometers}</output>
         <span>{String(props.obj.is_potentially_hazardous_asteroid)}</span>
+        <Form action={toggleClick}>
+            <input type='number' name='status' defaultValue={0} hidden/>
+            <button type='submit' />
+        </Form>
     </li>
 }
 export default async function Home({ params }) {
@@ -60,7 +59,7 @@ export default async function Home({ params }) {
 
     //try {
     resp = await fetch(`https://api.nasa.gov/neo/rest/v1/feed?start_date=${startDate}&end_date=${endDate}&api_key=3wa5hHgFuqhf6XiefvqzkcDQWZ01aOOK4vNZEXsP`
-    );//revalidate tag
+    );//revalidate tag change viewtype
     if (Number(resp.status) === 200) {
         const dat = await resp.json()
         const list = dat.near_earth_objects

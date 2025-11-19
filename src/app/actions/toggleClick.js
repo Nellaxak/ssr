@@ -6,5 +6,5 @@ import Li from '../Li';
 
 export async function toggleClick(formData) {
     console.log('toggleClick',formData)
-    await Li.setViewtype(formData.get('viewtype'))
+    //await Li.setViewtype(formData.get('viewtype'))
 }
