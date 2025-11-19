@@ -147,7 +147,7 @@ class Li {
     }
     else {
       console.log('get list undef')
-      //resd = ''
+      resd = ''
     }
     return resd
     /*return new Promise(resolve =>
