@@ -2,7 +2,7 @@ import Li from "../../../Li";
 import Form from "next/form";
 import styles from "./page.module.css";
 import React from "react";
-import statusMap from "@/app/statusMap";
+import statusMap from "../../../statusMap";
 import { toggleClick } from '../../../actions/toggleClick'
 
 let resp
