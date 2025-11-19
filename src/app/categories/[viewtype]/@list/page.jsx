@@ -47,7 +47,7 @@ function Row(props) {
         <output>{props.obj.close_approach_data[0].miss_distance.kilometers}</output>
         <span>{String(props.obj.is_potentially_hazardous_asteroid)}</span>
         <Form action={toggleClick}>
-            <input type='number' name='status' defaultValue={0} hidden/>
+            <input type='number' name='id' defaultValue={props.obj.id} hidden/>
             <button type='submit'>Отправить</button>
         </Form>
     </li>
