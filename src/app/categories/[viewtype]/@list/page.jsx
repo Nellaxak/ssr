@@ -2,12 +2,12 @@ import Li from "../../../Li";
 import Form from "next/form";
 import styles from "./page.module.css";
 import React from "react";
-import {toggleClick} from '../../../actions/toggleClick'
+import statusMap from "@/app/statusMap";
+import { toggleClick } from '../../../actions/toggleClick'
 
 let resp
 let startDate
 let endDate
-let resf
 async function CalcData() {
     let currentDate = new Date()
     currentDate.setDate(currentDate.getDate());//+1
@@ -28,7 +28,7 @@ async function CalcData() {
 }
 function List({ items, renderItem }) {
     //const [selectedIndex, setSelectedIndex] = useState(0);
-    console.log('renderItem', renderItem)
+    //console.log('renderItem', renderItem)
     return (
         <div className="List">
             {items.map((item, index) => {
@@ -36,6 +36,7 @@ function List({ items, renderItem }) {
                 return renderItem(item);
             })}</div>)
 }
+
 function Row(props) {
     console.log('Row', props)
     return <li>
@@ -47,8 +48,8 @@ function Row(props) {
         <output>{props.obj.close_approach_data[0].miss_distance.kilometers}</output>
         <span>{String(props.obj.is_potentially_hazardous_asteroid)}</span>
         <Form action={toggleClick}>
-            <input type='number' name='id' defaultValue={props.obj.id} hidden/>
-            <button type='submit'>Отправить</button>
+            <input type='number' name='id' defaultValue={props.obj.id} hidden />
+            <button type='submit'>{statusMap.get(props.obj.id)}</button>
         </Form>
     </li>
 }
@@ -66,13 +67,17 @@ export default async function Home({ params }) {
         const dates = Object.keys(list)
         const arrObjects = Object.values(list)
         return <List items={arrObjects[0]}
-            renderItem={(product) =>
-                <Row
+            renderItem={(product) => {
+                if (statusMap.size === 0) {
+                    statusMap.set(product.id, 0)
+                }
+                return <Row
                     key={product.id}
                     obj={product}
                     viewtype={viewtype}
                     dates={dates[0]}
                 />
+            }
             }
         />
     }
