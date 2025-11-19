@@ -48,7 +48,7 @@ function Row(props) {
         <span>{String(props.obj.is_potentially_hazardous_asteroid)}</span>
         <Form action={toggleClick}>
             <input type='number' name='status' defaultValue={0} hidden/>
-            <button type='submit' />
+            <button type='submit'>Отправить</button>
         </Form>
     </li>
 }
