@@ -62,7 +62,7 @@ export default async function Home({ params }) {
             console.log('aaswecv',child)
             if (React.isValidElement(child)) {
                 // Clone the child and add a new prop (e.g., a style)
-                return React.cloneElement(child, {
+                return React.cloneElement(child.id, {
                     style: { ...child.props.style, border: '1px solid blue' },
                     key: index // Always provide a key when mapping over elements
                 });
