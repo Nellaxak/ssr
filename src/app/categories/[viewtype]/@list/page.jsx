@@ -56,7 +56,7 @@ function Row(props) {
             className={styles.buttonItem}
             prefetch={false}
             href={`/categories/${props.viewtype}/click/${props.obj.id}`}
-            scroll={false} />
+            scroll={false}>{statusMap.get(props.obj.id)}</Link>
     </li>
 }
 export default async function Home({ params }) {
