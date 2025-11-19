@@ -14,7 +14,9 @@ export default async function Home({ params }) {
   console.log('find', find)
   await find.setStatus()
   //Li.viewtype = viewtype*/
-  //statusMap
+  const id = paramsPromise.id
+  const oldStatus = statusMap.get(id)
+  statusMap.set(id, !oldStatus)
   /*resd = await Li.getList(viewtype)*/
   // 
   return 'sssss;loooo'/*<main>

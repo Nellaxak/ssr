@@ -44,6 +44,7 @@ function Row(props) {
             <input type='number' name='id' defaultValue={props.obj.id} hidden />
             <button type='submit'>{statusMap.get(props.obj.id)}</button>
         </Form>*/
+    const dataViewtype = props.obj.close_approach_data[0].miss_distance
     return <li>
         <span>{props.dates}</span>
         <span>{props.key}</span>
@@ -52,8 +53,8 @@ function Row(props) {
         <span>{props.obj.absolute_magnitude_h}</span>
         <output>
             {(props.viewtype === 'main') ?
-                props.obj.close_approach_data[0].miss_distance.kilometers :
-                props.obj.close_approach_data[0].miss_distance.lunar
+                dataViewtype.kilometers :
+                dataViewtype.lunar
             }</output>
         <span>{String(props.obj.is_potentially_hazardous_asteroid)}</span>
         <Link key={props.obj.id}
