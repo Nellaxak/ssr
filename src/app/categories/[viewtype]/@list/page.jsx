@@ -68,9 +68,9 @@ export default async function Home({ params }) {
         const arrObjects = Object.values(list)
         return <List items={arrObjects[0]}
             renderItem={(product) => {
-                if (statusMap.size === 0) {
+                /*if (statusMap.size === 0) {
                     statusMap.set(product.id, 0)
-                }
+                }*/
                 return <Row
                     key={product.id}
                     obj={product}
