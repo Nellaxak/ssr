@@ -31,11 +31,11 @@ function List({ items, renderItem }) {
     //const [selectedIndex, setSelectedIndex] = useState(0);
     //console.log('renderItem', renderItem)
     return (
-        <div className="List">
+        <ul className="List">
             {items.map((item, index) => {
                 //const isHighlighted = index === selectedIndex;
                 return renderItem(item);
-            })}</div>)
+            })}</ul>)
 }
 
 function Row(props) {
@@ -81,6 +81,7 @@ export default async function Home({ params }) {
         const arrObjects = Object.values(list)
         return <List items={arrObjects[0]}
             renderItem={(product) => {
+                //updated status
                 if (statusMap.get(product.id) !== 1) {
                     statusMap.set(product.id, 0)
                 }

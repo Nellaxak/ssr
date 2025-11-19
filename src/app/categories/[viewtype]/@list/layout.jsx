@@ -13,7 +13,5 @@ export default async function ParallelLayout({
   count: React.ReactNode,
   list: React.ReactNode
 }*/) {
-  return <ul>
-    {children}
-  </ul>
+  return children
 }
