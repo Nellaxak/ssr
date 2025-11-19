@@ -33,7 +33,7 @@ async function CalcData() {
 }*/
 function List({ items, renderItem }) {
     //const [selectedIndex, setSelectedIndex] = useState(0);
-    console.log('renderItem',renderItem)
+    console.log('renderItem', renderItem)
     return (
         <div className="List">
             {items.map((item, index) => {
@@ -42,11 +42,15 @@ function List({ items, renderItem }) {
             })}</div>)
 }
 function Row(props) {
-    console.log('Row',props)
+    console.log('Row', props)
     return <li>
+        <span>{props.dates}</span>
         <span>{props.key}</span>
         <span>{props.obj.name}</span>
         <span>{props.obj.id}</span>
+        <span>{props.obj.absolute_magnitude_h}</span>
+        <output>{props.obj.close_approach_data[0].miss_distance.kilometers}</output>
+        <span>{props.obj.is_potentially_hazardous_asteroid}</span>
     </li>
 }
 export default async function Home({ params }) {
@@ -74,8 +78,8 @@ export default async function Home({ params }) {
                 <Row
                     key={product.id}
                     obj={product}
-                    //viewtype={viewtype}
-                    //dates={dates[0]}
+                    viewtype={viewtype}
+                    dates={dates[0]}
                 />
             }
         />
