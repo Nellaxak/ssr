@@ -52,7 +52,7 @@ function Row(props) {
         <span>{props.obj.absolute_magnitude_h}</span>
         <output>{props.obj.close_approach_data[0].miss_distance.kilometers}</output>
         <span>{String(props.obj.is_potentially_hazardous_asteroid)}</span>
-        <Link key={this.id}
+        <Link key={props.obj.id}
             className={styles.buttonItem}
             prefetch={false}
             href={`/categories/${props.viewtype}/click/${props.obj.id}`}
