@@ -1,10 +1,10 @@
-import Li from "../../../Li";
-import Form from "next/form";
+//import Li from "../../../Li";
+//import Form from "next/form";
 import styles from "./page.module.css";
 import React from "react";
 import statusMap from "../../../statusMap";
 import Link from "next/link";
-import { toggleClick } from '../../../actions/toggleClick'
+//import { toggleClick } from '../../../actions/toggleClick'
 
 let resp
 let startDate
@@ -28,14 +28,13 @@ async function CalcData() {
     //return { startDate, endDate }
 }
 async function List({ items, renderItem }) {
-    //const [selectedIndex, setSelectedIndex] = useState(0);
-    //console.log('renderItem', renderItem)
+    //await Promise.all(arrObjects[0].map(
+    const res = await Promise.all(items.map(async (item, index) => {
+        return await renderItem(item);
+    }))
     return (
         <ul className="List">
-            {items.map(async (item, index) => {
-                //const isHighlighted = index === selectedIndex;
-                return await renderItem(item);
-            })}</ul>)
+            {res}</ul>)
 }
 
 async function Row(props) {
