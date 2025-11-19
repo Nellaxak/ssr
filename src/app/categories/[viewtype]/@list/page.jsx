@@ -45,6 +45,7 @@ function Row(props) {
             <button type='submit'>{statusMap.get(props.obj.id)}</button>
         </Form>*/
     const dataViewtype = props.obj.close_approach_data[0].miss_distance
+    const status=statusMap.get(props.obj.id)
     return <li>
         <span>{props.dates}</span>
         <span>{props.key}</span>
@@ -61,7 +62,7 @@ function Row(props) {
             className={styles.buttonItem}
             prefetch={false}
             href={`/categories/${props.viewtype}/click/${props.obj.id}`}
-            scroll={false}>{statusMap.get(props.obj.id)}</Link>
+            scroll={false}>{status}</Link>
     </li>
 }
 export default async function Home({ params }) {
