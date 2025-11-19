@@ -39,7 +39,7 @@ function List({ items, renderItem }) {
 }
 
 function Row(props) {
-    console.log('Row', props)
+    //console.log('Row', props)
     /*<Form action={toggleClick}>
             <input type='number' name='id' defaultValue={props.obj.id} hidden />
             <button type='submit'>{statusMap.get(props.obj.id)}</button>
