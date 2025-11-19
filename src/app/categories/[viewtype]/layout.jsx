@@ -19,7 +19,8 @@ export default async function ParallelLayout({
   //console.log('layout viewtype',viewtype)
   //<Suspense>{toggle}</Suspense>
   return (
-      <main  className={styles.column}>
+    <Suspense>
+      <main className={styles.column}>
         {(viewtype !== 'marked') ? <div><h6 className={styles.h6}>Ближайшие подлёты астероидов</h6>
           <nav>
             <Link href="/categories/main" scroll={false}
@@ -32,5 +33,6 @@ export default async function ParallelLayout({
         <Suspense>{list}</Suspense>
         {children}
       </main>
+    </Suspense>
   )
 }
