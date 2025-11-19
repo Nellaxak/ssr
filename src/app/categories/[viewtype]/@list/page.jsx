@@ -1,7 +1,7 @@
 import Li from "../../../Li";
 import Link from "next/link";
 import styles from "./page.module.css";
-import React, { Children } from "react";
+import React from "react";
 
 let resp
 let startDate
@@ -33,6 +33,7 @@ async function CalcData() {
 }*/
 function List({ items, renderItem }) {
     //const [selectedIndex, setSelectedIndex] = useState(0);
+    console.log('renderItem',renderItem)
     return (
         <div className="List">
             {items.map((item, index) => {
@@ -40,11 +41,12 @@ function List({ items, renderItem }) {
                 return renderItem(item);
             })}</div>)
 }
-function Row(key, name, viewtype, dates) {
+function Row(props) {
+    console.log('Row',props)
     return <li>
-        <span>{key}</span>
-        <span>{name}</span>
-        <span>{dates}</span>
+        <span>{props.key}</span>
+        <span>{props.obj.name}</span>
+        <span>{props.obj.id}</span>
     </li>
 }
 export default async function Home({ params }) {
@@ -71,9 +73,9 @@ export default async function Home({ params }) {
             renderItem={(product) =>
                 <Row
                     key={product.id}
-                    name={product.name}
-                    viewtype={viewtype}
-                    dates={dates[0]}
+                    obj={product}
+                    //viewtype={viewtype}
+                    //dates={dates[0]}
                 />
             }
         />
