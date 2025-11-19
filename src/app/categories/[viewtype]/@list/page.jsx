@@ -45,7 +45,7 @@ function Row(props) {
             <button type='submit'>{statusMap.get(props.obj.id)}</button>
         </Form>*/
     const dataViewtype = props.obj.close_approach_data[0].miss_distance
-    const status=statusMap.get(props.obj.id)
+    const status = statusMap.get(props.obj.id)
     return <li>
         <span>{props.dates}</span>
         <span>{props.key}</span>
@@ -81,7 +81,7 @@ export default async function Home({ params }) {
         const arrObjects = Object.values(list)
         return <List items={arrObjects[0]}
             renderItem={(product) => {
-                if (statusMap.get(product.id) !== undefined) {
+                if (statusMap.get(product.id) !== 1) {
                     statusMap.set(product.id, 0)
                 }
                 return <Row
