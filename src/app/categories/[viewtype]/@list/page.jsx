@@ -25,24 +25,33 @@ async function CalcData() {
     })
     //return { startDate, endDate }
 }
-async function* getLangs(viewtype) {
+/*async function* getLangs(viewtype) {
     console.log('genn', viewtype)
     await Li.setViewtype(viewtype);
     yield await Li.getViewtype();
     yield await Li.getList(viewtype);
+}*/
+function List({ items, renderItem }) {
+    //const [selectedIndex, setSelectedIndex] = useState(0);
+    return (
+        <div className="List">
+            {items.map((item, index) => {
+                //const isHighlighted = index === selectedIndex;
+                return renderItem(item);
+            })}</div>)
+}
+function Row(key, name, viewtype, dates) {
+    return <li>
+        <span>{key}</span>
+        <span>{name}</span>
+        <span>{dates}</span>
+    </li>
 }
 export default async function Home({ params }) {
     [startDate, endDate] = await CalcData()
-    //console.log('cdfg',startDate, endDate)
     const promiseParams = await params
     const viewtype = promiseParams.viewtype
-    //await Li.setViewtype(viewtype)
-    //Li.viewtype=viewtype
-    //const generator = getLangs(viewtype)
-    //console.log('step1', await generator.next())
-    const size = await Li.getSize()
-    //promiseParams.params.then(async (data) => {
-    //if (viewtype === 'main' && size === 0) {
+
     //try {
     resp = await fetch(`https://api.nasa.gov/neo/rest/v1/feed?start_date=${startDate}&end_date=${endDate}&api_key=3wa5hHgFuqhf6XiefvqzkcDQWZ01aOOK4vNZEXsP`
     );//revalidate tag
@@ -58,47 +67,16 @@ export default async function Home({ params }) {
         //new Li(e, dates[0])
         //}
         //);
-        Children.map(arrObjects[0], (child, index) => {
-            console.log('aaswecv',child)
-            if (React.isValidElement(child)) {
-                // Clone the child and add a new prop (e.g., a style)
-                return React.cloneElement(child.id, {
-                    style: { ...child.props.style, border: '1px solid blue' },
-                    key: index // Always provide a key when mapping over elements
-                });
+        return <List items={arrObjects[0]}
+            renderItem={(product) =>
+                <Row
+                    key={product.id}
+                    name={product.name}
+                    viewtype={viewtype}
+                    dates={dates[0]}
+                />
             }
-            return child;
-        })
-        //Object.setPrototypeOf(arrObjects, parent);
-        //console.log('zzzzzxxxxx', arrObjects.getCount())
-        //console.log('ffffffwget', Object.getPrototypeOf(arrObjects))
-    } else {
-        //console.log('NASA API error fetch status', resp.status)
+        />
     }
-    /*} catch (err) {
-        //console.log('NASA API error fetch status###########', err)
-    }*/
-    //return data.viewtype
-    // }
-    //}).then(async (data) => {
-    //Li.viewtype=viewtype
-    //return data
-    // }).then(async (data) => {
-    //resf = await generator.next()
-    //const ersdf = resf.value
-    //return resf
-    //})
-    //console.log('ggggzzz', size)
-    //const resf = await Li.getList(viewtype)
-    return 'ddddddvbnxv'/*<main>
-        {(viewtype !== 'marked') ? <div><h6 className={styles.h6}>Ближайшие подлёты астероидов</h6>
-            <nav>
-                <Link href="/categories/main" scroll={false}
-                    className={(viewtype === 'main') ? 'km' : 'moon'}>в километрах</Link>
-                <span className={styles.space}>|</span>
-                <Link href="/categories/moon" scroll={false}
-                    className={(viewtype === 'main') ? 'moon' : 'km'}>в лунных орбитах</Link>
-            </nav></div> : <h6 className={styles.h6}>Заказ отправлен!</h6>}
-        <ul></ul>
-    </main>*/
+
 }
