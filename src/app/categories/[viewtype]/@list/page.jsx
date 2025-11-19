@@ -1,7 +1,7 @@
 //import Li from "../../../Li";
 //import Form from "next/form";
 import styles from "./page.module.css";
-import React from "react";
+import React, { Suspense } from "react";
 import statusMap from "../../../statusMap";
 import Link from "next/link";
 //import { toggleClick } from '../../../actions/toggleClick'
@@ -45,7 +45,7 @@ async function Row(props) {
         </Form>*/
     const dataViewtype = props.obj.close_approach_data[0].miss_distance
     const status = statusMap.get(props.obj.id)
-    return <li>
+    return <Suspense><li>
         <span>{props.dates}</span>
         <span>{props.key}</span>
         <span>{props.obj.name}</span>
@@ -61,8 +61,8 @@ async function Row(props) {
             className={styles.buttonItem}
             prefetch={false}
             href={`/categories/${props.viewtype}/click/${props.obj.id}`}
-            scroll={false}>{String(status)}</Link>
-    </li>
+            scroll={false}><Suspense>{String(status)}</Suspense></Link>
+    </li></Suspense>
 }
 export default async function Home({ params }) {
     [startDate, endDate] = await CalcData()
