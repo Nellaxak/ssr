@@ -51,11 +51,11 @@ async function Row(props) {
         <span>{props.obj.name}</span>
         <span>{props.obj.id}</span>
         <span>{props.obj.absolute_magnitude_h}</span>
-        <output>
+        <Suspense><output>
             {(props.viewtype === 'main') ?
                 dataViewtype.kilometers :
                 dataViewtype.lunar
-            }</output>
+            }</output></Suspense>
         <span>{String(props.obj.is_potentially_hazardous_asteroid)}</span>
         <Link key={props.obj.id}
             className={styles.buttonItem}
