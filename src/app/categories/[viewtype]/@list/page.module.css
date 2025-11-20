@@ -214,4 +214,5 @@
   align-items: flex-start;
   padding: 0px;
   gap: 24px;
+  list-style-type: none;
 }
