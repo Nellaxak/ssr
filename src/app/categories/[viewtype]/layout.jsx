@@ -32,7 +32,7 @@ export default async function ParallelLayout({
           </nav></header> :
           <h6 className={styles.h6}>Заказ отправлен!</h6>}
         <Suspense>{list}</Suspense>
-        {children}
+        <Suspense>{children}</Suspense>
       </main>
     </Suspense>
   )
