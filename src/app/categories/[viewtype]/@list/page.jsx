@@ -51,7 +51,7 @@ async function Row(props) {
         <span>{props.obj.name}</span>
         <span>{props.obj.id}</span>
         <span>{props.obj.absolute_magnitude_h}</span>
-        <Suspense><output>
+        <Suspense><output className={styles.padding}>
             {(props.viewtype === 'main') ?
                 dataViewtype.kilometers :
                 dataViewtype.lunar
