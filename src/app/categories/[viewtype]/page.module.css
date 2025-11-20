@@ -121,7 +121,7 @@
    }
  }
 
-/* .column {
+ /* .column {
    grid-area: g;
    display: flex;
    flex-direction: column;
@@ -207,4 +207,14 @@
  .columnFooter {
    display: flex;
    flex-direction: column;
+ }
+
+ .column {
+   grid-area: g;
+ }
+
+ .h6 {
+   /*column-count: 1;*/
+   padding-top: 8px;
+   width: 200px;
  }

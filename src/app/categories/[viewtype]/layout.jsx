@@ -21,14 +21,15 @@ export default async function ParallelLayout({
   return (
     <Suspense>
       <main className={styles.column}>
-        {(viewtype !== 'marked') ? <div><h6 className={styles.h6}>Ближайшие подлёты астероидов</h6>
+        {(viewtype !== 'marked') ? <header className={styles.header}>
+          <h6 className={styles.h6}>Ближайшие подлёты астероидов</h6>
           <nav>
             <Link href="/categories/main" scroll={false}
               className={(viewtype === 'main') ? 'km' : 'moon'}>в километрах</Link>
             <span className={styles.space}>|</span>
             <Link href="/categories/moon" scroll={false}
               className={(viewtype === 'main') ? 'moon' : 'km'}>в лунных орбитах</Link>
-          </nav></div> :
+          </nav></header> :
           <h6 className={styles.h6}>Заказ отправлен!</h6>}
         <Suspense>{list}</Suspense>
         {children}
