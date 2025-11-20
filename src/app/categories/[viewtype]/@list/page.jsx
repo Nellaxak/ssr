@@ -33,7 +33,7 @@ async function List({ items, renderItem }) {
         return await renderItem(item);
     }))
     return (
-        <ul className="List">
+        <ul className={styles.row}>
             {res}</ul>)
 }
 

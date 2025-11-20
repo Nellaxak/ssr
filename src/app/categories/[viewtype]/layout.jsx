@@ -23,7 +23,7 @@ export default async function ParallelLayout({
       <main className={styles.column}>
         {(viewtype !== 'marked') ? <header className={styles.header}>
           <h6 className={styles.h6}>Ближайшие подлёты астероидов</h6>
-          <nav>
+          <nav  className={styles.labelWrapper}>
             <Link href="/categories/main" scroll={false}
               className={(viewtype === 'main') ? 'km' : 'moon'}>в километрах</Link>
             <span className={styles.space}>|</span>
