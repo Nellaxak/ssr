@@ -93,8 +93,10 @@ async function Row(props) {
             <span className={styles.padding}>{props.dates}</span>
         </div>
         <span>{props.obj.name}</span>
-        <span>Ø</span>
-        <span>{Math.round(Number(props.obj.estimated_diameter.meters.estimated_diameter_min))}</span>
+        <div className={styles.flex_container_row}>
+            <span>Ø</span>
+            <span>{Math.round(Number(props.obj.estimated_diameter.meters.estimated_diameter_min))}</span>
+        </div>
         <Suspense>
             <output className={styles.padding}>{formatData}</output>
         </Suspense>
