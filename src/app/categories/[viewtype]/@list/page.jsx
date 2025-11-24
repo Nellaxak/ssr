@@ -19,31 +19,33 @@ const options = {
     second: 'numeric'*/
 };
 function DataFormat(param, viewtype) {
-    //const km = Math.round(Number(param))
-    let resultToggle
+    //let resultToggle
+    let resultFormat
     if (viewtype === 'main') {
-        resultToggle = new Intl.NumberFormat("ru", { style: "unit", unit: "kilometer", unitDisplay: "short" }).format(param.kilometers);
+        const roundValue = Math.round(Number(param.kilometers))
+        resultFormat = new Intl.NumberFormat("ru", { style: "unit", unit: "kilometer", unitDisplay: "short" }).format(roundValue);
     } else {
-        resultToggle = new Intl.NumberFormat("ru", { style: "decimal" }).format(param.lunar);
-    }
-    let map = new Map();
-    map.set(/0|[5-9]$/, ["ых", ""]);
-    map.set(/[2-4]$/, ["ые", "ы"]);
-    map.set(/\d?[1][0-9]$/, ["ых", ""]);//10,11-19
-    map.set(/\d?[1-9][0]{1,9}$/, ["ых", ""]);//20-90,100-900
-    map.set(/[1]$/, ["ая", "а"]);
+        const roundValue = Math.round(Number(param.lunar))
+        const resultToggle = new Intl.NumberFormat("ru", { style: "decimal" }).format(roundValue);
+        let map = new Map();
+        map.set(/0|[5-9]$/, ["ых", ""]);
+        map.set(/[2-4]$/, ["ые", "ы"]);
+        map.set(/\d?[1][0-9]$/, ["ых", ""]);//10,11-19
+        map.set(/\d?[1-9][0]{1,9}$/, ["ых", ""]);//20-90,100-900
+        map.set(/[1]$/, ["ая", "а"]);
 
-    const rootMoon = "лунн"
-    const rootOrbit = "орбит"
-    let fullResult = ''
-    map.forEach((value, key) => {
-        const result = resultToggle.match(key)
-        if (result !== null) {
-            fullResult = rootMoon + value[0] + " " + rootOrbit + value[1]
-        }
-    })
-    const ruMoon = resultToggle + " " + fullResult
-    return ruMoon
+        const rootMoon = "лунн"
+        const rootOrbit = "орбит"
+        let fullResult = ''
+        map.forEach((value, key) => {
+            const result = resultToggle.match(key)
+            if (result !== null) {
+                fullResult = rootMoon + value[0] + " " + rootOrbit + value[1]
+            }
+        })
+        resultFormat = resultToggle + " " + fullResult
+    }
+    return resultFormat
     //const ruDiameter = new Intl.NumberFormat("ru", { style: "unit", unit: "meter", unitDisplay: "short" }).format(roundDiameter);
 }
 async function CalcData() {
