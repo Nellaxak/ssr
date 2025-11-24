@@ -18,27 +18,34 @@ const options = {
     minute: 'numeric',
     second: 'numeric'*/
 };
-const ruKM = new Intl.NumberFormat("ru", { style: "unit", unit: "kilometer", unitDisplay: "short" }).format(km);
-const ruNumber = new Intl.NumberFormat("ru", { style: "decimal" }).format(moon);
-let map = new Map();
-map.set(/0|[5-9]$/, ["ых", ""]);
-map.set(/[2-4]$/, ["ые", "ы"]);
-map.set(/\d?[1][0-9]$/, ["ых", ""]);//10,11-19
-map.set(/\d?[1-9][0]{1,9}$/, ["ых", ""]);//20-90,100-900
-map.set(/[1]$/, ["ая", "а"]);
+function DataFormat(param, viewtype) {
+    //const km = Math.round(Number(param))
+    let resultToggle
+    if (viewtype === 'main') {
+        resultToggle = new Intl.NumberFormat("ru", { style: "unit", unit: "kilometer", unitDisplay: "short" }).format(param.kilometers);
+    } else {
+        resultToggle = new Intl.NumberFormat("ru", { style: "decimal" }).format(param.lunar);
+    } 
+    let map = new Map();
+    map.set(/0|[5-9]$/, ["ых", ""]);
+    map.set(/[2-4]$/, ["ые", "ы"]);
+    map.set(/\d?[1][0-9]$/, ["ых", ""]);//10,11-19
+    map.set(/\d?[1-9][0]{1,9}$/, ["ых", ""]);//20-90,100-900
+    map.set(/[1]$/, ["ая", "а"]);
 
-const rootMoon = "лунн"
-const rootOrbit = "орбит"
-let fullResult = ''
-map.forEach((value, key) => {
-    const result = ruNumber.match(key)
-    if (result !== null) {
-        fullResult = rootMoon + value[0] + " " + rootOrbit + value[1]
-    }
-})
-const ruMoon = ruNumber + " " + fullResult
-//const ruDiameter = new Intl.NumberFormat("ru", { style: "unit", unit: "meter", unitDisplay: "short" }).format(roundDiameter);
-
+    const rootMoon = "лунн"
+    const rootOrbit = "орбит"
+    let fullResult = ''
+    map.forEach((value, key) => {
+        const result = resultToggle.match(key)
+        if (result !== null) {
+            fullResult = rootMoon + value[0] + " " + rootOrbit + value[1]
+        }
+    })
+    const ruMoon = resultToggle + " " + fullResult
+    return ruMoon
+    //const ruDiameter = new Intl.NumberFormat("ru", { style: "unit", unit: "meter", unitDisplay: "short" }).format(roundDiameter);
+}
 async function CalcData() {
     let currentDate = new Date()
     currentDate.setDate(currentDate.getDate());//+1
@@ -87,7 +94,7 @@ async function Row(props) {
                 dataViewtype.kilometers :
                 dataViewtype.lunar
             }</output>
-            <output>{props.regexp}</output></Suspense>
+            <output>{DataFormat(dataViewtype, props.viewtype)}</output></Suspense>
         <div className={styles.flex_item}>
             <Link key={props.obj.id}
                 className={styles.buttonItem}
@@ -126,7 +133,7 @@ export default async function Home({ params }) {
                     obj={product}
                     viewtype={viewtype}
                     dates={dateString}
-                    regexp={ruKM}
+                //regexp={DataFormat()}
                 />
             }
             }
