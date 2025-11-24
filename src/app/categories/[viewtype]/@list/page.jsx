@@ -92,7 +92,7 @@ async function Row(props) {
     if (Number(props.obj.is_potentially_hazardous_asteroid) === 1) {
         Danger = 'Опасен'
     }
-    let statusItem='ЗАКАЗАТЬ'
+    let statusItem = 'ЗАКАЗАТЬ'
     return <Suspense><li className={styles.flex_container}>
         <div className={styles.flex_item}>
             <span className={styles.padding}>{props.dates}</span>
@@ -106,12 +106,14 @@ async function Row(props) {
             <output className={styles.padding}>{formatData}</output>
         </Suspense>
         <div className={styles.flex_item}>
-            <Link key={props.obj.id}
-                className={styles.buttonItem}
-                prefetch={false}
-                href={`/categories/${props.viewtype}/click/${props.obj.id}`}
-                scroll={false}><Suspense>{String(status)}</Suspense></Link>
-            <span>{Danger}</span>
+            <div className={styles.flex_container_row}>
+                <Link key={props.obj.id}
+                    className={styles.buttonItem}
+                    prefetch={false}
+                    href={`/categories/${props.viewtype}/click/${props.obj.id}`}
+                    scroll={false}><Suspense>{String(status)}</Suspense></Link>
+                <span>{Danger}</span>
+            </div>
         </div>
     </li></Suspense>
 }
