@@ -254,7 +254,8 @@
    border-radius: 16px;
    color: var(--bg-color-to-basket);
    touch-action: auto;
-   width: 200px;
+   width: 100px;
+   justify-content: center;
  }
 
  .buttonItem:hover {
