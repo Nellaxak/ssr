@@ -117,10 +117,10 @@ export default async function Home({ params }) {
     if (Number(resp.status) === 200) {
         const dat = await resp.json()
         const list = dat.near_earth_objects
-        const dates = Object.keys(list)
+        //const dates = Object.keys(list)
         const arrObjects = Object.values(list)
-        console.log('dates', dates[0])
-        const date = new Date(product.close_approach_data[0].epoch_date_close_approach)
+        console.log('dates',product.close_approach_data[0])//.epoch_date_close_approach
+        const date = Date.now()//new Date(Date.now())
         const prevDate = new Intl.DateTimeFormat("ru-RU", options).format(date);
         const datSlice = prevDate.slice(0, -2)
         const dateString = datSlice.replace('.', '');
