@@ -124,8 +124,8 @@ export default async function Home({ params }) {
 
         return <List items={arrObjects[0]}
             renderItem={async (product) => {
-                console.log('dates', product.close_approach_data[0])//.epoch_date_close_approach
-                const date = Date.now()//new Date(Date.now())
+                //console.log('dates', product.close_approach_data[0].epoch_date_close_approach
+                const date = new Date(product.close_approach_data[0].epoch_date_close_approach)
                 const prevDate = new Intl.DateTimeFormat("ru-RU", options).format(date);
                 const datSlice = prevDate.slice(0, -2)
                 const dateString = datSlice.replace('.', '');
