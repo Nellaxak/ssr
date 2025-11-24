@@ -254,7 +254,7 @@
    border-radius: 16px;
    color: var(--bg-color-to-basket);
    touch-action: auto;
-   width: 100px;
+   width: 150px;
    justify-content: center;
  }
 
