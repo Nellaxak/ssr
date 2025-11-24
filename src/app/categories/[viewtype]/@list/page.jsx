@@ -18,7 +18,7 @@ const options = {
     minute: 'numeric',
     second: 'numeric'*/
 };
-function DataFormat(param, viewtype) {
+async function DataFormat(param, viewtype) {
     //let resultToggle
     let resultFormat
     if (viewtype === 'main') {
@@ -87,16 +87,16 @@ async function Row(props) {
     <span>{props.obj.absolute_magnitude_h}</span>*/
     const dataViewtype = props.obj.close_approach_data[0].miss_distance
     const status = statusMap.get(props.obj.id)
+    const formatData = await DataFormat(dataViewtype, props.viewtype)
     return <Suspense><li className={styles.flex_container}>
-        <span className={styles.flex_item}>{props.dates}</span>
+        <div className={styles.flex_item}>
+            <span className={styles.padding}>{props.dates}</span>
+        </div>
         <span>{props.obj.name}</span>
         <span>{props.obj.estimated_diameter.meters.estimated_diameter_min}</span>
-        <Suspense><output className={styles.padding}>
-            {(props.viewtype === 'main') ?
-                dataViewtype.kilometers :
-                dataViewtype.lunar
-            }</output>
-            <output>{DataFormat(dataViewtype, props.viewtype)}</output></Suspense>
+        <Suspense>
+            <output className={styles.padding}>{formatData}</output>
+        </Suspense>
         <div className={styles.flex_item}>
             <Link key={props.obj.id}
                 className={styles.buttonItem}
