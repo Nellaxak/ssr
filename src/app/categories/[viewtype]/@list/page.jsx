@@ -1,14 +1,44 @@
-//import Li from "../../../Li";
-//import Form from "next/form";
 import styles from "./page.module.css";
 import React, { Suspense } from "react";
 import statusMap from "../../../statusMap";
 import Link from "next/link";
-//import { toggleClick } from '../../../actions/toggleClick'
 
 let resp
 let startDate
 let endDate
+const options = {
+    /*era: 'long',*/
+    year: 'numeric',
+    month: 'short',//long
+    day: 'numeric',
+    // weekday: 'long',
+    timeZone: "UTC",
+    //hour12: false,
+    /*hour: 'numeric',
+    minute: 'numeric',
+    second: 'numeric'*/
+};
+const ruKM = new Intl.NumberFormat("ru", { style: "unit", unit: "kilometer", unitDisplay: "short" }).format(km);
+const ruNumber = new Intl.NumberFormat("ru", { style: "decimal" }).format(moon);
+let map = new Map();
+map.set(/0|[5-9]$/, ["ых", ""]);
+map.set(/[2-4]$/, ["ые", "ы"]);
+map.set(/\d?[1][0-9]$/, ["ых", ""]);//10,11-19
+map.set(/\d?[1-9][0]{1,9}$/, ["ых", ""]);//20-90,100-900
+map.set(/[1]$/, ["ая", "а"]);
+
+const rootMoon = "лунн"
+const rootOrbit = "орбит"
+let fullResult = ''
+map.forEach((value, key) => {
+    const result = ruNumber.match(key)
+    if (result !== null) {
+        fullResult = rootMoon + value[0] + " " + rootOrbit + value[1]
+    }
+})
+const ruMoon = ruNumber + " " + fullResult
+//const ruDiameter = new Intl.NumberFormat("ru", { style: "unit", unit: "meter", unitDisplay: "short" }).format(roundDiameter);
+
 async function CalcData() {
     let currentDate = new Date()
     currentDate.setDate(currentDate.getDate());//+1
@@ -43,20 +73,21 @@ async function Row(props) {
             <input type='number' name='id' defaultValue={props.obj.id} hidden />
             <button type='submit'>{statusMap.get(props.obj.id)}</button>
         </Form>*/
+    /*<span>{props.obj.id}</span>
+    <span>{props.key}</span>
+    <span>{props.obj.absolute_magnitude_h}</span>*/
     const dataViewtype = props.obj.close_approach_data[0].miss_distance
     const status = statusMap.get(props.obj.id)
     return <Suspense><li className={styles.flex_container}>
         <span className={styles.flex_item}>{props.dates}</span>
-        <span>{props.key}</span>
         <span>{props.obj.name}</span>
-        <span>{props.obj.id}</span>
-        <span>{props.obj.absolute_magnitude_h}</span>
         <span>{props.obj.estimated_diameter.meters.estimated_diameter_min}</span>
         <Suspense><output className={styles.padding}>
             {(props.viewtype === 'main') ?
                 dataViewtype.kilometers :
                 dataViewtype.lunar
-            }</output></Suspense>
+            }</output>
+            <output>{props.regexp}</output></Suspense>
         <div className={styles.flex_item}>
             <Link key={props.obj.id}
                 className={styles.buttonItem}
@@ -81,6 +112,9 @@ export default async function Home({ params }) {
         const list = dat.near_earth_objects
         const dates = Object.keys(list)
         const arrObjects = Object.values(list)
+        const prevDate = new Intl.DateTimeFormat("ru-RU", options).format(dates[0]);
+        const datSlice = prevDate.slice(0, -2)
+        const dateString = datSlice.replace('.', '');
         return <List items={arrObjects[0]}
             renderItem={async (product) => {
                 //updated status
@@ -91,7 +125,8 @@ export default async function Home({ params }) {
                     key={product.id}
                     obj={product}
                     viewtype={viewtype}
-                    dates={dates[0]}
+                    dates={dateString}
+                    regexp={ruKM}
                 />
             }
             }

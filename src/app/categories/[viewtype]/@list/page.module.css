@@ -225,6 +225,5 @@
 .flex_item {
   flex: 1; /* Shorthand for flex-grow: 1, flex-shrink: 1, flex-basis: 0 */
   padding: 10px;
-  background-color: lightblue;
   margin: 5px;
 }
