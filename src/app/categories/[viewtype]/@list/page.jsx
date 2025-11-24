@@ -88,6 +88,11 @@ async function Row(props) {
     const dataViewtype = props.obj.close_approach_data[0].miss_distance
     const status = statusMap.get(props.obj.id)
     const formatData = await DataFormat(dataViewtype, props.viewtype)
+    let Danger = ''//'ЗАКАЗАТЬ'
+    if (Number(props.obj.is_potentially_hazardous_asteroid) === 1) {
+        Danger = 'Опасен'
+    }
+    let statusItem='ЗАКАЗАТЬ'
     return <Suspense><li className={styles.flex_container}>
         <div className={styles.flex_item}>
             <span className={styles.padding}>{props.dates}</span>
@@ -106,7 +111,7 @@ async function Row(props) {
                 prefetch={false}
                 href={`/categories/${props.viewtype}/click/${props.obj.id}`}
                 scroll={false}><Suspense>{String(status)}</Suspense></Link>
-            <span>{String(props.obj.is_potentially_hazardous_asteroid)}</span>
+            <span>{Danger}</span>
         </div>
     </li></Suspense>
 }
