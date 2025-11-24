@@ -112,7 +112,7 @@ async function Row(props) {
                     prefetch={false}
                     href={`/categories/${props.viewtype}/click/${props.obj.id}`}
                     scroll={false}><Suspense>{String(status)}</Suspense></Link>
-                <span>{Danger}</span>
+                <span className={styles.danger}>{Danger}</span>
             </div>
         </div>
     </li></Suspense>
