@@ -5,7 +5,7 @@ import statusMap from '../../../../../statusMap';
 
 export default async function Home({ params }) {
   const paramsPromise = await params
-  //const viewtype = paramsPromise.viewtype
+  const viewtype = paramsPromise.viewtype
   const id = paramsPromise.id
   const oldStatus = statusMap.get(id)
   statusMap.set(id, !oldStatus)

@@ -72,8 +72,10 @@ async function List({ items, renderItem }) {
         return await renderItem(item);
     }))
     return (
-        <ul className={styles.row}>
-            {res}</ul>)
+        <Suspense>
+            <ul className={styles.row}>
+                {res}</ul>
+        </Suspense>)
 }
 async function FormatStatus(params) {
     const status = statusMap.get(params)
@@ -134,14 +136,14 @@ export default async function Home({ params }) {
     //try {
     resp = await fetch(`https://api.nasa.gov/neo/rest/v1/feed?start_date=${startDate}&end_date=${endDate}&api_key=3wa5hHgFuqhf6XiefvqzkcDQWZ01aOOK4vNZEXsP`,
         { next: { tags: ['posts'] } }
-    );//revalidate tag change viewtype
+    );//revalidate tag after change viewtype
     if (Number(resp.status) === 200) {
         const dat = await resp.json()
         const list = dat.near_earth_objects
-        const dates = Object.keys(list)
+        //const dates = Object.keys(list)
         const arrObjects = Object.values(list)
 
-        return <List items={arrObjects[0]}
+        return <Suspense><List items={arrObjects[0]}
             renderItem={async (product) => {
                 //console.log('dates', product.close_approach_data[0].epoch_date_close_approach
                 const date = new Date(product.close_approach_data[0].epoch_date_close_approach)
@@ -152,15 +154,15 @@ export default async function Home({ params }) {
                 if (statusMap.get(product.id) !== 1) {
                     statusMap.set(product.id, 0)
                 }
-                return <Row
+                return <Suspense><Row
                     key={product.id}
                     obj={product}
                     viewtype={viewtype}
                     dates={dateString}
-                />
+                /></Suspense>
             }
             }
-        />
+        /></Suspense>
     }
 
 }

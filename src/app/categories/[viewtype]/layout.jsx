@@ -8,7 +8,7 @@ import styles from "./page.module.css";
 
 export default async function ParallelLayout({
   children, params,
-  list,//,toggle,
+  list,//count,
 }/*: {
   children: React.ReactNode,
   count: React.ReactNode,
@@ -17,7 +17,6 @@ export default async function ParallelLayout({
   const paramsPromise = await params
   const viewtype = paramsPromise.viewtype
   //console.log('layout viewtype',viewtype)
-  //<Suspense>{toggle}</Suspense>
   return (
     <Suspense>
       <main className={styles.column}>
