@@ -75,9 +75,19 @@ async function List({ items, renderItem }) {
         <ul className={styles.row}>
             {res}</ul>)
 }
-
+async function FormatStatus(params) {
+    const status = statusMap.get(props.obj.id)
+    let statusItem = 'ЗАКАЗАТЬ'
+    if (status === 0) {
+        statusItem = 'ЗАКАЗАТЬ'
+    }
+    else {
+        statusItem = 'В КОРЗИНЕ'
+    }
+    return statusItem
+}
 async function Row(props) {
-    console.log('Row', props)
+    //console.log('Row', props)
     /*<Form action={toggleClick}>
             <input type='number' name='id' defaultValue={props.obj.id} hidden />
             <button type='submit'>{statusMap.get(props.obj.id)}</button>
@@ -86,13 +96,12 @@ async function Row(props) {
     <span>{props.key}</span>
     <span>{props.obj.absolute_magnitude_h}</span>*/
     const dataViewtype = props.obj.close_approach_data[0].miss_distance
-    const status = statusMap.get(props.obj.id)
+    const status = await FormatStatus(props.obj.id)
     const formatData = await DataFormat(dataViewtype, props.viewtype)
-    let Danger = ''//'ЗАКАЗАТЬ'
+    let Danger = ''
     if (Number(props.obj.is_potentially_hazardous_asteroid) === 1) {
         Danger = 'Опасен'
     }
-    let statusItem = 'ЗАКАЗАТЬ'
     return <Suspense><li className={styles.flex_container}>
         <div className={styles.flex_item}>
             <span className={styles.padding}>{props.dates}</span>
