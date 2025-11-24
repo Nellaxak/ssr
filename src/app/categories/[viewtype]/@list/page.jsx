@@ -119,9 +119,10 @@ export default async function Home({ params }) {
         const list = dat.near_earth_objects
         const dates = Object.keys(list)
         const arrObjects = Object.values(list)
-        const prevDate = new Intl.DateTimeFormat("ru-RU", options).format(dates[0]);
+        console.log('dates',dates[0])
+        /*const prevDate = new Intl.DateTimeFormat("ru-RU", options).format(dates[0]);
         const datSlice = prevDate.slice(0, -2)
-        const dateString = datSlice.replace('.', '');
+        const dateString = datSlice.replace('.', '');*/
         return <List items={arrObjects[0]}
             renderItem={async (product) => {
                 //updated status
@@ -132,8 +133,7 @@ export default async function Home({ params }) {
                     key={product.id}
                     obj={product}
                     viewtype={viewtype}
-                    dates={dateString}
-                //regexp={DataFormat()}
+                    dates={dates[0]}
                 />
             }
             }
