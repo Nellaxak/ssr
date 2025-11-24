@@ -25,7 +25,7 @@ function DataFormat(param, viewtype) {
         resultToggle = new Intl.NumberFormat("ru", { style: "unit", unit: "kilometer", unitDisplay: "short" }).format(param.kilometers);
     } else {
         resultToggle = new Intl.NumberFormat("ru", { style: "decimal" }).format(param.lunar);
-    } 
+    }
     let map = new Map();
     map.set(/0|[5-9]$/, ["ых", ""]);
     map.set(/[2-4]$/, ["ые", "ы"]);
@@ -119,10 +119,11 @@ export default async function Home({ params }) {
         const list = dat.near_earth_objects
         const dates = Object.keys(list)
         const arrObjects = Object.values(list)
-        console.log('dates',dates[0])
-        /*const prevDate = new Intl.DateTimeFormat("ru-RU", options).format(dates[0]);
+        console.log('dates', dates[0])
+        const date = new Date(product.close_approach_data[0].epoch_date_close_approach)
+        const prevDate = new Intl.DateTimeFormat("ru-RU", options).format(date);
         const datSlice = prevDate.slice(0, -2)
-        const dateString = datSlice.replace('.', '');*/
+        const dateString = datSlice.replace('.', '');
         return <List items={arrObjects[0]}
             renderItem={async (product) => {
                 //updated status
@@ -133,7 +134,7 @@ export default async function Home({ params }) {
                     key={product.id}
                     obj={product}
                     viewtype={viewtype}
-                    dates={dates[0]}
+                    dates={dateString}
                 />
             }
             }
