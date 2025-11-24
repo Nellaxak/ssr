@@ -76,7 +76,7 @@ async function List({ items, renderItem }) {
             {res}</ul>)
 }
 async function FormatStatus(params) {
-    const status = statusMap.get(props.obj.id)
+    const status = statusMap.get(params)
     let statusItem = 'ЗАКАЗАТЬ'
     if (status === 0) {
         statusItem = 'ЗАКАЗАТЬ'
