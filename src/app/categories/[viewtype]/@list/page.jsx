@@ -38,30 +38,33 @@ async function List({ items, renderItem }) {
 }
 
 async function Row(props) {
-    //console.log('Row', props)
+    console.log('Row', props)
     /*<Form action={toggleClick}>
             <input type='number' name='id' defaultValue={props.obj.id} hidden />
             <button type='submit'>{statusMap.get(props.obj.id)}</button>
         </Form>*/
     const dataViewtype = props.obj.close_approach_data[0].miss_distance
     const status = statusMap.get(props.obj.id)
-    return <Suspense><li>
-        <span>{props.dates}</span>
+    return <Suspense><li className={styles.flex_container}>
+        <span className={styles.flex_item}>{props.dates}</span>
         <span>{props.key}</span>
         <span>{props.obj.name}</span>
         <span>{props.obj.id}</span>
         <span>{props.obj.absolute_magnitude_h}</span>
+        <span>{props.obj.estimated_diameter.meters.estimated_diameter_min}</span>
         <Suspense><output className={styles.padding}>
             {(props.viewtype === 'main') ?
                 dataViewtype.kilometers :
                 dataViewtype.lunar
             }</output></Suspense>
-        <span>{String(props.obj.is_potentially_hazardous_asteroid)}</span>
-        <Link key={props.obj.id}
-            className={styles.buttonItem}
-            prefetch={false}
-            href={`/categories/${props.viewtype}/click/${props.obj.id}`}
-            scroll={false}><Suspense>{String(status)}</Suspense></Link>
+        <div className={styles.flex_item}>
+            <Link key={props.obj.id}
+                className={styles.buttonItem}
+                prefetch={false}
+                href={`/categories/${props.viewtype}/click/${props.obj.id}`}
+                scroll={false}><Suspense>{String(status)}</Suspense></Link>
+            <span>{String(props.obj.is_potentially_hazardous_asteroid)}</span>
+        </div>
     </li></Suspense>
 }
 export default async function Home({ params }) {

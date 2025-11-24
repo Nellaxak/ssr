@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{Suspense} from 'react';
 import styles from "./page.module.css";
 
 //const inter = Inter({ subsets: ['latin'] })
@@ -13,5 +13,5 @@ export default async function Layout({
                 Ближайшие подлёты астероидов
             </h6>{children}
         </header>*/
-    return children
+    return <Suspense>{children}</Suspense>
 }
