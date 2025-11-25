@@ -67,14 +67,12 @@ async function CalcData() {
     //return { startDate, endDate }
 }
 async function List({ items, renderItem }) {
-    //await Promise.all(arrObjects[0].map(
     const res = await Promise.all(items.map(async (item, index) => {
         return await renderItem(item);
     }))
+    //<ul className={styles.row}>
     return (
-        <Suspense>
-            <ul className={styles.row}>
-                {res}</ul>
+        <Suspense>{res}
         </Suspense>)
 }
 async function FormatStatus(params) {
@@ -140,17 +138,14 @@ export default async function Home({ params }) {
     if (Number(resp.status) === 200) {
         const dat = await resp.json()
         const list = dat.near_earth_objects
-        //const dates = Object.keys(list)
         const arrObjects = Object.values(list)
 
         return <Suspense><List items={arrObjects[0]}
             renderItem={async (product) => {
-                //console.log('dates', product.close_approach_data[0].epoch_date_close_approach
                 const date = new Date(product.close_approach_data[0].epoch_date_close_approach)
                 const prevDate = new Intl.DateTimeFormat("ru-RU", options).format(date);
                 const datSlice = prevDate.slice(0, -2)
                 const dateString = datSlice.replace('.', '');
-                //updated status
                 if (statusMap.get(product.id) !== 1) {
                     statusMap.set(product.id, 0)
                 }
