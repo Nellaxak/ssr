@@ -30,10 +30,11 @@ export default async function ParallelLayout({
           <h6 className={styles.h6}>Заказ отправлен!</h6>}*/
   return (
     <Suspense>
+      <main className={styles.column}>
         <Suspense>{toggle}</Suspense>
         <Suspense>{list}</Suspense>
         <Suspense>{children}</Suspense>
-
+      </main>  
     </Suspense>
   )
 }
