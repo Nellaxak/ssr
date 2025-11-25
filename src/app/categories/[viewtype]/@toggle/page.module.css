@@ -1,0 +1,6 @@
+.padding_count {
+  padding-right: 0.3em;
+}
+.column {
+   grid-area: g;
+ }
