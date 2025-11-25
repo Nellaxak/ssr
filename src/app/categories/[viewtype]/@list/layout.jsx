@@ -13,5 +13,6 @@ export default async function ParallelLayout({
   count: React.ReactNode,
   list: React.ReactNode
 }*/) {
-  return <ul className={styles.row}>{children}</ul>
+  return <ul className={styles.row}>
+    <Suspense>{children}</Suspense></ul>
 }
