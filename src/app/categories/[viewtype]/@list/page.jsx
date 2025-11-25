@@ -126,21 +126,8 @@ async function Row(props) {
         </div>
     </li></Suspense>
 }
-async function RenderProp(product) {
-    const date = new Date(product.close_approach_data[0].epoch_date_close_approach)
-    const prevDate = new Intl.DateTimeFormat("ru-RU", options).format(date);
-    const datSlice = prevDate.slice(0, -2)
-    const dateString = datSlice.replace('.', '');
-    if (statusMap.get(product.id) !== 1) {
-        statusMap.set(product.id, 0)
-    }
-    return <Suspense><Row
-        key={product.id}
-        obj={product}
-        viewtype={viewtype}
-        dates={dateString}
-    /></Suspense>
-}
+/*async function RenderProp(product){
+}*/
 export default async function Home({ params }) {
     [startDate, endDate] = await CalcData()
     const promiseParams = await params
@@ -156,7 +143,22 @@ export default async function Home({ params }) {
         const arrObjects = Object.values(list)
 
         return <Suspense><List items={arrObjects[0]}
-            renderItem={RenderProp(product)}
+            renderItem={async (product) => {
+                const date = new Date(product.close_approach_data[0].epoch_date_close_approach)
+                const prevDate = new Intl.DateTimeFormat("ru-RU", options).format(date);
+                const datSlice = prevDate.slice(0, -2)
+                const dateString = datSlice.replace('.', '');
+                if (statusMap.get(product.id) !== 1) {
+                    statusMap.set(product.id, 0)
+                }
+                return <Suspense><Row
+                    key={product.id}
+                    obj={product}
+                    viewtype={viewtype}
+                    dates={dateString}
+                /></Suspense>
+            }
+            }
         /></Suspense>
     }
 
