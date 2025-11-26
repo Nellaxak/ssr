@@ -7,15 +7,15 @@ import styles from "./page.module.css";
 //const inter = Inter({ subsets: ['latin'] })
 
 export default async function ParallelLayout({
-  children, params,
+  children, //params,
   list,toggle//count,
 }/*: {
   children: React.ReactNode,
   count: React.ReactNode,
   list: React.ReactNode
 }*/) {
-  const paramsPromise = await params
-  const viewtype = paramsPromise.viewtype
+  //const paramsPromise = await params
+  //const viewtype = paramsPromise.viewtype
   //console.log('layout viewtype',viewtype)
   /*<main className={styles.column}>
         {(viewtype !== 'marked') ? <header className={styles.header}>
