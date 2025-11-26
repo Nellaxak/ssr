@@ -135,7 +135,8 @@ export default async function Home({ params }) {
 
     //try {
     resp = await fetch(`https://api.nasa.gov/neo/rest/v1/feed?start_date=${startDate}&end_date=${endDate}&api_key=3wa5hHgFuqhf6XiefvqzkcDQWZ01aOOK4vNZEXsP`,
-        { next: { tags: ['items'] } }
+        { cache: 'force-cache'}
+        //{ next: { tags: ['items'] } }
     );//revalidate tag after change viewtype
     if (Number(resp.status) === 200) {
         const dat = await resp.json()
