@@ -106,10 +106,10 @@ async function Row(props) {
         <div className={styles.flex_item}>
             <span className={styles.padding}>{props.dates}</span>
         </div>
-        <span>{props.obj.name}</span>
+        <span className={styles.name_link}>{props.obj.name}</span>
         <div className={styles.flex_container_row}>
-            <span>Ø</span>
-            <span>{Math.round(Number(props.obj.estimated_diameter.meters.estimated_diameter_min))}</span>
+            <span className={styles.name_link}>Ø</span>
+            <span className={styles.name_link}>{Math.round(Number(props.obj.estimated_diameter.meters.estimated_diameter_min))}</span>
         </div>
         <Suspense>
             <output className={styles.padding}>{formatData}</output>
@@ -135,7 +135,7 @@ export default async function Home({ params }) {
 
     //try {
     resp = await fetch(`https://api.nasa.gov/neo/rest/v1/feed?start_date=${startDate}&end_date=${endDate}&api_key=3wa5hHgFuqhf6XiefvqzkcDQWZ01aOOK4vNZEXsP`,
-        { next: { tags: ['posts'] } }
+        { next: { tags: ['items'] } }
     );//revalidate tag after change viewtype
     if (Number(resp.status) === 200) {
         const dat = await resp.json()
