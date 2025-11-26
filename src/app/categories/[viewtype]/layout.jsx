@@ -8,7 +8,7 @@ import styles from "./page.module.css";
 
 export default async function ParallelLayout({
   children, params,
-  list,//count,
+  list,toggle//count,
 }/*: {
   children: React.ReactNode,
   count: React.ReactNode,
