@@ -173,7 +173,7 @@ export default async function Home({ params }) {
         console.log(err)
     }*/
     Home.getLayout = function getLayout(page) {
-        return <li className={styles.flex_container}>
+        return (<li className={styles.flex_container}>
           <Suspense>{toggleViewtype}</Suspense>
           <Suspense>{toggleStatus}</Suspense>
           <div className={styles.flex_item}>
@@ -196,6 +196,6 @@ export default async function Home({ params }) {
               <span className={styles.danger}>'Danger'</span>
             </div>
           </div>
-        </li>
+        </li>)
     };
 }
