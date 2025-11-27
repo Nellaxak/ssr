@@ -142,10 +142,12 @@ export default async function Home({ params }) {
         // Loop to read chunks from the stream
         while (true) {
             const { done, value } = await reader.read(); // Read a chunk
-            if (done) {
             result = value
+            if (done) {
                 console.log("Stream finished.");
                 break; // Exit the loop when the stream is done
+            } else {
+                result = value
             }
         }
         //console.log('success')
