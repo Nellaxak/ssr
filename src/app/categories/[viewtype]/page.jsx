@@ -1,6 +1,6 @@
 import styles from "./page.module.css";
 import React, { Suspense } from "react";
-import statusMap from "../../../app/statusMap";
+import statusMap from "../../../statusMap";
 import Link from "next/link";
 
 let resp
@@ -139,7 +139,7 @@ export default async function Home({ params }) {
         );//revalidate tag after change viewtype
         console.log('sss',viewtype,resp.status)
         if (Number(resp.status) === 200) {
-            console.log('success')
+            //console.log('success')
             const dat = await resp.json()
             const list = dat.near_earth_objects
             const arrObjects = Object.values(list)

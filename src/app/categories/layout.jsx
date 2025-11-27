@@ -24,7 +24,7 @@ export default async function Layout({
                     <Link href="/categories/main" scroll={false}
                         className={(viewtype === undefined ) ? 'km' : 'moon'}>в километрах</Link>
                     <span className={styles.space}>|</span>
-                    <Link href="/categories/main/moon" scroll={false}
+                    <Link href="/categories/moon" scroll={false}
                         className={(viewtype === undefined ) ? 'moon' : 'km'}>в лунных орбитах</Link>
                 </nav></header> :
                 <h6 className={styles.h6}>Заказ отправлен!</h6>}
