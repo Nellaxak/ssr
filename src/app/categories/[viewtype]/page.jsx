@@ -2,6 +2,7 @@ import styles from "./page.module.css";
 import React, { Suspense } from "react";
 import statusMap from "../../statusMap";
 import Link from "next/link";
+import ItemLayout from "../../layouts/layout";
 
 let resp
 let startDate
@@ -128,38 +129,42 @@ export default async function Home({ params }) {
     const promiseParams = await params
     const viewtype = promiseParams.viewtype
     //try {
-        resp = await fetch(`https://api.nasa.gov/neo/rest/v1/feed?start_date=${startDate}&end_date=${endDate}&api_key=3wa5hHgFuqhf6XiefvqzkcDQWZ01aOOK4vNZEXsP`,
-            { cache: 'force-cache' }
-            //{ next: { tags: ['items'] } }
-        );//revalidate tag after change viewtype
-        //console.log('sss',viewtype,resp.status)
-        if (Number(resp.status) === 200) {
-            //console.log('success')
-            const dat = await resp.json()
-            const list = dat.near_earth_objects
-            const arrObjects = Object.values(list)
+    resp = await fetch(`https://api.nasa.gov/neo/rest/v1/feed?start_date=${startDate}&end_date=${endDate}&api_key=3wa5hHgFuqhf6XiefvqzkcDQWZ01aOOK4vNZEXsP`,
+        { cache: 'force-cache' }
+        //{ next: { tags: ['items'] } }
+    );//revalidate tag after change viewtype
+    //console.log('sss',viewtype,resp.status)
+    if (Number(resp.status) === 200) {
+        //console.log('success')
+        const dat = await resp.json()
+        const list = dat.near_earth_objects
+        const arrObjects = Object.values(list)
 
-            return <Suspense><List items={arrObjects[0]}
-                renderItem={async (product) => {
-                    const date = new Date(product.close_approach_data[0].epoch_date_close_approach)
-                    const prevDate = new Intl.DateTimeFormat("ru-RU", options).format(date);
-                    const datSlice = prevDate.slice(0, -2)
-                    const dateString = datSlice.replace('.', '');
-                    if (statusMap.get(product.id) !== 1) {
-                        statusMap.set(product.id, 0)
-                    }
-                    return <Suspense><Row
-                        key={product.id}
-                        obj={product}
-                        viewtype={viewtype}
-                        dates={dateString}
-                    /></Suspense>
+        return <Suspense><List items={arrObjects[0]}
+            renderItem={async (product) => {
+                const date = new Date(product.close_approach_data[0].epoch_date_close_approach)
+                const prevDate = new Intl.DateTimeFormat("ru-RU", options).format(date);
+                const datSlice = prevDate.slice(0, -2)
+                const dateString = datSlice.replace('.', '');
+                if (statusMap.get(product.id) !== 1) {
+                    statusMap.set(product.id, 0)
                 }
-                }
-            /></Suspense>
-        }
+                /*return <Suspense><Row
+                    key={product.id}
+                    obj={product}
+                    viewtype={viewtype}
+                    dates={dateString}
+                /></Suspense>*/
+                return <ItemLayout children={'llllllllllllllll'} />
+            }
+            }
+        /></Suspense>
+    }
     /*}
     catch (err) {
         console.log(err)
     }*/
+    Home.getLayout = function getLayout(page) {
+        return <MyLayout>{page}</MyLayout>;
+    };
 }
