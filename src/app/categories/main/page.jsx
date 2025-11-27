@@ -137,7 +137,7 @@ export default async function Home({ params }) {
             { cache: 'force-cache' }
             //{ next: { tags: ['items'] } }
         );//revalidate tag after change viewtype
-        //console.log('sss',resp.status)
+        console.log('sss',viewtype,resp.status)
         if (Number(resp.status) === 200) {
             const dat = await resp.json()
             const list = dat.near_earth_objects
