@@ -18,6 +18,11 @@ export default async function ItemLayout({
   const paramsPromise = await params
   const viewtype = paramsPromise.viewtype
   //{Math.round(Number(product.estimated_diameter.meters.estimated_diameter_min))}
+  /*<Link key={1}
+                className={styles.buttonItem}
+                prefetch={false}
+                href={`/categories/${viewtype}/click/${1}`}
+                scroll={false}><Suspense>0</Suspense></Link>*/
   return (
     <Suspense>
       <Suspense>
@@ -36,11 +41,7 @@ export default async function ItemLayout({
           <output className={styles.padding}><Suspense>{children}</Suspense></output>
           <div className={styles.flex_item}>
             <div className={styles.flex_container_row}>
-              <Link key={1}
-                className={styles.buttonItem}
-                prefetch={false}
-                href={`/categories/${viewtype}/click/${1}`}
-                scroll={false}><Suspense>0</Suspense></Link>
+              
               <span className={styles.danger}>'Danger'</span>
             </div>
           </div>
