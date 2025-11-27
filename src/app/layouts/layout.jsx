@@ -37,7 +37,7 @@ export default async function ItemLayout({
           <output className={styles.padding}><Suspense>{children}</Suspense></output>
           <div className={styles.flex_item}>
             <div className={styles.flex_container_row}>
-              <Link key={product.id}
+              <Link key={1}
                 className={styles.buttonItem}
                 prefetch={false}
                 href={`/categories/${viewtype}/click/${1}`}
