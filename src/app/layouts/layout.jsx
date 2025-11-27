@@ -15,7 +15,8 @@ export default async function ItemLayout({
   count: React.ReactNode,
   list: React.ReactNode
 }*/) {
-  const paramsPromise = await params
+  console.log('ItemLayout',children)
+  //const paramsPromise = await params
   //const viewtype = paramsPromise.viewtype
   //{Math.round(Number(product.estimated_diameter.meters.estimated_diameter_min))}
   return (
