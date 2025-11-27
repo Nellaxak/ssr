@@ -173,6 +173,29 @@ export default async function Home({ params }) {
         console.log(err)
     }*/
     Home.getLayout = function getLayout(page) {
-        return <ItemLayout>{page}</ItemLayout>;
+        return <li className={styles.flex_container}>
+          <Suspense>{toggleViewtype}</Suspense>
+          <Suspense>{toggleStatus}</Suspense>
+          <div className={styles.flex_item}>
+            <span className={styles.padding}>'dates'</span>
+          </div>
+          <span className={styles.name_link}>'name'</span>
+          <div className={styles.flex_container_row}>
+            <span className={styles.name_link}>Ø</span>
+            <span className={styles.name_link}>'Math.round'
+              </span>
+          </div>
+          <output className={styles.padding}><ItemLayout>{page}</ItemLayout></output>
+          <div className={styles.flex_item}>
+            <div className={styles.flex_container_row}>
+              <Link key={1}
+                className={styles.buttonItem}
+                prefetch={false}
+                href={`/categories/main/click/${1}`}
+                scroll={false}><Suspense>0</Suspense></Link>
+              <span className={styles.danger}>'Danger'</span>
+            </div>
+          </div>
+        </li>
     };
 }
