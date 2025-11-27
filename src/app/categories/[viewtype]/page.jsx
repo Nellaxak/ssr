@@ -149,13 +149,40 @@ export default async function Home({ params }) {
                 if (statusMap.get(product.id) !== 1) {
                     statusMap.set(product.id, 0)
                 }
+                const dataViewtype = product.close_approach_data[0].miss_distance
+                const status = await FormatStatus(product.id)
+                const formatData = await DataFormat(dataViewtype, props.viewtype)
+                let Danger = ''
+                if (Number(product.is_potentially_hazardous_asteroid) === 1) {
+                    Danger = 'Опасен'
+                }
                 /*return <Suspense><Row
                     key={product.id}
                     obj={product}
                     viewtype={viewtype}
                     dates={dateString}
                 /></Suspense>*/
-                return <ItemLayout children={'llllllllllllllll'} />
+                return <ItemLayout children={<><div className={styles.flex_item}>
+                    <span className={styles.padding}>{dateString}</span>
+                </div>
+                    <span className={styles.name_link}>{product.name}</span>
+                    <div className={styles.flex_container_row}>
+                        <span className={styles.name_link}>Ø</span>
+                        <span className={styles.name_link}>{Math.round(Number(product.estimated_diameter.meters.estimated_diameter_min))}</span>
+                    </div>
+                    <Suspense>
+                        <output className={styles.padding}>{formatData}</output>
+                    </Suspense>
+                    <div className={styles.flex_item}>
+                        <div className={styles.flex_container_row}>
+                            <Link key={product.id}
+                                className={styles.buttonItem}
+                                prefetch={false}
+                                href={`/categories/${viewtype}/click/${product.id}`}
+                                scroll={false}><Suspense>{String(status)}</Suspense></Link>
+                            <span className={styles.danger}>{Danger}</span>
+                        </div>
+                    </div></>} />
             }
             }
         /></Suspense>
