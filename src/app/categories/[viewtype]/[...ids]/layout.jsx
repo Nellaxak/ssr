@@ -8,7 +8,8 @@ import styles from "./page.module.css";
 
 export default async function ParallelLayout({
   children, //params,
-  list,//toggle//count,
+  toggleViewtype,
+  toggleStatus,
 }/*: {
   children: React.ReactNode,
   count: React.ReactNode,
@@ -18,11 +19,12 @@ export default async function ParallelLayout({
   const viewtype = paramsPromise.viewtype*/
   return (
     <Suspense>
-      <Suspense>{list}</Suspense>
       <Suspense>
-        <ul className={styles.row}>
+          <li className={styles.flex_container}>
+            <Suspense>{toggleViewtype}</Suspense>
+            <Suspense>{toggleStatus}</Suspense>
             <Suspense>{children}</Suspense>
-        </ul>
+          </li>
       </Suspense>
     </Suspense>
   )
