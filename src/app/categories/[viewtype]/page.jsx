@@ -133,13 +133,27 @@ export default async function Home({ params }) {
         { cache: 'force-cache' }
         //{ next: { tags: ['items'] } }
     );//revalidate tag after change viewtype
-    console.log('sss',resp)
+    //console.log('sss',resp)
+
     if (Number(resp.status) === 200) {
+        const reader = response.body.getReader(); // Get a reader for the stream
+        //let receivedLength = 0; // Track the total bytes received
+        let result
+        // Loop to read chunks from the stream
+        while (true) {
+            const { done, value } = await reader.read(); // Read a chunk
+            console.log('value', value)
+            result = value
+            if (done) {
+                console.log("Stream finished.");
+                break; // Exit the loop when the stream is done
+            }
+        }
         //console.log('success')
         //const dat = await resp.json()
         //const list = dat.near_earth_objects
         //const arrObjects = Object.values(list)
-        return resp/*<List items={arrObjects[0]}
+        return result/*<List items={arrObjects[0]}
             renderItem={async (product) => {
                 const date = new Date(product.close_approach_data[0].epoch_date_close_approach)
                 const prevDate = new Intl.DateTimeFormat("ru-RU", options).format(date);
@@ -151,21 +165,21 @@ export default async function Home({ params }) {
                 const dataViewtype = product.close_approach_data[0].miss_distance
                 const status = await FormatStatus(product.id)
                 const formatData = await DataFormat(dataViewtype, viewtype)*/
-                /*let Danger = ''
-                if (Number(product.is_potentially_hazardous_asteroid) === 1) {
-                    Danger = 'Опасен'
-                }*/
-                /*return <Suspense><Row
-                    key={product.id}
-                    obj={product}
-                    viewtype={viewtype}
-                    dates={dateString}
-                /></Suspense>*/
-                //return <ItemLayout children={formatData} />
-                /*return formatData
-            }
-            }
-        />*/
+        /*let Danger = ''
+        if (Number(product.is_potentially_hazardous_asteroid) === 1) {
+            Danger = 'Опасен'
+        }*/
+        /*return <Suspense><Row
+            key={product.id}
+            obj={product}
+            viewtype={viewtype}
+            dates={dateString}
+        /></Suspense>*/
+        //return <ItemLayout children={formatData} />
+        /*return formatData
+    }
+    }
+/>*/
     }
     /*}
     catch (err) {
