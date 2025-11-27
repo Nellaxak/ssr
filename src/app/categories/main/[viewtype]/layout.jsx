@@ -7,19 +7,17 @@ import styles from "./page.module.css";
 //const inter = Inter({ subsets: ['latin'] })
 
 export default async function ParallelLayout({
-  children, params,
+  children, //params,
   list,//toggle//count,
 }/*: {
   children: React.ReactNode,
   count: React.ReactNode,
   list: React.ReactNode
 }*/) {
-  const paramsPromise = await params
-  const viewtype = paramsPromise.viewtype
+  /*const paramsPromise = await params
+  const viewtype = paramsPromise.viewtype*/
   //console.log('layout viewtype',viewtype)
-  return (
-    <Suspense>
-      <main className={styles.column}>
+  /*<main className={styles.column}>
         {(viewtype !== 'marked') ? <header className={styles.header}>
           <h6 className={styles.h6}>Ближайшие подлёты астероидов</h6>
           <nav  className={styles.labelWrapper}>
@@ -29,10 +27,11 @@ export default async function ParallelLayout({
             <Link href="/categories/moon" scroll={false}
               className={(viewtype === 'main') ? 'moon' : 'km'}>в лунных орбитах</Link>
           </nav></header> :
-          <h6 className={styles.h6}>Заказ отправлен!</h6>}
-        <Suspense>{list}</Suspense>
-        <Suspense>{children}</Suspense>
-      </main>  
+          <h6 className={styles.h6}>Заказ отправлен!</h6>}*/
+  return (
+    <Suspense>
+      <Suspense>{list}</Suspense>
+      <Suspense>{children}</Suspense>
     </Suspense>
   )
 }
