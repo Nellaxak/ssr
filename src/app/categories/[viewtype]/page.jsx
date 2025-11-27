@@ -142,9 +142,8 @@ export default async function Home({ params }) {
         // Loop to read chunks from the stream
         while (true) {
             const { done, value } = await reader.read(); // Read a chunk
-            console.log('value', value)
-            result = value
             if (done) {
+            result = value
                 console.log("Stream finished.");
                 break; // Exit the loop when the stream is done
             }
@@ -153,6 +152,7 @@ export default async function Home({ params }) {
         //const dat = await resp.json()
         //const list = dat.near_earth_objects
         //const arrObjects = Object.values(list)
+        console.log('value', result)
         return result/*<List items={arrObjects[0]}
             renderItem={async (product) => {
                 const date = new Date(product.close_approach_data[0].epoch_date_close_approach)
