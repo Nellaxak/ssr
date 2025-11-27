@@ -140,7 +140,7 @@ export default async function Home({ params }) {
         const list = dat.near_earth_objects
         const arrObjects = Object.values(list)
 
-        return <Suspense><List items={arrObjects[0]}
+        return <List items={arrObjects[0]}
             renderItem={async (product) => {
                 const date = new Date(product.close_approach_data[0].epoch_date_close_approach)
                 const prevDate = new Intl.DateTimeFormat("ru-RU", options).format(date);
@@ -165,7 +165,7 @@ export default async function Home({ params }) {
                 return <ItemLayout children={formatData} />
             }
             }
-        /></Suspense>
+        />
     }
     /*}
     catch (err) {

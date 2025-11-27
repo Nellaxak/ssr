@@ -17,8 +17,7 @@ export default async function ItemLayout({
 }*/) {
   const paramsPromise = await params
   const viewtype = paramsPromise.viewtype
-  //            {Math.round(Number(product.estimated_diameter.meters.estimated_diameter_min))}
-
+  //{Math.round(Number(product.estimated_diameter.meters.estimated_diameter_min))}
   return (
     <Suspense>
       <Suspense>
