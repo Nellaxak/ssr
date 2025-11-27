@@ -138,8 +138,8 @@ export default async function Home({ params }) {
         { cache: 'force-cache'}
         //{ next: { tags: ['items'] } }
     );//revalidate tag after change viewtype
-    console.log('sss',resp.status)
-    //if (Number(resp.status) === 200) {
+    //console.log('sss',resp.status)
+    if (Number(resp.status) === 200) {
         const dat = await resp.json()
         const list = dat.near_earth_objects
         const arrObjects = Object.values(list)
@@ -162,6 +162,6 @@ export default async function Home({ params }) {
             }
             }
         /></Suspense>
-    //}
+    }
 
 }
