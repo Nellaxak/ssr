@@ -146,7 +146,7 @@ export default async function Home({ params }) {
                 console.log("Stream finished.");
                 break; // Exit the loop when the stream is done
             }
-            result = value
+            result = new TextDecoder().decode(value)
         }
         //console.log('success')
         //const dat = await resp.json()
