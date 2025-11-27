@@ -30,7 +30,7 @@ export default async function ParallelLayout({
           <h6 className={styles.h6}>Заказ отправлен!</h6>}*/
   return (
     <Suspense>
-      <Suspense>{list}</Suspense>
+      <Suspense><ul className={styles.row}>{list}</ul></Suspense>
       <Suspense>{children}</Suspense>
     </Suspense>
   )
