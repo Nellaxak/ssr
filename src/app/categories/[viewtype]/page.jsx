@@ -146,7 +146,8 @@ export default async function Home({ params }) {
                 console.log("Stream finished.");
                 break; // Exit the loop when the stream is done
             }
-            result = new TextDecoder().decode(value)
+            result = new SharedArrayBuffer(value.byteLength);
+            //new TextDecoder().decode(value)
         }
         //console.log('success')
         //const dat = await resp.json()
