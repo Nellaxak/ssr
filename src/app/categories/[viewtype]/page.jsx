@@ -69,7 +69,7 @@ async function CalcData() {
 }
 async function List({ items, renderItem }) {
     const res = await Promise.any(items.map(async (item, index) => {
-        return await renderItem(item);
+        return renderItem(item);
     }))
     //<ul className={styles.row}>
     return (
@@ -172,7 +172,7 @@ export default async function Home({ params }) {
     catch (err) {
         console.log(err)
     }*/
-    Home.getLayout = function getLayout(page) {
+    /*Home.getLayout = function getLayout(page) {
         return (<li className={styles.flex_container}>
           <Suspense>{toggleViewtype}</Suspense>
           <Suspense>{toggleStatus}</Suspense>
@@ -197,5 +197,5 @@ export default async function Home({ params }) {
             </div>
           </div>
         </li>)
-    };
+    };*/
 }
