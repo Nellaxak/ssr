@@ -1,6 +1,6 @@
 import styles from "./page.module.css";
 import React, { Suspense } from "react";
-import statusMap from "../../../statusMap";
+import statusMap from "../../statusMap";
 import Link from "next/link";
 
 let resp
