@@ -69,7 +69,7 @@ async function CalcData() {
 }
 async function List({ items, renderItem }) {
     const res = await Promise.any(items.map(async (item, index) => {
-        return renderItem(item);
+        return await renderItem(item);
     }))
     //<ul className={styles.row}>
     return (
@@ -133,14 +133,13 @@ export default async function Home({ params }) {
         { cache: 'force-cache' }
         //{ next: { tags: ['items'] } }
     );//revalidate tag after change viewtype
-    //console.log('sss',viewtype,resp.status)
+    console.log('sss',resp)
     if (Number(resp.status) === 200) {
         //console.log('success')
-        const dat = await resp.json()
-        const list = dat.near_earth_objects
-        const arrObjects = Object.values(list)
-
-        return <List items={arrObjects[0]}
+        //const dat = await resp.json()
+        //const list = dat.near_earth_objects
+        //const arrObjects = Object.values(list)
+        return resp/*<List items={arrObjects[0]}
             renderItem={async (product) => {
                 const date = new Date(product.close_approach_data[0].epoch_date_close_approach)
                 const prevDate = new Intl.DateTimeFormat("ru-RU", options).format(date);
@@ -151,7 +150,7 @@ export default async function Home({ params }) {
                 }
                 const dataViewtype = product.close_approach_data[0].miss_distance
                 const status = await FormatStatus(product.id)
-                const formatData = await DataFormat(dataViewtype, viewtype)
+                const formatData = await DataFormat(dataViewtype, viewtype)*/
                 /*let Danger = ''
                 if (Number(product.is_potentially_hazardous_asteroid) === 1) {
                     Danger = 'Опасен'
@@ -163,10 +162,10 @@ export default async function Home({ params }) {
                     dates={dateString}
                 /></Suspense>*/
                 //return <ItemLayout children={formatData} />
-                return formatData
+                /*return formatData
             }
             }
-        />
+        />*/
     }
     /*}
     catch (err) {
