@@ -152,17 +152,18 @@ export default async function Home({ params }) {
                 const dataViewtype = product.close_approach_data[0].miss_distance
                 const status = await FormatStatus(product.id)
                 const formatData = await DataFormat(dataViewtype, viewtype)
-                let Danger = ''
+                /*let Danger = ''
                 if (Number(product.is_potentially_hazardous_asteroid) === 1) {
                     Danger = 'Опасен'
-                }
+                }*/
                 /*return <Suspense><Row
                     key={product.id}
                     obj={product}
                     viewtype={viewtype}
                     dates={dateString}
                 /></Suspense>*/
-                return <ItemLayout children={formatData} />
+                //return <ItemLayout children={formatData} />
+                return formatData
             }
             }
         />
