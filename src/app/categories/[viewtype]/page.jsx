@@ -87,11 +87,6 @@ async function FormatStatus(params) {
     return statusItem
 }
 async function Row(props) {
-    //console.log('Row', props)
-    /*<Form action={toggleClick}>
-            <input type='number' name='id' defaultValue={props.obj.id} hidden />
-            <button type='submit'>{statusMap.get(props.obj.id)}</button>
-        </Form>*/
     /*<span>{props.obj.id}</span>
     <span>{props.key}</span>
     <span>{props.obj.absolute_magnitude_h}</span>*/
@@ -102,7 +97,7 @@ async function Row(props) {
     if (Number(props.obj.is_potentially_hazardous_asteroid) === 1) {
         Danger = 'Опасен'
     }
-    return <Suspense><li className={styles.flex_container}>
+    return <Suspense>
         <div className={styles.flex_item}>
             <span className={styles.padding}>{props.dates}</span>
         </div>
@@ -124,7 +119,7 @@ async function Row(props) {
                 <span className={styles.danger}>{Danger}</span>
             </div>
         </div>
-    </li></Suspense>
+    </Suspense>
 }
 /*async function RenderProp(product){
 }*/

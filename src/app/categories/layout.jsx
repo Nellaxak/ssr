@@ -10,12 +10,6 @@ export default async function Layout({
 }*/) {
     const promiseParams = await params
     const viewtype = promiseParams.viewtype
-    //console.log('asasas',await params)
-    /*<header className={styles.header}>
-            <h6 className={styles.h6}>
-                Ближайшие подлёты астероидов
-            </h6>{children}
-        </header>*/
     return (<Suspense>
         <main className={styles.column}>
             {(viewtype !== 'marked') ? <header className={styles.header}>
