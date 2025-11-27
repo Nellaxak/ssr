@@ -17,17 +17,6 @@ export default async function ParallelLayout({
   const paramsPromise = await params
   const viewtype = paramsPromise.viewtype
   //console.log('layout viewtype',viewtype)
-  /*<main className={styles.column}>
-        {(viewtype !== 'marked') ? <header className={styles.header}>
-          <h6 className={styles.h6}>Ближайшие подлёты астероидов</h6>
-          <nav  className={styles.labelWrapper}>
-            <Link href="/categories/main" scroll={false}
-              className={(viewtype === 'main') ? 'km' : 'moon'}>в километрах</Link>
-            <span className={styles.space}>|</span>
-            <Link href="/categories/moon" scroll={false}
-              className={(viewtype === 'main') ? 'moon' : 'km'}>в лунных орбитах</Link>
-          </nav></header> :
-          <h6 className={styles.h6}>Заказ отправлен!</h6>}*/
   return (
     <Suspense>
       <main className={styles.column}>
