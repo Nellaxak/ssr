@@ -138,16 +138,15 @@ export default async function Home({ params }) {
     if (Number(resp.status) === 200) {
         const reader = resp.body.getReader(); // Get a reader for the stream
         //let receivedLength = 0; // Track the total bytes received
-        let result=''
+        let result
         // Loop to read chunks from the stream
         while (true) {
             const { done, value } = await reader.read(); // Read a chunk
             if (done) {
                 console.log("Stream finished.");
                 break; // Exit the loop when the stream is done
-            } else {
-                result = result+value
             }
+            result = value
         }
         //console.log('success')
         //const dat = await resp.json()
