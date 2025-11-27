@@ -151,7 +151,7 @@ export default async function Home({ params }) {
                 }
                 const dataViewtype = product.close_approach_data[0].miss_distance
                 const status = await FormatStatus(product.id)
-                const formatData = await DataFormat(dataViewtype, props.viewtype)
+                const formatData = await DataFormat(dataViewtype, viewtype)
                 let Danger = ''
                 if (Number(product.is_potentially_hazardous_asteroid) === 1) {
                     Danger = 'Опасен'
