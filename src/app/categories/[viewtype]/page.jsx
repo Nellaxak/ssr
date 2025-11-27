@@ -136,7 +136,7 @@ export default async function Home({ params }) {
     //console.log('sss',resp)
 
     if (Number(resp.status) === 200) {
-        const reader = response.body.getReader(); // Get a reader for the stream
+        const reader = resp.body.getReader(); // Get a reader for the stream
         //let receivedLength = 0; // Track the total bytes received
         let result
         // Loop to read chunks from the stream
