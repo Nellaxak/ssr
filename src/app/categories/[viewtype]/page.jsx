@@ -192,6 +192,6 @@ export default async function Home({ params }) {
         console.log(err)
     }*/
     Home.getLayout = function getLayout(page) {
-        return <MyLayout>{page}</MyLayout>;
+        return <ItemLayout>{page}</ItemLayout>;
     };
 }
