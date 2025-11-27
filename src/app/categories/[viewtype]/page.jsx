@@ -162,27 +162,7 @@ export default async function Home({ params }) {
                     viewtype={viewtype}
                     dates={dateString}
                 /></Suspense>*/
-                return <ItemLayout children={<><div className={styles.flex_item}>
-                    <span className={styles.padding}>{dateString}</span>
-                </div>
-                    <span className={styles.name_link}>{product.name}</span>
-                    <div className={styles.flex_container_row}>
-                        <span className={styles.name_link}>Ø</span>
-                        <span className={styles.name_link}>{Math.round(Number(product.estimated_diameter.meters.estimated_diameter_min))}</span>
-                    </div>
-                    <Suspense>
-                        <output className={styles.padding}>{formatData}</output>
-                    </Suspense>
-                    <div className={styles.flex_item}>
-                        <div className={styles.flex_container_row}>
-                            <Link key={product.id}
-                                className={styles.buttonItem}
-                                prefetch={false}
-                                href={`/categories/${viewtype}/click/${product.id}`}
-                                scroll={false}><Suspense>{String(status)}</Suspense></Link>
-                            <span className={styles.danger}>{Danger}</span>
-                        </div>
-                    </div></>} />
+                return <ItemLayout children={formatData} />
             }
             }
         /></Suspense>
