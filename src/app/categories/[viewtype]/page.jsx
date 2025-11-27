@@ -67,7 +67,7 @@ async function CalcData() {
     //return { startDate, endDate }
 }
 async function List({ items, renderItem }) {
-    const res = await Promise.all(items.map(async (item, index) => {
+    const res = await Promise.any(items.map(async (item, index) => {
         return await renderItem(item);
     }))
     //<ul className={styles.row}>
@@ -137,7 +137,7 @@ export default async function Home({ params }) {
             { cache: 'force-cache' }
             //{ next: { tags: ['items'] } }
         );//revalidate tag after change viewtype
-        console.log('sss',viewtype,resp.status)
+        //console.log('sss',viewtype,resp.status)
         if (Number(resp.status) === 200) {
             //console.log('success')
             const dat = await resp.json()

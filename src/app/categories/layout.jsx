@@ -22,10 +22,10 @@ export default async function Layout({
                 <h6 className={styles.h6}>Ближайшие подлёты астероидов</h6>
                 <nav className={styles.labelWrapper}>
                     <Link href="/categories/main" scroll={false}
-                        className={(viewtype === undefined ) ? 'km' : 'moon'}>в километрах</Link>
+                        className={(viewtype === 'main' ) ? 'km' : 'moon'}>в километрах</Link>
                     <span className={styles.space}>|</span>
                     <Link href="/categories/moon" scroll={false}
-                        className={(viewtype === undefined ) ? 'moon' : 'km'}>в лунных орбитах</Link>
+                        className={(viewtype === 'main' ) ? 'moon' : 'km'}>в лунных орбитах</Link>
                 </nav></header> :
                 <h6 className={styles.h6}>Заказ отправлен!</h6>}
         {children}</main></Suspense>)
