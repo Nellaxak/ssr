@@ -1,8 +1,8 @@
 import styles from "./page.module.css";
 import React, { Suspense } from "react";
-import statusMap from "../../statusMap";
+import statusMap from "../statusMap";
 import Link from "next/link";
-import ItemLayout from "../../layouts/layout";
+//import ItemLayout from "../../layouts/layout";
 
 let resp
 let startDate
@@ -68,7 +68,7 @@ async function CalcData() {
     //return { startDate, endDate }
 }
 async function List({ items, renderItem }) {
-    const res = await Promise.any(items.map(async (item, index) => {
+    const res = await Promise.all(items.map(async (item, index) => {
         return await renderItem(item);
     }))
     //<ul className={styles.row}>
@@ -115,7 +115,7 @@ async function Row(props) {
                 <Link key={props.obj.id}
                     className={styles.buttonItem}
                     prefetch={false}
-                    href={`/categories/${props.viewtype}/click/${props.obj.id}`}
+                    href={`/categories?viewtype=${props.viewtype}/click/${props.obj.id}`}
                     scroll={false}><Suspense>{String(status)}</Suspense></Link>
                 <span className={styles.danger}>{Danger}</span>
             </div>
@@ -126,10 +126,10 @@ async function Row(props) {
 }*/
 export default async function Home({ searchParams }) {
     [startDate, endDate] = await CalcData()
-    const search=await searchParams;
-    const promiseParams = await params
-    const viewtype = 'main'//promiseParams.viewtype
-    console.log('search',search)
+    const search = await searchParams;
+    //const promiseParams = await params
+    const viewtype = await search.viewtype
+    //console.log('search',viewtype)
     //try {
     resp = await fetch(`https://api.nasa.gov/neo/rest/v1/feed?start_date=${startDate}&end_date=${endDate}&api_key=3wa5hHgFuqhf6XiefvqzkcDQWZ01aOOK4vNZEXsP`,
         { cache: 'force-cache' }
@@ -167,22 +167,24 @@ export default async function Home({ searchParams }) {
                 const dataViewtype = product.close_approach_data[0].miss_distance
                 const status = await FormatStatus(product.id)
                 const formatData = await DataFormat(dataViewtype, viewtype)
-        /*let Danger = ''
-        if (Number(product.is_potentially_hazardous_asteroid) === 1) {
-            Danger = 'Опасен'
-        }*/
-        return <Suspense><Row
-            key={product.id}
-            obj={product}
-            viewtype={viewtype}
-            dates={dateString}
-        /></Suspense> }}
+                /*let Danger = ''
+                if (Number(product.is_potentially_hazardous_asteroid) === 1) {
+                    Danger = 'Опасен'
+                }*/
+                return <Suspense><Row
+                    key={product.id}
+                    obj={product}
+                    viewtype={viewtype}
+                    dates={dateString}
+                /></Suspense>
+            }}
         //return <ItemLayout children={formatData} />
         /*return formatData
     }
     }
 />*/
-   /> }
+        />
+    }
     /*}
     catch (err) {
         console.log(err)
