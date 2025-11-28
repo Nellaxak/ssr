@@ -5,11 +5,11 @@ import styles from "./page.module.css";
 //const inter = Inter({ subsets: ['latin'] })
 export default async function Layout({
     children, 
-    searchParams,
+    //searchParams,
 }/*: {
   children: React.ReactNode,
 }*/) {
-    const promiseParams = await searchParams;
+    //const promiseParams = await searchParams;
     const viewtype = 'main'//await promiseParams.viewtype
     return (<Suspense>
         <main className={styles.column}>
