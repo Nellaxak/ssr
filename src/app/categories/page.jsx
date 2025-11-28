@@ -132,15 +132,15 @@ export default async function Home({ searchParams }) {
     //console.log('search',viewtype)
     //try {
     resp = await fetch(`https://api.nasa.gov/neo/rest/v1/feed?start_date=${startDate}&end_date=${endDate}&api_key=3wa5hHgFuqhf6XiefvqzkcDQWZ01aOOK4vNZEXsP`,
-        { cache: 'force-cache' }
+        //{ cache: 'force-cache' }
         //{ next: { tags: ['items'] } }
     );//revalidate tag after change viewtype
     //console.log('sss',resp)
 
     if (Number(resp.status) === 200) {
-        const reader = resp.body.getReader(); // Get a reader for the stream
+        //const reader = resp.body.getReader(); // Get a reader for the stream
         //let receivedLength = 0; // Track the total bytes received
-        let result
+        //let result
         // Loop to read chunks from the stream
         /*while (true) {
             const { done, value } = await reader.read(); // Read a chunk
