@@ -16,10 +16,10 @@ export default async function Layout({
             {(viewtype !== 'marked') ? <header className={styles.header}>
                 <h6 className={styles.h6}>Ближайшие подлёты астероидов</h6>
                 <nav className={styles.labelWrapper}>
-                    <Link href="/categories?viewtype=main" scroll={false}
+                    <Link href="/categories?viewtype=main" scroll={false} prefetch={false}
                         className={(viewtype === 'main') ? 'km' : 'moon'}>в километрах</Link>
                     <span className={styles.space}>|</span>
-                    <Link href="/categories?viewtype=moon" scroll={false}
+                    <Link href="/categories?viewtype=moon" scroll={false} prefetch={false}
                         className={(viewtype === 'main') ? 'moon' : 'km'}>в лунных орбитах</Link>
                 </nav></header> :
                 <h6 className={styles.h6}>Заказ отправлен!</h6>}
