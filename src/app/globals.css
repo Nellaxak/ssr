@@ -51,6 +51,10 @@ a {
   /*pointer-events: none;*/
 }
 
+a:hover {
+  pointer-events: none;
+}
+
 .space {
   font-family: 'Helvetica';
   font-style: normal;

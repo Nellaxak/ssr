@@ -127,30 +127,13 @@ async function Row(props) {
 export default async function Home({ searchParams }) {
     [startDate, endDate] = await CalcData()
     const search = await searchParams;
-    //const promiseParams = await params
     const viewtype = await search.viewtype
-    //console.log('search',viewtype)
     //try {
     resp = await fetch(`https://api.nasa.gov/neo/rest/v1/feed?start_date=${startDate}&end_date=${endDate}&api_key=3wa5hHgFuqhf6XiefvqzkcDQWZ01aOOK4vNZEXsP`,
         //{ cache: 'force-cache' }
         //{ next: { tags: ['items'] } }
     );//revalidate tag after change viewtype
-    //console.log('sss',resp)
-
     if (Number(resp.status) === 200) {
-        //const reader = resp.body.getReader(); // Get a reader for the stream
-        //let receivedLength = 0; // Track the total bytes received
-        //let result
-        // Loop to read chunks from the stream
-        /*while (true) {
-            const { done, value } = await reader.read(); // Read a chunk
-            if (done) {
-                console.log("Stream finished.");
-                break; // Exit the loop when the stream is done
-            }
-            result = new SharedArrayBuffer(value.byteLength);
-        }*/
-        //console.log('success')
         const dat = await resp.json()
         const list = dat.near_earth_objects
         const arrObjects = Object.values(list)
@@ -164,9 +147,9 @@ export default async function Home({ searchParams }) {
                 if (statusMap.get(product.id) !== 1) {
                     statusMap.set(product.id, 0)
                 }
-                const dataViewtype = product.close_approach_data[0].miss_distance
-                const status = await FormatStatus(product.id)
-                const formatData = await DataFormat(dataViewtype, viewtype)
+                //const dataViewtype = product.close_approach_data[0].miss_distance
+                //const status = await FormatStatus(product.id)
+                //const formatData = await DataFormat(dataViewtype, viewtype)
                 /*let Danger = ''
                 if (Number(product.is_potentially_hazardous_asteroid) === 1) {
                     Danger = 'Опасен'
@@ -178,8 +161,7 @@ export default async function Home({ searchParams }) {
                     dates={dateString}
                 /></Suspense>
             }}
-        //return <ItemLayout children={formatData} />
-        /*return formatData
+        /*
     }
     }
 />*/
@@ -189,30 +171,4 @@ export default async function Home({ searchParams }) {
     catch (err) {
         console.log(err)
     }*/
-    /*Home.getLayout = function getLayout(page) {
-        return (<li className={styles.flex_container}>
-          <Suspense>{toggleViewtype}</Suspense>
-          <Suspense>{toggleStatus}</Suspense>
-          <div className={styles.flex_item}>
-            <span className={styles.padding}>'dates'</span>
-          </div>
-          <span className={styles.name_link}>'name'</span>
-          <div className={styles.flex_container_row}>
-            <span className={styles.name_link}>Ø</span>
-            <span className={styles.name_link}>'Math.round'
-              </span>
-          </div>
-          <output className={styles.padding}><ItemLayout>{page}</ItemLayout></output>
-          <div className={styles.flex_item}>
-            <div className={styles.flex_container_row}>
-              <Link key={1}
-                className={styles.buttonItem}
-                prefetch={false}
-                href={`/categories/main/click/${1}`}
-                scroll={false}><Suspense>0</Suspense></Link>
-              <span className={styles.danger}>'Danger'</span>
-            </div>
-          </div>
-        </li>)
-    };*/
 }
