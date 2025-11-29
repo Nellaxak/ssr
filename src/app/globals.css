@@ -40,6 +40,7 @@ a {
   /*text-decoration-line: underline;
    /*border-bottom: 1px solid white;*/
   /*cursor: url('./icons8-pointer_1.svg'), auto;*/
+  cursor: pointer;
 }
 
 .km {
@@ -49,13 +50,14 @@ a {
   font-weight: bold;
   /*text-decoration-line:line-through;*/
   /*pointer-events: none;*/
+  cursor: pointer;
 }
 
 .moon:hover {
-  pointer-events: none;
+  /*pointer-events: none;*/
 }
 .km:hover {
-  pointer-events: none;
+  /*pointer-events: none;*/
 }
 .space {
   font-family: 'Helvetica';
