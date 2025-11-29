@@ -51,10 +51,12 @@ a {
   /*pointer-events: none;*/
 }
 
-a:hover {
+.moon:hover {
   pointer-events: none;
 }
-
+.km:hover {
+  pointer-events: none;
+}
 .space {
   font-family: 'Helvetica';
   font-style: normal;
