@@ -143,8 +143,8 @@ export default async function Home({ searchParams }) {
     const search = await searchParams;
     console.log('searchParams', search)
     const viewtype = await search.viewtype
-    const id = await search.id;
-    const oldStatus = Boolean(Number(await search.status));//undefined
+    //const id = await search.id;
+    //const oldStatus = Boolean(Number(await search.status));//undefined
     //console.log('oldStatus page',oldStatus)
     if (statusMap.size === 0) {
         startPage = true
@@ -167,9 +167,9 @@ export default async function Home({ searchParams }) {
                 const dateString = datSlice.replace('.', '');
                 if (startPage) {
                     statusMap.set(product.id, false)
-                } else {
+                } /*else {
                     statusMap.set(id, statusMap.get(id))
-                }
+                }*/
                 //const dataViewtype = product.close_approach_data[0].miss_distance
                 //const status = await FormatStatus(product.id)
                 //const formatData = await DataFormat(dataViewtype, viewtype)
