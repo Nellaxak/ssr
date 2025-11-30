@@ -155,20 +155,21 @@ export default async function Home({ searchParams }) {
         console.log('element_count', dat.element_count)
         const list = dat.near_earth_objects
         const arrObjects = Object.values(list)
-        if (oldStatus !== undefined) {
-            console.log('click', id)//calls many=element_count
-            statusMap.set(id, Number(!Number(oldStatus)))
-        }
+
         return <List items={arrObjects[0]}
             renderItem={async (product) => {
                 //change viewtype+click
-                //Object.setPrototypeOf(product, parentObject);
+                //update prototype
                 const date = new Date(product.close_approach_data[0].epoch_date_close_approach)
                 const prevDate = new Intl.DateTimeFormat("ru-RU", options).format(date);
                 const datSlice = prevDate.slice(0, -2)
                 const dateString = datSlice.replace('.', '');
                 if (startPage) {
                     statusMap.set(product.id, 0)
+                }
+                if (oldStatus !== undefined) {
+                    console.log('click', id)//calls many=element_count
+                    statusMap.set(id, Number(!Number(oldStatus)))
                 }
                 return <Suspense><Row
                     key={product.id}
