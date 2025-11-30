@@ -79,7 +79,7 @@ async function List({ items, renderItem }) {
 async function FormatStatus(params) {
     const status = statusMap.get(params)
     let statusItem = 'ЗАКАЗАТЬ'
-    if (status === true) {
+    if (status === false) {
         statusItem = 'ЗАКАЗАТЬ'
     }
     else {
