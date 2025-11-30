@@ -166,7 +166,7 @@ export default async function Home({ searchParams }) {
                 const datSlice = prevDate.slice(0, -2)
                 const dateString = datSlice.replace('.', '');
                 if (startPage) {
-                    statusMap.set(product.id, false)
+                    statusMap.set(product.id, 0)
                 }
                 if (oldStatus !== undefined) {
                     console.log('click', oldStatus, typeof oldStatus,Boolean(oldStatus))
