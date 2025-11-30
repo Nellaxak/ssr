@@ -159,7 +159,7 @@ export default async function Home({ searchParams }) {
                     statusMap.set(product.id, 0)
                 }
                 if (oldStatus !== undefined) {
-                    //console.log('click', id)
+                    console.log('click', id)
                     statusMap.set(id, Number(!Number(oldStatus)))
                 }
                 return <Suspense><Row
