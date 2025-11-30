@@ -81,9 +81,9 @@ async function List({ items, renderItem }) {
         </Suspense>)
 }
 async function FormatStatus(params) {
-    const status = Boolean(statusMap.get(params))
+    const status = Number(statusMap.get(params))
     let statusItem = 'ЗАКАЗАТЬ'
-    if (status === false) {
+    if (status === 0) {
         statusItem = 'ЗАКАЗАТЬ'
     }
     else {
