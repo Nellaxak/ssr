@@ -115,7 +115,7 @@ async function Row(props) {
                 <Link key={props.obj.id}
                     className={styles.buttonItem}
                     prefetch={false}
-                    href={`/categories?viewtype=${props.viewtype}&click=${props.obj.id}`}
+                    href={`/categories?viewtype=${props.viewtype}&click=${props.obj.id}&status=${statusMap.get(product.id)}`}
                     scroll={false}><Suspense>{String(status)}</Suspense></Link>
                 <span className={styles.danger}>{Danger}</span>
             </div>
