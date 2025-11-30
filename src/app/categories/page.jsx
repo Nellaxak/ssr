@@ -169,8 +169,8 @@ export default async function Home({ searchParams }) {
                     statusMap.set(product.id, 0)
                 }
                 if (oldStatus !== undefined) {
-                    console.log('click', oldStatus, typeof oldStatus,Boolean(oldStatus))
-                    statusMap.set(id, !Boolean(oldStatus))
+                    console.log('click', oldStatus, typeof oldStatus,Number(oldStatus),!Number(oldStatus))
+                    statusMap.set(id, !Number(oldStatus))
                 }
                 //const dataViewtype = product.close_approach_data[0].miss_distance
                 //const status = await FormatStatus(product.id)
