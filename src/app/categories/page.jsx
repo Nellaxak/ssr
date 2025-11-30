@@ -102,11 +102,12 @@ async function Row(props) {
     if (Number(props.obj.is_potentially_hazardous_asteroid) === 1) {
         Danger = 'Опасен'
     }
+    /*<Link key={props.obj.id}
+                        className={styles.buttonItem}
+                        prefetch={false}
+                        href={`/categories?viewtype=${props.viewtype}&id=${props.obj.id}&status=${!statusMap.get(props.obj.id)}`}
+                        scroll={false}><Suspense>{String(status)}</Suspense></Link>*/
     /**/
-    /*<Form action={toggleClick} className={styles.buttonItem}>
-                        <input type='number' name='id' defaultValue={props.obj.id} hidden />
-                        <button type='submit'>{status}</button>
-                    </Form>*/
     return <Suspense>
         <li>
             <div className={styles.flex_item}>
@@ -122,11 +123,10 @@ async function Row(props) {
             </Suspense>
             <div className={styles.flex_item}>
                 <div className={styles.flex_container_row}>
-                    <Link key={props.obj.id}
-                        className={styles.buttonItem}
-                        prefetch={false}
-                        href={`/categories?viewtype=${props.viewtype}&id=${props.obj.id}&status=${!statusMap.get(props.obj.id)}`}
-                        scroll={false}><Suspense>{String(status)}</Suspense></Link>
+                    <Form action={toggleClick} className={styles.buttonItem}>
+                        <input type='number' name='id' defaultValue={props.obj.id} hidden />
+                        <button type='submit'>{status}</button>
+                    </Form>
                     <span className={styles.danger}>{Danger}</span>
                 </div>
             </div>
