@@ -98,6 +98,11 @@ async function Row(props) {
     if (Number(props.obj.is_potentially_hazardous_asteroid) === 1) {
         Danger = 'Опасен'
     }
+    /*<Link key={props.obj.id}
+    className={styles.buttonItem}
+    prefetch={false}
+    href={`/categories?viewtype=${props.viewtype}&click=${props.obj.id}&status=${statusMap.get(props.obj.id)}`}
+    scroll={false}><Suspense>{String(status)}</Suspense></Link>*/
     return <Suspense>
         <div className={styles.flex_item}>
             <span className={styles.padding}>{props.dates}</span>
@@ -112,11 +117,10 @@ async function Row(props) {
         </Suspense>
         <div className={styles.flex_item}>
             <div className={styles.flex_container_row}>
-                <Link key={props.obj.id}
-                    className={styles.buttonItem}
-                    prefetch={false}
-                    href={`/categories?viewtype=${props.viewtype}&click=${props.obj.id}&status=${statusMap.get(props.obj.id)}`}
-                    scroll={false}><Suspense>{String(status)}</Suspense></Link>
+                <Form action={toggleClick}>
+                    <input type='number' name='id' defaultValue={props.obj.id} hidden />
+                    <button type='submit'>{statusMap.get(props.obj.id)}</button>
+                </Form>
                 <span className={styles.danger}>{Danger}</span>
             </div>
         </div>

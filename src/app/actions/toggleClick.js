@@ -10,5 +10,6 @@ export async function toggleClick(formData) {
     const id = formData.get('id')
     const oldStatus = statusMap.get(id)
     statusMap.set(id, !oldStatus)
+    //revalidateTag
     //await Li.setViewtype(formData.get('viewtype'))
 }
