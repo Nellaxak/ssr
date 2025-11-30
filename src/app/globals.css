@@ -32,6 +32,10 @@ a {
   text-decoration: none;
 }
 
+ul {
+  list-style-type: none;
+}
+
 .moon {
   /*color: inherit; /* Наследует цвет текста от родителя */
   background-color: black;

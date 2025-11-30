@@ -81,7 +81,7 @@ async function List({ items, renderItem }) {
 async function FormatStatus(params) {
     const status = statusMap.get(params)
     let statusItem = 'ЗАКАЗАТЬ'
-    if (status === false) {
+    if (status === true) {
         statusItem = 'ЗАКАЗАТЬ'
     }
     else {
@@ -138,8 +138,8 @@ export default async function Home({ searchParams }) {
     console.log('searchParams', search)
     const viewtype = await search.viewtype
     //const id = await search.click;
-    const oldStatus = Boolean(Number(await search.status));
-    console.log('oldStatus page',oldStatus)
+    //const oldStatus = Boolean(Number(await search.status));//undefined
+    //console.log('oldStatus page',oldStatus)
     //try {
     resp = await fetch(`https://api.nasa.gov/neo/rest/v1/feed?start_date=${startDate}&end_date=${endDate}&api_key=3wa5hHgFuqhf6XiefvqzkcDQWZ01aOOK4vNZEXsP`,
         //{ cache: 'force-cache' }
@@ -157,7 +157,7 @@ export default async function Home({ searchParams }) {
                 const datSlice = prevDate.slice(0, -2)
                 const dateString = datSlice.replace('.', '');
                 //if (statusMap.get(product.id) !== 1) {
-                statusMap.set(product.id, oldStatus)
+                //statusMap.set(product.id, oldStatus)
                 //}
                 //const dataViewtype = product.close_approach_data[0].miss_distance
                 //const status = await FormatStatus(product.id)
