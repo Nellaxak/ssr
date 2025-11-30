@@ -4,7 +4,7 @@ import statusMap from "../statusMap";
 import Link from "next/link";
 import Form from "next/form";
 import toggleClick from '../actions/toggleClick'
-import { after } from 'next/server';
+//import { after } from 'next/server';
 
 let resp
 let startDate
@@ -81,7 +81,7 @@ async function List({ items, renderItem }) {
 async function FormatStatus(params) {
     const status = statusMap.get(params)
     let statusItem = 'ЗАКАЗАТЬ'
-    if (status === true) {
+    if (status === false) {
         statusItem = 'ЗАКАЗАТЬ'
     }
     else {
@@ -100,11 +100,11 @@ async function Row(props) {
     if (Number(props.obj.is_potentially_hazardous_asteroid) === 1) {
         Danger = 'Опасен'
     }
-    /*<Link key={props.obj.id}
-    className={styles.buttonItem}
-    prefetch={false}
-    href={`/categories?viewtype=${props.viewtype}&click=${props.obj.id}&status=${statusMap.get(props.obj.id)}`}
-    scroll={false}><Suspense>{String(status)}</Suspense></Link>*/
+    /**/
+    /*<Form action={toggleClick} className={styles.buttonItem}>
+                        <input type='number' name='id' defaultValue={props.obj.id} hidden />
+                        <button type='submit'>{status}</button>
+                    </Form>*/
     return <Suspense>
         <li>
             <div className={styles.flex_item}>
@@ -120,10 +120,11 @@ async function Row(props) {
             </Suspense>
             <div className={styles.flex_item}>
                 <div className={styles.flex_container_row}>
-                    <Form action={toggleClick} className={styles.buttonItem}>
-                        <input type='number' name='id' defaultValue={props.obj.id} hidden />
-                        <button type='submit'>{status}</button>
-                    </Form>
+                    <Link key={props.obj.id}
+                        className={styles.buttonItem}
+                        prefetch={false}
+                        href={`/categories?viewtype=${props.viewtype}&id=${props.obj.id}&status=${statusMap.get(props.obj.id)}`}
+                        scroll={false}><Suspense>{String(status)}</Suspense></Link>
                     <span className={styles.danger}>{Danger}</span>
                 </div>
             </div>
@@ -133,18 +134,20 @@ async function Row(props) {
 /*async function RenderProp(product){
 }*/
 export default async function Home({ searchParams }) {
-    after(() => {
-        // This code will execute after the layout is rendered and sent to the user,
-        // even if a redirect occurred within a child component or Server Action.
+    /*after(() => {
         console.log('Redirect or page render finished!');
-    });
+    });*/
     [startDate, endDate] = await CalcData()
     const search = await searchParams;
     console.log('searchParams', search)
     const viewtype = await search.viewtype
+    let startPage
     //const id = await search.click;
-    //const oldStatus = Boolean(Number(await search.status));//undefined
+    const oldStatus = Boolean(Number(await search.status));//undefined
     //console.log('oldStatus page',oldStatus)
+    if (statusMap.size === 0) {
+        startPage = true
+    }
     //try {
     resp = await fetch(`https://api.nasa.gov/neo/rest/v1/feed?start_date=${startDate}&end_date=${endDate}&api_key=3wa5hHgFuqhf6XiefvqzkcDQWZ01aOOK4vNZEXsP`,
         //{ cache: 'force-cache' }
@@ -161,9 +164,11 @@ export default async function Home({ searchParams }) {
                 const prevDate = new Intl.DateTimeFormat("ru-RU", options).format(date);
                 const datSlice = prevDate.slice(0, -2)
                 const dateString = datSlice.replace('.', '');
-                //if (statusMap.get(product.id) !== 1) {
-                //statusMap.set(product.id, oldStatus)
-                //}
+                if (startPage) {
+                    statusMap.set(product.id, false)
+                } else {
+                    statusMap.set(product.id, !oldStatus)
+                }
                 //const dataViewtype = product.close_approach_data[0].miss_distance
                 //const status = await FormatStatus(product.id)
                 //const formatData = await DataFormat(dataViewtype, viewtype)
