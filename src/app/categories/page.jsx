@@ -154,7 +154,8 @@ export default async function Home({ searchParams }) {
     if (Number(resp.status) === 200) {
         //console.log('fetch success')
         const dat = await resp.json()
-        console.log('dat',dat)
+        //readable stream-chunk
+        console.log('element_count', dat.element_count)
         const list = dat.near_earth_objects
         const arrObjects = Object.values(list)
         //console.log('value', result)
@@ -168,7 +169,7 @@ export default async function Home({ searchParams }) {
                     statusMap.set(product.id, false)
                 }
                 if (oldStatus !== undefined) {
-                    console.log('click', Boolean(oldStatus))
+                    console.log('click', oldStatus, Boolean(oldStatus))
                     statusMap.set(id, !Boolean(oldStatus))
                 }
                 //const dataViewtype = product.close_approach_data[0].miss_distance
