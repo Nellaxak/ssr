@@ -115,7 +115,7 @@ async function Row(props) {
                 <Link key={props.obj.id}
                     className={styles.buttonItem}
                     prefetch={false}
-                    href={`/categories?viewtype=${props.viewtype}&click=${props.obj.id}&status=${!statusMap.get(props.obj.id)}`}
+                    href={`/categories?viewtype=${props.viewtype}&click=${props.obj.id}&status=${statusMap.get(props.obj.id)}`}
                     scroll={false}><Suspense>{String(status)}</Suspense></Link>
                 <span className={styles.danger}>{Danger}</span>
             </div>
@@ -127,8 +127,10 @@ async function Row(props) {
 export default async function Home({ searchParams }) {
     [startDate, endDate] = await CalcData()
     const search = await searchParams;
-    console.log('searchParams',search)
+    console.log('searchParams', search)
     const viewtype = await search.viewtype
+    //const id = await search.click;
+    const oldStatus = Boolean(Number(await search.status));
     //try {
     resp = await fetch(`https://api.nasa.gov/neo/rest/v1/feed?start_date=${startDate}&end_date=${endDate}&api_key=3wa5hHgFuqhf6XiefvqzkcDQWZ01aOOK4vNZEXsP`,
         //{ cache: 'force-cache' }
@@ -145,9 +147,9 @@ export default async function Home({ searchParams }) {
                 const prevDate = new Intl.DateTimeFormat("ru-RU", options).format(date);
                 const datSlice = prevDate.slice(0, -2)
                 const dateString = datSlice.replace('.', '');
-                if (statusMap.get(product.id) !== 1) {
-                    statusMap.set(product.id, 0)
-                }
+                //if (statusMap.get(product.id) !== 1) {
+                statusMap.set(product.id, !oldStatus)
+                //}
                 //const dataViewtype = product.close_approach_data[0].miss_distance
                 //const status = await FormatStatus(product.id)
                 //const formatData = await DataFormat(dataViewtype, viewtype)
