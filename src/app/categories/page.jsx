@@ -4,7 +4,7 @@ import statusMap from "../statusMap";
 import Link from "next/link";
 import Form from "next/form";
 import toggleClick from '../actions/toggleClick'
-//import ItemLayout from "../../layouts/layout";
+import { after } from 'next/server';
 
 let resp
 let startDate
@@ -133,6 +133,11 @@ async function Row(props) {
 /*async function RenderProp(product){
 }*/
 export default async function Home({ searchParams }) {
+    after(() => {
+        // This code will execute after the layout is rendered and sent to the user,
+        // even if a redirect occurred within a child component or Server Action.
+        console.log('Redirect or page render finished!');
+    });
     [startDate, endDate] = await CalcData()
     const search = await searchParams;
     console.log('searchParams', search)
