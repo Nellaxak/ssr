@@ -115,7 +115,7 @@ async function Row(props) {
                 <Link key={props.obj.id}
                     className={styles.buttonItem}
                     prefetch={false}
-                    href={`/categories?viewtype=${props.viewtype}&click=${props.obj.id}&status=${statusMap.get(props.obj.id)}`}
+                    href={`/categories?viewtype=${props.viewtype}&click=${props.obj.id}&status=${!statusMap.get(props.obj.id)}`}
                     scroll={false}><Suspense>{String(status)}</Suspense></Link>
                 <span className={styles.danger}>{Danger}</span>
             </div>
@@ -148,7 +148,7 @@ export default async function Home({ searchParams }) {
                 const datSlice = prevDate.slice(0, -2)
                 const dateString = datSlice.replace('.', '');
                 //if (statusMap.get(product.id) !== 1) {
-                statusMap.set(product.id, !oldStatus)
+                statusMap.set(product.id, oldStatus)
                 //}
                 //const dataViewtype = product.close_approach_data[0].miss_distance
                 //const status = await FormatStatus(product.id)
