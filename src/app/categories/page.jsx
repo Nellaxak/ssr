@@ -141,7 +141,7 @@ export default async function Home({ searchParams }) {
     console.log('searchParams', search)
     const viewtype = await search.viewtype
     const id = await search.id;
-    const oldStatus = Boolean(await search.status);//undefined->false
+    const oldStatus = await search.status;//undefined->false
     //console.log('oldStatus page',oldStatus)
     if (statusMap.size === 0) {
         startPage = true
@@ -166,7 +166,7 @@ export default async function Home({ searchParams }) {
                 if (startPage) {
                     statusMap.set(product.id, false)
                 } else {
-                    statusMap.set(id, oldStatus)
+                    statusMap.set(id, Boolean(oldStatus))
                 }
                 //const dataViewtype = product.close_approach_data[0].miss_distance
                 //const status = await FormatStatus(product.id)
