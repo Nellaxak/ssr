@@ -9,6 +9,8 @@ import toggleClick from '../actions/toggleClick'
 let resp
 let startDate
 let endDate
+let startPage
+
 const options = {
     /*era: 'long',*/
     year: 'numeric',
@@ -141,7 +143,6 @@ export default async function Home({ searchParams }) {
     const search = await searchParams;
     console.log('searchParams', search)
     const viewtype = await search.viewtype
-    let startPage
     const id = await search.id;
     const oldStatus = Boolean(Number(await search.status));//undefined
     //console.log('oldStatus page',oldStatus)
@@ -165,9 +166,9 @@ export default async function Home({ searchParams }) {
                 const datSlice = prevDate.slice(0, -2)
                 const dateString = datSlice.replace('.', '');
                 if (startPage) {
-                    statusMap.set(id, false)
+                    statusMap.set(product.id, false)
                 } else {
-                    statusMap.set(id, !oldStatus)
+                    statusMap.set(id, !statusMap.get(id))
                 }
                 //const dataViewtype = product.close_approach_data[0].miss_distance
                 //const status = await FormatStatus(product.id)
