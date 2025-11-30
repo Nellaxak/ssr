@@ -129,12 +129,6 @@ async function Row(props) {
 }
 /*async function RenderProp(product){
 }*/
-const parentObject = {
-    status: 0,
-    sayHello() {//getter/setter
-        console.log("Hello from parent!");
-    }
-};
 export default async function Home({ searchParams }) {
     [startDate, endDate] = await CalcData()
     const search = await searchParams;
@@ -157,7 +151,10 @@ export default async function Home({ searchParams }) {
         console.log('element_count', dat.element_count)
         const list = dat.near_earth_objects
         const arrObjects = Object.values(list)
-
+        if (oldStatus !== undefined) {
+            console.log('click', id)//calls many=element_count
+            statusMap.set(id, Number(!Number(oldStatus)))
+        }
         return <List items={arrObjects[0]}
             renderItem={async (product) => {
                 //change viewtype+click
@@ -168,10 +165,6 @@ export default async function Home({ searchParams }) {
                 const dateString = datSlice.replace('.', '');
                 if (startPage) {
                     statusMap.set(product.id, 0)
-                }
-                if (oldStatus !== undefined) {
-                    console.log('click', id)//calls many=element_count
-                    statusMap.set(id, Number(!Number(oldStatus)))
                 }
                 return <Suspense><Row
                     key={product.id}
