@@ -154,6 +154,7 @@ export default async function Home({ searchParams }) {
     if (Number(resp.status) === 200) {
         //console.log('fetch success')
         const dat = await resp.json()
+        console.log('dat',dat)
         const list = dat.near_earth_objects
         const arrObjects = Object.values(list)
         //console.log('value', result)
