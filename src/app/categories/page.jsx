@@ -2,9 +2,6 @@ import styles from "./page.module.css";
 import React, { Suspense } from "react";
 import statusMap from "../statusMap";
 import Link from "next/link";
-import Form from "next/form";
-import toggleClick from '../actions/toggleClick'
-//import { after } from 'next/server';
 
 let resp
 let startDate
@@ -75,7 +72,6 @@ async function List({ items, renderItem }) {
     const res = await Promise.all(items.map(async (item, index) => {
         return await renderItem(item);
     }))
-    //<ul className={styles.row}>
     return (
         <Suspense>{res}
         </Suspense>)
@@ -102,11 +98,6 @@ async function Row(props) {
     if (Number(props.obj.is_potentially_hazardous_asteroid) === 1) {
         Danger = 'Опасен'
     }
-    /**/
-    /*<Form action={toggleClick} className={styles.buttonItem}>
-                        <input type='number' name='id' defaultValue={props.obj.id} hidden />
-                        <button type='submit'>{status}</button>
-                    </Form>*/
     return <Suspense>
         <li>
             <div className={styles.flex_item}>
@@ -169,8 +160,8 @@ export default async function Home({ searchParams }) {
                     statusMap.set(product.id, 0)
                 }
                 if (oldStatus !== undefined) {
-                    console.log('click', oldStatus, typeof oldStatus,Number(oldStatus),!Number(oldStatus))
-                    statusMap.set(id, !Number(oldStatus))
+                    console.log('click', id)
+                    statusMap.set(id, Number(!Number(oldStatus)))
                 }
                 //const dataViewtype = product.close_approach_data[0].miss_distance
                 //const status = await FormatStatus(product.id)

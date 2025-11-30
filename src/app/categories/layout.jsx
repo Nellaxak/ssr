@@ -23,5 +23,5 @@ export default async function Layout({
                         className={(viewtype === 'main') ? 'moon' : 'km'}>в лунных орбитах</Link>
                 </nav></header> :
                 <h6 className={styles.h6}>Заказ отправлен!</h6>}
-            <ul>{children}</ul></main></Suspense>)
+            <ul className={styles.row}>{children}</ul></main></Suspense>)
 }
