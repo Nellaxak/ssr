@@ -81,7 +81,7 @@ async function List({ items, renderItem }) {
         </Suspense>)
 }
 async function FormatStatus(params) {
-    const status = statusMap.get(params)
+    const status = Boolean(statusMap.get(params))
     let statusItem = 'ЗАКАЗАТЬ'
     if (status === false) {
         statusItem = 'ЗАКАЗАТЬ'
@@ -141,7 +141,7 @@ export default async function Home({ searchParams }) {
     console.log('searchParams', search)
     const viewtype = await search.viewtype
     const id = await search.id;
-    const oldStatus = Boolean(Number(await search.status));//undefined
+    const oldStatus = Boolean(await search.status);//undefined->false
     //console.log('oldStatus page',oldStatus)
     if (statusMap.size === 0) {
         startPage = true
@@ -152,7 +152,7 @@ export default async function Home({ searchParams }) {
        // { next: { tags: 'items' } }
     );//revalidate tag after change viewtype
     if (Number(resp.status) === 200) {
-        console.log('fetch success')
+        //console.log('fetch success')
         const dat = await resp.json()
         const list = dat.near_earth_objects
         const arrObjects = Object.values(list)
@@ -166,7 +166,7 @@ export default async function Home({ searchParams }) {
                 if (startPage) {
                     statusMap.set(product.id, false)
                 } else {
-                    statusMap.set(id, statusMap.get(id))
+                    statusMap.set(id, oldStatus)
                 }
                 //const dataViewtype = product.close_approach_data[0].miss_distance
                 //const status = await FormatStatus(product.id)
