@@ -5,7 +5,7 @@ import Li from '../Li';
 import statusMap from '../statusMap';
 //import { method } from 'lodash';
 
-export async function toggleClick(formData) {
+async function toggleClick(formData) {
     console.log('toggleClick', formData)
     const id = formData.get('id')
     const oldStatus = statusMap.get(id)
@@ -13,3 +13,4 @@ export async function toggleClick(formData) {
     //revalidateTag
     //await Li.setViewtype(formData.get('viewtype'))
 }
+export default toggleClick
