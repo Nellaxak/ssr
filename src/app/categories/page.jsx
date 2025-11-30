@@ -102,12 +102,11 @@ async function Row(props) {
     if (Number(props.obj.is_potentially_hazardous_asteroid) === 1) {
         Danger = 'Опасен'
     }
-    /*<Link key={props.obj.id}
-                        className={styles.buttonItem}
-                        prefetch={false}
-                        href={`/categories?viewtype=${props.viewtype}&id=${props.obj.id}&status=${!statusMap.get(props.obj.id)}`}
-                        scroll={false}><Suspense>{String(status)}</Suspense></Link>*/
     /**/
+    /*<Form action={toggleClick} className={styles.buttonItem}>
+                        <input type='number' name='id' defaultValue={props.obj.id} hidden />
+                        <button type='submit'>{status}</button>
+                    </Form>*/
     return <Suspense>
         <li>
             <div className={styles.flex_item}>
@@ -123,10 +122,11 @@ async function Row(props) {
             </Suspense>
             <div className={styles.flex_item}>
                 <div className={styles.flex_container_row}>
-                    <Form action={toggleClick} className={styles.buttonItem}>
-                        <input type='number' name='id' defaultValue={props.obj.id} hidden />
-                        <button type='submit'>{status}</button>
-                    </Form>
+                    <Link key={props.obj.id}
+                        className={styles.buttonItem}
+                        prefetch={false}
+                        href={`/categories?viewtype=${props.viewtype}&id=${props.obj.id}&status=${!statusMap.get(props.obj.id)}`}
+                        scroll={false}><Suspense>{String(status)}</Suspense></Link>
                     <span className={styles.danger}>{Danger}</span>
                 </div>
             </div>
@@ -136,15 +136,12 @@ async function Row(props) {
 /*async function RenderProp(product){
 }*/
 export default async function Home({ searchParams }) {
-    /*after(() => {
-        console.log('Redirect or page render finished!');
-    });*/
     [startDate, endDate] = await CalcData()
     const search = await searchParams;
     console.log('searchParams', search)
     const viewtype = await search.viewtype
-    //const id = await search.id;
-    //const oldStatus = Boolean(Number(await search.status));//undefined
+    const id = await search.id;
+    const oldStatus = Boolean(Number(await search.status));//undefined
     //console.log('oldStatus page',oldStatus)
     if (statusMap.size === 0) {
         startPage = true
@@ -155,6 +152,7 @@ export default async function Home({ searchParams }) {
        // { next: { tags: 'items' } }
     );//revalidate tag after change viewtype
     if (Number(resp.status) === 200) {
+        console.log('fetch success')
         const dat = await resp.json()
         const list = dat.near_earth_objects
         const arrObjects = Object.values(list)
@@ -167,9 +165,9 @@ export default async function Home({ searchParams }) {
                 const dateString = datSlice.replace('.', '');
                 if (startPage) {
                     statusMap.set(product.id, false)
-                } /*else {
+                } else {
                     statusMap.set(id, statusMap.get(id))
-                }*/
+                }
                 //const dataViewtype = product.close_approach_data[0].miss_distance
                 //const status = await FormatStatus(product.id)
                 //const formatData = await DataFormat(dataViewtype, viewtype)
