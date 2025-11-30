@@ -1,5 +1,5 @@
 'use server'
-import { revalidateTag } from 'next/cache';
+import { revalidateTag,revalidatePath } from 'next/cache';
 //import { redirect, RedirectType } from 'next/navigation';
 //import Li from '../Li';
 import statusMap from '../statusMap';
@@ -11,7 +11,8 @@ async function toggleClick(formData) {
     const oldStatus = statusMap.get(id)
     console.log('oldStatus',oldStatus)
     statusMap.set(id, !oldStatus)
-    revalidateTag('items')
+    revalidatePath('/')
+    //revalidateTag('items')
     //await Li.setViewtype(formData.get('viewtype'))
 }
 export default toggleClick
