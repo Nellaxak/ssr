@@ -91,7 +91,7 @@ async function Row(props) {
     /*<span>{props.obj.id}</span>
     <span>{props.key}</span>
     <span>{props.obj.absolute_magnitude_h}</span>*/
-    console.log('qwasxz', props.obj.id, statusMap.get(props.obj.id))
+    //console.log('qwasxz', props.obj.id, statusMap.get(props.obj.id))
     const dataViewtype = props.obj.close_approach_data[0].miss_distance
     const status = await FormatStatus(props.obj.id)
     const formatData = await DataFormat(dataViewtype, props.viewtype)
@@ -148,11 +148,11 @@ export default async function Home({ searchParams }) {
     if (Number(resp.status) === 200) {
         const dat = await resp.json()
         //readable stream-chunk textDecoder->json
-        console.log('element_count', dat.element_count)
+        //console.log('element_count', dat.element_count)
         const list = dat.near_earth_objects
         const arrObjects = Object.values(list)
         if (oldStatus !== undefined) {
-            console.log('click', id)//calls many=element_count
+            //console.log('click', id)//calls many=element_count
             statusMap.set(id, Number(!Number(oldStatus)))
         }
         return <List items={arrObjects[0]}
