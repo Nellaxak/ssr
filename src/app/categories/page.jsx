@@ -106,26 +106,28 @@ async function Row(props) {
     href={`/categories?viewtype=${props.viewtype}&click=${props.obj.id}&status=${statusMap.get(props.obj.id)}`}
     scroll={false}><Suspense>{String(status)}</Suspense></Link>*/
     return <Suspense>
-        <div className={styles.flex_item}>
-            <span className={styles.padding}>{props.dates}</span>
-        </div>
-        <span className={styles.name_link}>{props.obj.name}</span>
-        <div className={styles.flex_container_row}>
-            <span className={styles.name_link}>Ø</span>
-            <span className={styles.name_link}>{Math.round(Number(props.obj.estimated_diameter.meters.estimated_diameter_min))}</span>
-        </div>
-        <Suspense>
-            <output className={styles.padding}>{formatData}</output>
-        </Suspense>
-        <div className={styles.flex_item}>
-            <div className={styles.flex_container_row}>
-                <Form action={toggleClick}>
-                    <input type='number' name='id' defaultValue={props.obj.id} hidden />
-                    <button type='submit'>{statusMap.get(props.obj.id)}</button>
-                </Form>
-                <span className={styles.danger}>{Danger}</span>
+        <li>
+            <div className={styles.flex_item}>
+                <span className={styles.padding}>{props.dates}</span>
             </div>
-        </div>
+            <span className={styles.name_link}>{props.obj.name}</span>
+            <div className={styles.flex_container_row}>
+                <span className={styles.name_link}>Ø</span>
+                <span className={styles.name_link}>{Math.round(Number(props.obj.estimated_diameter.meters.estimated_diameter_min))}</span>
+            </div>
+            <Suspense>
+                <output className={styles.padding}>{formatData}</output>
+            </Suspense>
+            <div className={styles.flex_item}>
+                <div className={styles.flex_container_row}>
+                    <Form action={toggleClick} className={styles.buttonItem}>
+                        <input type='number' name='id' defaultValue={props.obj.id} hidden />
+                        <button type='submit'>{status}</button>
+                    </Form>
+                    <span className={styles.danger}>{Danger}</span>
+                </div>
+            </div>
+        </li>
     </Suspense>
 }
 /*async function RenderProp(product){
