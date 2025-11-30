@@ -139,10 +139,11 @@ export default async function Home({ searchParams }) {
     const viewtype = await search.viewtype
     //const id = await search.click;
     const oldStatus = Boolean(Number(await search.status));
+    console.log('oldStatus page',oldStatus)
     //try {
     resp = await fetch(`https://api.nasa.gov/neo/rest/v1/feed?start_date=${startDate}&end_date=${endDate}&api_key=3wa5hHgFuqhf6XiefvqzkcDQWZ01aOOK4vNZEXsP`,
         //{ cache: 'force-cache' }
-        //{ next: { tags: ['items'] } }
+        { next: { tags: ['items'] } }
     );//revalidate tag after change viewtype
     if (Number(resp.status) === 200) {
         const dat = await resp.json()
