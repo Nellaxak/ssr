@@ -149,7 +149,7 @@ export default async function Home({ searchParams }) {
     //try {
     resp = await fetch(`https://api.nasa.gov/neo/rest/v1/feed?start_date=${startDate}&end_date=${endDate}&api_key=3wa5hHgFuqhf6XiefvqzkcDQWZ01aOOK4vNZEXsP`,
         //{ cache: 'force-cache' }
-       // { next: { tags: 'items' } }
+        // { next: { tags: 'items' } }
     );//revalidate tag after change viewtype
     if (Number(resp.status) === 200) {
         //console.log('fetch success')
@@ -165,8 +165,9 @@ export default async function Home({ searchParams }) {
                 const dateString = datSlice.replace('.', '');
                 if (startPage) {
                     statusMap.set(product.id, false)
-                } else {
-                    console.log('click',Boolean(oldStatus))
+                }
+                if (oldStatus !== undefined) {
+                    console.log('click', Boolean(oldStatus))
                     statusMap.set(id, !Boolean(oldStatus))
                 }
                 //const dataViewtype = product.close_approach_data[0].miss_distance
