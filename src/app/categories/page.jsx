@@ -91,7 +91,7 @@ async function Row(props) {
     /*<span>{props.obj.id}</span>
     <span>{props.key}</span>
     <span>{props.obj.absolute_magnitude_h}</span>*/
-    console.log('qwasxz',props.obj.id,statusMap.get(props.obj.id))
+    console.log('qwasxz', props.obj.id, statusMap.get(props.obj.id))
     const dataViewtype = props.obj.close_approach_data[0].miss_distance
     const status = await FormatStatus(props.obj.id)
     const formatData = await DataFormat(dataViewtype, props.viewtype)
@@ -129,10 +129,16 @@ async function Row(props) {
 }
 /*async function RenderProp(product){
 }*/
+const parentObject = {
+    status: 0,
+    sayHello() {//getter/setter
+        console.log("Hello from parent!");
+    }
+};
 export default async function Home({ searchParams }) {
     [startDate, endDate] = await CalcData()
     const search = await searchParams;
-    console.log('searchParams', search)
+    //console.log('searchParams', search)
     const viewtype = await search.viewtype
     const id = await search.id;
     const oldStatus = await search.status;//undefined->false
@@ -149,18 +155,20 @@ export default async function Home({ searchParams }) {
         console.log('element_count', dat.element_count)
         const list = dat.near_earth_objects
         const arrObjects = Object.values(list)
+        if (oldStatus !== undefined) {
+            console.log('click', id)//calls many=element_count
+            statusMap.set(id, Number(!Number(oldStatus)))
+        }
         return <List items={arrObjects[0]}
             renderItem={async (product) => {
+                //change viewtype+click
+                //Object.setPrototypeOf(product, parentObject);
                 const date = new Date(product.close_approach_data[0].epoch_date_close_approach)
                 const prevDate = new Intl.DateTimeFormat("ru-RU", options).format(date);
                 const datSlice = prevDate.slice(0, -2)
                 const dateString = datSlice.replace('.', '');
                 if (startPage) {
                     statusMap.set(product.id, 0)
-                }
-                if (oldStatus !== undefined) {
-                    console.log('click', id)
-                    statusMap.set(id, Number(!Number(oldStatus)))
                 }
                 return <Suspense><Row
                     key={product.id}
