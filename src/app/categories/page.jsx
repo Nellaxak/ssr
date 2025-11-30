@@ -125,7 +125,7 @@ async function Row(props) {
                     <Link key={props.obj.id}
                         className={styles.buttonItem}
                         prefetch={false}
-                        href={`/categories?viewtype=${props.viewtype}&id=${props.obj.id}&status=${!statusMap.get(props.obj.id)}`}
+                        href={`/categories?viewtype=${props.viewtype}&id=${props.obj.id}&status=${statusMap.get(props.obj.id)}`}
                         scroll={false}><Suspense>{String(status)}</Suspense></Link>
                     <span className={styles.danger}>{Danger}</span>
                 </div>
@@ -166,7 +166,7 @@ export default async function Home({ searchParams }) {
                 if (startPage) {
                     statusMap.set(product.id, false)
                 } else {
-                    statusMap.set(id, Boolean(oldStatus))
+                    statusMap.set(id, !Boolean(oldStatus))
                 }
                 //const dataViewtype = product.close_approach_data[0].miss_distance
                 //const status = await FormatStatus(product.id)
