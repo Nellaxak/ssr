@@ -91,6 +91,7 @@ async function Row(props) {
     /*<span>{props.obj.id}</span>
     <span>{props.key}</span>
     <span>{props.obj.absolute_magnitude_h}</span>*/
+    console.log('qwasxz',props.obj.id,statusMap.get(props.obj.id))
     const dataViewtype = props.obj.close_approach_data[0].miss_distance
     const status = await FormatStatus(props.obj.id)
     const formatData = await DataFormat(dataViewtype, props.viewtype)
@@ -99,7 +100,7 @@ async function Row(props) {
         Danger = 'Опасен'
     }
     return <Suspense>
-        <li>
+        <li key={props.obj.id}>
             <div className={styles.flex_item}>
                 <span className={styles.padding}>{props.dates}</span>
             </div>
@@ -117,7 +118,9 @@ async function Row(props) {
                         className={styles.buttonItem}
                         prefetch={false}
                         href={`/categories?viewtype=${props.viewtype}&id=${props.obj.id}&status=${statusMap.get(props.obj.id)}`}
-                        scroll={false}><Suspense>{String(status)}</Suspense></Link>
+                        scroll={false}>
+                        <Suspense>{String(status)}</Suspense>
+                    </Link>
                     <span className={styles.danger}>{Danger}</span>
                 </div>
             </div>
@@ -133,23 +136,19 @@ export default async function Home({ searchParams }) {
     const viewtype = await search.viewtype
     const id = await search.id;
     const oldStatus = await search.status;//undefined->false
-    //console.log('oldStatus page',oldStatus)
     if (statusMap.size === 0) {
         startPage = true
     }
     //try {
     resp = await fetch(`https://api.nasa.gov/neo/rest/v1/feed?start_date=${startDate}&end_date=${endDate}&api_key=3wa5hHgFuqhf6XiefvqzkcDQWZ01aOOK4vNZEXsP`,
         //{ cache: 'force-cache' }
-        // { next: { tags: 'items' } }
-    );//revalidate tag after change viewtype
+    );
     if (Number(resp.status) === 200) {
-        //console.log('fetch success')
         const dat = await resp.json()
-        //readable stream-chunk
+        //readable stream-chunk textDecoder->json
         console.log('element_count', dat.element_count)
         const list = dat.near_earth_objects
         const arrObjects = Object.values(list)
-        //console.log('value', result)
         return <List items={arrObjects[0]}
             renderItem={async (product) => {
                 const date = new Date(product.close_approach_data[0].epoch_date_close_approach)
@@ -160,16 +159,9 @@ export default async function Home({ searchParams }) {
                     statusMap.set(product.id, 0)
                 }
                 if (oldStatus !== undefined) {
-                    console.log('click', id)
+                    //console.log('click', id)
                     statusMap.set(id, Number(!Number(oldStatus)))
                 }
-                //const dataViewtype = product.close_approach_data[0].miss_distance
-                //const status = await FormatStatus(product.id)
-                //const formatData = await DataFormat(dataViewtype, viewtype)
-                /*let Danger = ''
-                if (Number(product.is_potentially_hazardous_asteroid) === 1) {
-                    Danger = 'Опасен'
-                }*/
                 return <Suspense><Row
                     key={product.id}
                     obj={product}
