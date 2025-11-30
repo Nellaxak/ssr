@@ -166,6 +166,7 @@ export default async function Home({ searchParams }) {
                 if (startPage) {
                     statusMap.set(product.id, false)
                 } else {
+                    console.log('click',Boolean(oldStatus))
                     statusMap.set(id, !Boolean(oldStatus))
                 }
                 //const dataViewtype = product.close_approach_data[0].miss_distance
