@@ -12,7 +12,7 @@ function ButtonSubmit() {
     //setViewtype(viewtypeChange)
   }, [])
   return <Form action={toggleClick} >
-    <input type='text' name='id' value={id} onChange={() => handleClick('input')} hidden></input>
+    <input type='text' name='id' defaultValue={'111111111'} onChange={() => handleClick('input')} hidden></input>
     <button type="submit" onClick={() => handleClick(1)}>0</button>
   </Form>
 
