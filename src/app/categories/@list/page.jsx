@@ -2,6 +2,7 @@ import styles from "./page.module.css";
 import React, { Suspense } from "react";
 import statusMap from "../../statusMap";
 import Link from "next/link";
+import Item from "../../Item";
 
 let resp
 let startDate
@@ -83,6 +84,7 @@ async function FormatStatus(params) {
         statusItem = 'ЗАКАЗАТЬ'
     }
     else {
+        //Count.value = Count.value + 1;
         statusItem = 'В КОРЗИНЕ'
     }
     return statusItem
@@ -153,6 +155,7 @@ export default async function Home({ searchParams }) {
         const arrObjects = Object.values(list)
         if (oldStatus !== undefined) {
             statusMap.set(id, Number(!Number(oldStatus)))
+            await Item.setCount(Number(!Number(oldStatus)))
         }
         return <List items={arrObjects[0]}
             renderItem={async (product) => {
@@ -162,6 +165,7 @@ export default async function Home({ searchParams }) {
                 const dateString = datSlice.replace('.', '');
                 if (startPage) {
                     statusMap.set(product.id, 0)
+                    //new Item(product.id)
                 }
                 return <Suspense><Row
                     key={product.id}
