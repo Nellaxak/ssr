@@ -10,7 +10,7 @@ async function toggleClick(formData) {
     const id = formData.get('id')
     const item = Item.arrObj.get(id)
     console.log('item', item, typeof id)
-    await item.setStatus()
+    //await item.setStatus()
     //console.log('oldStatus',oldStatus)
     //statusMap.set(id, !oldStatus)
     revalidatePath('/')

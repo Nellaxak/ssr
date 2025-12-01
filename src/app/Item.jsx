@@ -6,6 +6,7 @@ class Item {
   static count = 0;
   static arrObj = new Map();
   constructor(id) {
+    console.log('constructor',id)
     this.id = id
     this.status = 0
     //statusMap.set(id, 0)
