@@ -103,6 +103,7 @@ async function Row(props) {
     }
     const newStatus = await props.item.getStatus()
     const UrlStatus = props.item.status
+    await props.item.setStatus()
     return <Suspense>
         <li key={props.obj.id}>
             <div className={styles.flex_item}>
@@ -167,7 +168,7 @@ export default async function Home({ searchParams }) {
                 const dateString = datSlice.replace('.', '');
                 if (startPage) {
                     //statusMap.set(product.id, 0)
-                    item = new Item(product.id)
+                    item = new Item(id)
                 }
                 return <Suspense><Row
                     key={product.id}

@@ -3,7 +3,7 @@ import { Suspense, createElement } from 'react'
 import dynamic from 'next/dynamic'
 import ScrollComponent from '../components/ScrollComponent/page';
 //import ToggleHeader from '../components/ToggleHeader/page';
-//import { NavigationEvents } from '../components/NavigationsEvents/page';
+import { NavigationEvents } from '../components/NavigationsEvents/page';
 import Link from 'next/link';
 //import Button from '@/components/Button/page';
 //import { buttonClick } from "@/app/actions/updateStatus";
@@ -56,6 +56,7 @@ export default async function Layout(props) {
           <Suspense fallback={<span className={'loader'}></span>}>
             {props.children}
           </Suspense>
+          <NavigationEvents />
           <ScrollComponent />
         </div>
       </body>
