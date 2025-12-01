@@ -29,7 +29,7 @@ class Item {
   }
   static async findById(ppp) {
     console.log('findById', ppp)
-    return Item.arrObj.get(ppp);
+    return Item.arrObj.get(Number(ppp));
   }
   static async setCount(value) {
     Item.count = Item.count + value

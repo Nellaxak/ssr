@@ -169,7 +169,7 @@ export default async function Home({ searchParams }) {
                 const datSlice = prevDate.slice(0, -2)
                 const dateString = datSlice.replace('.', '');
                 if (startPage) {
-                    new Item(product.id)
+                    new Item(Number(product.id))
                 }
                 return <Suspense><Row
                     key={product.id}
