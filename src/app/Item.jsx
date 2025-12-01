@@ -8,6 +8,7 @@ class Item {
     this.status = 0
   }
   async getStatus() {
+    console.log('getStatus',this.id,this.status,typeof this.status)
     if (this.status === 1) {
       //await Item.setCount(1)
       return 'В КОРЗИНЕ'

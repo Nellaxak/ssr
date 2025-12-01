@@ -121,7 +121,7 @@ async function Row(props) {
                     <Link key={props.obj.id}
                         className={styles.buttonItem}
                         prefetch={false}
-                        href={`/categories?viewtype=${props.viewtype}&id=${props.obj.id}&status=${UrlStatus}`}
+                        href={`/categories?viewtype=${props.viewtype}&id=${props.obj.id}&status=${Number(!UrlStatus)}`}
                         scroll={false}>
                         <Suspense>{String(newStatus)}</Suspense>
                     </Link>
