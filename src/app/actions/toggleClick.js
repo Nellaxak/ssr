@@ -9,7 +9,7 @@ async function toggleClick(formData) {
     console.log('toggleClick', formData)
     const id = formData.get('id')
     const item = await Item.findById(id)
-    console.log('item',item)
+    console.log('item', item, typeof id)
     //await item.setStatus()
     //console.log('oldStatus',oldStatus)
     //statusMap.set(id, !oldStatus)
