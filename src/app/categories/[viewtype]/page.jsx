@@ -2,7 +2,6 @@ import styles from "./page.module.css";
 import React, { Suspense } from "react";
 import statusMap from "../../statusMap";
 import Link from "next/link";
-import ItemLayout from "../../layouts/layout";
 
 let resp
 let startDate

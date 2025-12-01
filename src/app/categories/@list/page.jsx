@@ -1,6 +1,6 @@
 import styles from "./page.module.css";
 import React, { Suspense } from "react";
-import statusMap from "../statusMap";
+import statusMap from "../../statusMap";
 import Link from "next/link";
 
 let resp
@@ -152,13 +152,10 @@ export default async function Home({ searchParams }) {
         const list = dat.near_earth_objects
         const arrObjects = Object.values(list)
         if (oldStatus !== undefined) {
-            //console.log('click', id)//calls many=element_count
             statusMap.set(id, Number(!Number(oldStatus)))
         }
         return <List items={arrObjects[0]}
             renderItem={async (product) => {
-                //change viewtype+click
-                //update prototype
                 const date = new Date(product.close_approach_data[0].epoch_date_close_approach)
                 const prevDate = new Intl.DateTimeFormat("ru-RU", options).format(date);
                 const datSlice = prevDate.slice(0, -2)
