@@ -3,7 +3,7 @@ import React, { Suspense } from "react";
 import statusMap from "../../statusMap";
 import Link from "next/link";
 import Item from "../../Item";
-import ButtonSubmit from '../../../components/ButtonSubmit'
+import ButtonSubmit from '../../../components/ButtonSubmit/page'
 let resp
 let startDate
 let endDate
