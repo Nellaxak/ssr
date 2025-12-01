@@ -157,9 +157,7 @@ export default async function Home({ searchParams }) {
         //console.log('element_count', dat.element_count)
         const list = dat.near_earth_objects
         const arrObjects = Object.values(list)
-        if (startPage){
-           statusMap.set(id, 0) 
-        }
+       
         /*if (oldStatus !== undefined) {
             statusMap.set(id, Number(oldStatus))//async  
         }*/
