@@ -9,11 +9,11 @@ async function toggleClick(formData) {
     console.log('toggleClick', formData)
     const id = formData.get('id')
     const item = Item.arrObj.get(Number(id))
-    console.log('item', item, typeof id)
+    console.log('item', item)
     //await item.setStatus()
     //console.log('oldStatus',oldStatus)
     //statusMap.set(id, !oldStatus)
-    revalidatePath('/')
+    //revalidatePath('/')
     //revalidateTag('items')
     //await Li.setViewtype(formData.get('viewtype'))
 }
