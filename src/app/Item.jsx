@@ -27,7 +27,7 @@ class Item {
     this.status = Number(!this.status)
   }
   static async findById(ppp) {
-    console.log('findById', ppp, arrObj.size)
+    console.log('findById', ppp)
     const resss = Item.arrObj.get(ppp);
     return resss
   }
