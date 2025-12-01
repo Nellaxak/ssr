@@ -140,8 +140,8 @@ export default async function Home({ searchParams }) {
     const search = await searchParams;
     //console.log('searchParams', search)
     const viewtype = await search.viewtype
-    const id = await search.id;
-    const oldStatus = await search.status;//undefined->false
+    //const id = await search.id;
+    //const oldStatus = await search.status;//undefined->false
     if (statusMap.size === 0) {
         startPage = true
     } else {
@@ -157,9 +157,12 @@ export default async function Home({ searchParams }) {
         //console.log('element_count', dat.element_count)
         const list = dat.near_earth_objects
         const arrObjects = Object.values(list)
-        if (oldStatus !== undefined) {
-            statusMap.set(id, Number(oldStatus))//async  
+        if (startPage){
+           statusMap.set(id, 0) 
         }
+        /*if (oldStatus !== undefined) {
+            statusMap.set(id, Number(oldStatus))//async  
+        }*/
         return <List items={arrObjects[0]}
             renderItem={async (product) => {
                 let item
@@ -169,7 +172,7 @@ export default async function Home({ searchParams }) {
                 const dateString = datSlice.replace('.', '');
                 if (startPage) {
                     statusMap.set(product.id, 0)
-                    item = new Item(id)
+                    item = new Item(product.id)
                 }
                 return <Suspense><Row
                     key={product.id}
