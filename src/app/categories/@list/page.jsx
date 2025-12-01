@@ -101,8 +101,8 @@ async function Row(props) {
     if (Number(props.obj.is_potentially_hazardous_asteroid) === 1) {
         Danger = 'Опасен'
     }
-    const newStatus = await props.item.getStatus()
-    const UrlStatus = props.item.status
+    //const newStatus = await props.item.getStatus()
+    //const UrlStatus = props.item.status
     // await props.item.setStatus()//very many
     /*<Link key={props.obj.id}
                          className={styles.buttonItem}
