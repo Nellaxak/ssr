@@ -24,7 +24,7 @@ class Item {
     this.status = Number(!this.status)
   }
   static async findById(ppp) {
-    console.log('findById', ppp,typeof ppp)
+    console.log('findById', ppp, statusMap.size)
     const resss = statusMap.get(ppp);
     return resss
   }
