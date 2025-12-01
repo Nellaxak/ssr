@@ -95,12 +95,14 @@ async function Row(props) {
     <span>{props.obj.absolute_magnitude_h}</span>*/
     //console.log('qwasxz', props.obj.id, statusMap.get(props.obj.id))
     const dataViewtype = props.obj.close_approach_data[0].miss_distance
-    const status = await FormatStatus(props.obj.id)
+    //const status = await FormatStatus(props.obj.id)
     const formatData = await DataFormat(dataViewtype, props.viewtype)
     let Danger = ''
     if (Number(props.obj.is_potentially_hazardous_asteroid) === 1) {
         Danger = 'Опасен'
     }
+    const newStatus = await props.item.getStatus()
+    const UrlStatus = props.item.status
     return <Suspense>
         <li key={props.obj.id}>
             <div className={styles.flex_item}>
@@ -119,9 +121,9 @@ async function Row(props) {
                     <Link key={props.obj.id}
                         className={styles.buttonItem}
                         prefetch={false}
-                        href={`/categories?viewtype=${props.viewtype}&id=${props.obj.id}&status=${Number(!statusMap.get(props.obj.id))}`}
+                        href={`/categories?viewtype=${props.viewtype}&id=${props.obj.id}&status=${UrlStatus}`}
                         scroll={false}>
-                        <Suspense>{String(status)}</Suspense>
+                        <Suspense>{String(newStatus)}</Suspense>
                     </Link>
                     <span className={styles.danger}>{Danger}</span>
                 </div>
@@ -136,7 +138,7 @@ export default async function Home({ searchParams }) {
     const search = await searchParams;
     //console.log('searchParams', search)
     const viewtype = await search.viewtype
-    const id = await search.id;
+    //const id = await search.id;
     const oldStatus = await search.status;//undefined->false
     if (statusMap.size === 0) {
         startPage = true
@@ -154,30 +156,25 @@ export default async function Home({ searchParams }) {
         const list = dat.near_earth_objects
         const arrObjects = Object.values(list)
         if (oldStatus !== undefined) {
-             if (Number(oldStatus) === 0) {
-                await Item.setCount(-1)
-            } else if (Number(oldStatus) === 1) {
-                await Item.setCount(1)
-            }
-            statusMap.set(id, Number(oldStatus))//async
-            /*statusMap.set(id, Number(!Number(oldStatus)))
-            await Item.setCount(Number(!Number(oldStatus)))*/
+            //statusMap.set(id, Number(oldStatus))//async  
         }
         return <List items={arrObjects[0]}
             renderItem={async (product) => {
+                let item
                 const date = new Date(product.close_approach_data[0].epoch_date_close_approach)
                 const prevDate = new Intl.DateTimeFormat("ru-RU", options).format(date);
                 const datSlice = prevDate.slice(0, -2)
                 const dateString = datSlice.replace('.', '');
                 if (startPage) {
-                    statusMap.set(product.id, 0)
-                    //new Item(product.id)
+                    //statusMap.set(product.id, 0)
+                    item = new Item(product.id)
                 }
                 return <Suspense><Row
                     key={product.id}
                     obj={product}
                     viewtype={viewtype}
                     dates={dateString}
+                    item={item}
                 /></Suspense>
             }}
         /*
