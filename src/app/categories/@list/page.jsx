@@ -158,7 +158,7 @@ export default async function Home({ searchParams }) {
         const list = dat.near_earth_objects
         const arrObjects = Object.values(list)
         if (oldStatus !== undefined) {
-            //statusMap.set(id, Number(oldStatus))//async  
+            statusMap.set(id, Number(oldStatus))//async  
         }
         return <List items={arrObjects[0]}
             renderItem={async (product) => {
