@@ -28,8 +28,7 @@ class Item {
   }
   static async findById(ppp) {
     console.log('findById', ppp)
-    const resss = Item.arrObj.get(ppp);
-    return resss
+    return Item.arrObj.get(ppp);
   }
   static async setCount(value) {
     Item.count = Item.count + value
