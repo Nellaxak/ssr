@@ -163,20 +163,19 @@ export default async function Home({ searchParams }) {
         }*/
         return <List items={arrObjects[0]}
             renderItem={async (product) => {
-                let item
+                //let item
                 const date = new Date(product.close_approach_data[0].epoch_date_close_approach)
                 const prevDate = new Intl.DateTimeFormat("ru-RU", options).format(date);
                 const datSlice = prevDate.slice(0, -2)
                 const dateString = datSlice.replace('.', '');
                 if (startPage) {
-                    item = new Item(product.id)
+                    new Item(product.id)
                 }
                 return <Suspense><Row
                     key={product.id}
                     obj={product}
                     viewtype={viewtype}
                     dates={dateString}
-                    item={item}
                 /></Suspense>
             }}
         /*

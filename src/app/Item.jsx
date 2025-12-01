@@ -4,10 +4,12 @@ import statusMap from "./statusMap";
 //proxy object
 class Item {
   static count = 0;
+  static arrObj = new Map();
   constructor(id) {
     this.id = id
     this.status = 0
-    statusMap.set(id, 0)
+    //statusMap.set(id, 0)
+    Item.arrObj.set(Number(this.id), this)
   }
   async getStatus() {
     console.log('getStatus', this.id, this.status, typeof this.status)
@@ -25,8 +27,8 @@ class Item {
     this.status = Number(!this.status)
   }
   static async findById(ppp) {
-    console.log('findById', ppp, statusMap.size)
-    const resss = statusMap.get(ppp);
+    console.log('findById', ppp, arrObj.size)
+    const resss = arrObj.get(ppp);
     return resss
   }
   static async setCount(value) {
