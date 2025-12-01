@@ -155,7 +155,11 @@ export default async function Home({ searchParams }) {
         const arrObjects = Object.values(list)
         if (oldStatus !== undefined) {
             statusMap.set(id, Number(oldStatus))
-            await Item.setCount(Number(oldStatus))
+            if (Number(oldStatus) === 0) {
+                await Item.setCount(-1)
+            } else {
+                await Item.setCount(1)
+            }
             /*statusMap.set(id, Number(!Number(oldStatus)))
             await Item.setCount(Number(!Number(oldStatus)))*/
         }
