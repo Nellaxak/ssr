@@ -139,7 +139,7 @@ export default async function Home({ searchParams }) {
     const search = await searchParams;
     //console.log('searchParams', search)
     const viewtype = await search.viewtype
-    //const id = await search.id;
+    const id = await search.id;
     const oldStatus = await search.status;//undefined->false
     if (statusMap.size === 0) {
         startPage = true
