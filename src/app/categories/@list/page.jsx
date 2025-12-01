@@ -154,8 +154,8 @@ export default async function Home({ searchParams }) {
         const list = dat.near_earth_objects
         const arrObjects = Object.values(list)
         if (oldStatus !== undefined) {
-            statusMap.set(id, oldStatus)
-            await Item.setCount(oldStatus)
+            statusMap.set(id, Number(oldStatus))
+            await Item.setCount(Number(oldStatus))
             /*statusMap.set(id, Number(!Number(oldStatus)))
             await Item.setCount(Number(!Number(oldStatus)))*/
         }
