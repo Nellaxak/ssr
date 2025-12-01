@@ -119,7 +119,7 @@ async function Row(props) {
                     <Link key={props.obj.id}
                         className={styles.buttonItem}
                         prefetch={false}
-                        href={`/categories?viewtype=${props.viewtype}&id=${props.obj.id}&status=${statusMap.get(props.obj.id)}`}
+                        href={`/categories?viewtype=${props.viewtype}&id=${props.obj.id}&status=${!statusMap.get(props.obj.id)}`}
                         scroll={false}>
                         <Suspense>{String(status)}</Suspense>
                     </Link>
@@ -154,8 +154,10 @@ export default async function Home({ searchParams }) {
         const list = dat.near_earth_objects
         const arrObjects = Object.values(list)
         if (oldStatus !== undefined) {
-            statusMap.set(id, Number(!Number(oldStatus)))
-            await Item.setCount(Number(!Number(oldStatus)))
+            statusMap.set(id, oldStatus)
+            await Item.setCount(oldStatus)
+            /*statusMap.set(id, Number(!Number(oldStatus)))
+            await Item.setCount(Number(!Number(oldStatus)))*/
         }
         return <List items={arrObjects[0]}
             renderItem={async (product) => {

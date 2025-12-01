@@ -8,7 +8,7 @@ class Item {
     this.status = 0
   }
   static async setCount(value) {
-    Item.count = Item.count + value
+    Item.count = Item.count + Number(value)
   }
 }
 export default Item
