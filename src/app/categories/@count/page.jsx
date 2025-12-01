@@ -7,11 +7,11 @@ import statusMap from '../../statusMap'
 /*export interface Count {
   count: number;
 }*/
-async function Page({ params }) {
+async function Page({ searchParams }) {
   //await http<Count>('http://localhost:3456/count') as Count;
   const count = statusMap.size
   console.log('count', count)
-  const paramsPromise = await params
+  const paramsPromise = await searchParams
   const viewtype = paramsPromise.viewtype
   //console.log('paramsPromise',paramsPromise)
   return (viewtype !== 'marked') ? <footer className={styles.footer}><span>Корзина</span>
