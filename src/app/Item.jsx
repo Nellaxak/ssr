@@ -7,6 +7,7 @@ class Item {
   constructor(id) {
     this.id = id
     this.status = 0
+    statusMap.set(id, 0)
   }
   async getStatus() {
     console.log('getStatus', this.id, this.status, typeof this.status)
