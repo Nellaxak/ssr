@@ -24,11 +24,7 @@ class Item {
     this.status = Number(!this.status)
   }
   static async findById(ppp) {
-    let resss = false
-    resss = statusMap.get(ppp);
-    if (resss === undefined) {
-      resss = false
-    }
+    const resss = statusMap.get(ppp);
     return resss
   }
   static async setCount(value) {
