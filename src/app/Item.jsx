@@ -1,5 +1,6 @@
 'use server'
-import { Suspense } from "react";
+//import { Suspense } from "react";//
+import statusMap from "./statusMap";
 //proxy object
 class Item {
   static count = 0;
@@ -21,6 +22,14 @@ class Item {
     console.log('setStatus', this.id, Number(!this.status))
     //await Item.setCount(1)
     this.status = Number(!this.status)
+  }
+  static async findById(ppp) {
+    let resss = false
+    resss = statusMap.get(Number(ppp));
+    if (resss === undefined) {
+      resss = false
+    }
+    return resss
   }
   static async setCount(value) {
     Item.count = Item.count + value

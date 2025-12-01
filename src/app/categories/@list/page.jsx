@@ -3,7 +3,7 @@ import React, { Suspense } from "react";
 import statusMap from "../../statusMap";
 import Link from "next/link";
 import Item from "../../Item";
-
+import ButtonSubmit from '../../../components/ButtonSubmit'
 let resp
 let startDate
 let endDate
@@ -103,7 +103,14 @@ async function Row(props) {
     }
     const newStatus = await props.item.getStatus()
     const UrlStatus = props.item.status
-    await props.item.setStatus()
+   // await props.item.setStatus()//very many
+   /*<Link key={props.obj.id}
+                        className={styles.buttonItem}
+                        prefetch={false}
+                        href={`/categories?viewtype=${props.viewtype}&id=${props.obj.id}&status=${Number(!UrlStatus)}`}
+                        scroll={false}>
+                        <Suspense>{String(newStatus)}</Suspense>
+                    </Link>*/
     return <Suspense>
         <li key={props.obj.id}>
             <div className={styles.flex_item}>
@@ -119,13 +126,7 @@ async function Row(props) {
             </Suspense>
             <div className={styles.flex_item}>
                 <div className={styles.flex_container_row}>
-                    <Link key={props.obj.id}
-                        className={styles.buttonItem}
-                        prefetch={false}
-                        href={`/categories?viewtype=${props.viewtype}&id=${props.obj.id}&status=${Number(!UrlStatus)}`}
-                        scroll={false}>
-                        <Suspense>{String(newStatus)}</Suspense>
-                    </Link>
+                    <ButtonSubmit />
                     <span className={styles.danger}>{Danger}</span>
                 </div>
             </div>
