@@ -1,6 +1,6 @@
 'use server'
 import { Suspense } from "react";
-
+//proxy object
 class Item {
   static count = 0;
   constructor(id) {
@@ -8,7 +8,7 @@ class Item {
     this.status = 0
   }
   async getStatus() {
-    console.log('getStatus',this.id,this.status,typeof this.status)
+    console.log('getStatus', this.id, this.status, typeof this.status)
     if (this.status === 1) {
       //await Item.setCount(1)
       return 'В КОРЗИНЕ'
@@ -18,8 +18,9 @@ class Item {
     }
   }
   async setStatus() {
+    console.log('setStatus', this.id, Number(!this.status))
     //await Item.setCount(1)
-    this.status = !this.status
+    this.status = Number(!this.status)
   }
   static async setCount(value) {
     Item.count = Item.count + value
