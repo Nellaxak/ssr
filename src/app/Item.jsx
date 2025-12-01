@@ -25,7 +25,7 @@ class Item {
   }
   static async findById(ppp) {
     let resss = false
-    resss = statusMap.get(Number(ppp));
+    resss = statusMap.get(ppp);
     if (resss === undefined) {
       resss = false
     }
