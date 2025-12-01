@@ -8,7 +8,7 @@ import Item from '../Item';
 async function toggleClick(formData) {
     console.log('toggleClick', formData)
     const id = formData.get('id')
-    const item = await Item.arrObj.get(id)
+    const item = Item.arrObj.get(id)
     console.log('item', item, typeof id)
     await item.setStatus()
     //console.log('oldStatus',oldStatus)
