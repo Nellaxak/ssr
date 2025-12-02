@@ -130,7 +130,7 @@ async function Row(props) {
                 <div className={styles.flex_container_row}>
                     <Form action={props.action} >
                         <input type='number' name='id' defaultValue={props.obj.id} hidden></input>
-                        <button type="submit">{status}</button>
+                        <button type="submit">0</button>
                     </Form>
                     <span className={styles.danger}>{Danger}</span>
                 </div>
