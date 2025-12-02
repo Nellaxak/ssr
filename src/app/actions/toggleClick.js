@@ -10,7 +10,7 @@ async function toggleClick(formData) {
     const id = Number(formData.get('id'))
     //const item = Item.arrObj.get(id)//sync
     const item1 = Item.findById(id)//sync
-    console.log('item', item1.id, item)
+    console.log('item', item1.id, item1)
     item1.setStatus()//sync
     //console.log('oldStatus',oldStatus)
     statusMap.set(id, !oldStatus)
