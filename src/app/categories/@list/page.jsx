@@ -4,7 +4,7 @@ import statusMap from "../../statusMap";
 import Link from "next/link";
 import Form from "next/form";
 import Item from "../../Item";
-import ButtonSubmit from '../../../components/ButtonSubmit/page'
+//import ButtonSubmit from '../../../components/ButtonSubmit/page'
 
 let resp
 let startDate
@@ -146,13 +146,13 @@ export default async function Home({ searchParams }) {
         const id = Number(formData.get('id'))
         //console.log('id type',typeof id)
         //const item = Item.arrObj.get(id)//sync
-        //const item = await Item.findById(id)//sync
+        const item = await Item.findById(id)//sync
         //console.log('item', item)
-        //await item.setStatus()//sync
+        await item.setStatus()//sync
         //console.log('oldStatus',oldStatus)
-        //statusMap.set(id, !oldStatus)
+        statusMap.set(id, !oldStatus)
         //revalidatePath('/')
-        //revalidateTag('items')//call Item constructor
+        revalidateTag('items')//call Item constructor
     }
     [startDate, endDate] = await CalcData()
     const search = await searchParams;
@@ -169,7 +169,7 @@ export default async function Home({ searchParams }) {
     //try {
     resp = await fetch(`https://api.nasa.gov/neo/rest/v1/feed?start_date=${startDate}&end_date=${endDate}&api_key=3wa5hHgFuqhf6XiefvqzkcDQWZ01aOOK4vNZEXsP`,
         //{ cache: 'force-cache' }
-        // { next: { tags: ['items'] } }
+         { next: { tags: ['items'] } }
     );
     if (Number(resp.status) === 200) {
         const dat = await resp.json()
