@@ -98,7 +98,7 @@ async function Row(props) {
     <span>{props.obj.absolute_magnitude_h}</span>*/
     //console.log('qwasxz', props.obj.id, statusMap.get(props.obj.id))
     const dataViewtype = props.obj.close_approach_data[0].miss_distance
-    //const status = await FormatStatus(props.obj.id)
+    const status = await FormatStatus(props.obj.id)
     const formatData = await DataFormat(dataViewtype, props.viewtype)
     let Danger = ''
     if (Number(props.obj.is_potentially_hazardous_asteroid) === 1) {
@@ -130,7 +130,7 @@ async function Row(props) {
                 <div className={styles.flex_container_row}>
                     <Form action={props.action} >
                         <input type='number' name='id' defaultValue={props.obj.id} hidden></input>
-                        <button type="submit">{statusMap.get(props.obj.id)}</button>
+                        <button type="submit">{status}</button>
                     </Form>
                     <span className={styles.danger}>{Danger}</span>
                 </div>
