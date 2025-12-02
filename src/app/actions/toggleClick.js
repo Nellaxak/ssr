@@ -2,7 +2,7 @@
 import { revalidateTag, revalidatePath } from 'next/cache';
 //import { redirect, RedirectType } from 'next/navigation';
 //import Li from '../Li';
-//import statusMap from '../statusMap';
+import statusMap from '../statusMap';
 //import { method } from 'lodash';
 import Item from '../Item';
 async function toggleClick(formData) {
