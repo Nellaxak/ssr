@@ -3,7 +3,7 @@ import { revalidateTag, revalidatePath } from 'next/cache';
 //import { redirect, RedirectType } from 'next/navigation';
 import statusMap from '../statusMap';
 import Item from '../Item';
-async function toggleClick(formData) {
+async function toggleClick1(formData) {
     console.log('toggleClick', formData, statusMap,Item.arrObj)
     const id = Number(formData.get('id'))
     //console.log('id type',typeof id)
@@ -16,4 +16,4 @@ async function toggleClick(formData) {
     //revalidatePath('/')
     revalidateTag('items')//call Item constructor
 }
-export default toggleClick
+export default toggleClick1

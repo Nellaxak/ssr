@@ -3,7 +3,7 @@
 //import { useEffect, useState, useCallback } from 'react'
 //import { useRouter } from 'next/navigation'
 import Form from 'next/form'
-import toggleClick from '../../app/actions/toggleClick'
+import toggleClick from '../../app/actions/toggleClick1'
 //import styles from "./page.module.css";
 //тоже renderProp?
 function ButtonSubmit(props) {
