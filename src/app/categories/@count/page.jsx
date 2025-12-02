@@ -10,14 +10,15 @@ import Item from '../../Item'
 async function Page({ searchParams }) {
   //await http<Count>('http://localhost:3456/count') as Count;
   const count = await Item.getCount()
-  console.log('count', count)
-  const paramsPromise = await searchParams
-  const viewtype = paramsPromise.viewtype
+  //console.log('count', count)
+  //const paramsPromise = await searchParams
+  //const viewtype = paramsPromise.viewtype
   //console.log('paramsPromise',paramsPromise)
-  return (viewtype !== 'marked') ? <footer className={styles.footer}><span>Корзина</span>
+  return count/*(viewtype !== 'marked') ? <footer className={styles.footer}><span>Корзина</span>
     <output className={styles.padding_count}>{count}</output>
     <span>астероида</span>
     <Link href="/categories?viewtype=marked" scroll={false}
-      className={styles.footer}>Отправить</Link></footer> : <footer className={styles.footer}>© Все права и планета защищены</footer>
+      className={styles.footer}>Отправить</Link></footer> : 
+      <footer className={styles.footer}>© Все права и планета защищены</footer>*/
 }
 export default Page

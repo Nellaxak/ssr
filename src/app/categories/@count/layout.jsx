@@ -16,5 +16,17 @@ export default function BasketLayout({
 }/*: {
     children: React.ReactNode
 }*/) {
-    return children
+    return <footer className={styles.footer}>
+        <div className={styles.columnFooter}>
+          <span className={styles.h3}>Корзина</span>
+          <output className={styles.padding_count}>{children}</output>
+          <span className={styles.aster}>астероида</span>
+        </div>
+        <nav className={styles.rrrr}>
+          <Link href="/categories?viewtype=marked" scroll={false}
+            className={styles.button}>
+            <span className={styles.padding}>Отправить</span>
+          </Link>
+        </nav>
+      </footer>
 }
