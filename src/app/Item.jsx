@@ -22,13 +22,13 @@ class Item {
       return 'ЗАКАЗАТЬ'
     }
   }
-  async setStatus() {
+  setStatus() {
     console.log('setStatus', this.id, Number(!this.status))
     //await Item.setCount(1)
     this.status = Number(!this.status)
   }
   static findById(ppp) {
-    console.log('findById', ppp)
+    //console.log('findById', ppp)
     return Item.arrObj.get(Number(ppp));
   }
   static async setCount(value) {

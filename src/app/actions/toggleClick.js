@@ -7,13 +7,13 @@ import { revalidateTag, revalidatePath } from 'next/cache';
 import Item from '../Item';
 async function toggleClick(formData) {
     console.log('toggleClick', formData)
-    const id = formData.get('id')
-    const item = Item.arrObj.get(Number(id))
-    const item1 = Item.findById(Number(id))
+    const id = Number(formData.get('id'))
+    //const item = Item.arrObj.get(id)//sync
+    const item1 = Item.findById(id)//sync
     console.log('item', item1.id, item)
-    //await item.setStatus()
+    item1.setStatus()//sync
     //console.log('oldStatus',oldStatus)
-    //statusMap.set(id, !oldStatus)
+    statusMap.set(id, !oldStatus)
     //revalidatePath('/')
     revalidateTag('items')
     //await Li.setViewtype(formData.get('viewtype'))
