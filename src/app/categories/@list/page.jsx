@@ -102,6 +102,7 @@ async function Row(props) {
     if (Number(props.obj.is_potentially_hazardous_asteroid) === 1) {
         Danger = 'Опасен'
     }
+    //conditional item.status render Link
     /*<Link key={props.obj.id}
         className={styles.buttonItem}
         prefetch={false}
@@ -124,9 +125,7 @@ async function Row(props) {
             </Suspense>
             <div className={styles.flex_item}>
                 <div className={styles.flex_container_row}>
-                    <ButtonSubmit id={props.obj.id} renderItem={async (id) => {
-                        console.log('button id', id)
-                    }} />
+                    <ButtonSubmit id={props.obj.id} />
                     <span className={styles.danger}>{Danger}</span>
                 </div>
             </div>

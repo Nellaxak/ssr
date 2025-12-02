@@ -1,11 +1,11 @@
-//'use client'
+'use client'
 
 //import { useEffect, useState, useCallback } from 'react'
 //import { useRouter } from 'next/navigation'
 import Form from 'next/form'
 import toggleClick from '../../app/actions/toggleClick'
 //import styles from "./page.module.css";
-//тоже renderProp
+//тоже renderProp?
 function ButtonSubmit(props) {
   console.log('ButtonSubmit',props)
   return  <Form action={toggleClick} >
