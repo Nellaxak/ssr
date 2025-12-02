@@ -8,12 +8,12 @@ async function toggleClick(formData) {
     const id = Number(formData.get('id'))
     //console.log('id type',typeof id)
     //const item = Item.arrObj.get(id)//sync
-    //const item = await Item.findById(id)//sync
+    const item = await Item.findById(id)//sync
     //console.log('item', item)
-    //await item.setStatus()//sync
+    await item.setStatus()//sync
     //console.log('oldStatus',oldStatus)
-    //statusMap.set(id, !oldStatus)
+    statusMap.set(id, !oldStatus)
     //revalidatePath('/')
-    //revalidateTag('items')//call Item constructor
+    revalidateTag('items')//call Item constructor
 }
 export default toggleClick

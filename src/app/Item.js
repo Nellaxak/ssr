@@ -24,7 +24,12 @@ class Item {
   }
   async setStatus() {
     console.log('setStatus', this.id, Number(!this.status))
-    //await Item.setCount(1)
+    if (this.status === 0) {
+      await Item.setCount(1)
+    }
+    else {
+      await Item.setCount(-1)
+    }
     this.status = Number(!this.status)
   }
   static async findById(ppp) {

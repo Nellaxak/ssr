@@ -4,7 +4,7 @@ import statusMap from "../../statusMap";
 import Link from "next/link";
 import Form from "next/form";
 import Item from "../../Item";
-//import ButtonSubmit from '../../../components/ButtonSubmit/page'
+import ButtonSubmit from '../../../components/ButtonSubmit/page'
 
 let resp
 let startDate
@@ -142,15 +142,12 @@ async function Row(props) {
 export default async function Home({ searchParams }) {
     async function toggleClick(formData) {
         'use server'
-        console.log('toggleClickPage', formData, statusMap, Item.arrObj)
+        console.log('toggleClickPage', formData)
         const id = Number(formData.get('id'))
         //console.log('id type',typeof id)
-        //const item = Item.arrObj.get(id)//sync
-        const item = await Item.findById(id)//sync
-        //console.log('item', item)
+        const item = await Item.findById(id)
         await item.setStatus()//sync
-        //console.log('oldStatus',oldStatus)
-        statusMap.set(id, !oldStatus)
+        statusMap.set(id, !statusMap.get(id))
         //revalidatePath('/')
         revalidateTag('items')//call Item constructor
     }
