@@ -81,7 +81,7 @@ async function List({ items, renderItem }) {
         </Suspense>)
 }
 async function FormatStatus(params) {
-    console.log('FormatStatus',params)
+    //console.log('FormatStatus', params)
     const status = Number(statusMap.get(params))
     let statusItem = 'ЗАКАЗАТЬ'
     if (status === 1) {
@@ -90,6 +90,7 @@ async function FormatStatus(params) {
     else {
         statusItem = 'В КОРЗИНЕ'
     }
+    console.log('format return', params, statusItem)
     return statusItem
 }
 async function Row(props) {
