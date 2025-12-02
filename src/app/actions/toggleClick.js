@@ -15,7 +15,7 @@ async function toggleClick(formData) {
     //console.log('oldStatus',oldStatus)
     //statusMap.set(id, !oldStatus)
     //revalidatePath('/')
-    //revalidateTag('items')
+    revalidateTag('items')
     //await Li.setViewtype(formData.get('viewtype'))
 }
 export default toggleClick

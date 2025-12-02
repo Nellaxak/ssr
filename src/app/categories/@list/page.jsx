@@ -4,6 +4,7 @@ import statusMap from "../../statusMap";
 import Link from "next/link";
 import Item from "../../Item";
 import ButtonSubmit from '../../../components/ButtonSubmit/page'
+import next from "next";
 let resp
 let startDate
 let endDate
@@ -101,16 +102,13 @@ async function Row(props) {
     if (Number(props.obj.is_potentially_hazardous_asteroid) === 1) {
         Danger = 'Опасен'
     }
-    //const newStatus = await props.item.getStatus()
-    //const UrlStatus = props.item.status
-    // await props.item.setStatus()//very many
     /*<Link key={props.obj.id}
-                         className={styles.buttonItem}
-                         prefetch={false}
-                         href={`/categories?viewtype=${props.viewtype}&id=${props.obj.id}&status=${Number(!UrlStatus)}`}
-                         scroll={false}>
-                         <Suspense>{String(newStatus)}</Suspense>
-                     </Link>*/
+        className={styles.buttonItem}
+        prefetch={false}
+        href={`/categories?viewtype=${props.viewtype}&id=${props.obj.id}&status=${Number(!UrlStatus)}`}
+        scroll={false}>
+        <Suspense>{String(newStatus)}</Suspense>
+    </Link>*/
     return <Suspense>
         <li key={props.obj.id}>
             <div className={styles.flex_item}>
@@ -126,7 +124,9 @@ async function Row(props) {
             </Suspense>
             <div className={styles.flex_item}>
                 <div className={styles.flex_container_row}>
-                    <ButtonSubmit id={props.obj.id} />
+                    <ButtonSubmit id={props.obj.id} renderItem={async (id) => {
+                        console.log('button id', id)
+                    }} />
                     <span className={styles.danger}>{Danger}</span>
                 </div>
             </div>
@@ -150,6 +150,7 @@ export default async function Home({ searchParams }) {
     //try {
     resp = await fetch(`https://api.nasa.gov/neo/rest/v1/feed?start_date=${startDate}&end_date=${endDate}&api_key=3wa5hHgFuqhf6XiefvqzkcDQWZ01aOOK4vNZEXsP`,
         //{ cache: 'force-cache' }
+        { next: { tags: 'items' } }
     );
     if (Number(resp.status) === 200) {
         const dat = await resp.json()
@@ -157,7 +158,7 @@ export default async function Home({ searchParams }) {
         //console.log('element_count', dat.element_count)
         const list = dat.near_earth_objects
         const arrObjects = Object.values(list)
-       
+
         /*if (oldStatus !== undefined) {
             statusMap.set(id, Number(oldStatus))//async  
         }*/
