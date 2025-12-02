@@ -4,7 +4,7 @@ import statusMap from "../../statusMap";
 import Link from "next/link";
 import Item from "../../Item";
 import ButtonSubmit from '../../../components/ButtonSubmit/page'
-import next from "next";
+
 let resp
 let startDate
 let endDate
@@ -110,6 +110,7 @@ async function Row(props) {
         scroll={false}>
         <Suspense>{String(newStatus)}</Suspense>
     </Link>*/
+    //<ButtonSubmit id={props.obj.id} />
     return <Suspense>
         <li key={props.obj.id}>
             <div className={styles.flex_item}>
@@ -125,7 +126,10 @@ async function Row(props) {
             </Suspense>
             <div className={styles.flex_item}>
                 <div className={styles.flex_container_row}>
-                    <ButtonSubmit id={props.obj.id} />
+                    <Form action={props.action} >
+                        <input type='number' name='id' defaultValue={props.obj.id} hidden></input>
+                        <button type="submit">0</button>
+                      </Form>
                     <span className={styles.danger}>{Danger}</span>
                 </div>
             </div>
@@ -135,6 +139,20 @@ async function Row(props) {
 /*async function RenderProp(product){
 }*/
 export default async function Home({ searchParams }) {
+    async function toggleClick(formData) {
+        'use server'
+        console.log('toggleClickPage', formData, statusMap, Item.arrObj)
+        const id = Number(formData.get('id'))
+        //console.log('id type',typeof id)
+        //const item = Item.arrObj.get(id)//sync
+        //const item = await Item.findById(id)//sync
+        //console.log('item', item)
+        //await item.setStatus()//sync
+        //console.log('oldStatus',oldStatus)
+        //statusMap.set(id, !oldStatus)
+        //revalidatePath('/')
+        //revalidateTag('items')//call Item constructor
+    }
     [startDate, endDate] = await CalcData()
     const search = await searchParams;
     //console.log('searchParams', search)
@@ -146,10 +164,11 @@ export default async function Home({ searchParams }) {
     } else {
         startPage = false
     }
+
     //try {
     resp = await fetch(`https://api.nasa.gov/neo/rest/v1/feed?start_date=${startDate}&end_date=${endDate}&api_key=3wa5hHgFuqhf6XiefvqzkcDQWZ01aOOK4vNZEXsP`,
         //{ cache: 'force-cache' }
-       // { next: { tags: ['items'] } }
+        // { next: { tags: ['items'] } }
     );
     if (Number(resp.status) === 200) {
         const dat = await resp.json()
@@ -176,6 +195,7 @@ export default async function Home({ searchParams }) {
                     obj={product}
                     viewtype={viewtype}
                     dates={dateString}
+                    action={toggleClick}
                 /></Suspense>
             }}
         /*
