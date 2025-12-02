@@ -9,7 +9,7 @@ async function toggleClick(formData) {
     console.log('toggleClick', formData)
     const id = formData.get('id')
     const item = Item.arrObj.get(Number(id))
-    const item1 = await Item.findById(Number(id))
+    const item1 = Item.findById(Number(id))
     console.log('item', item1.id, item)
     //await item.setStatus()
     //console.log('oldStatus',oldStatus)
