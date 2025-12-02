@@ -83,11 +83,10 @@ async function List({ items, renderItem }) {
 async function FormatStatus(params) {
     const status = Number(statusMap.get(params))
     let statusItem = 'ЗАКАЗАТЬ'
-    if (status === 0) {
+    if (status === 1) {
         statusItem = 'ЗАКАЗАТЬ'
     }
     else {
-        //Count.value = Count.value + 1;
         statusItem = 'В КОРЗИНЕ'
     }
     return statusItem
