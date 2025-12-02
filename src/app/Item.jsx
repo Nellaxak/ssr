@@ -9,7 +9,7 @@ class Item {
     console.log('constructor',id)
     this.id = id
     this.status = 0
-    //statusMap.set(id, 0)
+    statusMap.set(id, 0)
     Item.arrObj.set(id, this)
   }
   async getStatus() {
