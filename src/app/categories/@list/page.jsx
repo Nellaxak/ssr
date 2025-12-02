@@ -81,6 +81,7 @@ async function List({ items, renderItem }) {
         </Suspense>)
 }
 async function FormatStatus(params) {
+    console.log('FormatStatus',params)
     const status = Number(statusMap.get(params))
     let statusItem = 'ЗАКАЗАТЬ'
     if (status === 1) {
