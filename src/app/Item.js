@@ -6,7 +6,7 @@ class Item {
   static count = 0;
   static arrObj = new Map();
   constructor(id) {
-    console.log('constructor', id, typeof id)
+    //console.log('constructor', id, typeof id)
     this.id = id
     this.status = 0
     statusMap.set(id, 0)
@@ -23,7 +23,7 @@ class Item {
     }
   }
   async setStatus() {
-    console.log('setStatus', this.id, Number(!this.status))
+    //console.log('setStatus', this.id, Number(!this.status))
     if (this.status === 0) {
       await Item.setCount(1)
     }
@@ -31,9 +31,10 @@ class Item {
       await Item.setCount(-1)
     }
     this.status = Number(!this.status)
+    statusMap.set(this.id, !statusMap.get(id))
   }
   static async findById(ppp) {
-    console.log('findById', ppp, typeof ppp)
+    //console.log('findById', ppp, typeof ppp)
     return Item.arrObj.get(ppp);
   }
   static async setCount(value) {

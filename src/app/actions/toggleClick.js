@@ -12,7 +12,7 @@ async function toggleClick(formData) {
     //console.log('item', item)
     await item.setStatus()//sync
     //console.log('oldStatus',oldStatus)
-    statusMap.set(id, !oldStatus)
+    statusMap.set(id, !statusMap.get(id))
     //revalidatePath('/')
     revalidateTag('items')//call Item constructor
 }

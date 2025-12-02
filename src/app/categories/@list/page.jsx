@@ -130,8 +130,8 @@ async function Row(props) {
                 <div className={styles.flex_container_row}>
                     <Form action={props.action} >
                         <input type='number' name='id' defaultValue={props.obj.id} hidden></input>
-                        <button type="submit">0</button>
-                      </Form>
+                        <button type="submit">{statusMap.get(props.obj.id)}</button>
+                    </Form>
                     <span className={styles.danger}>{Danger}</span>
                 </div>
             </div>
@@ -147,10 +147,10 @@ export default async function Home({ searchParams }) {
         const id = Number(formData.get('id'))
         //console.log('id type',typeof id)
         const item = await Item.findById(id)
-        await item.setStatus()//sync
-        statusMap.set(id, !statusMap.get(id))
+        await item.setStatus()
+        //statusMap.set(id, !statusMap.get(id))
         //revalidatePath('/')
-        revalidateTag('items')//call Item constructor
+        revalidateTag('items')
     }
     [startDate, endDate] = await CalcData()
     const search = await searchParams;
@@ -167,7 +167,7 @@ export default async function Home({ searchParams }) {
     //try {
     resp = await fetch(`https://api.nasa.gov/neo/rest/v1/feed?start_date=${startDate}&end_date=${endDate}&api_key=3wa5hHgFuqhf6XiefvqzkcDQWZ01aOOK4vNZEXsP`,
         //{ cache: 'force-cache' }
-         { next: { tags: ['items'] } }
+        { next: { tags: ['items'] } }
     );
     if (Number(resp.status) === 200) {
         const dat = await resp.json()
