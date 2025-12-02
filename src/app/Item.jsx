@@ -22,7 +22,7 @@ class Item {
       return 'ЗАКАЗАТЬ'
     }
   }
-  setStatus() {
+  async setStatus() {
     console.log('setStatus', this.id, Number(!this.status))
     //await Item.setCount(1)
     this.status = Number(!this.status)

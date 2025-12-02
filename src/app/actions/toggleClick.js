@@ -8,10 +8,10 @@ import Item from '../Item';
 async function toggleClick(formData) {
     console.log('toggleClick', formData)
     const id = Number(formData.get('id'))
-    //const item = Item.arrObj.get(Numberid)//sync
-    const item = await Item.findById(id)//sync
-    console.log('item', item.id, item)
-    item.setStatus()//sync
+    const item = Item.arrObj.get(id)//sync
+    //const item = await Item.findById(id)//sync
+    console.log('item', item)
+    await item.setStatus()//sync
     //console.log('oldStatus',oldStatus)
     statusMap.set(id, !oldStatus)
     //revalidatePath('/')
