@@ -11,9 +11,9 @@ async function toggleClick(formData) {
     //const item = Item.arrObj.get(id)//sync
     const item = await Item.findById(id)//sync
     console.log('item', item)
-    await item.setStatus()//sync
+    //await item.setStatus()//sync
     //console.log('oldStatus',oldStatus)
-    statusMap.set(id, !oldStatus)
+    //statusMap.set(id, !oldStatus)
     //revalidatePath('/')
     revalidateTag('items')
     //await Li.setViewtype(formData.get('viewtype'))
