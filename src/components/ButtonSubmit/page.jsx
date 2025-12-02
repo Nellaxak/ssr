@@ -9,7 +9,7 @@ import toggleClick from '../../app/actions/toggleClick'
 function ButtonSubmit(props) {
   //console.log('ButtonSubmit',props)
   return  <Form action={toggleClick} >
-    <input type='text' name='id' defaultValue={props.id} hidden></input>
+    <input type='number' name='id' defaultValue={props.id} hidden></input>
     <button type="submit">0</button>
   </Form>
 }
