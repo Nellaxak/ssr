@@ -7,7 +7,7 @@ import { revalidateTag, revalidatePath } from 'next/cache';
 import Item from '../Item';
 async function toggleClick(formData) {
     console.log('toggleClick', formData)
-    const id = Number(formData.get('id'))
+    const id = formData.get('id')
     const item = Item.arrObj.get(id)//sync
     //const item = await Item.findById(id)//sync
     console.log('item', item)

@@ -10,7 +10,7 @@ class Item {
     this.id = id
     this.status = 0
     //statusMap.set(id, 0)
-    Item.arrObj.set(Number(id), this)
+    Item.arrObj.set(id, this)
   }
   async getStatus() {
     console.log('getStatus', this.id, this.status, typeof this.status)
@@ -29,7 +29,7 @@ class Item {
   }
   static async findById(ppp) {
     //console.log('findById', ppp)
-    return Item.arrObj.get(Number(ppp));
+    return Item.arrObj.get(ppp);
   }
   static async setCount(value) {
     Item.count = Item.count + value
