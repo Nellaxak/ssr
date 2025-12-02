@@ -28,7 +28,7 @@ class Item {
     this.status = Number(!this.status)
   }
   static async findById(ppp) {
-    console.log('findById', ppp)
+    console.log('findById', ppp, typeof ppp)
     return Item.arrObj.get(ppp);
   }
   static async setCount(value) {
