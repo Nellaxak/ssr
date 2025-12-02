@@ -10,7 +10,7 @@ class Item {
     this.id = id
     this.status = 0
     statusMap.set(id, 0)
-    Item.arrObj.set(id, this)
+    arrObj.set(id, this)
   }
   async getStatus() {
     console.log('getStatus', this.id, this.status, typeof this.status)
