@@ -6,7 +6,7 @@ import { revalidateTag, revalidatePath } from 'next/cache';
 //import { method } from 'lodash';
 import Item from '../Item';
 async function toggleClick(formData) {
-    console.log('toggleClick', formData)
+    console.log('toggleClick', formData, typeof formData.get('id'))
     const id = Number(formData.get('id'))
     //console.log('id type',typeof id)
     const item = Item.arrObj.get(id)//sync
