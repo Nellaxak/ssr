@@ -195,7 +195,9 @@ export default async function Home({ searchParams }) {
                 const dateString = datSlice.replace('.', '');
                 if (startPage) {
                     item = new Item(Number(product.id))
+                    console.log('item1',item)
                 }
+                console.log('renderProp item',item)
                 return <Suspense><Row
                     key={product.id}
                     obj={product}
