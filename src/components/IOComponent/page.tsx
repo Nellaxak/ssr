@@ -39,8 +39,8 @@ const IOComponent = () => {
     useEffect(() => {
         //socket.emit('addPage')
         const observer = new IntersectionObserver(callbackFunction, options);
-        const el = document.querySelector("#forScroll") as HTMLElement;
-        observer.observe(el);
+        //const el = document.querySelector("#forScroll") as HTMLElement;
+        observer.observe(ref.current);
         //socket.on('page', data => {
         //router.refresh()
         //})
