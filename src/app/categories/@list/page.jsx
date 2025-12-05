@@ -115,8 +115,10 @@ async function Row(props) {
     </Link>*/
     //<ButtonSubmit action={props.action} />
     const status1 = statusMap.get(Number(props.obj.id))
-    const status2 = await props.item.getStatus()
-    console.log('djkou', props.obj.id, statusMap.size, status1, status2)
+    const item = props.item
+    console.log('item', item)
+    //const status2 = await item.getStatus()
+    console.log('djkou', props.obj.id, statusMap.size, status1)
     return <Suspense>
         <li key={props.obj.id}>
             <div className={styles.flex_item}>
