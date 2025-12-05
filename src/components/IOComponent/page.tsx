@@ -2,6 +2,8 @@
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import { useCallback, useEffect, useRef } from "react";
 import dynamic from 'next/dynamic'
+import Form from 'next/form';
+import { pagination } from '../../app/actions/pagination'
 import CountPage from '../../app/CountPage'
 //import io from 'socket.io-client';
 
@@ -26,7 +28,6 @@ const IOComponent = () => {
         const [entry] = entries;
         if (entry.isIntersecting && add) {
             //socket.emit('addPage')
-            CountPage.count = CountPage.count + 1
             //serverActions Post request nasa fetch add
             const currentViewtype = searchParams.get('viewtype')
             router.push(`?viewtype=${currentViewtype}&scroll=down`, { scroll: false });
@@ -46,7 +47,11 @@ const IOComponent = () => {
         };
 
     }, [])
-    return null//ref
+    return <Form action={pagination} >
+        <input type='number' name='id' defaultValue={0} hidden></input>
+        <button type="submit"></button>
+    </Form>
+    //null//ref
     //(<></>)
 }
 //export default IOComponent
