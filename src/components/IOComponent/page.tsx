@@ -50,7 +50,7 @@ const IOComponent = () => {
         //serverActions Post request nasa fetch add
         const currentViewtype = searchParams.get('viewtype')
         router.push(`?viewtype=${currentViewtype}&page=${page}`, { scroll: false });
-        router.refresh()
+        /*router.refresh()*/
     }, [page])
     return null/*<Form action={pagination} >
         <input type='number' name='id' value={0} hidden></input>
