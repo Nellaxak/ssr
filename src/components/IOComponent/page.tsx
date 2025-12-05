@@ -52,7 +52,7 @@ const IOComponent = () => {
     }, [])
     useEffect(() => {
         //serverActions Post request nasa fetch add
-        router.push(`?viewtype=${currentViewtype}&page=${page}`, { scroll: false });
+        router.push(`?viewtype=${currentViewtype}&page=${page}`, { scroll: true });
         /*router.refresh()*/
     }, [page])
     return null/*<Form action={pagination} >
