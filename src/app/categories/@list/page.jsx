@@ -82,7 +82,7 @@ async function List({ items, renderItem }) {
 }
 async function FormatStatus(params) {
     //console.log('FormatStatus', params)
-    const status = Number(statusMap.get(params))
+    const status = Number(statusMap.get(Number(params)))
     let statusItem = 'ЗАКАЗАТЬ'
     if (status === 1) {
         statusItem = 'ЗАКАЗАТЬ'
@@ -115,10 +115,10 @@ async function Row(props) {
     </Link>*/
     //<ButtonSubmit action={props.action} />
     const status1 = statusMap.get(Number(props.obj.id))
-    const item = props.item
-    console.log('item', item)
+    //const item = props.item
+    //console.log('item', item)
     //const status2 = await item.getStatus()
-    console.log('djkou', props.obj.id, statusMap.size, status1)
+    //console.log('djkou', props.obj.id, statusMap.size, status1)
     return <Suspense>
         <li key={props.obj.id}>
             <div className={styles.flex_item}>
@@ -136,7 +136,7 @@ async function Row(props) {
                 <div className={styles.flex_container_row}>
                     <Form action={props.action} >
                         <input type='number' name='id' defaultValue={props.obj.id} hidden></input>
-                        <button type="submit"><Suspense>{status1}</Suspense>
+                        <button type="submit"><Suspense>{status}</Suspense>
                         </button>
                     </Form>
                     <span className={styles.danger}>{Danger}</span>
@@ -182,29 +182,24 @@ export default async function Home({ searchParams }) {
         //console.log('element_count', dat.element_count)
         const list = dat.near_earth_objects
         const arrObjects = Object.values(list)
-
-        /*if (oldStatus !== undefined) {
-            statusMap.set(id, Number(oldStatus))//async  
-        }*/
         return <List items={arrObjects[0]}
             renderItem={async (product) => {
-                let item
+                //let item
                 const date = new Date(product.close_approach_data[0].epoch_date_close_approach)
                 const prevDate = new Intl.DateTimeFormat("ru-RU", options).format(date);
                 const datSlice = prevDate.slice(0, -2)
                 const dateString = datSlice.replace('.', '');
                 if (startPage) {
-                    item = new Item(Number(product.id))
-                    console.log('item1',item)
+                    new Item(Number(product.id))
+                    //console.log('item1',item)
                 }
-                console.log('renderProp item',item)
+                console.log('renderProp item', item)
                 return <Suspense><Row
                     key={product.id}
                     obj={product}
                     viewtype={viewtype}
                     dates={dateString}
                     action={toggleClick}
-                    item={item}
                 /></Suspense>
             }}
         /*
