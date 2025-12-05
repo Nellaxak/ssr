@@ -1,6 +1,6 @@
 'use client'
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
-import { useCallback, useEffect,useRef } from "react";
+import { useCallback, useEffect, useRef } from "react";
 import dynamic from 'next/dynamic'
 //import io from 'socket.io-client';
 
@@ -21,9 +21,10 @@ const IOComponent = () => {
 
     const callbackFunction = useCallback(async (entries: IntersectionObserverEntry[]) => {
         const [entry] = entries;
-        console.log('add', add)
         if (entry.isIntersecting && add) {
             //socket.emit('addPage')
+            console.log('addIO', add)
+            router.push(`?scroll=down`, { scroll: false });
         }
     }, []);
     useEffect(() => {
@@ -32,7 +33,7 @@ const IOComponent = () => {
         const el = document.querySelector("#forScroll") as HTMLElement;
         observer.observe(el);
         //socket.on('page', data => {
-            router.refresh()
+        router.refresh()
         //})
         return () => {
             observer.disconnect();
