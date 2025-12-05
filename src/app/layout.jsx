@@ -57,9 +57,8 @@ export default async function Layout(props) {
           <Suspense fallback={<span className={'loader'}></span>}>
             {props.children}
           </Suspense>
-          <p id='forScroll'></p>
-          <ScrollComponent />
           <IOComponent />
+          <p id='forScroll' className={styles.sticky}></p>
         </div>
       </body>
     </html >

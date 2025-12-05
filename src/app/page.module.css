@@ -136,3 +136,8 @@
     padding-top: 8px;
     width: 200px;
   }
+
+  .sticky {
+    position: sticky;
+    bottom: 0;
+  }
