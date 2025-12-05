@@ -161,7 +161,7 @@ export default async function Home({ searchParams }) {
     }
     [startDate, endDate] = await CalcData()
     const search = await searchParams;
-    //console.log('searchParams', search)
+    console.log('searchParams', search)
     const viewtype = await search.viewtype
     //const id = await search.id;
     //const oldStatus = await search.status;//undefined->false

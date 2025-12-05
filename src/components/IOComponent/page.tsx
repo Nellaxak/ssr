@@ -14,7 +14,7 @@ const options = {
 const IOComponent = () => {
     const router = useRouter()
     const path = usePathname()
-    const searchParams=useSearchParams()
+    const searchParams = useSearchParams()
     let add = false
     if (!path.includes('items')) {
         add = true
@@ -22,12 +22,13 @@ const IOComponent = () => {
 
     const callbackFunction = useCallback(async (entries: IntersectionObserverEntry[]) => {
         const [entry] = entries;
-        if (entry.isIntersecting) {//&& add
+        if (entry.isIntersecting && add) {//
             //socket.emit('addPage')
             //serverActions Post request nasa fetch add
             //console.log('addIO', searchParams.get('viewtype'))
             //get current viewtype
-            router.push(`?viewtype=${searchParams.get('viewtype')}&scroll=down`, { scroll: false });
+            const currentViewtype = searchParams.get('viewtype')
+            router.push(`?viewtype=${currentViewtype}&scroll=down`, { scroll: false });
         }
     }, []);
     useEffect(() => {
