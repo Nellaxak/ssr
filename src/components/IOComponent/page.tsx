@@ -21,10 +21,12 @@ const IOComponent = () => {
 
     const callbackFunction = useCallback(async (entries: IntersectionObserverEntry[]) => {
         const [entry] = entries;
-        if (entry.isIntersecting && add) {
+        if (entry.isIntersecting) {//&& add
             //socket.emit('addPage')
+            //serverActions Post request nasa fetch add
             console.log('addIO', add)
-            router.push(`?scroll=down`, { scroll: false });
+            //get current viewtype
+            //router.push(`?viewtype     =&scroll=down`, { scroll: false });
         }
     }, []);
     useEffect(() => {
