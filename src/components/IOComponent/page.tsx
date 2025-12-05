@@ -2,6 +2,7 @@
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import { useCallback, useEffect, useRef } from "react";
 import dynamic from 'next/dynamic'
+import CountPage from '../../app/CountPage'
 //import io from 'socket.io-client';
 
 //const socket = io('ws://localhost:3456')
@@ -15,6 +16,7 @@ const IOComponent = () => {
     const router = useRouter()
     const path = usePathname()
     const searchParams = useSearchParams()
+    //useRef(null)
     let add = false
     if (!path.includes('items')) {
         add = true
@@ -22,11 +24,10 @@ const IOComponent = () => {
 
     const callbackFunction = useCallback(async (entries: IntersectionObserverEntry[]) => {
         const [entry] = entries;
-        if (entry.isIntersecting && add) {//
+        if (entry.isIntersecting && add) {
             //socket.emit('addPage')
+            CountPage.count = CountPage.count + 1
             //serverActions Post request nasa fetch add
-            //console.log('addIO', searchParams.get('viewtype'))
-            //get current viewtype
             const currentViewtype = searchParams.get('viewtype')
             router.push(`?viewtype=${currentViewtype}&scroll=down`, { scroll: false });
         }

@@ -5,6 +5,7 @@ import Link from "next/link";
 import Form from "next/form";
 import Item from "../../Item";
 import { revalidateTag, revalidatePath } from 'next/cache';
+import CountPage from "../../CountPage";
 import ButtonSubmit from '../../../components/ButtonSubmit/page'
 
 let resp
@@ -54,7 +55,8 @@ async function DataFormat(param, viewtype) {
     return resultFormat
     //const ruDiameter = new Intl.NumberFormat("ru", { style: "unit", unit: "meter", unitDisplay: "short" }).format(roundDiameter);
 }
-async function CalcData() {
+async function CalcData(params) {
+    console.log('CalcData',params)
     let currentDate = new Date()
     currentDate.setDate(currentDate.getDate());//+1
     let tomorrow = new Date();
@@ -159,12 +161,10 @@ export default async function Home({ searchParams }) {
         //revalidatePath('/')
         revalidateTag('items')
     }
-    [startDate, endDate] = await CalcData()
     const search = await searchParams;
-    console.log('searchParams', search)
+    //console.log('searchParams', search)
+    [startDate, endDate] = await CalcData(await search.scroll)
     const viewtype = await search.viewtype
-    //const id = await search.id;
-    //const oldStatus = await search.status;//undefined->false
     if (statusMap.size === 0) {
         startPage = true
     } else {
