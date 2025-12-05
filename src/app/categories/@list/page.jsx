@@ -115,7 +115,8 @@ async function Row(props) {
     </Link>*/
     //<ButtonSubmit action={props.action} />
     const status1 = statusMap.get(Number(props.obj.id))
-    console.log('djkou', props.obj.id, statusMap.size, status1)
+    const status2 = await props.item.getStatus()
+    console.log('djkou', props.obj.id, statusMap.size, status1, status2)
     return <Suspense>
         <li key={props.obj.id}>
             <div className={styles.flex_item}>
@@ -185,13 +186,13 @@ export default async function Home({ searchParams }) {
         }*/
         return <List items={arrObjects[0]}
             renderItem={async (product) => {
-                //let item
+                let item
                 const date = new Date(product.close_approach_data[0].epoch_date_close_approach)
                 const prevDate = new Intl.DateTimeFormat("ru-RU", options).format(date);
                 const datSlice = prevDate.slice(0, -2)
                 const dateString = datSlice.replace('.', '');
                 if (startPage) {
-                    new Item(Number(product.id))
+                    item = new Item(Number(product.id))
                 }
                 return <Suspense><Row
                     key={product.id}
@@ -199,6 +200,7 @@ export default async function Home({ searchParams }) {
                     viewtype={viewtype}
                     dates={dateString}
                     action={toggleClick}
+                    item={item}
                 /></Suspense>
             }}
         /*
