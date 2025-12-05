@@ -56,11 +56,18 @@ async function DataFormat(param, viewtype) {
     //const ruDiameter = new Intl.NumberFormat("ru", { style: "unit", unit: "meter", unitDisplay: "short" }).format(roundDiameter);
 }
 async function CalcData(params) {
-    console.log('CalcData',params)
+    console.log('CalcData', params, CountPage.page)
+
     let currentDate = new Date()
-    currentDate.setDate(currentDate.getDate());//+1
+    currentDate.setDate(currentDate.getDate());
+    if (params !== undefined) {
+        currentDate.setDate(currentDate.getDate() + CountPage.page);//+1
+    }
     let tomorrow = new Date();
-    tomorrow.setDate(tomorrow.getDate());//+1
+    tomorrow.setDate(tomorrow.getDate());
+    if (params !== undefined) {
+        tomorrow.setDate(tomorrow.getDate() + CountPage.page);//+1
+    }
     //console.log('myDate', currentDate, endNext)
     let startDate = currentDate.getFullYear() + '-' +
         (currentDate.getMonth() + 1) + '-' +
