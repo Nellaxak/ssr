@@ -68,7 +68,7 @@ async function CalcData(params) {
     const page = await params.page
     console.log('page**', page)
     if (page >= 0) {
-        tomorrow.setDate(tomorrow.getDate() + Number(params));//+1
+        tomorrow.setDate(tomorrow.getDate() + Number(page));//+1
     }
     //console.log('myDate', currentDate, endNext)
     let startDate = currentDate.getFullYear() + '-' +
