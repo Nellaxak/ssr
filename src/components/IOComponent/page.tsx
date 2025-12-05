@@ -1,6 +1,6 @@
 'use client'
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
-import { useCallback, useEffect, useState,useRef } from "react";
+import { useCallback, useEffect, useState, useRef } from "react";
 import dynamic from 'next/dynamic'
 import Form from 'next/form';
 import { pagination } from '../../app/actions/pagination'
@@ -29,7 +29,7 @@ const IOComponent = () => {
         const [entry] = entries;
         if (entry.isIntersecting && add) {
             //socket.emit('addPage')
-            setPage((page)=>page++)
+            setPage((page) => page+1)
             //serverActions Post request nasa fetch add
             const currentViewtype = searchParams.get('viewtype')
             router.push(`?viewtype=${currentViewtype}&page=${page}`, { scroll: false });
