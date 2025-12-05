@@ -67,7 +67,7 @@ async function CalcData(params) {
     tomorrow.setDate(tomorrow.getDate());
     const page = await params.page
     console.log('page**', page)
-    if (page >= 0) {
+    if (Number(page) >= 0) {
         tomorrow.setDate(tomorrow.getDate() + Number(page));//+1
     }
     //console.log('myDate', currentDate, endNext)
