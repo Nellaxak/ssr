@@ -21,7 +21,7 @@ const IOComponent = () => {
 
     const callbackFunction = useCallback(async (entries: IntersectionObserverEntry[]) => {
         const [entry] = entries;
-        //console.log('add', add)
+        console.log('add', add)
         if (entry.isIntersecting && add) {
             //socket.emit('addPage')
         }
