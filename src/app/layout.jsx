@@ -2,9 +2,10 @@ import { Suspense, createElement } from 'react'
 //import HeaderTop from '@/components/HeaderTop/page';
 import dynamic from 'next/dynamic'
 import ScrollComponent from '../components/ScrollComponent/page';
+import IOComponent from '../components/IOComponent/page'
 //import ToggleHeader from '../components/ToggleHeader/page';
-import { NavigationEvents } from '../components/NavigationsEvents/page';
-import Link from 'next/link';
+//import { NavigationEvents } from '../components/NavigationsEvents/page';
+//import Link from 'next/link';
 //import Button from '@/components/Button/page';
 //import { buttonClick } from "@/app/actions/updateStatus";
 //import { getItemData } from "@/app/actions/getItemData";
@@ -53,11 +54,12 @@ export default async function Layout(props) {
           <div className={styles.hidden}>
             <Image src={bigImage} alt="Earth" priority />
           </div>
+          <p id='forScroll'></p>
           <Suspense fallback={<span className={'loader'}></span>}>
             {props.children}
           </Suspense>
-          <NavigationEvents />
           <ScrollComponent />
+          <IOComponent />
         </div>
       </body>
     </html >

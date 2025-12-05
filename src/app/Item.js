@@ -6,13 +6,13 @@ class Item {
   static count = 0;
   static arrObj = new Map();
   constructor(id) {
-    console.log('constructor', id, typeof id)
+    //console.log('constructor', id, typeof id)
     this.id = id
     this.status = 0
     statusMap.set(id, 0)
     Item.arrObj.set(id, this)
   }
-  async getStatus() {
+  /*async getStatus() {
     console.log('getStatus', this.id, this.status, typeof this.status)
     if (this.status === 1) {
       //await Item.setCount(1)
@@ -21,7 +21,7 @@ class Item {
       //await Item.setCount(-1)
       return 'ЗАКАЗАТЬ'
     }
-  }
+  }*/
   async setStatus() {
     //console.log('setStatus', this.id, Number(!this.status))
     if (this.status === 0) {
