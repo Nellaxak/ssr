@@ -19,6 +19,7 @@ const IOComponent = () => {
     const path = usePathname()
     const searchParams = useSearchParams()
     const [page, setPage] = useState(0);
+    const currentViewtype = searchParams.get('viewtype')
     //useRef(null)
     let add = false
     if (!path.includes('items')) {
@@ -29,7 +30,10 @@ const IOComponent = () => {
         const [entry] = entries;
         if (entry.isIntersecting && add) {
             //socket.emit('addPage')
-            setPage((page) => page + 1)
+            setPage((page) => {
+                const newPage = page + 1
+                return newPage
+            })
         }
     }, []);
     useEffect(() => {
@@ -48,7 +52,6 @@ const IOComponent = () => {
     }, [])
     useEffect(() => {
         //serverActions Post request nasa fetch add
-        const currentViewtype = searchParams.get('viewtype')
         router.push(`?viewtype=${currentViewtype}&page=${page}`, { scroll: false });
         /*router.refresh()*/
     }, [page])
