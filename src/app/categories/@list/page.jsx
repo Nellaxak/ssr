@@ -114,7 +114,8 @@ async function Row(props) {
         <Suspense>{String(newStatus)}</Suspense>
     </Link>*/
     //<ButtonSubmit action={props.action} />
-    console.log('djkou', props.obj.id, statusMap.size, statusMap.get(Number(props.obj.id)))
+    const status1=statusMap.get(Number(props.obj.id))
+    //console.log('djkou', props.obj.id, statusMap.size, statusMap.get(Number(props.obj.id)))
     return <Suspense>
         <li key={props.obj.id}>
             <div className={styles.flex_item}>
@@ -132,7 +133,7 @@ async function Row(props) {
                 <div className={styles.flex_container_row}>
                     <Form action={props.action} >
                         <input type='number' name='id' defaultValue={props.obj.id} hidden></input>
-                        <button type="submit"><Suspense>{statusMap.get(props.obj.id)}</Suspense>
+                        <button type="submit"><Suspense>{status1}</Suspense>
                         </button>
                     </Form>
                     <span className={styles.danger}>{Danger}</span>
