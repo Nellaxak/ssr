@@ -61,7 +61,7 @@ export default async function Layout(props) {
             </Suspense>
           </div>
           <IOComponent />
-          <p id='forScroll' className={styles.sticky}></p>
+          <p id='forScroll'></p>
         </div>
       </body>
     </html >
