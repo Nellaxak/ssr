@@ -35,7 +35,7 @@ const IOComponent = () => {
         const el = document.querySelector("#forScroll") as HTMLElement;
         observer.observe(el);
         //socket.on('page', data => {
-        router.refresh()
+        //router.refresh()
         //})
         return () => {
             observer.disconnect();
