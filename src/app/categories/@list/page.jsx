@@ -193,7 +193,7 @@ export default async function Home({ searchParams }) {
                     new Item(Number(product.id))
                     //console.log('item1',item)
                 }
-                console.log('renderProp item', item)
+                //console.log('renderProp item', item)
                 return <Suspense><Row
                     key={product.id}
                     obj={product}
