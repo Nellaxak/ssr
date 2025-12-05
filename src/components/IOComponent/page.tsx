@@ -14,6 +14,7 @@ const options = {
 const IOComponent = () => {
     const router = useRouter()
     const path = usePathname()
+    const searchParams=useSearchParams()
     let add = false
     if (!path.includes('items')) {
         add = true
@@ -24,9 +25,9 @@ const IOComponent = () => {
         if (entry.isIntersecting) {//&& add
             //socket.emit('addPage')
             //serverActions Post request nasa fetch add
-            console.log('addIO', add)
+            //console.log('addIO', searchParams.get('viewtype'))
             //get current viewtype
-            //router.push(`?viewtype     =&scroll=down`, { scroll: false });
+            router.push(`?viewtype=${searchParams.get('viewtype')}&scroll=down`, { scroll: false });
         }
     }, []);
     useEffect(() => {
