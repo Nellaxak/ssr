@@ -84,13 +84,13 @@ async function FormatStatus(params) {
     //console.log('FormatStatus', params)
     const status = Number(statusMap.get(Number(params)))
     let statusItem = 'ЗАКАЗАТЬ'
-    if (status === 1) {
+    if (status === 0) {
         statusItem = 'ЗАКАЗАТЬ'
     }
     else {
         statusItem = 'В КОРЗИНЕ'
     }
-    console.log('format return', params, statusItem)
+    //console.log('format return', params, statusItem)
     return statusItem
 }
 async function Row(props) {
@@ -150,7 +150,7 @@ async function Row(props) {
 export default async function Home({ searchParams }) {
     async function toggleClick(formData) {
         'use server'
-        console.log('toggleClickPage', formData)
+        //console.log('toggleClickPage', formData)
         const id = Number(formData.get('id'))
         //console.log('id type',typeof id)
         const item = await Item.findById(id)
