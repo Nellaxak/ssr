@@ -169,7 +169,7 @@ export default async function Home({ searchParams }) {
         revalidateTag('items')
     }
     const search = await searchParams;
-    //console.log('searchParams', search)
+    console.log('searchParams', search)
     [startDate, endDate] = await CalcData(await search.page)
     const viewtype = await search.viewtype
     if (statusMap.size === 0) {
