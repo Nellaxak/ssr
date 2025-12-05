@@ -1,6 +1,6 @@
 'use client'
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
-import { useCallback, useEffect, useRef } from "react";
+import { useCallback, useEffect, useState,useRef } from "react";
 import dynamic from 'next/dynamic'
 import Form from 'next/form';
 import { pagination } from '../../app/actions/pagination'
@@ -18,6 +18,7 @@ const IOComponent = () => {
     const router = useRouter()
     const path = usePathname()
     const searchParams = useSearchParams()
+    const [page, setPage] = useState(0);
     //useRef(null)
     let add = false
     if (!path.includes('items')) {
@@ -28,9 +29,10 @@ const IOComponent = () => {
         const [entry] = entries;
         if (entry.isIntersecting && add) {
             //socket.emit('addPage')
+            setPage((page)=>page++)
             //serverActions Post request nasa fetch add
             const currentViewtype = searchParams.get('viewtype')
-            router.push(`?viewtype=${currentViewtype}&scroll=down`, { scroll: false });
+            router.push(`?viewtype=${currentViewtype}&page=${page}`, { scroll: false });
         }
     }, []);
     useEffect(() => {
@@ -47,11 +49,11 @@ const IOComponent = () => {
         };
 
     }, [])
-    return <Form action={pagination} >
-        <input type='number' name='id' defaultValue={0} hidden></input>
+    return null/*<Form action={pagination} >
+        <input type='number' name='id' value={0} hidden></input>
         <button type="submit"></button>
-    </Form>
-    //null//ref
+    </Form>*/
+    //ref
     //(<></>)
 }
 //export default IOComponent
