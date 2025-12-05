@@ -20,7 +20,7 @@ const IOComponent = () => {
     const searchParams = useSearchParams()
     const [page, setPage] = useState(0);
     const currentViewtype = searchParams.get('viewtype')
-    //useRef(null)
+    const ref = useRef(null)
     let add = false
     if (!path.includes('items')) {
         add = true
@@ -55,7 +55,7 @@ const IOComponent = () => {
         router.push(`?viewtype=${currentViewtype}&page=${page}`, { scroll: true });
         /*router.refresh()*/
     }, [page])
-    return null/*<Form action={pagination} >
+    return <p ref={ref}></p>/*<Form action={pagination} >
         <input type='number' name='id' value={0} hidden></input>
         <button type="submit"></button>
     </Form>*/
