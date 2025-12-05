@@ -60,9 +60,9 @@ async function CalcData(params) {
 
     let currentDate = new Date()
     currentDate.setDate(currentDate.getDate());
-    if (params !== undefined) {
+    /*if (params !== undefined) {
         currentDate.setDate(currentDate.getDate() + Number(params));//+1
-    }
+    }*/
     let tomorrow = new Date();
     tomorrow.setDate(tomorrow.getDate());
     if (params !== undefined) {
