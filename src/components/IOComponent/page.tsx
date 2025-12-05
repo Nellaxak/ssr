@@ -29,10 +29,8 @@ const IOComponent = () => {
         const [entry] = entries;
         if (entry.isIntersecting && add) {
             //socket.emit('addPage')
-            setPage((page) => page+1)
-            //serverActions Post request nasa fetch add
-            const currentViewtype = searchParams.get('viewtype')
-            router.push(`?viewtype=${currentViewtype}&page=${page}`, { scroll: false });
+            setPage((page) => page + 1)
+
         }
     }, []);
     useEffect(() => {
@@ -49,6 +47,11 @@ const IOComponent = () => {
         };
 
     }, [])
+    useEffect(() => {
+        //serverActions Post request nasa fetch add
+        const currentViewtype = searchParams.get('viewtype')
+        router.push(`?viewtype=${currentViewtype}&page=${page}`, { scroll: false });
+    }, [page])
     return null/*<Form action={pagination} >
         <input type='number' name='id' value={0} hidden></input>
         <button type="submit"></button>
