@@ -113,7 +113,8 @@ async function Row(props) {
         scroll={false}>
         <Suspense>{String(newStatus)}</Suspense>
     </Link>*/
-    //<ButtonSubmit id={props.obj.id} />
+    //<ButtonSubmit action={props.action} />
+    console.log('djkou', props.obj.id, statusMap.get(props.obj.id))
     return <Suspense>
         <li key={props.obj.id}>
             <div className={styles.flex_item}>
