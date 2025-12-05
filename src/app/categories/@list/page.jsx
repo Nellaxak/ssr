@@ -114,8 +114,8 @@ async function Row(props) {
         <Suspense>{String(newStatus)}</Suspense>
     </Link>*/
     //<ButtonSubmit action={props.action} />
-    const status1=statusMap.get(Number(props.obj.id))
-    //console.log('djkou', props.obj.id, statusMap.size, statusMap.get(Number(props.obj.id)))
+    const status1 = statusMap.get(Number(props.obj.id))
+    console.log('djkou', props.obj.id, statusMap.size, status1)
     return <Suspense>
         <li key={props.obj.id}>
             <div className={styles.flex_item}>
