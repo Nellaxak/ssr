@@ -25,6 +25,16 @@ const options = {
     minute: 'numeric',
     second: 'numeric'*/
 };
+const optionsDate = {
+  year: 'numeric',
+  month: 'long', // 'short', 'numeric'
+  day: 'numeric',
+  weekday: 'long', // 'short', 'narrow'
+  /*hour: '2-digit',
+  minute: '2-digit',
+  second: '2-digit',*/
+  timeZoneName: 'short'
+};
 async function DataFormat(param, viewtype) {
     //let resultToggle
     let resultFormat
@@ -72,18 +82,18 @@ async function CalcData(params) {
         //console.log('if', tomorrow.getDate())
         tomorrow.setDate(newPage);//+1
     }
-    //console.log('myDate', currentDate, endNext)
+    //console.log('myDate', new Intl.DateTimeFormat('ru-RU', optionsDate).format(currentDate))
     let startDate = currentDate.getFullYear() + '-' +
         (currentDate.getMonth() + 1) + '-' +
         currentDate.getDate();
     let endDate = tomorrow.getFullYear() + '-' +
         (tomorrow.getMonth() + 1) + '-' +
         tomorrow.getDate();
-    //console.log('return data', startDate, endDate)
+    console.log('return data', startDate, endDate)
     /*return new Promise((resolve) => {
         resolve([startDate, endDate])
     })*/
-    return [startDate, endDate ]
+    return [startDate, endDate]
 }
 async function List({ items, renderItem }) {
     const res = await Promise.all(items.map(async (item, index) => {
@@ -174,7 +184,7 @@ export default async function Home({ searchParams }) {
     }
     const search = await searchParams;
     console.log('searchParams', search)
-    [startDate, endDate] = await CalcData(search)
+    let [startDate, endDate] = await CalcData(search)
     console.log('date', startDate, endDate)
     const viewtype = await search.viewtype
     if (statusMap.size === 0) {

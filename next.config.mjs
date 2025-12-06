@@ -10,7 +10,7 @@ const nextConfig = {
         return [
             {
                 source: '/',
-                destination: '/categories?viewtype=main',
+                destination: '/categories?viewtype=main&page=0',
                 permanent: true
             },
         ]
