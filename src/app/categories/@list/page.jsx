@@ -12,7 +12,7 @@ let resp
 let startDate
 let endDate
 let startPage
-let array3
+let array3=[]
 const options = {
     /*era: 'long',*/
     year: 'numeric',
