@@ -56,7 +56,7 @@ const IOComponent = () => {
     useEffect(() => {
         //serverActions Post request nasa fetch add
         router.push(`?viewtype=${currentViewtype}&page=${page}`, { scroll: false });
-        router.refresh()
+        //router.refresh()
     }, [page])
     return <p ref={ref}></p>
     /*return <Form action={pagination} ref={ref}>
