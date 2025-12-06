@@ -12,7 +12,7 @@ let resp
 let startDate
 let endDate
 let startPage
-let array3=[]
+let array3 = []
 const options = {
     /*era: 'long',*/
     year: 'numeric',
@@ -59,9 +59,10 @@ async function CalcData(params) {
     //console.log('CalcData', await params)
     let currentDate = new Date()
     currentDate.setDate(currentDate.getDate());
-    /*if (params !== undefined) {
-        currentDate.setDate(currentDate.getDate() + Number(params));//+1
-    }*/
+    if (Number(page) >= 0) {
+        const newPage = Number(currentDate.getDate()) + Number(page)
+        currentDate.setDate(newPage);//+1
+    }
     let tomorrow = new Date();
     tomorrow.setDate(tomorrow.getDate());
     const page = await params.page
