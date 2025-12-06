@@ -202,7 +202,7 @@ export default async function Home({ searchParams }) {
     if (Number(resp.status) === 200) {
         const dat = await resp.json()
         //readable stream-chunk textDecoder->json
-        //console.log('element_count', dat.element_count)
+        console.log('element_count', dat.element_count)
         const list = dat.near_earth_objects
         const arrObjects = Object.values(list)
         return <List items={arrObjects[0]}
