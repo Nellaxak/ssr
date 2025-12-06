@@ -66,7 +66,7 @@ async function DataFormat(param, viewtype) {
     //const ruDiameter = new Intl.NumberFormat("ru", { style: "unit", unit: "meter", unitDisplay: "short" }).format(roundDiameter);
 }
 async function CalcData(params) {
-    console.log('CalcData', await params)
+    //console.log('CalcData', await params)
 
     let currentDate = new Date()
     currentDate.setDate(currentDate.getDate());
@@ -89,7 +89,7 @@ async function CalcData(params) {
     let endDate = tomorrow.getFullYear() + '-' +
         (tomorrow.getMonth() + 1) + '-' +
         tomorrow.getDate();
-    console.log('return data', startDate, endDate)
+    //console.log('return data', startDate, endDate)
     /*return new Promise((resolve) => {
         resolve([startDate, endDate])
     })*/
@@ -183,9 +183,9 @@ export default async function Home({ searchParams }) {
         revalidateTag('items')
     }
     const search = await searchParams;
-    console.log('searchParams', search)
+    //console.log('searchParams', search)
     let [startDate, endDate] = await CalcData(search)
-    console.log('date', startDate, endDate)
+    //console.log('date', startDate, endDate)
     const viewtype = await search.viewtype
     if (statusMap.size === 0) {
         startPage = true
