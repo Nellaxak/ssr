@@ -15,11 +15,11 @@ const options = {
 }
 
 const IOComponent = () => {
-    //const router = useRouter()
+    const router = useRouter()
     const path = usePathname()
-    //const searchParams = useSearchParams()
+    const searchParams = useSearchParams()
     const [page, setPage] = useState(0);
-    //const currentViewtype = searchParams.get('viewtype')
+    const currentViewtype = searchParams.get('viewtype')
     //const currentPage = searchParams.get('page')
     const ref = useRef(null)
     let add = false
@@ -53,16 +53,16 @@ const IOComponent = () => {
         };
 
     }, [])
-    /*useEffect(() => {
+    useEffect(() => {
         //serverActions Post request nasa fetch add
         router.push(`?viewtype=${currentViewtype}&page=${page}`, { scroll: false });
         //router.refresh()
-    }, [page])*/
-    //return <p ref={ref}></p>
-    return <Form action={pagination} ref={ref}>
+    }, [page])
+    return <p ref={ref}></p>
+    /*return <Form action={pagination} ref={ref}>
         <input type='number' name='page' value={page} hidden></input>
         <button type="submit"></button>
-    </Form>
+    </Form>*/
     //(<></>)
 }
 export default IOComponent
