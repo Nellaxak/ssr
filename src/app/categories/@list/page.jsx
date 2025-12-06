@@ -185,6 +185,7 @@ export default async function Home({ searchParams }) {
     const search = await searchParams;
     //console.log('searchParams', search)
     let [startDate, endDate] = await CalcData(search)
+    console.log('page ssr',await search.page)
     //console.log('date', startDate, endDate)
     const viewtype = await search.viewtype
     /*if (statusMap.size === 0) {
