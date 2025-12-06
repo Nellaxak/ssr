@@ -26,14 +26,14 @@ const options = {
     second: 'numeric'*/
 };
 const optionsDate = {
-  year: 'numeric',
-  month: 'long', // 'short', 'numeric'
-  day: 'numeric',
-  weekday: 'long', // 'short', 'narrow'
-  /*hour: '2-digit',
-  minute: '2-digit',
-  second: '2-digit',*/
-  timeZoneName: 'short'
+    year: 'numeric',
+    month: 'long', // 'short', 'numeric'
+    day: 'numeric',
+    weekday: 'long', // 'short', 'narrow'
+    /*hour: '2-digit',
+    minute: '2-digit',
+    second: '2-digit',*/
+    timeZoneName: 'short'
 };
 async function DataFormat(param, viewtype) {
     //let resultToggle
@@ -211,7 +211,7 @@ export default async function Home({ searchParams }) {
                 const prevDate = new Intl.DateTimeFormat("ru-RU", options).format(date);
                 const datSlice = prevDate.slice(0, -2)
                 const dateString = datSlice.replace('.', '');
-                console.log('exsist',Boolean(Item.findById(Number(product.id))))
+                console.log('exsist', product.id, Boolean(Item.findById(Number(product.id))))
                 if (!Boolean(Item.findById(Number(product.id)))) {
                     new Item(Number(product.id))
                     //console.log('item1',item)
