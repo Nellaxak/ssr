@@ -176,8 +176,8 @@ export default async function Home({ searchParams }) {
     const search = await searchParams;
     //console.log('searchParams', search)
     let [startDate, endDate] = await CalcData(search)
-    console.log('page ssr', await search.page)
-    console.log('date', startDate, endDate)
+    //console.log('page ssr', await search.page)
+    //console.log('date', startDate, endDate)
     const viewtype = await search.viewtype
     /*if (statusMap.size === 0) {
         startPage = true
@@ -193,7 +193,7 @@ export default async function Home({ searchParams }) {
     if (Number(resp.status) === 200) {
         const dat = await resp.json()
         //readable stream-chunk textDecoder->json
-        console.log('element_count', dat.element_count)
+        //console.log('element_count', dat.element_count)
         const list = dat.near_earth_objects
         const arrObjects = Object.values(list)
         //concat arr
@@ -205,7 +205,7 @@ export default async function Home({ searchParams }) {
                 const prevDate = new Intl.DateTimeFormat("ru-RU", options).format(date);
                 const datSlice = prevDate.slice(0, -2)
                 const dateString = datSlice.replace('.', '');
-                console.log('exsist', product.id, Boolean(Item.findById(Number(product.id))))
+                //console.log('exsist', product.id, Boolean(Item.findById(Number(product.id))))
                 if (!Boolean(Item.findById(Number(product.id)))) {
                     new Item(Number(product.id))
                     //console.log('item1',item)
