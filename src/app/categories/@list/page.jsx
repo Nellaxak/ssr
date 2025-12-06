@@ -211,8 +211,8 @@ export default async function Home({ searchParams }) {
                 const prevDate = new Intl.DateTimeFormat("ru-RU", options).format(date);
                 const datSlice = prevDate.slice(0, -2)
                 const dateString = datSlice.replace('.', '');
-                console.log('exsist',!Item.findById(Number(product.id)))
-                if (!Item.findById(Number(product.id))) {
+                console.log('exsist',Boolean(Item.findById(Number(product.id))))
+                if (!Boolean(Item.findById(Number(product.id)))) {
                     new Item(Number(product.id))
                     //console.log('item1',item)
                 }
