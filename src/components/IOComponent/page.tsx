@@ -3,7 +3,7 @@ import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import { useCallback, useEffect, useState, useRef } from "react";
 import dynamic from 'next/dynamic'
 import Form from 'next/form';
-import { pagination } from '../../app/actions/pagination'
+import { pagination } from '../../app/lib/actions'
 import CountPage from '../../app/CountPage'
 //import io from 'socket.io-client';
 
@@ -15,12 +15,12 @@ const options = {
 }
 
 const IOComponent = () => {
-    const router = useRouter()
+    //const router = useRouter()
     const path = usePathname()
-    const searchParams = useSearchParams()
-    //const [page, setPage] = useState(0);
-    const currentViewtype = searchParams.get('viewtype')
-    const currentPage = searchParams.get('page')
+    //const searchParams = useSearchParams()
+    const [page, setPage] = useState(0);
+    //const currentViewtype = searchParams.get('viewtype')
+    //const currentPage = searchParams.get('page')
     const ref = useRef(null)
     let add = false
     if (!path.includes('items')) {
@@ -30,13 +30,13 @@ const IOComponent = () => {
     const callbackFunction = useCallback(async (entries: IntersectionObserverEntry[]) => {
         const [entry] = entries;
         if (entry.isIntersecting && add) {
-            const page = Number(currentPage) + 1
-            router.push(`?viewtype=${currentViewtype}&page=${page}`, { scroll: false });
+            //const page = Number(currentPage) + 1
+            //router.push(`?viewtype=${currentViewtype}&page=${page}`, { scroll: false });
             //socket.emit('addPage')
-            /*setPage((page) => {
+            setPage((page) => {
                 const newPage = page + 1
                 return newPage
-            })*/
+            })
         }
     }, []);
     useEffect(() => {
@@ -58,11 +58,11 @@ const IOComponent = () => {
         router.push(`?viewtype=${currentViewtype}&page=${page}`, { scroll: false });
         //router.refresh()
     }, [page])*/
-    return <p ref={ref}></p>
-    /*return <Form action={pagination} ref={ref}>
+    //return <p ref={ref}></p>
+    return <Form action={pagination} ref={ref}>
         <input type='number' name='page' value={page} hidden></input>
         <button type="submit"></button>
-    </Form>*/
+    </Form>
     //(<></>)
 }
 export default IOComponent

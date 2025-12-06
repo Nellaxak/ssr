@@ -3,7 +3,7 @@
 import { useEffect, useState, useCallback,Suspense } from 'react'
 import { useRouter } from 'next/navigation'
 import Form from 'next/form'
-import toggleClick from '../../app/actions/toggleClick1'
+import toggleClick from '../../app/lib/toggleClick1'
 //import styles from "./page.module.css";
 //intersection observer
 function ButtonSubmit(props) {
