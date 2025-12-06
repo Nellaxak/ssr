@@ -187,11 +187,11 @@ export default async function Home({ searchParams }) {
     let [startDate, endDate] = await CalcData(search)
     //console.log('date', startDate, endDate)
     const viewtype = await search.viewtype
-    if (statusMap.size === 0) {
+    /*if (statusMap.size === 0) {
         startPage = true
     } else {
         startPage = false
-    }
+    }*/
 
     //try {
     resp = await fetch(`https://api.nasa.gov/neo/rest/v1/feed?start_date=${startDate}&end_date=${endDate}&api_key=3wa5hHgFuqhf6XiefvqzkcDQWZ01aOOK4vNZEXsP`,
@@ -211,7 +211,8 @@ export default async function Home({ searchParams }) {
                 const prevDate = new Intl.DateTimeFormat("ru-RU", options).format(date);
                 const datSlice = prevDate.slice(0, -2)
                 const dateString = datSlice.replace('.', '');
-                if (startPage) {
+                console.log('exsist',!Item.findById(Number(product.id)))
+                if (!Item.findById(Number(product.id))) {
                     new Item(Number(product.id))
                     //console.log('item1',item)
                 }
