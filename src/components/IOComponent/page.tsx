@@ -17,9 +17,9 @@ const options = {
 const IOComponent = () => {
     const router = useRouter()
     const path = usePathname()
-    const searchParams = useSearchParams()
+    //const searchParams = useSearchParams()
     const [page, setPage] = useState(0);
-    const currentViewtype = searchParams.get('viewtype')
+    //const currentViewtype = searchParams.get('viewtype')
     const ref = useRef(null)
     let add = false
     if (!path.includes('items')) {
@@ -50,17 +50,17 @@ const IOComponent = () => {
         };
 
     }, [])
-    useEffect(() => {
+    /*useEffect(() => {
         //serverActions Post request nasa fetch add
         router.push(`?viewtype=${currentViewtype}&page=${page}`, { scroll: false });
-        router.refresh()
-    }, [page])
-    return <p ref={ref}></p>/*<Form action={pagination} >
-        <input type='number' name='id' value={0} hidden></input>
+        //router.refresh()
+    }, [page])*/
+    //<p ref={ref}></p>
+    return <Form action={pagination} ref={ref}>
+        <input type='number' name='page' value={page} hidden></input>
         <button type="submit"></button>
-    </Form>*/
-    //ref
+    </Form>
     //(<></>)
 }
-//export default IOComponent
-export default dynamic(() => Promise.resolve(IOComponent), { ssr: false });
+export default IOComponent
+//export default dynamic(() => Promise.resolve(IOComponent), { ssr: false });
