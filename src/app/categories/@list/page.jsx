@@ -12,7 +12,7 @@ let resp
 let startDate
 let endDate
 let startPage
-
+let array3
 const options = {
     /*era: 'long',*/
     year: 'numeric',
@@ -174,7 +174,7 @@ export default async function Home({ searchParams }) {
     const search = await searchParams;
     //console.log('searchParams', search)
     let [startDate, endDate] = await CalcData(search)
-    console.log('page ssr',await search.page)
+    console.log('page ssr', await search.page)
     console.log('date', startDate, endDate)
     const viewtype = await search.viewtype
     /*if (statusMap.size === 0) {
@@ -194,7 +194,9 @@ export default async function Home({ searchParams }) {
         console.log('element_count', dat.element_count)
         const list = dat.near_earth_objects
         const arrObjects = Object.values(list)
-        return <List items={arrObjects[0]}
+        //concat arr
+        array3 = array3.concat(arrObjects[0]);
+        return <List items={array3}
             renderItem={async (product) => {
                 //let item
                 const date = new Date(product.close_approach_data[0].epoch_date_close_approach)
