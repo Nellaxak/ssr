@@ -4,7 +4,7 @@ import { useCallback, useEffect, useState, useRef } from "react";
 import dynamic from 'next/dynamic'
 import Form from 'next/form';
 import { pagination } from '../../app/lib/actions'
-import CountPage from '../../app/CountPage'
+//import CountPage from '../../app/CountPage'
 //import io from 'socket.io-client';
 
 //const socket = io('ws://localhost:3456')

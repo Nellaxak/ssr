@@ -5,6 +5,6 @@ import { revalidateTag } from 'next/cache';
 //import { method } from 'lodash';
 
 export async function pagination(formData) {
-    console.log('pagination',formData.get('page'))
+    console.log('pagination',formData)//.get('page'))
     revalidateTag('items')
 }
