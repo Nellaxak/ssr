@@ -25,16 +25,6 @@ const options = {
     minute: 'numeric',
     second: 'numeric'*/
 };
-const optionsDate = {
-    year: 'numeric',
-    month: 'long', // 'short', 'numeric'
-    day: 'numeric',
-    weekday: 'long', // 'short', 'narrow'
-    /*hour: '2-digit',
-    minute: '2-digit',
-    second: '2-digit',*/
-    timeZoneName: 'short'
-};
 async function DataFormat(param, viewtype) {
     //let resultToggle
     let resultFormat
@@ -67,7 +57,6 @@ async function DataFormat(param, viewtype) {
 }
 async function CalcData(params) {
     //console.log('CalcData', await params)
-
     let currentDate = new Date()
     currentDate.setDate(currentDate.getDate());
     /*if (params !== undefined) {

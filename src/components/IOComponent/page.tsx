@@ -17,9 +17,10 @@ const options = {
 const IOComponent = () => {
     const router = useRouter()
     const path = usePathname()
-    //const searchParams = useSearchParams()
-    const [page, setPage] = useState(0);
-    //const currentViewtype = searchParams.get('viewtype')
+    const searchParams = useSearchParams()
+    //const [page, setPage] = useState(0);
+    const currentViewtype = searchParams.get('viewtype')
+    const currentPage = searchParams.get('page')
     const ref = useRef(null)
     let add = false
     if (!path.includes('items')) {
@@ -29,11 +30,13 @@ const IOComponent = () => {
     const callbackFunction = useCallback(async (entries: IntersectionObserverEntry[]) => {
         const [entry] = entries;
         if (entry.isIntersecting && add) {
+            const page = Number(currentPage) + 1
+            router.push(`?viewtype=${currentViewtype}&page=${page}`, { scroll: false });
             //socket.emit('addPage')
-            setPage((page) => {
+            /*setPage((page) => {
                 const newPage = page + 1
                 return newPage
-            })
+            })*/
         }
     }, []);
     useEffect(() => {
@@ -55,11 +58,11 @@ const IOComponent = () => {
         router.push(`?viewtype=${currentViewtype}&page=${page}`, { scroll: false });
         //router.refresh()
     }, [page])*/
-    //<p ref={ref}></p>
-    return <Form action={pagination} ref={ref}>
+    return <p ref={ref}></p>
+    /*return <Form action={pagination} ref={ref}>
         <input type='number' name='page' value={page} hidden></input>
         <button type="submit"></button>
-    </Form>
+    </Form>*/
     //(<></>)
 }
 export default IOComponent
