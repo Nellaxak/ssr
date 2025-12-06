@@ -65,13 +65,13 @@ async function CalcData(params) {
     }*/
     let tomorrow = new Date();
     tomorrow.setDate(tomorrow.getDate());
-    //const page = await params.page
+    const page = await params.page
     //console.log('page**', page)
-    //if (Number(page) >= 0) {
-        //const newPage = Number(tomorrow.getDate()) + Number(page)
-        console.log('if', tomorrow.getDate())
-        //tomorrow.setDate(newPage);//+1
-   // }
+    if (Number(page) >= 0) {
+        const newPage = Number(tomorrow.getDate()) + Number(page)
+        //console.log('if', tomorrow.getDate())
+        tomorrow.setDate(newPage);//+1
+    }
     //console.log('myDate', currentDate, endNext)
     let startDate = currentDate.getFullYear() + '-' +
         (currentDate.getMonth() + 1) + '-' +
@@ -80,10 +80,10 @@ async function CalcData(params) {
         (tomorrow.getMonth() + 1) + '-' +
         tomorrow.getDate();
     //console.log('return data', startDate, endDate)
-    return new Promise((resolve) => {
+    /*return new Promise((resolve) => {
         resolve([startDate, endDate])
-    })
-    //return { startDate, endDate }
+    })*/
+    return [startDate, endDate ]
 }
 async function List({ items, renderItem }) {
     const res = await Promise.all(items.map(async (item, index) => {
