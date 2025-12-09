@@ -22,13 +22,13 @@ function ButtonSubmit(props) {
     const [entry] = entries;
     if (!entry.isIntersecting) {
       //router.push(`?viewtype=${currentViewtype}&page=${page}`, { scroll: false });
-      //console.log('output button', props)
+      console.log('output button', props)
       /*setPage((page) => {
         const newPage = page + 1
         return newPage
       })*/
     } else {
-      //console.log('input button', props)
+      console.log('input button', props)
     }
   }, []);
   useEffect(() => {
