@@ -6,11 +6,12 @@ const nextConfig = {
     /*experimental: {
         exposeBusinessErrors: true,
     },*/
+    //destination: '/categories?viewtype=main&page=0',
     async redirects() {
         return [
             {
                 source: '/',
-                destination: '/categories?viewtype=main&page=0',
+                destination: '/categories?viewtype=main',
                 permanent: true
             },
         ]
