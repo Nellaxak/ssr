@@ -13,9 +13,6 @@ const options = {
   rootMargin: "100px",
   threshold: 1.0,
 }
-const handleClick = () => {
-  console.log('iobuttonclick')
-}
 function ButtonSubmit(props) {
   const ref = useRef(null)
   const [page, setPage] = useState(0);
@@ -28,7 +25,7 @@ function ButtonSubmit(props) {
     if (!entry.isIntersecting) {
       //router.push(`?viewtype=${currentViewtype}&page=${page}`, { scroll: false });
       console.log('output button', props)
-      handleClick();
+      pagination()
       /*setPage((page) => {
         const newPage = page + 1
         return newPage
@@ -40,7 +37,6 @@ function ButtonSubmit(props) {
   useEffect(() => {
     //socket.emit('addPage')
     const observer = new IntersectionObserver(callbackFunction, options);
-    //const el = document.querySelector("#forScroll") as HTMLElement;
     observer.observe(ref.current);
     //mobserver.observe(ref.current, config);
     //socket.on('page', data => {
@@ -53,13 +49,9 @@ function ButtonSubmit(props) {
 
   }, [])
   //console.log('ButtonSubmit',props)
-  return <div ref={ref}><Form action={toggleClick} >
-    <input type='number' name='id' defaultValue={props.id} hidden></input>
-    <button type="submit"><Suspense>444444</Suspense></button>
-  </Form>
-    <Form action={pagination}>
+  return <Form action={toggleClick} ref={ref}>
       <input type='number' name='id' defaultValue={props.id} hidden></input>
-      <button type="submit" onClick={handleClick}><Suspense>iob</Suspense></button>
-    </Form></div>
+      <button type="submit"><Suspense>444444</Suspense></button>
+    </Form>
 }
 export default ButtonSubmit
