@@ -2,12 +2,8 @@
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import { useCallback, useEffect, useState, useRef } from "react";
 import dynamic from 'next/dynamic'
-import Form from 'next/form';
-import { pagination } from '../../app/lib/actions'
 //import CountPage from '../../app/CountPage'
-//import io from 'socket.io-client';
 
-//const socket = io('ws://localhost:3456')
 const options = {
     root: null,
     rootMargin: "100px",
@@ -31,9 +27,6 @@ const IOComponent = () => {
         const [entry] = entries;
         if (entry.isIntersecting && add) {
             console.log('add page')
-            //const page = Number(currentPage) + 1
-            //router.push(`?viewtype=${currentViewtype}&page=${page}`, { scroll: false });
-            //socket.emit('addPage')
             setPage((page) => {
                 let newPage = page + 1
                 return newPage
@@ -41,25 +34,18 @@ const IOComponent = () => {
         }
     }, []);
     useEffect(() => {
-        //socket.emit('addPage')
         const observer = new IntersectionObserver(callbackFunction, options);
-        //const el = document.querySelector("#forScroll") as HTMLElement;
+        //as HTMLElement
         observer.observe(ref.current);
-        //socket.on('page', data => {
-        //router.refresh()
-        //})
         return () => {
             observer.disconnect();
-            //socket.off('page')
         };
-
     }, [])
     useEffect(() => {
-        //serverActions Post request nasa fetch add
         router.push(`?viewtype=${currentViewtype}&page=${page}`, { scroll: false });
         //router.refresh()
     }, [page])
     return <p ref={ref}></p>
 }
-export default IOComponent
-//export default dynamic(() => Promise.resolve(IOComponent), { ssr: false });
+//export default IOComponent
+export default dynamic(() => Promise.resolve(IOComponent), { ssr: false });
