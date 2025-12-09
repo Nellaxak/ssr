@@ -62,14 +62,14 @@ async function CalcData(params) {
     currentDate.setDate(currentDate.getDate());
     const page = await params.page
 
-    if (Number(page) >= 0) {
+    if (Number(page) > 0) {
         const newPage = Number(currentDate.getDate()) + Number(page)
         currentDate.setDate(newPage);//+1
     }
     let tomorrow = new Date();
     tomorrow.setDate(tomorrow.getDate());
     //console.log('page**', page)
-    if (Number(page) >= 0) {
+    if (Number(page) > 0) {
         const newPage = Number(tomorrow.getDate()) + Number(page)
         //console.log('if', tomorrow.getDate())
         tomorrow.setDate(newPage);//+1
@@ -89,14 +89,6 @@ async function CalcData(params) {
 }
 
 async function List({ items, renderItem }) {
-    const res = await Promise.all(items.map(async (item, index) => {
-        return await renderItem(item);
-    }))
-    return (
-        <Suspense>{res}
-        </Suspense>)
-}
-async function ListB({ items, renderItem }) {
     const res = await Promise.all(items.map(async (item, index) => {
         return await renderItem(item);
     }))
@@ -193,11 +185,6 @@ export default async function Home({ searchParams }) {
     //console.log('page ssr', await search.page)
     //console.log('date', startDate, endDate)
     const viewtype = await search.viewtype
-    /*if (statusMap.size === 0) {
-        startPage = true
-    } else {
-        startPage = false
-    }*/
 
     //try {
     resp = await fetch(`https://api.nasa.gov/neo/rest/v1/feed?start_date=${startDate}&end_date=${endDate}&api_key=3wa5hHgFuqhf6XiefvqzkcDQWZ01aOOK4vNZEXsP`,
@@ -206,7 +193,7 @@ export default async function Home({ searchParams }) {
     );
     if (Number(resp.status) === 200) {
         //console.log('body ', typeof resp.body, resp.body)
-        const stream = resp.body; // response.body is a ReadableStream
+        /*const stream = resp.body; // response.body is a ReadableStream
 
         if (!stream) return;
 
@@ -220,10 +207,9 @@ export default async function Home({ searchParams }) {
             const sab = new SharedArrayBuffer(chunk);
             console.log('Chunk size:', chunk.length, 'bytes', sab);
         }
-        console.log('Stream finished.');
-        /*return <ListB items={array3}
-            renderItem={async (product) => { }} />*/
-        /*const dat = await resp.json()
+        console.log('Stream finished.');*/
+
+        const dat = await resp.json()
         const list = dat.near_earth_objects
         const arrObjects = Object.values(list)
         array3 = array3.concat(arrObjects[0]);
@@ -235,10 +221,10 @@ export default async function Home({ searchParams }) {
                 const datSlice = prevDate.slice(0, -2)
                 const dateString = datSlice.replace('.', '');
                 //console.log('exsist', product.id, Boolean(Item.findById(Number(product.id))))
-                if (!Boolean(Item.findById(Number(product.id)))) {
-                    new Item(Number(product.id))
-                    //console.log('item1',item)
-                }
+                //if (!Boolean(Item.findById(Number(product.id)))) {
+                new Item(Number(product.id))
+                //console.log('item1',item)
+                //}
                 //console.log('renderProp item', item)
                 return <Suspense><Row
                     key={product.id}
@@ -248,9 +234,8 @@ export default async function Home({ searchParams }) {
                     action={toggleClick}
                 /></Suspense>
             }}
-        />*/
-
-        return sab//String(res)
+        />
+        //return sab//String(res)
     } else {
         console.log('resp', resp.status)
     }
