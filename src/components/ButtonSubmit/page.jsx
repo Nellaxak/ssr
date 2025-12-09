@@ -27,6 +27,8 @@ function ButtonSubmit(props) {
         const newPage = page + 1
         return newPage
       })*/
+    } else{
+      console.log('input button', props)
     }
   }, []);
   useEffect(() => {
