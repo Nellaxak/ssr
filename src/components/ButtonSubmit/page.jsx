@@ -6,6 +6,11 @@ import Form from 'next/form'
 import { toggleClick } from '../../app/lib/actions'
 //import styles from "./page.module.css";
 //intersection observer
+const options = {
+  root: null,
+  rootMargin: "100px",
+  threshold: 1.0,
+}
 function ButtonSubmit(props) {
   const ref = useRef(null)
   const [page, setPage] = useState(0);
