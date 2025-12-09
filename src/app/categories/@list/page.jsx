@@ -133,11 +133,9 @@ async function Row(props) {
     //console.log('item', item)
     //const status2 = await item.getStatus()
     //console.log('djkou', props.obj.id, statusMap.size, status1)
-    /*<Form action={props.action} >
-                        <input type='number' name='id' defaultValue={props.obj.id} hidden></input>
-                        <button type="submit"><Suspense>{status}</Suspense>
-                        </button>
-                    </Form>*/
+    /**/
+    /*<ButtonSubmit id={props.obj.id} name={props.obj.name} />*/
+
     return <Suspense>
         <li key={props.obj.id}>
             <div className={styles.flex_item}>
@@ -149,11 +147,15 @@ async function Row(props) {
                 <span className={styles.name_link}>{Math.round(Number(props.obj.estimated_diameter.meters.estimated_diameter_min))}</span>
             </div>
             <Suspense>
+                <Form action={props.action} >
+                    <input type='number' name='id' defaultValue={props.obj.id} hidden></input>
+                    <button type="submit"><Suspense>{status}</Suspense>
+                    </button>
+                </Form>
                 <output className={styles.padding}>{formatData}</output>
             </Suspense>
             <div className={styles.flex_item}>
                 <div className={styles.flex_container_row}>
-                    <ButtonSubmit id={props.obj.id} name={props.obj.name} />
                     <span className={styles.danger}>{Danger}</span>
                 </div>
             </div>
