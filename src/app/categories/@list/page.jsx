@@ -146,7 +146,7 @@ async function Row(props) {
                 <span className={styles.name_link}>Ø</span>
                 <span className={styles.name_link}>{Math.round(Number(props.obj.estimated_diameter.meters.estimated_diameter_min))}</span>
             </div>
-             <Form action={props.action} >
+            <Form action={props.action} >
                 <input type='number' name='id' defaultValue={props.obj.id} hidden></input>
                 <button type="submit"><Suspense>{status}</Suspense>
                 </button>
@@ -154,7 +154,7 @@ async function Row(props) {
             <Suspense>
                 <output className={styles.padding}>{formatData}</output>
             </Suspense>
-           
+
             <div className={styles.flex_item}>
                 <div className={styles.flex_container_row}>
                     <span className={styles.danger}>{Danger}</span>
@@ -195,6 +195,7 @@ export default async function Home({ searchParams }) {
         { next: { tags: ['items'] } }
     );
     if (Number(resp.status) === 200) {
+        console.log('body ', typeof resp.body, resp.body)
         const dat = await resp.json()
         //readable stream-chunk textDecoder->json
         //console.log('element_count', dat.element_count)
@@ -229,7 +230,7 @@ export default async function Home({ searchParams }) {
 />*/
         />
     } else {
-        console.log('resp',resp.status)
+        console.log('resp', resp.status)
     }
     /*}
     catch (err) {
