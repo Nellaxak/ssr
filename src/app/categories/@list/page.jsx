@@ -13,6 +13,7 @@ let startDate
 let endDate
 let startPage
 let array3 = []
+let res=''
 const options = {
     /*era: 'long',*/
     year: 'numeric',
@@ -196,7 +197,6 @@ export default async function Home({ searchParams }) {
     );
     if (Number(resp.status) === 200) {
         //console.log('body ', typeof resp.body, resp.body)
-        //const response = await fetch(url);
         const stream = resp.body; // response.body is a ReadableStream
 
         if (!stream) return;
@@ -205,11 +205,13 @@ export default async function Home({ searchParams }) {
         for await (const chunk of stream) {
             // Each chunk is typically a Uint8Array (byte array) in web streams
             console.log('Received chunk:', chunk);
+            res=res+chunk
             //const sharedBuffer = new SharedArrayBuffer(chunk)
             console.log('Chunk size:', chunk.length, 'bytes');
         }
 
         console.log('Stream finished.');
+
         /*const dat = await resp.json()
         const list = dat.near_earth_objects
         const arrObjects = Object.values(list)
@@ -236,7 +238,7 @@ export default async function Home({ searchParams }) {
                 /></Suspense>
             }}
         />*/
-        return String(stream)
+        return String(res)
     } else {
         console.log('resp', resp.status)
     }
