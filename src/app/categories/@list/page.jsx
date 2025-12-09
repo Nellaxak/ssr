@@ -13,7 +13,7 @@ let startDate
 let endDate
 let startPage
 let array3 = []
-let res=''
+let res = ''
 const options = {
     /*era: 'long',*/
     year: 'numeric',
@@ -205,7 +205,9 @@ export default async function Home({ searchParams }) {
         for await (const chunk of stream) {
             // Each chunk is typically a Uint8Array (byte array) in web streams
             console.log('Received chunk:', chunk);
-            res=res+chunk
+            const blob = new Blob(chunk, { type: 'text/html' }); // Adjust type as needed
+            console.log('blob',blob)
+            res = res + chunk
             //const sharedBuffer = new SharedArrayBuffer(chunk)
             console.log('Chunk size:', chunk.length, 'bytes');
         }
