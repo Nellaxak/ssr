@@ -63,7 +63,7 @@ export default async function Layout(props) {
             <Suspense fallback={<span className={'loader'}></span>}>
               {props.children}
             </Suspense>
-            <IOComponent />
+            <Suspense><IOComponent /></Suspense>
           </div>
         </div>
       </body>
