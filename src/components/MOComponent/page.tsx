@@ -29,7 +29,7 @@ const callback = function (mutationsList: any, observer: any) {
         }
     }
 };
-const IOComponent = () => {
+const MOComponent = () => {
     const router = useRouter()
     const path = usePathname()
     const searchParams = useSearchParams()
@@ -81,5 +81,5 @@ const IOComponent = () => {
     </Form>*/
     //(<></>)
 }
-export default IOComponent
+export default MOComponent
 //export default dynamic(() => Promise.resolve(IOComponent), { ssr: false });

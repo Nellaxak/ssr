@@ -3,6 +3,8 @@ import { Suspense, createElement } from 'react'
 import dynamic from 'next/dynamic'
 import ScrollComponent from '../components/ScrollComponent/page';
 import IOComponent from '../components/IOComponent/page'
+import MOComponent from '../components/MOComponent/page'
+
 //import ToggleHeader from '../components/ToggleHeader/page';
 //import { NavigationEvents } from '../components/NavigationsEvents/page';
 //import Link from 'next/link';
@@ -60,6 +62,7 @@ export default async function Layout(props) {
             <Suspense fallback={<span className={'loader'}></span>}>
               {props.children}
             </Suspense>
+            <Suspense><MOComponent /></Suspense>
           </div>
         </div>
       </body>
