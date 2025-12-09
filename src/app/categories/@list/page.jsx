@@ -133,6 +133,11 @@ async function Row(props) {
     //console.log('item', item)
     //const status2 = await item.getStatus()
     //console.log('djkou', props.obj.id, statusMap.size, status1)
+    /*<Form action={props.action} >
+                        <input type='number' name='id' defaultValue={props.obj.id} hidden></input>
+                        <button type="submit"><Suspense>{status}</Suspense>
+                        </button>
+                    </Form>*/
     return <Suspense>
         <li key={props.obj.id}>
             <div className={styles.flex_item}>
@@ -148,11 +153,7 @@ async function Row(props) {
             </Suspense>
             <div className={styles.flex_item}>
                 <div className={styles.flex_container_row}>
-                    <Form action={props.action} >
-                        <input type='number' name='id' defaultValue={props.obj.id} hidden></input>
-                        <button type="submit"><Suspense>{status}</Suspense>
-                        </button>
-                    </Form>
+                    <ButtonSubmit id={props.obj.id} />
                     <span className={styles.danger}>{Danger}</span>
                 </div>
             </div>
