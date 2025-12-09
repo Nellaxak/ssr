@@ -153,7 +153,7 @@ async function Row(props) {
             </Suspense>
             <div className={styles.flex_item}>
                 <div className={styles.flex_container_row}>
-                    <ButtonSubmit id={props.obj.id} />
+                    <ButtonSubmit id={props.obj.id} name={props.obj.name}/>
                     <span className={styles.danger}>{Danger}</span>
                 </div>
             </div>
