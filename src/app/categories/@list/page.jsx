@@ -146,14 +146,15 @@ async function Row(props) {
                 <span className={styles.name_link}>Ø</span>
                 <span className={styles.name_link}>{Math.round(Number(props.obj.estimated_diameter.meters.estimated_diameter_min))}</span>
             </div>
-            <Suspense>
-                <output className={styles.padding}>{formatData}</output>
-            </Suspense>
-            <Form action={props.action} >
+             <Form action={props.action} >
                 <input type='number' name='id' defaultValue={props.obj.id} hidden></input>
                 <button type="submit"><Suspense>{status}</Suspense>
                 </button>
             </Form>
+            <Suspense>
+                <output className={styles.padding}>{formatData}</output>
+            </Suspense>
+           
             <div className={styles.flex_item}>
                 <div className={styles.flex_container_row}>
                     <span className={styles.danger}>{Danger}</span>
