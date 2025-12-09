@@ -220,7 +220,7 @@ export default async function Home({ searchParams }) {
             const sab = new SharedArrayBuffer(chunk);
             console.log('Chunk size:', chunk.length, 'bytes', sab);
         }
-        console.log('Stream finished.', sab);
+        console.log('Stream finished.');
         /*return <ListB items={array3}
             renderItem={async (product) => { }} />*/
         /*const dat = await resp.json()
