@@ -11,6 +11,9 @@ const options = {
   rootMargin: "100px",
   threshold: 1.0,
 }
+const handleClick = () => {
+  console.log('iobuttonclick')
+}
 function ButtonSubmit(props) {
   const ref = useRef(null)
   const [page, setPage] = useState(0);
@@ -23,6 +26,7 @@ function ButtonSubmit(props) {
     if (!entry.isIntersecting) {
       //router.push(`?viewtype=${currentViewtype}&page=${page}`, { scroll: false });
       console.log('output button', props)
+      handleClick();
       /*setPage((page) => {
         const newPage = page + 1
         return newPage
@@ -47,9 +51,9 @@ function ButtonSubmit(props) {
 
   }, [])
   //console.log('ButtonSubmit',props)
-  return <Form action={toggleClick} ref={ref}>
+  return <Form action={toggleClick} ref={ref} hidden>
     <input type='number' name='id' defaultValue={props.id} hidden></input>
-    <button type="submit"><Suspense>444444</Suspense></button>
+    <button type="submit" onClick={handleClick} hidden><Suspense>444444</Suspense></button>
   </Form>
 }
 export default ButtonSubmit

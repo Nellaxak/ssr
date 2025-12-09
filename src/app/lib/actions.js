@@ -11,7 +11,7 @@ export async function pagination(formData) {
     revalidateTag('items')
 }
 export async function toggleClick(formData) {
-    console.log('toggleClick', formData, statusMap,Item.arrObj)
+    console.log('toggleClick button', formData, statusMap,Item.arrObj)
     const id = Number(formData.get('id'))
     //console.log('id type',typeof id)
     //const item = Item.arrObj.get(id)//sync
