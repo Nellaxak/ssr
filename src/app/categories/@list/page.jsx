@@ -205,6 +205,7 @@ export default async function Home({ searchParams }) {
         for await (const chunk of stream) {
             // Each chunk is typically a Uint8Array (byte array) in web streams
             console.log('Received chunk:', chunk);
+            //const sharedBuffer = new SharedArrayBuffer(chunk)
             console.log('Chunk size:', chunk.length, 'bytes');
         }
 
@@ -235,7 +236,7 @@ export default async function Home({ searchParams }) {
                 /></Suspense>
             }}
         />*/
-        return 'ffffopkkkkkk'
+        return stream
     } else {
         console.log('resp', resp.status)
     }
