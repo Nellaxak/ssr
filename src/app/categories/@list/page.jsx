@@ -217,11 +217,9 @@ export default async function Home({ searchParams }) {
 
             //const blob = new Blob(chunk, { type: 'text/html' }); // Adjust type as needed
             //console.log('blob',blob)
-            //res = res + chunk
-            //const sharedBuffer = new SharedArrayBuffer(chunk)
-            console.log('Chunk size:', chunk.length, 'bytes');
+            const sab = new SharedArrayBuffer(chunk);
+            console.log('Chunk size:', chunk.length, 'bytes', sab);
         }
-        const sab = new SharedArrayBuffer(stream);
         console.log('Stream finished.', sab);
         /*return <ListB items={array3}
             renderItem={async (product) => { }} />*/
