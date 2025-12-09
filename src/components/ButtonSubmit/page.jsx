@@ -11,22 +11,6 @@ const options = {
   rootMargin: "100px",
   threshold: 1.0,
 }
-const config = {
-  attributes: true,
-  childList: true,
-  subtree: true,
-};
-
-// Колбэк-функция при срабатывании мутации
-const callback = function (mutationsList, observer) {
-  for (let mutation of mutationsList) {
-    if (mutation.type === "childList") {
-      console.log("A child node has been added or removed.");
-    } else if (mutation.type === "attributes") {
-      console.log("The " + mutation.attributeName + " attribute was modified.");
-    }
-  }
-};
 function ButtonSubmit(props) {
   const ref = useRef(null)
   const [page, setPage] = useState(0);
@@ -49,17 +33,15 @@ function ButtonSubmit(props) {
   }, []);
   useEffect(() => {
     //socket.emit('addPage')
-    const mobserver = new MutationObserver(callback)
     const observer = new IntersectionObserver(callbackFunction, options);
     //const el = document.querySelector("#forScroll") as HTMLElement;
     observer.observe(ref.current);
-    mobserver.observe(ref.current, config);
+    //mobserver.observe(ref.current, config);
     //socket.on('page', data => {
     //router.refresh()
     //})
     return () => {
       observer.disconnect();
-      mobserver.disconnect();
       //socket.off('page')
     };
 
