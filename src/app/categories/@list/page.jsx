@@ -195,13 +195,23 @@ export default async function Home({ searchParams }) {
         { next: { tags: ['items'] } }
     );
     if (Number(resp.status) === 200) {
-        console.log('body ', typeof resp.body, resp.body)
-        const dat = await resp.json()
-        //readable stream-chunk textDecoder->json
-        //console.log('element_count', dat.element_count)
+        //console.log('body ', typeof resp.body, resp.body)
+        //const response = await fetch(url);
+        const stream = resp.body; // response.body is a ReadableStream
+
+        if (!stream) return;
+
+        // Use the async iterator to process each chunk
+        for await (const chunk of stream) {
+            // Each chunk is typically a Uint8Array (byte array) in web streams
+            console.log('Received chunk:', chunk);
+            console.log('Chunk size:', chunk.length, 'bytes');
+        }
+
+        console.log('Stream finished.');
+        /*const dat = await resp.json()
         const list = dat.near_earth_objects
         const arrObjects = Object.values(list)
-        //concat arr
         array3 = array3.concat(arrObjects[0]);
         return <List items={array3}
             renderItem={async (product) => {
@@ -224,11 +234,8 @@ export default async function Home({ searchParams }) {
                     action={toggleClick}
                 /></Suspense>
             }}
-        /*
-    }
-    }
-/>*/
-        />
+        />*/
+        return 'ffffopkkkkkk'
     } else {
         console.log('resp', resp.status)
     }
