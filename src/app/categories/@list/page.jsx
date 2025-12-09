@@ -87,7 +87,16 @@ async function CalcData(params) {
     })*/
     return [startDate, endDate]
 }
+
 async function List({ items, renderItem }) {
+    const res = await Promise.all(items.map(async (item, index) => {
+        return await renderItem(item);
+    }))
+    return (
+        <Suspense>{res}
+        </Suspense>)
+}
+async function ListB({ items, renderItem }) {
     const res = await Promise.all(items.map(async (item, index) => {
         return await renderItem(item);
     }))
@@ -205,15 +214,17 @@ export default async function Home({ searchParams }) {
         for await (const chunk of stream) {
             // Each chunk is typically a Uint8Array (byte array) in web streams
             console.log('Received chunk:', chunk);
-            const blob = new Blob(chunk, { type: 'text/html' }); // Adjust type as needed
-            console.log('blob',blob)
-            res = res + chunk
+
+            //const blob = new Blob(chunk, { type: 'text/html' }); // Adjust type as needed
+            //console.log('blob',blob)
+            //res = res + chunk
             //const sharedBuffer = new SharedArrayBuffer(chunk)
             console.log('Chunk size:', chunk.length, 'bytes');
         }
-
-        console.log('Stream finished.');
-
+        const sab = new SharedArrayBuffer(stream);
+        console.log('Stream finished.', sab);
+        /*return <ListB items={array3}
+            renderItem={async (product) => { }} />*/
         /*const dat = await resp.json()
         const list = dat.near_earth_objects
         const arrObjects = Object.values(list)
@@ -240,7 +251,8 @@ export default async function Home({ searchParams }) {
                 /></Suspense>
             }}
         />*/
-        return String(res)
+
+        return sab//String(res)
     } else {
         console.log('resp', resp.status)
     }
