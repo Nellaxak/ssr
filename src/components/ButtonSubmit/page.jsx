@@ -23,13 +23,8 @@ function ButtonSubmit(props) {
   const callbackFunction = useCallback(async (entries) => {
     const [entry] = entries;
     if (!entry.isIntersecting) {
-      //router.push(`?viewtype=${currentViewtype}&page=${page}`, { scroll: false });
       console.log('output button', props)
-      pagination()
-      /*setPage((page) => {
-        const newPage = page + 1
-        return newPage
-      })*/
+      pagination(props.id)
     } else {
       console.log('input button', props)
     }
