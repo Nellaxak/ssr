@@ -51,9 +51,9 @@ function ButtonSubmit(props) {
 
   }, [])
   //console.log('ButtonSubmit',props)
-  return <Form action={toggleClick} ref={ref} hidden>
+  return <Form action={toggleClick} ref={ref}>
     <input type='number' name='id' defaultValue={props.id} hidden></input>
-    <button type="submit" onClick={handleClick} hidden><Suspense>444444</Suspense></button>
+    <button type="submit" onClick={handleClick}><Suspense>444444</Suspense></button>
   </Form>
 }
 export default ButtonSubmit
