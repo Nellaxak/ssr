@@ -221,10 +221,10 @@ export default async function Home({ searchParams }) {
                 const datSlice = prevDate.slice(0, -2)
                 const dateString = datSlice.replace('.', '');
                 //console.log('exsist', product.id, Boolean(Item.findById(Number(product.id))))
-                //if (!Boolean(Item.findById(Number(product.id)))) {
-                new Item(Number(product.id))
-                //console.log('item1',item)
-                //}
+                if (!Boolean(Item.findById(Number(product.id)))) {
+                    new Item(Number(product.id))//not concat
+                    //console.log('item1',item)
+                }
                 //console.log('renderProp item', item)
                 return <Suspense><Row
                     key={product.id}
