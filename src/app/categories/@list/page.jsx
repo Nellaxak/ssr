@@ -228,6 +228,8 @@ export default async function Home({ searchParams }) {
     }
 />*/
         />
+    } else {
+        console.log('resp',resp.status)
     }
     /*}
     catch (err) {
