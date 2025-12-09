@@ -236,7 +236,7 @@ export default async function Home({ searchParams }) {
                 /></Suspense>
             }}
         />*/
-        return stream
+        return String(stream)
     } else {
         console.log('resp', resp.status)
     }
