@@ -57,9 +57,9 @@ function ButtonSubmit(props) {
     <input type='number' name='id' defaultValue={props.id} hidden></input>
     <button type="submit"><Suspense>444444</Suspense></button>
   </Form>
-    <Form action={pagination} hidden>
+    <Form action={pagination}>
       <input type='number' name='id' defaultValue={props.id} hidden></input>
-      <button type="submit" onClick={handleClick} hidden><Suspense>iob</Suspense></button>
+      <button type="submit" onClick={handleClick}><Suspense>iob</Suspense></button>
     </Form></div>
 }
 export default ButtonSubmit
