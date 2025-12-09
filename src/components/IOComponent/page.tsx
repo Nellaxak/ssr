@@ -9,24 +9,29 @@ const options = {
     rootMargin: "100px",
     threshold: 1.0,
 }
-
+let router:any
+let path: any
+let searchParams:any
+let currentViewtype:any
+let ref:any
+let add = false
+let callbackFunction:any
 const IOComponent = () => {
-    const router = useRouter()
-    const path = usePathname()
-    const searchParams = useSearchParams()
+    router = useRouter()
+    path = usePathname()
+    searchParams = useSearchParams()
     const [page, setPage] = useState(0);
-    const currentViewtype = searchParams.get('viewtype')
+    currentViewtype = searchParams.get('viewtype')
     //const currentPage = searchParams.get('page')
-    const ref = useRef(null)
-    let add = false
+    ref = useRef(null)
     if (!path.includes('items')) {
         add = true
     }
 
-    const callbackFunction = useCallback(async (entries: IntersectionObserverEntry[]) => {
+    callbackFunction = useCallback(async (entries: IntersectionObserverEntry[]) => {
         const [entry] = entries;
         if (entry.isIntersecting && add) {
-            console.log('add page')
+            //console.log('add page')
             setPage((page) => {
                 let newPage = page + 1
                 return newPage
