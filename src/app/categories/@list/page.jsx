@@ -59,20 +59,20 @@ async function CalcData(params) {
     //console.log('CalcData', await params)
     let currentDate = new Date()
     currentDate.setDate(currentDate.getDate());
-    /*const page = await params.page
+    const page = await params.page
 
     if (Number(page) >= 0) {
         const newPage = Number(currentDate.getDate()) + Number(page)
         currentDate.setDate(newPage);//+1
-    }*/
+    }
     let tomorrow = new Date();
     tomorrow.setDate(tomorrow.getDate());
     //console.log('page**', page)
-    /*if (Number(page) >= 0) {
+    if (Number(page) >= 0) {
         const newPage = Number(tomorrow.getDate()) + Number(page)
         //console.log('if', tomorrow.getDate())
         tomorrow.setDate(newPage);//+1
-    }*/
+    }
     //console.log('myDate', new Intl.DateTimeFormat('ru-RU', optionsDate).format(currentDate))
     let startDate = currentDate.getFullYear() + '-' +
         (currentDate.getMonth() + 1) + '-' +
@@ -153,7 +153,7 @@ async function Row(props) {
             </Suspense>
             <div className={styles.flex_item}>
                 <div className={styles.flex_container_row}>
-                    <ButtonSubmit id={props.obj.id} name={props.obj.name}/>
+                    <ButtonSubmit id={props.obj.id} name={props.obj.name} />
                     <span className={styles.danger}>{Danger}</span>
                 </div>
             </div>
