@@ -30,11 +30,12 @@ const IOComponent = () => {
     const callbackFunction = useCallback(async (entries: IntersectionObserverEntry[]) => {
         const [entry] = entries;
         if (entry.isIntersecting && add) {
+            console.log('add page')
             //const page = Number(currentPage) + 1
             //router.push(`?viewtype=${currentViewtype}&page=${page}`, { scroll: false });
             //socket.emit('addPage')
             setPage((page) => {
-                const newPage = page + 1
+                let newPage = page + 1
                 return newPage
             })
         }
@@ -59,11 +60,6 @@ const IOComponent = () => {
         //router.refresh()
     }, [page])
     return <p ref={ref}></p>
-    /*return <Form action={pagination} ref={ref}>
-        <input type='number' name='page' value={page} hidden></input>
-        <button type="submit"></button>
-    </Form>*/
-    //(<></>)
 }
 export default IOComponent
 //export default dynamic(() => Promise.resolve(IOComponent), { ssr: false });
