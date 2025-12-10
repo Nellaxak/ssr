@@ -6,7 +6,7 @@ class Item {
   static count = 0;
   static arrObj = new Map();
   constructor(id,obj) {
-    console.log('constructor', id, typeof id)
+    //console.log('constructor', id, typeof id)
     Object.entries(obj).map(([key, value]) => this[key] = value);
     this.id = id
     this.status = 0

@@ -177,10 +177,11 @@ export default async function Home({ searchParams }) {
         //array3 = array3.concat(arrObjects[0]);
         return <List items={linkedList.toArray()}
             renderItem={async (product) => {
-                const date = new Date(product.close_approach_data[0].epoch_date_close_approach)
+                /*const date = new Date(product.close_approach_data[0].epoch_date_close_approach)
                 const prevDate = new Intl.DateTimeFormat("ru-RU", options).format(date);
                 const datSlice = prevDate.slice(0, -2)
-                const dateString = datSlice.replace('.', '');
+                const dateString = datSlice.replace('.', '');*/
+                const dateString = startDate;
                 //console.log('exsist', product.id, Boolean(Item.findById(Number(product.id))))
                 //if (!Boolean(Item.findById(Number(product.id)))) {
                 //const item = new Item(Number(product.id, product))//not concat
