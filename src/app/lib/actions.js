@@ -20,5 +20,5 @@ export async function toggleClick(formData) {
         await item.setStatus()
         //statusMap.set(id, !statusMap.get(id))
         //revalidatePath('/')
-        revalidateTag('items')
+        //revalidateTag('items')
     }

@@ -7,7 +7,7 @@ import Item from "../../Item";
 import { revalidateTag, revalidatePath } from 'next/cache';
 import CountPage from "../../CountPage";
 import ButtonSubmit from '../../../components/ButtonSubmit/page'
-import {toggleClick} from '../../lib/actions'
+import { toggleClick } from '../../lib/actions'
 import linkedList from '../../LinkedList'
 
 let resp
@@ -172,8 +172,9 @@ export default async function Home({ searchParams }) {
         const list = dat.near_earth_objects
         const arrObjects = Object.values(list)
         //console.log('list',arrObjects[0])
-        array3 = array3.concat(arrObjects[0]);
-        return <List items={array3}
+        linkedList.fromArray(arrObjects[0])
+        //array3 = array3.concat(arrObjects[0]);
+        return <List items={linkedList.toArray()}
             renderItem={async (product) => {
                 const date = new Date(product.close_approach_data[0].epoch_date_close_approach)
                 const prevDate = new Intl.DateTimeFormat("ru-RU", options).format(date);
@@ -181,8 +182,8 @@ export default async function Home({ searchParams }) {
                 const dateString = datSlice.replace('.', '');
                 //console.log('exsist', product.id, Boolean(Item.findById(Number(product.id))))
                 //if (!Boolean(Item.findById(Number(product.id)))) {
-                    const item=new Item(Number(product.id))//not concat
-                    linkedList.append(item)       //console.log('item1',item)
+                //const item = new Item(Number(product.id, product))//not concat
+                //linkedList.append(item)       //console.log('item1',item)
                 //}
                 //console.log('renderProp item', item)
                 return <Suspense><Row
