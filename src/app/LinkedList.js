@@ -1,17 +1,17 @@
 import Item from "./Item";
-class LinkedListNode {
-  static arrObj = new Map();
+export class LinkedListNode {
   constructor(value, next = null) {
     this.value = value;
     //this.error = error;
     this.next = next;
-    LinkedListNode.arrObj.set(Number(this.value.id), this)
   }
 }
 export class LinkedList {
+  static arrObj = new Map();
   constructor(type) {
     this.head = null;
     this.tail = null;
+    LinkedList.arrObj.set(Number(this.value.id), this)
   }
   append(value1) {
     //console.log('before append', value1)
