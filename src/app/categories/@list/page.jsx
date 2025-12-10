@@ -7,6 +7,8 @@ import Item from "../../Item";
 import { revalidateTag, revalidatePath } from 'next/cache';
 import CountPage from "../../CountPage";
 import ButtonSubmit from '../../../components/ButtonSubmit/page'
+import {toggleClick} from '../../lib/actions'
+import linkedList from '../../LinkedList'
 
 let resp
 let startDate
@@ -122,26 +124,12 @@ async function Row(props) {
         Danger = 'Опасен'
     }
     //conditional item.status render Link
-    /*<Link key={props.obj.id}
-        className={styles.buttonItem}
-        prefetch={false}
-        href={`/categories?viewtype=${props.viewtype}&id=${props.obj.id}&status=${Number(!UrlStatus)}`}
-        scroll={false}>
-        <Suspense>{String(newStatus)}</Suspense>
-    </Link>*/
     //<ButtonSubmit action={props.action} />
     const status1 = statusMap.get(Number(props.obj.id))
     //const item = props.item
     //console.log('item', item)
     //const status2 = await item.getStatus()
     //console.log('djkou', props.obj.id, statusMap.size, status1)
-    /**/
-    /*/
-/*<Form action={props.action} >
-                <input type='number' name='id' defaultValue={props.obj.id} hidden></input>
-                <button type="submit"><Suspense>{status}</Suspense>
-                </button>
-            </Form>*/
     return <Suspense>
         <li key={props.obj.id}>
             <div className={styles.flex_item}>
@@ -167,17 +155,6 @@ async function Row(props) {
 /*async function RenderProp(product){
 }*/
 export default async function Home({ searchParams }) {
-    async function toggleClick(formData) {
-        'use server'
-        //console.log('toggleClickPage', formData)
-        const id = Number(formData.get('id'))
-        //console.log('id type',typeof id)
-        const item = await Item.findById(id)
-        await item.setStatus()
-        //statusMap.set(id, !statusMap.get(id))
-        //revalidatePath('/')
-        revalidateTag('items')
-    }
     const search = await searchParams;
     //console.log('searchParams', search)
     let [startDate, endDate] = await CalcData(search)
@@ -191,23 +168,6 @@ export default async function Home({ searchParams }) {
         { next: { tags: ['items'] } }
     );
     if (Number(resp.status) === 200) {
-        //console.log('body ', typeof resp.body, resp.body)
-        /*const stream = resp.body; // response.body is a ReadableStream
-
-        if (!stream) return;
-
-        // Use the async iterator to process each chunk
-        for await (const chunk of stream) {
-            // Each chunk is typically a Uint8Array (byte array) in web streams
-            console.log('Received chunk:', chunk);
-
-            //const blob = new Blob(chunk, { type: 'text/html' }); // Adjust type as needed
-            //console.log('blob',blob)
-            const sab = new SharedArrayBuffer(chunk);
-            console.log('Chunk size:', chunk.length, 'bytes', sab);
-        }
-        console.log('Stream finished.');*/
-
         const dat = await resp.json()
         const list = dat.near_earth_objects
         const arrObjects = Object.values(list)
@@ -215,15 +175,14 @@ export default async function Home({ searchParams }) {
         array3 = array3.concat(arrObjects[0]);
         return <List items={array3}
             renderItem={async (product) => {
-                //let item
                 const date = new Date(product.close_approach_data[0].epoch_date_close_approach)
                 const prevDate = new Intl.DateTimeFormat("ru-RU", options).format(date);
                 const datSlice = prevDate.slice(0, -2)
                 const dateString = datSlice.replace('.', '');
                 //console.log('exsist', product.id, Boolean(Item.findById(Number(product.id))))
                 if (!Boolean(Item.findById(Number(product.id)))) {
-                    new Item(Number(product.id))//not concat
-                    //console.log('item1',item)
+                    const item=new Item(Number(product.id))//not concat
+                    linkedList.append(item)       //console.log('item1',item)
                 }
                 //console.log('renderProp item', item)
                 return <Suspense><Row
