@@ -116,7 +116,7 @@ async function Row(props) {
     /*<span>{props.obj.id}</span>
     <span>{props.key}</span>
     <span>{props.obj.absolute_magnitude_h}</span>*/
-    //console.log('qwasxz', props.obj.id, statusMap.get(props.obj.id))
+    console.log('qwasxz', props.obj.id, statusMap.get(props.obj.id))
     const dataViewtype = {meters:0}//props.obj.close_approach_data[0].miss_distance
     //const status = await FormatStatus(props.obj.id)
     const formatData = await DataFormat(dataViewtype, 'main')//props.viewtype)
