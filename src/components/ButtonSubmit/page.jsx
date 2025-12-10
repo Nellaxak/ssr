@@ -14,6 +14,7 @@ const options = {
   threshold: 1.0,
 }
 function ButtonSubmit(props) {
+  console.log('ButtonSubmit props',props)
   const ref = useRef(null)
   const [page, setPage] = useState(0);
   const router = useRouter()
