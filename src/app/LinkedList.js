@@ -11,11 +11,11 @@ export class LinkedList {
   constructor(type) {
     this.head = null;
     this.tail = null;
-    LinkedList.arrObj.set(Number(this.value.id), this)
   }
   append(value1) {
     //console.log('before append', value1)
     const value = new Item(Number(value1.id), value1)
+    LinkedList.arrObj.set(Number(value.id), this)
     const newNode = new LinkedListNode(value);
     if (!this.head || !this.tail) {
       this.head = newNode;
