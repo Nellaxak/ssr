@@ -23,10 +23,10 @@ function ButtonSubmit(props) {
   const callbackFunction = useCallback(async (entries) => {
     const [entry] = entries;
     if (!entry.isIntersecting) {
-      console.log('output button', props)
+      //console.log('output button', props)
       pagination(props.id)
     } else {
-      console.log('input button', props)
+      //console.log('input button', props)
     }
   }, []);
   useEffect(() => {

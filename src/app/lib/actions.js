@@ -10,7 +10,7 @@ import linkedList from '../LinkedList';
 export async function pagination(id) {
     console.log('pagination',id)
     //output delete linked list
-    revalidateTag('items')
+    //revalidateTag('items')
 }
 export async function toggleClick(formData) {
         //console.log('toggleClickPage', formData)
