@@ -12,7 +12,7 @@ export class LinkedList {
     this.tail = null;
   }
   append(value1) {
-    console.log('before append', value1)
+    //console.log('before append', value1)
     const value = new Item(Number(value1.id), value1)
     const newNode = new LinkedListNode(value);
     if (!this.head || !this.tail) {
@@ -22,7 +22,7 @@ export class LinkedList {
     }
     this.tail.next = newNode;
     this.tail = newNode;
-    console.log('after append', this)
+    //console.log('after append', this)
     return this;
   }
   toArray() {
