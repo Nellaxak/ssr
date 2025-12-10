@@ -5,21 +5,22 @@ import { revalidateTag } from 'next/cache';
 //import { method } from 'lodash';
 import Item from '../Item';
 import statusMap from '../statusMap';
-import linkedList from '../LinkedList';
+import linkedList, { LinkedList } from '../LinkedList';
 
 export async function pagination(id) {
-    console.log('pagination',id)
+    console.log('pagination', id)
     //output delete linked list
-    linkedList.delete(id)//must be object
+    const obj = LinkedList.arrObj.get(Number(id))
+    linkedList.delete(obj)//must be object
     //revalidateTag('items')
 }
 export async function toggleClick(formData) {
-        //console.log('toggleClickPage', formData)
-        const id = Number(formData.get('id'))
-        //console.log('id type',typeof id)
-        const item = await Item.findById(id)
-        await item.setStatus()
-        //statusMap.set(id, !statusMap.get(id))
-        //revalidatePath('/')
-        //revalidateTag('items')
-    }
+    //console.log('toggleClickPage', formData)
+    const id = Number(formData.get('id'))
+    //console.log('id type',typeof id)
+    const item = await Item.findById(id)
+    await item.setStatus()
+    //statusMap.set(id, !statusMap.get(id))
+    //revalidatePath('/')
+    //revalidateTag('items')
+}
