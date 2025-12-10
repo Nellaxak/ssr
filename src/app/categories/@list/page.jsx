@@ -117,16 +117,16 @@ async function Row(props) {
     <span>{props.key}</span>
     <span>{props.obj.absolute_magnitude_h}</span>*/
     //console.log('qwasxz', props.obj.id, statusMap.get(props.obj.id))
-    const dataViewtype = props.obj.close_approach_data[0].miss_distance
-    const status = await FormatStatus(props.obj.id)
-    const formatData = await DataFormat(dataViewtype, props.viewtype)
+    //const dataViewtype = props.obj.close_approach_data[0].miss_distance
+    //const status = await FormatStatus(props.obj.id)
+    const formatData = await DataFormat(dataViewtype, 'main')//props.viewtype)
     let Danger = ''
-    if (Number(props.obj.is_potentially_hazardous_asteroid) === 1) {
+   // if (Number(props.obj.is_potentially_hazardous_asteroid) === 1) {
         Danger = 'Опасен'
-    }
+   // }
     //conditional item.status render Link
     //<ButtonSubmit action={props.action} />
-    const status1 = statusMap.get(Number(props.obj.id))
+    //const status1 = statusMap.get(Number(props.obj.id))
     //const item = props.item
     //console.log('item', item)
     //const status2 = await item.getStatus()
