@@ -41,6 +41,7 @@ export default async function Layout(props) {
   /* <Suspense><IOComponent /></Suspense>
           <p id='forScroll'></p>*/
   //<Suspense><MOComponent /></Suspense>
+//<Suspense><IOComponent /></Suspense>
   return (
     <html lang="ru">
       <body>
@@ -64,7 +65,7 @@ export default async function Layout(props) {
               {props.children}
             </Suspense>
           </div>
-          <Suspense><IOComponent /></Suspense>
+          
         </div>
       </body>
     </html >

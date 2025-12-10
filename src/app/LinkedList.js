@@ -37,6 +37,7 @@ export class LinkedList {
     }
 
     // Возвращаем массив из всех узлов.
+    console.log('nodes',nodes)
     return nodes;
   }
   fromArray(values) {
