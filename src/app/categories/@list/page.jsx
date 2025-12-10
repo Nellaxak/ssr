@@ -192,7 +192,7 @@ export default async function Home({ searchParams }) {
                 //const item = new Item(Number(product.id, product))//not concat
                 //linkedList.append(item)       //console.log('item1',item)
                 //}
-                //console.log('renderProp item', item)
+                console.log('renderProp product', product)
                 return <Suspense><Row
                     key={product.id}
                     obj={product}
