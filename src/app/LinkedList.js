@@ -37,7 +37,8 @@ export class LinkedList {
 
     // Если head должен быть удален, то делаем следующий узел новым head.
     //const obj = LinkedListNode.arrObj.get(Number(this.value.id))
-    while (this.head && this.head.value.id === value.id) {
+    while (this.head && this.head.value === value) {
+      console.log('41')
       deletedNode = this.head;
 
       // Переназначаем следующий за head узел на новый head.
@@ -51,7 +52,8 @@ export class LinkedList {
     // Перебираем все узлы и удаляем их, если их значение равно указанному.
     if (currentNode !== null) {
       while (currentNode.next) {
-        if (currentNode.next.value.id === value.id) {
+        if (currentNode.next.value === value) {
+          console.log('ddddwww')
           deletedNode = currentNode.next;
           // Перезаписываем, чтобы узел через один стал следующим узлом.
           currentNode.next = currentNode.next.next;
@@ -65,7 +67,8 @@ export class LinkedList {
     // Так как, если в цикле мы удаляем последний узел,
     // то с предпоследнего узла убираем только ссылку на него.
     // Поэтому делаем проверку на его удаление с "tail".
-    if (this.tail && this.tail.value.id === value.id) {
+    if (this.tail && this.tail.value === value) {
+      console.log('lopnnn')
       // в данном случае currentNode это или предпоследний узел или head.
       this.tail = currentNode;
     }
