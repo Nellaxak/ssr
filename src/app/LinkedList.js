@@ -5,7 +5,7 @@ class LinkedListNode {
     this.value = value;
     //this.error = error;
     this.next = next;
-    //LinkedListNode.arrObj.set(Number(this.value.id), this)
+    LinkedListNode.arrObj.set(Number(this.value.id), this)
   }
 }
 export class LinkedList {
