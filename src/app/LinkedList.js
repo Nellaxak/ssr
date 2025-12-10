@@ -11,7 +11,7 @@ export class LinkedList {
     this.tail = null;
   }
   append(value) {
-    console.log('append',value)
+    console.log('before append',value)
     const newNode = new LinkedListNode(value);
     if (!this.head || !this.tail) {
       this.head = newNode;
