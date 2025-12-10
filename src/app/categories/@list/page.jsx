@@ -117,7 +117,7 @@ async function Row(props) {
     <span>{props.key}</span>
     <span>{props.obj.absolute_magnitude_h}</span>*/
     //console.log('qwasxz', props.obj.id, statusMap.get(props.obj.id))
-    const dataViewtype = 0//props.obj.close_approach_data[0].miss_distance
+    const dataViewtype = {meters:0}//props.obj.close_approach_data[0].miss_distance
     //const status = await FormatStatus(props.obj.id)
     const formatData = await DataFormat(dataViewtype, 'main')//props.viewtype)
     let Danger = ''
@@ -131,6 +131,9 @@ async function Row(props) {
     //console.log('item', item)
     //const status2 = await item.getStatus()
     //console.log('djkou', props.obj.id, statusMap.size, status1)
+    /*<span className={styles.name_link}>{
+                Math.round(Number(props.obj.estimated_diameter.meters.estimated_diameter_min))}
+                </span>*/
     return <Suspense>
         <li key={props.obj.id}>
             <div className={styles.flex_item}>
@@ -139,7 +142,9 @@ async function Row(props) {
             <span className={styles.name_link}>{props.obj.name}</span>
             <div className={styles.flex_container_row}>
                 <span className={styles.name_link}>Ø</span>
-                <span className={styles.name_link}>{Math.round(Number(props.obj.estimated_diameter.meters.estimated_diameter_min))}</span>
+                <span className={styles.name_link}>{
+                Math.round(Number(props.obj.estimated_diameter))}
+                </span>
             </div>
             <Suspense>
                 <output className={styles.padding}>{formatData}</output>
