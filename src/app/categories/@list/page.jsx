@@ -117,13 +117,13 @@ async function Row(props) {
     <span>{props.key}</span>
     <span>{props.obj.absolute_magnitude_h}</span>*/
     console.log('qwasxz', props.obj.id, statusMap.get(props.obj.id))
-    const dataViewtype = {meters:0}//props.obj.close_approach_data[0].miss_distance
+    const dataViewtype = { meters: 0 }//props.obj.close_approach_data[0].miss_distance
     //const status = await FormatStatus(props.obj.id)
     const formatData = await DataFormat(dataViewtype, 'main')//props.viewtype)
     let Danger = ''
-   // if (Number(props.obj.is_potentially_hazardous_asteroid) === 1) {
-        Danger = 'Опасен'
-   // }
+    // if (Number(props.obj.is_potentially_hazardous_asteroid) === 1) {
+    Danger = 'Опасен'
+    // }
     //conditional item.status render Link
     //<ButtonSubmit action={props.action} />
     //const status1 = statusMap.get(Number(props.obj.id))
@@ -143,7 +143,7 @@ async function Row(props) {
             <div className={styles.flex_container_row}>
                 <span className={styles.name_link}>Ø</span>
                 <span className={styles.name_link}>{
-                Math.round(Number(props.obj.estimated_diameter))}
+                    Math.round(Number(props.obj.estimated_diameter))}
                 </span>
             </div>
             <Suspense>
