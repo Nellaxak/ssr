@@ -19,17 +19,19 @@ export class LinkedList {
   }
   append(value1) {//if exsist?
     //console.log('before append', value1)
-    const value = new Item(Number(value1.id), value1)
-    LinkedList.arrObj.set(Number(value.id), this)
-    const newNode = new LinkedListNode(value);
-    if (!this.head || !this.tail) {
-      this.head = newNode;
+    if (!LinkedList.arrObj.has(Number(value1.id))) {
+      const value = new Item(Number(value1.id), value1)
+      LinkedList.arrObj.set(Number(value.id), this)
+      const newNode = new LinkedListNode(value);
+      if (!this.head || !this.tail) {
+        this.head = newNode;
+        this.tail = newNode;
+        return this;
+      }
+      this.tail.next = newNode;
       this.tail = newNode;
-      return this;
+      //console.log('after append', this)
     }
-    this.tail.next = newNode;
-    this.tail = newNode;
-    //console.log('after append', this)
     return this;
   }
   delete(value) {//object
