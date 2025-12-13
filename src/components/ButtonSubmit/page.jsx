@@ -29,7 +29,10 @@ function ButtonSubmit(props) {
     const [entry] = entries;
     if (entry.isIntersecting) {
       //console.log('output button', props)
-      pagination(props.index,props.length)
+      if ((props.index + 1) === props.length) {
+        console.log('page added')
+        pagination()
+      }
       //client count scroll+1
       //router.push(`?viewtype=${currentViewtype}&page=${currentPage}&output=${props.id}`, { scroll: false });//very many rerender
     } else {
