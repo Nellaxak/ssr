@@ -32,7 +32,8 @@ function ButtonSubmit(props) {
       if ((props.index + 1) === props.length) {
         //console.log('page added')
         pagination()
-        const count = await CountPage.getCount();
+        //const count = await CountPage.getCount();
+        const count=0
         router.push(`?viewtype=${currentViewtype}&page=${count}`, { scroll: true });//very many rerender
       }
       //router.push(`?viewtype=${currentViewtype}&page=${currentPage}&output=${props.id}`, { scroll: false });//very many rerender
