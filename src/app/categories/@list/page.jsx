@@ -191,8 +191,8 @@ export default async function Home({ searchParams }) {
             console.log('ll appends')
             await linkedList.fromArray(arrObjects[0])
         }*/
-        //array3 = array3.concat(arrObjects[0]);
-        array3 = arrObjects[0]
+        array3 = array3.concat(arrObjects[0]);
+        //array3 = arrObjects[0]
         //const list1 = await linkedList.toArray()
         return <List items={array3}
             renderItem={async (product,index) => {
