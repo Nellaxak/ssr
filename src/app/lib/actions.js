@@ -12,7 +12,7 @@ export async function pagination(index) {
     //await CountPage.setCount(1)
     console.log('io output',array3.length)
     //array3.splice(index,1)
-    revalidateTag('items')
+    //revalidateTag('items')
 }
 export async function toggleClick(formData) {
     //console.log('toggleClickPage', formData)
