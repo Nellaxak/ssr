@@ -8,10 +8,10 @@ class CountPage {
    // this.id = id
     //this.status = 0
   }
-  static async setCount(value) {
+  static setCount(value) {
     CountPage.count = CountPage.count + value
   }
-  static async getCount() {
+  static getCount() {
     return CountPage.count
   }
 }

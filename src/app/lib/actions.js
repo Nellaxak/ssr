@@ -15,7 +15,7 @@ export async function pagination() {
     //const obj = LinkedList.arrObj.get(Number(id))
     //console.log('dlete obj',obj)
     //await linkedList.delete(obj)//must be object
-    await CountPage.setCount(1)
+    CountPage.setCount(1)
     //revalidateTag('items')
 }
 export async function toggleClick(formData) {
