@@ -17,7 +17,7 @@ export class LinkedList {
     return LinkedList._instance;
 
   }
-  append(value1) {//if exsist?
+  async append(value1) {//if exsist?
     //console.log('before append', value1)
     if (!LinkedList.arrObj.has(Number(value1.id))) {
       const value = new Item(Number(value1.id), value1)
@@ -34,7 +34,7 @@ export class LinkedList {
     }
     return this;
   }
-  delete(value) {//object
+  async delete(value) {//object
     // Если нет head значит список пуст.
     if (!this.head) {
       return null;
@@ -82,7 +82,7 @@ export class LinkedList {
 
     return deletedNode;
   }
-  toArray() {
+  async toArray() {
     const nodes = [];
 
     let currentNode = this.head;
@@ -97,8 +97,8 @@ export class LinkedList {
     console.log('nodes', nodes)
     return nodes;
   }
-  fromArray(values) {
-    values.forEach(value => this.append(value));
+  async fromArray(values) {
+    values.forEach(async (value) => await this.append(value));
 
     return this;
   }

@@ -12,7 +12,7 @@ export async function pagination(id) {
     //output delete linked list
     const obj = LinkedList.arrObj.get(Number(id))
     //console.log('dlete obj',obj)
-    linkedList.delete(obj)//must be object
+    await linkedList.delete(obj)//must be object
     revalidateTag('items')
 }
 export async function toggleClick(formData) {
