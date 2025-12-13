@@ -9,12 +9,13 @@ import CountPage from "../../CountPage";
 import ButtonSubmit from '../../../components/ButtonSubmit/page'
 import { toggleClick } from '../../lib/actions'
 import linkedList from '../../LinkedList'
+import array3 from "../../lib/ArrayGlob";
 
 let resp
 let startDate
 let endDate
 let startPage
-let array3 = []
+//let array3 = []
 let res = ''
 const options = {
     /*era: 'long',*/
@@ -91,14 +92,14 @@ async function CalcData(params) {
 }
 
 async function List({ items, renderItem }) {
-    /*const res = //await Promise.all(
+    const res = await Promise.all(
         items.map(async (item, index) => {
-        console.log('item_map',item)
-        //return await renderItem(item);
-    })//)
-    */
+        //console.log('item_map',item)
+        return await renderItem(item);
+    }))
+    
     return (
-        <Suspense>{items}
+        <Suspense>{res}
         </Suspense>)
 }
 async function FormatStatus(params) {
@@ -178,8 +179,8 @@ export default async function Home({ searchParams }) {
         { next: { tags: ['items'] } }
     );
     if (Number(resp.status) === 200) {
-        const arrayBuffer = await resp.arrayBuffer();
-        /*const dat = await resp.json()
+        //const arrayBuffer = await resp.arrayBuffer();
+        const dat = await resp.json()
         const list = dat.near_earth_objects
         const arrObjects = Object.values(list)
         //console.log('list',arrObjects[0])
@@ -187,9 +188,9 @@ export default async function Home({ searchParams }) {
             console.log('ll appends')
             await linkedList.fromArray(arrObjects[0])
         }
-        //array3 = array3.concat(arrObjects[0]);
-        const list1 = await linkedList.toArray()*/
-        return <List items={arrayBuffer}
+        array3 = array3.concat(arrObjects[0]);
+        //const list1 = await linkedList.toArray()
+        return <List items={array3}
             renderItem={async (product) => {
                 /*const date = new Date(product.close_approach_data[0].epoch_date_close_approach)
                 const prevDate = new Intl.DateTimeFormat("ru-RU", options).format(date);
