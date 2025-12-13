@@ -31,7 +31,7 @@ function ButtonSubmit(props) {
       //console.log('input button', props.index + 1, props.length)
       if ((props.index + 1) === props.length) {
         //console.log('page added')
-        pagination()
+        //pagination()
         //const count = await CountPage.getCount();
         //const count=0
         currentPage = currentPage + 1
