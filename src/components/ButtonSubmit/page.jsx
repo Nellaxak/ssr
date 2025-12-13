@@ -4,7 +4,7 @@ import { useEffect, useState, useCallback, Suspense, useRef } from 'react'
 import { useRouter, useSearchParams } from 'next/navigation'
 import Form from 'next/form'
 import { toggleClick } from '../../app/lib/actions'
-//import { pagination } from '../../app/lib/actions'
+import { pagination } from '../../app/lib/actions'
 //import CountPage from '../../app/CountPage'
 //import styles from "./page.module.css";
 //intersection observer
@@ -28,9 +28,14 @@ function ButtonSubmit(props) {
   const callbackFunction = useCallback(async (entries) => {
     const [entry] = entries;
     if (entry.isIntersecting) {
-      if ((props.index + 1) === props.length) {
+      pagination(props.index)
+
+      if ((props.index + 1) >= props.length) {
         currentPage = currentPage + 1
-        router.push(`?viewtype=${currentViewtype}&page=${currentPage}`, { scroll: true });
+        router.push(`?viewtype=${currentViewtype}&page=${currentPage}`, { scroll: false });
+      } else if ((props.index + 1) <= props.length) {
+        currentPage = currentPage - 1
+        router.push(`?viewtype=${currentViewtype}&page=${currentPage}`, { scroll: false });
       }
       //router.push(`?viewtype=${currentViewtype}&page=${currentPage}&output=${props.id}`, { scroll: false });//very many rerender
     } else {

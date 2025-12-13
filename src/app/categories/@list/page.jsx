@@ -9,13 +9,13 @@ import { revalidateTag, revalidatePath } from 'next/cache';
 import ButtonSubmit from '../../../components/ButtonSubmit/page'
 import { toggleClick } from '../../lib/actions'
 //import linkedList from '../../LinkedList'
-//import array3 from "../../lib/ArrayGlob";
+import array3 from "../../lib/ArrayGlob";
 
 let resp
 let startDate
 let endDate
 let startPage
-let array3 = []
+//let array3 = []
 let res = ''
 const options = {
     /*era: 'long',*/
@@ -125,9 +125,9 @@ async function Row(props) {
     //const status = await FormatStatus(props.obj.id)
     const formatData = await DataFormat(dataViewtype, props.viewtype)
     let Danger = ''
-     if (Number(props.obj.is_potentially_hazardous_asteroid) === 1) {
-    Danger = 'Опасен'
-     }
+    if (Number(props.obj.is_potentially_hazardous_asteroid) === 1) {
+        Danger = 'Опасен'
+    }
     //conditional item.status render Link
     //<ButtonSubmit action={props.action} />
     //const status1 = statusMap.get(Number(props.obj.id))
@@ -144,7 +144,7 @@ async function Row(props) {
             <span className={styles.name_link}>{props.obj.name}</span>
             <div className={styles.flex_container_row}>
                 <span className={styles.name_link}>{
-                Math.round(Number(props.obj.estimated_diameter.meters.estimated_diameter_min))}
+                    Math.round(Number(props.obj.estimated_diameter.meters.estimated_diameter_min))}
                 </span>
                 <span className={styles.name_link}>{
                     Math.round(Number(props.obj.estimated_diameter))}
@@ -170,7 +170,6 @@ export default async function Home({ searchParams }) {
     const viewtype = await search.viewtype
     //try {
     resp = await fetch(`https://api.nasa.gov/neo/rest/v1/feed?start_date=${startDate}&end_date=${endDate}&api_key=3wa5hHgFuqhf6XiefvqzkcDQWZ01aOOK4vNZEXsP`,
-        //resp = await fetch(`https://api.nasa.gov/neo/rest/v1/browse?page=${page}&api_key=3wa5hHgFuqhf6XiefvqzkcDQWZ01aOOK4vNZEXsP`,
         { cache: 'force-cache' },
         { next: { tags: ['items'] } }
     );
@@ -178,8 +177,8 @@ export default async function Home({ searchParams }) {
         const dat = await resp.json()
         const list = dat.near_earth_objects
         const arrObjects = Object.values(list)
-        //array3 = array3.concat(arrObjects[0]);
-        array3 = arrObjects[0]
+        array3 = array3.concat(arrObjects[0]);
+        //array3 = arrObjects[0]
         //very small data emulate
         return <List items={array3}
             renderItem={async (product, index) => {
