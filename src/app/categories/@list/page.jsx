@@ -170,11 +170,11 @@ export default async function Home({ searchParams }) {
     //console.log('page ssr', await search.page)
     //console.log('date', startDate, endDate)
     const viewtype = await search.viewtype
-    //const page = await search.page
-    const output = await search.output
-    console.log('output', output)
+    const page = await search.page
+    //const output = await search.output
+    //console.log('output', output)
     //try {
-    resp = await fetch(`https://api.nasa.gov/neo/rest/v1/feed?start_date=${startDate}&end_date=${endDate}&api_key=3wa5hHgFuqhf6XiefvqzkcDQWZ01aOOK4vNZEXsP`,
+    resp = await fetch(`https://api.nasa.gov/neo/rest/v1/feed?start_date=${startDate}&end_date=${endDate}&page=${page}&api_key=3wa5hHgFuqhf6XiefvqzkcDQWZ01aOOK4vNZEXsP`,
         { cache: 'force-cache' },
         { next: { tags: ['items'] } }
     );
@@ -184,11 +184,12 @@ export default async function Home({ searchParams }) {
         const list = dat.near_earth_objects
         const arrObjects = Object.values(list)
         //console.log('list',arrObjects[0])
-        if (output === undefined) {
+        /*if (output === undefined) {
             console.log('ll appends')
             await linkedList.fromArray(arrObjects[0])
-        }
-        array3 = array3.concat(arrObjects[0]);
+        }*/
+        //array3 = array3.concat(arrObjects[0]);
+        array3=arrObjects[0]
         //const list1 = await linkedList.toArray()
         return <List items={array3}
             renderItem={async (product) => {
