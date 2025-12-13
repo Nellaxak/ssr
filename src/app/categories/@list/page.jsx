@@ -5,17 +5,17 @@ import Link from "next/link";
 import Form from "next/form";
 import Item from "../../Item";
 import { revalidateTag, revalidatePath } from 'next/cache';
-import CountPage from "../../CountPage";
+//import CountPage from "../../CountPage";
 import ButtonSubmit from '../../../components/ButtonSubmit/page'
 import { toggleClick } from '../../lib/actions'
-import linkedList from '../../LinkedList'
-import array3 from "../../lib/ArrayGlob";
+//import linkedList from '../../LinkedList'
+//import array3 from "../../lib/ArrayGlob";
 
 let resp
 let startDate
 let endDate
 let startPage
-//let array3 = []
+let array3 = []
 let res = ''
 const options = {
     /*era: 'long',*/
@@ -121,13 +121,13 @@ async function Row(props) {
     <span>{props.key}</span>
     <span>{props.obj.absolute_magnitude_h}</span>*/
     //console.log('qwasxz', props)
-    const dataViewtype = { meters: 0 }//props.obj.close_approach_data[0].miss_distance
+    const dataViewtype = props.obj.close_approach_data[0].miss_distance
     //const status = await FormatStatus(props.obj.id)
-    const formatData = await DataFormat(dataViewtype, 'main')//props.viewtype)
+    const formatData = await DataFormat(dataViewtype, props.viewtype)
     let Danger = ''
-    // if (Number(props.obj.is_potentially_hazardous_asteroid) === 1) {
+     if (Number(props.obj.is_potentially_hazardous_asteroid) === 1) {
     Danger = 'Опасен'
-    // }
+     }
     //conditional item.status render Link
     //<ButtonSubmit action={props.action} />
     //const status1 = statusMap.get(Number(props.obj.id))
@@ -135,9 +135,7 @@ async function Row(props) {
     //console.log('item', item)
     //const status2 = await item.getStatus()
     //console.log('djkou', props.obj.id, statusMap.size, status1)
-    /*<span className={styles.name_link}>{
-                Math.round(Number(props.obj.estimated_diameter.meters.estimated_diameter_min))}
-                </span>*/
+    /**/
     return <Suspense>
         <li key={props.obj.id}>
             <div className={styles.flex_item}>
@@ -145,7 +143,9 @@ async function Row(props) {
             </div>
             <span className={styles.name_link}>{props.obj.name}</span>
             <div className={styles.flex_container_row}>
-                <span className={styles.name_link}>Ø</span>
+                <span className={styles.name_link}>{
+                Math.round(Number(props.obj.estimated_diameter.meters.estimated_diameter_min))}
+                </span>
                 <span className={styles.name_link}>{
                     Math.round(Number(props.obj.estimated_diameter))}
                 </span>
@@ -166,35 +166,21 @@ async function Row(props) {
 }*/
 export default async function Home({ searchParams }) {
     const search = await searchParams;
-    //console.log('searchParams', search)
     let [startDate, endDate] = await CalcData(search)
-    //console.log('page ssr', await search.page)
-    //console.log('date', startDate, endDate)
     const viewtype = await search.viewtype
-    //const page = await search.page
-    //const output = await search.output
-    //console.log('output', output)
     //try {
     resp = await fetch(`https://api.nasa.gov/neo/rest/v1/feed?start_date=${startDate}&end_date=${endDate}&api_key=3wa5hHgFuqhf6XiefvqzkcDQWZ01aOOK4vNZEXsP`,
         //resp = await fetch(`https://api.nasa.gov/neo/rest/v1/browse?page=${page}&api_key=3wa5hHgFuqhf6XiefvqzkcDQWZ01aOOK4vNZEXsP`,
         { cache: 'force-cache' },
         { next: { tags: ['items'] } }
     );
-    //console.log('resp.status', resp.status)
     if (Number(resp.status) === 200) {
-        //const arrayBuffer = await resp.arrayBuffer();
         const dat = await resp.json()
         const list = dat.near_earth_objects
         const arrObjects = Object.values(list)
-        //console.log('list',arrObjects[0])
-        /*if (output === undefined) {
-            console.log('ll appends')
-            await linkedList.fromArray(arrObjects[0])
-        }*/
         //array3 = array3.concat(arrObjects[0]);
         array3 = arrObjects[0]
-        console.log('ssccc', startDate, array3.length)
-        //const list1 = await linkedList.toArray()
+        //very small data emulate
         return <List items={array3}
             renderItem={async (product, index) => {
                 /*const date = new Date(product.close_approach_data[0].epoch_date_close_approach)
@@ -202,12 +188,7 @@ export default async function Home({ searchParams }) {
                 const datSlice = prevDate.slice(0, -2)
                 const dateString = datSlice.replace('.', '');*/
                 const dateString = startDate;
-                //console.log('exsist', product.id, Boolean(Item.findById(Number(product.id))))
-                //if (!Boolean(Item.findById(Number(product.id)))) {
-                //const item = new Item(Number(product.id, product))//not concat
-                //linkedList.append(item)       //console.log('item1',item)
-                //}
-                //console.log('renderProp product', product.value)
+                new Item(Number(product.id, product))
                 return <Suspense><Row
                     key={product.id}
                     obj={product}

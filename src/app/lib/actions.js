@@ -1,13 +1,6 @@
 'use server'
 import { revalidateTag } from 'next/cache';
-//import { redirect, RedirectType } from 'next/navigation';
-//import CountPage from '../CountPage'
-//import { method } from 'lodash';
 import Item from '../Item';
-import statusMap from '../statusMap';
-import linkedList, { LinkedList } from '../LinkedList';
-import CountPage from '../CountPage'
-import array3 from '../../app/lib/ArrayGlob'
 
 export async function pagination() {
     //console.log('pagination', id)
