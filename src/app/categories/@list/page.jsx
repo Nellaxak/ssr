@@ -188,7 +188,7 @@ export default async function Home({ searchParams }) {
                 const datSlice = prevDate.slice(0, -2)
                 const dateString = datSlice.replace('.', '');*/
                 const dateString = startDate;
-                new Item(Number(product.id, product))
+                new Item(Number(product.id), product)
                 return <Suspense><Row
                     key={product.id}
                     obj={product}
