@@ -32,8 +32,8 @@ function ScrollComponent() {
     router = useRouter()
 
     const handleScroll = useCallback(async () => {
-        const elem = document.querySelector('#header')
-        /*const rect = elem.getBoundingClientRect()
+        /*const elem = document.querySelector('#header')
+        const rect = elem.getBoundingClientRect()
         const hh = rect.height
         //console.log('scrollend', rect, vertical, rect.y < vertical)
         let item = Math.abs(rect.y - vertical)
