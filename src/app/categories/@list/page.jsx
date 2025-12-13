@@ -167,8 +167,9 @@ export default async function Home({ searchParams }) {
     //console.log('page ssr', await search.page)
     //console.log('date', startDate, endDate)
     const viewtype = await search.viewtype
-    const page = await search.page
-    console.log('page number', page, typeof page, Number(page))
+    //const page = await search.page
+    const output = await search.output
+    console.log('output', output)
     //try {
     resp = await fetch(`https://api.nasa.gov/neo/rest/v1/feed?start_date=${startDate}&end_date=${endDate}&api_key=3wa5hHgFuqhf6XiefvqzkcDQWZ01aOOK4vNZEXsP`,
         { cache: 'force-cache' },
@@ -179,7 +180,7 @@ export default async function Home({ searchParams }) {
         const list = dat.near_earth_objects
         const arrObjects = Object.values(list)
         //console.log('list',arrObjects[0])
-        if (Number(page) === 0) {
+        if (output !== undefined) {
             console.log('ll appends')
             linkedList.fromArray(arrObjects[0])//appends
         }
