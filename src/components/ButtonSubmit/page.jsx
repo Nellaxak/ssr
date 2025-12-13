@@ -33,10 +33,10 @@ function ButtonSubmit(props) {
       if ((props.index + 1) >= props.length) {
         currentPage = currentPage + 1
         router.push(`?viewtype=${currentViewtype}&page=${currentPage}`, { scroll: false });
-      } else if ((props.index + 1) <= props.length) {
+      } /*else if ((props.index + 1) <= props.length) {
         currentPage = currentPage - 1
         router.push(`?viewtype=${currentViewtype}&page=${currentPage}`, { scroll: false });
-      }
+      }*/
       //router.push(`?viewtype=${currentViewtype}&page=${currentPage}&output=${props.id}`, { scroll: false });//very many rerender
     } else {
       //console.log('input button', props)
