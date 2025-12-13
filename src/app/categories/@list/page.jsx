@@ -91,10 +91,11 @@ async function CalcData(params) {
 }
 
 async function List({ items, renderItem }) {
-    const res = await Promise.all(items.map(async (item, index) => {
-        //console.log('item_map',index)
-        return await renderItem(item);
-    }))
+    const res = //await Promise.all(
+        items.map(async (item, index) => {
+        console.log('item_map',item)
+        //return await renderItem(item);
+    })//)
     return (
         <Suspense>{res}
         </Suspense>)
@@ -176,17 +177,18 @@ export default async function Home({ searchParams }) {
         { next: { tags: ['items'] } }
     );
     if (Number(resp.status) === 200) {
-        const dat = await resp.json()
+        const arrayBuffer = await resp.arrayBuffer();
+        /*const dat = await resp.json()
         const list = dat.near_earth_objects
         const arrObjects = Object.values(list)
         //console.log('list',arrObjects[0])
         if (output === undefined) {
             console.log('ll appends')
-            await linkedList.fromArray(arrObjects[0])//appends
+            await linkedList.fromArray(arrObjects[0])
         }
         //array3 = array3.concat(arrObjects[0]);
-        const list1 = await linkedList.toArray()
-        return <List items={list1}
+        const list1 = await linkedList.toArray()*/
+        return <List items={arrayBuffer}
             renderItem={async (product) => {
                 /*const date = new Date(product.close_approach_data[0].epoch_date_close_approach)
                 const prevDate = new Intl.DateTimeFormat("ru-RU", options).format(date);
