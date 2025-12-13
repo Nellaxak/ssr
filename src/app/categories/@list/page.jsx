@@ -178,6 +178,7 @@ export default async function Home({ searchParams }) {
         { cache: 'force-cache' },
         { next: { tags: ['items'] } }
     );
+    console.log('resp.status',resp.status)
     if (Number(resp.status) === 200) {
         //const arrayBuffer = await resp.arrayBuffer();
         const dat = await resp.json()
