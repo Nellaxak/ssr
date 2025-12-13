@@ -28,7 +28,7 @@ function ButtonSubmit(props) {
   const callbackFunction = useCallback(async (entries) => {
     const [entry] = entries;
     if (entry.isIntersecting) {
-      //console.log('output button', props)
+      console.log('input button', props.index + 1, props.length)
       if ((props.index + 1) === props.length) {
         console.log('page added')
         pagination()
