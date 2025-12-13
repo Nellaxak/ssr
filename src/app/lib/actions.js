@@ -9,16 +9,17 @@ import linkedList, { LinkedList } from '../LinkedList';
 import CountPage from '../CountPage'
 import array3 from '../../app/lib/ArrayGlob'
 
-export async function pagination(id) {
+export async function pagination(index, length) {
     //console.log('pagination', id)
     //output delete linked list
     //const obj = LinkedList.arrObj.get(Number(id))
     //console.log('dlete obj',obj)
     //await linkedList.delete(obj)//must be object
     //if last id => increment Page
-
-    //await CountPage.setCount(1)
-    revalidateTag('items')
+    if ((index + 1) === length) {
+        await CountPage.setCount(1)
+        revalidateTag('items')
+    }
 }
 export async function toggleClick(formData) {
     //console.log('toggleClickPage', formData)

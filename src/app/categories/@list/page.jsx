@@ -61,9 +61,10 @@ async function DataFormat(param, viewtype) {
 }
 async function CalcData(params) {
     //console.log('CalcData', await params)
+    const count=await CountPage.getCount();
     let currentDate = new Date()
     currentDate.setDate(currentDate.getDate());
-    const page = await params.page
+    const page = count//await params.page
 
     if (Number(page) > 0) {
         const newPage = Number(currentDate.getDate()) + Number(page)
@@ -119,7 +120,7 @@ async function Row(props) {
     /*<span>{props.obj.id}</span>
     <span>{props.key}</span>
     <span>{props.obj.absolute_magnitude_h}</span>*/
-    console.log('qwasxz', props)
+    //console.log('qwasxz', props)
     const dataViewtype = { meters: 0 }//props.obj.close_approach_data[0].miss_distance
     //const status = await FormatStatus(props.obj.id)
     const formatData = await DataFormat(dataViewtype, 'main')//props.viewtype)
@@ -210,6 +211,7 @@ export default async function Home({ searchParams }) {
                     key={product.id}
                     obj={product}
                     index={index}
+                    length={array3.length}
                     viewtype={viewtype}
                     dates={dateString}
                     action={toggleClick}
