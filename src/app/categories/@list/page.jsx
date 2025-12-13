@@ -94,10 +94,10 @@ async function CalcData(params) {
 async function List({ items, renderItem }) {
     const res = await Promise.all(
         items.map(async (item, index) => {
-        //console.log('item_map',item)
-        return await renderItem(item);
-    }))
-    
+            //console.log('item_map',item)
+            return await renderItem(item);
+        }))
+
     return (
         <Suspense>{res}
         </Suspense>)
@@ -174,11 +174,12 @@ export default async function Home({ searchParams }) {
     //const output = await search.output
     //console.log('output', output)
     //try {
-    resp = await fetch(`https://api.nasa.gov/neo/rest/v1/feed?start_date=${startDate}&end_date=${endDate}&page=${page}&api_key=3wa5hHgFuqhf6XiefvqzkcDQWZ01aOOK4vNZEXsP`,
+    //resp = await fetch(`https://api.nasa.gov/neo/rest/v1/feed?start_date=${startDate}&end_date=${endDate}&api_key=3wa5hHgFuqhf6XiefvqzkcDQWZ01aOOK4vNZEXsP`,
+    resp = await fetch(`https://api.nasa.gov/neo/rest/v1/browse?page=${page}&api_key=3wa5hHgFuqhf6XiefvqzkcDQWZ01aOOK4vNZEXsP`,
         { cache: 'force-cache' },
         { next: { tags: ['items'] } }
     );
-    console.log('resp.status',resp.status)
+    console.log('resp.status', resp.status)
     if (Number(resp.status) === 200) {
         //const arrayBuffer = await resp.arrayBuffer();
         const dat = await resp.json()
@@ -190,7 +191,7 @@ export default async function Home({ searchParams }) {
             await linkedList.fromArray(arrObjects[0])
         }*/
         //array3 = array3.concat(arrObjects[0]);
-        array3=arrObjects[0]
+        array3 = arrObjects[0]
         //const list1 = await linkedList.toArray()
         return <List items={array3}
             renderItem={async (product) => {
