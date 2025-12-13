@@ -15,7 +15,6 @@ export async function pagination() {
     //const obj = LinkedList.arrObj.get(Number(id))
     //console.log('dlete obj',obj)
     //await linkedList.delete(obj)//must be object
-    //if last id => increment Page
     await CountPage.setCount(1)
     revalidateTag('items')
 }

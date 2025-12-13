@@ -61,7 +61,7 @@ async function DataFormat(param, viewtype) {
 }
 async function CalcData(params) {
     //console.log('CalcData', await params)
-    const count=await CountPage.getCount();
+    const count = await CountPage.getCount();
     let currentDate = new Date()
     currentDate.setDate(currentDate.getDate());
     const page = count//await params.page
@@ -96,7 +96,7 @@ async function List({ items, renderItem }) {
     const res = await Promise.all(
         items.map(async (item, index) => {
             //console.log('item_map',item)
-            return await renderItem(item,index);
+            return await renderItem(item, index);
         }))
 
     return (
@@ -176,7 +176,7 @@ export default async function Home({ searchParams }) {
     //console.log('output', output)
     //try {
     resp = await fetch(`https://api.nasa.gov/neo/rest/v1/feed?start_date=${startDate}&end_date=${endDate}&api_key=3wa5hHgFuqhf6XiefvqzkcDQWZ01aOOK4vNZEXsP`,
-    //resp = await fetch(`https://api.nasa.gov/neo/rest/v1/browse?page=${page}&api_key=3wa5hHgFuqhf6XiefvqzkcDQWZ01aOOK4vNZEXsP`,
+        //resp = await fetch(`https://api.nasa.gov/neo/rest/v1/browse?page=${page}&api_key=3wa5hHgFuqhf6XiefvqzkcDQWZ01aOOK4vNZEXsP`,
         { cache: 'force-cache' },
         { next: { tags: ['items'] } }
     );
@@ -191,11 +191,11 @@ export default async function Home({ searchParams }) {
             console.log('ll appends')
             await linkedList.fromArray(arrObjects[0])
         }*/
-        array3 = array3.concat(arrObjects[0]);
-        //array3 = arrObjects[0]
+        //array3 = array3.concat(arrObjects[0]);
+        array3 = arrObjects[0]
         //const list1 = await linkedList.toArray()
         return <List items={array3}
-            renderItem={async (product,index) => {
+            renderItem={async (product, index) => {
                 /*const date = new Date(product.close_approach_data[0].epoch_date_close_approach)
                 const prevDate = new Intl.DateTimeFormat("ru-RU", options).format(date);
                 const datSlice = prevDate.slice(0, -2)
