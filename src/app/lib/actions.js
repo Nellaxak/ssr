@@ -16,7 +16,7 @@ export async function pagination() {
     //console.log('dlete obj',obj)
     //await linkedList.delete(obj)//must be object
     await CountPage.setCount(1)
-    revalidateTag('items')
+    //revalidateTag('items')
 }
 export async function toggleClick(formData) {
     //console.log('toggleClickPage', formData)
