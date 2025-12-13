@@ -12,7 +12,7 @@ export class LinkedList {
     this.head = null;
     this.tail = null;
   }
-  append(value1) {
+  append(value1) {//if exsist?
     //console.log('before append', value1)
     const value = new Item(Number(value1.id), value1)
     LinkedList.arrObj.set(Number(value.id), this)
@@ -37,7 +37,7 @@ export class LinkedList {
 
     // Если head должен быть удален, то делаем следующий узел новым head.
     //const obj = LinkedListNode.arrObj.get(Number(this.value.id))
-    while (this.head && this.head.value === value) {
+    while (this.head && this.head.value.id === value.id) {
       console.log('41')
       deletedNode = this.head;
 
@@ -52,7 +52,7 @@ export class LinkedList {
     // Перебираем все узлы и удаляем их, если их значение равно указанному.
     if (currentNode !== null) {
       while (currentNode.next) {
-        if (currentNode.next.value === value) {
+        if (currentNode.next.value.id === value.id) {
           console.log('ddddwww')
           deletedNode = currentNode.next;
           // Перезаписываем, чтобы узел через один стал следующим узлом.
@@ -67,7 +67,7 @@ export class LinkedList {
     // Так как, если в цикле мы удаляем последний узел,
     // то с предпоследнего узла убираем только ссылку на него.
     // Поэтому делаем проверку на его удаление с "tail".
-    if (this.tail && this.tail.value === value) {
+    if (this.tail && this.tail.value.id === value.id) {
       console.log('lopnnn')
       // в данном случае currentNode это или предпоследний узел или head.
       this.tail = currentNode;

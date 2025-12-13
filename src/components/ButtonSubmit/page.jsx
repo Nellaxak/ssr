@@ -26,6 +26,7 @@ function ButtonSubmit(props) {
     if (!entry.isIntersecting) {
       //console.log('output button', props)
       pagination(props.id)
+      //router.push()without page=0
     } else {
       //console.log('input button', props)
     }

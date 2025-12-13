@@ -116,7 +116,7 @@ async function Row(props) {
     /*<span>{props.obj.id}</span>
     <span>{props.key}</span>
     <span>{props.obj.absolute_magnitude_h}</span>*/
-    console.log('qwasxz', props)
+    //console.log('qwasxz', props)
     const dataViewtype = { meters: 0 }//props.obj.close_approach_data[0].miss_distance
     //const status = await FormatStatus(props.obj.id)
     const formatData = await DataFormat(dataViewtype, 'main')//props.viewtype)
@@ -167,7 +167,7 @@ export default async function Home({ searchParams }) {
     //console.log('page ssr', await search.page)
     //console.log('date', startDate, endDate)
     const viewtype = await search.viewtype
-
+    const page = await search.page
     //try {
     resp = await fetch(`https://api.nasa.gov/neo/rest/v1/feed?start_date=${startDate}&end_date=${endDate}&api_key=3wa5hHgFuqhf6XiefvqzkcDQWZ01aOOK4vNZEXsP`,
         { cache: 'force-cache' },
@@ -178,7 +178,10 @@ export default async function Home({ searchParams }) {
         const list = dat.near_earth_objects
         const arrObjects = Object.values(list)
         //console.log('list',arrObjects[0])
-        linkedList.fromArray(arrObjects[0])
+        if (Number(page) === 0) {
+            console.log('ll appends')
+            linkedList.fromArray(arrObjects[0])//appends
+        }
         //array3 = array3.concat(arrObjects[0]);
         return <List items={linkedList.toArray()}
             renderItem={async (product) => {
@@ -192,7 +195,7 @@ export default async function Home({ searchParams }) {
                 //const item = new Item(Number(product.id, product))//not concat
                 //linkedList.append(item)       //console.log('item1',item)
                 //}
-                console.log('renderProp product', product.value)
+                //console.log('renderProp product', product.value)
                 return <Suspense><Row
                     key={product.value.id}
                     obj={product.value}
