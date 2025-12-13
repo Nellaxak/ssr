@@ -180,7 +180,7 @@ export default async function Home({ searchParams }) {
         const list = dat.near_earth_objects
         const arrObjects = Object.values(list)
         //console.log('list',arrObjects[0])
-        if (output !== undefined) {
+        if (output === undefined) {
             console.log('ll appends')
             linkedList.fromArray(arrObjects[0])//appends
         }
