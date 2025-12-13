@@ -14,6 +14,7 @@ const options = {
   threshold: 1.0,
 }
 let currentViewtype = ''
+let currentPage = 0
 function ButtonSubmit(props) {
   //console.log('ButtonSubmit props',props)
   const ref = useRef(null)
@@ -21,6 +22,7 @@ function ButtonSubmit(props) {
   const router = useRouter()
   const searchParams = useSearchParams()
   currentViewtype = searchParams.get('viewtype')
+  currentPage = searchParams.get('page')
   //const callbackFunction = useCallback(async (entries: IntersectionObserverEntry[]) => {
 
   const callbackFunction = useCallback(async (entries) => {
@@ -29,7 +31,7 @@ function ButtonSubmit(props) {
       //console.log('output button', props)
       pagination(props.id)
       //client count scroll+1
-      router.push(`?viewtype=${currentViewtype}&output=${props.id}`, { scroll: false });//very many rerender
+      router.push(`?viewtype=${currentViewtype}&page=${currentPage}&output=${props.id}`, { scroll: false });//very many rerender
     } else {
       //console.log('input button', props)
     }
