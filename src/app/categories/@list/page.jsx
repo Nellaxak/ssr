@@ -95,7 +95,7 @@ async function List({ items, renderItem }) {
     const res = await Promise.all(
         items.map(async (item, index) => {
             //console.log('item_map',item)
-            return await renderItem(item);
+            return await renderItem(item,index);
         }))
 
     return (
@@ -119,7 +119,7 @@ async function Row(props) {
     /*<span>{props.obj.id}</span>
     <span>{props.key}</span>
     <span>{props.obj.absolute_magnitude_h}</span>*/
-    //console.log('qwasxz', props)
+    console.log('qwasxz', props)
     const dataViewtype = { meters: 0 }//props.obj.close_approach_data[0].miss_distance
     //const status = await FormatStatus(props.obj.id)
     const formatData = await DataFormat(dataViewtype, 'main')//props.viewtype)
@@ -170,12 +170,12 @@ export default async function Home({ searchParams }) {
     //console.log('page ssr', await search.page)
     //console.log('date', startDate, endDate)
     const viewtype = await search.viewtype
-    const page = await search.page
+    //const page = await search.page
     //const output = await search.output
     //console.log('output', output)
     //try {
-    //resp = await fetch(`https://api.nasa.gov/neo/rest/v1/feed?start_date=${startDate}&end_date=${endDate}&api_key=3wa5hHgFuqhf6XiefvqzkcDQWZ01aOOK4vNZEXsP`,
-    resp = await fetch(`https://api.nasa.gov/neo/rest/v1/browse?page=${page}&api_key=3wa5hHgFuqhf6XiefvqzkcDQWZ01aOOK4vNZEXsP`,
+    resp = await fetch(`https://api.nasa.gov/neo/rest/v1/feed?start_date=${startDate}&end_date=${endDate}&api_key=3wa5hHgFuqhf6XiefvqzkcDQWZ01aOOK4vNZEXsP`,
+    //resp = await fetch(`https://api.nasa.gov/neo/rest/v1/browse?page=${page}&api_key=3wa5hHgFuqhf6XiefvqzkcDQWZ01aOOK4vNZEXsP`,
         { cache: 'force-cache' },
         { next: { tags: ['items'] } }
     );

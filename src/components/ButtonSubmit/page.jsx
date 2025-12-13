@@ -27,11 +27,11 @@ function ButtonSubmit(props) {
 
   const callbackFunction = useCallback(async (entries) => {
     const [entry] = entries;
-    if (!entry.isIntersecting) {
+    if (entry.isIntersecting) {
       //console.log('output button', props)
       pagination(props.id)
       //client count scroll+1
-      router.push(`?viewtype=${currentViewtype}&page=${currentPage}&output=${props.id}`, { scroll: false });//very many rerender
+      //router.push(`?viewtype=${currentViewtype}&page=${currentPage}&output=${props.id}`, { scroll: false });//very many rerender
     } else {
       //console.log('input button', props)
     }
