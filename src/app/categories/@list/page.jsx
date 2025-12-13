@@ -179,7 +179,7 @@ export default async function Home({ searchParams }) {
         { cache: 'force-cache' },
         { next: { tags: ['items'] } }
     );
-    console.log('resp.status', resp.status)
+    //console.log('resp.status', resp.status)
     if (Number(resp.status) === 200) {
         //const arrayBuffer = await resp.arrayBuffer();
         const dat = await resp.json()
@@ -194,7 +194,7 @@ export default async function Home({ searchParams }) {
         array3 = arrObjects[0]
         //const list1 = await linkedList.toArray()
         return <List items={array3}
-            renderItem={async (product) => {
+            renderItem={async (product,index) => {
                 /*const date = new Date(product.close_approach_data[0].epoch_date_close_approach)
                 const prevDate = new Intl.DateTimeFormat("ru-RU", options).format(date);
                 const datSlice = prevDate.slice(0, -2)
@@ -209,6 +209,7 @@ export default async function Home({ searchParams }) {
                 return <Suspense><Row
                     key={product.id}
                     obj={product}
+                    index={index}
                     viewtype={viewtype}
                     dates={dateString}
                     action={toggleClick}
