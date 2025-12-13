@@ -1,7 +1,7 @@
 'use client'//?
 
 import { useEffect, useState, useCallback, Suspense, useRef } from 'react'
-import { useRouter } from 'next/navigation'
+import { useRouter, useSearchParams } from 'next/navigation'
 import Form from 'next/form'
 import { toggleClick } from '../../app/lib/actions'
 import { pagination } from '../../app/lib/actions'
@@ -13,12 +13,14 @@ const options = {
   rootMargin: "100px",
   threshold: 1.0,
 }
+let currentViewtype = ''
 function ButtonSubmit(props) {
   //console.log('ButtonSubmit props',props)
   const ref = useRef(null)
   const [page, setPage] = useState(0);
   const router = useRouter()
-
+  const searchParams = useSearchParams()
+  currentViewtype = searchParams.get('viewtype')
   //const callbackFunction = useCallback(async (entries: IntersectionObserverEntry[]) => {
 
   const callbackFunction = useCallback(async (entries) => {
@@ -26,7 +28,7 @@ function ButtonSubmit(props) {
     if (!entry.isIntersecting) {
       //console.log('output button', props)
       pagination(props.id)
-      //router.push()without page=0
+      router.push(`?viewtype=${currentViewtype}`, { scroll: false });
     } else {
       //console.log('input button', props)
     }
@@ -47,8 +49,8 @@ function ButtonSubmit(props) {
   }, [])
   //console.log('ButtonSubmit',props)
   return <Form action={toggleClick} ref={ref}>
-      <input type='number' name='id' defaultValue={props.id} hidden></input>
-      <button type="submit"><Suspense>444444</Suspense></button>
-    </Form>
+    <input type='number' name='id' defaultValue={props.id} hidden></input>
+    <button type="submit"><Suspense>444444</Suspense></button>
+  </Form>
 }
 export default ButtonSubmit
