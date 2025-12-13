@@ -207,8 +207,8 @@ export default async function Home({ searchParams }) {
                 //}
                 //console.log('renderProp product', product.value)
                 return <Suspense><Row
-                    key={product.value.id}
-                    obj={product.value}
+                    key={product.id}
+                    obj={product}
                     viewtype={viewtype}
                     dates={dateString}
                     action={toggleClick}
