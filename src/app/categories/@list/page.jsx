@@ -168,7 +168,7 @@ export default async function Home({ searchParams }) {
     //console.log('date', startDate, endDate)
     const viewtype = await search.viewtype
     const page = await search.page
-    console.log('page number',Number(page))
+    console.log('page number', page, Number(page))
     //try {
     resp = await fetch(`https://api.nasa.gov/neo/rest/v1/feed?start_date=${startDate}&end_date=${endDate}&api_key=3wa5hHgFuqhf6XiefvqzkcDQWZ01aOOK4vNZEXsP`,
         { cache: 'force-cache' },

@@ -28,8 +28,8 @@ function ButtonSubmit(props) {
     if (!entry.isIntersecting) {
       //console.log('output button', props)
       pagination(props.id)
-      //count scroll+1
-      //router.push(`?viewtype=${currentViewtype}`, { scroll: false });//very many rerender
+      //client count scroll+1
+      router.push(`?viewtype=${currentViewtype}`, { scroll: false });//very many rerender
     } else {
       //console.log('input button', props)
     }
