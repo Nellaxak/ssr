@@ -29,7 +29,7 @@ function ButtonSubmit(props) {
       //console.log('output button', props)
       pagination(props.id)
       //client count scroll+1
-      router.push(`?viewtype=${currentViewtype}`, { scroll: false });//very many rerender
+      router.push(`?viewtype=${currentViewtype}&output=${props.id}`, { scroll: false });//very many rerender
     } else {
       //console.log('input button', props)
     }

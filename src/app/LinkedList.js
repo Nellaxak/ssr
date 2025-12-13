@@ -9,7 +9,7 @@ export class LinkedListNode {
 export class LinkedList {
   static arrObj = new Map();
   constructor(type) {
-    if (!LinkedList._instance) {
+    if (!LinkedList._instance) {//pattern Singleton
       LinkedList._instance = this;
       this.head = null;
       this.tail = null;
