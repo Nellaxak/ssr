@@ -10,7 +10,8 @@ export async function pagination(index) {
     //console.log('dlete obj',obj)
     //await linkedList.delete(obj)//must be object
     //await CountPage.setCount(1)
-    array3.splice(index,1)
+    console.log('io output',array3.length)
+    //array3.splice(index,1)
     revalidateTag('items')
 }
 export async function toggleClick(formData) {

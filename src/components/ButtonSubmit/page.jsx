@@ -27,7 +27,7 @@ function ButtonSubmit(props) {
 
   const callbackFunction = useCallback(async (entries) => {
     const [entry] = entries;
-    if (entry.isIntersecting) {
+    if (!entry.isIntersecting) {
       pagination(props.index)
 
       if ((props.index + 1) >= props.length) {
