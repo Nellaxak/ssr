@@ -9,8 +9,13 @@ export class LinkedListNode {
 export class LinkedList {
   static arrObj = new Map();
   constructor(type) {
-    this.head = null;
-    this.tail = null;
+    if (!LinkedList._instance) {
+      LinkedList._instance = this;
+      this.head = null;
+      this.tail = null;
+    }
+    return LinkedList._instance;
+
   }
   append(value1) {//if exsist?
     //console.log('before append', value1)
