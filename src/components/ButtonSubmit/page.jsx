@@ -22,7 +22,7 @@ function ButtonSubmit(props) {
   const router = useRouter()
   const searchParams = useSearchParams()
   currentViewtype = searchParams.get('viewtype')
-  currentPage = searchParams.get('page')
+  currentPage = Number(searchParams.get('page'))
   //const callbackFunction = useCallback(async (entries: IntersectionObserverEntry[]) => {
 
   const callbackFunction = useCallback(async (entries) => {
@@ -34,7 +34,8 @@ function ButtonSubmit(props) {
         pagination()
         //const count = await CountPage.getCount();
         //const count=0
-        router.push(`?viewtype=${currentViewtype}&page=${0}`, { scroll: true });
+        currentPage = currentPage + 1
+        router.push(`?viewtype=${currentViewtype}&page=${currentPage}`, { scroll: true });
       }
       //router.push(`?viewtype=${currentViewtype}&page=${currentPage}&output=${props.id}`, { scroll: false });//very many rerender
     } else {

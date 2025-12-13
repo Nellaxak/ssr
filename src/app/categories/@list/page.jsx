@@ -61,10 +61,10 @@ async function DataFormat(param, viewtype) {
 }
 async function CalcData(params) {
     //console.log('CalcData', await params)
-    const count = CountPage.getCount();
+    //const count = await CountPage.getCount();
     let currentDate = new Date()
     currentDate.setDate(currentDate.getDate());
-    const page = count//await params.page
+    const page = await params.page
 
     if (Number(page) > 0) {
         const newPage = Number(currentDate.getDate()) + Number(page)
