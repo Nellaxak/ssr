@@ -25,13 +25,13 @@ const handler = {
     }
 };
 
-const targetArray = ['a', 'b', 'c', 'd'];
-const proxyArray = new Proxy(targetArray, handler);
+//const targetArray = ['a', 'b', 'c', 'd'];
+//const proxyArray = new Proxy(array3, handler);
 
-console.log('--- Calling splice() ---');
+//console.log('--- Calling splice() ---');
 // Insert 'x' and 'y' at index 1, remove 1 element ('b')
-proxyArray.splice(1, 1, 'x', 'y');
-console.log('--- splice() finished ---');
+//proxyArray.splice(1, 1, 'x', 'y');
+//console.log('--- splice() finished ---');
 
 let items = new Proxy(array3, handler/* {
     get(target, prop) {
