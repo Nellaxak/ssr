@@ -29,17 +29,19 @@ function ButtonSubmit(props) {
   const callbackFunction = useCallback(async (entries) => {
     const [entry] = entries;
     if (!entry.isIntersecting) {
-      OutputItemsSet.add(Number(props.index))
+      if (currentPage > 0) {
+        OutputItemsSet.add(Number(props.index))
+      }
       //console.log('input',props.index)
       //if (currentPage > 0) {
-        //pagination(props.index)
-        //if ((props.index + 1) >= props.length) {//scroll down
-          //currentPage = currentPage + 1
-          //router.push(`?viewtype=${currentViewtype}&page=${currentPage}`, { scroll: false });
-        //}
+      //pagination(props.index)
+      //if ((props.index + 1) >= props.length) {//scroll down
+      //currentPage = currentPage + 1
+      //router.push(`?viewtype=${currentViewtype}&page=${currentPage}`, { scroll: false });
+      //}
       //} /*else if ((props.index + 1) <= props.length) {//scroll top
-        //currentPage = currentPage - 1
-        //router.push(`?viewtype=${currentViewtype}&page=${currentPage}`, { scroll: false });
+      //currentPage = currentPage - 1
+      //router.push(`?viewtype=${currentViewtype}&page=${currentPage}`, { scroll: false });
       //}*/
     } else {
       //console.log('output',props.index)
