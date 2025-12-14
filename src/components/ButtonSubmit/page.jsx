@@ -41,7 +41,7 @@ function ButtonSubmit(props) {
       //router.push(`?viewtype=${currentViewtype}&page=${currentPage}`, { scroll: false });
       //}*/
     } else {
-      if (currentPage > 0) {
+      if (page > 0) {
         OutputItemsSet.add(Number(props.index))
       }
       //console.log('output',props.index)
