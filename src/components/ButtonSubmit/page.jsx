@@ -33,9 +33,8 @@ function ButtonSubmit(props) {
       //if (currentPage > 0) {
       //pagination(props.index)
       if ((props.index + 1) >= props.length) {//scroll down
-        currentPage = currentPage + 1
-        router.push(`?viewtype=${currentViewtype}&page=${currentPage}`, { scroll: true });
-        router.refresh()
+        setPage((page) => page++)
+        //currentPage = currentPage + 1
       }
       //} /*else if ((props.index + 1) <= props.length) {//scroll top
       //currentPage = currentPage - 1
@@ -51,22 +50,10 @@ function ButtonSubmit(props) {
       //console.log('input button', props)
     }
   }, []);
-  const handleScroll = useCallback(async () => {
-    const elem = ref.current;//document.querySelector('#header')
-    //const rect = elem.getBoundingClientRect()
-    //console.log('rect', props.index, rect)
-    /*const hh = rect.height
-    //console.log('scrollend', rect, vertical, rect.y < vertical)
-    let item = Math.abs(rect.y - vertical)
-    //console.log('abs', item, hh)
-    const col = Math.round(Math.abs((item - hh) / hh))
-    if (rect.y < vertical) {
-        router.push(`?action=down&col=${col}`, { scroll: false });
-    } else {
-        router.push(`?action=up&col=${col}`, { scroll: false });
-    }
-    vertical = rect.y*/
-  }, [])
+  useEffect(() => {
+    router.push(`?viewtype=${currentViewtype}&page=${currentPage}`, { scroll: true });
+    //router.refresh()
+  }, [page])
   useEffect(() => {
     //socket.emit('addPage')
     const observer = new IntersectionObserver(callbackFunction, options);
