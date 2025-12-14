@@ -34,7 +34,7 @@ function ButtonSubmit(props) {
       //pagination(props.index)
       if ((props.index + 1) >= props.length) {//scroll down
         currentPage = currentPage + 1
-        router.push(`?viewtype=${currentViewtype}&page=${currentPage}`, { scroll: false });
+        router.push(`?viewtype=${currentViewtype}&page=${currentPage}`, { scroll: true });
       }
       //} /*else if ((props.index + 1) <= props.length) {//scroll top
       //currentPage = currentPage - 1
