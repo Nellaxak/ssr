@@ -5,7 +5,7 @@ import { useRouter, useSearchParams } from 'next/navigation'
 import Form from 'next/form'
 import { toggleClick } from '../../app/lib/actions'
 import { pagination } from '../../app/lib/actions'
-import OutputItemsSet from '@/app/OutputtemsSet'
+import OutputItemsSet from '../../app/OutputtemsSet'
 //import CountPage from '../../app/CountPage'
 //import styles from "./page.module.css";
 //intersection observer

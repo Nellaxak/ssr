@@ -9,7 +9,7 @@ import { revalidateTag, revalidatePath } from 'next/cache';
 import ButtonSubmit from '../../../components/ButtonSubmit/page'
 import { toggleClick } from '../../lib/actions'
 //import linkedList from '../../LinkedList'
-import OutputItemsSet from "@/app/OutputtemsSet";
+import OutputItemsSet from "../../OutputItemsSet";
 import items from "../../lib/ArrayGlob";
 
 let resp
