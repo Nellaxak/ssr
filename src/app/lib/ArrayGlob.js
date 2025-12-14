@@ -1,5 +1,5 @@
-let array3 = []
-const handler = {
+//let array3 = []
+/*const handler = {
     get: function (target, prop, receiver) {
         console.log(`Getting property: ${String(prop)}`);
         // Crucial: Call the original method on the *target* array, 
@@ -23,7 +23,7 @@ const handler = {
         console.log(`Deleting property: ${String(property)}`);
         return Reflect.deleteProperty(target, property);
     }
-};
+};*/
 
 //const targetArray = ['a', 'b', 'c', 'd'];
 //const proxyArray = new Proxy(array3, handler);
@@ -33,15 +33,32 @@ const handler = {
 //proxyArray.splice(1, 1, 'x', 'y');
 //console.log('--- splice() finished ---');
 
-let items = new Proxy(array3, handler/* {
-    get(target, prop) {
-        console.log('proxy', target, prop)
-        if (prop in target) {
-            return target[prop];
-        } else {
-            return 0; // значение по умолчанию
-        }
+//let items = new Proxy(array3, handler
+/* {
+   get(target, prop) {
+       console.log('proxy', target, prop)
+       if (prop in target) {
+           return target[prop];
+       } else {
+           return 0; // значение по умолчанию
+       }
+   }
+  
+}*/
+//);
+class MyObject {
+    //static _A; // Use a private variable to store the actual value
+    constructor() {
+        this._A = []
     }
-   
-}*/);
+    get A() {
+        return this._A;
+    }
+
+    // Add a setter to allow assignment
+    set A(value) {
+        this._A = value;
+    }
+}
+const items = new MyObject()
 export default items
