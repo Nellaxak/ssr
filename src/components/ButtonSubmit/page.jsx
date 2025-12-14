@@ -28,10 +28,7 @@ function ButtonSubmit(props) {
 
   const callbackFunction = useCallback(async (entries) => {
     const [entry] = entries;
-    if (!entry.isIntersecting) {
-      if (currentPage > 0) {
-        OutputItemsSet.add(Number(props.index))
-      }
+    if (entry.isIntersecting) {
       //console.log('input',props.index)
       //if (currentPage > 0) {
       //pagination(props.index)
@@ -44,6 +41,9 @@ function ButtonSubmit(props) {
       //router.push(`?viewtype=${currentViewtype}&page=${currentPage}`, { scroll: false });
       //}*/
     } else {
+      if (currentPage > 0) {
+        OutputItemsSet.add(Number(props.index))
+      }
       //console.log('output',props.index)
       //currentPage = currentPage + 1
       //router.push(`?viewtype=${currentViewtype}&page=${currentPage}`, { scroll: false });
