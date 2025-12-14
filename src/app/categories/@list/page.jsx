@@ -103,6 +103,7 @@ async function List({ items, renderItem }) {
         items.map(async (item, index) => {
             //console.log('item_map',item)
             if (!OutputItemsSet.has(Number(index))) {
+                console.log('not has',index)
                 return await renderItem(item, index);
             }
         }))
