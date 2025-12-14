@@ -15,7 +15,7 @@ let resp
 let startDate
 let endDate
 let startPage
-//let array3 = []
+let array3 = []
 let res = ''
 const options = {
     /*era: 'long',*/
@@ -177,11 +177,10 @@ export default async function Home({ searchParams }) {
         const dat = await resp.json()
         const list = dat.near_earth_objects
         const arrObjects = Object.values(list)
-        console.log('lllvvmmm')
-        const items1 = items.concat(arrObjects[0]);
+        array3 = array3.concat(arrObjects[0]);
         //const items = arrObjects[0]
         //add very small data emulate
-        return <List items={items1}
+        return <List items={array3}
             renderItem={async (product, index) => {
                 /*const date = new Date(product.close_approach_data[0].epoch_date_close_approach)
                 const prevDate = new Intl.DateTimeFormat("ru-RU", options).format(date);
