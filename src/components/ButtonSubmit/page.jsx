@@ -39,9 +39,10 @@ function ButtonSubmit(props) {
         //currentPage = currentPage - 1
         //router.push(`?viewtype=${currentViewtype}&page=${currentPage}`, { scroll: false });
       //}*/
-      //router.push(`?viewtype=${currentViewtype}&page=${currentPage}&output=${props.id}`, { scroll: false });//very many rerender
     } else {
       console.log('output',props.index)
+      currentPage = currentPage + 1
+      router.push(`?viewtype=${currentViewtype}&page=${currentPage}`, { scroll: false });
       //console.log('input button', props)
     }
   }, []);
