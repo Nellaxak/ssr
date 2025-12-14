@@ -10,7 +10,7 @@ export async function pagination(index) {
     //console.log('dlete obj',obj)
     //await linkedList.delete(obj)//must be object
     //await CountPage.setCount(1)
-    console.log('io output',items.length)
+    //console.log('io output',items.length)
     //array3.splice(index,1)
     //revalidateTag('items')
 }
