@@ -52,11 +52,13 @@ class MyObject {
         this._A = []
     }
     get A() {
+        console.log('getter')
         return this._A;
     }
 
     // Add a setter to allow assignment
     set A(value) {
+        console.log('setter',value)
         this._A = value;
     }
 }
