@@ -52,7 +52,7 @@ function ButtonSubmit(props) {
   }, []);
   useEffect(() => {
     router.push(`?viewtype=${currentViewtype}&page=${page}`, { scroll: false });
-    //router.refresh()
+    router.refresh()
   }, [page])
   useEffect(() => {
     //socket.emit('addPage')
