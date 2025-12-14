@@ -1,5 +1,5 @@
 let array3 = []
-items = new Proxy(array3, {
+let items = new Proxy(array3, {
     get(target, prop) {
         console.log('proxy', target, prop)
         if (prop in target) {
