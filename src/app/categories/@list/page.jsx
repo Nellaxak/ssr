@@ -178,10 +178,10 @@ export default async function Home({ searchParams }) {
         const list = dat.near_earth_objects
         const arrObjects = Object.values(list)
         console.log('lllvvmmm')
-        const items = items.concat(arrObjects[0]);
+        const items1 = items.concat(arrObjects[0]);
         //const items = arrObjects[0]
         //add very small data emulate
-        return <List items={items}
+        return <List items={items1}
             renderItem={async (product, index) => {
                 /*const date = new Date(product.close_approach_data[0].epoch_date_close_approach)
                 const prevDate = new Intl.DateTimeFormat("ru-RU", options).format(date);
