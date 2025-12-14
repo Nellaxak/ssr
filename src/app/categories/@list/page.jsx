@@ -178,8 +178,8 @@ export default async function Home({ searchParams }) {
         const list = dat.near_earth_objects
         const arrObjects = Object.values(list)
         console.log('lllvvmmm')
-        items = items.concat(arrObjects[0]);
-        //items = arrObjects[0]
+        //items = items.concat(arrObjects[0]);
+        items = arrObjects[0]
         //add very small data emulate
         return <List items={items}
             renderItem={async (product, index) => {
