@@ -32,7 +32,7 @@ function ButtonSubmit(props) {
 
       if ((props.index + 1) >= props.length) {//scroll down
         currentPage = currentPage + 1
-        router.push(`?viewtype=${currentViewtype}&page=${currentPage}`, { scroll: false });
+        //router.push(`?viewtype=${currentViewtype}&page=${currentPage}`, { scroll: false });
       } /*else if ((props.index + 1) <= props.length) {//scroll top
         currentPage = currentPage - 1
         router.push(`?viewtype=${currentViewtype}&page=${currentPage}`, { scroll: false });
@@ -42,16 +42,36 @@ function ButtonSubmit(props) {
       //console.log('input button', props)
     }
   }, []);
+  const handleScroll = useCallback(async () => {
+    const elem = ref.current;//document.querySelector('#header')
+    const rect = elem.getBoundingClientRect()
+    console.log('rect', rect)
+    /*const hh = rect.height
+    //console.log('scrollend', rect, vertical, rect.y < vertical)
+    let item = Math.abs(rect.y - vertical)
+    //console.log('abs', item, hh)
+    const col = Math.round(Math.abs((item - hh) / hh))
+    if (rect.y < vertical) {
+        router.push(`?action=down&col=${col}`, { scroll: false });
+    } else {
+        router.push(`?action=up&col=${col}`, { scroll: false });
+    }
+    vertical = rect.y*/
+  }, [])
   useEffect(() => {
     //socket.emit('addPage')
     const observer = new IntersectionObserver(callbackFunction, options);
     observer.observe(ref.current);
+    document.addEventListener('scrollend', handleScroll)
+
     //mobserver.observe(ref.current, config);
     //socket.on('page', data => {
     //router.refresh()
     //})
     return () => {
       observer.disconnect();
+      document.removeEventListener('scrollend', handleScroll)
+
       //socket.off('page')
     };
 
