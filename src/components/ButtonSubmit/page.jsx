@@ -5,6 +5,7 @@ import { useRouter, useSearchParams } from 'next/navigation'
 import Form from 'next/form'
 import { toggleClick } from '../../app/lib/actions'
 import { pagination } from '../../app/lib/actions'
+import OutputItemsSet from '@/app/OutputtemsSet'
 //import CountPage from '../../app/CountPage'
 //import styles from "./page.module.css";
 //intersection observer
@@ -27,8 +28,9 @@ function ButtonSubmit(props) {
 
   const callbackFunction = useCallback(async (entries) => {
     const [entry] = entries;
-    if (entry.isIntersecting) {
-      console.log('input',props.index)
+    if (!entry.isIntersecting) {
+      OutputItemsSet.add(Number(props.index))
+      //console.log('input',props.index)
       //if (currentPage > 0) {
         //pagination(props.index)
         //if ((props.index + 1) >= props.length) {//scroll down
@@ -40,9 +42,9 @@ function ButtonSubmit(props) {
         //router.push(`?viewtype=${currentViewtype}&page=${currentPage}`, { scroll: false });
       //}*/
     } else {
-      console.log('output',props.index)
-      currentPage = currentPage + 1
-      router.push(`?viewtype=${currentViewtype}&page=${currentPage}`, { scroll: false });
+      //console.log('output',props.index)
+      //currentPage = currentPage + 1
+      //router.push(`?viewtype=${currentViewtype}&page=${currentPage}`, { scroll: false });
       //console.log('input button', props)
     }
   }, []);

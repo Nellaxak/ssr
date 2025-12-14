@@ -9,6 +9,7 @@ import { revalidateTag, revalidatePath } from 'next/cache';
 import ButtonSubmit from '../../../components/ButtonSubmit/page'
 import { toggleClick } from '../../lib/actions'
 //import linkedList from '../../LinkedList'
+import OutputItemsSet from "@/app/OutputtemsSet";
 import items from "../../lib/ArrayGlob";
 
 let resp
@@ -94,10 +95,13 @@ async function CalcData(params) {
 
 async function List({ items, renderItem }) {
     const res = await Promise.all(
-        items.map(async (item, index) => {
+        items.filter(async function (item,index) {
+            return !OutputItemsSet.has(index);
+        })
+        /*items.map(async (item, index) => {
             //console.log('item_map',item)
             return await renderItem(item, index);
-        }))
+        })*/)
 
     return (
         <Suspense>{res}
@@ -177,8 +181,9 @@ export default async function Home({ searchParams }) {
         const dat = await resp.json()
         const list = dat.near_earth_objects
         const arrObjects = Object.values(list)
+        //AddedItemsSet.//(0..length-1)indexes
         array3 = array3.concat(arrObjects[0]);
-        //const items = arrObjects[0]
+        //array3 = arrObjects[0]
         //add very small data emulate
         return <List items={array3}
             renderItem={async (product, index) => {
