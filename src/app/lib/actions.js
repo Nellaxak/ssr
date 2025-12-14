@@ -1,6 +1,6 @@
 'use server'
 import { revalidateTag } from 'next/cache';
-import array3 from '../../app/lib/ArrayGlob'
+import items from '../../app/lib/ArrayGlob'
 import Item from '../Item';
 
 export async function pagination(index) {
@@ -10,7 +10,7 @@ export async function pagination(index) {
     //console.log('dlete obj',obj)
     //await linkedList.delete(obj)//must be object
     //await CountPage.setCount(1)
-    //console.log('io output',array3.length)
+    console.log('io output',items.length)
     //array3.splice(index,1)
     //revalidateTag('items')
 }

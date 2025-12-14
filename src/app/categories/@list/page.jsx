@@ -9,7 +9,7 @@ import { revalidateTag, revalidatePath } from 'next/cache';
 import ButtonSubmit from '../../../components/ButtonSubmit/page'
 import { toggleClick } from '../../lib/actions'
 //import linkedList from '../../LinkedList'
-import array3 from "../../lib/ArrayGlob";
+import items from "../../lib/ArrayGlob";
 
 let resp
 let startDate
@@ -177,7 +177,8 @@ export default async function Home({ searchParams }) {
         const dat = await resp.json()
         const list = dat.near_earth_objects
         const arrObjects = Object.values(list)
-        array3 = array3.concat(arrObjects[0]);
+        console.log('lllvvmmm')
+        items = items.concat(arrObjects[0]);
         //array3 = arrObjects[0]
         //add very small data emulate
         return <List items={array3}
