@@ -67,10 +67,10 @@ async function CalcData(params) {
     currentDate.setDate(currentDate.getDate());
     const page = await params.page
 
-    if (Number(page) > 0) {
+    /*if (Number(page) > 0) {
         const newPage = Number(currentDate.getDate()) + Number(page)
         currentDate.setDate(newPage);//+1
-    }
+    }*/
     let tomorrow = new Date();
     tomorrow.setDate(tomorrow.getDate());
     //console.log('page**', page)
@@ -187,8 +187,8 @@ export default async function Home({ searchParams }) {
         const list = dat.near_earth_objects
         const arrObjects = Object.values(list)
         //AddedItemsSet.//(0..length-1)indexes
-        array3 = array3.concat(arrObjects[0]);
-        //array3 = arrObjects[0]
+        //array3 = array3.concat(arrObjects[0]);
+        array3 = arrObjects[0]
         //add very small data emulate
         return <List items={array3}
             renderItem={async (product, index) => {
