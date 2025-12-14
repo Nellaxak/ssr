@@ -95,15 +95,17 @@ async function CalcData(params) {
 
 async function List({ items, renderItem }) {
     const res = await Promise.all(
-        items.filter(async function (item, index) {
+        /*items.filter(async function (item, index) {
             if (!OutputItemsSet.has(Number(index))) {
                 return await renderItem(item, index)
             }
-        })
-        /*items.map(async (item, index) => {
+        })*/
+        items.map(async (item, index) => {
             //console.log('item_map',item)
-            return await renderItem(item, index);
-        })*/)
+            if (!OutputItemsSet.has(Number(index))) {
+                return await renderItem(item, index);
+            }
+        }))
 
     return (
         <Suspense>{res}
