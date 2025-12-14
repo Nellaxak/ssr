@@ -45,7 +45,7 @@ function ButtonSubmit(props) {
   const handleScroll = useCallback(async () => {
     const elem = ref.current;//document.querySelector('#header')
     const rect = elem.getBoundingClientRect()
-    console.log('rect', props.name, rect)
+    console.log('rect', props.index, rect)
     /*const hh = rect.height
     //console.log('scrollend', rect, vertical, rect.y < vertical)
     let item = Math.abs(rect.y - vertical)
