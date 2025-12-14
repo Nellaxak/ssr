@@ -30,7 +30,7 @@ function ButtonSubmit(props) {
     if (!entry.isIntersecting) {
       pagination(props.index)
 
-      if ((props.index + 1) >= props.length) {
+      if ((props.index + 1) >= props.length) {//scroll down
         currentPage = currentPage + 1
         router.push(`?viewtype=${currentViewtype}&page=${currentPage}`, { scroll: false });
       } /*else if ((props.index + 1) <= props.length) {

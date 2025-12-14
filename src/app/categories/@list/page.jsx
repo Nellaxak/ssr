@@ -179,7 +179,7 @@ export default async function Home({ searchParams }) {
         const arrObjects = Object.values(list)
         array3 = array3.concat(arrObjects[0]);
         //array3 = arrObjects[0]
-        //very small data emulate
+        //add very small data emulate
         return <List items={array3}
             renderItem={async (product, index) => {
                 /*const date = new Date(product.close_approach_data[0].epoch_date_close_approach)
