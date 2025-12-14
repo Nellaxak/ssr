@@ -35,10 +35,10 @@ function ButtonSubmit(props) {
       //console.log('input',props.index)
       //if (currentPage > 0) {
       //pagination(props.index)
-      //if ((props.index + 1) >= props.length) {//scroll down
-      //currentPage = currentPage + 1
-      //router.push(`?viewtype=${currentViewtype}&page=${currentPage}`, { scroll: false });
-      //}
+      if ((props.index + 1) >= props.length) {//scroll down
+        currentPage = currentPage + 1
+        router.push(`?viewtype=${currentViewtype}&page=${currentPage}`, { scroll: false });
+      }
       //} /*else if ((props.index + 1) <= props.length) {//scroll top
       //currentPage = currentPage - 1
       //router.push(`?viewtype=${currentViewtype}&page=${currentPage}`, { scroll: false });
