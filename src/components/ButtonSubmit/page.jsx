@@ -44,8 +44,8 @@ function ButtonSubmit(props) {
   }, []);
   const handleScroll = useCallback(async () => {
     const elem = ref.current;//document.querySelector('#header')
-    const rect = elem.getBoundingClientRect()
-    console.log('rect', props.index, rect)
+    //const rect = elem.getBoundingClientRect()
+    //console.log('rect', props.index, rect)
     /*const hh = rect.height
     //console.log('scrollend', rect, vertical, rect.y < vertical)
     let item = Math.abs(rect.y - vertical)
@@ -62,7 +62,7 @@ function ButtonSubmit(props) {
     //socket.emit('addPage')
     const observer = new IntersectionObserver(callbackFunction, options);
     observer.observe(ref.current);
-    document.addEventListener('scrollend', handleScroll)
+    //document.addEventListener('scrollend', handleScroll)
 
     //mobserver.observe(ref.current, config);
     //socket.on('page', data => {
@@ -70,7 +70,7 @@ function ButtonSubmit(props) {
     //})
     return () => {
       observer.disconnect();
-      document.removeEventListener('scrollend', handleScroll)
+      //document.removeEventListener('scrollend', handleScroll)
 
       //socket.off('page')
     };
