@@ -95,8 +95,10 @@ async function CalcData(params) {
 
 async function List({ items, renderItem }) {
     const res = await Promise.all(
-        items.filter(async function (item,index) {
-            return !OutputItemsSet.has(index);
+        items.filter(async function (item, index) {
+            if (!OutputItemsSet.has(index)) {
+                return item
+            }
         })
         /*items.map(async (item, index) => {
             //console.log('item_map',item)
