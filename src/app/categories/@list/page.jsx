@@ -193,7 +193,7 @@ export default async function Home({ searchParams }) {
                     key={product.id}
                     obj={product}
                     index={index}
-                    length={array3.length}
+                    length={items.length}
                     viewtype={viewtype}
                     dates={dateString}
                     action={toggleClick}
