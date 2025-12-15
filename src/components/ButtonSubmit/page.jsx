@@ -29,21 +29,21 @@ function ButtonSubmit(props) {
   const callbackFunction = useCallback(async (entries) => {
     const [entry] = entries;
     if (entry.isIntersecting) {
-      //console.log('input',props.index)
+      console.log('input', props.index, entry.boundingClientRect)
       //if (currentPage > 0) {
       //pagination(props.index)
-      if ((props.index + 1) >= props.length) {//scroll down
+      /*if ((props.index + 1) >= props.length) {//scroll down
         setPage((page) => page++)
-        //currentPage = currentPage + 1
-      }
+      }*/
       //} /*else if ((props.index + 1) <= props.length) {//scroll top
       //currentPage = currentPage - 1
       //router.push(`?viewtype=${currentViewtype}&page=${currentPage}`, { scroll: false });
       //}*/
     } else {
-      if (page > 0) {
+      console.log('output', props.index, entry.boundingClientRect)
+      /*if (page > 0) {
         OutputItemsSet.add(Number(props.index))
-      }
+      }*/
       //console.log('output',props.index)
       //currentPage = currentPage + 1
       //router.push(`?viewtype=${currentViewtype}&page=${currentPage}`, { scroll: false });

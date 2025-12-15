@@ -102,10 +102,10 @@ async function List({ items, renderItem }) {
         })*/
         items.map(async (item, index) => {
             //console.log('item_map',item)
-            if (!OutputItemsSet.has(Number(index))) {
-                console.log('not has',index)
-                return await renderItem(item, index);
-            }
+            //if (!OutputItemsSet.has(Number(index))) {
+            //console.log('not has',index)
+            return await renderItem(item, index);
+            //}
         }))
 
     return (
@@ -186,7 +186,6 @@ export default async function Home({ searchParams }) {
         const dat = await resp.json()
         const list = dat.near_earth_objects
         const arrObjects = Object.values(list)
-        //AddedItemsSet.//(0..length-1)indexes
         //array3 = array3.concat(arrObjects[0]);
         array3 = arrObjects[0]
         //add very small data emulate
