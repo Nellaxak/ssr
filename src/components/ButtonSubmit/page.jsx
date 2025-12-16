@@ -28,32 +28,32 @@ function ButtonSubmit(props) {
 
   const callbackFunction = useCallback(async (entries) => {
     const [entry] = entries;
-      if (entry.isIntersecting) {
-        //if (props.index === 0) {
-        console.log('input', props.index)
-        //}
-        //if (currentPage > 0) {
-        //pagination(props.index)
-        /*if ((props.index + 1) >= props.length) {//scroll down
-          setPage((page) => page++)
-        }*/
-        //} /*else if ((props.index + 1) <= props.length) {//scroll top
-        //currentPage = currentPage - 1
-        //router.push(`?viewtype=${currentViewtype}&page=${currentPage}`, { scroll: false });
-        //}*/
-      } else {
-        //if (props.index === 0) {
+    if (entry.isIntersecting) {
+      //if (props.index === 0) {
+      console.log('input', props.index)
+      //}
+      //if (currentPage > 0) {
+      //pagination(props.index)
+      /*if ((props.index + 1) >= props.length) {//scroll down
+        setPage((page) => page++)
+      }*/
+      //} /*else if ((props.index + 1) <= props.length) {//scroll top
+      //currentPage = currentPage - 1
+      //router.push(`?viewtype=${currentViewtype}&page=${currentPage}`, { scroll: false });
+      //}*/
+    } else {
+      //if (props.index === 0) {
 
-        console.log('output', props.index)
-        //}
-        /*if (page > 0) {
-          OutputItemsSet.add(Number(props.index))
-        }*/
-        //console.log('output',props.index)
-        //currentPage = currentPage + 1
-        //router.push(`?viewtype=${currentViewtype}&page=${currentPage}`, { scroll: false });
-        //console.log('input button', props)
-      }
+      console.log('output', props.index)
+      //}
+      /*if (page > 0) {
+        OutputItemsSet.add(Number(props.index))
+      }*/
+      //console.log('output',props.index)
+      //currentPage = currentPage + 1
+      //router.push(`?viewtype=${currentViewtype}&page=${currentPage}`, { scroll: false });
+      //console.log('input button', props)
+    }
     //}, 1000)
   }, []);
   /*useEffect(() => {
@@ -61,13 +61,15 @@ function ButtonSubmit(props) {
     router.refresh()
   }, [page])*/
   useEffect(() => {
-    const ti = setTimeout(() => {
-    const observer = new IntersectionObserver(callbackFunction, options);
-    observer.observe(ref.current);
-    },1000)
+    //const ti = setTimeout(() => {
+    document.addEventListener('DOMConentLoaded', () => {
+      const observer = new IntersectionObserver(callbackFunction, options);
+      observer.observe(ref.current);
+    })
+    //},1000)
     return () => {
       observer.disconnect();
-      clearTimeout(ti)
+      //clearTimeout(ti)
     };
 
   }, [])
