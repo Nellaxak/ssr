@@ -28,51 +28,46 @@ function ButtonSubmit(props) {
 
   const callbackFunction = useCallback(async (entries) => {
     const [entry] = entries;
-    if (entry.isIntersecting) {
-      if (props.index === 0) {
-        console.log('input', entry.boundingClientRect.top, entry.boundingClientRect.bottom)
+    const ti = setTimeout(() => {
+      if (entry.isIntersecting) {
+        //if (props.index === 0) {
+        console.log('input', props.index)
+        //}
+        //if (currentPage > 0) {
+        //pagination(props.index)
+        /*if ((props.index + 1) >= props.length) {//scroll down
+          setPage((page) => page++)
+        }*/
+        //} /*else if ((props.index + 1) <= props.length) {//scroll top
+        //currentPage = currentPage - 1
+        //router.push(`?viewtype=${currentViewtype}&page=${currentPage}`, { scroll: false });
+        //}*/
+      } else {
+        //if (props.index === 0) {
+
+        console.log('output', props.index)
+        //}
+        /*if (page > 0) {
+          OutputItemsSet.add(Number(props.index))
+        }*/
+        //console.log('output',props.index)
+        //currentPage = currentPage + 1
+        //router.push(`?viewtype=${currentViewtype}&page=${currentPage}`, { scroll: false });
+        //console.log('input button', props)
       }
-      //if (currentPage > 0) {
-      //pagination(props.index)
-      /*if ((props.index + 1) >= props.length) {//scroll down
-        setPage((page) => page++)
-      }*/
-      //} /*else if ((props.index + 1) <= props.length) {//scroll top
-      //currentPage = currentPage - 1
-      //router.push(`?viewtype=${currentViewtype}&page=${currentPage}`, { scroll: false });
-      //}*/
-    } else {
-      if (props.index === 0) {
-        console.log('output', entry.boundingClientRect.top, entry.boundingClientRect.bottom)
-      }
-      /*if (page > 0) {
-        OutputItemsSet.add(Number(props.index))
-      }*/
-      //console.log('output',props.index)
-      //currentPage = currentPage + 1
-      //router.push(`?viewtype=${currentViewtype}&page=${currentPage}`, { scroll: false });
-      //console.log('input button', props)
-    }
+    }, 1000)
   }, []);
-  useEffect(() => {
+  /*useEffect(() => {
     router.push(`?viewtype=${currentViewtype}&page=${page}`, { scroll: false });
     router.refresh()
-  }, [page])
+  }, [page])*/
   useEffect(() => {
-    //socket.emit('addPage')
     const observer = new IntersectionObserver(callbackFunction, options);
     observer.observe(ref.current);
-    //document.addEventListener('scrollend', handleScroll)
 
-    //mobserver.observe(ref.current, config);
-    //socket.on('page', data => {
-    //router.refresh()
-    //})
     return () => {
       observer.disconnect();
-      //document.removeEventListener('scrollend', handleScroll)
-
-      //socket.off('page')
+      clearTimeout(ti)
     };
 
   }, [])
