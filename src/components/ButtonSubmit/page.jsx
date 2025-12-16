@@ -28,7 +28,6 @@ function ButtonSubmit(props) {
 
   const callbackFunction = useCallback(async (entries) => {
     const [entry] = entries;
-    const ti = setTimeout(() => {
       if (entry.isIntersecting) {
         //if (props.index === 0) {
         console.log('input', props.index)
@@ -55,16 +54,17 @@ function ButtonSubmit(props) {
         //router.push(`?viewtype=${currentViewtype}&page=${currentPage}`, { scroll: false });
         //console.log('input button', props)
       }
-    }, 1000)
+    //}, 1000)
   }, []);
   /*useEffect(() => {
     router.push(`?viewtype=${currentViewtype}&page=${page}`, { scroll: false });
     router.refresh()
   }, [page])*/
   useEffect(() => {
+    const ti = setTimeout(() => {
     const observer = new IntersectionObserver(callbackFunction, options);
     observer.observe(ref.current);
-
+    },1000)
     return () => {
       observer.disconnect();
       clearTimeout(ti)
