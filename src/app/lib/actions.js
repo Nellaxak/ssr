@@ -33,6 +33,7 @@ export async function mountItemFSM(index){
     });
 }
 export async function startFSM(index){
+      console.log(cameraFSM,'start',index)
       cameraFSM.trigger("start",index);
 }
 export async function scrollFSMDown(index){
