@@ -75,8 +75,8 @@ function ButtonSubmit(props) {
       return () => {
         observer.disconnect();
       };
-      fetch()
     }
+    fetch()
   }, [])
   //console.log('ButtonSubmit',props)
   return <Form action={toggleClick} ref={ref}>
