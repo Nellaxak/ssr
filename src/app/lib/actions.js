@@ -15,9 +15,14 @@ export async function mountItemFSM(index) {
 }
 export async function startFSM(index) {
     const instance = listInstances.get(index)
-    console.log(instance, 'start', index)
+    //console.log(instance, 'start', index)
     instance.dispatch('press')
     //cameraFSM.trigger("start", index);
+}
+export async function scrollFSM(index) {
+    const instance = listInstances.get(index)
+    //console.log(instance, 'start', index)
+    instance.dispatch('press')
 }
 export async function scrollFSMDown(index) {
     //cameraFSM.trigger("outgoingCall", "ScrollDown");

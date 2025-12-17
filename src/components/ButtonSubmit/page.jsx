@@ -4,7 +4,7 @@ import { useEffect, useState, useCallback, Suspense, useRef } from 'react'
 import { useRouter, useSearchParams } from 'next/navigation'
 import Form from 'next/form'
 import { toggleClick } from '../../app/lib/actions'
-import { pagination, mountItemFSM, startFSM, scrollFSMDown, scrollFSMUp } from '../../app/lib/actions'
+import { pagination, mountItemFSM, startFSM, scrollFSMDown, scrollFSMUp, scrollFSM } from '../../app/lib/actions'
 
 import OutputItemsSet from '../../app/OutputItemsSet'
 //import CountPage from '../../app/CountPage'
@@ -30,38 +30,38 @@ function ButtonSubmit(props) {
   let item
   const callbackFunction = useCallback(async (entries) => {
     const [entry] = entries;
-    //callFSM.trigger("outgoingCall", "Alice");
-    if (entry.isIntersecting) {
-      //if (props.index === 0) {
-      //scrollFSMDown(props.index)
-      startFSM(props.index)
-      console.log('input', props.index)
-      //}
-      //if (currentPage > 0) {
-      //pagination(props.index)
-      /*if ((props.index + 1) >= props.length) {//scroll down
-        setPage((page) => page++)
-      }*/
-      //} /*else if ((props.index + 1) <= props.length) {//scroll top
-      //currentPage = currentPage - 1
-      //router.push(`?viewtype=${currentViewtype}&page=${currentPage}`, { scroll: false });
-      //}*/
-    } else {
-      //if (props.index === 0) {
-      //cameraFSM.trigger("outgoingCall", "ScrollUp");
-      //scrollFSMUp(props.index)
-      startFSM(props.index)
-      console.log('output', props.index)
-      //}
-      /*if (page > 0) {
-        OutputItemsSet.add(Number(props.index))
-      }*/
-      //console.log('output',props.index)
-      //currentPage = currentPage + 1
-      //router.push(`?viewtype=${currentViewtype}&page=${currentPage}`, { scroll: false });
-      //console.log('input button', props)
-    }
-    //}, 1000)
+    await scrollFSM(props.index)
+    //if (entry.isIntersecting) {
+    //if (props.index === 0) {
+    //scrollFSMDown(props.index)
+    //scrollFSMUp(props.index)
+    //console.log('input', props.index)
+    //}
+    //if (currentPage > 0) {
+    //pagination(props.index)
+    /*if ((props.index + 1) >= props.length) {//scroll down
+      setPage((page) => page++)
+    }*/
+    //} /*else if ((props.index + 1) <= props.length) {//scroll top
+    //currentPage = currentPage - 1
+    //router.push(`?viewtype=${currentViewtype}&page=${currentPage}`, { scroll: false });
+    //}*/
+    //} else {
+    //if (props.index === 0) {
+    //cameraFSM.trigger("outgoingCall", "ScrollUp");
+    //scrollFSMUp(props.index)
+    //scrollFSMDown(props.index)
+    //startFSM(props.index, 'output')
+    //console.log('output', props.index)
+    //}
+    /*if (page > 0) {
+      OutputItemsSet.add(Number(props.index))
+    }*/
+    //console.log('output',props.index)
+    //currentPage = currentPage + 1
+    //router.push(`?viewtype=${currentViewtype}&page=${currentPage}`, { scroll: false });
+    //console.log('input button', props)
+    //}
   }, []);
   /*useEffect(() => {
     router.push(`?viewtype=${currentViewtype}&page=${page}`, { scroll: false });
@@ -70,6 +70,8 @@ function ButtonSubmit(props) {
   useEffect(() => {
     //const fetch = async () => {
     mountItemFSM(props.index)
+    startFSM(props.index)
+
     //console.log('instanceFSM', instanceFSM)
     //}
     //fetch()

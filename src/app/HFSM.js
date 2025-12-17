@@ -6,15 +6,15 @@ class HFSM {
         this.transitions = {
             OFF: {
                 press() {
-                    this.state = 'ON'
+                    this.state = 'LOAD'
                 }
             },
-            ON: {
+            LOAD: {
                 press() {
-                    this.state = 'BLINK';
+                    this.state = 'SCROLL';
                 },
             },
-            BLINK: {
+            SCROLL: {
                 press() {
                     this.state = 'OFF';
                 },
