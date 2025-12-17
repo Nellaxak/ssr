@@ -4,7 +4,7 @@ import items from '../../app/lib/ArrayGlob'
 import Item from '../Item';
 import HFSM from '../HFSM'
 //let cameraFSM
-export function mountItemFSM(index) {//async
+export async function mountItemFSM(index) {//closure
     function closure() {
         const cameraFSM = new HFSM({
             initial: "idle", // Камера по умолчанию неактивна
