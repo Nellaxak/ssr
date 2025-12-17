@@ -4,46 +4,46 @@ import items from '../../app/lib/ArrayGlob'
 import Item from '../Item';
 import HFSM from '../HFSM'
 //let cameraFSM
-export async function mountItemFSM(index) {//closure
-    function closure() {
-        const cameraFSM = new HFSM({
-            initial: "idle", // Камера по умолчанию неактивна
-            index: index,
-            transitions: {
-                idle: [{ event: "start", to: "started" }], // Событие "start" -> попытка запуска камеры
-                started: [
-                    { event: "openedForCall", to: "opened" }, // Камера успешно запущена и готова к звонку
-                    // { event: "error", to: "idle" }            // Ошибка при запуске камеры
-                ],
-                opened: [{ event: "close", to: "idle" }],   // Закрыть камеру
+export async function mountItemFSM(index) {
+    //function closure() {
+    const cameraFSM = new HFSM({
+        initial: "idle", // Камера по умолчанию неактивна
+        index: index,
+        transitions: {
+            idle: [{ event: "start", to: "started" }], // Событие "start" -> попытка запуска камеры
+            started: [
+                { event: "openedForCall", to: "opened" }, // Камера успешно запущена и готова к звонку
+                // { event: "error", to: "idle" }            // Ошибка при запуске камеры
+            ],
+            opened: [{ event: "close", to: "idle" }],   // Закрыть камеру
+        },
+        callbacks: {
+            onAfterStart: (from, to) => {
+                // Что то делаем
+                console.log('onAfterStart', from, to)
             },
-            callbacks: {
-                onAfterStart: (from, to) => {
-                    // Что то делаем
-                    console.log('onAfterStart', from, to)
-                },
-                onAfterOpenedForCall: (from, to, msg) => {
-                    // Что то делаем
-                    console.log('onAfterOpenedForCall', from, to, msg)
-                },
-                onAfterError: (from, to, err) => {
-                    // Что то делаем
-                    console.log('onAfterError', from, to, err)
-                }
+            onAfterOpenedForCall: (from, to, msg) => {
+                // Что то делаем
+                console.log('onAfterOpenedForCall', from, to, msg)
+            },
+            onAfterError: (from, to, err) => {
+                // Что то делаем
+                console.log('onAfterError', from, to, err)
             }
-        });
-        return cameraFSM
-    }
-    return closure()
+        }
+    });
+    return cameraFSM
+    //}
+    //return closure()
 }
-export async function startFSM(item, index) {
+export async function startFSM(index) {
     console.log(cameraFSM, 'start', index)
     cameraFSM.trigger("start", index);
 }
-export async function scrollFSMDown(item, index) {
+export async function scrollFSMDown(index) {
     cameraFSM.trigger("outgoingCall", "ScrollDown");
 }
-export async function scrollFSMUp(item, index) {
+export async function scrollFSMUp(index) {
     cameraFSM.trigger("outgoingCall", "ScrollUp");
 }
 export async function pagination(index) {

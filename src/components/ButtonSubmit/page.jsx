@@ -34,8 +34,8 @@ function ButtonSubmit(props) {
     if (entry.isIntersecting) {
       //if (props.index === 0) {
       //scrollFSMDown(props.index)
-      startFSM(item, props.index)
-      console.log('input', item, props.index)
+      startFSM(props.index)
+      console.log('input', props.index)
       //}
       //if (currentPage > 0) {
       //pagination(props.index)
@@ -50,8 +50,8 @@ function ButtonSubmit(props) {
       //if (props.index === 0) {
       //cameraFSM.trigger("outgoingCall", "ScrollUp");
       //scrollFSMUp(props.index)
-      startFSM(item, props.index)
-      console.log('output', item, props.index)
+      startFSM(props.index)
+      console.log('output', props.index)
       //}
       /*if (page > 0) {
         OutputItemsSet.add(Number(props.index))
@@ -69,7 +69,7 @@ function ButtonSubmit(props) {
   }, [page])*/
   useEffect(() => {
     const fetch = async () => {
-      item = await mountItemFSM(props.index)
+      await mountItemFSM(props.index)
       const observer = new IntersectionObserver(callbackFunction, options);
       observer.observe(ref.current);
       return () => {
