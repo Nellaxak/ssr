@@ -30,9 +30,9 @@ function ButtonSubmit(props) {
   const callbackFunction = useCallback(async (entries) => {
     const [entry] = entries;
     if (entry.isIntersecting) {
-      scrollFSM(props.index, 'input',entry.getBoundingClientRect())
+      scrollFSM(props.index, 'input',entry.intersectionRect)
     } else {
-      scrollFSM(props.index, 'output',entry.getBoundingClientRect())
+      scrollFSM(props.index, 'output',entry.intersectionRect)
     }
   }, []);
   /*useEffect(() => {
