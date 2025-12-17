@@ -4,7 +4,7 @@ import { useEffect, useState, useCallback, Suspense, useRef } from 'react'
 import { useRouter, useSearchParams } from 'next/navigation'
 import Form from 'next/form'
 import { toggleClick } from '../../app/lib/actions'
-import { pagination,mountItemFSM,startFSM,scrollFSMDown,scrollFSMUp } from '../../app/lib/actions'
+import { pagination, mountItemFSM, startFSM, scrollFSMDown, scrollFSMUp } from '../../app/lib/actions'
 
 import OutputItemsSet from '../../app/OutputItemsSet'
 //import CountPage from '../../app/CountPage'
@@ -27,15 +27,15 @@ function ButtonSubmit(props) {
   currentViewtype = searchParams.get('viewtype')
   currentPage = Number(searchParams.get('page'))
   //const callbackFunction = useCallback(async (entries: IntersectionObserverEntry[]) => {
-
+  let item
   const callbackFunction = useCallback(async (entries) => {
     const [entry] = entries;
     //callFSM.trigger("outgoingCall", "Alice");
     if (entry.isIntersecting) {
       //if (props.index === 0) {
       //scrollFSMDown(props.index)
-      startFSM(props.index)
-      console.log('input', props.index)
+      startFSM(item, props.index)
+      console.log('input', item, props.index)
       //}
       //if (currentPage > 0) {
       //pagination(props.index)
@@ -50,8 +50,8 @@ function ButtonSubmit(props) {
       //if (props.index === 0) {
       //cameraFSM.trigger("outgoingCall", "ScrollUp");
       //scrollFSMUp(props.index)
-      startFSM(props.index)
-      console.log('output', props.index)
+      startFSM(item, props.index)
+      console.log('output', item, props.index)
       //}
       /*if (page > 0) {
         OutputItemsSet.add(Number(props.index))
@@ -68,7 +68,7 @@ function ButtonSubmit(props) {
     router.refresh()
   }, [page])*/
   useEffect(() => {
-    mountItemFSM(props.index)
+    item = mountItemFSM(props.index)
     const observer = new IntersectionObserver(callbackFunction, options);
     observer.observe(ref.current);
     return () => {
