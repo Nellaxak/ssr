@@ -19,8 +19,10 @@ export async function startFSM(index) {
 }
 export async function scrollFSM(index, action) {
     const instance = listInstances.get(index)
-    console.log('scroll', index, action)
-    instance.dispatch('press')
+    console.log('scroll', instance, index, action)
+    if (instance !== undefined) {
+        instance.dispatch('press')
+    }
 }
 export async function scrollFSMDown(index) {
     //cameraFSM.trigger("outgoingCall", "ScrollDown");
