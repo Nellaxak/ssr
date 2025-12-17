@@ -34,7 +34,7 @@ function ButtonSubmit(props) {
     if (entry.isIntersecting) {
       //if (props.index === 0) {
       //scrollFSMDown(props.index)
-      //startFSM(props.index)
+      startFSM(props.index)
       console.log('input', props.index)
       //}
       //if (currentPage > 0) {
@@ -50,7 +50,7 @@ function ButtonSubmit(props) {
       //if (props.index === 0) {
       //cameraFSM.trigger("outgoingCall", "ScrollUp");
       //scrollFSMUp(props.index)
-      //startFSM(props.index)
+      startFSM(props.index)
       console.log('output', props.index)
       //}
       /*if (page > 0) {

@@ -5,19 +5,18 @@ import Item from '../Item';
 import HFSM from '../HFSM'
 //let cameraFSM
 //let instance
-const listInstances=new Map()
+const listInstances = new Map()
 export async function mountItemFSM(index) {
     //function closure() {
     const instanceFSM = new HFSM(index)
-    listInstances.set(index,instanceFSM)
-    //observable+channel(instance) dispatch.
+    listInstances.set(index, instanceFSM)
     //}
     //return closure()
 }
 export async function startFSM(index) {
-    //observable+channel(instance?) subscribe
-    const instance=listInstances.get(index)
-    console.log(instance,'start', index)
+    const instance = listInstances.get(index)
+    console.log(instance, 'start', index)
+    instance.dispatch('press')
     //cameraFSM.trigger("start", index);
 }
 export async function scrollFSMDown(index) {
