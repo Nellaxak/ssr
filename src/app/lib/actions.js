@@ -3,8 +3,9 @@ import { revalidateTag } from 'next/cache';
 import items from '../../app/lib/ArrayGlob'
 import Item from '../Item';
 import HFSM from '../HFSM'
+let cameraFSM
 export async function mountItemFSM(index){
-    const cameraFSM = new HFSM({
+    cameraFSM = new HFSM({
       initial: "idle", // Камера по умолчанию неактивна
       index: index,
       transitions: {
