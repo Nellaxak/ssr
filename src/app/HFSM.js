@@ -1,4 +1,4 @@
-class HFSM {
+export default class HFSM {
     constructor(config) {
         this.index = config.index;
         this.state = config.initial; // Начальное состояние автомата
