@@ -30,9 +30,9 @@ function ButtonSubmit(props) {
   const callbackFunction = useCallback(async (entries) => {
     const [entry] = entries;
     if (entry.isIntersecting) {
-      scrollFSM(props.index, 'input',entry.intersectionRect)
+      scrollFSM(props.index, 'input')
     } else {
-      scrollFSM(props.index, 'output',entry.intersectionRect)
+      scrollFSM(props.index, 'output')
     }
   }, []);
   /*useEffect(() => {
@@ -40,20 +40,14 @@ function ButtonSubmit(props) {
     router.refresh()
   }, [page])*/
   useEffect(() => {
-    //const fetch = async () => {
+    console.log('mount',props.index)
     mountItemFSM(props.index)
-    //startFSM(props.index)
-
-    //console.log('instanceFSM', instanceFSM)
-    //}
-    //fetch()
     const observer = new IntersectionObserver(callbackFunction, options);
     observer.observe(ref.current);
     return () => {
       observer.disconnect();
     };
   }, [])
-  //console.log('ButtonSubmit',props)
   return <Form action={toggleClick} ref={ref}>
     <input type='number' name='id' defaultValue={props.id} hidden></input>
     <button type="submit"><Suspense>444444</Suspense></button>

@@ -6,29 +6,51 @@ import HFSM from '../HFSM'
 
 const listInstances = new Map()
 export async function mountItemFSM(index) {
-    //function closure() {
-    const instanceFSM = new HFSM(index)
+    const instanceFSM = new HFSM({
+        initial: "idle", // Камера по умолчанию неактивна
+        index: index,
+        transitions: {
+            idle: [{ event: "start", to: "started" }], // Событие "start" -&gt; попытка запуска камеры
+            started: [
+                { event: "ioInput", to: "inside" },
+                { event: "ioOutput", to: "ouside" },// Камера успешно запущена и готова к звонку
+                //{event: "error", to: "idle"}            // Ошибка при запуске камеры
+            ],
+            inside: [{ event: "ioOutput", to: "outside" }],   // Закрыть камеру
+            outside: [{ event: "ioInput", to: "inside" }],
+        },
+        callbacks: {
+            onAfterStart: (from, to) => {
+                // Что то делаем
+                console.log('onAfterStart', from, to)
+            },
+            onAfterOpenedForCall: (from, to, msg) => {
+                // Что то делаем
+                console.log('onAfterOpenedForCall', from, to, msg)
+            },
+            onAfterError: (from, to, err) => {
+                // Что то делаем
+                console.log('onAfterError', from, to, err)
+            }
+        }
+    });
     listInstances.set(index, instanceFSM)
-    //}
-    //return closure()
+    instanceFSM.trigger("start");
 }
-export async function startFSM(index) {
+export async function scrollFSM(index, action) {
     const instance = listInstances.get(index)
-    //console.log(instance, 'start', index)
-    instance.dispatch('press')
-}
-export async function scrollFSM(index, action, intersectionRect) {
-    const instance = listInstances.get(index)
-    console.log('scroll', index, action, intersectionRect)
+    console.log('scroll', index, action)
     if (instance !== undefined) {
-        instance.dispatch('press')
+        if (action === 'input') {
+            instance.trigger("ioInput");
+        } else {
+            instance.trigger("ioOutput");
+        }
     }
 }
 export async function scrollFSMDown(index) {
-    //cameraFSM.trigger("outgoingCall", "ScrollDown");
 }
 export async function scrollFSMUp(index) {
-    //cameraFSM.trigger("outgoingCall", "ScrollUp");
 }
 export async function pagination(index) {
     //console.log('pagination', id)
