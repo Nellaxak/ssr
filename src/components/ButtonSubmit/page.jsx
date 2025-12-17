@@ -13,11 +13,10 @@ import OutputItemsSet from '../../app/OutputItemsSet'
 const options = {
   root: null,
   rootMargin: "0px",
-  threshold: 1.0,
+  threshold: 0.0,
 }
 let currentViewtype = ''
 let currentPage = 0
-let cameraFSM
 function ButtonSubmit(props) {
   //console.log('ButtonSubmit props',props)
   const ref = useRef(null)
@@ -31,9 +30,9 @@ function ButtonSubmit(props) {
   const callbackFunction = useCallback(async (entries) => {
     const [entry] = entries;
     if (entry.isIntersecting) {
-      scrollFSM(props.index, 'input')
+      scrollFSM(props.index, 'input',entry.getBoundingClientRect())
     } else {
-      scrollFSM(props.index, 'output')
+      scrollFSM(props.index, 'output',entry.getBoundingClientRect())
     }
   }, []);
   /*useEffect(() => {
