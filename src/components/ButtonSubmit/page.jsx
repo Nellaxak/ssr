@@ -16,6 +16,7 @@ const options = {
 }
 let currentViewtype = ''
 let currentPage = 0
+let cameraFSM
 function ButtonSubmit(props) {
   //console.log('ButtonSubmit props',props)
   const ref = useRef(null)
@@ -28,8 +29,10 @@ function ButtonSubmit(props) {
 
   const callbackFunction = useCallback(async (entries) => {
     const [entry] = entries;
+    //callFSM.trigger("outgoingCall", "Alice");
     if (entry.isIntersecting) {
       //if (props.index === 0) {
+      cameraFSM.trigger("outgoingCall", "ScrollDown");
       console.log('input', props.index)
       //}
       //if (currentPage > 0) {
@@ -43,7 +46,7 @@ function ButtonSubmit(props) {
       //}*/
     } else {
       //if (props.index === 0) {
-
+      cameraFSM.trigger("outgoingCall", "ScrollUp");
       console.log('output', props.index)
       //}
       /*if (page > 0) {
@@ -61,15 +64,36 @@ function ButtonSubmit(props) {
     router.refresh()
   }, [page])*/
   useEffect(() => {
-    //const ti = setTimeout(() => {
-    document.addEventListener('DOMConentLoaded', () => {
-      const observer = new IntersectionObserver(callbackFunction, options);
-      observer.observe(ref.current);
-    })
-    //},1000)
+    cameraFSM = new HFSM({
+      initial: "idle", // Камера по умолчанию неактивна
+      index: props.index,
+      transitions: {
+        idle: [{ event: "start", to: "started" }], // Событие "start" -> попытка запуска камеры
+        started: [
+          { event: "openedForCall", to: "opened" }, // Камера успешно запущена и готова к звонку
+          { event: "error", to: "idle" }            // Ошибка при запуске камеры
+        ],
+        opened: [{ event: "close", to: "idle" }],   // Закрыть камеру
+      },
+      callbacks: {
+        onAfterStart: (from, to) => {
+          // Что то делаем
+          console.log('onAfterStart', from, to)
+        },
+        onAfterOpenedForCall: (from, to, msg) => {
+          // Что то делаем
+          console.log('onAfterOpenedForCall', from, to, msg)
+        },
+        onAfterError: (from, to, err) => {
+          // Что то делаем
+          console.log('onAfterError', from, to, err)
+        }
+      }
+    });
+    const observer = new IntersectionObserver(callbackFunction, options);
+    observer.observe(ref.current);
     return () => {
       observer.disconnect();
-      //clearTimeout(ti)
     };
 
   }, [])
