@@ -43,7 +43,7 @@ function ButtonSubmit(props) {
   useEffect(() => {
     //const fetch = async () => {
     mountItemFSM(props.index)
-    startFSM(props.index)
+    //startFSM(props.index)
 
     //console.log('instanceFSM', instanceFSM)
     //}
