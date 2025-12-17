@@ -6,13 +6,13 @@ class HFSM {
         this.transitions = {
             OFF: {
                 press() {
-                    console.log('Load',this.index)
+                    console.log('LOAD', this.index)
                     this.state = 'LOAD'
                 }
             },
             LOAD: {
                 press() {
-                    console.log('Scroll',this.index)
+                    console.log('SCROLL', this.index)
                     this.state = 'SCROLL';
                 },
             },
