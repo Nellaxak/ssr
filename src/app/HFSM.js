@@ -36,6 +36,7 @@ export default class HFSM {
 
         // Смена состояния
         this.state = to;
+        console.log('mmmmmm',this.index,this.state)
         this.history.push({ from, to, event, timestamp: Date.now() });
 
         // Коллбэк после перехода
