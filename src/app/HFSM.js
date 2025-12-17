@@ -1,4 +1,45 @@
-export default class HFSM {
+//const machine = {
+class HFSM {
+    constructor(index) {
+        this.state = 'OFF'
+        this.index = index
+        this.transitions = {
+            OFF: {
+                press() {
+                    this.state = 'ON'
+                }
+            },
+            ON: {
+                press() {
+                    this.state = 'BLINK';
+                },
+            },
+            BLINK: {
+                press() {
+                    this.state = 'OFF';
+                },
+            },
+        }
+    }
+    dispatch(actionName) {
+        const action = this.transitions[this.state][actionName];
+
+        if (action) {
+            action.call(this);
+        } else {
+            console.log('Invalid action');
+        }
+    }
+}
+export default HFSM
+/*const flashlight = Object.create(machine);
+console.log(flashlight.state); // OFF
+flashlight.dispatch('press'); 
+console.log(flashlight.state); // ON
+flashlight.dispatch('press');
+console.log(flashlight.state); // BLINK
+*/
+/*class HFSM {
     constructor(config) {
         console.log('index', config.index)
         this.state = config.initial; // Начальное состояние автомата
@@ -78,4 +119,4 @@ export default class HFSM {
     static capitalize(str) {
         return str.charAt(0).toUpperCase() + str.slice(1);
     }
-}
+}*/

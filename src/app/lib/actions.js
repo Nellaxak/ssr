@@ -6,7 +6,8 @@ import HFSM from '../HFSM'
 //let cameraFSM
 export async function mountItemFSM(index) {
     //function closure() {
-    const cameraFSM = new HFSM({
+    const instance = new HFSM(index)
+    /*const cameraFSM = new HFSM({
         initial: "idle", // Камера по умолчанию неактивна
         index: index,
         transitions: {
@@ -32,7 +33,7 @@ export async function mountItemFSM(index) {
             }
         }
     });
-    return cameraFSM
+    return cameraFSM*/
     //}
     //return closure()
 }
