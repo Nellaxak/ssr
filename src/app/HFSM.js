@@ -18,7 +18,7 @@ export default class HFSM {
     trigger(event, ...args) {
         const allowed = this.getTransitionsForState(this.state);
         const transition = allowed.find(t => t.event === event);
-
+        console.log('kkkkkkkkkkkkk', this.index, transition)
         if (!transition) {
             console.warn(`Event "${event}" not allowed in state "${this.state}"`);
             return false;
@@ -36,7 +36,7 @@ export default class HFSM {
 
         // Смена состояния
         this.state = to;
-        console.log('mmmmmm',this.index,this.state)
+        console.log('mmmmmm', this.index, this.state)
         this.history.push({ from, to, event, timestamp: Date.now() });
 
         // Коллбэк после перехода
