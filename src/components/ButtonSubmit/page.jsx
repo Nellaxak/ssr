@@ -69,8 +69,8 @@ function ButtonSubmit(props) {
   }, [page])*/
   useEffect(() => {
     //const fetch = async () => {
-    setInstanceFSM(mountItemFSM(props.index))
-    console.log('instanceFSM', instanceFSM)
+    mountItemFSM(props.index)
+    //console.log('instanceFSM', instanceFSM)
     //}
     //fetch()
     const observer = new IntersectionObserver(callbackFunction, options);
