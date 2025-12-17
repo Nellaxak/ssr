@@ -32,6 +32,9 @@ export async function mountItemFSM(index){
       }
     });
 }
+export async function startFSM(index){
+      cameraFSM.trigger("start",index);
+}
 export async function scrollFSMDown(index){
       cameraFSM.trigger("outgoingCall", "ScrollDown");
 }
