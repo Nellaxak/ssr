@@ -12,7 +12,7 @@ export async function mountItemFSM(index){
         idle: [{ event: "start", to: "started" }], // Событие "start" -> попытка запуска камеры
         started: [
           { event: "openedForCall", to: "opened" }, // Камера успешно запущена и готова к звонку
-          { event: "error", to: "idle" }            // Ошибка при запуске камеры
+         // { event: "error", to: "idle" }            // Ошибка при запуске камеры
         ],
         opened: [{ event: "close", to: "idle" }],   // Закрыть камеру
       },
