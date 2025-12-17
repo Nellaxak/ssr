@@ -21,7 +21,7 @@ let cameraFSM
 function ButtonSubmit(props) {
   //console.log('ButtonSubmit props',props)
   const ref = useRef(null)
-  const [page, setPage] = useState(0);
+  const [instanceFSM, setInstanceFSM] = useState(null);
   const router = useRouter()
   const searchParams = useSearchParams()
   currentViewtype = searchParams.get('viewtype')
@@ -34,7 +34,7 @@ function ButtonSubmit(props) {
     if (entry.isIntersecting) {
       //if (props.index === 0) {
       //scrollFSMDown(props.index)
-      startFSM(props.index)
+      //startFSM(props.index)
       console.log('input', props.index)
       //}
       //if (currentPage > 0) {
@@ -50,7 +50,7 @@ function ButtonSubmit(props) {
       //if (props.index === 0) {
       //cameraFSM.trigger("outgoingCall", "ScrollUp");
       //scrollFSMUp(props.index)
-      startFSM(props.index)
+      //startFSM(props.index)
       console.log('output', props.index)
       //}
       /*if (page > 0) {
@@ -68,15 +68,15 @@ function ButtonSubmit(props) {
     router.refresh()
   }, [page])*/
   useEffect(() => {
-    //const fetch = async () => {
-      mountItemFSM(props.index)
-      const observer = new IntersectionObserver(callbackFunction, options);
-      observer.observe(ref.current);
-      return () => {
-        observer.disconnect();
-      };
-    //}
-    //fetch()
+    const fetch = async () => {
+      setInstanceFSM(await mountItemFSM(props.index))
+    }
+    fetch()
+    const observer = new IntersectionObserver(callbackFunction, options);
+    observer.observe(ref.current);
+    return () => {
+      observer.disconnect();
+    };
   }, [])
   //console.log('ButtonSubmit',props)
   return <Form action={toggleClick} ref={ref}>
