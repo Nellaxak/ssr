@@ -30,7 +30,7 @@ function ButtonSubmit(props) {
   let item
   const callbackFunction = useCallback(async (entries) => {
     const [entry] = entries;
-    await scrollFSM(props.index)
+    scrollFSM(props.index)
     //if (entry.isIntersecting) {
     //if (props.index === 0) {
     //scrollFSMDown(props.index)
