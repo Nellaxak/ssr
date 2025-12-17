@@ -6,11 +6,13 @@ class HFSM {
         this.transitions = {
             OFF: {
                 press() {
+                    console.log('Load',this.index)
                     this.state = 'LOAD'
                 }
             },
             LOAD: {
                 press() {
+                    console.log('Scroll',this.index)
                     this.state = 'SCROLL';
                 },
             },
@@ -32,10 +34,3 @@ class HFSM {
     }
 }
 export default HFSM
-/*const flashlight = Object.create(machine);
-console.log(flashlight.state); // OFF
-flashlight.dispatch('press'); 
-console.log(flashlight.state); // ON
-flashlight.dispatch('press');
-console.log(flashlight.state); // BLINK
-*/

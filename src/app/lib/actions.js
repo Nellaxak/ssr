@@ -17,9 +17,9 @@ export async function startFSM(index) {
     //console.log(instance, 'start', index)
     instance.dispatch('press')
 }
-export async function scrollFSM(index) {
+export async function scrollFSM(index, action) {
     const instance = listInstances.get(index)
-    console.log('scroll', index)
+    console.log('scroll', index, action)
     instance.dispatch('press')
 }
 export async function scrollFSMDown(index) {
