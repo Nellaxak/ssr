@@ -3,8 +3,7 @@ import { revalidateTag } from 'next/cache';
 import items from '../../app/lib/ArrayGlob'
 import Item from '../Item';
 import HFSM from '../HFSM'
-//let cameraFSM
-//let instance
+
 const listInstances = new Map()
 export async function mountItemFSM(index) {
     //function closure() {
@@ -17,11 +16,10 @@ export async function startFSM(index) {
     const instance = listInstances.get(index)
     //console.log(instance, 'start', index)
     instance.dispatch('press')
-    //cameraFSM.trigger("start", index);
 }
 export async function scrollFSM(index) {
     const instance = listInstances.get(index)
-    //console.log(instance, 'start', index)
+    console.log('scroll', index)
     instance.dispatch('press')
 }
 export async function scrollFSMDown(index) {
