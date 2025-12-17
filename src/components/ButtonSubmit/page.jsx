@@ -68,15 +68,15 @@ function ButtonSubmit(props) {
     router.refresh()
   }, [page])*/
   useEffect(() => {
-    const fetch = async () => {
-      await mountItemFSM(props.index)
+    //const fetch = async () => {
+      mountItemFSM(props.index)
       const observer = new IntersectionObserver(callbackFunction, options);
       observer.observe(ref.current);
       return () => {
         observer.disconnect();
       };
-    }
-    fetch()
+    //}
+    //fetch()
   }, [])
   //console.log('ButtonSubmit',props)
   return <Form action={toggleClick} ref={ref}>
