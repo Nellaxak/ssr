@@ -4,7 +4,8 @@ import { useEffect, useState, useCallback, Suspense, useRef } from 'react'
 import { useRouter, useSearchParams } from 'next/navigation'
 import Form from 'next/form'
 import { toggleClick } from '../../app/lib/actions'
-import { pagination } from '../../app/lib/actions'
+import { pagination,mountItemFSM,scrollFSMDown,scrollFSMUp } from '../../app/lib/actions'
+
 import OutputItemsSet from '../../app/OutputItemsSet'
 //import CountPage from '../../app/CountPage'
 //import styles from "./page.module.css";
@@ -32,7 +33,7 @@ function ButtonSubmit(props) {
     //callFSM.trigger("outgoingCall", "Alice");
     if (entry.isIntersecting) {
       //if (props.index === 0) {
-      cameraFSM.trigger("outgoingCall", "ScrollDown");
+      scrollFSMDown(props.index)
       console.log('input', props.index)
       //}
       //if (currentPage > 0) {
@@ -46,7 +47,8 @@ function ButtonSubmit(props) {
       //}*/
     } else {
       //if (props.index === 0) {
-      cameraFSM.trigger("outgoingCall", "ScrollUp");
+      //cameraFSM.trigger("outgoingCall", "ScrollUp");
+      scrollFSMUp(props.index)
       console.log('output', props.index)
       //}
       /*if (page > 0) {
@@ -64,32 +66,7 @@ function ButtonSubmit(props) {
     router.refresh()
   }, [page])*/
   useEffect(() => {
-    cameraFSM = new HFSM({
-      initial: "idle", // Камера по умолчанию неактивна
-      index: props.index,
-      transitions: {
-        idle: [{ event: "start", to: "started" }], // Событие "start" -> попытка запуска камеры
-        started: [
-          { event: "openedForCall", to: "opened" }, // Камера успешно запущена и готова к звонку
-          { event: "error", to: "idle" }            // Ошибка при запуске камеры
-        ],
-        opened: [{ event: "close", to: "idle" }],   // Закрыть камеру
-      },
-      callbacks: {
-        onAfterStart: (from, to) => {
-          // Что то делаем
-          console.log('onAfterStart', from, to)
-        },
-        onAfterOpenedForCall: (from, to, msg) => {
-          // Что то делаем
-          console.log('onAfterOpenedForCall', from, to, msg)
-        },
-        onAfterError: (from, to, err) => {
-          // Что то делаем
-          console.log('onAfterError', from, to, err)
-        }
-      }
-    });
+    mountItemFSM(props.index)
     const observer = new IntersectionObserver(callbackFunction, options);
     observer.observe(ref.current);
     return () => {
