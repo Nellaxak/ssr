@@ -4,48 +4,27 @@ import items from '../../app/lib/ArrayGlob'
 import Item from '../Item';
 import HFSM from '../HFSM'
 //let cameraFSM
+//let instance
+const listInstances=new Map()
 export async function mountItemFSM(index) {
     //function closure() {
-    const instance = new HFSM(index)
-    /*const cameraFSM = new HFSM({
-        initial: "idle", // Камера по умолчанию неактивна
-        index: index,
-        transitions: {
-            idle: [{ event: "start", to: "started" }], // Событие "start" -> попытка запуска камеры
-            started: [
-                { event: "openedForCall", to: "opened" }, // Камера успешно запущена и готова к звонку
-                // { event: "error", to: "idle" }            // Ошибка при запуске камеры
-            ],
-            opened: [{ event: "close", to: "idle" }],   // Закрыть камеру
-        },
-        callbacks: {
-            onAfterStart: (from, to) => {
-                // Что то делаем
-                console.log('onAfterStart', from, to)
-            },
-            onAfterOpenedForCall: (from, to, msg) => {
-                // Что то делаем
-                console.log('onAfterOpenedForCall', from, to, msg)
-            },
-            onAfterError: (from, to, err) => {
-                // Что то делаем
-                console.log('onAfterError', from, to, err)
-            }
-        }
-    });
-    return cameraFSM*/
+    const instanceFSM = new HFSM(index)
+    listInstances.set(index,instanceFSM)
+    //observable+channel(instance) dispatch.
     //}
     //return closure()
 }
 export async function startFSM(index) {
-    console.log(cameraFSM, 'start', index)
-    cameraFSM.trigger("start", index);
+    //observable+channel(instance?) subscribe
+    const instance=listInstances.get(index)
+    console.log(instance,'start', index)
+    //cameraFSM.trigger("start", index);
 }
 export async function scrollFSMDown(index) {
-    cameraFSM.trigger("outgoingCall", "ScrollDown");
+    //cameraFSM.trigger("outgoingCall", "ScrollDown");
 }
 export async function scrollFSMUp(index) {
-    cameraFSM.trigger("outgoingCall", "ScrollUp");
+    //cameraFSM.trigger("outgoingCall", "ScrollUp");
 }
 export async function pagination(index) {
     //console.log('pagination', id)
