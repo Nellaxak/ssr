@@ -19,7 +19,7 @@ let currentPage = 0
 function ButtonSubmit(props) {
   //console.log('ButtonSubmit props',props)
   const ref = useRef(null)
-  const [page, setPage] = useState(null);
+  const [page, setPage] = useState(0);
   const router = useRouter()
   const searchParams = useSearchParams()
   currentViewtype = searchParams.get('viewtype')
@@ -35,7 +35,7 @@ function ButtonSubmit(props) {
     if (entry.isIntersecting) {
       if ((props.index + 1) === props.length) {
         setPage((page) => {
-          const newPage = Number(page) + 1
+          let newPage = Number(page) + 1
           return newPage
         })
       }
