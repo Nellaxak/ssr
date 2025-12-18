@@ -35,7 +35,7 @@ function ButtonSubmit(props) {
     if (entry.isIntersecting) {
       if ((props.index + 1) === props.length) {
         setPage((page) => {
-          let newPage = Number(page) + 1
+          let newPage = page + 1
           return newPage
         })
       }
@@ -46,7 +46,7 @@ function ButtonSubmit(props) {
   }, []);
   useEffect(() => {
     router.push(`?viewtype=${currentViewtype}&page=${page}`, { scroll: false });
-    //router.refresh()
+    router.refresh()
   }, [page])
   useEffect(() => {
     console.log('mount', props.index)//page increment -> new mount?
