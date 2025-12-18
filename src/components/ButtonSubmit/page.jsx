@@ -32,7 +32,7 @@ function ButtonSubmit(props) {
   const callbackFunction = useCallback(async (entries) => {
     const [entry] = entries;
     if (entry.isIntersecting) {
-      console.log('isIntersecting',(Number(props.index) + 1), Number(props.length))
+      console.log('isIntersecting',(Number(props.index) + 1), props.length)
       if ((Number(props.index) + 1) === Number(props.length)) {
         console.log('increm')
         setPage((page) => {
