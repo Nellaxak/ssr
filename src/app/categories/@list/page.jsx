@@ -162,7 +162,7 @@ async function Row(props) {
             <Suspense>
                 <output className={styles.padding}>{formatData}</output>
             </Suspense>
-            <ButtonSubmit index={props.index} length={props.length} id={props.obj.id} action={props.action}/>
+            <ButtonSubmit index={props.index} length={props.length} id={props.obj.id} />
             <div className={styles.flex_item}>
                 <div className={styles.flex_container_row}>
                     <span className={styles.danger}>{Danger}</span>
@@ -174,7 +174,7 @@ async function Row(props) {
 /*async function RenderProp(product){
 }*/
 export default async function Home({ searchParams }) {
-    console.log('@list Home')
+    //console.log('@list Home')
     const search = await searchParams;
     let [startDate, endDate] = await CalcData(search)
     const viewtype = await search.viewtype
@@ -206,7 +206,6 @@ export default async function Home({ searchParams }) {
                     length={items.length}
                     viewtype={viewtype}
                     dates={dateString}
-                    action={toggleClick}
                 /></Suspense>
             }}
         />

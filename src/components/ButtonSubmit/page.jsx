@@ -27,8 +27,7 @@ function ButtonSubmit(props) {
   //const callbackFunction = useCallback(async (entries: IntersectionObserverEntry[]) => {
   //let item
   const handleClick = useCallback(async () => {
-    console.log('handleClick', props.id)//,await props.action)
-    //await props.action(props.id)
+    //console.log('handleClick', props.id)
     await toggleClick(props.id)
   }, [])
   const callbackFunction = useCallback(async (entries) => {
@@ -52,7 +51,7 @@ function ButtonSubmit(props) {
       observer.disconnect();
     };
   }, [])
-  return <button type="button" ref={ref} onClick={() => handleClick()}><Suspense>444444</Suspense></button>
+  return <button type="button" ref={ref} onClick={handleClick}><Suspense>444444</Suspense></button>
   /*<Form action={toggleClick} ref={ref}>
    <input type='number' name='id' defaultValue={props.id} hidden></input>*/
   //</Form>
