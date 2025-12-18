@@ -13,7 +13,7 @@ export async function mountItemFSM(index) {
             idle: [{ event: "start", to: "started" }], // Событие "start" -&gt; попытка запуска камеры
             started: [
                 { event: "ioInput", to: "inside" },
-                { event: "ioOutput", to: "outside" },// Камера успешно запущена и готова к звонку
+                { event: "ioOutput", to: "outside" },// успешно запущена и готова к звонку
                 //{event: "error", to: "idle"}            // Ошибка при запуске камеры
             ],
             inside: [{ event: "ioOutput", to: "outside" }],   // Закрыть камеру
@@ -39,7 +39,7 @@ export async function mountItemFSM(index) {
 }
 export async function scrollFSM(index, action) {
     const instance = listInstances.get(index)
-    console.log('scroll', index, action, instance)
+    console.log('scroll', index, action)
     if (instance !== undefined) {
         if (action === 'input') {
             instance.trigger("ioInput");

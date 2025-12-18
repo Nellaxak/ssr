@@ -19,12 +19,12 @@ let currentPage = 0
 function ButtonSubmit(props) {
   //console.log('ButtonSubmit props',props)
   const ref = useRef(null)
-  const [instanceFSM, setInstanceFSM] = useState(null);
+  const [page, setPage] = useState(null);
   const router = useRouter()
   const searchParams = useSearchParams()
   currentViewtype = searchParams.get('viewtype')
   currentPage = Number(searchParams.get('page'))
-  
+
   const handleClick = useCallback(async () => {
     await toggleClick(props.id)
   }, [])
@@ -33,17 +33,20 @@ function ButtonSubmit(props) {
   const callbackFunction = useCallback(async (entries) => {
     const [entry] = entries;
     if (entry.isIntersecting) {
+      if ((props.index + 1) === props.length) {
+        setPage((page) => page++)
+      }
       scrollFSM(props.index, 'input')
     } else {
       scrollFSM(props.index, 'output')
     }
   }, []);
-  /*useEffect(() => {
+  useEffect(() => {
     router.push(`?viewtype=${currentViewtype}&page=${page}`, { scroll: false });
     router.refresh()
-  }, [page])*/
+  }, [page])
   useEffect(() => {
-    console.log('mount', props.index)
+    console.log('mount', props.index)//page increment -> new mount?
     mountItemFSM(props.index)
     const observer = new IntersectionObserver(callbackFunction, options);
     observer.observe(ref.current);
