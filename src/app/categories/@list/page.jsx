@@ -203,7 +203,7 @@ export default async function Home({ searchParams }) {
                     key={product.id}
                     obj={product}
                     index={index}
-                    length={items.length}
+                    length={array3.length}
                     viewtype={viewtype}
                     dates={dateString}
                 /></Suspense>
