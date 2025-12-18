@@ -35,7 +35,7 @@ function ButtonSubmit(props) {
     if (entry.isIntersecting) {
       if ((props.index + 1) === props.length) {
         setPage((page) => {
-          const newPage = page + 1
+          const newPage = Number(page) + 1
           return newPage
         })
       }
