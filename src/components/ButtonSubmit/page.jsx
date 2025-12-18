@@ -32,25 +32,20 @@ function ButtonSubmit(props) {
   const callbackFunction = useCallback(async (entries) => {
     const [entry] = entries;
     if (entry.isIntersecting) {
-      console.log('isIntersecting',(Number(props.index) + 1), props.length)
       if ((Number(props.index) + 1) === Number(props.length)) {
-        console.log('increm')
         setPage((page) => {
           let newPage = page + 1
           return newPage
         })
-        /*currentPage = currentPage + 1
-        router.push(`?viewtype=${currentViewtype}&page=${currentPage}`, { scroll: false });
-        router.refresh()*/
       }
-      //scrollFSM(props.index, 'input')
+      scrollFSM(props.index, 'input')
     } else {
-      //scrollFSM(props.index, 'output')
+      scrollFSM(props.index, 'output')
     }
   }, []);
   useEffect(() => {
     router.push(`?viewtype=${currentViewtype}&page=${page}`, { scroll: false });
-    router.refresh()
+    //router.refresh()
   }, [page])
   useEffect(() => {
     console.log('mount', props.index)//page increment -> new mount?
