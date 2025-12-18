@@ -24,12 +24,12 @@ function ButtonSubmit(props) {
   const searchParams = useSearchParams()
   currentViewtype = searchParams.get('viewtype')
   currentPage = Number(searchParams.get('page'))
-  //const callbackFunction = useCallback(async (entries: IntersectionObserverEntry[]) => {
-  //let item
+  
   const handleClick = useCallback(async () => {
-    //console.log('handleClick', props.id)
     await toggleClick(props.id)
   }, [])
+  //const callbackFunction = useCallback(async (entries: IntersectionObserverEntry[]) => {
+
   const callbackFunction = useCallback(async (entries) => {
     const [entry] = entries;
     if (entry.isIntersecting) {

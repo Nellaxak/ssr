@@ -39,7 +39,7 @@ export async function mountItemFSM(index) {
 }
 export async function scrollFSM(index, action) {
     const instance = listInstances.get(index)
-    console.log('scroll', index, action)
+    console.log('scroll', index, action, instance)
     if (instance !== undefined) {
         if (action === 'input') {
             instance.trigger("ioInput");
@@ -64,12 +64,9 @@ export async function pagination(index) {
     //revalidateTag('items')
 }
 export async function toggleClick(params) {
-    console.log('toggleClickPage', params)
     const id = Number(params)
-    //console.log('id type',params.get('id))
     const item = await Item.findById(id)
     await item.setStatus()
     //statusMap.set(id, !statusMap.get(id))
-    //revalidatePath('/')
     revalidateTag('items')
 }
