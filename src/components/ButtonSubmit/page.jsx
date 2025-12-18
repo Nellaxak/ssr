@@ -27,6 +27,9 @@ function ButtonSubmit(props) {
   currentPage = Number(searchParams.get('page'))
   //const callbackFunction = useCallback(async (entries: IntersectionObserverEntry[]) => {
   let item
+  const handleClick = useCallback(() => {
+    toggleClick(props.id)
+  }, [])
   const callbackFunction = useCallback(async (entries) => {
     const [entry] = entries;
     if (entry.isIntersecting) {
@@ -40,7 +43,7 @@ function ButtonSubmit(props) {
     router.refresh()
   }, [page])*/
   useEffect(() => {
-    console.log('mount',props.index)
+    console.log('mount', props.index)
     mountItemFSM(props.index)
     const observer = new IntersectionObserver(callbackFunction, options);
     observer.observe(ref.current);
@@ -48,9 +51,9 @@ function ButtonSubmit(props) {
       observer.disconnect();
     };
   }, [])
-  return <Form action={toggleClick} ref={ref}>
-    <input type='number' name='id' defaultValue={props.id} hidden></input>
-    <button type="submit"><Suspense>444444</Suspense></button>
-  </Form>
+  return /*<Form action={toggleClick} ref={ref}>
+    <input type='number' name='id' defaultValue={props.id} hidden></input>*/
+  <button type="button" onClick={handleClick}><Suspense>444444</Suspense></button>
+  //</Form>
 }
 export default ButtonSubmit
