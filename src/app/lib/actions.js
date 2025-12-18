@@ -64,7 +64,7 @@ export async function pagination(index) {
     //revalidateTag('items')
 }
 export async function toggleClick(params) {
-    //console.log('toggleClickPage', id)
+    console.log('toggleClickPage', params)
     const id = Number(params)
     //console.log('id type',typeof id)
     const item = await Item.findById(id)
