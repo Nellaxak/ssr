@@ -46,7 +46,7 @@ function ButtonSubmit(props) {
   }, []);
   useEffect(() => {
     router.push(`?viewtype=${currentViewtype}&page=${page}`, { scroll: false });
-    router.refresh()
+    //router.refresh()
   }, [page])
   useEffect(() => {
     console.log('mount', props.index)//page increment -> new mount?
