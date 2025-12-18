@@ -51,7 +51,7 @@ function ButtonSubmit(props) {
       observer.disconnect();
     };
   }, [])
-  return <button type="button" onClick={handleClick}><Suspense>444444</Suspense></button>
+  return <button type="button" ref={ref} onClick={handleClick}><Suspense>444444</Suspense></button>
    /*<Form action={toggleClick} ref={ref}>
     <input type='number' name='id' defaultValue={props.id} hidden></input>*/
   //</Form>
