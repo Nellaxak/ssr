@@ -66,7 +66,7 @@ export async function pagination(index) {
 export async function toggleClick(params) {
     console.log('toggleClickPage', params)
     const id = Number(params)
-    //console.log('id type',typeof id)
+    //console.log('id type',params.get('id))
     const item = await Item.findById(id)
     await item.setStatus()
     //statusMap.set(id, !statusMap.get(id))

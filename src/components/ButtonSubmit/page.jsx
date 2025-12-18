@@ -27,9 +27,9 @@ function ButtonSubmit(props) {
   currentPage = Number(searchParams.get('page'))
   //const callbackFunction = useCallback(async (entries: IntersectionObserverEntry[]) => {
   //let item
-  const handleClick = useCallback(() => {
+  const handleClick = useCallback(async () => {
     console.log('handleClick',props.id)
-    toggleClick(props.id)
+    await props.action(props.id)
   }, [])
   const callbackFunction = useCallback(async (entries) => {
     const [entry] = entries;
