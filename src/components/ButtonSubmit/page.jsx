@@ -3,8 +3,7 @@
 import { useEffect, useState, useCallback, Suspense, useRef } from 'react'
 import { useRouter, useSearchParams } from 'next/navigation'
 import Form from 'next/form'
-import { toggleClick } from '../../app/lib/actions'
-import { pagination, mountItemFSM, startFSM, scrollFSMDown, scrollFSMUp, scrollFSM } from '../../app/lib/actions'
+import { toggleClick,pagination, mountItemFSM, startFSM, scrollFSMDown, scrollFSMUp, scrollFSM } from '../../app/lib/actions'
 
 import OutputItemsSet from '../../app/OutputItemsSet'
 //import CountPage from '../../app/CountPage'
@@ -28,8 +27,9 @@ function ButtonSubmit(props) {
   //const callbackFunction = useCallback(async (entries: IntersectionObserverEntry[]) => {
   //let item
   const handleClick = useCallback(async () => {
-    console.log('handleClick',props.id,await props.action)
-    await props.action(props.id)
+    console.log('handleClick',props.id)//,await props.action)
+    //await props.action(props.id)
+    toggleClick(props.id)
   }, [])
   const callbackFunction = useCallback(async (entries) => {
     const [entry] = entries;
