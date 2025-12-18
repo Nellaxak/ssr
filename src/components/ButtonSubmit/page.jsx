@@ -33,6 +33,7 @@ function ButtonSubmit(props) {
     const [entry] = entries;
     if (entry.isIntersecting) {
       if ((props.index + 1) === props.length) {
+        console.log('increm')
         setPage((page) => {
           let newPage = page + 1
           return newPage
