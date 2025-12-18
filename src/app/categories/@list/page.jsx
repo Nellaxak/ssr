@@ -162,7 +162,7 @@ async function Row(props) {
             <Suspense>
                 <output className={styles.padding}>{formatData}</output>
             </Suspense>
-            <ButtonSubmit index={props.index} length={props.length} id={props.obj.id}/>
+            <ButtonSubmit index={props.index} length={props.length} id={props.obj.id} />
             <div className={styles.flex_item}>
                 <div className={styles.flex_container_row}>
                     <span className={styles.danger}>{Danger}</span>
@@ -181,7 +181,7 @@ export default async function Home({ searchParams }) {
     //try {
     resp = await fetch(`https://api.nasa.gov/neo/rest/v1/feed?start_date=${startDate}&end_date=${endDate}&api_key=3wa5hHgFuqhf6XiefvqzkcDQWZ01aOOK4vNZEXsP`,
         { cache: 'force-cache' },
-       // { next: { tags: ['items'] } }
+        // { next: { tags: ['items'] } }
     );
     if (Number(resp.status) === 200) {
         const dat = await resp.json()
@@ -198,6 +198,7 @@ export default async function Home({ searchParams }) {
                 const dateString = datSlice.replace('.', '');*/
                 const dateString = startDate;
                 new Item(Number(product.id), product)
+                //action={toggleClick}
                 return <Suspense><Row
                     key={product.id}
                     obj={product}
@@ -205,7 +206,6 @@ export default async function Home({ searchParams }) {
                     length={items.length}
                     viewtype={viewtype}
                     dates={dateString}
-                    action={toggleClick}
                 /></Suspense>
             }}
         />
