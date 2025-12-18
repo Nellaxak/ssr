@@ -26,7 +26,7 @@ function ButtonSubmit(props) {
   currentViewtype = searchParams.get('viewtype')
   currentPage = Number(searchParams.get('page'))
   //const callbackFunction = useCallback(async (entries: IntersectionObserverEntry[]) => {
-  let item
+  //let item
   const handleClick = useCallback(() => {
     toggleClick(props.id)
   }, [])
@@ -51,9 +51,9 @@ function ButtonSubmit(props) {
       observer.disconnect();
     };
   }, [])
-  return /*<Form action={toggleClick} ref={ref}>
+  return <button type="button" onClick={handleClick}><Suspense>444444</Suspense></button>
+   /*<Form action={toggleClick} ref={ref}>
     <input type='number' name='id' defaultValue={props.id} hidden></input>*/
-  <button type="button" onClick={handleClick}><Suspense>444444</Suspense></button>
   //</Form>
 }
 export default ButtonSubmit
