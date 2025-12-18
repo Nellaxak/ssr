@@ -28,7 +28,7 @@ function ButtonSubmit(props) {
   //const callbackFunction = useCallback(async (entries: IntersectionObserverEntry[]) => {
   //let item
   const handleClick = useCallback(async () => {
-    console.log('handleClick',props.id,props.action)
+    console.log('handleClick',props.id,await props.action)
     await props.action(props.id)
   }, [])
   const callbackFunction = useCallback(async (entries) => {
