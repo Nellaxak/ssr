@@ -34,7 +34,10 @@ function ButtonSubmit(props) {
     const [entry] = entries;
     if (entry.isIntersecting) {
       if ((props.index + 1) === props.length) {
-        setPage((page) => page++)
+        setPage((page) => {
+          const newPage = page + 1
+          return newPage
+        })
       }
       scrollFSM(props.index, 'input')
     } else {
