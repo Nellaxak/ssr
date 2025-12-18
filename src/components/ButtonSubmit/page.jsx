@@ -29,7 +29,7 @@ function ButtonSubmit(props) {
   const handleClick = useCallback(async () => {
     console.log('handleClick',props.id)//,await props.action)
     //await props.action(props.id)
-    toggleClick(props.id)
+    await toggleClick(props.id)
   }, [])
   const callbackFunction = useCallback(async (entries) => {
     const [entry] = entries;
