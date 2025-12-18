@@ -29,7 +29,6 @@ function ButtonSubmit(props) {
     await toggleClick(props.id)
   }, [])
   //const callbackFunction = useCallback(async (entries: IntersectionObserverEntry[]) => {
-
   const callbackFunction = useCallback(async (entries) => {
     const [entry] = entries;
     if (entry.isIntersecting) {
@@ -40,10 +39,11 @@ function ButtonSubmit(props) {
         })*/
         currentPage = currentPage + 1
         router.push(`?viewtype=${currentViewtype}&page=${currentPage}`, { scroll: false });
+        router.refresh()
       }
-      scrollFSM(props.index, 'input')
+      //scrollFSM(props.index, 'input')
     } else {
-      scrollFSM(props.index, 'output')
+      //scrollFSM(props.index, 'output')
     }
   }, []);
   /*useEffect(() => {
