@@ -34,20 +34,22 @@ function ButtonSubmit(props) {
     const [entry] = entries;
     if (entry.isIntersecting) {
       if ((props.index + 1) === props.length) {
-        setPage((page) => {
+        /*setPage((page) => {
           let newPage = page + 1
           return newPage
-        })
+        })*/
+        currentPage = currentPage + 1
+        router.push(`?viewtype=${currentViewtype}&page=${currentPage}`, { scroll: false });
       }
       scrollFSM(props.index, 'input')
     } else {
       scrollFSM(props.index, 'output')
     }
   }, []);
-  useEffect(() => {
+  /*useEffect(() => {
     router.push(`?viewtype=${currentViewtype}&page=${page}`, { scroll: false });
     router.refresh()
-  }, [page])
+  }, [page])*/
   useEffect(() => {
     console.log('mount', props.index)//page increment -> new mount?
     mountItemFSM(props.index)
