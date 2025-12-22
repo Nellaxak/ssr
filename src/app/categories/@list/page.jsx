@@ -95,12 +95,7 @@ async function List({ items, renderItem }) {
     console.log('type items', Array.isArray(items), items.length)
     const res = await Promise.all(
         items.map(async (item, index) => {
-            //index err
-            //console.log('item_map',item)
-            //if (!OutputItemsSet.has(Number(index))) {
-            //console.log('not has',index)
             return await renderItem(item, index);
-            //}
         }))
 
     return (
@@ -199,7 +194,7 @@ export default async function Home({ searchParams }) {
                     key={product.id}
                     obj={product}
                     index={index}
-                    length={arrObjects[0].length}
+                    length={items.length}
                     viewtype={viewtype}
                     dates={dateString}
                 /></Suspense>
