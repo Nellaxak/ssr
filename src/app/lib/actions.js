@@ -37,7 +37,7 @@ export async function mountItemFSM(index, obj) {
                 // Что то делаем
                 if (from === 'inside') {
                     console.log('scroll outside', index)
-                    linkedList.delete(obj)
+                    //linkedList.delete(obj)
                 }
                 //console.log('onAfterIoOutput', index, from, to)
             },
