@@ -114,8 +114,9 @@ export class LinkedList {
     return nodes;
   }
   async fromArray(values) {
+    console.log('fromArray')
     values.forEach(async (value) => {
-      console.log('value', value)
+      //console.log('value', value)
       await this.append(value)
     });
 
