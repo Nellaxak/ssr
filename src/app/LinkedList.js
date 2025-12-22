@@ -110,7 +110,7 @@ export class LinkedList {
     }
 
     // Возвращаем массив из всех узлов.
-    //console.log('nodes', nodes)
+    console.log('nodes length', nodes.length)
     return nodes;
   }
   async fromArray(values) {
