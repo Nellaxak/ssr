@@ -164,7 +164,7 @@ async function Row(props) {
 /*async function RenderProp(product){
 }*/
 export default async function Home({ searchParams }) {
-    console.log('@list Home')
+    //console.log('@list Home')
     const search = await searchParams;
     let [startDate, endDate] = await CalcData(search)
     const viewtype = await search.viewtype
