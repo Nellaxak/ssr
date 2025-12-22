@@ -20,15 +20,6 @@ export async function mountItemFSM(index, obj) {
             outside: [{ event: "ioInput", to: "inside" }],
         },
         callbacks: {
-            /*onAfterStart: (from, to) => {
-                // Что то делаем
-                console.log('onAfterStart', from, to)
-            },*/
-            /*onBeforeIoInput: (from, to) => {
-                // Что то делаем
-                console.log('onBeforeIoInput', index, from, to)
-               
-            },*/
             onAfterIoInput: (from, to) => {
                 // Что то делаем
                 if (from === 'outside') {
@@ -36,10 +27,6 @@ export async function mountItemFSM(index, obj) {
                 }
                 //console.log('onAfterIoInput', index, from, to)
             },
-            /*onBeforeIoOutput: (from, to) => {
-                // Что то делаем
-                console.log('onBeforeIoOutput', index, from, to)
-            },*/
             onAfterIoOutput: (from, to) => {
                 // Что то делаем
                 if (from === 'inside') {
@@ -47,10 +34,6 @@ export async function mountItemFSM(index, obj) {
                 }
                 //console.log('onAfterIoOutput', index, from, to)
             },
-            /*onAfterOpenedForCall: (from, to, msg) => {
-                // Что то делаем
-                console.log('onAfterOpenedForCall', from, to, msg)
-            },*/
             onAfterError: (from, to, err) => {
                 // Что то делаем
                 console.log('onAfterError', from, to, err)
@@ -62,8 +45,8 @@ export async function mountItemFSM(index, obj) {
 }
 export async function scrollFSM(index, action) {
     const instance = listInstances.get(index)
-    console.log('scroll', index, action)
     if (instance !== undefined) {
+        console.log('scroll', index, action)
         if (action === 'input') {
             instance.trigger("ioInput");
         } else {

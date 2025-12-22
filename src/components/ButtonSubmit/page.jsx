@@ -20,6 +20,7 @@ function ButtonSubmit(props) {
   //console.log('ButtonSubmit props',props)
   const ref = useRef(null)
   const [page, setPage] = useState(0);
+  //const [io, setIO] = useState(null);//true-input-load/false-output
   const router = useRouter()
   const searchParams = useSearchParams()
   currentViewtype = searchParams.get('viewtype')
@@ -38,8 +39,10 @@ function ButtonSubmit(props) {
           return newPage
         })
       }
+      //setIO(true)//!prev state?
       scrollFSM(props.index, 'input')
     } else {
+      //setIO(false)
       scrollFSM(props.index, 'output')
     }
   }, []);
