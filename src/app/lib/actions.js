@@ -23,14 +23,14 @@ export async function mountItemFSM(index, obj) {
             onAfterIoInput: async (from, to) => {
                 // Что то делаем
                 if (from === 'outside') {
-                    console.log('scroll down', index)
+                    console.log('scroll inside', index)
                 }
                 //console.log('onAfterIoInput', index, from, to)
             },
             onAfterIoOutput: async (from, to) => {
                 // Что то делаем
                 if (from === 'inside') {
-                    console.log('scroll up', index)
+                    console.log('scroll outside', index)
                 }
                 //console.log('onAfterIoOutput', index, from, to)
             },
@@ -46,7 +46,7 @@ export async function mountItemFSM(index, obj) {
 export async function scrollFSM(index, action) {
     const instance = listInstances.get(index)
     if (instance !== undefined) {
-        console.log('scroll', index, action)
+        //console.log('scroll', index, action)
         if (action === 'input') {
             await instance.trigger("ioInput");
         } else {
