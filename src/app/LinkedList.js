@@ -11,10 +11,10 @@ export class LinkedList {
   static arrObj = new Map();
   constructor(type) {
     //if (!LinkedList._instance) {// Singleton
-      //LinkedList._instance = this;
-      this.head = null;
-      this.tail = null;
-   // }
+    //LinkedList._instance = this;
+    this.head = null;
+    this.tail = null;
+    // }
     //return LinkedList._instance;
 
   }
@@ -114,7 +114,10 @@ export class LinkedList {
     return nodes;
   }
   async fromArray(values) {
-    values.forEach(async (value) => await this.append(value));
+    values.forEach(async (value) => {
+      console.log('value', value)
+      await this.append(value)
+    });
 
     return this;
   }
