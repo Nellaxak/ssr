@@ -185,7 +185,8 @@ export default async function Home({ searchParams }) {
         linkedList.fromArray(arrObjects[0])
         //array3 = arrObjects[0]
         //add very small data emulate
-        return <List items={linkedList.toArray()}
+        const items = await linkedList.toArray()
+        return <List items={items}
             renderItem={async (product, index) => {
                 /*const date = new Date(product.close_approach_data[0].epoch_date_close_approach)
                 const prevDate = new Intl.DateTimeFormat("ru-RU", options).format(date);
