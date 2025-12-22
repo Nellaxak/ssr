@@ -92,7 +92,7 @@ async function CalcData(params) {
 }
 
 async function List({ items, renderItem }) {
-    console.log('type items', items.isArray())
+    console.log('type items', Array.isArray(items))
     const res = await Promise.all(
         items.map(async (item, index) => {
             //console.log('item_map',item)
