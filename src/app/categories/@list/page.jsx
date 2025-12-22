@@ -92,9 +92,10 @@ async function CalcData(params) {
 }
 
 async function List({ items, renderItem }) {
-    console.log('type items', Array.isArray(items))
+    console.log('type items', Array.isArray(items), items.length)
     const res = await Promise.all(
         items.map(async (item, index) => {
+            //index err
             //console.log('item_map',item)
             //if (!OutputItemsSet.has(Number(index))) {
             //console.log('not has',index)

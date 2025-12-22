@@ -39,11 +39,11 @@ export default class HFSM {
         // Смена состояния
         this.state = to;
         console.log('after', this.index, this.state)
-        if (this.state === 'inside') {
+        /*if (this.state === 'inside') {
             linkedList.append(this.obj)
         } else {
             linkedList.delete(this.obj)
-        }
+        }*/
         this.history.push({ from, to, event, timestamp: Date.now() });
 
         // Коллбэк после перехода
