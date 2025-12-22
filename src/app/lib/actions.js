@@ -24,21 +24,28 @@ export async function mountItemFSM(index, obj) {
                 // Что то делаем
                 console.log('onAfterStart', from, to)
             },*/
-            onBeforeIoInput: (from, to) => {
+            /*onBeforeIoInput: (from, to) => {
                 // Что то делаем
                 console.log('onBeforeIoInput', index, from, to)
-            },
+               
+            },*/
             onAfterIoInput: (from, to) => {
                 // Что то делаем
-                console.log('onAfterIoInput', index, from, to)
+                if (from === 'outside') {
+                    console.log('scroll down', index)
+                }
+                //console.log('onAfterIoInput', index, from, to)
             },
-            onBeforeIoOutput: (from, to) => {
+            /*onBeforeIoOutput: (from, to) => {
                 // Что то делаем
                 console.log('onBeforeIoOutput', index, from, to)
-            },
+            },*/
             onAfterIoOutput: (from, to) => {
                 // Что то делаем
-                console.log('onAfterIoOutput', index, from, to)
+                if (from === 'inside') {
+                    console.log('scroll up', index)
+                }
+                //console.log('onAfterIoOutput', index, from, to)
             },
             /*onAfterOpenedForCall: (from, to, msg) => {
                 // Что то делаем
