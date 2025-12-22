@@ -177,13 +177,13 @@ export default async function Home({ searchParams }) {
         const dat = await resp.json()
         const list = dat.near_earth_objects
         const arrObjects = Object.values(list)
-        console.log('arrObjects', arrObjects[0].length)
+        //console.log('arrObjects', arrObjects[0].length)
         //array3 = array3.concat(arrObjects[0]);
-        await linkedList.fromArray(arrObjects[0])
-        //array3 = arrObjects[0]
+        //await linkedList.fromArray(arrObjects[0])
+        array3 = arrObjects[0]
         //add very small data emulate
-        const items = await linkedList.toArray()
-        return <List items={items}
+        //const items = await linkedList.toArray()
+        return <List items={array3}
             renderItem={async (product, index) => {
                 /*const date = new Date(product.close_approach_data[0].epoch_date_close_approach)
                 const prevDate = new Intl.DateTimeFormat("ru-RU", options).format(date);
@@ -195,7 +195,7 @@ export default async function Home({ searchParams }) {
                     key={product.id}
                     obj={product}
                     index={index}
-                    length={items.length}
+                    length={array3.length}
                     viewtype={viewtype}
                     dates={dateString}
                 /></Suspense>
