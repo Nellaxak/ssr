@@ -3,6 +3,7 @@ import { revalidateTag } from 'next/cache';
 import items from '../../app/lib/ArrayGlob'
 import Item from '../Item';
 import HFSM from '../HFSM'
+import linkedList from '../LinkedList';
 
 const listInstances = new Map()
 export async function mountItemFSM(index, obj) {
@@ -23,6 +24,7 @@ export async function mountItemFSM(index, obj) {
             onAfterIoInput: async (from, to) => {
                 // Что то делаем
                 if (from === 'outside') {
+                    linkedList.append(obj)
                     console.log('scroll inside', index)
                 }
                 //console.log('onAfterIoInput', index, from, to)
@@ -30,6 +32,7 @@ export async function mountItemFSM(index, obj) {
             onAfterIoOutput: async (from, to) => {
                 // Что то делаем
                 if (from === 'inside') {
+                    linkedList.delete(obj)
                     console.log('scroll outside', index)
                 }
                 //console.log('onAfterIoOutput', index, from, to)

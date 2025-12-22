@@ -1,4 +1,4 @@
-import Item from "./Item";
+//import Item from "./Item";
 export class LinkedListNode {
   constructor(value, next = null) {
     this.value = value;
@@ -9,7 +9,7 @@ export class LinkedListNode {
 export class LinkedList {
   static arrObj = new Map();
   constructor(type) {
-    if (!LinkedList._instance) {//pattern Singleton
+    if (!LinkedList._instance) {// Singleton
       LinkedList._instance = this;
       this.head = null;
       this.tail = null;
@@ -33,9 +33,9 @@ export class LinkedList {
   async append(value1) {//if exsist?
     //console.log('before append', value1)
     if (!LinkedList.arrObj.has(Number(value1.id))) {
-      const value = new Item(Number(value1.id), value1)
-      LinkedList.arrObj.set(Number(value.id), this)
-      const newNode = new LinkedListNode(value);
+      //const value = new Item(Number(value1.id), value1)
+      LinkedList.arrObj.set(Number(value1.id), value1)
+      const newNode = new LinkedListNode(value1);
       if (!this.head || !this.tail) {
         this.head = newNode;
         this.tail = newNode;
