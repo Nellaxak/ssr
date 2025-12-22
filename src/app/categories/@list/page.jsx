@@ -186,16 +186,16 @@ export default async function Home({ searchParams }) {
         console.log('after llist', items.length)
         return <List items={items}
             renderItem={async (product, index) => {
-                console.log('product', product)
+                console.log('product', product.value)
                 /*const date = new Date(product.close_approach_data[0].epoch_date_close_approach)
                 const prevDate = new Intl.DateTimeFormat("ru-RU", options).format(date);
                 const datSlice = prevDate.slice(0, -2)
                 const dateString = datSlice.replace('.', '');*/
                 const dateString = startDate;
-                new Item(Number(product.id), product)
+                new Item(Number(product.value.id), product.value)
                 return <Suspense><Row
-                    key={product.id}
-                    obj={product}
+                    key={product.value.id}
+                    obj={product.value}
                     index={index}
                     length={items.length}
                     viewtype={viewtype}
