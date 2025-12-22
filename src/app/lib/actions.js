@@ -24,8 +24,11 @@ export async function mountItemFSM(index, obj) {
             onAfterIoInput: async (from, to) => {
                 // Что то делаем
                 if (from === 'outside') {
-                    linkedList.append(obj)
+                    //linkedList.append(obj)
                     console.log('scroll inside', index)
+                    if (linkedList.tail === obj) {
+                        console.log('scroll inside tail', index)
+                    }
                 }
                 //console.log('onAfterIoInput', index, from, to)
             },
