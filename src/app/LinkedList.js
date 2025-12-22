@@ -4,18 +4,18 @@ export class LinkedListNode {
     this.value = value;
     //this.error = error;
     this.next = next;
-    this.prev = prev;
+    //this.prev = prev;
   }
 }
 export class LinkedList {
   static arrObj = new Map();
   constructor(type) {
-    if (!LinkedList._instance) {// Singleton
-      LinkedList._instance = this;
+    //if (!LinkedList._instance) {// Singleton
+      //LinkedList._instance = this;
       this.head = null;
       this.tail = null;
-    }
-    return LinkedList._instance;
+   // }
+    //return LinkedList._instance;
 
   }
   find(value) {
@@ -43,7 +43,7 @@ export class LinkedList {
         return this;
       }
       this.tail.next = newNode;
-      newNode.prev = this.tail;
+      //newNode.prev = this.tail;
       this.tail = newNode;
       //console.log('after append', this)
     }

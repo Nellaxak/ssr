@@ -26,7 +26,7 @@ export async function mountItemFSM(index, obj) {
                 if (from === 'outside') {
                     //linkedList.append(obj)//append next node ll
                     //tail.prev
-                    console.log('scroll inside', index, linkedList.tail.prev, obj.id)
+                    console.log('scroll inside', index, linkedList.tail, obj.id)
                     /*if (linkedList.tail.id === obj.id) {
                         console.log('scroll inside tail', index)
                     }*/
