@@ -180,10 +180,11 @@ export default async function Home({ searchParams }) {
         //console.log('arrObjects', arrObjects[0].length)
         //array3 = array3.concat(arrObjects[0]);
         await linkedList.fromArray(arrObjects[0])
-        array3 = arrObjects[0]
+        //array3 = arrObjects[0]
         //add very small data emulate
-        //const items = await linkedList.toArray()
-        return <List items={array3}
+        const items = await linkedList.toArray()
+        console.log('after ll', items.length)
+        return <List items={items}
             renderItem={async (product, index) => {
                 /*const date = new Date(product.close_approach_data[0].epoch_date_close_approach)
                 const prevDate = new Intl.DateTimeFormat("ru-RU", options).format(date);
@@ -195,7 +196,7 @@ export default async function Home({ searchParams }) {
                     key={product.id}
                     obj={product}
                     index={index}
-                    length={array3.length}
+                    length={items.length}
                     viewtype={viewtype}
                     dates={dateString}
                 /></Suspense>
