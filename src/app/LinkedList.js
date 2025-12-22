@@ -1,9 +1,10 @@
 //import Item from "./Item";
 export class LinkedListNode {
-  constructor(value, next = null) {
+  constructor(value, next = null, prev = null) {
     this.value = value;
     //this.error = error;
     this.next = next;
+    this.prev = prev;
   }
 }
 export class LinkedList {
@@ -42,6 +43,7 @@ export class LinkedList {
         return this;
       }
       this.tail.next = newNode;
+      newNode.prev = this.tail;
       this.tail = newNode;
       //console.log('after append', this)
     }
