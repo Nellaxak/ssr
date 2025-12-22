@@ -33,12 +33,12 @@ function ButtonSubmit(props) {
   const callbackFunction = useCallback(async (entries) => {
     const [entry] = entries;
     if (entry.isIntersecting) {
-      if ((Number(props.index) + 1) === Number(props.length)) {
+      /*if ((Number(props.index) + 1) === Number(props.length)) {
         setPage((page) => {
           let newPage = page + 1
           return newPage
         })
-      }
+      }*/
       //setIO(true)//!prev state?
       scrollFSM(props.index, 'input')
     } else {
