@@ -183,9 +183,10 @@ export default async function Home({ searchParams }) {
         //array3 = arrObjects[0]
         //add very small data emulate
         const items = await linkedList.toArray()
-        console.log('after ll', items.length)
+        console.log('after llist', items.length)
         return <List items={items}
             renderItem={async (product, index) => {
+                console.log('product', product)
                 /*const date = new Date(product.close_approach_data[0].epoch_date_close_approach)
                 const prevDate = new Intl.DateTimeFormat("ru-RU", options).format(date);
                 const datSlice = prevDate.slice(0, -2)
