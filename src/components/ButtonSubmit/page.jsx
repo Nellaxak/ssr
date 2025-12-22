@@ -23,7 +23,7 @@ function ButtonSubmit(props) {
   const router = useRouter()
   const searchParams = useSearchParams()
   currentViewtype = searchParams.get('viewtype')
-  currentPage = Number(searchParams.get('page'))
+  //currentPage = Number(searchParams.get('page'))
 
   const handleClick = useCallback(async () => {
     await toggleClick(props.id)
@@ -45,11 +45,10 @@ function ButtonSubmit(props) {
   }, []);
   useEffect(() => {
     router.push(`?viewtype=${currentViewtype}&page=${page}`, { scroll: false });
-    //router.refresh()
   }, [page])
   useEffect(() => {
     console.log('mount', props.index)//page increment -> new mount?
-    mountItemFSM(props.index)
+    mountItemFSM(props.index, props.obj)
     const observer = new IntersectionObserver(callbackFunction, options);
     observer.observe(ref.current);
     return () => {

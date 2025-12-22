@@ -5,16 +5,16 @@ import Item from '../Item';
 import HFSM from '../HFSM'
 
 const listInstances = new Map()
-export async function mountItemFSM(index) {
+export async function mountItemFSM(index, obj) {
     const instanceFSM = new HFSM({
         initial: "idle", // Камера по умолчанию неактивна
         index: index,
+        obj: obj,
         transitions: {
             idle: [{ event: "start", to: "started" }], // Событие "start" -&gt; попытка запуска камеры
             started: [
                 { event: "ioInput", to: "inside" },
                 { event: "ioOutput", to: "outside" },// успешно запущена и готова к звонку
-                //{event: "error", to: "idle"}            // Ошибка при запуске камеры
             ],
             inside: [{ event: "ioOutput", to: "outside" }],   // Закрыть камеру
             outside: [{ event: "ioInput", to: "inside" }],
@@ -24,10 +24,10 @@ export async function mountItemFSM(index) {
                 // Что то делаем
                 console.log('onAfterStart', from, to)
             },
-            onAfterOpenedForCall: (from, to, msg) => {
+            /*onAfterOpenedForCall: (from, to, msg) => {
                 // Что то делаем
                 console.log('onAfterOpenedForCall', from, to, msg)
-            },
+            },*/
             onAfterError: (from, to, err) => {
                 // Что то делаем
                 console.log('onAfterError', from, to, err)

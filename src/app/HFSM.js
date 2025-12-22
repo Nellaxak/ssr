@@ -1,6 +1,8 @@
+import linkedList from '../app/LinkedList'
 export default class HFSM {
     constructor(config) {
         this.index = config.index;
+        this.obj = config.obj;
         this.state = config.initial; // Начальное состояние автомата
         this.transitions = config.transitions; // Описание всех возможных переходов
         this.callbacks = config.callbacks || {}; // Функции обратного вызова (действия)
@@ -37,6 +39,11 @@ export default class HFSM {
         // Смена состояния
         this.state = to;
         console.log('after', this.index, this.state)
+        if (this.state === 'inside') {
+            linkedList.append(this.obj)
+        } else {
+            linkedList.delete(this.obj)
+        }
         this.history.push({ from, to, event, timestamp: Date.now() });
 
         // Коллбэк после перехода

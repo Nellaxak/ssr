@@ -5,10 +5,8 @@ import Link from "next/link";
 import Form from "next/form";
 import Item from "../../Item";
 import { revalidateTag, revalidatePath } from 'next/cache';
-//import CountPage from "../../CountPage";
 import ButtonSubmit from '../../../components/ButtonSubmit/page'
-import { toggleClick } from '../../lib/actions'
-//import linkedList from '../../LinkedList'
+import linkedList from '../../LinkedList'
 import OutputItemsSet from "../../OutputItemsSet";
 import items from "../../lib/ArrayGlob";
 
@@ -162,7 +160,7 @@ async function Row(props) {
             <Suspense>
                 <output className={styles.padding}>{formatData}</output>
             </Suspense>
-            <ButtonSubmit index={props.index} length={props.length} id={props.obj.id} />
+            <ButtonSubmit index={props.index} length={props.length} id={props.obj.id} obj={props.obj} />
             <div className={styles.flex_item}>
                 <div className={styles.flex_container_row}>
                     <span className={styles.danger}>{Danger}</span>
@@ -188,9 +186,10 @@ export default async function Home({ searchParams }) {
         const list = dat.near_earth_objects
         const arrObjects = Object.values(list)
         //array3 = array3.concat(arrObjects[0]);
-        array3 = arrObjects[0]
+        linkedList.fromArray(arrObjects[0])
+        //array3 = arrObjects[0]
         //add very small data emulate
-        return <List items={array3}
+        return <List items={linkedList.toArray()}
             renderItem={async (product, index) => {
                 /*const date = new Date(product.close_approach_data[0].epoch_date_close_approach)
                 const prevDate = new Intl.DateTimeFormat("ru-RU", options).format(date);
@@ -198,12 +197,11 @@ export default async function Home({ searchParams }) {
                 const dateString = datSlice.replace('.', '');*/
                 const dateString = startDate;
                 new Item(Number(product.id), product)
-                //action={toggleClick}
                 return <Suspense><Row
                     key={product.id}
                     obj={product}
                     index={index}
-                    length={array3.length}
+                    length={arrObjects[0].length}
                     viewtype={viewtype}
                     dates={dateString}
                 /></Suspense>
