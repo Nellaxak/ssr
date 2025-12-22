@@ -20,21 +20,21 @@ export async function mountItemFSM(index, obj) {
             outside: [{ event: "ioInput", to: "inside" }],
         },
         callbacks: {
-            onAfterIoInput: (from, to) => {
+            onAfterIoInput: async (from, to) => {
                 // Что то делаем
                 if (from === 'outside') {
                     console.log('scroll down', index)
                 }
                 //console.log('onAfterIoInput', index, from, to)
             },
-            onAfterIoOutput: (from, to) => {
+            onAfterIoOutput: async (from, to) => {
                 // Что то делаем
                 if (from === 'inside') {
                     console.log('scroll up', index)
                 }
                 //console.log('onAfterIoOutput', index, from, to)
             },
-            onAfterError: (from, to, err) => {
+            onAfterError: async (from, to, err) => {
                 // Что то делаем
                 console.log('onAfterError', from, to, err)
             }
