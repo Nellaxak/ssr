@@ -20,9 +20,25 @@ export async function mountItemFSM(index, obj) {
             outside: [{ event: "ioInput", to: "inside" }],
         },
         callbacks: {
-            onAfterStart: (from, to) => {
+            /*onAfterStart: (from, to) => {
                 // Что то делаем
                 console.log('onAfterStart', from, to)
+            },*/
+            onBeforeIoInput: (from, to) => {
+                // Что то делаем
+                console.log('onBeforeIoInput', from, to)
+            },
+            onAfterIoInput: (from, to) => {
+                // Что то делаем
+                console.log('onAfterIoInput', from, to)
+            },
+            onBeforeIoOutput: (from, to) => {
+                // Что то делаем
+                console.log('onBeforeIoOutput', from, to)
+            },
+             onAfterIoOutput: (from, to) => {
+                // Что то делаем
+                console.log('onAfterIoOutput', from, to)
             },
             /*onAfterOpenedForCall: (from, to, msg) => {
                 // Что то делаем

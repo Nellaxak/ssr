@@ -20,7 +20,7 @@ export default class HFSM {
     trigger(event, ...args) {
         const allowed = this.getTransitionsForState(this.state);
         const transition = allowed.find(t => t.event === event);
-        console.log('before', this.index, this.state, transition)
+        //console.log('before', this.index, this.state, transition)
         if (!transition) {
             console.warn(`Event "${event}" not allowed in state "${this.state}"`);
             return false;
@@ -38,7 +38,7 @@ export default class HFSM {
 
         // Смена состояния
         this.state = to;
-        console.log('after', this.index, this.state)
+        //console.log('after', this.index, this.state)
         /*if (this.state === 'inside') {
             linkedList.append(this.obj)
         } else {
