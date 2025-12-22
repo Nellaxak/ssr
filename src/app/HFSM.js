@@ -11,14 +11,14 @@ export default class HFSM {
     }
 
     // Проверяет, возможно ли данное событие в текущем состоянии
-    can(event) {
-        const allowed = this.getTransitionsForState(this.state);
+    async can(event) {
+        const allowed = await this.getTransitionsForState(this.state);
         return allowed.some(t => t.event === event);
     }
 
     // Инициирует переход по событию
-    trigger(event, ...args) {
-        const allowed = this.getTransitionsForState(this.state);
+    async trigger(event, ...args) {
+        const allowed = await this.getTransitionsForState(this.state);
         const transition = allowed.find(t => t.event === event);
         //console.log('before', this.index, this.state, transition)
         if (!transition) {
@@ -28,7 +28,7 @@ export default class HFSM {
 
         const from = this.state;
         const to = transition.to;
-        const capitalizedEvent = HFSM.capitalize(event);
+        const capitalizedEvent = await HFSM.capitalize(event);
 
         // Коллбэк перед переходом
         const beforeCallback = `onBefore${capitalizedEvent}`;
@@ -59,31 +59,31 @@ export default class HFSM {
 
         // Обработка вложенного FSM, если новое состояние является таковым
         if (this.states[to] instanceof HFSM) {
-            this.states[to].start(...args);
+            await this.states[to].start(...args);
         }
 
         return true;
     }
 
     // Запускает начальный коллбэк, если он определен
-    start(...args) {
+    async start(...args) {
         if (this.callbacks.onStart) {
             this.callbacks.onStart(this.state, ...args);
         }
     }
 
     // Вспомогательный метод для получения доступных переходов из заданного состояния
-    getTransitionsForState(state) {
+    async getTransitionsForState(state) {
         return this.transitions[state] || [];
     }
 
     // Возвращает историю переходов
-    getHistory() {
+    async getHistory() {
         return this.history;
     }
 
     // Вспомогательный метод для капитализации первой буквы строки (для имен коллбэков)
-    static capitalize(str) {
+    static async capitalize(str) {
         return str.charAt(0).toUpperCase() + str.slice(1);
     }
 }
