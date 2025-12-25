@@ -11,7 +11,7 @@ const instanceItem = new Map()
 
 //add observer subscribe
 //console.log('linkedlist', linkedList)
-export async function mountItemFSM(index, obj) {
+export async function mountItem(index, obj) {
     const item = new Item(Number(obj.id), obj)
     instanceItem.set(Number(obj.id), item)
 }
