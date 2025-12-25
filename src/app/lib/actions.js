@@ -3,10 +3,10 @@ import { revalidateTag } from 'next/cache';
 import items from '../../app/lib/ArrayGlob'
 import Item from '../Item';
 import HFSM from '../HFSM'
-import linkedList from '../LinkedList';
+import ffff from '../LinkedList';
 
 const listInstances = new Map()
-console.log('linkedlist', linkedList)
+console.log('linkedlist', ffff())
 
 export async function mountItemFSM(index, obj) {
     const instanceFSM = new HFSM({
@@ -28,7 +28,7 @@ export async function mountItemFSM(index, obj) {
                 if (from === 'outside') {
                     //linkedList.append(obj)//append next node ll
                     //tail.prev
-                    console.log('scroll inside', index, linkedList)//, obj.id)
+                    console.log('scroll inside', index, ffff)//, obj.id)
                     /*if (linkedList.tail.id === obj.id) {
                         console.log('scroll inside tail', index)
                     }*/

@@ -1,6 +1,6 @@
 //import Item from "./Item";
 'use server'
-export class LinkedListNode {
+class LinkedListNode {
   constructor(value, next = null, prev = null) {
     this.value = value;
     //this.error = error;
@@ -8,7 +8,7 @@ export class LinkedListNode {
     //this.prev = prev;
   }
 }
-export class LinkedList {
+class LinkedList {
   static arrObj = new Map();
   constructor() {
     //if (!LinkedList._instance) {// Singleton
@@ -131,4 +131,7 @@ export class LinkedList {
   }
 }
 const linkedList = new LinkedList()
-export default linkedList
+export default async function ffff(){
+  return linkedList
+}
+//linkedList
