@@ -1,4 +1,5 @@
 //import Item from "./Item";
+'use server'
 export class LinkedListNode {
   constructor(value, next = null, prev = null) {
     this.value = value;
