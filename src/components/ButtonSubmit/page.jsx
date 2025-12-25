@@ -9,13 +9,13 @@ import { toggleClick } from '../../app/lib/actions'
 //import CountPage from '../../app/CountPage'
 //import styles from "./page.module.css";
 //intersection observer
-/*const options = {
+const options = {
   root: null,
   rootMargin: "0px",
   threshold: 0.0,
 }
 let currentViewtype = ''
-let currentPage = 0*/
+let currentPage = 0
 function ButtonSubmit(props) {
   //console.log('ButtonSubmit props',props)
   const ref = useRef(null)
