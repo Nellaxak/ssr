@@ -130,7 +130,7 @@ export default class LinkedList {
     return this;
   }
 }
-//const linkedList =  new LinkedList()
-//export default linkedList/*async function ffff(){
+export const linkedList =  new LinkedList()
+//export linkedList/*async function ffff(){
   //return
 //}*/
