@@ -1,7 +1,7 @@
 import { Suspense, createElement } from 'react'
 //import HeaderTop from '@/components/HeaderTop/page';
 import dynamic from 'next/dynamic'
-//import LinkedListInstance from '../components/LinkedListInstance/page'
+import LinkedListInstance from '../components/LinkedListInstance/page'
 
 //import ToggleHeader from '../components/ToggleHeader/page';
 //import { NavigationEvents } from '../components/NavigationsEvents/page';
