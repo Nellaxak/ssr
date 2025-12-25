@@ -170,8 +170,8 @@ export default async function Home({ searchParams }) {
     const search = await searchParams;
     let [startDate, endDate] = await CalcData(search)
     const page = await search.page
-    const viewtype = await search.viewtype
-    const outside = await search.outside
+    //const viewtype = await search.viewtype
+    //const outside = await search.outside
     //try {
     resp = await fetch(`https://api.nasa.gov/neo/rest/v1/feed?start_date=${startDate}&end_date=${endDate}&api_key=3wa5hHgFuqhf6XiefvqzkcDQWZ01aOOK4vNZEXsP`,
         { cache: 'force-cache' },
@@ -183,10 +183,10 @@ export default async function Home({ searchParams }) {
         const arrObjects = Object.values(list)
         //console.log('arrObjects', arrObjects[0].length)
         array3 = array3.concat(arrObjects[0]);
-        const length = array3.length
+        /*const length = array3.length
         if (page > 0 && outside !== undefined) {
             array3 = array3.slice(outside, length - outside)
-        }
+        }*/
         //await linkedList.fromArray(arrObjects[0])
         //array3 = arrObjects[0]
         //add very small data emulate
@@ -201,11 +201,12 @@ export default async function Home({ searchParams }) {
                 const dateString = datSlice.replace('.', '');*/
                 const dateString = startDate;
                 new Item(Number(product.id), product)
+                /*index={index}
+                length={array3.length}*/
                 return <Suspense><Row
                     key={product.id}
                     obj={product}
-                    index={index}
-                    length={array3.length}
+                    
                     viewtype={viewtype}
                     dates={dateString}
                 /></Suspense>
