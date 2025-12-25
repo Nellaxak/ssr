@@ -8,11 +8,12 @@ import LinkedList, { linkedList } from '../LinkedList';
 
 const listInstances = new Map()
 const instanceLinkedList = new Map()
-instanceLinkedList.set(0, new LinkedList())
+
 //add observer subscribe
 //console.log('linkedlist', linkedList)
 export async function createInstanceLinkedList() {
     //const linkedList = new LinkedList()
+    instanceLinkedList.set(0, new LinkedList())
     console.log('size instances', instanceLinkedList.size)
 }
 export async function mountItemFSM(index, obj) {

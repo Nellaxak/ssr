@@ -123,7 +123,6 @@ async function Row(props) {
     <span>{props.key}</span>
     <span>{props.obj.absolute_magnitude_h}</span>*/
     //console.log('qwasxz', props)
-    let visible = 'visible'
     const dataViewtype = props.obj.close_approach_data[0].miss_distance
     //const status = await FormatStatus(props.obj.id)
     const formatData = await DataFormat(dataViewtype, props.viewtype)
@@ -131,18 +130,13 @@ async function Row(props) {
     if (Number(props.obj.is_potentially_hazardous_asteroid) === 1) {
         Danger = 'Опасен'
     }
-    function itemOutput(params) {
-        visible = params//'hidden'
-    }
     //conditional item.status render Link
-    //<ButtonSubmit action={props.action} />
     //const status1 = statusMap.get(Number(props.obj.id))
     //const item = props.item
     //console.log('item', item)
     //const status2 = await item.getStatus()
     //console.log('djkou', props.obj.id, statusMap.size, status1)
-    /*<Activity mode="visible"> without hooks*/
-    return <Activity mode={visible}>
+    return <Suspense>
         <li key={props.obj.id}>
             <div className={styles.flex_item}>
                 <span className={styles.padding}>{props.dates}</span>
@@ -160,14 +154,14 @@ async function Row(props) {
                 <output className={styles.padding}>{formatData}</output>
             </Suspense>
             <ButtonSubmit index={props.index} length={props.length}
-                id={props.obj.id} obj={props.obj} ffff={itemOutput} />
+                id={props.obj.id} obj={props.obj} />
             <div className={styles.flex_item}>
                 <div className={styles.flex_container_row}>
                     <span className={styles.danger}>{Danger}</span>
                 </div>
             </div>
         </li>
-    </Activity>
+    </Suspense>
 }
 /*async function RenderProp(product){
 }*/
@@ -176,6 +170,7 @@ export default async function Home({ searchParams }) {
     const search = await searchParams;
     let [startDate, endDate] = await CalcData(search)
     const viewtype = await search.viewtype
+    const outside = await search.outside
     //try {
     resp = await fetch(`https://api.nasa.gov/neo/rest/v1/feed?start_date=${startDate}&end_date=${endDate}&api_key=3wa5hHgFuqhf6XiefvqzkcDQWZ01aOOK4vNZEXsP`,
         { cache: 'force-cache' },
@@ -186,13 +181,14 @@ export default async function Home({ searchParams }) {
         const list = dat.near_earth_objects
         const arrObjects = Object.values(list)
         //console.log('arrObjects', arrObjects[0].length)
-        //array3 = array3.concat(arrObjects[0]);
-        await linkedList.fromArray(arrObjects[0])
+        array3 = array3.concat(arrObjects[0]);
+        array3 = array3.slice(outside, 1)
+        //await linkedList.fromArray(arrObjects[0])
         //array3 = arrObjects[0]
         //add very small data emulate
-        const items = await linkedList.toArray()
+        //const items = await linkedList.toArray()
         //console.log('after llist', items.length)
-        return <List items={items}
+        return <List items={array3}
             renderItem={async (product, index) => {
                 //console.log('product', product.value)
                 /*const date = new Date(product.close_approach_data[0].epoch_date_close_approach)
@@ -200,12 +196,12 @@ export default async function Home({ searchParams }) {
                 const datSlice = prevDate.slice(0, -2)
                 const dateString = datSlice.replace('.', '');*/
                 const dateString = startDate;
-                new Item(Number(product.value.id), product.value)
+                new Item(Number(product.id), product)
                 return <Suspense><Row
-                    key={product.value.id}
-                    obj={product.value}
+                    key={product.id}
+                    obj={product}
                     index={index}
-                    length={items.length}
+                    length={array3.length}
                     viewtype={viewtype}
                     dates={dateString}
                 /></Suspense>

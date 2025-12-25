@@ -39,12 +39,9 @@ function ButtonSubmit(props) {
           return newPage
         })
       }*/
-      props.ffff('visible')
-      //setIO(true)//!prev state?
       //scrollFSM(props.index, 'input')
     } else {
-      props.ffff('hidden')
-      //setIO(false)
+      router.push(`?viewtype=${currentViewtype}&page=${page}&outside=${props.index}`, { scroll: false });
       //scrollFSM(props.index, 'output')
     }
   }, []);
@@ -53,7 +50,7 @@ function ButtonSubmit(props) {
   }, [page])
   useEffect(() => {
     console.log('mount', props.index)//page increment -> new mount?
-    mountItemFSM(props.index, props.obj)
+    //mountItemFSM(props.index, props.obj)
     const observer = new IntersectionObserver(callbackFunction, options);
     observer.observe(ref.current);
     return () => {
