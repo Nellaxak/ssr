@@ -169,7 +169,7 @@ export default async function Home({ searchParams }) {
     //console.log('@list Home')
     const search = await searchParams;
     let [startDate, endDate] = await CalcData(search)
-   // const page = await search.page
+    // const page = await search.page
     //const viewtype = await search.viewtype
     //const outside = await search.outside
     //try {
@@ -180,16 +180,18 @@ export default async function Home({ searchParams }) {
     if (Number(resp.status) === 200) {
         const dat = await resp.json()
         const list = dat.near_earth_objects
-        //console.log('ddxas',)
         const arrObjects = Object.values(list)
-        console.log('arrObjects size', arrObjects[0].length)
-        //array3 = array3.concat(arrObjects[0]);
+        //console.log('arrObjects size', arrObjects[0].length)
+        //if (arrObjects[0].length <= 7) {
+            //add empty 2 items
+        //}
+        array3 = array3.concat(arrObjects[0]);
         /*const length = array3.length
         if (page > 0 && outside !== undefined) {
             array3 = array3.slice(outside, length - outside)
         }*/
         //await linkedList.fromArray(arrObjects[0])
-        array3 = arrObjects[0]
+        //array3 = arrObjects[0]
         //add very small data emulate
         //const items = await linkedList.toArray()
         //console.log('after llist', items.length)

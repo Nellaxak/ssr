@@ -9,28 +9,28 @@ import { toggleClick } from '../../app/lib/actions'
 //import CountPage from '../../app/CountPage'
 //import styles from "./page.module.css";
 //intersection observer
-const options = {
+/*const options = {
   root: null,
   rootMargin: "0px",
   threshold: 0.0,
 }
 let currentViewtype = ''
-let currentPage = 0
+let currentPage = 0*/
 function ButtonSubmit(props) {
   //console.log('ButtonSubmit props',props)
   const ref = useRef(null)
-  const [page, setPage] = useState(0);
+  /*const [page, setPage] = useState(0);
   //const [io, setIO] = useState(null);//true-input-load/false-output
   const router = useRouter()
   const searchParams = useSearchParams()
-  currentViewtype = searchParams.get('viewtype')
+  currentViewtype = searchParams.get('viewtype')*/
   //currentPage = Number(searchParams.get('page'))
 
   const handleClick = useCallback(async () => {
     await toggleClick(props.id)
   }, [])
   //const callbackFunction = useCallback(async (entries: IntersectionObserverEntry[]) => {
-  const callbackFunction = useCallback(async (entries) => {
+  /*const callbackFunction = useCallback(async (entries) => {
     const [entry] = entries;
     if (entry.isIntersecting) {
       if ((Number(props.index) + 1) === Number(props.length)) {
@@ -57,7 +57,7 @@ function ButtonSubmit(props) {
     return () => {
       observer.disconnect();
     };
-  }, [])
+  }, [])*/
   //onClick={()=>handleClick()}
   return <button type="button" ref={ref} onClick={handleClick}><Suspense>444444</Suspense></button>
   /*<Form action={toggleClick} ref={ref}>
