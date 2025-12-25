@@ -169,6 +169,7 @@ export default async function Home({ searchParams }) {
     //console.log('@list Home')
     const search = await searchParams;
     let [startDate, endDate] = await CalcData(search)
+    const page = await search.page
     const viewtype = await search.viewtype
     const outside = await search.outside
     //try {
