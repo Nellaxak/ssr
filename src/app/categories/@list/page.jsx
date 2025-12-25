@@ -138,7 +138,7 @@ async function Row(props) {
     //const status2 = await item.getStatus()
     //console.log('djkou', props.obj.id, statusMap.size, status1)
     /**/
-    return <Activity>
+    return <Activity mode="visible">
         <li key={props.obj.id}>
             <div className={styles.flex_item}>
                 <span className={styles.padding}>{props.dates}</span>
