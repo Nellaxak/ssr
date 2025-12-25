@@ -183,7 +183,7 @@ export default async function Home({ searchParams }) {
         //console.log('arrObjects', arrObjects[0].length)
         array3 = array3.concat(arrObjects[0]);
         const length = array3.length
-        if (outside !== undefined) {
+        if (page > 0 && outside !== undefined) {
             array3 = array3.slice(outside, length - outside)
         }
         //await linkedList.fromArray(arrObjects[0])
