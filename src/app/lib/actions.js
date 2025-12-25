@@ -1,16 +1,14 @@
 'use server'
 import { revalidateTag } from 'next/cache';
-import items from '../../app/lib/ArrayGlob'
+//import items from '../../app/lib/ArrayGlob'
 import Item from '../Item';
-import HFSM from '../HFSM'
+//import HFSM from '../HFSM'
 //call import before fromArray ssr
 import LinkedList, { linkedList } from '../LinkedList';
 
 const listInstances = new Map()
 const instanceItem = new Map()
 
-//add observer subscribe
-//console.log('linkedlist', linkedList)
 export async function mountItem(index, obj) {
     const item = new Item(Number(obj.id), obj)
     instanceItem.set(Number(obj.id), item)
@@ -43,10 +41,9 @@ export async function pagination(index) {
 }
 export async function toggleClick(params) {
     const id = Number(params)
-    //const item = await Item.findById(id)
     const item = instanceItem.get(id)
-    console.log('toggle', id, item)
     await item.setStatus()
+    console.log('count',Item.count)
     //statusMap.set(id, !statusMap.get(id))
     revalidateTag('items', 'max')
 }

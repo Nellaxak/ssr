@@ -154,7 +154,7 @@ async function Row(props) {
                 <output className={styles.padding}>{formatData}</output>
             </Suspense>
             <ButtonSubmit index={props.index} length={props.length}
-                id={props.obj.id} obj={props.obj} status={status}/>
+                id={props.obj.id} obj={props.obj} status={status} />
             <div className={styles.flex_item}>
                 <div className={styles.flex_container_row}>
                     <span className={styles.danger}>{Danger}</span>
@@ -169,9 +169,6 @@ export default async function Home({ searchParams }) {
     //console.log('@list Home')
     const search = await searchParams;
     let [startDate, endDate] = await CalcData(search)
-    // const page = await search.page
-    //const viewtype = await search.viewtype
-    //const outside = await search.outside
     //try {
     resp = await fetch(`https://api.nasa.gov/neo/rest/v1/feed?start_date=${startDate}&end_date=${endDate}&api_key=3wa5hHgFuqhf6XiefvqzkcDQWZ01aOOK4vNZEXsP`,
         { cache: 'force-cache' },
@@ -181,20 +178,7 @@ export default async function Home({ searchParams }) {
         const dat = await resp.json()
         const list = dat.near_earth_objects
         const arrObjects = Object.values(list)
-        //console.log('arrObjects size', arrObjects[0].length)
-        //if (arrObjects[0].length <= 7) {
-            //add empty 2 items
-        //}
         array3 = array3.concat(arrObjects[0]);
-        /*const length = array3.length
-        if (page > 0 && outside !== undefined) {
-            array3 = array3.slice(outside, length - outside)
-        }*/
-        //await linkedList.fromArray(arrObjects[0])
-        //array3 = arrObjects[0]
-        //add very small data emulate
-        //const items = await linkedList.toArray()
-        //console.log('after llist', items.length)
         return <List items={array3}
             renderItem={async (product, index) => {
                 //console.log('product', product.value)
@@ -202,7 +186,6 @@ export default async function Home({ searchParams }) {
                 const prevDate = new Intl.DateTimeFormat("ru-RU", options).format(date);
                 const datSlice = prevDate.slice(0, -2)
                 const dateString = datSlice.replace('.', '');
-                //new Item(Number(product.id), product)
                 /*
                 viewtype={viewtype}
                 */
