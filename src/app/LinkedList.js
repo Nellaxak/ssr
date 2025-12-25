@@ -10,12 +10,12 @@ export class LinkedListNode {
 export class LinkedList {
   static arrObj = new Map();
   constructor(type) {
-    if (!LinkedList._instance) {// Singleton
-      LinkedList._instance = this;
+    //if (!LinkedList._instance) {// Singleton
+      //LinkedList._instance = this;
       this.head = null;
       this.tail = null;
-    }
-    return LinkedList._instance;
+    //}
+    //return LinkedList._instance;
 
   }
   find(value) {
