@@ -17,12 +17,12 @@ class LinkedList {
     //this.tail = null;
     //}
     //return LinkedList._instance;
+    this.head = null;
+    this.tail = null;
     if (LinkedList.instance) {
       return LinkedList.instance; // Return the existing instance
     }
     LinkedList.instance = this;
-    this.head = null;
-    this.tail = null;
   }
   find(value) {
     let current = this.head; // Start at the beginning
@@ -130,8 +130,8 @@ class LinkedList {
     return this;
   }
 }
-const linkedList = new LinkedList()
+//const linkedList = 
 export default async function ffff(){
-  return linkedList
+  return new LinkedList()
 }
 //linkedList
