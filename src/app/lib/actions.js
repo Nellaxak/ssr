@@ -6,6 +6,8 @@ import HFSM from '../HFSM'
 import linkedList from '../LinkedList';
 
 const listInstances = new Map()
+console.log('linkedlist', linkedList)
+
 export async function mountItemFSM(index, obj) {
     const instanceFSM = new HFSM({
         initial: "idle", // Камера по умолчанию неактивна
