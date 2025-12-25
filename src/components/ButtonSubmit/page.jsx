@@ -39,11 +39,13 @@ function ButtonSubmit(props) {
           return newPage
         })
       }*/
+      props.ffff('visible')
       //setIO(true)//!prev state?
-      scrollFSM(props.index, 'input')
+      //scrollFSM(props.index, 'input')
     } else {
+      props.ffff('hidden')
       //setIO(false)
-      scrollFSM(props.index, 'output')
+      //scrollFSM(props.index, 'output')
     }
   }, []);
   useEffect(() => {

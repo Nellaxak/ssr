@@ -1,5 +1,5 @@
 import styles from "./page.module.css";
-import React, { Suspense,Activity } from "react";
+import React, { Suspense, Activity } from "react";
 import statusMap from "../../statusMap";
 import Link from "next/link";
 import Form from "next/form";
@@ -123,12 +123,16 @@ async function Row(props) {
     <span>{props.key}</span>
     <span>{props.obj.absolute_magnitude_h}</span>*/
     //console.log('qwasxz', props)
+    let visible = 'visible'
     const dataViewtype = props.obj.close_approach_data[0].miss_distance
     //const status = await FormatStatus(props.obj.id)
     const formatData = await DataFormat(dataViewtype, props.viewtype)
     let Danger = ''
     if (Number(props.obj.is_potentially_hazardous_asteroid) === 1) {
         Danger = 'Опасен'
+    }
+    function itemOutput(params) {
+        visible = params//'hidden'
     }
     //conditional item.status render Link
     //<ButtonSubmit action={props.action} />
@@ -137,8 +141,8 @@ async function Row(props) {
     //console.log('item', item)
     //const status2 = await item.getStatus()
     //console.log('djkou', props.obj.id, statusMap.size, status1)
-    /**/
-    return <Activity mode="visible">
+    /*<Activity mode="visible"> without hooks*/
+    return <Activity mode={visible}>
         <li key={props.obj.id}>
             <div className={styles.flex_item}>
                 <span className={styles.padding}>{props.dates}</span>
@@ -155,7 +159,8 @@ async function Row(props) {
             <Suspense>
                 <output className={styles.padding}>{formatData}</output>
             </Suspense>
-            <ButtonSubmit index={props.index} length={props.length} id={props.obj.id} obj={props.obj} />
+            <ButtonSubmit index={props.index} length={props.length}
+                id={props.obj.id} obj={props.obj} ffff={itemOutput} />
             <div className={styles.flex_item}>
                 <div className={styles.flex_container_row}>
                     <span className={styles.danger}>{Danger}</span>
