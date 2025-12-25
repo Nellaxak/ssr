@@ -3,7 +3,7 @@
 import { useEffect, useState, useCallback, Suspense, useRef } from 'react'
 import { useRouter, useSearchParams } from 'next/navigation'
 import Form from 'next/form'
-import { toggleClick } from '../../app/lib/actions'
+import { toggleClick,mountItem } from '../../app/lib/actions'
 
 //import OutputItemsSet from '../../app/OutputItemsSet'
 //import CountPage from '../../app/CountPage'
@@ -31,7 +31,7 @@ function ButtonSubmit(props) {
   }, [])
   useEffect(() => {
     //console.log('mount', props.index)//page increment -> new mount?
-    mountItemFSM(props.index, props.obj)
+    mountItem(props.index, props.obj)
   }, [])
   //const callbackFunction = useCallback(async (entries: IntersectionObserverEntry[]) => {
   /*const callbackFunction = useCallback(async (entries) => {
