@@ -202,12 +202,11 @@ export default async function Home({ searchParams }) {
                 const dateString = startDate;
                 new Item(Number(product.id), product)
                 /*index={index}
+                viewtype={viewtype}
                 length={array3.length}*/
                 return <Suspense><Row
                     key={product.id}
                     obj={product}
-                    
-                    viewtype={viewtype}
                     dates={dateString}
                 /></Suspense>
             }}
