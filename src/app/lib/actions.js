@@ -3,12 +3,13 @@ import { revalidateTag } from 'next/cache';
 import items from '../../app/lib/ArrayGlob'
 import Item from '../Item';
 import HFSM from '../HFSM'
+//call import before fromArray ssr
 import LinkedList, { linkedList } from '../LinkedList';
 
 const listInstances = new Map()
 const instanceLinkedList = new Map()
-instanceLinkedList.set(0,linkedList)
-
+instanceLinkedList.set(0, new LinkedList())
+//add observer subscribe
 //console.log('linkedlist', linkedList)
 export async function createInstanceLinkedList() {
     //const linkedList = new LinkedList()

@@ -10,6 +10,7 @@ class LinkedListNode {
 }
 export default class LinkedList {
   static arrObj = new Map();
+  static instance = null;
   constructor() {
     //if (!LinkedList._instance) {// Singleton
     //LinkedList._instance = this;
@@ -17,12 +18,15 @@ export default class LinkedList {
     //this.tail = null;
     //}
     //return LinkedList._instance;
-    this.head = null;
-    this.tail = null;
+
     if (LinkedList.instance) {
+      console.log('double call')
       return LinkedList.instance; // Return the existing instance
+    } else {
+      LinkedList.instance = this;
+      this.head = null;
+      this.tail = null;
     }
-    LinkedList.instance = this;
   }
   find(value) {
     let current = this.head; // Start at the beginning
@@ -126,11 +130,11 @@ export default class LinkedList {
       //console.log('value', value)
       await this.append(value)
     });
-
+    //add observer dispatch
     return this;
   }
 }
-export const linkedList =  new LinkedList()
+export const linkedList = new LinkedList()
 //export linkedList/*async function ffff(){
-  //return
+//return
 //}*/
