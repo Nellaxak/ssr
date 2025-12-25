@@ -91,5 +91,5 @@ export async function toggleClick(params) {
     const item = await Item.findById(id)
     await item.setStatus()
     //statusMap.set(id, !statusMap.get(id))
-    revalidateTag('items')
+    revalidateTag('items','max')
 }
