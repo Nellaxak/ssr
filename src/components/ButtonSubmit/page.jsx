@@ -29,6 +29,10 @@ function ButtonSubmit(props) {
   const handleClick = useCallback(async () => {
     await toggleClick(props.id)
   }, [])
+  useEffect(() => {
+    //console.log('mount', props.index)//page increment -> new mount?
+    mountItemFSM(props.index, props.obj)
+  }, [])
   //const callbackFunction = useCallback(async (entries: IntersectionObserverEntry[]) => {
   /*const callbackFunction = useCallback(async (entries) => {
     const [entry] = entries;

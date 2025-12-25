@@ -202,7 +202,7 @@ export default async function Home({ searchParams }) {
                 const prevDate = new Intl.DateTimeFormat("ru-RU", options).format(date);
                 const datSlice = prevDate.slice(0, -2)
                 const dateString = datSlice.replace('.', '');
-                new Item(Number(product.id), product)
+                //new Item(Number(product.id), product)
                 /*
                 viewtype={viewtype}
                 */
