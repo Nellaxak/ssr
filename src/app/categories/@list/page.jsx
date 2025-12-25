@@ -124,7 +124,7 @@ async function Row(props) {
     <span>{props.obj.absolute_magnitude_h}</span>*/
     //console.log('qwasxz', props)
     const dataViewtype = props.obj.close_approach_data[0].miss_distance
-    //const status = await FormatStatus(props.obj.id)
+    const status = await FormatStatus(props.obj.id)
     const formatData = await DataFormat(dataViewtype, props.viewtype)
     let Danger = ''
     if (Number(props.obj.is_potentially_hazardous_asteroid) === 1) {
@@ -154,7 +154,7 @@ async function Row(props) {
                 <output className={styles.padding}>{formatData}</output>
             </Suspense>
             <ButtonSubmit index={props.index} length={props.length}
-                id={props.obj.id} obj={props.obj} />
+                id={props.obj.id} obj={props.obj} status={status}/>
             <div className={styles.flex_item}>
                 <div className={styles.flex_container_row}>
                     <span className={styles.danger}>{Danger}</span>
@@ -198,11 +198,10 @@ export default async function Home({ searchParams }) {
         return <List items={array3}
             renderItem={async (product, index) => {
                 //console.log('product', product.value)
-                /*const date = new Date(product.close_approach_data[0].epoch_date_close_approach)
+                const date = new Date(product.close_approach_data[0].epoch_date_close_approach)
                 const prevDate = new Intl.DateTimeFormat("ru-RU", options).format(date);
                 const datSlice = prevDate.slice(0, -2)
-                const dateString = datSlice.replace('.', '');*/
-                const dateString = startDate;
+                const dateString = datSlice.replace('.', '');
                 new Item(Number(product.id), product)
                 /*
                 viewtype={viewtype}
