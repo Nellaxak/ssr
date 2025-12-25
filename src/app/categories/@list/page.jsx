@@ -180,8 +180,9 @@ export default async function Home({ searchParams }) {
     if (Number(resp.status) === 200) {
         const dat = await resp.json()
         const list = dat.near_earth_objects
+        //console.log('ddxas',)
         const arrObjects = Object.values(list)
-        //console.log('arrObjects', arrObjects[0].length)
+        console.log('arrObjects size', arrObjects[0].length)
         //array3 = array3.concat(arrObjects[0]);
         /*const length = array3.length
         if (page > 0 && outside !== undefined) {
