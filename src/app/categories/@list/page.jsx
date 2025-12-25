@@ -182,7 +182,8 @@ export default async function Home({ searchParams }) {
         const arrObjects = Object.values(list)
         //console.log('arrObjects', arrObjects[0].length)
         array3 = array3.concat(arrObjects[0]);
-        array3 = array3.slice(outside, 1)
+        const length = array3.length
+        array3 = array3.slice(outside, length - outside)
         //await linkedList.fromArray(arrObjects[0])
         //array3 = arrObjects[0]
         //add very small data emulate
