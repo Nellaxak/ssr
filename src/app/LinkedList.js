@@ -33,21 +33,21 @@ export class LinkedList {
   }
   async append(value) {//if exsist?
     console.log('before append', value.name)
-    //if (!LinkedList.arrObj.has(Number(value.id))) {
-    //const value = new Item(Number(value1.id), value1)
-    // LinkedList.arrObj.set(Number(value.id), value)
-    const newNode = new LinkedListNode(value);
-    console.log('aaaaaaaaaa', this.head, this.tail)
-    if (!this.head || !this.tail) {
-      this.head = newNode;
+    if (!LinkedList.arrObj.has(Number(value.id))) {
+      //const value = new Item(Number(value1.id), value1)
+      LinkedList.arrObj.set(Number(value.id), value)
+      const newNode = new LinkedListNode(value);
+      console.log('aaaaaaaaaa', this.head, this.tail)
+      if (!this.head || !this.tail) {
+        this.head = newNode;
+        this.tail = newNode;
+        return this;
+      }
+      this.tail.next = newNode;
+      //newNode.prev = this.tail;
       this.tail = newNode;
-      return this;
+      //console.log('after append', this)
     }
-    this.tail.next = newNode;
-    //newNode.prev = this.tail;
-    this.tail = newNode;
-    //console.log('after append', this)
-    // }
     return this;
   }
   async delete(value) {//object
