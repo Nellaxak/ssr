@@ -133,4 +133,4 @@ export default class LinkedList {
 //const linkedList =  new LinkedList()
 //export default linkedList/*async function ffff(){
   //return
-//}
+//}*/

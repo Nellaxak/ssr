@@ -6,11 +6,14 @@ import HFSM from '../HFSM'
 import LinkedList from '../LinkedList';
 
 const listInstances = new Map()
-let linkedList
+const instanceLinkedList=new Set()
+//let linkedList
 //console.log('linkedlist', linkedList)
 export async function createInstanceLinkedList() {
     console.log('call createInstanceLinkedList')
-    linkedList = new LinkedList()
+    const linkedList = new LinkedList()
+    instanceLinkedList.add(linkedList)
+    console.log('size instances',instanceLinkedList.size)
 }
 export async function mountItemFSM(index, obj) {
     const instanceFSM = new HFSM({

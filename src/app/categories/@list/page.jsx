@@ -6,7 +6,7 @@ import Form from "next/form";
 import Item from "../../Item";
 import { revalidateTag, revalidatePath } from 'next/cache';
 import ButtonSubmit from '../../../components/ButtonSubmit/page'
-import LinkedList from '../../LinkedList'
+import linkedList from '../../LinkedList'
 import OutputItemsSet from "../../OutputItemsSet";
 import items from "../../lib/ArrayGlob";
 
