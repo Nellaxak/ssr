@@ -6,7 +6,7 @@ import Form from "next/form";
 import Item from "../../Item";
 import { revalidateTag, revalidatePath } from 'next/cache';
 import ButtonSubmit from '../../../components/ButtonSubmit/page'
-import ffff from '../../LinkedList'
+import LinkedList from '../../LinkedList'
 import OutputItemsSet from "../../OutputItemsSet";
 import items from "../../lib/ArrayGlob";
 
@@ -16,8 +16,8 @@ let endDate
 let startPage
 let array3 = []
 let res = ''
-const linkedList = await ffff()
-console.log('linkedlist', linkedList)
+//const linkedList = await ffff()
+//console.log('linkedlist', linkedList)
 
 const options = {
     /*era: 'long',*/

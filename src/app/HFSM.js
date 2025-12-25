@@ -1,4 +1,4 @@
-import linkedList from '../app/LinkedList'
+//import linkedList from '../app/LinkedList'
 export default class HFSM {
     constructor(config) {
         this.index = config.index;
