@@ -9,14 +9,19 @@ export class LinkedListNode {
 }
 export class LinkedList {
   static arrObj = new Map();
-  constructor(type) {
+  constructor() {
     //if (!LinkedList._instance) {// Singleton
-      //LinkedList._instance = this;
-      this.head = null;
-      this.tail = null;
+    //LinkedList._instance = this;
+    //this.head = null;
+    //this.tail = null;
     //}
     //return LinkedList._instance;
-
+    if (LinkedList.instance) {
+      return LinkedList.instance; // Return the existing instance
+    }
+    LinkedList.instance = this;
+    this.head = null;
+    this.tail = null;
   }
   find(value) {
     let current = this.head; // Start at the beginning
@@ -31,7 +36,7 @@ export class LinkedList {
 
     return null; // Return null if the value is not found after traversing the whole list
   }
-  async append(value) {//if exsist?
+  async append(value) {
     console.log('before append', value.name, LinkedList.arrObj.has(Number(value.id)))
     if (!LinkedList.arrObj.has(Number(value.id))) {
       //const value = new Item(Number(value1.id), value1)
