@@ -6,7 +6,7 @@ import HFSM from '../HFSM'
 import ffff from '../LinkedList';
 
 const listInstances = new Map()
-const linkedList=ffff()
+const linkedList = await ffff()
 console.log('linkedlist', linkedList)
 
 export async function mountItemFSM(index, obj) {

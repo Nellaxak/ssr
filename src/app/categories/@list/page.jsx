@@ -16,7 +16,8 @@ let endDate
 let startPage
 let array3 = []
 let res = ''
-const linkedList = ffff()
+const linkedList = await ffff()
+console.log('linkedlist', linkedList)
 
 const options = {
     /*era: 'long',*/
