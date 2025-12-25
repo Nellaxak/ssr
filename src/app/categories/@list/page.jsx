@@ -182,13 +182,13 @@ export default async function Home({ searchParams }) {
         const list = dat.near_earth_objects
         const arrObjects = Object.values(list)
         //console.log('arrObjects', arrObjects[0].length)
-        array3 = array3.concat(arrObjects[0]);
+        //array3 = array3.concat(arrObjects[0]);
         /*const length = array3.length
         if (page > 0 && outside !== undefined) {
             array3 = array3.slice(outside, length - outside)
         }*/
         //await linkedList.fromArray(arrObjects[0])
-        //array3 = arrObjects[0]
+        array3 = arrObjects[0]
         //add very small data emulate
         //const items = await linkedList.toArray()
         //console.log('after llist', items.length)
@@ -201,12 +201,14 @@ export default async function Home({ searchParams }) {
                 const dateString = datSlice.replace('.', '');*/
                 const dateString = startDate;
                 new Item(Number(product.id), product)
-                /*index={index}
+                /*
                 viewtype={viewtype}
-                length={array3.length}*/
+                */
                 return <Suspense><Row
                     key={product.id}
                     obj={product}
+                    index={index}
+                    length={array3.length}
                     dates={dateString}
                 /></Suspense>
             }}

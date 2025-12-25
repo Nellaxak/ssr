@@ -30,7 +30,7 @@ function ButtonSubmit(props) {
     await toggleClick(props.id)
   }, [])
   //const callbackFunction = useCallback(async (entries: IntersectionObserverEntry[]) => {
-  /*const callbackFunction = useCallback(async (entries) => {
+  const callbackFunction = useCallback(async (entries) => {
     const [entry] = entries;
     if (entry.isIntersecting) {
       if ((Number(props.index) + 1) === Number(props.length)) {
@@ -57,7 +57,7 @@ function ButtonSubmit(props) {
     return () => {
       observer.disconnect();
     };
-  }, [])*/
+  }, [])
   //onClick={()=>handleClick()}
   return <button type="button" ref={ref} onClick={handleClick}><Suspense>444444</Suspense></button>
   /*<Form action={toggleClick} ref={ref}>
