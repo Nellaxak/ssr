@@ -1,5 +1,5 @@
 import styles from "./page.module.css";
-import React, { Suspense } from "react";
+import React, { Suspense,Activity } from "react";
 import statusMap from "../../statusMap";
 import Link from "next/link";
 import Form from "next/form";
@@ -138,7 +138,7 @@ async function Row(props) {
     //const status2 = await item.getStatus()
     //console.log('djkou', props.obj.id, statusMap.size, status1)
     /**/
-    return <Suspense>
+    return <Activity>
         <li key={props.obj.id}>
             <div className={styles.flex_item}>
                 <span className={styles.padding}>{props.dates}</span>
@@ -162,7 +162,7 @@ async function Row(props) {
                 </div>
             </div>
         </li>
-    </Suspense>
+    </Activity>
 }
 /*async function RenderProp(product){
 }*/
