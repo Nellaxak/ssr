@@ -36,7 +36,7 @@ class Item {
   }
   static async findById(ppp) {
     //console.log('findById', ppp, typeof ppp)
-    return Item.arrObj.get(ppp);
+    return this//Item.arrObj.get(ppp);
   }
   static async setCount(value) {
     Item.count = Item.count + value
