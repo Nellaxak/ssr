@@ -32,6 +32,7 @@ function ScrollComponent() {
     router = useRouter()
 
     const handleScroll = useCallback(async () => {
+        console.log('scrollend')
         /*const elem = document.querySelector('#header')
         const rect = elem.getBoundingClientRect()
         const hh = rect.height

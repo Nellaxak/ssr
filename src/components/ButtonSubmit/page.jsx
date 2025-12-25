@@ -41,7 +41,7 @@ function ButtonSubmit(props) {
       }
       //scrollFSM(props.index, 'input')
     } else {
-      console.log('outside', props.index)
+      //console.log('outside', props.index)
       //router.push(`?viewtype=${currentViewtype}&page=${page}&outside=${props.index}`, { scroll: false });
       //scrollFSM(props.index, 'output')
     }
