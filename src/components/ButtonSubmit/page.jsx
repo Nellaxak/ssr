@@ -19,11 +19,11 @@ let currentPage = 0*/
 function ButtonSubmit(props) {
   //console.log('ButtonSubmit props',props)
   const ref = useRef(null)
-  /*const [page, setPage] = useState(0);
+  const [page, setPage] = useState(0);
   //const [io, setIO] = useState(null);//true-input-load/false-output
   const router = useRouter()
   const searchParams = useSearchParams()
-  currentViewtype = searchParams.get('viewtype')*/
+  currentViewtype = searchParams.get('viewtype')
   //currentPage = Number(searchParams.get('page'))
 
   const handleClick = useCallback(async () => {
@@ -47,7 +47,7 @@ function ButtonSubmit(props) {
     }
   }, []);
   useEffect(() => {
-    router.push(`?viewtype=${currentViewtype}&page=${page}`, { scroll: false });
+    router.push(`?viewtype=${currentViewtype}&page=${page}`, { scroll: true });
   }, [page])
   useEffect(() => {
     console.log('mount', props.index)//page increment -> new mount?
