@@ -88,9 +88,9 @@ export async function pagination(index) {
 }
 export async function toggleClick(params) {
     const id = Number(params)
-    console.log('toggle', id, Item)
     const item = await Item.findById(id)
-    await item.setStatus()
+    console.log('toggle', id, item)
+    //await item.setStatus()
     //statusMap.set(id, !statusMap.get(id))
     revalidateTag('items', 'max')
 }
