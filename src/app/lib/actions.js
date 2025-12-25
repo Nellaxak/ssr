@@ -90,7 +90,7 @@ export async function toggleClick(params) {
     const id = Number(params)
     const item = await Item.findById(id)
     console.log('toggle', id, Object.getPrototypeOf(item))
-    //await item.setStatus()
+    item.setStatus()
     //statusMap.set(id, !statusMap.get(id))
     revalidateTag('items', 'max')
 }
