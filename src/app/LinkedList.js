@@ -7,28 +7,21 @@ class LinkedListNode {
     this.next = next;
     //this.prev = prev;
   }
-  get value() {
+  /*get value() {
     console.log("Getting the radius value");
     return this.value;
   }
   set value(newValue) {
     //console.log("Getting the radius value");
     this.value = newValue;
-  }
+  }*/
 }
 export default class LinkedList {
   static arrObj = new Map();
   static instance = null;
   constructor() {
-    //if (!LinkedList._instance) {// Singleton
-    //LinkedList._instance = this;
-    //this.head = null;
-    //this.tail = null;
-    //}
-    //return LinkedList._instance;
-
     if (LinkedList.instance) {
-      console.log('double call')
+      //console.log('double call')
       return LinkedList.instance; // Return the existing instance
     } else {
       LinkedList.instance = this;

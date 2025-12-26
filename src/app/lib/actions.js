@@ -12,9 +12,6 @@ export async function createLinkedListInstance() {
     instanceLinkedList.set(0, ll)
     return ll
 }
-/*export async function notIO(index, obj) {
-    console.log('ll acc', instanceLL.get(0))
-}*/
 export async function mountItem(index, obj) {
     //console.log('ll acc', instanceLL.get(0))
     const instanceFSM = new HFSM({
@@ -40,7 +37,8 @@ export async function mountItem(index, obj) {
                     const ll = instanceLinkedList.get(0)
                     console.log('scroll inside', index)//, obj.id)
                     console.log('tail0000', ll.tail)//, obj.id)
-                    console.log('tail_value', ll.tail.value)//,Object.getOwnPropertyNames(ll.tail))
+                    console.log('tail_value', ll.tail === obj)
+                    //,Object.getOwnPropertyNames(ll.tail))
                     /*if (ll.tail.value.id === obj.id) {
                         console.log('scroll inside tail', index)
                     }*/
