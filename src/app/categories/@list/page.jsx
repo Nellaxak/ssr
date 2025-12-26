@@ -173,6 +173,7 @@ export default async function Home({ searchParams }) {
         { next: { tags: ['items'] } }
     );
     if (Number(resp.status) === 200) {
+        console.log('not from cache')
         const dat = await resp.json()
         const list = dat.near_earth_objects
         const arrObjects = Object.values(list)

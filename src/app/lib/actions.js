@@ -7,37 +7,11 @@ import HFSM from '../HFSM'
 const listInstances = new Map()
 const instanceItem = new Map()
 const instanceLinkedList = new Map()
-//const ll = new LinkedList()
-/*const initializeApp = function (eventMessage) {
-    console.log('App initialized:', eventMessage);
-    const ll = new LinkedList()
-    instanceLinkedList.set(0, ll)
-    return ll
-};
-const callOnce = (fn) => {
-    let hasBeenCalled = false;
-    let result; // Variable to store the result of the first call
 
-    return function (...args) {
-        if (!hasBeenCalled) {
-            hasBeenCalled = true;
-            // Use apply to ensure correct 'this' context and pass arguments
-            result = fn.apply(this, args);
-        }
-        // Subsequent calls return the cached result
-        return result;
-    };
-};*/
 export async function createLinkedListInstance() {
     const ll = new LinkedList()
     instanceLinkedList.set(0, ll)
     return ll
-    //const initOnce = callOnce(initializeApp)
-    //return initOnce(0)
-    //const ll = instanceLinkedList.get(0)
-    //return ll
-    //console.log('single function call')
-
 }
 export async function mountItem(index, obj) {
     const instanceFSM = new HFSM({
