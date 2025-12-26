@@ -179,10 +179,9 @@ export default async function Home({ searchParams }) {
         //array3 = array3.concat(arrObjects[0]);
         //array3 = arrObjects[0];
         array3 = await ll.toArray()
-        //console.log('plplp',ll)
         return <List items={array3}
             renderItem={async (product, index) => {
-                //console.log('product', product.value)
+                console.log('product', product.value)
                 /*const date = new Date(product.value.close_approach_data[0].epoch_date_close_approach)
                 const prevDate = new Intl.DateTimeFormat("ru-RU", options).format(date);
                 const datSlice = prevDate.slice(0, -2)
