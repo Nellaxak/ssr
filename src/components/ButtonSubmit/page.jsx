@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useCallback, Suspense, useRef } from 'react'
+import { useEffect, useCallback, Suspense, useRef, useState } from 'react'
 import { useRouter, useSearchParams } from 'next/navigation'
 import { toggleClick, mountItem, scrollFSM } from '../../app/lib/actions'
 const options = {
