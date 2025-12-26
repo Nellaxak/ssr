@@ -33,16 +33,17 @@ export async function mountItem(index, obj) {
         callbacks: {
             onAfterIoInput: async (from, to) => {
                 // Что то делаем
-                console.log('_scroll inside', index, from)//, obj.id)
+                //console.log('_scroll inside', index, from)//, obj.id)
                 if (from === 'outside') {
                     //linkedList.append(obj)//append next node ll
                     //tail.prev
+                    const ll = instanceLinkedList.get(0)
                     console.log('scroll inside', index)//, obj.id)
-                    console.log('instanceLinkedList', instanceLinkedList.get(0))//, obj.id)
+                    //console.log('instanceLinkedList', instanceLinkedList.get(0))//, obj.id)
 
-                    /*if (linkedList.tail.id === obj.id) {
+                    if (ll.tail.id === obj.id) {
                         console.log('scroll inside tail', index)
-                    }*/
+                    }
                 }
                 //console.log('onAfterIoInput', index, from, to)
             },
@@ -61,14 +62,14 @@ export async function mountItem(index, obj) {
         }
     });
     listInstances.set(index, instanceFSM)
-    console.log('listInstances set', index)
+    //console.log('listInstances set', index)
     const item = new Item(Number(obj.id), obj)
     instanceItem.set(Number(obj.id), item)
     await instanceFSM.trigger("start");
 }
 export async function scrollFSM(index, action) {
     const instance = listInstances.get(index)
-    console.log('listInstances get', index, instance)
+    //console.log('listInstances get', index, instance)
     if (instance !== undefined) {
         //console.log('scroll', index, action)
         if (action === 'input') {
