@@ -182,7 +182,7 @@ export default async function Home({ searchParams }) {
         return <List items={array3}
             renderItem={async (product, index) => {
                 console.log('product', product)
-                /*const date = new Date(product.value.close_approach_data[0].epoch_date_close_approach)
+                /*const date = new Date(product.close_approach_data[0].epoch_date_close_approach)
                 const prevDate = new Intl.DateTimeFormat("ru-RU", options).format(date);
                 const datSlice = prevDate.slice(0, -2)
                 const dateString = datSlice.replace('.', '');*/
@@ -191,8 +191,8 @@ export default async function Home({ searchParams }) {
                 viewtype={viewtype}
                 */
                 return <Suspense><Row
-                    key={product.value.id}
-                    obj={product.value}
+                    key={product.id}
+                    obj={product}
                     index={index}
                     length={arrObjects[0].length}
                     dates={dateString}
