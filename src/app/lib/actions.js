@@ -1,7 +1,7 @@
 'use server'
 import { revalidateTag } from 'next/cache';
 import Item from '../Item';
-import LinkedList from '../LinkedList'
+import LinkedList,{linkedList} from '../LinkedList'
 import HFSM from '../HFSM'
 
 const listInstances = new Map()
@@ -37,7 +37,7 @@ const callOnce = (fn) => {
     //console.log('single function call')
 
 //}
-export async function mountItem(index, obj,ll) {
+export async function mountItem(index, obj) {
     const instanceFSM = new HFSM({
         initial: "idle", // Камера по умолчанию неактивна
         index: index,
@@ -59,8 +59,8 @@ export async function mountItem(index, obj,ll) {
                     //linkedList.append(obj)//append next node ll
                     //tail.prev
                     //const ll = instanceLinkedList.get(0)
-                    console.log('scroll inside', index, ll)//, obj.id)
-                    console.log('tail0000', ll.tail, ll.tail.value)//, obj.id)
+                    console.log('scroll inside', index, linkedList)//, obj.id)
+                    //console.log('tail0000', ll.tail, ll.tail.value)//, obj.id)
                     // if (ll.tail.value) {
                     //console.log('tail_value', ll.tail?.value === obj)
                     // }
