@@ -42,7 +42,7 @@ export default class LinkedList {
     return null; // Return null if the value is not found after traversing the whole list
   }
   async append(value) {
-    console.log('before append', value.name, LinkedList.arrObj.has(Number(value.id)))
+    //console.log('before append', value.name, LinkedList.arrObj.has(Number(value.id)))
     if (!LinkedList.arrObj.has(Number(value.id))) {
       //const value = new Item(Number(value1.id), value1)
       LinkedList.arrObj.set(Number(value.id), value)
@@ -56,7 +56,7 @@ export default class LinkedList {
       //newNode.prev = this.tail;
       this.tail = newNode;
       //console.log('after append', this)
-      console.log('after append', this.head, this.tail)
+      //console.log('after append', this.head, this.tail)
     }
     return this;
   }
