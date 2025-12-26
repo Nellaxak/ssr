@@ -37,7 +37,7 @@ export async function mountItem(index, obj) {
                     const ll = instanceLinkedList.get(0)
                     console.log('scroll inside', index)//, obj.id)
                     console.log('tail0000', ll.tail)//, obj.id)
-                    console.log('tail_value', ll.tail === obj)
+                    console.log('tail_value', ll.tail.value === obj)
                     //,Object.getOwnPropertyNames(ll.tail))
                     /*if (ll.tail.value.id === obj.id) {
                         console.log('scroll inside tail', index)
