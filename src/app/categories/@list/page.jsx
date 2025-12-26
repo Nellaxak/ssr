@@ -177,8 +177,8 @@ export default async function Home({ searchParams }) {
         const arrObjects = Object.values(list)
         await ll.fromArray(arrObjects[0])
         //array3 = array3.concat(arrObjects[0]);
-        array3 = arrObjects[0];
-        await ll.toArray()
+        //array3 = arrObjects[0];
+        array3 = await ll.toArray()
         //console.log('plplp',ll)
         return <List items={array3}
             renderItem={async (product, index) => {
@@ -191,10 +191,10 @@ export default async function Home({ searchParams }) {
                 viewtype={viewtype}
                 */
                 return <Suspense><Row
-                    key={product.id}
-                    obj={product}
+                    key={product.value.id}
+                    obj={product.value}
                     index={index}
-                    length={array3.length}
+                    length={arrObjects[0].length}
                     dates={dateString}
                 /></Suspense>
             }}
