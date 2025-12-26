@@ -7,7 +7,9 @@ import HFSM from '../HFSM'
 const listInstances = new Map()
 const instanceItem = new Map()
 const instanceLinkedList = new Map()
-const initializeApp = function (eventMessage) {
+const ll = new LinkedList()
+instanceLinkedList.set(0, ll)
+/*const initializeApp = function (eventMessage) {
     console.log('App initialized:', eventMessage);
     const ll = new LinkedList()
     instanceLinkedList.set(0, ll)
@@ -26,10 +28,12 @@ const callOnce = (fn) => {
         // Subsequent calls return the cached result
         return result;
     };
-};
+};*/
 export async function createLinkedListInstance() {
-    const initOnce = callOnce(initializeApp)
-    return initOnce(0)
+    //const initOnce = callOnce(initializeApp)
+    //return initOnce(0)
+    const ll = instanceLinkedList.get(0)
+    return ll
     //console.log('single function call')
 
 }
