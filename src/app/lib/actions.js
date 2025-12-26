@@ -1,14 +1,13 @@
 'use server'
 import { revalidateTag } from 'next/cache';
 import Item from '../Item';
-import LinkedList,{linkedList} from '../LinkedList'
+import LinkedList, { linkedList } from '../LinkedList'
 import HFSM from '../HFSM'
 
 const listInstances = new Map()
 const instanceItem = new Map()
 const instanceLinkedList = new Map()
 //const ll = new LinkedList()
-//instanceLinkedList.set(0, ll)
 /*const initializeApp = function (eventMessage) {
     console.log('App initialized:', eventMessage);
     const ll = new LinkedList()
@@ -29,14 +28,17 @@ const callOnce = (fn) => {
         return result;
     };
 };*/
-//export async function createLinkedListInstance() {
+export async function createLinkedListInstance() {
+    const ll = new LinkedList()
+    instanceLinkedList.set(0, ll)
+    return ll
     //const initOnce = callOnce(initializeApp)
     //return initOnce(0)
     //const ll = instanceLinkedList.get(0)
     //return ll
     //console.log('single function call')
 
-//}
+}
 export async function mountItem(index, obj) {
     const instanceFSM = new HFSM({
         initial: "idle", // Камера по умолчанию неактивна
@@ -59,7 +61,7 @@ export async function mountItem(index, obj) {
                     //linkedList.append(obj)//append next node ll
                     //tail.prev
                     //const ll = instanceLinkedList.get(0)
-                    console.log('scroll inside', index, linkedList)//, obj.id)
+                    console.log('scroll inside', index, instanceLinkedList.get(0))//, obj.id)
                     //console.log('tail0000', ll.tail, ll.tail.value)//, obj.id)
                     // if (ll.tail.value) {
                     //console.log('tail_value', ll.tail?.value === obj)
