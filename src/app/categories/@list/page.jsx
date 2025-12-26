@@ -183,10 +183,11 @@ export default async function Home({ searchParams }) {
         return <List items={array3}
             renderItem={async (product, index) => {
                 //console.log('product', product.value)
-                const date = new Date(product.value.close_approach_data[0].epoch_date_close_approach)
+                /*const date = new Date(product.value.close_approach_data[0].epoch_date_close_approach)
                 const prevDate = new Intl.DateTimeFormat("ru-RU", options).format(date);
                 const datSlice = prevDate.slice(0, -2)
-                const dateString = datSlice.replace('.', '');
+                const dateString = datSlice.replace('.', '');*/
+                const dateString = startDate;
                 /*
                 viewtype={viewtype}
                 */
