@@ -8,12 +8,12 @@ const listInstances = new Map()
 const instanceItem = new Map()
 const instanceLinkedList = new Map()
 export async function createLinkedListInstance() {
+    console.log('single function call')
     const ll = new LinkedList()
     instanceLinkedList.set(0, ll)
     return ll
 }
 export async function mountItem(index, obj) {
-    //console.log('ll acc', instanceLL.get(0))
     const instanceFSM = new HFSM({
         initial: "idle", // Камера по умолчанию неактивна
         index: index,
@@ -35,9 +35,11 @@ export async function mountItem(index, obj) {
                     //linkedList.append(obj)//append next node ll
                     //tail.prev
                     const ll = instanceLinkedList.get(0)
-                    console.log('scroll inside', index)//, obj.id)
+                    console.log('scroll inside', index,ll)//, obj.id)
                     console.log('tail0000', ll.tail)//, obj.id)
-                    console.log('tail_value', ll.tail.value === obj)
+                    // if (ll.tail.value) {
+                    //console.log('tail_value', ll.tail?.value === obj)
+                    // }
                     //,Object.getOwnPropertyNames(ll.tail))
                     /*if (ll.tail.value.id === obj.id) {
                         console.log('scroll inside tail', index)
