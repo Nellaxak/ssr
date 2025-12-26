@@ -60,9 +60,9 @@ export async function mountItem(index, obj) {
                 if (from === 'outside') {
                     //linkedList.append(obj)//append next node ll
                     //tail.prev
-                    //const ll = instanceLinkedList.get(0)
-                    console.log('scroll inside', index, instanceLinkedList.get(0))//, obj.id)
-                    //console.log('tail0000', ll.tail, ll.tail.value)//, obj.id)
+                    const ll = instanceLinkedList.get(0)
+                    console.log('scroll inside', index, ll)//, obj.id)
+                    console.log('tail0000', ll.tail, ll.tail.value)//, obj.id)
                     // if (ll.tail.value) {
                     //console.log('tail_value', ll.tail?.value === obj)
                     // }
