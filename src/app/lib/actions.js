@@ -28,7 +28,8 @@ const callOnce = (fn) => {
     };
 };
 export async function createLinkedListInstance() {
-    callOnce(initializeApp)
+    const initOnce = callOnce(initializeApp)
+    return initOnce(0)
     //console.log('single function call')
 
 }
