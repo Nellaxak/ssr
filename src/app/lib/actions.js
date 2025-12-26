@@ -60,13 +60,14 @@ export async function mountItem(index, obj) {
             }
         }
     });
-    //listInstances.set(index, instanceFSM)
+    listInstances.set(index, instanceFSM)
     await instanceFSM.trigger("start");
     const item = new Item(Number(obj.id), obj)
     instanceItem.set(Number(obj.id), item)
 }
 export async function scrollFSM(index, action) {
-    const instance = listInstances.get(index)
+    const instance = instanceLinkedList.get(index)
+    //console.log()
     if (instance !== undefined) {
         //console.log('scroll', index, action)
         if (action === 'input') {
