@@ -13,7 +13,7 @@ let startPage
 let array3 = []
 let res = ''
 
-const ll = await createLinkedListInstance()
+//const ll = await createLinkedListInstance()
 //ll.append({name: 'ioooo',id: 1})
 //console.log('ll page', ll)
 
