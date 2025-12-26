@@ -11,6 +11,10 @@ class LinkedListNode {
     console.log("Getting the radius value");
     return this.value;
   }
+  set value(newValue) {
+    //console.log("Getting the radius value");
+    this.value = newValue;
+  }
 }
 export default class LinkedList {
   static arrObj = new Map();
