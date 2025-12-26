@@ -67,7 +67,7 @@ export async function mountItem(index, obj) {
 }
 export async function scrollFSM(index, action) {
     const instance = listInstances.get(index)
-    console.log('listInstances', instance)
+    console.log('listInstances', index, instance)
     if (instance !== undefined) {
         //console.log('scroll', index, action)
         if (action === 'input') {
