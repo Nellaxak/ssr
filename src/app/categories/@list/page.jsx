@@ -176,7 +176,8 @@ export default async function Home({ searchParams }) {
         const list = dat.near_earth_objects
         const arrObjects = Object.values(list)
         await ll.fromArray(arrObjects[0])
-        array3 = array3.concat(arrObjects[0]);
+        //array3 = array3.concat(arrObjects[0]);
+        array3 = arrObjects[0];
         await ll.toArray()
         //console.log('plplp',ll)
         return <List items={array3}

@@ -5,15 +5,15 @@ import LinkedList from '../LinkedList'
 
 const listInstances = new Map()
 const instanceItem = new Map()
-const instanceLL = new Map()
+const instanceLinkedList = new Map()
 export async function createLinkedListInstance() {
     const ll = new LinkedList()
-    instanceLL.set(0, ll)
+    instanceLinkedList.set(0, ll)
     return ll
 }
-export async function notIO(index, obj) {
+/*export async function notIO(index, obj) {
     console.log('ll acc', instanceLL.get(0))
-}
+}*/
 export async function mountItem(index, obj) {
     //console.log('ll acc', instanceLL.get(0))
     const instanceFSM = new HFSM({
@@ -45,7 +45,7 @@ export async function mountItem(index, obj) {
             onAfterIoOutput: async (from, to) => {
                 // Что то делаем
                 if (from === 'inside') {
-                    console.log('scroll outside', index)
+                    console.log('scroll outside', index, instanceLinkedList.get(0))
                     //linkedList.delete(obj)
                 }
                 //console.log('onAfterIoOutput', index, from, to)
