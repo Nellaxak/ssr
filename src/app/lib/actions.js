@@ -8,7 +8,7 @@ const listInstances = new Map()
 const instanceItem = new Map()
 const instanceLinkedList = new Map()
 const ll = new LinkedList()
-instanceLinkedList.set(0, ll)
+//instanceLinkedList.set(0, ll)
 /*const initializeApp = function (eventMessage) {
     console.log('App initialized:', eventMessage);
     const ll = new LinkedList()
@@ -32,7 +32,7 @@ const callOnce = (fn) => {
 export async function createLinkedListInstance() {
     //const initOnce = callOnce(initializeApp)
     //return initOnce(0)
-    const ll = instanceLinkedList.get(0)
+    //const ll = instanceLinkedList.get(0)
     return ll
     //console.log('single function call')
 
