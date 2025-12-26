@@ -61,13 +61,14 @@ export async function mountItem(index, obj) {
         }
     });
     listInstances.set(index, instanceFSM)
+    console.log('listInstances set', index)
     const item = new Item(Number(obj.id), obj)
     instanceItem.set(Number(obj.id), item)
     await instanceFSM.trigger("start");
 }
 export async function scrollFSM(index, action) {
     const instance = listInstances.get(index)
-    console.log('listInstances', index, instance)
+    console.log('listInstances get', index, instance)
     if (instance !== undefined) {
         //console.log('scroll', index, action)
         if (action === 'input') {
