@@ -1,15 +1,21 @@
 'use server'
 import { revalidateTag } from 'next/cache';
-//import items from '../../app/lib/ArrayGlob'
 import Item from '../Item';
-//import HFSM from '../HFSM'
-//call import before fromArray ssr
-import LinkedList, { linkedList } from '../LinkedList';
+import LinkedList from '../LinkedList'
 
 const listInstances = new Map()
 const instanceItem = new Map()
-
+const instanceLL = new Map()
+export async function createLinkedListInstance() {
+    const ll = new LinkedList()
+    instanceLL.set(0, ll)
+    return ll
+}
+export async function notIO(index, obj) {
+    console.log('ll acc', instanceLL.get(0))
+}
 export async function mountItem(index, obj) {
+    //console.log('ll acc', instanceLL.get(0))
     const item = new Item(Number(obj.id), obj)
     instanceItem.set(Number(obj.id), item)
 }
@@ -43,7 +49,7 @@ export async function toggleClick(params) {
     const id = Number(params)
     const item = instanceItem.get(id)
     await item.setStatus()
-    console.log('count',Item.count)
+    console.log('count', Item.count)
     //statusMap.set(id, !statusMap.get(id))
     revalidateTag('items', 'max')
 }

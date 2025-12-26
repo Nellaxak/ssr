@@ -1,14 +1,9 @@
 import styles from "./page.module.css";
 import React, { Suspense, Activity } from "react";
 import statusMap from "../../statusMap";
-import Link from "next/link";
-import Form from "next/form";
-import Item from "../../Item";
 import { revalidateTag, revalidatePath } from 'next/cache';
 import ButtonSubmit from '../../../components/ButtonSubmit/page'
-import LinkedList, { linkedList } from '../../LinkedList'
-import OutputItemsSet from "../../OutputItemsSet";
-import items from "../../lib/ArrayGlob";
+import { createLinkedListInstance } from '../../lib/actions'
 
 let resp
 let startDate
@@ -16,8 +11,10 @@ let endDate
 let startPage
 let array3 = []
 let res = ''
-//const linkedList = await ffff()
-//console.log('linkedlist', linkedList)
+
+const ll = await createLinkedListInstance()
+//ll.append({name: 'ioooo',id: 1})
+//console.log('ll page', ll)
 
 const options = {
     /*era: 'long',*/
@@ -178,7 +175,10 @@ export default async function Home({ searchParams }) {
         const dat = await resp.json()
         const list = dat.near_earth_objects
         const arrObjects = Object.values(list)
+        await ll.fromArray(arrObjects[0])
         array3 = array3.concat(arrObjects[0]);
+        await ll.toArray()
+        //console.log('plplp',ll)
         return <List items={array3}
             renderItem={async (product, index) => {
                 //console.log('product', product.value)

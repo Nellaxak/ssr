@@ -2,20 +2,20 @@
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import { useCallback, useEffect, useState, useRef } from "react";
 import dynamic from 'next/dynamic'
-//import CountPage from '../../app/CountPage'
+import { notIO } from '../../app/lib/actions'
 
 const options = {
     root: null,
     rootMargin: "100px",
     threshold: 1.0,
 }
-let router:any
+let router: any
 let path: any
-let searchParams:any
-let currentViewtype:any
-let ref:any
+let searchParams: any
+let currentViewtype: any
+let ref: any
 let add = false
-let callbackFunction:any
+let callbackFunction: any
 const IOComponent = () => {
     router = useRouter()
     path = usePathname()
@@ -36,6 +36,11 @@ const IOComponent = () => {
                 let newPage = page + 1
                 return newPage
             })
+            //await notIO()
+            //console.log('isIntersecting')
+        } else {
+            //await notIO()
+            //console.log('not isIntersecting')
         }
     }, []);
     useEffect(() => {
