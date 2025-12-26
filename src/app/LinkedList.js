@@ -122,11 +122,11 @@ export default class LinkedList {
     }
 
     // Возвращаем массив из всех узлов.
-    console.log('nodes length', nodes.length)
+    //console.log('nodes length', nodes.length)
     return nodes;
   }
   async fromArray(values) {
-    console.log('fromArray')
+    //console.log('fromArray')
     values.forEach(async (value) => {
       //console.log('value', value)
       await this.append(value)
