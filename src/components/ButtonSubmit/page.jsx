@@ -15,6 +15,7 @@ function ButtonSubmit(props) {
   //const callbackFunction = useCallback(async (entries: IntersectionObserverEntry[]) => {
   const callbackFunction = useCallback(async (entries) => {
     const [entry] = entries;
+    console.log('indexllll', props.index)
     if (entry.isIntersecting) {
       scrollFSM(props.index, 'input')
     } else {
