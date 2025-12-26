@@ -7,11 +7,30 @@ import HFSM from '../HFSM'
 const listInstances = new Map()
 const instanceItem = new Map()
 const instanceLinkedList = new Map()
-export async function createLinkedListInstance() {
-    console.log('single function call')
+const initializeApp = function (eventMessage) {
+    console.log('App initialized:', eventMessage);
     const ll = new LinkedList()
     instanceLinkedList.set(0, ll)
     return ll
+};
+const callOnce = (fn) => {
+    let hasBeenCalled = false;
+    let result; // Variable to store the result of the first call
+
+    return function (...args) {
+        if (!hasBeenCalled) {
+            hasBeenCalled = true;
+            // Use apply to ensure correct 'this' context and pass arguments
+            result = fn.apply(this, args);
+        }
+        // Subsequent calls return the cached result
+        return result;
+    };
+};
+export async function createLinkedListInstance() {
+    callOnce(initializeApp)
+    //console.log('single function call')
+
 }
 export async function mountItem(index, obj) {
     const instanceFSM = new HFSM({
@@ -35,7 +54,7 @@ export async function mountItem(index, obj) {
                     //linkedList.append(obj)//append next node ll
                     //tail.prev
                     const ll = instanceLinkedList.get(0)
-                    console.log('scroll inside', index,ll)//, obj.id)
+                    console.log('scroll inside', index, ll)//, obj.id)
                     console.log('tail0000', ll.tail)//, obj.id)
                     // if (ll.tail.value) {
                     //console.log('tail_value', ll.tail?.value === obj)
