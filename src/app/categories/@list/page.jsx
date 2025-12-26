@@ -95,7 +95,7 @@ async function List({ items, renderItem }) {
     console.log('type items', items, Array.isArray(items), items.length)
     const res = await Promise.all(
         items.map(async (item, index) => {
-            return await renderItem(item, index);
+            return await renderItem(item.value, index);
         }))
 
     return (
