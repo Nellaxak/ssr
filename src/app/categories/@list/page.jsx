@@ -3,7 +3,8 @@ import React, { Suspense, Activity } from "react";
 import statusMap from "../../statusMap";
 import { revalidateTag, revalidatePath } from 'next/cache';
 import ButtonSubmit from '../../../components/ButtonSubmit/page'
-import { createLinkedListInstance } from '../../lib/actions'
+import { linkedList } from "../../LinkedList";
+//import { createLinkedListInstance } from '../../lib/actions'
 
 let resp
 let startDate
@@ -12,7 +13,7 @@ let startPage
 let array3 = []
 let res = ''
 
-const ll = await createLinkedListInstance()
+//const ll = await createLinkedListInstance()
 //ll.append({name: 'ioooo',id: 1})
 //console.log('ll page', ll)
 
@@ -151,7 +152,7 @@ async function Row(props) {
                 <output className={styles.padding}>{formatData}</output>
             </Suspense>
             <ButtonSubmit index={props.index} length={props.length}
-                id={props.obj.id} obj={props.obj} status={status} />
+                id={props.obj.id} obj={props.obj} status={status} acton={props.acton}/>
             <div className={styles.flex_item}>
                 <div className={styles.flex_container_row}>
                     <span className={styles.danger}>{Danger}</span>
@@ -175,10 +176,10 @@ export default async function Home({ searchParams }) {
         const dat = await resp.json()
         const list = dat.near_earth_objects
         const arrObjects = Object.values(list)
-        await ll.fromArray(arrObjects[0])
+        await linkedList.fromArray(arrObjects[0])
         //array3 = array3.concat(arrObjects[0]);
         //array3 = arrObjects[0];
-        array3 = await ll.toArray()
+        array3 = await linkedList.toArray()
         return <List items={array3}
             renderItem={async (product, index) => {
                 //console.log('product', product)
@@ -196,6 +197,7 @@ export default async function Home({ searchParams }) {
                     index={index}
                     length={arrObjects[0].length}
                     dates={dateString}
+                    acton={linkedList}
                 /></Suspense>
             }}
         />

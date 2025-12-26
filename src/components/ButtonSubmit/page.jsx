@@ -23,7 +23,7 @@ function ButtonSubmit(props) {
   }, []);
   useEffect(() => {
     console.log('mount', props.index)//page increment -> new mount?
-    mountItem(props.index, props.obj)
+    mountItem(props.index, props.obj, props.acton)
     const observer = new IntersectionObserver(callbackFunction, options);
     observer.observe(ref.current);
     return () => {

@@ -7,7 +7,7 @@ import HFSM from '../HFSM'
 const listInstances = new Map()
 const instanceItem = new Map()
 const instanceLinkedList = new Map()
-const ll = new LinkedList()
+//const ll = new LinkedList()
 //instanceLinkedList.set(0, ll)
 /*const initializeApp = function (eventMessage) {
     console.log('App initialized:', eventMessage);
@@ -29,15 +29,15 @@ const callOnce = (fn) => {
         return result;
     };
 };*/
-export async function createLinkedListInstance() {
+//export async function createLinkedListInstance() {
     //const initOnce = callOnce(initializeApp)
     //return initOnce(0)
     //const ll = instanceLinkedList.get(0)
-    return ll
+    //return ll
     //console.log('single function call')
 
-}
-export async function mountItem(index, obj) {
+//}
+export async function mountItem(index, obj,ll) {
     const instanceFSM = new HFSM({
         initial: "idle", // Камера по умолчанию неактивна
         index: index,
@@ -58,7 +58,7 @@ export async function mountItem(index, obj) {
                 if (from === 'outside') {
                     //linkedList.append(obj)//append next node ll
                     //tail.prev
-                    const ll = instanceLinkedList.get(0)
+                    //const ll = instanceLinkedList.get(0)
                     console.log('scroll inside', index, ll)//, obj.id)
                     console.log('tail0000', ll.tail, ll.tail.value)//, obj.id)
                     // if (ll.tail.value) {
