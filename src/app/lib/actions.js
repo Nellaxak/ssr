@@ -2,6 +2,7 @@
 import { revalidateTag } from 'next/cache';
 import Item from '../Item';
 import LinkedList from '../LinkedList'
+import HFSM from '../HFSM'
 
 const listInstances = new Map()
 const instanceItem = new Map()
@@ -57,9 +58,9 @@ export async function mountItem(index, obj) {
         }
     });
     //listInstances.set(index, instanceFSM)
+    await instanceFSM.trigger("start");
     const item = new Item(Number(obj.id), obj)
     instanceItem.set(Number(obj.id), item)
-    await instanceFSM.trigger("start");
 }
 export async function scrollFSM(index, action) {
     const instance = listInstances.get(index)

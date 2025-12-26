@@ -1,7 +1,5 @@
 'use client'
-
-import { useEffect, useCallback, Suspense, useRef, useState } from 'react'
-import { useRouter, useSearchParams } from 'next/navigation'
+import { useEffect, useCallback, Suspense, useRef } from 'react'
 import { toggleClick, mountItem, scrollFSM } from '../../app/lib/actions'
 const options = {
   root: null,
@@ -12,11 +10,11 @@ let currentViewtype = ''
 let currentPage = 0
 function ButtonSubmit(props) {
   const ref = useRef(null)
-  const [page, setPage] = useState(0);
+  //const [page, setPage] = useState(0);
   //const [io, setIO] = useState(null);//true-input-load/false-output
-  const router = useRouter()
-  const searchParams = useSearchParams()
-  currentViewtype = searchParams.get('viewtype')
+  //const router = useRouter()
+  //const searchParams = useSearchParams()
+  //currentViewtype = searchParams.get('viewtype')
   //currentPage = Number(searchParams.get('page'))
 
   const handleClick = useCallback(async () => {
@@ -39,9 +37,9 @@ function ButtonSubmit(props) {
       scrollFSM(props.index, 'output')
     }
   }, []);
-  useEffect(() => {
+  /*useEffect(() => {
     router.push(`?viewtype=${currentViewtype}&page=${page}`, { scroll: false });
-  }, [page])
+  }, [page])*/
   useEffect(() => {
     console.log('mount', props.index)//page increment -> new mount?
     mountItem(props.index, props.obj)
