@@ -166,7 +166,7 @@ async function Row(props) {
 export default async function Home({ searchParams }) {
     console.log('@list Home')
     const search = await searchParams;
-    const start = await search.start
+    //const start = await search.start
     let [startDate, endDate] = await CalcData(search)
     //try {
     resp = await fetch(`https://api.nasa.gov/neo/rest/v1/feed?start_date=${startDate}&end_date=${endDate}&api_key=3wa5hHgFuqhf6XiefvqzkcDQWZ01aOOK4vNZEXsP`,
@@ -178,9 +178,9 @@ export default async function Home({ searchParams }) {
         const dat = await resp.json()
         const list = dat.near_earth_objects
         const arrObjects = Object.values(list)
-        if (Number(start) === 1) {
-            await ll.fromArray(arrObjects[0])
-        }
+        //if (Number(start) === 1) {
+        await ll.fromArray(arrObjects[0])
+        //}
         //array3 = array3.concat(arrObjects[0]);
         //array3 = arrObjects[0];
         array3 = await ll.toArray()
