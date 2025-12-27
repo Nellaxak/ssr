@@ -1,11 +1,15 @@
 // middleware.js or middleware.ts
 import { NextResponse } from 'next/server';
+import { linkedList } from './app/LinkedList'
 
 export function middleware(request) {
-  //console.log('middleware',request.method)
-  if (request.method === 'POST') {
+  //console.log('middleware', linkedList)
+  const queryParams = request.nextUrl.searchParams;
+  const pageUrl = queryParams.get('page');
+  console.log('Page URL param:', pageUrl);
+  if (request.method === 'POST' && Number(pageUrl) === 0) {
     // You can add additional logic here, e.g., rate limiting or authentication checks
-    
+    console.log('mstop')
     // To stop the request, return a response immediately. 
     // This prevents the request from reaching the intended API route or page.
     return new NextResponse(JSON.stringify({ message: 'POST requests are not allowed for this route' }), {
