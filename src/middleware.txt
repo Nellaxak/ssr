@@ -7,7 +7,7 @@ export async function middleware(request) {
   const queryParams = request.nextUrl.searchParams;
   const pageUrl = queryParams.get('page');
   console.log('Page URL param:', pageUrl, Number(pageUrl));
-  if (request.method === 'POST' && Number(pageUrl) === 0) {
+  if (request.method === 'POST' && Number(pageUrl) === 0) {//and Number(null)===0
     // You can add additional logic here, e.g., rate limiting or authentication checks
     console.log('mstop')
     // To stop the request, return a response immediately. 

@@ -2,11 +2,11 @@
 import { useEffect, useCallback, Suspense, useRef } from 'react'
 //import { useRouter, useSearchParams } from 'next/navigation'
 import { toggleClick, mountItem, scrollFSM } from '../../app/lib/actions'
-const options = {
+/*const options = {
   root: null,
   rootMargin: "0px",
   threshold: 0.0,
-}
+}*/
 
 let ref
 
@@ -32,7 +32,7 @@ function ButtonSubmit(props) {
   //fetchData(searchParams.get('filter')); 
   //}, [setSearchParams]);
   //const callbackFunction = useCallback(async (entries: IntersectionObserverEntry[]) => {
-  const callbackFunction = useCallback(async (entries) => {
+  /*const callbackFunction = useCallback(async (entries) => {
     const [entry] = entries;
     //console.log('currentPage', currentPage)
     //if (currentPage > 0) {
@@ -42,10 +42,10 @@ function ButtonSubmit(props) {
         scrollFSM(props.index, 'output')
       }
    // }
-  }, []);
+  }, []);*/
   useEffect(() => {
     console.log('mount', props.index)
-    mountItem(props.index, props.obj)//await
+    //mountItem(props.index, props.obj)//await
     const observer = new IntersectionObserver(callbackFunction, options);
     observer.observe(ref.current);
     return () => {
