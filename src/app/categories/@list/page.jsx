@@ -184,7 +184,7 @@ export default async function Home({ searchParams }) {
         //await ll.fromArray(arrObjects[0])
         //}
         //array3 = array3.concat(arrObjects[0]);
-        array3.concat(arrObjects[0]);
+        array3.concat(...arrObjects[0]);
 
         //array3 = arrObjects[0];
         //array3 = await ll.toArray()
