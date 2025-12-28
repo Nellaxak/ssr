@@ -1,24 +1,31 @@
 'use client'
 import { useEffect, useCallback, Suspense, useRef } from 'react'
+import { useRouter, useSearchParams } from 'next/navigation'
 import { toggleClick, mountItem, scrollFSM } from '../../app/lib/actions'
 const options = {
   root: null,
   rootMargin: "0px",
   threshold: 0.0,
 }
+let currentPage
+let ref
+let searchParams
 function ButtonSubmit(props) {
-  const ref = useRef(null)
-
+  ref = useRef(null)
+  searchParams = useSearchParams()
+  currentPage = Number(searchParams.get('page'))
   const handleClick = useCallback(async () => {
     await toggleClick(props.id)
   }, [])
   //const callbackFunction = useCallback(async (entries: IntersectionObserverEntry[]) => {
   const callbackFunction = useCallback(async (entries) => {
     const [entry] = entries;
-    if (entry.isIntersecting) {
-      scrollFSM(props.index, 'input')
-    } else {
-      scrollFSM(props.index, 'output')
+    if (Number(currentPage) > 0) {
+      if (entry.isIntersecting) {
+        scrollFSM(props.index, 'input')
+      } else {
+        scrollFSM(props.index, 'output')
+      }
     }
   }, []);
   useEffect(() => {
