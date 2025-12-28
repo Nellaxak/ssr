@@ -11,7 +11,7 @@ import { toggleClick, mountItem, scrollFSM } from '../../app/lib/actions'
 let ref
 
 function ButtonSubmit(props) {
-  ref = useRef(null)
+  //ref = useRef(null)
   //const [page, setPage] = useState(0);
   //searchParams = useSearchParams()
   //const [searchParams, setSearchParams] = useSearchParams();
@@ -43,16 +43,16 @@ function ButtonSubmit(props) {
       }
    // }
   }, []);*/
-  useEffect(() => {
+  /*useEffect(() => {
     console.log('mount', props.index)
     //mountItem(props.index, props.obj)//await
     const observer = new IntersectionObserver(callbackFunction, options);
     observer.observe(ref.current);
     return () => {
       //delete fsm instance
-      observer.disconnect();
+      //observer.disconnect();
     };
-  }, [])
+  }, [])*/
 
   //onClick={()=>handleClick()}
   return <button type="button" ref={ref} onClick={handleClick}><Suspense>{props.status}</Suspense></button>

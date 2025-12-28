@@ -164,7 +164,7 @@ async function Row(props) {
 /*async function RenderProp(product){
 }*/
 export default async function Home({ searchParams }) {
-    console.log('@list Home')
+    //console.log('@list Home')
     const search = await searchParams;
     //const start = await search.start
     let [startDate, endDate] = await CalcData(search)
@@ -174,24 +174,24 @@ export default async function Home({ searchParams }) {
         { next: { tags: ['items'] } }
     );
     if (Number(resp.status) === 200) {
-        console.log('not from cache')
+        //console.log('not from cache')
         const dat = await resp.json()
         const list = dat.near_earth_objects
         const arrObjects = Object.values(list)
         //if (Number(start) === 1) {
-        await ll.fromArray(arrObjects[0])
+        //await ll.fromArray(arrObjects[0])
         //}
         array3 = array3.concat(arrObjects[0]);
         //array3 = arrObjects[0];
-        array3 = await ll.toArray()
+        //array3 = await ll.toArray()
         return <List items={array3}
             renderItem={async (product, index) => {
                 //console.log('product', product)
-                /*const date = new Date(product.close_approach_data[0].epoch_date_close_approach)
+                const date = new Date(product.close_approach_data[0].epoch_date_close_approach)
                 const prevDate = new Intl.DateTimeFormat("ru-RU", options).format(date);
                 const datSlice = prevDate.slice(0, -2)
-                const dateString = datSlice.replace('.', '');*/
-                const dateString = startDate;
+                const dateString = datSlice.replace('.', '');
+                //const dateString = startDate;
                 /*
                 viewtype={viewtype}
                 */
