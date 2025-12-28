@@ -19,6 +19,8 @@ class LinkedListNode {
 export default class LinkedList {
   static arrObj = new Map();
   static instance = null;
+  static length = 0;
+  static head = null;
   constructor() {
     if (LinkedList.instance) {
       //console.log('double call')
@@ -50,12 +52,17 @@ export default class LinkedList {
       const newNode = new LinkedListNode(value);
       if (!this.head || !this.tail) {
         this.head = newNode;
+        LinkedList.head = this.head;
         this.tail = newNode;
         return this;
       }
       this.tail.next = newNode;
       //newNode.prev = this.tail;
       this.tail = newNode;
+      LinkedList.length = LinkedList.length + 1
+      if (LinkedList.length >= 9) {
+        //delete all prev
+      }
       //console.log('after append', this)
       //console.log('after append', this.head, this.tail)
     }
@@ -134,6 +141,15 @@ export default class LinkedList {
     });
     //add observer dispatch
     return this;
+  }
+  static async getAll(method) {
+    let current = LinkedList.head;
+    while (current) {
+      //console.log(current.value);
+      current = current.next;
+      console.log('bbbh',method(current.value))
+      return await method(current.value);
+    }
   }
 }
 export const linkedList = new LinkedList()

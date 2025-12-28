@@ -3,7 +3,7 @@ import React, { Suspense, Activity } from "react";
 import statusMap from "../../statusMap";
 //import { revalidateTag, revalidatePath } from 'next/cache';
 import ButtonSubmit from '../../../components/ButtonSubmit/page'
-//import { linkedList } from "../../LinkedList";
+import LinkedList, { linkedList } from "../../LinkedList";
 import Item from "../../Item";
 import { createLinkedListInstance } from '../../lib/actions'
 
@@ -93,13 +93,16 @@ async function CalcData(params) {
     return [startDate, endDate]
 }
 
-async function List({ items, renderItem }) {
+async function List({ renderItem }) {
     //console.log('type items', Array.isArray(items), items.length)
-    const res = await Promise.all(
-        items.map(async (item, index) => {
-            //console.log('llpoiyt', item.value)
-            return await renderItem(item.value, index);
-        }))
+    //const res = await Promise.all(
+    res = LinkedList.getAll(renderItem)
+    console.log('res',res)
+    //)
+    /*items.map(async (item, index) => {
+        //console.log('llpoiyt', item.value)
+        return await renderItem(item.value, index);
+    }))*/
     return (
         <Suspense>{res}
         </Suspense>)
@@ -154,8 +157,7 @@ async function Row(props) {
             <Suspense>
                 <output className={styles.padding}>{formatData}</output>
             </Suspense>
-            <ButtonSubmit index={props.index} length={props.length}
-                id={props.obj.id} obj={props.obj} status={status} />
+            <ButtonSubmit id={props.obj.id} obj={props.obj} status={status} />
             <div className={styles.flex_item}>
                 <div className={styles.flex_container_row}>
                     <span className={styles.danger}>{Danger}</span>
@@ -185,9 +187,10 @@ export default async function Home({ searchParams }) {
         //}
         //array3 = array3.concat(arrObjects[0]);
         //array3.push(...arrObjects[0]);
+        //mySet = new Set(arrObjects[0]);
         //array3 = arrObjects[0];
-        array3 = await ll.toArray()
-        return <List items={array3}
+        //array3 = await ll.toArray()
+        return <List //items={array3}
             renderItem={async (product, index) => {
                 //console.log('product', product)
                 const date = new Date(product.close_approach_data[0].epoch_date_close_approach)
@@ -202,8 +205,6 @@ export default async function Home({ searchParams }) {
                 return <Suspense><Row
                     key={product.id}
                     obj={product}
-                    index={index}
-                    length={arrObjects[0].length}
                     dates={dateString}
                 /></Suspense>
             }}
