@@ -6,7 +6,7 @@ export async function middleware(request) {
   //console.log('middleware', linkedList)
   const queryParams = request.nextUrl.searchParams;
   const pageUrl = queryParams.get('page');
-  console.log('Page URL param:', pageUrl);
+  console.log('Page URL param:', pageUrl, Number(pageUrl));
   if (request.method === 'POST' && Number(pageUrl) === 0) {
     // You can add additional logic here, e.g., rate limiting or authentication checks
     console.log('mstop')
