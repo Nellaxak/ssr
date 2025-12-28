@@ -93,4 +93,8 @@ export async function toggleClick(params) {
     //console.log('count', Item.count)
     //statusMap.set(id, !statusMap.get(id))
     //revalidateTag('items', 'max')
+    //return item.status
+}
+export async function getStatus(params) {
+    console.log('getStatus', params)
 }
