@@ -98,7 +98,7 @@ async function List({ items, renderItem }) {
     const res = await Promise.all(
         items.map(async (item, index) => {
             //console.log('llpoiyt', item.value)
-            return await renderItem(item, index);
+            return await renderItem(item.value, index);
         }))
     return (
         <Suspense>{res}
@@ -181,26 +181,26 @@ export default async function Home({ searchParams }) {
         const list = dat.near_earth_objects
         const arrObjects = Object.values(list)
         //if (Number(start) === 1) {
-        //await ll.fromArray(arrObjects[0])
+        await ll.fromArray(arrObjects[0])
         //}
-        array3 = array3.concat(arrObjects[0]);
+        //array3 = array3.concat(arrObjects[0]);
         //array3.push(...arrObjects[0]);
         //array3 = arrObjects[0];
-        //array3 = await ll.toArray()
+        array3 = await ll.toArray()
         return <List items={array3}
             renderItem={async (product, index) => {
                 //console.log('product', product)
-                const date = new Date(product.close_approach_data[0].epoch_date_close_approach)
+                /*const date = new Date(product.close_approach_data[0].epoch_date_close_approach)
                 const prevDate = new Intl.DateTimeFormat("ru-RU", options).format(date);
                 const datSlice = prevDate.slice(0, -2)
                 const dateString = datSlice.replace('.', '');
-                new Item(Number(product.id), product)
+                new Item(Number(product.id), product)*/
                 //const dateString = startDate;
                 /*
                 viewtype={viewtype}
                 */
                 return <Suspense><Row
-                    key={product.id}
+                    key={product.value.id}
                     obj={product}
                     index={index}
                     length={arrObjects[0].length}
