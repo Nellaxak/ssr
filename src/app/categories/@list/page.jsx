@@ -186,12 +186,12 @@ export default async function Home({ searchParams }) {
         //array3 = await ll.toArray()
         return <List items={array3}
             renderItem={async (product, index) => {
-                //console.log('product', product)
-                const date = new Date(product.close_approach_data[0].epoch_date_close_approach)
+                console.log('product', product)
+                /*const date = new Date(product.close_approach_data[0].epoch_date_close_approach)
                 const prevDate = new Intl.DateTimeFormat("ru-RU", options).format(date);
                 const datSlice = prevDate.slice(0, -2)
-                const dateString = datSlice.replace('.', '');
-                //const dateString = startDate;
+                const dateString = datSlice.replace('.', '');*/
+                const dateString = startDate;
                 /*
                 viewtype={viewtype}
                 */
