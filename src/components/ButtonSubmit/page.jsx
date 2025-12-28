@@ -12,8 +12,8 @@ let ref
 let searchParams
 function ButtonSubmit(props) {
   ref = useRef(null)
-  searchParams = useSearchParams()
-  //const [searchParams, setSearchParams] = useSearchParams();
+  //searchParams = useSearchParams()
+  const [searchParams, setSearchParams] = useSearchParams();
   currentPage = Number(searchParams.get('page'))
   const handleClick = useCallback(async () => {
     await toggleClick(props.id)
@@ -33,7 +33,7 @@ function ButtonSubmit(props) {
         scrollFSM(props.index, 'output')
       }
     }
-  }, [currentPage]);
+  }, [setSearchParams]);
   useEffect(() => {
     console.log('mount', props.index)
     mountItem(props.index, props.obj)//await
