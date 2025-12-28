@@ -55,6 +55,6 @@ function ButtonSubmit(props) {
   }, [])*/
 
   //onClick={()=>handleClick()}
-  return <button type="button" ref={ref} onClick={handleClick}><Suspense>{props.status}</Suspense></button>
+  return <button type="button" onClick={handleClick}><Suspense>{props.status}</Suspense></button>
 }
 export default ButtonSubmit
