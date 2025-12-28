@@ -123,8 +123,8 @@ async function Row(props) {
     <span>{props.obj.absolute_magnitude_h}</span>*/
     //console.log('qwasxz', props)
     const dataViewtype = props.obj.close_approach_data[0].miss_distance
-    const status = Number(statusMap.get(Number(props.obj.id)))
-    console.log('id', props.obj.id, 'status', status)
+    const status = 0//Number(statusMap.get(Number(props.obj.id)))
+    //console.log('id', props.obj.id, 'status', status)
     //await FormatStatus(props.obj.id)
     const formatData = await DataFormat(dataViewtype, props.viewtype)
     let Danger = ''
@@ -167,7 +167,7 @@ async function Row(props) {
 /*async function RenderProp(product){
 }*/
 export default async function Home({ searchParams }) {
-    console.log('@list Home')
+    //console.log('@list Home')
     const search = await searchParams;
     let [startDate, endDate] = await CalcData(search)
     //try {
@@ -201,7 +201,7 @@ export default async function Home({ searchParams }) {
                 */
                 return <Suspense><Row
                     key={product.value.id}
-                    obj={product}
+                    obj={product.value}
                     index={index}
                     length={arrObjects[0].length}
                     dates={dateString}
