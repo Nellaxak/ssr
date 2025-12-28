@@ -127,6 +127,7 @@ export default class LinkedList {
   }
   async fromArray(values) {
     //console.log('fromArray')
+    //add filter exsist
     values.forEach(async (value) => {
       //console.log('value', value)
       await this.append(value)
