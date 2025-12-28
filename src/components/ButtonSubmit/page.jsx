@@ -11,12 +11,17 @@ let currentPage
 let ref
 let searchParams
 function ButtonSubmit(props) {
-  const ref = useRef(null)
-  searchParams = useSearchParams()
+  ref = useRef(null)
+  //searchParams = useSearchParams()
+  const [searchParams, setSearchParams] = useSearchParams();
   currentPage = Number(searchParams.get('page'))
   const handleClick = useCallback(async () => {
     await toggleClick(props.id)
   }, [])
+  //useEffect(() => {
+    // This might capture a stale 'searchParams' if not handled carefully
+    //fetchData(searchParams.get('filter')); 
+  //}, [setSearchParams]);
   //const callbackFunction = useCallback(async (entries: IntersectionObserverEntry[]) => {
   const callbackFunction = useCallback(async (entries) => {
     const [entry] = entries;
@@ -28,7 +33,7 @@ function ButtonSubmit(props) {
         scrollFSM(props.index, 'output')
       }
     }
-  }, []);
+  }, [currentPage]);
   useEffect(() => {
     console.log('mount', props.index)
     mountItem(props.index, props.obj)//await
