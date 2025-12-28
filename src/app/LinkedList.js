@@ -136,22 +136,15 @@ export default class LinkedList {
     const nodes = [];
     //add filter exsist
     values.forEach(async (value) => {
-      //console.log('value', value)
       const node = await this.append(value)
-      nodes.push(node);
+      console.log('node', node)
+      if (node) {
+        nodes.push(node);
+      }
     });
     //add observer dispatch
     return nodes;
   }
-  /*static async getAll(method) {
-    let current = LinkedList.head;
-    while (current) {
-      //console.log(current.value);
-      current = current.next;
-      console.log('bbbh',method(current.value))
-      return await method(current.value);
-    }
-  }*/
 }
 export const linkedList = new LinkedList()
 //export linkedList/*async function ffff(){
