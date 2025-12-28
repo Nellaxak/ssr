@@ -36,10 +36,8 @@ const IOComponent = () => {
                 let newPage = page + 1
                 return newPage
             })
-            //await notIO()
             //console.log('isIntersecting')
         } else {
-            //await notIO()
             //console.log('not isIntersecting')
         }
     }, []);
@@ -53,7 +51,7 @@ const IOComponent = () => {
     }, [])
     useEffect(() => {
         router.push(`?viewtype=${currentViewtype}&page=${page}`, { scroll: false });
-        router.refresh()
+        //router.refresh()
     }, [page])
     return <p ref={ref}></p>
 }

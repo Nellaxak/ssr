@@ -1,21 +1,21 @@
 'use client'
-import { useEffect, useCallback, Suspense, useRef, useState } from 'react'
-import { useRouter, useSearchParams } from 'next/navigation'
+import { useEffect, useCallback, Suspense, useRef } from 'react'
+//import { useRouter, useSearchParams } from 'next/navigation'
 import { toggleClick, mountItem, scrollFSM } from '../../app/lib/actions'
 const options = {
   root: null,
   rootMargin: "0px",
   threshold: 0.0,
 }
-let currentPage
+
 let ref
-let searchParams
+
 function ButtonSubmit(props) {
   ref = useRef(null)
-  const [page, setPage] = useState(0);
-  searchParams = useSearchParams()
+  //const [page, setPage] = useState(0);
+  //searchParams = useSearchParams()
   //const [searchParams, setSearchParams] = useSearchParams();
-  currentPage = Number(searchParams.get('page'))
+  //currentPage = Number(searchParams.get('page'))
 
   const handleClick = useCallback(async () => {
     await toggleClick(props.id)
@@ -35,14 +35,14 @@ function ButtonSubmit(props) {
   const callbackFunction = useCallback(async (entries) => {
     const [entry] = entries;
     //console.log('currentPage', currentPage)
-    if (currentPage > 0) {
+    //if (currentPage > 0) {
       if (entry.isIntersecting) {
         scrollFSM(props.index, 'input')
       } else {
         scrollFSM(props.index, 'output')
       }
-    }
-  }, [currentPage]);
+   // }
+  }, []);
   useEffect(() => {
     console.log('mount', props.index)
     mountItem(props.index, props.obj)//await
