@@ -202,6 +202,7 @@ export default async function Home({ searchParams }) {
                 return <Suspense><Row
                     key={product.id}
                     obj={product}
+                    index={index}
                     dates={dateString}
                 /></Suspense>
             }}
