@@ -11,7 +11,7 @@ let currentPage
 let ref
 let searchParams
 function ButtonSubmit(props) {
-  ref = useRef(null)
+  const ref = useRef(null)
   searchParams = useSearchParams()
   currentPage = Number(searchParams.get('page'))
   const handleClick = useCallback(async () => {
@@ -20,8 +20,8 @@ function ButtonSubmit(props) {
   //const callbackFunction = useCallback(async (entries: IntersectionObserverEntry[]) => {
   const callbackFunction = useCallback(async (entries) => {
     const [entry] = entries;
-    console.log('currentPage', currentPage)
-    if (Number(currentPage) > 0) {
+    //console.log('currentPage', currentPage)
+    if (currentPage > 0) {
       if (entry.isIntersecting) {
         scrollFSM(props.index, 'input')
       } else {
