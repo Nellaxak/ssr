@@ -40,6 +40,7 @@ export async function mountItem(index, obj) {
             onAfterIoOutput: async (from, to) => {
                 // Что то делаем
                 if (from === 'inside') {
+                    const ll = instanceLinkedList.get(0)
                     console.log('scroll outside', index, ll)
                     ll.delete(obj)
                 }
