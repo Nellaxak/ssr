@@ -5,7 +5,7 @@ import statusMap from "../../statusMap";
 import ButtonSubmit from '../../../components/ButtonSubmit/page'
 //import { linkedList } from "../../LinkedList";
 import Item from "../../Item";
-//import { createLinkedListInstance } from '../../lib/actions'
+import { createLinkedListInstance } from '../../lib/actions'
 
 let resp
 let startDate
@@ -14,7 +14,7 @@ let startPage
 let array3 = []
 let res = ''
 
-//const ll = await createLinkedListInstance()
+const ll = await createLinkedListInstance()
 //ll.append({name: 'ioooo',id: 1})
 //console.log('ll page', ll)
 
@@ -193,8 +193,8 @@ export default async function Home({ searchParams }) {
                 /*const date = new Date(product.close_approach_data[0].epoch_date_close_approach)
                 const prevDate = new Intl.DateTimeFormat("ru-RU", options).format(date);
                 const datSlice = prevDate.slice(0, -2)
-                const dateString = datSlice.replace('.', '');
-                new Item(Number(product.id), product)*/
+                const dateString = datSlice.replace('.', '');*/
+                new Item(Number(product.id), product)
                 //const dateString = startDate;
                 /*
                 viewtype={viewtype}
