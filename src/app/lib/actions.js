@@ -30,28 +30,18 @@ export async function mountItem(index, obj) {
         callbacks: {
             onAfterIoInput: async (from, to) => {
                 // Что то делаем
-                //console.log('_scroll inside', index, from)//, obj.id)
                 if (from === 'outside') {
-                    //linkedList.append(obj)//append next node ll
                     //tail.prev
                     const ll = instanceLinkedList.get(0)
                     console.log('scroll inside', index, ll)//, obj.id)
-                    console.log('tail0000', ll.head, ll.tail)//, obj.id)
-                    // if (ll.tail.value) {
-                    //console.log('tail_value', ll.tail?.value === obj)
-                    // }
-                    //,Object.getOwnPropertyNames(ll.tail))
-                    /*if (ll.tail.value.id === obj.id) {
-                        console.log('scroll inside tail', index)
-                    }*/
                 }
                 //console.log('onAfterIoInput', index, from, to)
             },
             onAfterIoOutput: async (from, to) => {
                 // Что то делаем
                 if (from === 'inside') {
-                    console.log('scroll outside', index, instanceLinkedList.get(0))
-                    //linkedList.delete(obj)
+                    console.log('scroll outside', index, ll)
+                    ll.delete(obj)
                 }
                 //console.log('onAfterIoOutput', index, from, to)
             },
