@@ -96,7 +96,7 @@ async function CalcData(params) {
 async function List({ renderItem }) {
     //console.log('type items', Array.isArray(items), items.length)
     //const res = await Promise.all(
-    res = LinkedList.getAll(renderItem)
+    const res = await LinkedList.getAll(renderItem)
     console.log('res',res)
     //)
     /*items.map(async (item, index) => {
