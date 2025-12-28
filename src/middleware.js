@@ -13,7 +13,7 @@ export function middleware(request) {
     // To stop the request, return a response immediately. 
     // This prevents the request from reaching the intended API route or page.
     return new NextResponse(JSON.stringify({ message: 'POST requests are not allowed for this route' }), {
-      status: 200, // Use an appropriate HTTP status code (e.g., 400, 401, 403, 405)
+      status: 400, // Use an appropriate HTTP status code (e.g., 400, 401, 403, 405)
       headers: {
         'content-type': 'application/json',
       },
