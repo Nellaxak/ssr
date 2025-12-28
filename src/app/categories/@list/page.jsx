@@ -1,11 +1,11 @@
 import styles from "./page.module.css";
 import React, { Suspense, Activity } from "react";
 import statusMap from "../../statusMap";
-import { revalidateTag, revalidatePath } from 'next/cache';
+//import { revalidateTag, revalidatePath } from 'next/cache';
 import ButtonSubmit from '../../../components/ButtonSubmit/page'
-import { linkedList } from "../../LinkedList";
+//import { linkedList } from "../../LinkedList";
 import Item from "../../Item";
-import { createLinkedListInstance } from '../../lib/actions'
+//import { createLinkedListInstance } from '../../lib/actions'
 
 let resp
 let startDate
@@ -14,7 +14,7 @@ let startPage
 let array3 = []
 let res = ''
 
-const ll = await createLinkedListInstance()
+//const ll = await createLinkedListInstance()
 //ll.append({name: 'ioooo',id: 1})
 //console.log('ll page', ll)
 
@@ -105,7 +105,7 @@ async function List({ items, renderItem }) {
         </Suspense>)
 }
 async function FormatStatus(params) {
-    //console.log('FormatStatus', params)
+    console.log('FormatStatus', params)
     const status = Number(statusMap.get(Number(params)))
     let statusItem = 'ЗАКАЗАТЬ'
     if (status === 0) {
@@ -123,7 +123,9 @@ async function Row(props) {
     <span>{props.obj.absolute_magnitude_h}</span>*/
     //console.log('qwasxz', props)
     const dataViewtype = props.obj.close_approach_data[0].miss_distance
-    const status = await FormatStatus(props.obj.id)
+    const status = Number(statusMap.get(Number(props.obj.id)))
+    console.log('id', props.obj.id, 'status', status)
+    //await FormatStatus(props.obj.id)
     const formatData = await DataFormat(dataViewtype, props.viewtype)
     let Danger = ''
     if (Number(props.obj.is_potentially_hazardous_asteroid) === 1) {
