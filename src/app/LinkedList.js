@@ -137,7 +137,7 @@ export default class LinkedList {
     //add filter exsist
     values.forEach(async (value) => {
       //console.log('value', value)
-      const node=await this.append(value)
+      const node = await this.append(value)
       nodes.push(node);
     });
     //add observer dispatch

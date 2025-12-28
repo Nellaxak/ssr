@@ -94,12 +94,11 @@ async function CalcData(params) {
 }
 
 async function List({ items, renderItem }) {
-    //console.log('type items', Array.isArray(items), items.length)
-    const res = await Promise.all(
-        items.map(async (item, index) => {
-            //console.log('llpoiyt', item.value)
-            return await renderItem(item.value, index);
-        }))
+    console.log('type items', Array.isArray(items), items.length)
+    const res = await Promise.all(items.map(async (item, index) => {
+        //console.log('llpoiyt', item.value)
+        return await renderItem(item.value, index);
+    }))
     return (
         <Suspense>{res}
         </Suspense>)
@@ -202,6 +201,7 @@ export default async function Home({ searchParams }) {
                 return <Suspense><Row
                     key={product.id}
                     obj={product}
+                    viewtype={viewtype}
                     index={index}
                     dates={dateString}
                 /></Suspense>
