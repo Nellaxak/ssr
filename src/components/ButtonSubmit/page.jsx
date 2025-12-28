@@ -13,19 +13,20 @@ let searchParams
 function ButtonSubmit(props) {
   ref = useRef(null)
   const [page, setPage] = useState(0);
-  //searchParams = useSearchParams()
-  const [searchParams, setSearchParams] = useSearchParams();
+  searchParams = useSearchParams()
+  //const [searchParams, setSearchParams] = useSearchParams();
+  currentPage = Number(searchParams.get('page'))
 
   const handleClick = useCallback(async () => {
     await toggleClick(props.id)
   }, [])
-  useEffect(() => {
+  /*useEffect(() => {
     // This code runs whenever the component mounts or the searchParams change
     const currentPage = Number(searchParams.get('page'))
     setPage(currentPage)
     // You can perform side effects here, such as fetching data based on the new params
     // fetchData(sort, category);
-  }, [searchParams]);
+  }, [searchParams]);*/
   //useEffect(() => {
   // This might capture a stale 'searchParams' if not handled carefully
   //fetchData(searchParams.get('filter')); 
@@ -34,14 +35,14 @@ function ButtonSubmit(props) {
   const callbackFunction = useCallback(async (entries) => {
     const [entry] = entries;
     //console.log('currentPage', currentPage)
-    if (page > 0) {
+    if (currentPage > 0) {
       if (entry.isIntersecting) {
         scrollFSM(props.index, 'input')
       } else {
         scrollFSM(props.index, 'output')
       }
     }
-  }, [page]);
+  }, [currentPage]);
   useEffect(() => {
     console.log('mount', props.index)
     mountItem(props.index, props.obj)//await
