@@ -181,13 +181,8 @@ export default async function Home({ searchParams }) {
         //if (Number(start) === 1) {
         array3 = await ll.fromArray(arrObjects[0])
         //}
-        //array3 = array3.concat(arrObjects[0]);
-        //array3.push(...arrObjects[0]);
         //mySet = new Set(arrObjects[0]);
-        //array3 = arrObjects[0];
-        //array3 = await ll.toArray()
-        return <List items={array3}
-            renderItem={async (product, index) => {
+        return <List items={array3} renderItem={async (product, index) => {
                 //console.log('product', product)
                 const date = new Date(product.close_approach_data[0].epoch_date_close_approach)
                 const prevDate = new Intl.DateTimeFormat("ru-RU", options).format(date);

@@ -61,7 +61,7 @@ export default class LinkedList {
       this.tail = newNode;
       LinkedList.length = LinkedList.length + 1
       if (LinkedList.length >= 9) {
-        //delete all prev
+        //delete from head+9
       }
       //console.log('after append', this)
       //console.log('after append', this.head, this.tail)
