@@ -11,12 +11,9 @@ let resp
 let startDate
 let endDate
 let startPage
-let array3 = []
 let res = ''
 
 const ll = await createLinkedListInstance()
-//ll.append({name: 'ioooo',id: 1})
-//console.log('ll page', ll)
 
 const options = {
     /*era: 'long',*/
@@ -162,8 +159,7 @@ async function Row(props) {
         </li>
     </Suspense>
 }
-/*async function RenderProp(product){
-}*/
+
 export default async function Home({ searchParams }) {
     //console.log('@list Home')
     const search = await searchParams;
@@ -178,10 +174,7 @@ export default async function Home({ searchParams }) {
         const dat = await resp.json()
         const list = dat.near_earth_objects
         const arrObjects = Object.values(list)
-        //if (Number(start) === 1) {
-        array3 = await ll.fromArray(arrObjects[0])
-        //}
-        //mySet = new Set(arrObjects[0]);
+        const array3 = await ll.fromArray(arrObjects[0])
         return <List items={array3} renderItem={async (product, index) => {
                 //console.log('product', product)
                 const date = new Date(product.close_approach_data[0].epoch_date_close_approach)
@@ -190,9 +183,6 @@ export default async function Home({ searchParams }) {
                 const dateString = datSlice.replace('.', '');
                 new Item(Number(product.id), product)
                 //const dateString = startDate;
-                /*
-                viewtype={viewtype}
-                */
                 return <Suspense><Row
                     key={product.id}
                     obj={product}
