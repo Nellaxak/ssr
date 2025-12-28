@@ -133,16 +133,17 @@ export default class LinkedList {
     return nodes;
   }
   async fromArray(values) {
-    //console.log('fromArray')
+    const nodes = [];
     //add filter exsist
     values.forEach(async (value) => {
       //console.log('value', value)
-      await this.append(value)
+      const node=await this.append(value)
+      nodes.push(node);
     });
     //add observer dispatch
-    return this;
+    return nodes;
   }
-  static async getAll(method) {
+  /*static async getAll(method) {
     let current = LinkedList.head;
     while (current) {
       //console.log(current.value);
@@ -150,7 +151,7 @@ export default class LinkedList {
       console.log('bbbh',method(current.value))
       return await method(current.value);
     }
-  }
+  }*/
 }
 export const linkedList = new LinkedList()
 //export linkedList/*async function ffff(){

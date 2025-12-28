@@ -93,16 +93,13 @@ async function CalcData(params) {
     return [startDate, endDate]
 }
 
-async function List({ renderItem }) {
+async function List({ items, renderItem }) {
     //console.log('type items', Array.isArray(items), items.length)
-    //const res = await Promise.all(
-    const res = await LinkedList.getAll(renderItem)
-    console.log('res',res)
-    //)
-    /*items.map(async (item, index) => {
-        //console.log('llpoiyt', item.value)
-        return await renderItem(item.value, index);
-    }))*/
+    const res = await Promise.all(
+        items.map(async (item, index) => {
+            //console.log('llpoiyt', item.value)
+            return await renderItem(item.value, index);
+        }))
     return (
         <Suspense>{res}
         </Suspense>)
@@ -183,14 +180,14 @@ export default async function Home({ searchParams }) {
         const list = dat.near_earth_objects
         const arrObjects = Object.values(list)
         //if (Number(start) === 1) {
-        await ll.fromArray(arrObjects[0])
+        array3 = await ll.fromArray(arrObjects[0])
         //}
         //array3 = array3.concat(arrObjects[0]);
         //array3.push(...arrObjects[0]);
         //mySet = new Set(arrObjects[0]);
         //array3 = arrObjects[0];
         //array3 = await ll.toArray()
-        return <List //items={array3}
+        return <List items={array3}
             renderItem={async (product, index) => {
                 //console.log('product', product)
                 const date = new Date(product.close_approach_data[0].epoch_date_close_approach)
