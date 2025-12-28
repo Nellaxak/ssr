@@ -2,7 +2,7 @@
 import { NextResponse } from 'next/server';
 import { linkedList } from './app/LinkedList'
 
-export function middleware(request) {
+export async function middleware(request) {
   //console.log('middleware', linkedList)
   const queryParams = request.nextUrl.searchParams;
   const pageUrl = queryParams.get('page');
