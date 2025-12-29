@@ -197,7 +197,9 @@ export default async function Home({ searchParams }) {
         const dat = await resp.json()
         const list = dat.near_earth_objects
         const arrObjects = Object.values(list)
-        const array3 = await ll.fromArray(arrObjects[0])
+        await ll.fromArray(arrObjects[0])
+        const array3 = await ll.toArray()
+
         //console.log('array3', array3)
         return <List items={array3} renderItem={async (product, index) => {
             //console.log('product', product)

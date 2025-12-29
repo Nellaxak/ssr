@@ -134,17 +134,18 @@ export default class LinkedList {
     return nodes;
   }
   async fromArray(values) {
-    const nodes = await this.toArray()
+    //const nodes = []//await this.toArray()
 
     //add filter exsist
     values.forEach(async (value) => {
-      const node = await this.append(value)
-      if (node) {
+      //const node = 
+      await this.append(value)
+      /*if (node) {
         //console.log('nodepp', node)
         nodes.push(value);
-      }
+      }*/
     });
-    return nodes;
+    //return nodes;
   }
 }
 export const linkedList = new LinkedList()
