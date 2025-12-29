@@ -114,7 +114,7 @@ async function RenderProp(product, index) {
 async function List({ items, renderItem }) {
     //console.log('type items', Array.isArray(items), items.length)
     const res = await Promise.all(items.map(async (item, index) => {
-        //console.log('llpoiyt', await renderItem(item.value, index))
+        //console.log('llpoiyt', item)
         //.filter(predicate) 
         return await renderItem(item.value, index);
     }))
@@ -198,8 +198,8 @@ export default async function Home({ searchParams }) {
         const arrObjects = Object.values(list)
         const array3 = await ll.fromArray(arrObjects[0])
         console.log('array3', array3.length, Array.isArray(array3))
-        return <List items={array3} renderItem={async (product) => {
-            console.log('product', product)
+        return <List items={array3} renderItem={async (value) => {
+            console.log('product', value)
             //let item
             const date = new Date(product.close_approach_data[0].epoch_date_close_approach)
             const prevDate = new Intl.DateTimeFormat("ru-RU", options).format(date);
