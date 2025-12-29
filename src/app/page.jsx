@@ -203,6 +203,8 @@ export default async function Home({ searchParams }) {
         { cache: 'force-cache' },
         { next: { tags: ['items'] } }
     );
+    const data = await resp.json()
+    console.log('data', data)
     //let result = '';
     /*resp.then((response) => {
         const reader = response.body.getReader();
