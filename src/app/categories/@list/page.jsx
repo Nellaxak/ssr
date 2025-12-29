@@ -187,14 +187,37 @@ export default async function Home({ searchParams }) {
     let [startDate, endDate] = await CalcData(search)
     const viewtype = await search.viewtype
     const page = await search.page
-    console.log('@list Home',page)
+    console.log('@list Home', page)
 
     //try {
-    resp = await fetch(`https://api.nasa.gov/neo/rest/v1/feed?start_date=${startDate}&end_date=${endDate}&api_key=3wa5hHgFuqhf6XiefvqzkcDQWZ01aOOK4vNZEXsP`,
+    resp = fetch(`https://api.nasa.gov/neo/rest/v1/feed?start_date=${startDate}&end_date=${endDate}&api_key=3wa5hHgFuqhf6XiefvqzkcDQWZ01aOOK4vNZEXsP`,
         { cache: 'force-cache' },
         { next: { tags: ['items'] } }
     );
-    if (Number(resp.status) === 200) {
+    //fetch("./tortoise.png")
+    // Retrieve its body as ReadableStream
+    resp.then((response) => {
+    const reader = response.body.getReader();
+    return new ReadableStream({
+      start(controller) {
+        return pump();
+        function pump() {
+          return reader.read().then(({ done, value }) => {
+            // When no more data needs to be consumed, close the stream
+            if (done) {
+              controller.close();
+              return;
+            }
+            // Enqueue the next data chunk into our target stream
+            controller.enqueue(value);
+            console.log('value',value)
+            return pump();
+          });
+        }
+      },
+    });
+  })
+    /*if (Number(resp.status) === 200) {
         //console.log('not from cache')
         const dat = await resp.json()
         const list = dat.near_earth_objects
@@ -226,7 +249,7 @@ export default async function Home({ searchParams }) {
         //return sab//String(res)
     } else {
         console.log('resp', resp.status)
-    }
+    }*/
     /*}
     catch (err) {
         console.log(err)
