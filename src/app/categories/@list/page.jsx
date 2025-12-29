@@ -196,12 +196,12 @@ export default async function Home({ searchParams }) {
     console.log('@list Home', page)
 
     //try {
-    resp = fetch(`https://api.nasa.gov/neo/rest/v1/feed?start_date=${startDate}&end_date=${endDate}&api_key=3wa5hHgFuqhf6XiefvqzkcDQWZ01aOOK4vNZEXsP`,
+    resp = await fetch(`https://api.nasa.gov/neo/rest/v1/feed?start_date=${startDate}&end_date=${endDate}&api_key=3wa5hHgFuqhf6XiefvqzkcDQWZ01aOOK4vNZEXsP`,
         { cache: 'default' },
         { next: { tags: ['items'] } }
     );
     //let result = '';
-    resp.then((response) => {
+    /*resp.then((response) => {
         const reader = response.body.getReader();
         const decoder = new TextDecoder('utf-8'); // Specify the encoding
         new ReadableStream({
@@ -219,7 +219,7 @@ export default async function Home({ searchParams }) {
                         /*const sharedBuffer = new SharedArrayBuffer(value.length);
                         const sharedUint8Array = new Uint8Array(sharedBuffer);
                         sharedUint8Array.set(value);*/
-                        array3 = value//sharedUint8Array
+                        /*array3 = value//sharedUint8Array
                         //result += decoder.decode(value, { stream: true });
                         console.log('value', value)
                         return pump();
@@ -233,7 +233,7 @@ export default async function Home({ searchParams }) {
                 bite={bite}
             /></Suspense>
         }} />
-    })
+    })*/
     /*return <List items={array3} renderItem={async (bite) => {
         console.log('bite', bite)
         //console.log('exsist', product.id, Boolean(Item.findById(Number(product.id))))
