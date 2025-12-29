@@ -194,12 +194,11 @@ export default async function Home({ searchParams }) {
         { cache: 'force-cache' },
         { next: { tags: ['items'] } }
     );
-    //fetch("./tortoise.png")
-    // Retrieve its body as ReadableStream
+    let result = '';
+
     resp.then((response) => {
         const reader = response.body.getReader();
         const decoder = new TextDecoder('utf-8'); // Specify the encoding
-        let result = '';
         return new ReadableStream({
             start(controller) {
                 return pump();
@@ -220,6 +219,7 @@ export default async function Home({ searchParams }) {
             },
         });
     })
+    return result
     /*if (Number(resp.status) === 200) {
         //console.log('not from cache')
         const dat = await resp.json()
