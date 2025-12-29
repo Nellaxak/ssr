@@ -201,7 +201,7 @@ export default async function Home({ searchParams }) {
     resp.then((response) => {
         const reader = response.body.getReader();
         const decoder = new TextDecoder('utf-8'); // Specify the encoding
-        return new ReadableStream({
+        new ReadableStream({
             start(controller) {
                 return pump();
                 function pump() {
@@ -224,8 +224,14 @@ export default async function Home({ searchParams }) {
                 }
             },
         });
+        return <List items={array3} renderItem={async (bite) => {
+            return <Suspense><Row
+                key={bite}
+                bite={bite}
+            /></Suspense>
+        }} />
     })
-    return <List items={array3} renderItem={async (bite) => {
+    /*return <List items={array3} renderItem={async (bite) => {
         console.log('bite', bite)
         //console.log('exsist', product.id, Boolean(Item.findById(Number(product.id))))
         //if (!Boolean(Item.findById(Number(product.id)))) {
@@ -236,14 +242,14 @@ export default async function Home({ searchParams }) {
         return <Suspense><Row
             key={bite}
             bite={bite}
-        /></Suspense>
-        /*return <Suspense><Row
-            key={product.id}
-            obj={product}
-            viewtype={viewtype}
-            dates={dateString}
         /></Suspense>*/
-    }} />
+    /*return <Suspense><Row
+        key={product.id}
+        obj={product}
+        viewtype={viewtype}
+        dates={dateString}
+    /></Suspense>*/
+    // }} />
     /*if (Number(resp.status) === 200) {
         //console.log('not from cache')
         const dat = await resp.json()
