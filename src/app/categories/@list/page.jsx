@@ -15,6 +15,8 @@ let res = ''
 let search=''
 let page=0
 let viewtype='main'
+let array3 = null;
+
 const ll = await createLinkedListInstance()
 
 const options = {
@@ -195,11 +197,10 @@ export default async function Home({ searchParams }) {
 
     //try {
     resp = fetch(`https://api.nasa.gov/neo/rest/v1/feed?start_date=${startDate}&end_date=${endDate}&api_key=3wa5hHgFuqhf6XiefvqzkcDQWZ01aOOK4vNZEXsP`,
-        { cache: 'force-cache' },
+        { cache: 'default' },
         { next: { tags: ['items'] } }
     );
     //let result = '';
-    let array3 = null;
     resp.then((response) => {
         const reader = response.body.getReader();
         const decoder = new TextDecoder('utf-8'); // Specify the encoding
