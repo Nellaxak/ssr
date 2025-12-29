@@ -197,26 +197,29 @@ export default async function Home({ searchParams }) {
     //fetch("./tortoise.png")
     // Retrieve its body as ReadableStream
     resp.then((response) => {
-    const reader = response.body.getReader();
-    return new ReadableStream({
-      start(controller) {
-        return pump();
-        function pump() {
-          return reader.read().then(({ done, value }) => {
-            // When no more data needs to be consumed, close the stream
-            if (done) {
-              controller.close();
-              return;
-            }
-            // Enqueue the next data chunk into our target stream
-            controller.enqueue(value);
-            console.log('value',value)
-            return pump();
-          });
-        }
-      },
-    });
-  })
+        const reader = response.body.getReader();
+        const decoder = new TextDecoder('utf-8'); // Specify the encoding
+        let result = '';
+        return new ReadableStream({
+            start(controller) {
+                return pump();
+                function pump() {
+                    return reader.read().then(({ done, value }) => {
+                        // When no more data needs to be consumed, close the stream
+                        if (done) {
+                            controller.close();
+                            return;
+                        }
+                        // Enqueue the next data chunk into our target stream
+                        controller.enqueue(value);
+                        result += decoder.decode(value, { stream: true });
+                        console.log('value', result)
+                        return pump();
+                    });
+                }
+            },
+        });
+    })
     /*if (Number(resp.status) === 200) {
         //console.log('not from cache')
         const dat = await resp.json()
