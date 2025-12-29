@@ -112,9 +112,9 @@ async function RenderProp(product, index) {
     /></Suspense>
 }
 async function List({ items, renderItem }) {
-    console.log('type items', Array.isArray(items), items.length)
+    //console.log('type items', Array.isArray(items), items.length)
     const res = await Promise.all(items.map(async (item, index) => {
-        console.log('llpoiyt', await renderItem(item.value, index))
+        //console.log('llpoiyt', await renderItem(item.value, index))
         //.filter(predicate) 
         return await renderItem(item.value, index);
     }))
@@ -198,24 +198,25 @@ export default async function Home({ searchParams }) {
         const arrObjects = Object.values(list)
         const array3 = await ll.fromArray(arrObjects[0])
         return <List items={array3} renderItem={async (product) => {
-                //let item
-                const date = new Date(product.close_approach_data[0].epoch_date_close_approach)
-                const prevDate = new Intl.DateTimeFormat("ru-RU", options).format(date);
-                const datSlice = prevDate.slice(0, -2)
-                const dateString = datSlice.replace('.', '');
-                //console.log('exsist', product.id, Boolean(Item.findById(Number(product.id))))
-                if (!Boolean(Item.findById(Number(product.id)))) {
-                    new Item(Number(product.id))
-                    //console.log('item1',item)
-                }
-                //console.log('renderProp item', item)
-                return <Suspense><Row
-                    key={product.id}
-                    obj={product}
-                    viewtype={viewtype}
-                    dates={dateString}
-                /></Suspense>
-            }} />
+            console.log('product', product)
+            //let item
+            const date = new Date(product.close_approach_data[0].epoch_date_close_approach)
+            const prevDate = new Intl.DateTimeFormat("ru-RU", options).format(date);
+            const datSlice = prevDate.slice(0, -2)
+            const dateString = datSlice.replace('.', '');
+            //console.log('exsist', product.id, Boolean(Item.findById(Number(product.id))))
+            if (!Boolean(Item.findById(Number(product.id)))) {
+                new Item(Number(product.id))
+                //console.log('item1',item)
+            }
+            //console.log('renderProp item', item)
+            return <Suspense><Row
+                key={product.id}
+                obj={product}
+                viewtype={viewtype}
+                dates={dateString}
+            /></Suspense>
+        }} />
         //return sab//String(res)
     } else {
         console.log('resp', resp.status)
