@@ -207,7 +207,7 @@ export default async function Home({ searchParams }) {
             const dateString = datSlice.replace('.', '');
             //console.log('exsist', product.id, Boolean(Item.findById(Number(product.id))))
             //if (!Boolean(Item.findById(Number(product.id)))) {
-            new Item(Number(product.id))
+            //new Item(Number(product.id))
             //console.log('item1',item)
             //}
             //console.log('renderProp item', item)
