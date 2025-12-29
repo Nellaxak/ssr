@@ -91,7 +91,7 @@ async function CalcData(params) {
 }
 async function predicate(item, index, arr) {//renderItem?
     if (item.visible === 1) {
-        return await RenderProp(item.value, index)
+        return await RenderProp(item, index)
     }
     return false
 }
@@ -114,7 +114,7 @@ async function RenderProp(product, index) {
 async function List({ items, renderItem }) {
     //console.log('type items', Array.isArray(items), items.length)
     const res = await Promise.all(items.map(async (item, index) => {
-        console.log('llpoiyt', item)
+        //console.log('llpoiyt', item)
         //.filter(predicate) 
         return await renderItem(item, index);
     }))
@@ -139,7 +139,7 @@ async function Row(props) {
     /*<span>{props.obj.id}</span>
     <span>{props.key}</span>
     <span>{props.obj.absolute_magnitude_h}</span>*/
-    //console.log('qwasxz', props)
+    console.log('qwasxz', props)
     const dataViewtype = props.obj.close_approach_data[0].miss_distance
     const status = 0//Number(statusMap.get(Number(props.obj.id)))
     //console.log('id', props.obj.id, 'status', status)
