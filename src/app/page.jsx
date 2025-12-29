@@ -1,11 +1,11 @@
 import styles from "./page.module.css";
 import React, { Suspense, Activity } from "react";
-import statusMap from "../../statusMap";
+/*import statusMap from "../../statusMap";
 //import { revalidateTag, revalidatePath } from 'next/cache';
 import ButtonSubmit from '../../../components/ButtonSubmit/page'
 import LinkedList, { linkedList } from "../../LinkedList";
 import Item from "../../Item";
-import { createLinkedListInstance } from '../../lib/actions'
+import { createLinkedListInstance } from '../../lib/actions'*/
 
 let resp
 //let startDate
@@ -20,7 +20,7 @@ let currentDate = new Date()
 let startDate = currentDate.getFullYear() + '-' +
     (currentDate.getMonth() + 1) + '-' +
     currentDate.getDate();
-const ll = await createLinkedListInstance()
+//const ll = await createLinkedListInstance()
 
 const options = {
     /*era: 'long',*/
