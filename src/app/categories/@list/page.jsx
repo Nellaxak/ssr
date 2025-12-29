@@ -141,7 +141,7 @@ async function Row(props) {
     <span>{props.key}</span>
     <span>{props.obj.absolute_magnitude_h}</span>*/
     console.log('qwasxz', props)
-    return props
+    return <li>{props}</li>
     /*const dataViewtype = props.obj.close_approach_data[0].miss_distance
     const status = 0//Number(statusMap.get(Number(props.obj.id)))
     //console.log('id', props.obj.id, 'status', status)
@@ -213,10 +213,10 @@ export default async function Home({ searchParams }) {
                         }
                         // Enqueue the next data chunk into our target stream
                         controller.enqueue(value);
-                        const sharedBuffer = new SharedArrayBuffer(value.length);
+                        /*const sharedBuffer = new SharedArrayBuffer(value.length);
                         const sharedUint8Array = new Uint8Array(sharedBuffer);
-                        sharedUint8Array.set(value);
-                        array3 = sharedUint8Array
+                        sharedUint8Array.set(value);*/
+                        array3 = value//sharedUint8Array
                         //result += decoder.decode(value, { stream: true });
                         console.log('value', value)
                         return pump();
