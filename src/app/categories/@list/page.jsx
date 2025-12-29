@@ -12,7 +12,9 @@ let startDate
 let endDate
 let startPage
 let res = ''
-
+let search=''
+let page=0
+let viewtype='main'
 const ll = await createLinkedListInstance()
 
 const options = {
@@ -185,10 +187,10 @@ async function Row(props) {
 }
 
 export default async function Home({ searchParams }) {
-    const search = await searchParams;
+    search = await searchParams;
     let [startDate, endDate] = await CalcData(search)
-    const viewtype = await search.viewtype
-    const page = await search.page
+    viewtype = await search.viewtype
+    page = await search.page
     console.log('@list Home', page)
 
     //try {
@@ -196,7 +198,7 @@ export default async function Home({ searchParams }) {
         { cache: 'force-cache' },
         { next: { tags: ['items'] } }
     );
-    let result = '';
+    //let result = '';
     let array3 = null;
     resp.then((response) => {
         const reader = response.body.getReader();
