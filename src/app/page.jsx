@@ -23,7 +23,7 @@ let currentDate = new Date()
 let startDate = currentDate.getFullYear() + '-' +
     (currentDate.getMonth() + 1) + '-' +
     currentDate.getDate();
-let set = new Map()
+//let set = new Map()
 //const ll = await createLinkedListInstance()
 
 const options = {
@@ -152,8 +152,8 @@ async function Row(props) {
     <span>{props.key}</span>
     <span>{props.obj.absolute_magnitude_h}</span>*/
     //console.log('qwasxz', props)
-    return <li>{props.bite}</li>
-    /*const dataViewtype = props.obj.close_approach_data[0].miss_distance
+    //return <li>{props.bite}</li>
+    const dataViewtype = props.obj.close_approach_data[0].miss_distance
     const status = 0//Number(statusMap.get(Number(props.obj.id)))
     //console.log('id', props.obj.id, 'status', status)
     //await FormatStatus(props.obj.id)
@@ -192,18 +192,18 @@ async function Row(props) {
                 </div>
             </div>
         </li>
-    </Suspense>*/
+    </Suspense>
 }
 
 export default async function Home({ searchParams }) {
-    //search = await searchParams;
+    search = await searchParams;
     //let [startDate, endDate] = await CalcData(search)
-    //viewtype = await search.viewtype
+    viewtype = await search.viewtype
     //page = await search.page
     console.log('@list Home', await searchParams)
 
     //try {
-    resp = await fetch(`https://api.nasa.gov/neo/rest/v1/feed?start_date=${startDate}&end_date=${startDate}&api_key=3wa5hHgFuqhf6XiefvqzkcDQWZ01aOOK4vNZEXsP`,
+    resp = await fetch(`https://api.nasa.gov/neo/rest/v1/feed?start_date=${startDate}&end_date=${endDate}&api_key=3wa5hHgFuqhf6XiefvqzkcDQWZ01aOOK4vNZEXsP`,
         { cache: 'force-cache' },//deduplicate fetch
         { next: { tags: ['items'] } }
     );
@@ -213,8 +213,28 @@ export default async function Home({ searchParams }) {
     arrObjects = Object.values(list)
     //concat arr
     //array3 = array3.concat(arrObjects[0]);
-    arrObjects[0].map((item,index) => set.set(item.id,item))
-    console.log('concat', set.size)
+    array3 = arrObjects[0];
+    //arrObjects[0].map((item) => set.set(item.id,item))
+    console.log('concat', array3.length)
+    return <List items={array3} renderItem={async (product) => {
+        //console.log('product', product)
+        const date = new Date(product.close_approach_data[0].epoch_date_close_approach)
+        const prevDate = new Intl.DateTimeFormat("ru-RU", options).format(date);
+        const datSlice = prevDate.slice(0, -2)
+        const dateString = datSlice.replace('.', '');
+        //console.log('exsist', product.id, Boolean(Item.findById(Number(product.id))))
+        //if (!Boolean(Item.findById(Number(product.id)))) {
+        //new Item(Number(product.id))
+        //console.log('item1',item)
+        //}
+        //console.log('renderProp item', item)
+        return <Suspense><Row
+            key={product.id}
+            obj={product}
+            viewtype={viewtype}
+            dates={dateString}
+        /></Suspense>
+    }} />
     //let result = '';
     /*resp.then((response) => {
         const reader = response.body.getReader();
@@ -277,26 +297,7 @@ bite={bite}
         const array3 = await ll.toArray()
 
         //console.log('array3', array3)
-        return <List items={array3} renderItem={async (product) => {
-            //console.log('product', product)
-            //let item
-            const date = new Date(product.close_approach_data[0].epoch_date_close_approach)
-            const prevDate = new Intl.DateTimeFormat("ru-RU", options).format(date);
-            const datSlice = prevDate.slice(0, -2)
-            const dateString = datSlice.replace('.', '');
-            //console.log('exsist', product.id, Boolean(Item.findById(Number(product.id))))
-            //if (!Boolean(Item.findById(Number(product.id)))) {
-            //new Item(Number(product.id))
-            //console.log('item1',item)
-            //}
-            //console.log('renderProp item', item)
-            return <Suspense><Row
-                key={product.id}
-                obj={product}
-                viewtype={viewtype}
-                dates={dateString}
-            /></Suspense>
-        }} />
+        
         //return sab//String(res)
     } else {
         console.log('resp', resp.status)
