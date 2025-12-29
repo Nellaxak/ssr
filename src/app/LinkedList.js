@@ -139,7 +139,7 @@ export default class LinkedList {
     values.forEach(async (value) => {
       const node = await this.append(value)
       if (node) {
-        console.log('nodepp', node)
+        //console.log('nodepp', node)
         nodes.push(node);
       }
     });
