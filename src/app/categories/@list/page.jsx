@@ -139,8 +139,9 @@ async function Row(props) {
     /*<span>{props.obj.id}</span>
     <span>{props.key}</span>
     <span>{props.obj.absolute_magnitude_h}</span>*/
-    //console.log('qwasxz', props)
-    const dataViewtype = props.obj.close_approach_data[0].miss_distance
+    console.log('qwasxz', props)
+    return props
+    /*const dataViewtype = props.obj.close_approach_data[0].miss_distance
     const status = 0//Number(statusMap.get(Number(props.obj.id)))
     //console.log('id', props.obj.id, 'status', status)
     //await FormatStatus(props.obj.id)
@@ -179,7 +180,7 @@ async function Row(props) {
                 </div>
             </div>
         </li>
-    </Suspense>
+    </Suspense>*/
 }
 
 export default async function Home({ searchParams }) {
@@ -195,7 +196,7 @@ export default async function Home({ searchParams }) {
         { next: { tags: ['items'] } }
     );
     let result = '';
-
+    let array3 = null;
     resp.then((response) => {
         const reader = response.body.getReader();
         const decoder = new TextDecoder('utf-8'); // Specify the encoding
@@ -211,15 +212,30 @@ export default async function Home({ searchParams }) {
                         }
                         // Enqueue the next data chunk into our target stream
                         controller.enqueue(value);
-                        result += decoder.decode(value, { stream: true });
-                        console.log('value', result)
+                        array3 = value
+                        //result += decoder.decode(value, { stream: true });
+                        console.log('value', value)
                         return pump();
                     });
                 }
             },
         });
     })
-    return result
+    return <List items={array3} renderItem={async (bite) => {
+        console.log('bite', bite)
+        //console.log('exsist', product.id, Boolean(Item.findById(Number(product.id))))
+        //if (!Boolean(Item.findById(Number(product.id)))) {
+        //new Item(Number(product.id))
+        //console.log('item1',item)
+        //}
+        //console.log('renderProp item', item)
+        /*return <Suspense><Row
+            key={product.id}
+            obj={product}
+            viewtype={viewtype}
+            dates={dateString}
+        /></Suspense>*/
+    }} />
     /*if (Number(resp.status) === 200) {
         //console.log('not from cache')
         const dat = await resp.json()
