@@ -125,7 +125,7 @@ export default class LinkedList {
 
     // Перебираем все узлы и добавляем в массив.
     while (currentNode) {
-      nodes.push(currentNode);
+      nodes.push(currentNode.value);
       currentNode = currentNode.next;
     }
 
@@ -134,7 +134,8 @@ export default class LinkedList {
     return nodes;
   }
   async fromArray(values) {
-    const nodes = [];
+    const nodes = await this.toArray()
+
     //add filter exsist
     values.forEach(async (value) => {
       const node = await this.append(value)
