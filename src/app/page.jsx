@@ -1,9 +1,9 @@
 import styles from "./page.module.css";
 import React, { Suspense, Activity } from "react";
 /*import statusMap from "../../statusMap";
-//import { revalidateTag, revalidatePath } from 'next/cache';
-import ButtonSubmit from '../../../components/ButtonSubmit/page'
-import LinkedList, { linkedList } from "../../LinkedList";
+//import { revalidateTag, revalidatePath } from 'next/cache';*/
+import ButtonSubmit from '../components/ButtonSubmit/page'
+/*import LinkedList, { linkedList } from "../../LinkedList";
 import Item from "../../Item";
 import { createLinkedListInstance } from '../../lib/actions'*/
 
@@ -19,10 +19,10 @@ let array3 = []//null;
 let data
 let list
 let arrObjects
-let currentDate = new Date()
-let startDate = currentDate.getFullYear() + '-' +
+//let currentDate = new Date()
+/*let startDate = currentDate.getFullYear() + '-' +
     (currentDate.getMonth() + 1) + '-' +
-    currentDate.getDate();
+    currentDate.getDate();*/
 //let set = new Map()
 //const ll = await createLinkedListInstance()
 
@@ -197,10 +197,10 @@ async function Row(props) {
 
 export default async function Home({ searchParams }) {
     search = await searchParams;
-    //let [startDate, endDate] = await CalcData(search)
+    let [startDate, endDate] = await CalcData(search)
     viewtype = await search.viewtype
     //page = await search.page
-    console.log('@list Home', await searchParams)
+    //console.log('@list Home', await searchParams)
 
     //try {
     resp = await fetch(`https://api.nasa.gov/neo/rest/v1/feed?start_date=${startDate}&end_date=${endDate}&api_key=3wa5hHgFuqhf6XiefvqzkcDQWZ01aOOK4vNZEXsP`,
