@@ -90,7 +90,7 @@ async function CalcData(params) {
     return [startDate, endDate]
 }
 async function predicate(item, index, arr) {//renderItem?
-    if (item.value.visible === 1) {
+    if (item.visible === 1) {
         return await RenderProp(item.value, index)
     }
     return false
@@ -114,7 +114,7 @@ async function RenderProp(product, index) {
 async function List({ items, renderItem }) {
     console.log('type items', Array.isArray(items), items.length)
     const res = await Promise.all(items.map(async (item, index) => {
-        console.log('llpoiyt', item.value.visible)
+        console.log('llpoiyt', item.visible)
         //.filter(predicate) 
         return await renderItem(item.value, index);
     }))
