@@ -113,10 +113,10 @@ async function RenderProp(product, index) {
 }
 async function List({ items, renderItem }) {
     //console.log('type items', Array.isArray(items), items.length)
-    const res = await Promise.all(items.map(async (item, index) => {
+    const res = await Promise.all(items.map(async (item) => {
         //console.log('llpoiyt', item)
         //.filter(predicate) 
-        return await renderItem(item, index);
+        return await renderItem(item);
     }))
     return (
         <Suspense>{res}
