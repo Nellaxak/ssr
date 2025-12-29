@@ -1,13 +1,13 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
     distDir: 'build',
-    /*reactStrictMode: false,*/
+    reactStrictMode: false,
     /*basePath: '/categories',*/
     /*experimental: {
         exposeBusinessErrors: true,
     },*/
     //destination: '/categories?viewtype=main&page=0',
-    async redirects() {
+    /*async redirects() {
         return [
             {
                 source: '/',
@@ -15,6 +15,6 @@ const nextConfig = {
                 permanent: true
             },
         ]
-    },
+    },*/
 };
 export default nextConfig;
