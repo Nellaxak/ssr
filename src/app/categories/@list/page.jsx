@@ -16,10 +16,7 @@ let search = ''
 let page = 0
 let viewtype = 'main'
 let array3 = null;
-let currentDate = new Date()
-let startDate = currentDate.getFullYear() + '-' +
-    (currentDate.getMonth() + 1) + '-' +
-    currentDate.getDate();
+let list
 const ll = await createLinkedListInstance()
 
 const options = {
@@ -148,8 +145,8 @@ async function Row(props) {
     <span>{props.key}</span>
     <span>{props.obj.absolute_magnitude_h}</span>*/
     //console.log('qwasxz', props)
-    return <li>{props.bite}</li>
-    /*const dataViewtype = props.obj.close_approach_data[0].miss_distance
+
+    const dataViewtype = props.obj.close_approach_data[0].miss_distance
     const status = 0//Number(statusMap.get(Number(props.obj.id)))
     //console.log('id', props.obj.id, 'status', status)
     //await FormatStatus(props.obj.id)
@@ -188,96 +185,36 @@ async function Row(props) {
                 </div>
             </div>
         </li>
-    </Suspense>*/
+    </Suspense>
 }
 
 export default async function Home({ searchParams }) {
     search = await searchParams;
-    //let [startDate, endDate] = await CalcData(search)
-    //viewtype = await search.viewtype
+    let [startDate, endDate] = await CalcData(search)
+    viewtype = await search.viewtype
     //page = await search.page
-    console.log('@list Home')
+    //console.log('@list Home')
 
     //try {
-    resp = await fetch(`https://api.nasa.gov/neo/rest/v1/feed?start_date=${startDate}&end_date=${startDate}&api_key=3wa5hHgFuqhf6XiefvqzkcDQWZ01aOOK4vNZEXsP`,
+    resp = await fetch(`https://api.nasa.gov/neo/rest/v1/feed?start_date=${startDate}&end_date=${endDate}&api_key=3wa5hHgFuqhf6XiefvqzkcDQWZ01aOOK4vNZEXsP`,
         { cache: 'force-cache' },
         { next: { tags: ['items'] } }
     );
-    //let result = '';
-    /*resp.then((response) => {
-        const reader = response.body.getReader();
-        const decoder = new TextDecoder('utf-8'); // Specify the encoding
-        new ReadableStream({
-            start(controller) {
-                return pump();
-                function pump() {
-                    return reader.read().then(({ done, value }) => {
-                        // When no more data needs to be consumed, close the stream
-                        if (done) {
-                            controller.close();
-                            return;
-                        }
-                        // Enqueue the next data chunk into our target stream
-                        controller.enqueue(value);
-                        /*const sharedBuffer = new SharedArrayBuffer(value.length);
-                        const sharedUint8Array = new Uint8Array(sharedBuffer);
-                        sharedUint8Array.set(value);*/
-    /*array3 = value//sharedUint8Array
-    //result += decoder.decode(value, { stream: true });
-    console.log('value', value)
-    return pump();
-});
-}
-},
-});
-return <List items={array3} renderItem={async (bite) => {
-return <Suspense><Row
-key={bite}
-bite={bite}
-/></Suspense>
-}} />
-})*/
-    /*return <List items={array3} renderItem={async (bite) => {
-        console.log('bite', bite)
-        //console.log('exsist', product.id, Boolean(Item.findById(Number(product.id))))
-        //if (!Boolean(Item.findById(Number(product.id)))) {
-        //new Item(Number(product.id))
-        //console.log('item1',item)
-        //}
-        //console.log('renderProp item', item)
-        return <Suspense><Row
-            key={bite}
-            bite={bite}
-        /></Suspense>*/
-    /*return <Suspense><Row
-        key={product.id}
-        obj={product}
-        viewtype={viewtype}
-        dates={dateString}
-    /></Suspense>*/
-    // }} />
-    /*if (Number(resp.status) === 200) {
-        //console.log('not from cache')
-        const dat = await resp.json()
-        const list = dat.near_earth_objects
-        const arrObjects = Object.values(list)
-        await ll.fromArray(arrObjects[0])
-        const array3 = await ll.toArray()
-
-        //console.log('array3', array3)
+    if (Number(resp.status) === 200) {
+        data = await resp.json()
+        console.log('count', data.element_count)
+        list = data.near_earth_objects
+        arrObjects = Object.values(list)
+        array3 = arrObjects[0];
+        console.log('concat', array3.length)
         return <List items={array3} renderItem={async (product) => {
             //console.log('product', product)
-            //let item
             const date = new Date(product.close_approach_data[0].epoch_date_close_approach)
             const prevDate = new Intl.DateTimeFormat("ru-RU", options).format(date);
             const datSlice = prevDate.slice(0, -2)
             const dateString = datSlice.replace('.', '');
-            //console.log('exsist', product.id, Boolean(Item.findById(Number(product.id))))
-            //if (!Boolean(Item.findById(Number(product.id)))) {
+
             //new Item(Number(product.id))
-            //console.log('item1',item)
-            //}
-            //console.log('renderProp item', item)
             return <Suspense><Row
                 key={product.id}
                 obj={product}
@@ -285,10 +222,9 @@ bite={bite}
                 dates={dateString}
             /></Suspense>
         }} />
-        //return sab//String(res)
     } else {
         console.log('resp', resp.status)
-    }*/
+    }
     /*}
     catch (err) {
         console.log(err)

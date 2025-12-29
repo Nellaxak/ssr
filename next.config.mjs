@@ -7,7 +7,7 @@ const nextConfig = {
         exposeBusinessErrors: true,
     },*/
     //destination: '/categories?viewtype=main&page=0',
-    /*async redirects() {
+    async redirects() {
         return [
             {
                 source: '/',
@@ -15,6 +15,6 @@ const nextConfig = {
                 permanent: true
             },
         ]
-    },*/
+    },
 };
 export default nextConfig;
