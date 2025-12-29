@@ -112,7 +112,7 @@ async function RenderProp(product, index) {
     /></Suspense>
 }
 async function List({ items, renderItem }) {
-    console.log('type items', Array.isArray(items), items.length)
+    console.log('type items', Array.isArray(items))
     const res = await Promise.all(items.map(async (item) => {
         //console.log('llpoiyt', item)
         //.filter(predicate) 
