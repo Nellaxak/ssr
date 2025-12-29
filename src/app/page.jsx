@@ -204,7 +204,7 @@ export default async function Home({ searchParams }) {
 
     //try {
     resp = await fetch(`https://api.nasa.gov/neo/rest/v1/feed?start_date=${startDate}&end_date=${startDate}&api_key=3wa5hHgFuqhf6XiefvqzkcDQWZ01aOOK4vNZEXsP`,
-        { cache: 'only-if-cached' },//deduplicate fetch
+        { cache: 'force-cache' },//deduplicate fetch
         { next: { tags: ['items'] } }
     );
     data = await resp.json()
