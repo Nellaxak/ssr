@@ -140,7 +140,7 @@ export default class LinkedList {
       const node = await this.append(value)
       if (node) {
         //console.log('nodepp', node)
-        nodes.push(node.value);
+        nodes.push(value);
       }
     });
     return nodes;
