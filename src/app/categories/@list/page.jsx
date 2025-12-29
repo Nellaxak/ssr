@@ -89,11 +89,33 @@ async function CalcData(params) {
     })*/
     return [startDate, endDate]
 }
-
+async function predicate(item, index, arr) {//renderItem?
+    if (item.value.visible === 1) {
+        return await RenderProp(item.value, index)
+    }
+    return false
+}
+async function RenderProp(product, index) {
+    //console.log('product', product)
+    const date = new Date(product.close_approach_data[0].epoch_date_close_approach)
+    const prevDate = new Intl.DateTimeFormat("ru-RU", options).format(date);
+    const datSlice = prevDate.slice(0, -2)
+    const dateString = datSlice.replace('.', '');
+    new Item(Number(product.id), product)
+    //const dateString = startDate;
+    return <Suspense><Row
+        key={product.id}
+        obj={product}
+        viewtype={viewtype}
+        index={index}
+        dates={dateString}
+    /></Suspense>
+}
 async function List({ items, renderItem }) {
     console.log('type items', Array.isArray(items), items.length)
     const res = await Promise.all(items.map(async (item, index) => {
-        //console.log('llpoiyt', item.value)
+        console.log('llpoiyt', item.value.visible)
+        //.filter(predicate) 
         return await renderItem(item.value, index);
     }))
     return (
@@ -175,23 +197,7 @@ export default async function Home({ searchParams }) {
         const list = dat.near_earth_objects
         const arrObjects = Object.values(list)
         const array3 = await ll.fromArray(arrObjects[0])
-        return <List items={array3} renderItem={async (product, index) => {
-                //console.log('product', product)
-                const date = new Date(product.close_approach_data[0].epoch_date_close_approach)
-                const prevDate = new Intl.DateTimeFormat("ru-RU", options).format(date);
-                const datSlice = prevDate.slice(0, -2)
-                const dateString = datSlice.replace('.', '');
-                new Item(Number(product.id), product)
-                //const dateString = startDate;
-                return <Suspense><Row
-                    key={product.id}
-                    obj={product}
-                    viewtype={viewtype}
-                    index={index}
-                    dates={dateString}
-                /></Suspense>
-            }}
-        />
+        return <List items={array3} renderItem={RenderProp} />
         //return sab//String(res)
     } else {
         console.log('resp', resp.status)

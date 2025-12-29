@@ -1,8 +1,9 @@
 //import Item from "./Item";
 //'use server'
 class LinkedListNode {
-  constructor(value, next = null, prev = null) {
+  constructor(value, visible = 1, next = null, prev = null) {
     this.value = value;
+    this.visible = visible;
     //this.error = error;
     this.next = next;
     //this.prev = prev;
@@ -19,7 +20,7 @@ class LinkedListNode {
 export default class LinkedList {
   static arrObj = new Map();
   static instance = null;
-  static length = 0;
+  static length1 = 0;
   static head = null;
   constructor() {
     if (LinkedList.instance) {
@@ -59,7 +60,7 @@ export default class LinkedList {
       this.tail.next = newNode;
       //newNode.prev = this.tail;
       this.tail = newNode;
-      LinkedList.length = LinkedList.length + 1
+      LinkedList.length1 = LinkedList.length1 + 1
       if (LinkedList.length >= 9) {
         //delete from head+9
       }
