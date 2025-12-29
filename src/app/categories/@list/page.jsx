@@ -123,7 +123,7 @@ async function List({ items, renderItem }) {
     }))
 
     return (
-        <Suspense>{items}
+        <Suspense>{res}
         </Suspense>)
 }
 async function FormatStatus(params) {
