@@ -16,6 +16,9 @@ let search = ''
 let page = 0
 let viewtype = 'main'
 let array3 = []//null;
+let data 
+let list
+let arrObjects
 let currentDate = new Date()
 let startDate = currentDate.getFullYear() + '-' +
     (currentDate.getMonth() + 1) + '-' +
@@ -203,10 +206,10 @@ export default async function Home({ searchParams }) {
         { cache: 'force-cache' },
         { next: { tags: ['items'] } }
     );
-    const data = await resp.json()
+     data = await resp.json()
     console.log('count', data.element_count)
-    const list = data.near_earth_objects
-    const arrObjects = Object.values(list)
+     list = data.near_earth_objects
+     arrObjects = Object.values(list)
     //concat arr
     array3 = array3.concat(arrObjects[0]);
     console.log('concat', array3.length)
