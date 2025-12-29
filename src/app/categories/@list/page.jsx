@@ -197,6 +197,7 @@ export default async function Home({ searchParams }) {
         const list = dat.near_earth_objects
         const arrObjects = Object.values(list)
         const array3 = await ll.fromArray(arrObjects[0])
+        console.log('array3', array3.length)
         return <List items={array3} renderItem={async (product) => {
             console.log('product', product)
             //let item
@@ -205,10 +206,10 @@ export default async function Home({ searchParams }) {
             const datSlice = prevDate.slice(0, -2)
             const dateString = datSlice.replace('.', '');
             //console.log('exsist', product.id, Boolean(Item.findById(Number(product.id))))
-            if (!Boolean(Item.findById(Number(product.id)))) {
-                new Item(Number(product.id))
-                //console.log('item1',item)
-            }
+            //if (!Boolean(Item.findById(Number(product.id)))) {
+            new Item(Number(product.id))
+            //console.log('item1',item)
+            //}
             //console.log('renderProp item', item)
             return <Suspense><Row
                 key={product.id}
