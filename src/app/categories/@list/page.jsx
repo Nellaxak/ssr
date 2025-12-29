@@ -8,15 +8,18 @@ import Item from "../../Item";
 import { createLinkedListInstance } from '../../lib/actions'
 
 let resp
-let startDate
+//let startDate
 let endDate
 let startPage
 let res = ''
-let search=''
-let page=0
-let viewtype='main'
+let search = ''
+let page = 0
+let viewtype = 'main'
 let array3 = null;
-
+let currentDate = new Date()
+let startDate = currentDate.getFullYear() + '-' +
+    (currentDate.getMonth() + 1) + '-' +
+    currentDate.getDate();
 const ll = await createLinkedListInstance()
 
 const options = {
@@ -190,13 +193,13 @@ async function Row(props) {
 
 export default async function Home({ searchParams }) {
     search = await searchParams;
-    let [startDate, endDate] = await CalcData(search)
+    //let [startDate, endDate] = await CalcData(search)
     viewtype = await search.viewtype
     page = await search.page
     console.log('@list Home', page)
 
     //try {
-    resp = await fetch(`https://api.nasa.gov/neo/rest/v1/feed?start_date=${startDate}&end_date=${endDate}&api_key=3wa5hHgFuqhf6XiefvqzkcDQWZ01aOOK4vNZEXsP`,
+    resp = await fetch(`https://api.nasa.gov/neo/rest/v1/feed?start_date=${startDate}&end_date=${startDate}&api_key=3wa5hHgFuqhf6XiefvqzkcDQWZ01aOOK4vNZEXsP`,
         { cache: 'force-cache' },
         { next: { tags: ['items'] } }
     );
@@ -219,21 +222,21 @@ export default async function Home({ searchParams }) {
                         /*const sharedBuffer = new SharedArrayBuffer(value.length);
                         const sharedUint8Array = new Uint8Array(sharedBuffer);
                         sharedUint8Array.set(value);*/
-                        /*array3 = value//sharedUint8Array
-                        //result += decoder.decode(value, { stream: true });
-                        console.log('value', value)
-                        return pump();
-                    });
-                }
-            },
-        });
-        return <List items={array3} renderItem={async (bite) => {
-            return <Suspense><Row
-                key={bite}
-                bite={bite}
-            /></Suspense>
-        }} />
-    })*/
+    /*array3 = value//sharedUint8Array
+    //result += decoder.decode(value, { stream: true });
+    console.log('value', value)
+    return pump();
+});
+}
+},
+});
+return <List items={array3} renderItem={async (bite) => {
+return <Suspense><Row
+key={bite}
+bite={bite}
+/></Suspense>
+}} />
+})*/
     /*return <List items={array3} renderItem={async (bite) => {
         console.log('bite', bite)
         //console.log('exsist', product.id, Boolean(Item.findById(Number(product.id))))
