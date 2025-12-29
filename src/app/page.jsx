@@ -16,7 +16,7 @@ let search = ''
 let page = 0
 let viewtype = 'main'
 let array3 = []//null;
-let data 
+let data
 let list
 let arrObjects
 let currentDate = new Date()
@@ -194,22 +194,22 @@ async function Row(props) {
     </Suspense>*/
 }
 
-export default async function Home({ searchParams }) {
-    search = await searchParams;
+export default async function Home() {
+    //search = await searchParams;
     //let [startDate, endDate] = await CalcData(search)
     //viewtype = await search.viewtype
     //page = await search.page
-    console.log('@list Home')
+    //console.log('@list Home')
 
     //try {
     resp = await fetch(`https://api.nasa.gov/neo/rest/v1/feed?start_date=${startDate}&end_date=${startDate}&api_key=3wa5hHgFuqhf6XiefvqzkcDQWZ01aOOK4vNZEXsP`,
         { cache: 'force-cache' },
         { next: { tags: ['items'] } }
     );
-     data = await resp.json()
+    data = await resp.json()
     console.log('count', data.element_count)
-     list = data.near_earth_objects
-     arrObjects = Object.values(list)
+    list = data.near_earth_objects
+    arrObjects = Object.values(list)
     //concat arr
     array3 = array3.concat(arrObjects[0]);
     console.log('concat', array3.length)
