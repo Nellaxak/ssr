@@ -113,13 +113,14 @@ async function RenderProp(product, index) {
 }
 async function List({ items, renderItem }) {
     console.log('type items', Array.isArray(items))
-    const res = await Promise.all(items.map(async (item) => {
+    /*const res = await Promise.all(items.forEach(async (item) => {
         //console.log('llpoiyt', item)
         //.filter(predicate) 
         return await renderItem(item);
-    }))
+    }))*/
+
     return (
-        <Suspense>{res}
+        <Suspense>{items}
         </Suspense>)
 }
 async function FormatStatus(params) {
