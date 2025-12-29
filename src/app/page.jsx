@@ -23,7 +23,7 @@ let currentDate = new Date()
 let startDate = currentDate.getFullYear() + '-' +
     (currentDate.getMonth() + 1) + '-' +
     currentDate.getDate();
-let set = new Set()
+let set = new Map()
 //const ll = await createLinkedListInstance()
 
 const options = {
@@ -213,7 +213,7 @@ export default async function Home({ searchParams }) {
     arrObjects = Object.values(list)
     //concat arr
     //array3 = array3.concat(arrObjects[0]);
-    arrObjects[0].map((item) => set.add(item))
+    arrObjects[0].map((item,index) => set.set(item.id,item))
     console.log('concat', set.size)
     //let result = '';
     /*resp.then((response) => {
