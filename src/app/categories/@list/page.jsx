@@ -116,7 +116,7 @@ async function List({ items, renderItem }) {
     const res = await Promise.all(items.map(async (item, index) => {
         //console.log('llpoiyt', item)
         //.filter(predicate) 
-        return await renderItem(item.value, index);
+        return await renderItem(item, index);
     }))
     return (
         <Suspense>{res}
@@ -198,7 +198,7 @@ export default async function Home({ searchParams }) {
         const arrObjects = Object.values(list)
         const array3 = await ll.fromArray(arrObjects[0])
         console.log('array3', array3)
-        return <List items={array3} renderItem={async (product) => {
+        return <List items={array3} renderItem={async (product, index) => {
             console.log('product', product)
             //let item
             const date = new Date(product.close_approach_data[0].epoch_date_close_approach)
