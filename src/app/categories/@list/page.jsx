@@ -112,7 +112,7 @@ async function RenderProp(product, index) {
     /></Suspense>
 }
 async function List({ items, renderItem }) {
-    //console.log('type items', Array.isArray(items), items.length)
+    console.log('type items', Array.isArray(items), items.length)
     const res = await Promise.all(items.map(async (item) => {
         //console.log('llpoiyt', item)
         //.filter(predicate) 
@@ -139,7 +139,7 @@ async function Row(props) {
     /*<span>{props.obj.id}</span>
     <span>{props.key}</span>
     <span>{props.obj.absolute_magnitude_h}</span>*/
-    console.log('qwasxz', props)
+    //console.log('qwasxz', props)
     const dataViewtype = props.obj.close_approach_data[0].miss_distance
     const status = 0//Number(statusMap.get(Number(props.obj.id)))
     //console.log('id', props.obj.id, 'status', status)
@@ -201,7 +201,7 @@ export default async function Home({ searchParams }) {
         const array3 = await ll.toArray()
 
         //console.log('array3', array3)
-        return <List items={array3} renderItem={async (product, index) => {
+        return <List items={array3} renderItem={async (product) => {
             //console.log('product', product)
             //let item
             const date = new Date(product.close_approach_data[0].epoch_date_close_approach)
