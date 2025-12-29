@@ -140,8 +140,8 @@ async function Row(props) {
     /*<span>{props.obj.id}</span>
     <span>{props.key}</span>
     <span>{props.obj.absolute_magnitude_h}</span>*/
-    console.log('qwasxz', props)
-    return <li>{props}</li>
+    //console.log('qwasxz', props)
+    return <li>{props.bite}</li>
     /*const dataViewtype = props.obj.close_approach_data[0].miss_distance
     const status = 0//Number(statusMap.get(Number(props.obj.id)))
     //console.log('id', props.obj.id, 'status', status)
@@ -233,6 +233,10 @@ export default async function Home({ searchParams }) {
         //console.log('item1',item)
         //}
         //console.log('renderProp item', item)
+        return <Suspense><Row
+            key={bite}
+            bite={bite}
+        /></Suspense>
         /*return <Suspense><Row
             key={product.id}
             obj={product}
