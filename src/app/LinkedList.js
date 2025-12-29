@@ -47,9 +47,9 @@ export default class LinkedList {
   }
   async append(value) {
     //console.log('before append', value.name, LinkedList.arrObj.has(Number(value.id)))
-    if (!LinkedList.arrObj.has(Number(value.id))) {
+    //if (!LinkedList.arrObj.has(Number(value.id))) {
       //const value = new Item(Number(value1.id), value1)
-      LinkedList.arrObj.set(Number(value.id), value)
+      //LinkedList.arrObj.set(Number(value.id), value)
       const newNode = new LinkedListNode(value);
       if (!this.head || !this.tail) {
         this.head = newNode;
@@ -60,13 +60,13 @@ export default class LinkedList {
       this.tail.next = newNode;
       //newNode.prev = this.tail;
       this.tail = newNode;
-      LinkedList.length1 = LinkedList.length1 + 1
-      if (LinkedList.length >= 9) {
+      //LinkedList.length1 = LinkedList.length1 + 1
+      //if (LinkedList.length >= 9) {
         //delete from head+9
-      }
+     // }
       //console.log('after append', this)
       //console.log('after append', this.head, this.tail)
-    }
+    //}
     return this;
   }
   async delete(value) {//object
