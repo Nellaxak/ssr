@@ -96,7 +96,7 @@ async function predicate(item, index, arr) {//renderItem?
     return false
 }
 async function RenderProp(product, index) {
-    //console.log('product', product)
+    console.log('RenderProp', product)
     const date = new Date(product.close_approach_data[0].epoch_date_close_approach)
     const prevDate = new Intl.DateTimeFormat("ru-RU", options).format(date);
     const datSlice = prevDate.slice(0, -2)
@@ -114,7 +114,7 @@ async function RenderProp(product, index) {
 async function List({ items, renderItem }) {
     console.log('type items', Array.isArray(items), items.length)
     const res = await Promise.all(items.map(async (item, index) => {
-        console.log('llpoiyt', item.visible)
+        console.log('llpoiyt', renderItem)
         //.filter(predicate) 
         return await renderItem(item.value, index);
     }))
