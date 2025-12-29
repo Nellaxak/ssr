@@ -23,6 +23,7 @@ let currentDate = new Date()
 let startDate = currentDate.getFullYear() + '-' +
     (currentDate.getMonth() + 1) + '-' +
     currentDate.getDate();
+let set = new Set()
 //const ll = await createLinkedListInstance()
 
 const options = {
@@ -194,7 +195,7 @@ async function Row(props) {
     </Suspense>*/
 }
 
-export default async function Home({searchParams}) {
+export default async function Home({ searchParams }) {
     //search = await searchParams;
     //let [startDate, endDate] = await CalcData(search)
     //viewtype = await search.viewtype
@@ -211,8 +212,9 @@ export default async function Home({searchParams}) {
     list = data.near_earth_objects
     arrObjects = Object.values(list)
     //concat arr
-    array3 = array3.concat(arrObjects[0]);
-    console.log('concat', array3.length)
+    //array3 = array3.concat(arrObjects[0]);
+    arrObjects[0].map((item) => set.add(item))
+    console.log('concat', set.size)
     //let result = '';
     /*resp.then((response) => {
         const reader = response.body.getReader();
