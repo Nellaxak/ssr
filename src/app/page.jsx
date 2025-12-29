@@ -194,12 +194,12 @@ async function Row(props) {
     </Suspense>*/
 }
 
-export default async function Home(searchParams) {
+export default async function Home({searchParams}) {
     //search = await searchParams;
     //let [startDate, endDate] = await CalcData(search)
     //viewtype = await search.viewtype
     //page = await search.page
-    console.log('@list Home', searchParams)
+    console.log('@list Home', await searchParams)
 
     //try {
     resp = await fetch(`https://api.nasa.gov/neo/rest/v1/feed?start_date=${startDate}&end_date=${startDate}&api_key=3wa5hHgFuqhf6XiefvqzkcDQWZ01aOOK4vNZEXsP`,
