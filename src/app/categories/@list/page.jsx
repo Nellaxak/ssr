@@ -8,14 +8,13 @@ import Item from "../../Item";
 import { createLinkedListInstance } from '../../lib/actions'
 
 let resp
-//let startDate
 let endDate
 let startPage
 let res = ''
 let search = ''
 let page = 0
 let viewtype = 'main'
-let array3 = null;
+let array3 = [];
 let list
 const ll = await createLinkedListInstance()
 
@@ -116,12 +115,12 @@ async function RenderProp(product, index) {
     /></Suspense>
 }
 async function List({ items, renderItem }) {
-    console.log('type items', Array.isArray(items))
-    /*const res = await Promise.all(items.forEach(async (item) => {
+    //console.log('type items', Array.isArray(items))
+    const res = await Promise.all(items.map(async (item) => {
         //console.log('llpoiyt', item)
         //.filter(predicate) 
         return await renderItem(item);
-    }))*/
+    }))
 
     return (
         <Suspense>{items}
@@ -192,9 +191,6 @@ export default async function Home({ searchParams }) {
     search = await searchParams;
     let [startDate, endDate] = await CalcData(search)
     viewtype = await search.viewtype
-    //page = await search.page
-    //console.log('@list Home')
-
     //try {
     resp = await fetch(`https://api.nasa.gov/neo/rest/v1/feed?start_date=${startDate}&end_date=${endDate}&api_key=3wa5hHgFuqhf6XiefvqzkcDQWZ01aOOK4vNZEXsP`,
         { cache: 'force-cache' },
