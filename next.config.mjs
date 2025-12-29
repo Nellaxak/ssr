@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
     distDir: 'build',
-    /*reactStrictMode: false,*/
+    reactStrictMode: false,
     /*basePath: '/categories',*/
     /*experimental: {
         exposeBusinessErrors: true,
