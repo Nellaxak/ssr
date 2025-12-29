@@ -213,7 +213,10 @@ export default async function Home({ searchParams }) {
                         }
                         // Enqueue the next data chunk into our target stream
                         controller.enqueue(value);
-                        array3 = value
+                        const sharedBuffer = new SharedArrayBuffer(value.length);
+                        const sharedUint8Array = new Uint8Array(sharedBuffer);
+                        sharedUint8Array.set(value);
+                        array3 = sharedUint8Array
                         //result += decoder.decode(value, { stream: true });
                         console.log('value', value)
                         return pump();
