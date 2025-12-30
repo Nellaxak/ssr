@@ -194,9 +194,9 @@ export default async function Home({ searchParams }) {
     viewtype = await search.viewtype
     //page = await search.page
     //try {
-    resp = await fetch(`https://api.nasa.gov/neo/rest/v1/feed?start_date=${startDate}&end_date=${endDate}&api_key=3wa5hHgFuqhf6XiefvqzkcDQWZ01aOOK4vNZEXsP`,
-        // { cache: 'force-cache' },
-        { cache: 'no-store' },
+    const resp = await fetch(`https://api.nasa.gov/neo/rest/v1/feed?start_date=${startDate}&end_date=${endDate}&api_key=3wa5hHgFuqhf6XiefvqzkcDQWZ01aOOK4vNZEXsP`,
+        { cache: 'force-cache' },
+        //{ cache: 'no-store' },
         { next: { tags: ['items'] } }
     );
     if (Number(resp.status) === 200) {
@@ -226,6 +226,7 @@ export default async function Home({ searchParams }) {
         }} />
     } else {
         console.log('resp', resp.status)
+        //return not empty render
         return <List items={newArr} renderItem={async (product) => {
             //console.log('product', product)
             const date = new Date(product.close_approach_data[0].epoch_date_close_approach)
