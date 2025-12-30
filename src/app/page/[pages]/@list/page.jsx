@@ -196,18 +196,15 @@ export default async function Home({ searchParams }) {
     //try {
     const resp = await fetch(`https://api.nasa.gov/neo/rest/v1/feed?start_date=${startDate}&end_date=${endDate}&api_key=3wa5hHgFuqhf6XiefvqzkcDQWZ01aOOK4vNZEXsP`,
         { cache: 'force-cache' },
-        //{ cache: 'no-store' },
+       // { cache: 'no-store' },//add io
         { next: { tags: ['items'] } }
     );
     if (Number(resp.status) === 200) {
         data = await resp.json()
         list = data.near_earth_objects
         console.log('count', data.element_count)
-        arrObjects = Object.values(list)//[[dat1],[dat2],[dat3]]
-        //console.log('dats', Object.keys(list))
-        //console.log('arrObjects', arrObjects.flat())
+        arrObjects = Object.values(list)
         newArr = arrObjects.flat()
-        //array3 = arrObjects[0];
         console.log('concat', newArr.length)
         return <List items={newArr} renderItem={async (product) => {
             //console.log('product', product)

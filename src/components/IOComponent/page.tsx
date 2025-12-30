@@ -50,7 +50,7 @@ const IOComponent = () => {
         };
     }, [])
     useEffect(() => {
-        router.push(`?viewtype=${currentViewtype}&page=${page}`, { scroll: false });
+        router.push(`/page/${page}?viewtype=${currentViewtype}`, { scroll: false });
         //router.refresh()
     }, [page])
     return <p ref={ref}></p>

@@ -2,6 +2,8 @@
 const nextConfig = {
     distDir: 'build',
     reactStrictMode: false,
+    /*cacheHandler: require.resolve('./cache-handler.js'),
+    cacheMaxMemorySize: 100, */// 100mb
     /*basePath: '/categories',*/
     /*experimental: {
         exposeBusinessErrors: true,
@@ -11,7 +13,7 @@ const nextConfig = {
         return [
             {
                 source: '/',
-                destination: '/categories?viewtype=main&page=0',
+                destination: '/page/0?viewtype=main',
                 permanent: true
             },
         ]
