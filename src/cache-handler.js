@@ -7,12 +7,15 @@ class CacheHandler {
 
   async get(key) {
     console.log('cache get', key, store.get(key))
-    //return store.get(key)
+    //prev chunk=store.get(key)
+    return store.get(key)//err
     // ...
   }
 
   async set(key, data, ctx) {
     console.log('dddd', key, 'data', data, 'ctx', ctx)
+    //prev chunk=store.get(key)
+    //add new chunk-data.data.body uint8array readable stream
     store.set(key, data)
     // ...
   }

@@ -17,7 +17,7 @@ let viewtype = 'main'
 let array3 = [];
 let list
 let newArr
-const ll = await createLinkedListInstance()
+//const ll = await createLinkedListInstance()
 
 const options = {
     /*era: 'long',*/
@@ -68,10 +68,10 @@ async function CalcData(params) {
     currentDate.setDate(currentDate.getDate());
     const page = params
 
-    if (Number(page) > 0) {
+    /*if (Number(page) > 0) {
         const newPage = Number(currentDate.getDate()) + Number(page)
         currentDate.setDate(newPage);//+1
-    }
+    }*/
     let tomorrow = new Date();
     tomorrow.setDate(tomorrow.getDate());
     //console.log('page**', page)
