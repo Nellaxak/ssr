@@ -66,7 +66,7 @@ async function CalcData(params) {
     //const count = await CountPage.getCount();
     let currentDate = new Date()
     currentDate.setDate(currentDate.getDate());
-    const page = await params.page
+    const page = params
 
     /*if (Number(page) > 0) {
         const newPage = Number(currentDate.getDate()) + Number(page)
@@ -190,10 +190,10 @@ async function Row(props) {
 
 export default async function Home({ params,searchParams }) {
     search = await searchParams;
-    let [startDate, endDate] = await CalcData(search)
+    const pages = await params.pages
+    let [startDate, endDate] = await CalcData(pages)
     viewtype = await search.viewtype
-    const page = await params
-    console.log('page',page)
+    //console.log('page',pages)
     //try {
     const resp = await fetch(`https://api.nasa.gov/neo/rest/v1/feed?start_date=${startDate}&end_date=${endDate}&api_key=3wa5hHgFuqhf6XiefvqzkcDQWZ01aOOK4vNZEXsP`,
         { cache: 'force-cache' },
