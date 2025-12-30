@@ -197,10 +197,10 @@ export default async function Home({ searchParams }) {
         { next: { tags: ['items'] } }
     );
     if (Number(resp.status) === 200) {
-        data = await resp.json()
+        const data = await resp.json()
         console.log('count', data.element_count)
-        list = data.near_earth_objects
-        arrObjects = Object.values(list)
+        const list = data.near_earth_objects
+        const arrObjects = Object.values(list)
         //array3 = arrObjects[0];
         console.log('concat', arrObjects[0].length)
         return <List items={arrObjects[0]} renderItem={async (product) => {
