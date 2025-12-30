@@ -16,6 +16,7 @@ let page = 0
 let viewtype = 'main'
 let array3 = [];
 let list
+let newArr
 const ll = await createLinkedListInstance()
 
 const options = {
@@ -194,18 +195,18 @@ export default async function Home({ searchParams }) {
     //page = await search.page
     //try {
     resp = await fetch(`https://api.nasa.gov/neo/rest/v1/feed?start_date=${startDate}&end_date=${endDate}&api_key=3wa5hHgFuqhf6XiefvqzkcDQWZ01aOOK4vNZEXsP`,
-       // { cache: 'force-cache' },
+        // { cache: 'force-cache' },
         { cache: 'no-store' },
         { next: { tags: ['items'] } }
     );
     if (Number(resp.status) === 200) {
-        const data = await resp.json()
-        const list = data.near_earth_objects
+        data = await resp.json()
+        list = data.near_earth_objects
         console.log('count', data.element_count)
-        const arrObjects = Object.values(list)//[[dat1],[dat2],[dat3]]
+        arrObjects = Object.values(list)//[[dat1],[dat2],[dat3]]
         //console.log('dats', Object.keys(list))
         //console.log('arrObjects', arrObjects.flat())
-        const newArr = arrObjects.flat()
+        newArr = arrObjects.flat()
         //array3 = arrObjects[0];
         console.log('concat', newArr.length)
         return <List items={newArr} renderItem={async (product) => {
@@ -225,6 +226,21 @@ export default async function Home({ searchParams }) {
         }} />
     } else {
         console.log('resp', resp.status)
+        return <List items={newArr} renderItem={async (product) => {
+            //console.log('product', product)
+            const date = new Date(product.close_approach_data[0].epoch_date_close_approach)
+            const prevDate = new Intl.DateTimeFormat("ru-RU", options).format(date);
+            const datSlice = prevDate.slice(0, -2)
+            const dateString = datSlice.replace('.', '');
+
+            //new Item(Number(product.id))
+            return <Suspense><Row
+                key={product.id}
+                obj={product}
+                viewtype={viewtype}
+                dates={dateString}
+            /></Suspense>
+        }} />
     }
     /*}
     catch (err) {
