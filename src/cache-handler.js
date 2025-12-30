@@ -1,10 +1,12 @@
 const store = new Map();
 class CacheHandler {
   constructor(options) {
+    console.log('CacheHandler constructor options', options)
     this.options = options
   }
 
   async get(key) {
+    console.log('cache get', key)
     // ...
   }
 
