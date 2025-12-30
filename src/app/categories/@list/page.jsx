@@ -191,7 +191,7 @@ export default async function Home({ searchParams }) {
     search = await searchParams;
     let [startDate, endDate] = await CalcData(search)
     viewtype = await search.viewtype
-    page = await search.page
+    //page = await search.page
     //try {
     resp = await fetch(`https://api.nasa.gov/neo/rest/v1/feed?start_date=${startDate}&end_date=${endDate}&api_key=3wa5hHgFuqhf6XiefvqzkcDQWZ01aOOK4vNZEXsP`,
        // { cache: 'force-cache' },
@@ -201,9 +201,9 @@ export default async function Home({ searchParams }) {
     if (Number(resp.status) === 200) {
         const data = await resp.json()
         const list = data.near_earth_objects
-        console.log('count', data.element_count, 'page', page, list)
+        console.log('count', data.element_count)
         const arrObjects = Object.values(list)//[[dat1],[dat2],[dat3]]
-        console.log('dats', Object.keys(list))
+        //console.log('dats', Object.keys(list))
         //console.log('arrObjects', arrObjects.flat())
         const newArr = arrObjects.flat()
         //array3 = arrObjects[0];
