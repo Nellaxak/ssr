@@ -117,7 +117,7 @@ async function RenderProp(product, index) {
 async function List({ items, renderItem }) {
     //console.log('type items', Array.isArray(items))
     const res = await Promise.all(items.map(async (item) => {
-        //console.log('llpoiyt', item)
+        //console.log('llpoiyt', item.visible)//linked list
         //.filter(predicate) 
         return await renderItem(item);
     }))
@@ -201,9 +201,9 @@ export default async function Home({ searchParams }) {
         console.log('count', data.element_count)
         list = data.near_earth_objects
         arrObjects = Object.values(list)
-        array3 = arrObjects[0];
-        console.log('concat', array3.length)
-        return <List items={array3} renderItem={async (product) => {
+        //array3 = arrObjects[0];
+        console.log('concat', arrObjects[0].length)
+        return <List items={arrObjects[0]} renderItem={async (product) => {
             //console.log('product', product)
             const date = new Date(product.close_approach_data[0].epoch_date_close_approach)
             const prevDate = new Intl.DateTimeFormat("ru-RU", options).format(date);
