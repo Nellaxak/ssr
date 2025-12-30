@@ -202,6 +202,7 @@ export default async function Home({ searchParams }) {
         const list = data.near_earth_objects
         console.log('count', data.element_count, 'page', page, list)
         const arrObjects = Object.values(list)
+        console.log('dats', Object.keys(list))
         //console.log('arrObjects', arrObjects.flat())
         const newArr = arrObjects.flat()
         //array3 = arrObjects[0];
