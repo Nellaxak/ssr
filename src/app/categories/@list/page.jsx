@@ -198,12 +198,13 @@ export default async function Home({ searchParams }) {
     );
     if (Number(resp.status) === 200) {
         const data = await resp.json()
-        console.log('count', data.element_count)
         const list = data.near_earth_objects
+        console.log('count', data.element_count, list)
         const arrObjects = Object.values(list)
-        console.log('arrObjects', arrObjects.flat())
+        //console.log('arrObjects', arrObjects.flat())
+        const newArr = arrObjects.flat()
         //array3 = arrObjects[0];
-        console.log('concat', arrObjects[0].length)
+        console.log('concat', newArr.length)
         return <List items={arrObjects[0]} renderItem={async (product) => {
             //console.log('product', product)
             const date = new Date(product.close_approach_data[0].epoch_date_close_approach)
