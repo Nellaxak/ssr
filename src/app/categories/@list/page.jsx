@@ -201,7 +201,7 @@ export default async function Home({ searchParams }) {
         console.log('count', data.element_count)
         const list = data.near_earth_objects
         const arrObjects = Object.values(list)
-        console.log('arrObjects', arrObjects)
+        console.log('arrObjects', arrObjects.flat())
         //array3 = arrObjects[0];
         console.log('concat', arrObjects[0].length)
         return <List items={arrObjects[0]} renderItem={async (product) => {
