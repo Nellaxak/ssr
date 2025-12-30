@@ -188,11 +188,12 @@ async function Row(props) {
     </Suspense>
 }
 
-export default async function Home({ searchParams }) {
+export default async function Home({ params,searchParams }) {
     search = await searchParams;
     let [startDate, endDate] = await CalcData(search)
     viewtype = await search.viewtype
-    //page = await search.page
+    const page = await params.page
+    console.log('page',page)
     //try {
     const resp = await fetch(`https://api.nasa.gov/neo/rest/v1/feed?start_date=${startDate}&end_date=${endDate}&api_key=3wa5hHgFuqhf6XiefvqzkcDQWZ01aOOK4vNZEXsP`,
         { cache: 'force-cache' },
@@ -202,10 +203,10 @@ export default async function Home({ searchParams }) {
     if (Number(resp.status) === 200) {
         data = await resp.json()
         list = data.near_earth_objects
-        console.log('count', data.element_count)
+        console.log('element_count', data.element_count)
         arrObjects = Object.values(list)
         newArr = arrObjects.flat()
-        console.log('concat', newArr.length)
+        //console.log('concat', newArr.length)
         return <List items={newArr} renderItem={async (product) => {
             //console.log('product', product)
             const date = new Date(product.close_approach_data[0].epoch_date_close_approach)
@@ -224,7 +225,7 @@ export default async function Home({ searchParams }) {
     } else {
         console.log('resp', resp.status)
         //return not empty render
-        return <List items={newArr} renderItem={async (product) => {
+        /*return <List items={newArr} renderItem={async (product) => {
             //console.log('product', product)
             const date = new Date(product.close_approach_data[0].epoch_date_close_approach)
             const prevDate = new Intl.DateTimeFormat("ru-RU", options).format(date);
@@ -238,7 +239,7 @@ export default async function Home({ searchParams }) {
                 viewtype={viewtype}
                 dates={dateString}
             /></Suspense>
-        }} />
+        }} />*/
     }
     /*}
     catch (err) {
