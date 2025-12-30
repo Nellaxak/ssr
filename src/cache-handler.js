@@ -7,11 +7,13 @@ class CacheHandler {
 
   async get(key) {
     console.log('cache get', key)
+    return store.get(key)
     // ...
   }
 
   async set(key, data, ctx) {
     console.log('dddd', key, 'data', data, 'ctx', ctx)
+    store.set(key,data)
     // ...
   }
 
