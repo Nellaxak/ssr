@@ -2,8 +2,8 @@
 const nextConfig = {
     distDir: 'build',
     reactStrictMode: false,
-    /*cacheHandler: require.resolve('./cache-handler.js'),
-    cacheMaxMemorySize: 100, */// 100mb
+    cacheHandler: require.resolve('./cache-handler.js'),
+    cacheMaxMemorySize: 100, // 100mb
     /*basePath: '/categories',*/
     /*experimental: {
         exposeBusinessErrors: true,
