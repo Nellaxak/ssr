@@ -9,7 +9,7 @@ class CacheHandler {
   }
 
   async set(key, data, ctx) {
-    console.log('dddd', key, data, ctx)
+    console.log('dddd', key, 'data', data, 'ctx', ctx)
     // ...
   }
 
