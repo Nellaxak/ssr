@@ -1,7 +1,7 @@
 import styles from "./page.module.css";
 import Link from "next/link";
-import statusMap from '../../statusMap'
-import Item from '../../Item'
+import statusMap from '../../../statusMap'
+import Item from '../../../Item'
 //import http from '@/utils/http'
 
 /*export interface Count {
