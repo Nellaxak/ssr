@@ -1,3 +1,4 @@
+const store = new Map();
 class CacheHandler {
   constructor(options) {
     this.options = options
@@ -8,11 +9,12 @@ class CacheHandler {
   }
 
   async set(key, data, ctx) {
+    console.log('dddd', key, data, ctx)
     // ...
-    console.log(' set CacheHandler', data, ctx)
   }
 
   async revalidateTag(tag) {
     // ...
   }
 }
+module.exports = CacheHandler;

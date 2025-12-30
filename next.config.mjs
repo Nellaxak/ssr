@@ -1,8 +1,10 @@
 /** @type {import('next').NextConfig} */
+import { createRequire } from 'module';
+const require = createRequire(import.meta.url);
 const nextConfig = {
     distDir: 'build',
     reactStrictMode: false,
-    cacheHandler: require.resolve('./cache-handler.js'),
+    cacheHandler: require.resolve('./src/cache-handler.js'),
     cacheMaxMemorySize: 100, // 100mb
     /*basePath: '/categories',*/
     /*experimental: {
