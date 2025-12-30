@@ -17,7 +17,7 @@ class CacheHandler {
     //prev chunk=store.get(key)
     //add new chunk-data.data.body uint8array readable stream
     store.set(key, data)
-    console.log('getter', store.get(key))
+    //console.log('getter', store.get(key))
     // ...
   }
 
