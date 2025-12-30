@@ -200,6 +200,7 @@ export default async function Home({ params,searchParams }) {
         // { cache: 'no-store' },//add io
         { next: { tags: ['items'] } }
     );
+    console.log('llll',resp.status)
     if (Number(resp.status) === 200) {
         data = await resp.json()
         list = data.near_earth_objects
