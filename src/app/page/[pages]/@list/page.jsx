@@ -115,9 +115,9 @@ async function RenderProp(product, index) {
         dates={dateString}
     /></Suspense>
 }
-async function List({ items, renderItem }) {
+async function List({ items, outside,renderItem }) {
     //console.log('type items', Array.isArray(items))
-    const res = await Promise.all(items.map(async (item) => {
+    const res = await Promise.all(items.slice(outside,(items.length-1)).map(async (item) => {
         //console.log('llpoiyt', item.visible)//linked list
         //.filter(predicate) 
         return await renderItem(item);
@@ -189,10 +189,11 @@ async function Row(props) {
 }
 
 export default async function Home({ params, searchParams }) {
-    search = await searchParams;
+    const search = await searchParams;
     const pages = await params.pages
     let [startDate, endDate] = await CalcData(pages)
-    viewtype = await search.viewtype
+    const viewtype = await search.viewtype
+    const outside = await search.outside
     //console.log('page',pages)
     //try {
     const resp = await fetch(`https://api.nasa.gov/neo/rest/v1/feed?start_date=${startDate}&end_date=${endDate}&api_key=3wa5hHgFuqhf6XiefvqzkcDQWZ01aOOK4vNZEXsP`,
@@ -200,7 +201,7 @@ export default async function Home({ params, searchParams }) {
         // { cache: 'no-store' },//add io
         { next: { tags: ['items'] } }
     );
-    console.log('llll', resp.status)
+    //console.log('llll', resp.status)
     if (Number(resp.status) === 200) {
         const data = await resp.json()
         list = data.near_earth_objects
@@ -208,7 +209,7 @@ export default async function Home({ params, searchParams }) {
         const arrObjects = Object.values(list)
         const newArr = arrObjects.flat()
         //console.log('concat', newArr.length)
-        return <List items={newArr} renderItem={async (product) => {
+        return <List items={newArr} outside={outside} renderItem={async (product) => {
             //console.log('product', product)
             const date = new Date(product.close_approach_data[0].epoch_date_close_approach)
             const prevDate = new Intl.DateTimeFormat("ru-RU", options).format(date);
