@@ -193,7 +193,6 @@ export default async function Home({ params, searchParams }) {
     const pages = await params.pages
     let [startDate, endDate] = await CalcData(pages)
     const viewtype = await search.viewtype
-    //const outside = await search.outside
     //console.log('page',pages)
     //try {
     const resp = await fetch(`https://api.nasa.gov/neo/rest/v1/feed?start_date=${startDate}&end_date=${endDate}&api_key=3wa5hHgFuqhf6XiefvqzkcDQWZ01aOOK4vNZEXsP`,
