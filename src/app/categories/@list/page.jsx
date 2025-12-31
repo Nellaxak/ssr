@@ -111,12 +111,12 @@ async function RenderProp(product, index) {
 }
 async function List({ items, page, renderItem }) {
     //console.log('type items', Array.isArray(items), outside)
-    let prevPageItems = items.length-(Number(page) * 9) - 1
-    console.log('prevPageItems',prevPageItems)
+    let prevPageItems = items.length - (Number(page) * 9) - 1
+    console.log('prevPageItems', page, prevPageItems)
     if (prevPageItems < 0) {
         prevPageItems = 0
     }
-    const res = await Promise.all(items.slice(prevPageItems, items.length).map(async (item) => {
+    const res = await Promise.all(items.slice(prevPageItems, items.length - 1).map(async (item) => {
         //console.log('llpoiyt', item.visible)//linked list
         return await renderItem(item);
     }))
