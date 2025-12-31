@@ -17,6 +17,7 @@ let viewtype = 'main'
 let array3 = [];
 let list
 let newArr
+let offset=[]
 //const ll = await createLinkedListInstance()
 
 const options = {
@@ -109,22 +110,14 @@ async function RenderProp(product, index) {
         dates={dateString}
     /></Suspense>
 }
-async function List({ items, page, renderItem }) {
-    //console.log('type items', Array.isArray(items), outside)
-    /*const offset = 2//must be prev 2 in viewport
-    let prevPageItems = (Number(page) * 10) //- 1//for overflow
-    console.log('prevPageItems', page, prevPageItems)
-    if (prevPageItems < 0) {
-        prevPageItems = 0
-    }*/
+async function List({ items, renderItem }) {
     const res = await Promise.all(items.map(async (item) => {
         //console.log('llpoiyt', item.visible)//linked list
         return await renderItem(item);
     }))
 
-    return (
-        <Suspense>{res}
-        </Suspense>)
+    return (<Suspense>{res}
+    </Suspense>)
 }
 async function FormatStatus(params) {
     //console.log('FormatStatus', params)
@@ -186,7 +179,7 @@ async function Row(props) {
         </li>
     </Suspense>
 }
-const tgtgt = new ReadableStream()
+//const tgtgt = new ReadableStream()
 export default async function Home({ searchParams }) {
     const search = await searchParams;
     const page = await search.page
@@ -195,24 +188,26 @@ export default async function Home({ searchParams }) {
     //console.log('page', page)
     //try {
     const resp = await fetch(`https://api.nasa.gov/neo/rest/v1/feed?start_date=${startDate}&end_date=${endDate}&api_key=3wa5hHgFuqhf6XiefvqzkcDQWZ01aOOK4vNZEXsP`,
-        /*{
-            method: 'GET',
-            body: tgtgt, // Браузер установит Content-Length
-        },*/
         { cache: 'force-cache' },
         // { cache: 'no-store' },//add io
         { next: { tags: ['items'] } }
     );
-    const contentLength = resp.headers.get('content-length');
-    console.log('llll', page, contentLength)
+    //const contentLength = resp.headers.get('content-length');
+    console.log('llll', page)
     if (Number(resp.status) === 200) {
         const data = await resp.json()
         list = data.near_earth_objects
         console.log('element_count', data.element_count)
+        if (Number(data.element_count) < 9) {
+
+        }
         const arrObjects = Object.values(list)
         const newArr = arrObjects.flat()
+        if (Number(page) > 0) {
+            offset = newArr.slice(-2)
+        }
         //console.log('concat', newArr.length)
-        return <List items={newArr} page={page} renderItem={async (product) => {
+        return <List items={[...offset, ...newArr]} renderItem={async (product) => {
             //console.log('product', product)
             const date = new Date(product.close_approach_data[0].epoch_date_close_approach)
             const prevDate = new Intl.DateTimeFormat("ru-RU", options).format(date);
