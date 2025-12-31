@@ -77,7 +77,7 @@ async function CalcData(params) {
     tomorrow.setDate(tomorrow.getDate());
     //console.log('page**', page)
     //if (Number(page) > 0) {
-        const newPage1 = Number(tomorrow.getDate()) + Number(page)// + 1//+1 offset
+        const newPage1 = Number(tomorrow.getDate()) + Number(page) + 1//+1 offset
         //console.log('if', tomorrow.getDate())
         tomorrow.setDate(newPage1);//+1
     //}
@@ -185,7 +185,7 @@ export default async function Home({ searchParams }) {
     const page = await search.page
     let [startDate, endDate] = await CalcData(page)
     const viewtype = await search.viewtype
-    console.log('page', page, startDate, endDate)
+    console.log('page', page)
     //try {
     const resp = await fetch(`https://api.nasa.gov/neo/rest/v1/feed?start_date=${startDate}&end_date=${endDate}&api_key=3wa5hHgFuqhf6XiefvqzkcDQWZ01aOOK4vNZEXsP`,
         { cache: 'force-cache' },
