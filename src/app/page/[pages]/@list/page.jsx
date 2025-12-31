@@ -116,7 +116,7 @@ async function RenderProp(product, index) {
     /></Suspense>
 }
 async function List({ items, outside, renderItem }) {
-    console.log('type items', Array.isArray(items), outside)
+    //console.log('type items', Array.isArray(items), outside)
     const res = await Promise.all(items.slice(Number(outside), (items.length - 1)).map(async (item) => {
         //console.log('llpoiyt', item.visible)//linked list
         //.filter(predicate) 
@@ -209,7 +209,7 @@ export default async function Home({ params, searchParams }) {
         const arrObjects = Object.values(list)
         const newArr = arrObjects.flat()
         //console.log('concat', newArr.length)
-        return <List items={newArr} outside={outside} renderItem={async (product) => {
+        return <List items={newArr} outside={1} renderItem={async (product) => {
             //console.log('product', product)
             const date = new Date(product.close_approach_data[0].epoch_date_close_approach)
             const prevDate = new Intl.DateTimeFormat("ru-RU", options).format(date);
