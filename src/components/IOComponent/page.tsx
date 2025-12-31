@@ -6,7 +6,8 @@ import dynamic from 'next/dynamic'
 
 const options = {
     root: null,
-    rootMargin: "-170px",//2 li he
+    rootMargin: "0px",//-px not work
+    scrollMargin: "-80px",
     threshold: 1.0,
 }
 let router: any
