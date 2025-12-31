@@ -36,7 +36,7 @@ function ScrollComponent() {
     router = useRouter()
     const [startRow, setStartRow] = useState(0)
     const handleScroll = useCallback(async (e) => {
-        console.log('target', e.target.scrollTop)
+        console.log('target', e.target)
         //console.log('scrollend')
         /*const rect = elem.getBoundingClientRect()
         const hh = rect.height
