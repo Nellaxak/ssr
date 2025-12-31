@@ -202,7 +202,7 @@ export default async function Home({ params,searchParams }) {
     );
     console.log('llll',resp.status)
     if (Number(resp.status) === 200) {
-        data = await resp.json()
+        const data = await resp.json()
         list = data.near_earth_objects
         console.log('element_count', data.element_count)
         arrObjects = Object.values(list)
