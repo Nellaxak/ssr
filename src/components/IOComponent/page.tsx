@@ -31,14 +31,10 @@ const IOComponent = () => {
     callbackFunction = useCallback(async (entries: IntersectionObserverEntry[]) => {
         const [entry] = entries;
         if (entry.isIntersecting && add) {
-            //console.log('add page')
             setPage((page) => {
                 let newPage = page + 1
                 return newPage
             })
-            //console.log('isIntersecting')
-        } else {
-            //console.log('not isIntersecting')
         }
     }, []);
     useEffect(() => {

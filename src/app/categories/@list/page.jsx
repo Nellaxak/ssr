@@ -111,7 +111,8 @@ async function RenderProp(product, index) {
 }
 async function List({ items, page, renderItem }) {
     //console.log('type items', Array.isArray(items), outside)
-    let prevPageItems = (Number(page) * 10) //- 1
+    const offset = 2//must be prev 2 in viewport
+    let prevPageItems = (Number(page) * 10) //- 1//for overflow
     console.log('prevPageItems', page, prevPageItems)
     if (prevPageItems < 0) {
         prevPageItems = 0
@@ -191,14 +192,14 @@ export default async function Home({ searchParams }) {
     const page = await search.page
     let [startDate, endDate] = await CalcData(page)
     const viewtype = await search.viewtype
-    console.log('page', page)
+    //console.log('page', page)
     //try {
     const resp = await fetch(`https://api.nasa.gov/neo/rest/v1/feed?start_date=${startDate}&end_date=${endDate}&api_key=3wa5hHgFuqhf6XiefvqzkcDQWZ01aOOK4vNZEXsP`,
         { cache: 'force-cache' },
         // { cache: 'no-store' },//add io
         { next: { tags: ['items'] } }
     );
-    //console.log('llll', resp.status)
+    console.log('llll', page, resp.body)
     if (Number(resp.status) === 200) {
         const data = await resp.json()
         list = data.near_earth_objects
