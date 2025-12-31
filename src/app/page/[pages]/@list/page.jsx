@@ -115,9 +115,9 @@ async function RenderProp(product, index) {
         dates={dateString}
     /></Suspense>
 }
-async function List({ items, outside, renderItem }) {
+async function List({ items, page, renderItem }) {
     //console.log('type items', Array.isArray(items), outside)
-    const res = await Promise.all(items.slice(Number(outside), (items.length - 1)).map(async (item) => {
+    const res = await Promise.all(items.slice(Number(page) * 9 - 1, (items.length - 1)).map(async (item) => {
         //console.log('llpoiyt', item.visible)//linked list
         //.filter(predicate) 
         return await renderItem(item);
@@ -193,7 +193,7 @@ export default async function Home({ params, searchParams }) {
     const pages = await params.pages
     let [startDate, endDate] = await CalcData(pages)
     const viewtype = await search.viewtype
-    const outside = await search.outside
+    //const outside = await search.outside
     //console.log('page',pages)
     //try {
     const resp = await fetch(`https://api.nasa.gov/neo/rest/v1/feed?start_date=${startDate}&end_date=${endDate}&api_key=3wa5hHgFuqhf6XiefvqzkcDQWZ01aOOK4vNZEXsP`,
@@ -209,7 +209,7 @@ export default async function Home({ params, searchParams }) {
         const arrObjects = Object.values(list)
         const newArr = arrObjects.flat()
         //console.log('concat', newArr.length)
-        return <List items={newArr} outside={1} renderItem={async (product) => {
+        return <List items={newArr} page={pages} renderItem={async (product) => {
             //console.log('product', product)
             const date = new Date(product.close_approach_data[0].epoch_date_close_approach)
             const prevDate = new Intl.DateTimeFormat("ru-RU", options).format(date);
