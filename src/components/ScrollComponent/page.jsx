@@ -38,8 +38,7 @@ function ScrollComponent() {
     const handleScroll = useCallback(async (e) => {
         console.log('target', e.target.scrollTop)
         //console.log('scrollend')
-        /*const elem = document.querySelector('#header')
-        const rect = elem.getBoundingClientRect()
+        /*const rect = elem.getBoundingClientRect()
         const hh = rect.height
         //console.log('scrollend', rect, vertical, rect.y < vertical)
         let item = Math.abs(rect.y - vertical)
@@ -57,12 +56,13 @@ function ScrollComponent() {
         ));
     }, [])
     useEffect(() => {
-        console.log('startRow',startRow)
+        console.log('startRow', startRow)
     }, [startRow])
     useEffect(() => {
-        document.addEventListener('scrollend', handleScroll)
+        const elem = document.querySelector('#header')
+        elem.addEventListener('scrollend', handleScroll)
         return () => {
-            document.removeEventListener('scrollend', handleScroll)
+            elem.removeEventListener('scrollend', handleScroll)
         };
     }, [])
     return (<p>
