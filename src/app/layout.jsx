@@ -2,6 +2,7 @@ import { Suspense, createElement } from 'react'
 //import HeaderTop from '@/components/HeaderTop/page';
 import dynamic from 'next/dynamic'
 import IOComponent from '../components/IOComponent/page'
+import ScrollComponent from '../components/ScrollComponent/page'
 
 //import ToggleHeader from '../components/ToggleHeader/page';
 //import { NavigationEvents } from '../components/NavigationsEvents/page';
@@ -63,7 +64,7 @@ export default async function Layout(props) {
               {props.children}
             </Suspense>
           </div>
-          <IOComponent />
+          <ScrollComponent />
         </div>
       </body>
     </html >

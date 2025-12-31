@@ -3,6 +3,7 @@ class CacheHandler {
   constructor(options) {
     console.log('CacheHandler constructor options', options)
     this.options = options
+    //this.data
   }
 
   async get(key) {
@@ -27,4 +28,5 @@ class CacheHandler {
     // ...
   }
 }
-module.exports = CacheHandler;
+const fff = new CacheHandler()
+module.exports = fff//CacheHandler;

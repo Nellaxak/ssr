@@ -27,12 +27,17 @@ let status = 0
 let page = 0
 let myProps
 let vertical = 0
-
+//let start=0
+let visibleRows=6
+let rowHeight=100
+let data=[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
 function ScrollComponent() {
+    ref = useRef()
     router = useRouter()
-
-    const handleScroll = useCallback(async () => {
-        console.log('scrollend')
+    const [startRow, setStartRow] = useState(0)
+    const handleScroll = useCallback(async (e) => {
+        console.log('target',e.target)
+        //console.log('scrollend')
         /*const elem = document.querySelector('#header')
         const rect = elem.getBoundingClientRect()
         const hh = rect.height
@@ -46,6 +51,11 @@ function ScrollComponent() {
             router.push(`?action=up&col=${col}`, { scroll: false });
         }
         vertical = rect.y*/
+        setStartRow(Math.min(
+            data.length - visibleRows - 1,
+            Math.floor(e.target.scrollTop / rowHeight)
+        ));
+        console.log()
     }, [])
     useEffect(() => {
         document.addEventListener('scrollend', handleScroll)
