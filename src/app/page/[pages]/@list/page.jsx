@@ -115,9 +115,9 @@ async function RenderProp(product, index) {
         dates={dateString}
     /></Suspense>
 }
-async function List({ items, outside,renderItem }) {
-    //console.log('type items', Array.isArray(items))
-    const res = await Promise.all(items.slice(outside,(items.length-1)).map(async (item) => {
+async function List({ items, outside, renderItem }) {
+    console.log('type items', Array.isArray(items), outside)
+    const res = await Promise.all(items.slice(Numder(outside), (items.length - 1)).map(async (item) => {
         //console.log('llpoiyt', item.visible)//linked list
         //.filter(predicate) 
         return await renderItem(item);
