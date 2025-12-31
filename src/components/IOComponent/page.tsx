@@ -36,6 +36,7 @@ const IOComponent = () => {
                 let newPage = page + 1
                 return newPage
             })
+        //router.push(`/categories?viewtype=${currentViewtype}&page=${page}`, { scroll: true });
         }
     }, []);
     useEffect(() => {
