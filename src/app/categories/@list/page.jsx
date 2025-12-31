@@ -68,10 +68,10 @@ async function CalcData(params) {
     currentDate.setDate(currentDate.getDate());
     const page = params
 
-    /*if (Number(page) > 0) {
+    if (Number(page) > 0) {
         const newPage = Number(currentDate.getDate()) + Number(page)
         currentDate.setDate(newPage);//+1
-    }*/
+    }
     let tomorrow = new Date();
     tomorrow.setDate(tomorrow.getDate());
     //console.log('page**', page)
@@ -111,13 +111,13 @@ async function RenderProp(product, index) {
 }
 async function List({ items, page, renderItem }) {
     //console.log('type items', Array.isArray(items), outside)
-    const offset = 2//must be prev 2 in viewport
+    /*const offset = 2//must be prev 2 in viewport
     let prevPageItems = (Number(page) * 10) //- 1//for overflow
     console.log('prevPageItems', page, prevPageItems)
     if (prevPageItems < 0) {
         prevPageItems = 0
-    }
-    const res = await Promise.all(items.slice(prevPageItems, items.length).map(async (item) => {
+    }*/
+    const res = await Promise.all(items.map(async (item) => {
         //console.log('llpoiyt', item.visible)//linked list
         return await renderItem(item);
     }))
@@ -195,10 +195,10 @@ export default async function Home({ searchParams }) {
     //console.log('page', page)
     //try {
     const resp = await fetch(`https://api.nasa.gov/neo/rest/v1/feed?start_date=${startDate}&end_date=${endDate}&api_key=3wa5hHgFuqhf6XiefvqzkcDQWZ01aOOK4vNZEXsP`,
-        {
+        /*{
             method: 'GET',
             body: tgtgt, // Браузер установит Content-Length
-        },
+        },*/
         { cache: 'force-cache' },
         // { cache: 'no-store' },//add io
         { next: { tags: ['items'] } }
