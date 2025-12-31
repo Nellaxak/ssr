@@ -1,11 +1,11 @@
 import styles from "./page.module.css";
 import React, { Suspense, Activity } from "react";
-import statusMap from "../../../statusMap";
+import statusMap from "../../statusMap";
 //import { revalidateTag, revalidatePath } from 'next/cache';
-import ButtonSubmit from '../../../../components/ButtonSubmit/page'
+import ButtonSubmit from '../../../components/ButtonSubmit/page'
 //import LinkedList, { linkedList } from "../../../LinkedList";
-import Item from "../../../Item";
-import { createLinkedListInstance } from '../../../lib/actions'
+import Item from "../../Item";
+//import { createLinkedListInstance } from '../../../lib/actions'
 
 let resp
 let endDate
@@ -181,12 +181,12 @@ async function Row(props) {
     </Suspense>
 }
 
-export default async function Home({ params, searchParams }) {
+export default async function Home({ searchParams }) {
     const search = await searchParams;
-    const pages = await params.pages
-    let [startDate, endDate] = await CalcData(pages)
+    const page = await search.page
+    let [startDate, endDate] = await CalcData(page)
     const viewtype = await search.viewtype
-    console.log('page',pages)
+    console.log('page',page)
     //try {
     const resp = await fetch(`https://api.nasa.gov/neo/rest/v1/feed?start_date=${startDate}&end_date=${endDate}&api_key=3wa5hHgFuqhf6XiefvqzkcDQWZ01aOOK4vNZEXsP`,
         { cache: 'force-cache' },
