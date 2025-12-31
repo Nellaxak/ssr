@@ -9,6 +9,7 @@ const options = {
   threshold: 1.0,
 }
 function ButtonSubmit(props) {
+  const [outside,setOutside]=useState(0)
   const ref = useRef(null)
   const router = useRouter()
   const params = useParams()
@@ -28,9 +29,13 @@ function ButtonSubmit(props) {
       //router.push(`?viewtype=${currentViewtype}&page=${currentPage}&output=${props.id}`, { scroll: false });//very many rerender
     } else {
       //console.log('input button', props)
-      router.push(`/page/${currentPage}?viewtype=${currentViewtype}&outside=${0}`, { scroll: false });//very many rerender
+      setOutside(0)
     }
   }, []);
+  useEffect(() => {
+      router.push(`/page/${currentPage}?viewtype=${currentViewtype}&outside=${0}`, { scroll: false });//very many rerender
+  }, [outside])
+
   useEffect(() => {
     //socket.emit('addPage')
     const observer = new IntersectionObserver(callbackFunction, options);
