@@ -203,13 +203,13 @@ export default async function Home({ searchParams }) {
         }
         const arrObjects = Object.values(list)
         const newArr = arrObjects.flat()
-        if (Number(page) > 0) {
+        /*if (Number(page) > 0) {
             offset = newArr.slice(-2)
         } else {
             offset =[]
-        }
-        console.log('offset', ...offset)
-        return <List items={[...offset, ...newArr]} renderItem={async (product) => {
+        }*/
+        //console.log('offset', ...offset)
+        return <List items={newArr} renderItem={async (product) => {
             //console.log('product', product)
             const date = new Date(product.close_approach_data[0].epoch_date_close_approach)
             const prevDate = new Intl.DateTimeFormat("ru-RU", options).format(date);

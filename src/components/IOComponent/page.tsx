@@ -6,7 +6,7 @@ import dynamic from 'next/dynamic'
 
 const options = {
     root: null,
-    rootMargin: "100px",
+    rootMargin: "-170px",//2 li he
     threshold: 1.0,
 }
 let router: any
