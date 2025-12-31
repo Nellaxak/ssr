@@ -1,6 +1,6 @@
 'use client'
-import { useCallback, Suspense, useEffect, useState } from 'react'
-import { useRouter, useSearchParams,useParams } from 'next/navigation'
+import { useCallback, Suspense, useEffect, useState, useRef } from 'react'
+import { useRouter, useSearchParams, useParams } from 'next/navigation'
 import { toggleClick, getStatus } from '../../app/lib/actions'
 
 const options = {
@@ -9,6 +9,7 @@ const options = {
   threshold: 1.0,
 }
 function ButtonSubmit(props) {
+  const ref = useRef(null)
   const router = useRouter()
   const params = useParams()
 
@@ -46,6 +47,6 @@ function ButtonSubmit(props) {
   }, [])
   //onClick={handleClick}
   //onClick={()=>handleClick()}
-  return <button type="button" onClick={handleClick}><Suspense>{props.status}</Suspense></button>
+  return <button type="button" onClick={handleClick} ref={ref}><Suspense>{props.status}</Suspense></button>
 }
 export default ButtonSubmit
