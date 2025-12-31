@@ -69,18 +69,18 @@ async function CalcData(params) {
     currentDate.setDate(currentDate.getDate());
     const page = params
 
-    if (Number(page) > 0) {
+    //if (Number(page) > 0) {
         const newPage = Number(currentDate.getDate()) + Number(page)
         currentDate.setDate(newPage);//+1
-    }
+    //}
     let tomorrow = new Date();
     tomorrow.setDate(tomorrow.getDate());
     //console.log('page**', page)
-    if (Number(page) > 0) {
-        const newPage = Number(tomorrow.getDate()) + Number(page) + 1//+1 offset
+    //if (Number(page) > 0) {
+        const newPage1 = Number(tomorrow.getDate()) + Number(page) + 1//+1 offset
         //console.log('if', tomorrow.getDate())
-        tomorrow.setDate(newPage);//+1
-    }
+        tomorrow.setDate(newPage1);//+1
+    //}
     //console.log('myDate', new Intl.DateTimeFormat('ru-RU', optionsDate).format(currentDate))
     let startDate = currentDate.getFullYear() + '-' +
         (currentDate.getMonth() + 1) + '-' +
