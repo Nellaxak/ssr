@@ -205,6 +205,8 @@ export default async function Home({ searchParams }) {
         const newArr = arrObjects.flat()
         if (Number(page) > 0) {
             offset = newArr.slice(-2)
+        } else {
+            offset =[]
         }
         console.log('offset', ...offset)
         return <List items={[...offset, ...newArr]} renderItem={async (product) => {
