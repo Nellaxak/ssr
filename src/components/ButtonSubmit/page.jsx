@@ -10,7 +10,7 @@ const options = {
 }
 function ButtonSubmit(props) {
   const router = useRouter()
-  const params = useSearchParams()
+  const params = useParams()
 
   currentPage = Number(useParams.get('pages'))
 
