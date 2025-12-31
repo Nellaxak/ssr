@@ -17,7 +17,7 @@ let viewtype = 'main'
 let array3 = [];
 let list
 let newArr
-let offset=[]
+let offset = []
 //const ll = await createLinkedListInstance()
 
 const options = {
@@ -77,7 +77,7 @@ async function CalcData(params) {
     tomorrow.setDate(tomorrow.getDate());
     //console.log('page**', page)
     if (Number(page) > 0) {
-        const newPage = Number(tomorrow.getDate()) + Number(page)
+        const newPage = Number(tomorrow.getDate()) + Number(page) + 1//+1 offset
         //console.log('if', tomorrow.getDate())
         tomorrow.setDate(newPage);//+1
     }
@@ -185,7 +185,7 @@ export default async function Home({ searchParams }) {
     const page = await search.page
     let [startDate, endDate] = await CalcData(page)
     const viewtype = await search.viewtype
-    //console.log('page', page)
+    console.log('page', page, startDate, endDate)
     //try {
     const resp = await fetch(`https://api.nasa.gov/neo/rest/v1/feed?start_date=${startDate}&end_date=${endDate}&api_key=3wa5hHgFuqhf6XiefvqzkcDQWZ01aOOK4vNZEXsP`,
         { cache: 'force-cache' },
@@ -203,12 +203,7 @@ export default async function Home({ searchParams }) {
         }
         const arrObjects = Object.values(list)
         const newArr = arrObjects.flat()
-        /*if (Number(page) > 0) {
-            offset = newArr.slice(-2)
-        } else {
-            offset =[]
-        }*/
-        //console.log('offset', ...offset)
+
         return <List items={newArr} renderItem={async (product) => {
             //console.log('product', product)
             const date = new Date(product.close_approach_data[0].epoch_date_close_approach)

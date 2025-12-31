@@ -7,7 +7,7 @@ import dynamic from 'next/dynamic'
 const options = {
     root: null,//document.querySelector("#scrollArea"),
     rootMargin: "0px",//-px not work
-    scrollMargin: "80px",
+    scrollMargin: "-80px",
     threshold: 1.0,
 }
 let router: any
@@ -50,7 +50,7 @@ const IOComponent = () => {
         router.push(`/categories?viewtype=${currentViewtype}&page=${page}`, { scroll: true });
         //router.refresh()
     }, [page])
-    return <p ref={ref} style={{height: '100px'}}></p>
+    return <p ref={ref}></p>
 }
 //export default IOComponent
 export default dynamic(() => Promise.resolve(IOComponent), { ssr: false });
