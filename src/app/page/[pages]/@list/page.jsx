@@ -188,7 +188,7 @@ async function Row(props) {
     </Suspense>
 }
 
-export default async function Home({ params,searchParams }) {
+export default async function Home({ params, searchParams }) {
     search = await searchParams;
     const pages = await params.pages
     let [startDate, endDate] = await CalcData(pages)
@@ -200,13 +200,13 @@ export default async function Home({ params,searchParams }) {
         // { cache: 'no-store' },//add io
         { next: { tags: ['items'] } }
     );
-    console.log('llll',resp.status)
+    console.log('llll', resp.status)
     if (Number(resp.status) === 200) {
         const data = await resp.json()
         list = data.near_earth_objects
         console.log('element_count', data.element_count)
-        arrObjects = Object.values(list)
-        newArr = arrObjects.flat()
+        const arrObjects = Object.values(list)
+        const newArr = arrObjects.flat()
         //console.log('concat', newArr.length)
         return <List items={newArr} renderItem={async (product) => {
             //console.log('product', product)
