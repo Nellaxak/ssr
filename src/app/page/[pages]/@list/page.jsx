@@ -93,12 +93,6 @@ async function CalcData(params) {
     })*/
     return [startDate, endDate]
 }
-async function predicate(item, index, arr) {//renderItem?
-    if (item.visible === 1) {
-        return await RenderProp(item, index)
-    }
-    return false
-}
 async function RenderProp(product, index) {
     console.log('RenderProp', product)
     const date = new Date(product.close_approach_data[0].epoch_date_close_approach)
@@ -117,9 +111,8 @@ async function RenderProp(product, index) {
 }
 async function List({ items, page, renderItem }) {
     //console.log('type items', Array.isArray(items), outside)
-    const res = await Promise.all(items.slice(Number(page) * 9 - 1, (items.length - 1)).map(async (item) => {
+    const res = await Promise.all(items.slice((Number(page) * 9) - 1, items.length).map(async (item) => {
         //console.log('llpoiyt', item.visible)//linked list
-        //.filter(predicate) 
         return await renderItem(item);
     }))
 
