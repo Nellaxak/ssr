@@ -12,7 +12,7 @@ function ButtonSubmit(props) {
   const router = useRouter()
   const params = useParams()
 
-  currentPage = Number(params.get('pages'))
+  currentPage = params.pages
 
   const handleClick = useCallback(async () => {
     await toggleClick(props.id)
