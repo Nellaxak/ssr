@@ -199,7 +199,8 @@ export default async function Home({ searchParams }) {
         // { cache: 'no-store' },//add io
         { next: { tags: ['items'] } }
     );
-    console.log('llll', page, resp.body)
+    const contentLength = resp.headers.get('content-length');
+    console.log('llll', page, contentLength)
     if (Number(resp.status) === 200) {
         const data = await resp.json()
         list = data.near_earth_objects
