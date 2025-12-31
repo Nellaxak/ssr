@@ -36,7 +36,7 @@ function ScrollComponent() {
     router = useRouter()
     const [startRow, setStartRow] = useState(0)
     const handleScroll = useCallback(async (e) => {
-        //console.log('target', e.target)
+        console.log('target', e.target.scrollTop)
         //console.log('scrollend')
         /*const elem = document.querySelector('#header')
         const rect = elem.getBoundingClientRect()
@@ -55,8 +55,10 @@ function ScrollComponent() {
             data.length - visibleRows - 1,
             Math.floor(e.target.scrollTop / rowHeight)
         ));
-        console.log('startRow',startRow)
     }, [])
+    useEffect(() => {
+        console.log('startRow',startRow)
+    }, [startRow])
     useEffect(() => {
         document.addEventListener('scrollend', handleScroll)
         return () => {
