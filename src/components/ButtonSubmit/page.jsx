@@ -9,12 +9,14 @@ const options = {
   threshold: 1.0,
 }
 function ButtonSubmit(props) {
-  const [outside,setOutside]=useState(0)
+  const [outside, setOutside] = useState(0)
   const ref = useRef(null)
   const router = useRouter()
   const params = useParams()
-
+  const searchParams = useSearchParams()
   const currentPage = params.pages
+  const currentViewtype = searchParams.get('viewtype')
+
 
   const handleClick = useCallback(async () => {
     await toggleClick(props.id)
@@ -33,7 +35,7 @@ function ButtonSubmit(props) {
     }
   }, []);
   useEffect(() => {
-      router.push(`/page/${currentPage}?viewtype=${currentViewtype}&outside=${0}`, { scroll: false });//very many rerender
+    router.push(`/page/${currentPage}?viewtype=${currentViewtype}&outside=${0}`, { scroll: false });//very many rerender
   }, [outside])
 
   useEffect(() => {
