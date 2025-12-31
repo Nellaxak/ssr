@@ -111,7 +111,7 @@ async function RenderProp(product, index) {
 }
 async function List({ items, page, renderItem }) {
     //console.log('type items', Array.isArray(items), outside)
-    let prevPageItems = (Number(page) * 9) - 1
+    let prevPageItems = (Number(page) * 9) //- 1
     console.log('prevPageItems', page, prevPageItems)
     if (prevPageItems < 0) {
         prevPageItems = 0
