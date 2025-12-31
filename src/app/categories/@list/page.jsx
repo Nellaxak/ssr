@@ -116,7 +116,7 @@ async function List({ items, page, renderItem }) {
     if (prevPageItems < 0) {
         prevPageItems = 0
     }
-    const res = await Promise.all(items.slice(prevPageItems, items.length - 1).map(async (item) => {
+    const res = await Promise.all(items.slice(prevPageItems, items.length).map(async (item) => {
         //console.log('llpoiyt', item.visible)//linked list
         return await renderItem(item);
     }))
