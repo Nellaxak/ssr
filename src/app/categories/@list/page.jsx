@@ -111,7 +111,11 @@ async function RenderProp(product, index) {
 }
 async function List({ items, page, renderItem }) {
     //console.log('type items', Array.isArray(items), outside)
-    const res = await Promise.all(items.slice((Number(page) * 9) - 1, items.length).map(async (item) => {
+    let prevPageItems = (Number(page) * 9) - 1
+    if (prevPageItems < 0) {
+        prevPageItems = 0
+    }
+    const res = await Promise.all(items.slice(prevPageItems, items.length).map(async (item) => {
         //console.log('llpoiyt', item.visible)//linked list
         return await renderItem(item);
     }))
@@ -186,7 +190,7 @@ export default async function Home({ searchParams }) {
     const page = await search.page
     let [startDate, endDate] = await CalcData(page)
     const viewtype = await search.viewtype
-    console.log('page',page)
+    console.log('page', page)
     //try {
     const resp = await fetch(`https://api.nasa.gov/neo/rest/v1/feed?start_date=${startDate}&end_date=${endDate}&api_key=3wa5hHgFuqhf6XiefvqzkcDQWZ01aOOK4vNZEXsP`,
         { cache: 'force-cache' },
