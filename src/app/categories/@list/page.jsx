@@ -186,7 +186,7 @@ async function Row(props) {
         </li>
     </Suspense>
 }
-
+const tgtgt = new ReadableStream()
 export default async function Home({ searchParams }) {
     const search = await searchParams;
     const page = await search.page
@@ -195,6 +195,10 @@ export default async function Home({ searchParams }) {
     //console.log('page', page)
     //try {
     const resp = await fetch(`https://api.nasa.gov/neo/rest/v1/feed?start_date=${startDate}&end_date=${endDate}&api_key=3wa5hHgFuqhf6XiefvqzkcDQWZ01aOOK4vNZEXsP`,
+        {
+            method: 'GET',
+            body: tgtgt, // Браузер установит Content-Length
+        },
         { cache: 'force-cache' },
         // { cache: 'no-store' },//add io
         { next: { tags: ['items'] } }
