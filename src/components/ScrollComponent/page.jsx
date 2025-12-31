@@ -29,14 +29,14 @@ let myProps
 let vertical = 0
 //let start=0
 let visibleRows = 6
-let rowHeight = 100
+let rowHeight = 85
 function ScrollComponent() {
     let data = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
     ref = useRef()
     router = useRouter()
     const [startRow, setStartRow] = useState(0)
     const handleScroll = useCallback(async (e) => {
-        console.log('target', e.target)
+        //console.log('target', e.target)
         //console.log('scrollend')
         /*const elem = document.querySelector('#header')
         const rect = elem.getBoundingClientRect()
@@ -55,7 +55,7 @@ function ScrollComponent() {
             data.length - visibleRows - 1,
             Math.floor(e.target.scrollTop / rowHeight)
         ));
-        console.log()
+        console.log('startRow',startRow)
     }, [])
     useEffect(() => {
         document.addEventListener('scrollend', handleScroll)
