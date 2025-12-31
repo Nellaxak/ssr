@@ -206,7 +206,7 @@ export default async function Home({ searchParams }) {
         if (Number(page) > 0) {
             offset = newArr.slice(-2)
         }
-        //console.log('concat', newArr.length)
+        console.log('offset', ...offset)
         return <List items={[...offset, ...newArr]} renderItem={async (product) => {
             //console.log('product', product)
             const date = new Date(product.close_approach_data[0].epoch_date_close_approach)
