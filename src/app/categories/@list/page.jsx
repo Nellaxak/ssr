@@ -201,7 +201,7 @@ export default async function Home({ searchParams }) {
 
         }
         list = data.links.self.near_earth_objects
-        console.log('data', list)//data.links.next/prev/self
+        console.log('data', data.links)//data.links.next/prev/self
         console.log('element_count', data.element_count)
         if (Number(data.element_count) < 9) {
 
