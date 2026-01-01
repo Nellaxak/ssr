@@ -181,13 +181,13 @@ async function Row(props) {
     </Suspense>
 }
 //const tgtgt = new ReadableStream()
-const targetPage = { page: 0 }
+const targetPage = { page: -1 }
 const pageProxy = new Proxy(targetPage, {
     set(target, prop, val) {
         console.log('proxy set ', target, prop, val)
         if (val !== target[prop]) {
             console.log('added')
-            dll.append(data.links.self)
+            //dll.append(data.links.self)
         }
         return true
     }
