@@ -197,7 +197,7 @@ export default async function Home({ searchParams }) {
     //console.log('llll', page)
     if (Number(resp.status) === 200) {
         const data = await resp.json()
-        if (Number(scroll === 1)) {
+        if (Number(scroll) === 1) {
             console.log('add nextpage')
         }
         list = data.near_earth_objects
