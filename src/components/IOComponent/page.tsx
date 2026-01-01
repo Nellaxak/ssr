@@ -20,7 +20,7 @@ let callbackFunction: any
 const IOComponent = () => {
     const router = useRouter()
     //path = usePathname()
-    searchParams = useSearchParams()
+    const searchParams = useSearchParams()
     const [page, setPage] = useState(0);
     const currentViewtype = searchParams.get('viewtype')
     //const currentPage = searchParams.get('page')
