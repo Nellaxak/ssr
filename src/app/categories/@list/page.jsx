@@ -183,13 +183,13 @@ async function Row(props) {
 //const tgtgt = new ReadableStream()
 let targetPage = { page: -1 }
 const pageProxy = new Proxy(targetPage, {
-    /*get(target, prop) {
+    get(target, prop) {
         if (prop in target) {
             return target[prop];
         } else {
             return 0; // значение по умолчанию
         }
-    },*/
+    },
     set(target, prop, val) {
         //console.log('proxy set ', target, prop, target[prop], val)
         if (val !== target[prop]) {
