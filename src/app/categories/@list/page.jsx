@@ -191,9 +191,9 @@ const pageProxy = new Proxy(targetPage, {
         }
     },
     set(target, prop, val) {
-        //console.log('proxy set ', target, prop, target[prop], val)
         if (val !== target[prop]) {
-            console.log('added')
+        //console.log('proxy set ', target, prop, target[prop], val)
+            console.log('added',target, prop, target[prop], val)
             target[prop] = val;
             //dll.append(data.links.self)
         }
@@ -217,7 +217,7 @@ export default async function Home({ searchParams }) {
     if (Number(resp.status) === 200) {
         const data = await resp.json()
         //page proxy
-        pageProxy.page = page
+        pageProxy.page = Number(page)
         //dll.append(data.links.self)
         /*if (Number(scroll) === 1) {
             //console.log('add nextpage')
