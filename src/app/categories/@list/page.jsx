@@ -200,8 +200,8 @@ export default async function Home({ searchParams }) {
         if (scroll === 'down') {
 
         }
-        list = data.links.self.near_earth_objects
-        console.log('data', data.links.self)//data.links.next/prev/self
+        list = data.near_earth_objects
+        console.log('data', data.links.self)//data.links.next/prev/self url for fetch
         console.log('element_count', data.element_count)
         if (Number(data.element_count) < 9) {
 
