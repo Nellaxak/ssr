@@ -82,7 +82,7 @@ export class DoublyLinkedList implements INodeList {
     if (!this.head) {
       this.head = newNode;
     }
-    console.log('append')
+    console.log('append',this)
     return this;
   }
 
