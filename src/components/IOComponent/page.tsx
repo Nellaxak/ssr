@@ -52,7 +52,7 @@ const IOComponent = () => {
         };
     }, [])
     useEffect(() => {
-        router.push(`/categories?viewtype=${currentViewtype}&scroll=${'down'}&page=${page}`, { scroll: true });
+        router.push(`/categories?viewtype=${currentViewtype}&scroll1=${'down'}&page=${page}`, { scroll: true });
         //router.refresh()
     }, [page])
     return <p ref={ref}></p>
