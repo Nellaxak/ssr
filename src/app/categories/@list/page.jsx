@@ -203,10 +203,10 @@ export default async function Home({ searchParams }) {
                 { cache: 'force-cache' },
                 // { next: { tags: ['items'] } }
             );
-            const data = await respNext.json()
-            const listNext = data.near_earth_objects
-            const arrObjects = Object.values(listNext)
-            newArrNext = arrObjects.flat()
+            const data1 = await respNext.json()
+            const listNext = data1.near_earth_objects
+            const arrObjects1 = Object.values(listNext)
+            newArrNext = arrObjects1.flat()
         }
         const list = data.near_earth_objects
         //console.log('element_count', data.element_count)
