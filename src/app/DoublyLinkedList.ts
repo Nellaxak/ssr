@@ -65,7 +65,7 @@ export class DoublyLinkedList implements INodeList {
   }
 
   // Добавляем узел в конец списка.
-  append(value: Value): DoublyLinkedList {
+  append(value: any): DoublyLinkedList {
     const newNode = new DoublyLinkedListNode(value);
 
     if (this.tail) {
@@ -82,7 +82,7 @@ export class DoublyLinkedList implements INodeList {
     if (!this.head) {
       this.head = newNode;
     }
-
+    console.log('append')
     return this;
   }
 
