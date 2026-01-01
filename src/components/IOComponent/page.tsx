@@ -36,7 +36,8 @@ const IOComponent = () => {
                 let newPage = page + 1
                 return newPage
             })*/
-        router.push(`/categories?viewtype=${currentViewtype}&page=${0}&scroll=down`, { scroll: true });
+            setPage(0)
+            //router.push(`/categories?viewtype=${currentViewtype}&page=${0}&scroll=down`, { scroll: true });
         }
     }, []);
     useEffect(() => {
@@ -47,10 +48,10 @@ const IOComponent = () => {
             observer.disconnect();
         };
     }, [])
-    /*useEffect(() => {
-        router.push(`/categories?viewtype=${currentViewtype}&page=${0}&scroll=down`, { scroll: true });
+    useEffect(() => {
+        router.push(`/categories?viewtype=${currentViewtype}&page=${page}&scroll=down`, { scroll: true });
         //router.refresh()
-    }, [page])*/
+    }, [page])
     return <p ref={ref}></p>
 }
 //export default IOComponent
