@@ -182,7 +182,7 @@ async function Row(props) {
 }
 //const tgtgt = new ReadableStream()
 const targetPage = { page: 0 }
-const pageProxy = Proxy(targetPage, {
+const pageProxy = new Proxy(targetPage, {
     set(target, prop, val) {
         console.log('proxy set ', target, prop, val)
         if (val !== target[prop]) {
