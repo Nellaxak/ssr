@@ -180,20 +180,20 @@ async function Row(props) {
         </li>
     </Suspense>
 }
-//const tgtgt = new ReadableStream()
+
 let targetPage = { page: -1 }
 const pageProxy = new Proxy(targetPage, {
     get(target, prop) {
         if (prop in target) {
             return target[prop];
         } else {
-            return 0; // значение по умолчанию
+            return -1; // значение по умолчанию
         }
     },
     set(target, prop, val) {
         if (val !== target[prop]) {
             //console.log('proxy set ', target, prop, target[prop], val)
-            console.log('added', target, prop, target[prop], val)
+            //console.log('added', target, prop, target[prop], val)
             target[prop] = val;
             dll.append({value1:90})//data.links.self)
         }

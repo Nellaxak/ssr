@@ -41,7 +41,7 @@ export interface INodeList {
 export class DoublyLinkedList implements INodeList {
   public head: DoublyLinkedListNode | null = null;
   public tail: DoublyLinkedListNode | null = null;
-
+  static count: number = 0
   // Добавляем узел в начало списка.
   prepend(value: Value): DoublyLinkedList {
     // Создаем новый узел, который будет head.
@@ -82,7 +82,8 @@ export class DoublyLinkedList implements INodeList {
     if (!this.head) {
       this.head = newNode;
     }
-    console.log('append', this.head === this.tail)
+    DoublyLinkedList.count = DoublyLinkedList.count + 1
+    console.log('append', DoublyLinkedList.count)
     return this;
   }
 
