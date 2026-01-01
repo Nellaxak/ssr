@@ -217,8 +217,8 @@ export default async function Home({ searchParams }) {
     if (Number(resp.status) === 200) {
         const data = await resp.json()
         //page proxy
-        pageProxy.page = Number(page)
-        //dll.append(data.links.self)
+        //pageProxy.page = Number(page)
+        dll.append(data.links.self)
         /*if (Number(scroll) === 1) {
             //console.log('add nextpage')
             //console.log('data', data.links.next)//data.links.next/prev/self url for fetch
