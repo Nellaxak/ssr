@@ -32,11 +32,11 @@ const IOComponent = () => {
     callbackFunction = useCallback(async (entries: IntersectionObserverEntry[]) => {
         const [entry] = entries;
         if (entry.isIntersecting && add) {
-            setPage((page) => {
+            /*setPage((page) => {
                 let newPage = page + 1
                 return newPage
-            })
-        //router.push(`/categories?viewtype=${currentViewtype}&page=${page}`, { scroll: true });
+            })*/
+        router.push(`/categories?viewtype=${currentViewtype}&page=${0}&scroll=down`, { scroll: true });
         }
     }, []);
     useEffect(() => {
@@ -47,10 +47,10 @@ const IOComponent = () => {
             observer.disconnect();
         };
     }, [])
-    useEffect(() => {
+    /*useEffect(() => {
         router.push(`/categories?viewtype=${currentViewtype}&page=${0}&scroll=down`, { scroll: true });
         //router.refresh()
-    }, [page])
+    }, [page])*/
     return <p ref={ref}></p>
 }
 //export default IOComponent
