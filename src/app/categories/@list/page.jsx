@@ -191,9 +191,10 @@ const pageProxy = new Proxy(targetPage, {
         }
     },*/
     set(target, prop, val) {
-        console.log('proxy set ', target, prop, target[prop],val)
+        //console.log('proxy set ', target, prop, target[prop], val)
         if (val !== target[prop]) {
             console.log('added')
+            target[prop] = val;
             //dll.append(data.links.self)
         }
         return true
