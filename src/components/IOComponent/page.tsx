@@ -22,6 +22,8 @@ const IOComponent = () => {
     //path = usePathname()
     const searchParams = useSearchParams()
     const [page, setPage] = useState(0);
+    const [scroll, setScroll] = useState(0);
+
     const currentViewtype = searchParams.get('viewtype')
     //const currentPage = searchParams.get('page')
     const ref = useRef(null)
@@ -33,12 +35,11 @@ const IOComponent = () => {
         const [entry] = entries;
         if (entry.isIntersecting) {// && add) {
             //console.log('input')
-            /*setPage((page) => {
+            setPage((page) => {
                 let newPage = page + 1
                 return newPage
-            })*/
-            setPage(1)
-            //router.push(`/categories?viewtype=${currentViewtype}&page=${0}&scroll=down`, { scroll: true });
+            })
+            setScroll(1)
         } 
     }, []);
     useEffect(() => {
@@ -50,9 +51,9 @@ const IOComponent = () => {
         };
     }, [])
     useEffect(() => {
-        router.push(`/categories?viewtype=${currentViewtype}&page=${0}&scroll=${page}`, { scroll: false });
+        router.push(`/categories?viewtype=${currentViewtype}&page=${page}&scroll=${scroll}`, { scroll: false });
         //router.refresh()
-    }, [page])
+    }, [page,scroll])
     return <p ref={ref}></p>
 }
 //export default IOComponent

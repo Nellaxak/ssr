@@ -198,7 +198,7 @@ export default async function Home({ searchParams }) {
         const data = await resp.json()
         if (Number(scroll) === 1) {
             //console.log('add nextpage')
-            console.log('data', data.links.next)//data.links.next/prev/self url for fetch
+            //console.log('data', data.links.next)//data.links.next/prev/self url for fetch
             const respNext = await fetch(`${data.links.next}`,
                 { cache: 'force-cache' },
                 // { next: { tags: ['items'] } }
