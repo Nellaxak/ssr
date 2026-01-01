@@ -181,6 +181,17 @@ async function Row(props) {
     </Suspense>
 }
 //const tgtgt = new ReadableStream()
+const targetPage = { page: 0 }
+const pageProxy = Proxy(targetPage, {
+    set(target, prop, val) {
+        console.log('proxy set ', target, prop, val)
+        if (val !== target[prop]) {
+            console.log('added')
+            dll.append(data.links.self)
+        }
+        return true
+    }
+})
 export default async function Home({ searchParams }) {
     const search = await searchParams;
     const page = await search.page
@@ -194,10 +205,13 @@ export default async function Home({ searchParams }) {
         // { cache: 'no-store' },//add io
         { next: { tags: ['items'] } }
     );
-    let newArrNext = []
+    //let newArrNext = []
     if (Number(resp.status) === 200) {
         const data = await resp.json()
-        if (Number(scroll) === 1) {
+        //page proxy
+        pageProxy.page = page
+        //dll.append(data.links.self)
+        /*if (Number(scroll) === 1) {
             //console.log('add nextpage')
             //console.log('data', data.links.next)//data.links.next/prev/self url for fetch
             const respNext = await fetch(`${data.links.next}`,
@@ -208,7 +222,7 @@ export default async function Home({ searchParams }) {
             const listNext = data1.near_earth_objects
             const arrObjects1 = Object.values(listNext)
             newArrNext = arrObjects1.flat()
-        }
+        }*/
         const list = data.near_earth_objects
         //console.log('element_count', data.element_count)
         //if (Number(data.element_count) < 9) {
@@ -216,7 +230,8 @@ export default async function Home({ searchParams }) {
         //}
         const arrObjects = Object.values(list)
         const newArr = arrObjects.flat()
-        return <List items={[...newArr, ...newArrNext]} renderItem={async (product) => {
+        // {[...newArr, ...newArrNext]}
+        return <List items={newArr} renderItem={async (product) => {
             //console.log('product', product)
             const date = new Date(product.close_approach_data[0].epoch_date_close_approach)
             const prevDate = new Intl.DateTimeFormat("ru-RU", options).format(date);
