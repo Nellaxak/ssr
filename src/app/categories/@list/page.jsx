@@ -204,11 +204,11 @@ export default async function Home({ searchParams }) {
                 // { next: { tags: ['items'] } }
             );
             const data = await respNext.json()
-            listNext = data.near_earth_objects
-            const arrObjects = Object.values(list)
+            const listNext = data.near_earth_objects
+            const arrObjects = Object.values(listNext)
             newArrNext = arrObjects.flat()
         }
-        list = data.near_earth_objects
+        const list = data.near_earth_objects
         //console.log('element_count', data.element_count)
         //if (Number(data.element_count) < 9) {
 
