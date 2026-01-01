@@ -18,20 +18,20 @@ let ref: any
 let add = false
 let callbackFunction: any
 const IOComponent = () => {
-    router = useRouter()
+    const router = useRouter()
     //path = usePathname()
     searchParams = useSearchParams()
     const [page, setPage] = useState(0);
-    currentViewtype = searchParams.get('viewtype')
+    const currentViewtype = searchParams.get('viewtype')
     //const currentPage = searchParams.get('page')
-    ref = useRef(null)
+    const ref = useRef(null)
     /*if (!path.includes('items')) {
         add = true
     }*/
 
     callbackFunction = useCallback(async (entries: IntersectionObserverEntry[]) => {
         const [entry] = entries;
-        if (entry.isIntersecting){// && add) {
+        if (entry.isIntersecting) {// && add) {
             /*setPage((page) => {
                 let newPage = page + 1
                 return newPage
