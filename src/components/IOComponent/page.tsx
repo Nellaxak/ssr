@@ -32,17 +32,14 @@ const IOComponent = () => {
     callbackFunction = useCallback(async (entries: IntersectionObserverEntry[]) => {
         const [entry] = entries;
         if (entry.isIntersecting) {// && add) {
-            console.log('input')
+            //console.log('input')
             /*setPage((page) => {
                 let newPage = page + 1
                 return newPage
             })*/
             setPage(1)
             //router.push(`/categories?viewtype=${currentViewtype}&page=${0}&scroll=down`, { scroll: true });
-        } else {
-            //setPage(-1)
-            //console.log('output')
-        }
+        } 
     }, []);
     useEffect(() => {
         const observer = new IntersectionObserver(callbackFunction, options);

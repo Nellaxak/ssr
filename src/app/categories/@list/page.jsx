@@ -186,30 +186,36 @@ export default async function Home({ searchParams }) {
     let [startDate, endDate] = await CalcData(page)
     const viewtype = await search.viewtype
     const scroll = await search.scroll
-    console.log('scroll', scroll)
+    //console.log('scroll', scroll)
     //try {
     const resp = await fetch(`https://api.nasa.gov/neo/rest/v1/feed?start_date=${startDate}&end_date=${endDate}&api_key=3wa5hHgFuqhf6XiefvqzkcDQWZ01aOOK4vNZEXsP`,
         { cache: 'force-cache' },
         // { cache: 'no-store' },//add io
         { next: { tags: ['items'] } }
     );
-    //const contentLength = resp.headers.get('content-length');
-    //console.log('llll', page)
+    let newArrNext = []
     if (Number(resp.status) === 200) {
         const data = await resp.json()
         if (Number(scroll) === 1) {
-            console.log('add nextpage')
+            //console.log('add nextpage')
+            console.log('data', data.links.next)//data.links.next/prev/self url for fetch
+            const respNext = await fetch(`${data.links.next}`,
+                { cache: 'force-cache' },
+                // { next: { tags: ['items'] } }
+            );
+            const data = await respNext.json()
+            listNext = data.near_earth_objects
+            const arrObjects = Object.values(list)
+            newArrNext = arrObjects.flat()
         }
         list = data.near_earth_objects
-        console.log('data', data.links.self)//data.links.next/prev/self url for fetch
-        console.log('element_count', data.element_count)
-        if (Number(data.element_count) < 9) {
+        //console.log('element_count', data.element_count)
+        //if (Number(data.element_count) < 9) {
 
-        }
+        //}
         const arrObjects = Object.values(list)
         const newArr = arrObjects.flat()
-
-        return <List items={newArr} renderItem={async (product) => {
+        return <List items={[...newArr, ...newArrNext]} renderItem={async (product) => {
             //console.log('product', product)
             const date = new Date(product.close_approach_data[0].epoch_date_close_approach)
             const prevDate = new Intl.DateTimeFormat("ru-RU", options).format(date);
