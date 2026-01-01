@@ -197,8 +197,8 @@ export default async function Home({ searchParams }) {
     //console.log('llll', page)
     if (Number(resp.status) === 200) {
         const data = await resp.json()
-        if (scroll === 'down') {
-
+        if (Number(scroll === 1)) {
+            console.log('add nextpage')
         }
         list = data.near_earth_objects
         console.log('data', data.links.self)//data.links.next/prev/self url for fetch
