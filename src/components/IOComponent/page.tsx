@@ -37,9 +37,10 @@ const IOComponent = () => {
                 let newPage = page + 1
                 return newPage
             })*/
-            setPage(0)
+            setPage(1)
             //router.push(`/categories?viewtype=${currentViewtype}&page=${0}&scroll=down`, { scroll: true });
         } else {
+            setPage(-1)
             console.log('output')
         }
     }, []);
@@ -52,7 +53,7 @@ const IOComponent = () => {
         };
     }, [])
     useEffect(() => {
-        router.push(`/categories?viewtype=${currentViewtype}&scroll1=${'down'}&page=${page}`, { scroll: true });
+        router.push(`/categories?viewtype=${currentViewtype}&scroll1=${page}&page=${0}`, { scroll: true });
         //router.refresh()
     }, [page])
     return <p ref={ref}></p>
