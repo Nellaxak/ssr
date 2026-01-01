@@ -185,8 +185,8 @@ export default async function Home({ searchParams }) {
     const page = await search.page
     let [startDate, endDate] = await CalcData(page)
     const viewtype = await search.viewtype
-    const scroll1 = await search.scroll
-    console.log('scroll', scroll1)
+    const scroll = await search.scroll
+    console.log('scroll', scroll)
     //try {
     const resp = await fetch(`https://api.nasa.gov/neo/rest/v1/feed?start_date=${startDate}&end_date=${endDate}&api_key=3wa5hHgFuqhf6XiefvqzkcDQWZ01aOOK4vNZEXsP`,
         { cache: 'force-cache' },
@@ -197,7 +197,7 @@ export default async function Home({ searchParams }) {
     //console.log('llll', page)
     if (Number(resp.status) === 200) {
         const data = await resp.json()
-        if (scroll1 === 'down') {
+        if (scroll === 'down') {
 
         }
         list = data.near_earth_objects

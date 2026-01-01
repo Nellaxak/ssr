@@ -15,7 +15,7 @@ const nextConfig = {
         return [
             {
                 source: '/',
-                destination: '/categories?viewtype=main&page=0&scroll1=0',
+                destination: '/categories?viewtype=main&page=0&scroll=0',
                 permanent: true
             },
         ]

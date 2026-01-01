@@ -40,8 +40,8 @@ const IOComponent = () => {
             setPage(1)
             //router.push(`/categories?viewtype=${currentViewtype}&page=${0}&scroll=down`, { scroll: true });
         } else {
-            setPage(-1)
-            console.log('output')
+            //setPage(-1)
+            //console.log('output')
         }
     }, []);
     useEffect(() => {
@@ -53,7 +53,7 @@ const IOComponent = () => {
         };
     }, [])
     useEffect(() => {
-        router.push(`/categories?viewtype=${currentViewtype}&scroll1=${page}&page=${0}`, { scroll: true });
+        router.push(`/categories?viewtype=${currentViewtype}&scroll=${page}&page=${0}`, { scroll: true });
         //router.refresh()
     }, [page])
     return <p ref={ref}></p>
