@@ -196,9 +196,8 @@ const pageProxy = new Proxy(targetPage, {
             console.log('added', target, prop, target[prop], val)
             target[prop] = val;
             //dll.append(data.links.self)
-            return true
         }
-        
+        return true
     }
 })
 export default async function Home({ searchParams }) {
