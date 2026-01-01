@@ -6,7 +6,7 @@ import dynamic from 'next/dynamic'
 
 const options = {
     root: null,//document.querySelector("#scrollArea"),
-    rootMargin: "0px",//-px not work
+    rootMargin: "100px",//-px not work
     //scrollMargin: "-80px",
     threshold: 1.0,
 }
@@ -52,7 +52,7 @@ const IOComponent = () => {
         };
     }, [])
     useEffect(() => {
-        router.push(`/categories?viewtype=${currentViewtype}&page=${page}&scroll=${'down'}`, { scroll: true });
+        router.push(`/categories?viewtype=${currentViewtype}&scroll=${'down'}&page=${page}`, { scroll: true });
         //router.refresh()
     }, [page])
     return <p ref={ref}></p>
