@@ -70,16 +70,16 @@ async function CalcData(params) {
     const page = params
 
     //if (Number(page) > 0) {
-        const newPage = Number(currentDate.getDate()) + Number(page)
-        currentDate.setDate(newPage);//+1
+    const newPage = Number(currentDate.getDate()) + Number(page)
+    currentDate.setDate(newPage);//+1
     //}
     let tomorrow = new Date();
     tomorrow.setDate(tomorrow.getDate());
     //console.log('page**', page)
     //if (Number(page) > 0) {
-        const newPage1 = Number(tomorrow.getDate()) + Number(page)// + 1//+1 offset
-        //console.log('if', tomorrow.getDate())
-        tomorrow.setDate(newPage1);//+1
+    const newPage1 = Number(tomorrow.getDate()) + Number(page)// + 1//+1 offset
+    //console.log('if', tomorrow.getDate())
+    tomorrow.setDate(newPage1);//+1
     //}
     //console.log('myDate', new Intl.DateTimeFormat('ru-RU', optionsDate).format(currentDate))
     let startDate = currentDate.getFullYear() + '-' +
@@ -185,7 +185,8 @@ export default async function Home({ searchParams }) {
     const page = await search.page
     let [startDate, endDate] = await CalcData(page)
     const viewtype = await search.viewtype
-    console.log('page', page)
+    const scroll = await search.scroll
+    console.log('scroll', scroll)
     //try {
     const resp = await fetch(`https://api.nasa.gov/neo/rest/v1/feed?start_date=${startDate}&end_date=${endDate}&api_key=3wa5hHgFuqhf6XiefvqzkcDQWZ01aOOK4vNZEXsP`,
         { cache: 'force-cache' },
@@ -193,11 +194,14 @@ export default async function Home({ searchParams }) {
         { next: { tags: ['items'] } }
     );
     //const contentLength = resp.headers.get('content-length');
-    console.log('llll', page)
+    //console.log('llll', page)
     if (Number(resp.status) === 200) {
         const data = await resp.json()
-        console.log('data',data)
-        list = data.near_earth_objects
+        if (scroll === 'down') {
+
+        }
+        list = data.links.self.near_earth_objects
+        console.log('data', list)//data.links.next/prev/self
         console.log('element_count', data.element_count)
         if (Number(data.element_count) < 9) {
 
