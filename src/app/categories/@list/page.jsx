@@ -180,7 +180,29 @@ async function Row(props) {
         </li>
     </Suspense>
 }
-
+function forProxy(params) {
+    console.log('forProxy', params)
+    return ffff
+}
+const fProxy = new Proxy(forProxy, {
+    get(target, prop) {
+        console.log('get fProxy', target, prop)
+        /*if (prop in target) {
+            return target[prop];
+        } else {
+            return -1; // значение по умолчанию
+        }*/
+    },
+    set(target, prop, val) {
+        //if (val !== target[prop]) {
+        //console.log('proxy set ', target, prop, target[prop], val)
+        //console.log('added', target, prop, target[prop], val)
+        //target[prop] = val;
+        //dll.append({value1:90})//data.links.self)
+        //}
+        return true
+    }
+})
 let targetPage = { page: -1 }
 const pageProxy = new Proxy(targetPage, {
     get(target, prop) {
@@ -195,7 +217,7 @@ const pageProxy = new Proxy(targetPage, {
             //console.log('proxy set ', target, prop, target[prop], val)
             //console.log('added', target, prop, target[prop], val)
             target[prop] = val;
-            dll.append({value1:90})//data.links.self)
+            dll.append({ value1: 90 })//data.links.self)
         }
         return true
     }
@@ -217,7 +239,8 @@ export default async function Home({ searchParams }) {
     if (Number(resp.status) === 200) {
         const data = await resp.json()
         //page proxy
-        pageProxy.page = Number(page)
+        fProxy(data.links)
+        //pageProxy.page = Number(page)
         //dll.append(data.links.self)
         /*if (Number(scroll) === 1) {
             //console.log('add nextpage')
