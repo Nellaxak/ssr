@@ -182,7 +182,7 @@ async function Row(props) {
 }
 function forProxy(params) {
     console.log('forProxy', params)
-    return ffff
+    return 'ffff'
 }
 const fProxy = new Proxy(forProxy, {
     get(target, prop) {
@@ -194,6 +194,7 @@ const fProxy = new Proxy(forProxy, {
         }*/
     },
     set(target, prop, val) {
+        console.log('set proxy func')
         //if (val !== target[prop]) {
         //console.log('proxy set ', target, prop, target[prop], val)
         //console.log('added', target, prop, target[prop], val)
@@ -203,6 +204,23 @@ const fProxy = new Proxy(forProxy, {
         return true
     }
 })
+function sum(a, b) {
+    return a + b;
+}
+const handler = {
+    apply: function (target, thisArg, argumentsList) {
+        console.log('xvbm,', thisArg)
+        console.log(`Calculate sum: ${argumentsList}`); // Logs: "Calculate sum: 1,2"
+
+        // Call the original function using Reflect.apply for best practice
+        const result = Reflect.apply(target, thisArg, argumentsList);
+
+        // Modify the result (e.g., multiply by 10)
+        return result * 10;
+    }
+};
+
+const proxy = new Proxy(sum, handler);
 let targetPage = { page: -1 }
 const pageProxy = new Proxy(targetPage, {
     get(target, prop) {
@@ -239,7 +257,8 @@ export default async function Home({ searchParams }) {
     if (Number(resp.status) === 200) {
         const data = await resp.json()
         //page proxy
-        fProxy(data.links)
+        //fProxy(data.links)
+        proxy(page, data.links)
         //pageProxy.page = Number(page)
         //dll.append(data.links.self)
         /*if (Number(scroll) === 1) {
