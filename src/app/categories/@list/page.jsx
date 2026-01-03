@@ -209,7 +209,7 @@ function sum(a, b) {
 }
 const handler = {
     apply: function (target, thisArg, argumentsList) {
-        console.log('xvbm,', Array.isArray(argumentsList))
+        console.log('xvbm,', Array.isArray(argumentsList), argumentsList[0])
         console.log(`Calculate sum: ${argumentsList}`); // Logs: "Calculate sum: 1,2"
 
         // Call the original function using Reflect.apply for best practice
