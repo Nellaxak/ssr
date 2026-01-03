@@ -209,7 +209,7 @@ function sum(a, b) {
 }
 const handler = {
     apply: function (target, thisArg, argumentsList) {
-        console.log('xvbm,', thisArg)
+        console.log('xvbm,', Array.isArray(argumentsList))
         console.log(`Calculate sum: ${argumentsList}`); // Logs: "Calculate sum: 1,2"
 
         // Call the original function using Reflect.apply for best practice
@@ -258,6 +258,7 @@ export default async function Home({ searchParams }) {
         const data = await resp.json()
         //page proxy
         //fProxy(data.links)
+        //const boundDisplay = person.display.bind(data.links);
         proxy(page, data.links)
         //pageProxy.page = Number(page)
         //dll.append(data.links.self)
