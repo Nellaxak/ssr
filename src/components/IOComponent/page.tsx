@@ -39,11 +39,7 @@ const IOComponent = () => {
                 let newPage = page + 1
                 return newPage
             })
-            setScroll(1)
-            /*setScroll((page) => {
-                let newPage = page + 1
-                return newPage
-            })*/
+            //setScroll(1)
         }
     }, []);
     useEffect(() => {
@@ -55,9 +51,9 @@ const IOComponent = () => {
         };
     }, [])
     useEffect(() => {
-        router.push(`/categories?viewtype=${currentViewtype}&page=${page}&scroll=${scroll}`, { scroll: true });
+        router.push(`/categories?viewtype=${currentViewtype}&page=${page}&scroll=${scroll}`, { scroll: false });
         //router.refresh()
-    }, [page, scroll])
+    }, [page])
     return <p ref={ref}></p>
 }
 //export default IOComponent

@@ -113,11 +113,14 @@ async function RenderProp(product, index) {
 }
 async function List({ items, renderItem }) {
     //console.log('items', items)
-    const res = await Promise.all(items.map(async (item) => {
+    for (const element of items) {
+        // code to be executed for each element
+    }
+    /*const res = await Promise.all(items.map(async (item) => {
         //console.log('llpoiyt', item.visible)//linked list
         return await renderItem(item);
-    }))
-    //const res = ''
+    }))*/
+    const res = ''
     return (<Suspense>{res}
     </Suspense>)
 }
@@ -196,6 +199,7 @@ const pageProxy = new Proxy(targetPage, {
         //console.log('proxy set', target, prop, val, target.data)
         if (typeof val == 'number') {//only page
             if (val !== target[prop]) {//singleton pattern by proxy
+                dll.append(target.data.self)
                 //map.set(Number(val), target.data)
                 //dll.append(target.data)
                 /*dll.append(target.data.prev)
@@ -225,16 +229,16 @@ export default async function Home({ searchParams }) {
         { cache: 'force-cache' },
         { next: { tags: ['items'] } }
     );
-    let newArrNext = []
+    /*let newArrNext = []
     let newArrPrev = []
-    let newArrSelf = []
+    let newArrSelf = []*/
 
     if (Number(resp.status) === 200) {
         const data = await resp.json()
         pageProxy.data = data.links
         pageProxy.page = Number(page)
         //dll.append(data.links.self)
-        const respSelf = await fetch(`${data.links.self}`,
+        /*const respSelf = await fetch(`${data.links.self}`,
             { cache: 'force-cache' },
         );
         const dataSelf = await respSelf.json()
@@ -257,7 +261,7 @@ export default async function Home({ searchParams }) {
         const data1 = await respNext.json()
         const listNext = data1.near_earth_objects
         const arrObjects1 = Object.values(listNext)
-        newArrNext = arrObjects1.flat()
+        newArrNext = arrObjects1.flat()*/
         //const listSelf = data.near_earth_objects
         //console.log('element_count', data.element_count)
         //if (Number(data.element_count) < 9) {
@@ -265,7 +269,7 @@ export default async function Home({ searchParams }) {
         //}
         //const arrObjectsSelf = Object.values(listSelf)
         // {[...newArr, ...newArrNext]}
-        return <List items={[...newArrPrev, ...newArrSelf, ...newArrNext]} renderItem={async (product) => {
+        return <List items={dll} renderItem={async (product) => {
             //console.log('product', product)
             const date = new Date(product.close_approach_data[0].epoch_date_close_approach)
             const prevDate = new Intl.DateTimeFormat("ru-RU", options).format(date);
