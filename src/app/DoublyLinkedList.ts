@@ -83,6 +83,10 @@ export class DoublyLinkedList implements INodeList {
     if (!this.head) {
       this.head = newNode;
     }
+    const startDate = '2026-01-04'
+    const ggg = fetch(`https://api.nasa.gov/neo/rest/v1/feed?start_date=${startDate}&end_date=${startDate}&api_key=3wa5hHgFuqhf6XiefvqzkcDQWZ01aOOK4vNZEXsP`,
+      { cache: 'force-cache' },
+    );
     DoublyLinkedList.count = DoublyLinkedList.count + 1
     console.log('after append', DoublyLinkedList.count)
     return this;

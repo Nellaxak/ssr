@@ -39,10 +39,11 @@ const IOComponent = () => {
                 let newPage = page + 1
                 return newPage
             })*/
-            setScroll((page) => {
+           setScroll(1)
+            /*setScroll((page) => {
                 let newPage = page + 1
                 return newPage
-            })
+            })*/
         } 
     }, []);
     useEffect(() => {

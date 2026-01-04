@@ -180,48 +180,6 @@ async function Row(props) {
         </li>
     </Suspense>
 }
-/*function forProxy(params) {
-    console.log('forProxy', params)
-    return 'ffff'
-}
-const fProxy = new Proxy(forProxy, {
-    get(target, prop) {
-        console.log('get fProxy', target, prop)
-        /*if (prop in target) {
-            return target[prop];
-        } else {
-            return -1; // значение по умолчанию
-        }*/
-/* },
- set(target, prop, val) {
-     console.log('set proxy func')
-     //if (val !== target[prop]) {
-     //console.log('proxy set ', target, prop, target[prop], val)
-     //console.log('added', target, prop, target[prop], val)
-     //target[prop] = val;
-     //dll.append({value1:90})//data.links.self)
-     //}
-     return true
- }
-})
-function sum(a, b) {
- return a + b;
-}
-const handler = {
- apply: function (target, thisArg, argumentsList) {
-     console.log('xvbm,', Array.isArray(argumentsList), argumentsList[0])
-     //argumentsList[0] page 
-     console.log(`Calculate sum: ${argumentsList}`); // Logs: "Calculate sum: 1,2"
-
-     // Call the original function using Reflect.apply for best practice
-     const result = Reflect.apply(target, thisArg, argumentsList);
-
-     // Modify the result (e.g., multiply by 10)
-     return result * 10;
- }
-};
-
-const proxy = new Proxy(sum, handler);*/
 let targetPage = { page: -1, data: null }
 const pageProxy = new Proxy(targetPage, {
     get(target, prop) {
@@ -237,7 +195,7 @@ const pageProxy = new Proxy(targetPage, {
         if (typeof val == 'number') {//only page
             if (val !== target[prop]) {//singleton pattern by proxy
                 target[prop] = val;
-                //dll.append(target.data.links)//append one
+                dll.append(target.data.links)//append one
                 //data.links.self,next,prev)
             }
         } else {
@@ -252,14 +210,11 @@ export default async function Home({ searchParams }) {
     let [startDate, endDate] = await CalcData(page)
     const viewtype = await search.viewtype
     const scroll = await search.scroll
-    //const data = { 
     //const links = { links: { next: {}, prev: {}, self: {} } }
-
     //console.log('scroll', scroll)
     //try {
     const resp = await fetch(`https://api.nasa.gov/neo/rest/v1/feed?start_date=${startDate}&end_date=${endDate}&api_key=3wa5hHgFuqhf6XiefvqzkcDQWZ01aOOK4vNZEXsP`,
         { cache: 'force-cache' },
-        // { cache: 'no-store' },//add io
         { next: { tags: ['items'] } }
     );
     let newArrNext = []
