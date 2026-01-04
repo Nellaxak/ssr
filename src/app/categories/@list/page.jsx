@@ -180,7 +180,7 @@ async function Row(props) {
         </li>
     </Suspense>
 }
-function forProxy(params) {
+/*function forProxy(params) {
     console.log('forProxy', params)
     return 'ffff'
 }
@@ -192,40 +192,40 @@ const fProxy = new Proxy(forProxy, {
         } else {
             return -1; // значение по умолчанию
         }*/
-    },
-    set(target, prop, val) {
-        console.log('set proxy func')
-        //if (val !== target[prop]) {
-        //console.log('proxy set ', target, prop, target[prop], val)
-        //console.log('added', target, prop, target[prop], val)
-        //target[prop] = val;
-        //dll.append({value1:90})//data.links.self)
-        //}
-        return true
-    }
+/* },
+ set(target, prop, val) {
+     console.log('set proxy func')
+     //if (val !== target[prop]) {
+     //console.log('proxy set ', target, prop, target[prop], val)
+     //console.log('added', target, prop, target[prop], val)
+     //target[prop] = val;
+     //dll.append({value1:90})//data.links.self)
+     //}
+     return true
+ }
 })
 function sum(a, b) {
-    return a + b;
+ return a + b;
 }
 const handler = {
-    apply: function (target, thisArg, argumentsList) {
-        console.log('xvbm,', Array.isArray(argumentsList), argumentsList[0])
-        //argumentsList[0] page 
-        console.log(`Calculate sum: ${argumentsList}`); // Logs: "Calculate sum: 1,2"
+ apply: function (target, thisArg, argumentsList) {
+     console.log('xvbm,', Array.isArray(argumentsList), argumentsList[0])
+     //argumentsList[0] page 
+     console.log(`Calculate sum: ${argumentsList}`); // Logs: "Calculate sum: 1,2"
 
-        // Call the original function using Reflect.apply for best practice
-        const result = Reflect.apply(target, thisArg, argumentsList);
+     // Call the original function using Reflect.apply for best practice
+     const result = Reflect.apply(target, thisArg, argumentsList);
 
-        // Modify the result (e.g., multiply by 10)
-        return result * 10;
-    }
+     // Modify the result (e.g., multiply by 10)
+     return result * 10;
+ }
 };
 
-const proxy = new Proxy(sum, handler);
-//let targetPage = { page: -1 }
-const pageProxy = new Proxy(proxy, {
+const proxy = new Proxy(sum, handler);*/
+let targetPage = { page: -1, data: null }
+const pageProxy = new Proxy(targetPage, {
     get(target, prop) {
-        console.log('nested proxy get', target, prop)
+        //console.log('proxy get', target, prop)
         if (prop in target) {
             return target[prop];
         } else {
@@ -233,13 +233,15 @@ const pageProxy = new Proxy(proxy, {
         }
     },
     set(target, prop, val) {
-        console.log('nested proxy set', target, prop, val)
-
-        if (val !== target[prop]) {
-            //console.log('proxy set ', target, prop, target[prop], val)
-            //console.log('added', target, prop, target[prop], val)
+        //console.log('proxy set', target, prop, val, target.data)
+        if (typeof val == 'number') {//only page
+            if (val !== target[prop]) {//singleton pattern by proxy
+                target[prop] = val;
+                //dll.append(target.data.links)//append one
+                //data.links.self,next,prev)
+            }
+        } else {
             target[prop] = val;
-            dll.append({ value1: 90 })//data.links.self)
         }
         return true
     }
@@ -250,6 +252,9 @@ export default async function Home({ searchParams }) {
     let [startDate, endDate] = await CalcData(page)
     const viewtype = await search.viewtype
     const scroll = await search.scroll
+    //const data = { 
+    //const links = { links: { next: {}, prev: {}, self: {} } }
+
     //console.log('scroll', scroll)
     //try {
     const resp = await fetch(`https://api.nasa.gov/neo/rest/v1/feed?start_date=${startDate}&end_date=${endDate}&api_key=3wa5hHgFuqhf6XiefvqzkcDQWZ01aOOK4vNZEXsP`,
@@ -257,27 +262,58 @@ export default async function Home({ searchParams }) {
         // { cache: 'no-store' },//add io
         { next: { tags: ['items'] } }
     );
-    //let newArrNext = []
+    let newArrNext = []
+    let newArrPrev = []
     if (Number(resp.status) === 200) {
         const data = await resp.json()
-        //page proxy
-        //proxy(page, data.links)
-        //func proxy
+        pageProxy.data = data.links
         pageProxy.page = Number(page)
-        //pageProxy.page = Number(page)
         //dll.append(data.links.self)
-        /*if (Number(scroll) === 1) {
-            //console.log('add nextpage')
-            //console.log('data', data.links.next)//data.links.next/prev/self url for fetch
+        /*if (Number(page) === 0) {
+            //only next
             const respNext = await fetch(`${data.links.next}`,
                 { cache: 'force-cache' },
-                // { next: { tags: ['items'] } }
+            );
+            const data1 = await respNext.json()
+            const listNext = data1.near_earth_objects
+            const arrObjects1 = Object.values(listNext)
+            newArrNext = arrObjects1.flat()
+        } *//*else {
+            const respPrev = await fetch(`${data.links.prev}`,
+                { cache: 'force-cache' },
+            );
+            const dataPrev = await respPrev.json()
+            const listPrev = dataPrev.near_earth_objects
+            const arrObjects2 = Object.values(listPrev)
+            newArrPrev = arrObjects2.flat()
+            const respNext = await fetch(`${data.links.next}`,
+                { cache: 'force-cache' },
             );
             const data1 = await respNext.json()
             const listNext = data1.near_earth_objects
             const arrObjects1 = Object.values(listNext)
             newArrNext = arrObjects1.flat()
         }*/
+        if (Number(scroll) === 1) {
+            if (Number(page) > 0) {
+                const respPrev = await fetch(`${data.links.prev}`,
+                    { cache: 'force-cache' },
+                );
+                const dataPrev = await respPrev.json()
+                const listPrev = dataPrev.near_earth_objects
+                const arrObjects2 = Object.values(listPrev)
+                newArrPrev = arrObjects2.flat()
+            }
+            //console.log('add nextpage')
+            //console.log('data', data.links.next)//data.links.next/prev/self url for fetch
+            const respNext = await fetch(`${data.links.next}`,
+                { cache: 'force-cache' },
+            );
+            const data1 = await respNext.json()
+            const listNext = data1.near_earth_objects
+            const arrObjects1 = Object.values(listNext)
+            newArrNext = arrObjects1.flat()
+        }
         const list = data.near_earth_objects
         //console.log('element_count', data.element_count)
         //if (Number(data.element_count) < 9) {
@@ -286,7 +322,7 @@ export default async function Home({ searchParams }) {
         const arrObjects = Object.values(list)
         const newArr = arrObjects.flat()
         // {[...newArr, ...newArrNext]}
-        return <List items={newArr} renderItem={async (product) => {
+        return <List items={[...newArr, ...newArrNext]} renderItem={async (product) => {
             //console.log('product', product)
             const date = new Date(product.close_approach_data[0].epoch_date_close_approach)
             const prevDate = new Intl.DateTimeFormat("ru-RU", options).format(date);
@@ -310,7 +346,7 @@ export default async function Home({ searchParams }) {
             const prevDate = new Intl.DateTimeFormat("ru-RU", options).format(date);
             const datSlice = prevDate.slice(0, -2)
             const dateString = datSlice.replace('.', '');
-
+    
             //new Item(Number(product.id))
             return <Suspense><Row
                 key={product.id}
