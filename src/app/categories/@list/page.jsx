@@ -112,10 +112,10 @@ async function RenderProp(product, index) {
     /></Suspense>
 }
 async function List({ items, renderItem }) {
-    const ggg = await items
-    console.log('items', ggg)
+    //const ggg = await items
+    console.log('items', items)
 
-    for (let element of ggg) {
+    for await (let element of items) {
         // code to be executed for each element
     }
     /*const res = await Promise.all(items.map(async (item) => {
