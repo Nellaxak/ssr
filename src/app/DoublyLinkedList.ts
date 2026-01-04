@@ -37,11 +37,27 @@ export interface INodeList {
   toString(callback?: Fn): string;
   reverse(): DoublyLinkedList;
 }
+interface Iterator<T, TReturn = any, TNext = undefined> {
+    next(...args: [] | [TNext]): IteratorResult<T, TReturn>;
+    return?(value?: TReturn): IteratorResult<T, TReturn>;
+    throw?(e?: any): IteratorResult<T, TReturn>;
+}
 
 export class DoublyLinkedList implements INodeList {
   public head: DoublyLinkedListNode | null = null;
   public tail: DoublyLinkedListNode | null = null;
   static count: number = 0
+  //public *[Symbol.iterator](): Iterator<T> {
+
+  public *[Symbol.iterator](): any {
+    //return this.values();
+    console.log('Symbol.iterator')
+    let current = this.head;
+    while (current !== null) {
+      yield current.value;
+      current = current.next;
+    }
+  }
   // Добавляем узел в начало списка.
   prepend(value: Value): DoublyLinkedList {
     // Создаем новый узел, который будет head.
