@@ -196,8 +196,8 @@ const pageProxy = new Proxy(targetPage, {
         //console.log('proxy set', target, prop, val, target.data)
         if (typeof val == 'number') {//only page
             if (val !== target[prop]) {//singleton pattern by proxy
-                map.set(val, target.data)
-                //dll.append(target.data)
+                //map.set(Number(val), target.data)
+                dll.append(target.data)
                 /*dll.append(target.data.prev)
                 dll.append(target.data.self)
                 dll.append(target.data.next)*/
@@ -217,7 +217,7 @@ export default async function Home({ searchParams }) {
     const page = await search.page
     let [startDate, endDate] = await CalcData(page)
     const viewtype = await search.viewtype
-    const scroll = await search.scroll
+    //const scroll = await search.scroll
     //const links = { links: { next: {}, prev: {}, self: {} } }
     //console.log('scroll', scroll)
     //try {
@@ -232,35 +232,39 @@ export default async function Home({ searchParams }) {
         pageProxy.data = data.links
         pageProxy.page = Number(page)
         //dll.append(data.links.self)
-        /*if (Number(scroll) === 1) {
-            //if (Number(page) > 0) {
-            const respPrev = await fetch(`${data.links.prev}`,
-                { cache: 'force-cache' },
-            );
-            const dataPrev = await respPrev.json()
-            const listPrev = dataPrev.near_earth_objects
-            const arrObjects2 = Object.values(listPrev)
-            newArrPrev = arrObjects2.flat()
-            //}
-            //console.log('add nextpage')
-            //console.log('data', data.links.next)//data.links.next/prev/self url for fetch
-            const respNext = await fetch(`${data.links.next}`,
-                { cache: 'force-cache' },
-            );
-            const data1 = await respNext.json()
-            const listNext = data1.near_earth_objects
-            const arrObjects1 = Object.values(listNext)
-            newArrNext = arrObjects1.flat()
-        }*/
-        const list = data.near_earth_objects
+        const respSelf = await fetch(`${data.links.self}`,
+            { cache: 'force-cache' },
+        );
+        const dataSelf = await respSelf.json()
+        const listSelf = dataSelf.near_earth_objects
+        const arrObjectsSelf = Object.values(listSelf)
+        newArrSelf = arrObjectsSelf.flat()
+        const respPrev = await fetch(`${data.links.prev}`,
+            { cache: 'force-cache' },
+        );
+        const dataPrev = await respPrev.json()
+        const listPrev = dataPrev.near_earth_objects
+        const arrObjects2 = Object.values(listPrev)
+        newArrPrev = arrObjects2.flat()
+        //}
+        //console.log('add nextpage')
+        //console.log('data', data.links.next)//data.links.next/prev/self url for fetch
+        const respNext = await fetch(`${data.links.next}`,
+            { cache: 'force-cache' },
+        );
+        const data1 = await respNext.json()
+        const listNext = data1.near_earth_objects
+        const arrObjects1 = Object.values(listNext)
+        newArrNext = arrObjects1.flat()
+        //const listSelf = data.near_earth_objects
         //console.log('element_count', data.element_count)
         //if (Number(data.element_count) < 9) {
 
         //}
-        const arrObjects = Object.values(list)
-        const newArr = arrObjects.flat()
+        //const arrObjectsSelf = Object.values(listSelf)
+        const newArrSelf = arrObjectsSelf.flat()
         // {[...newArr, ...newArrNext]}
-        return <List items={map} renderItem={async (product) => {
+        return <List items={[...newArrPrev,...newArrSelf, ...newArrNext]} renderItem={async (product) => {
             //console.log('product', product)
             const date = new Date(product.close_approach_data[0].epoch_date_close_approach)
             const prevDate = new Intl.DateTimeFormat("ru-RU", options).format(date);
