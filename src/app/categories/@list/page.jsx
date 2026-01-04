@@ -112,12 +112,12 @@ async function RenderProp(product, index) {
     /></Suspense>
 }
 async function List({ items, renderItem }) {
-    console.log('items', items)
-    /*const res = await Promise.all(items.map(async (item) => {
+    //console.log('items', items)
+    const res = await Promise.all(items.map(async (item) => {
         //console.log('llpoiyt', item.visible)//linked list
         return await renderItem(item);
-    }))*/
-    const res = ''
+    }))
+    //const res = ''
     return (<Suspense>{res}
     </Suspense>)
 }
@@ -197,7 +197,7 @@ const pageProxy = new Proxy(targetPage, {
         if (typeof val == 'number') {//only page
             if (val !== target[prop]) {//singleton pattern by proxy
                 //map.set(Number(val), target.data)
-                dll.append(target.data)
+                //dll.append(target.data)
                 /*dll.append(target.data.prev)
                 dll.append(target.data.self)
                 dll.append(target.data.next)*/
@@ -265,7 +265,7 @@ export default async function Home({ searchParams }) {
         //}
         //const arrObjectsSelf = Object.values(listSelf)
         // {[...newArr, ...newArrNext]}
-        return <List items={[...newArrPrev,...newArrSelf, ...newArrNext]} renderItem={async (product) => {
+        return <List items={[...newArrPrev, ...newArrSelf, ...newArrNext]} renderItem={async (product) => {
             //console.log('product', product)
             const date = new Date(product.close_approach_data[0].epoch_date_close_approach)
             const prevDate = new Intl.DateTimeFormat("ru-RU", options).format(date);
