@@ -35,16 +35,16 @@ const IOComponent = () => {
         const [entry] = entries;
         if (entry.isIntersecting) {// && add) {
             //console.log('input')
-            /*setPage((page) => {
+            setPage((page) => {
                 let newPage = page + 1
                 return newPage
-            })*/
-           setScroll(1)
+            })
+            setScroll(1)
             /*setScroll((page) => {
                 let newPage = page + 1
                 return newPage
             })*/
-        } 
+        }
     }, []);
     useEffect(() => {
         const observer = new IntersectionObserver(callbackFunction, options);
@@ -57,7 +57,7 @@ const IOComponent = () => {
     useEffect(() => {
         router.push(`/categories?viewtype=${currentViewtype}&page=${page}&scroll=${scroll}`, { scroll: false });
         //router.refresh()
-    }, [page,scroll])
+    }, [page, scroll])
     return <p ref={ref}></p>
 }
 //export default IOComponent

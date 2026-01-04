@@ -112,6 +112,7 @@ async function RenderProp(product, index) {
     /></Suspense>
 }
 async function List({ items, renderItem }) {
+    //-map()+ iterable DLL
     const res = await Promise.all(items.map(async (item) => {
         //console.log('llpoiyt', item.visible)//linked list
         return await renderItem(item);
@@ -194,8 +195,9 @@ const pageProxy = new Proxy(targetPage, {
         //console.log('proxy set', target, prop, val, target.data)
         if (typeof val == 'number') {//only page
             if (val !== target[prop]) {//singleton pattern by proxy
+                dll.append(target.data.links.self)//append one
+                console.log('dll', dll)
                 target[prop] = val;
-                dll.append(target.data.links)//append one
                 //data.links.self,next,prev)
             }
         } else {
@@ -251,13 +253,13 @@ export default async function Home({ searchParams }) {
         }*/
         if (Number(scroll) === 1) {
             //if (Number(page) > 0) {
-                const respPrev = await fetch(`${data.links.prev}`,
-                    { cache: 'force-cache' },
-                );
-                const dataPrev = await respPrev.json()
-                const listPrev = dataPrev.near_earth_objects
-                const arrObjects2 = Object.values(listPrev)
-                newArrPrev = arrObjects2.flat()
+            const respPrev = await fetch(`${data.links.prev}`,
+                { cache: 'force-cache' },
+            );
+            const dataPrev = await respPrev.json()
+            const listPrev = dataPrev.near_earth_objects
+            const arrObjects2 = Object.values(listPrev)
+            newArrPrev = arrObjects2.flat()
             //}
             //console.log('add nextpage')
             //console.log('data', data.links.next)//data.links.next/prev/self url for fetch
