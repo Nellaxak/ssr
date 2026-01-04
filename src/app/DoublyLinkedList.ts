@@ -52,7 +52,7 @@ export class DoublyLinkedList implements INodeList {
   public async *[Symbol.asyncIterator](): any {
     let current = this.head;
     let nodes = []
-    console.log('kkk', current)
+    //console.log('kkk', current)
 
     while (current !== null) {
       const self = await fetch(`${current.value}`,
@@ -81,8 +81,8 @@ export class DoublyLinkedList implements INodeList {
       yield current.value;
       current = current.next;
     }
-    console.log('nodes', nodes.length)
-    //return nodes
+    //console.log('nodes', nodes.length)
+    return nodes
   }
   // Добавляем узел в начало списка.
   prepend(value: Value): DoublyLinkedList {
