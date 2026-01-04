@@ -52,8 +52,9 @@ export class DoublyLinkedList implements INodeList {
   public async *[Symbol.asyncIterator](): any {
     let current = this.head;
     let nodes = []
+    console.log('kkk', current)
+
     while (current !== null) {
-      console.log('Symbol.iterator', current)
       const self = await fetch(`${current.value}`,
         { cache: 'force-cache' },
       );
