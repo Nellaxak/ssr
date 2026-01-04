@@ -57,7 +57,7 @@ export class DoublyLinkedList implements INodeList {
       const self = await fetch(`${current.value}`,
         { cache: 'force-cache' },
       );
-      //function
+      //wrap function
       const data = await self.json()
       const list = data.near_earth_objects
       const arrObjects = Object.values(list)
@@ -81,7 +81,7 @@ export class DoublyLinkedList implements INodeList {
       current = current.next;
     }
     console.log('nodes', nodes.length)
-    return nodes
+    //return nodes
   }
   // Добавляем узел в начало списка.
   prepend(value: Value): DoublyLinkedList {
