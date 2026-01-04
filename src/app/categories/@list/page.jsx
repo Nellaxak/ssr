@@ -112,10 +112,10 @@ async function RenderProp(product, index) {
     /></Suspense>
 }
 async function List({ items, renderItem }) {
-    //console.log('items', items)
-    for (let element of items) {
+    console.log('items', items)
+    //for (let element of els) {
         // code to be executed for each element
-    }
+    //}
     /*const res = await Promise.all(items.map(async (item) => {
         //console.log('llpoiyt', item.visible)//linked list
         return await renderItem(item);
@@ -185,7 +185,7 @@ async function Row(props) {
     </Suspense>
 }
 let targetPage = { page: -1, data: null }
-const map = new Map()
+//const map = new Map()
 const pageProxy = new Proxy(targetPage, {
     get(target, prop) {
         //console.log('proxy get', target, prop)
