@@ -80,9 +80,9 @@ export class DoublyLinkedList implements INodeList {
       */
       yield current.value;
       current = current.next;
+      //return nodes
     }
     //console.log('nodes', nodes.length)
-    return nodes
   }
   // Добавляем узел в начало списка.
   prepend(value: Value): DoublyLinkedList {
