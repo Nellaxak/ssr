@@ -112,10 +112,12 @@ async function RenderProp(product, index) {
     /></Suspense>
 }
 async function List({ items, renderItem }) {
-    console.log('items', items)
-    //for (let element of items) {
+    const ggg = await items
+    console.log('items', ggg)
+
+    for (let element of ggg) {
         // code to be executed for each element
-    //}
+    }
     /*const res = await Promise.all(items.map(async (item) => {
         //console.log('llpoiyt', item.visible)//linked list
         return await renderItem(item);
