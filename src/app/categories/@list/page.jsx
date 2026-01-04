@@ -210,6 +210,7 @@ function sum(a, b) {
 const handler = {
     apply: function (target, thisArg, argumentsList) {
         console.log('xvbm,', Array.isArray(argumentsList), argumentsList[0])
+        //argumentsList[0] page 
         console.log(`Calculate sum: ${argumentsList}`); // Logs: "Calculate sum: 1,2"
 
         // Call the original function using Reflect.apply for best practice
@@ -221,9 +222,10 @@ const handler = {
 };
 
 const proxy = new Proxy(sum, handler);
-let targetPage = { page: -1 }
-const pageProxy = new Proxy(targetPage, {
+//let targetPage = { page: -1 }
+const pageProxy = new Proxy(proxy, {
     get(target, prop) {
+        console.log('nested proxy get', target, prop)
         if (prop in target) {
             return target[prop];
         } else {
@@ -231,6 +233,8 @@ const pageProxy = new Proxy(targetPage, {
         }
     },
     set(target, prop, val) {
+        console.log('nested proxy set', target, prop, val)
+
         if (val !== target[prop]) {
             //console.log('proxy set ', target, prop, target[prop], val)
             //console.log('added', target, prop, target[prop], val)
@@ -257,9 +261,9 @@ export default async function Home({ searchParams }) {
     if (Number(resp.status) === 200) {
         const data = await resp.json()
         //page proxy
-        //fProxy(data.links)
-        //const boundDisplay = person.display.bind(data.links);
-        proxy(page, data.links)
+        //proxy(page, data.links)
+        //func proxy
+        pageProxy.page = Number(page)
         //pageProxy.page = Number(page)
         //dll.append(data.links.self)
         /*if (Number(scroll) === 1) {
