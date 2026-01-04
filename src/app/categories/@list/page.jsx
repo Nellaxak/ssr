@@ -113,7 +113,7 @@ async function RenderProp(product, index) {
 }
 async function List({ items, renderItem }) {
     //console.log('items', items)
-    for (const element of items) {
+    for (let element of items) {
         // code to be executed for each element
     }
     /*const res = await Promise.all(items.map(async (item) => {
