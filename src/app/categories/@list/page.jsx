@@ -195,7 +195,7 @@ const pageProxy = new Proxy(targetPage, {
         //console.log('proxy set', target, prop, val, target.data)
         if (typeof val == 'number') {//only page
             if (val !== target[prop]) {//singleton pattern by proxy
-                dll.append(target.data.links.self)//append one
+                dll.append(target.data.self)//append one
                 console.log('dll', dll)
                 target[prop] = val;
                 //data.links.self,next,prev)
