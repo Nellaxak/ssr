@@ -225,8 +225,10 @@ export default async function Home({ searchParams }) {
         { cache: 'force-cache' },
         { next: { tags: ['items'] } }
     );
-    //let newArrNext = []
-    //let newArrPrev = []
+    let newArrNext = []
+    let newArrPrev = []
+    let newArrSelf = []
+
     if (Number(resp.status) === 200) {
         const data = await resp.json()
         pageProxy.data = data.links
@@ -262,7 +264,6 @@ export default async function Home({ searchParams }) {
 
         //}
         //const arrObjectsSelf = Object.values(listSelf)
-        const newArrSelf = arrObjectsSelf.flat()
         // {[...newArr, ...newArrNext]}
         return <List items={[...newArrPrev,...newArrSelf, ...newArrNext]} renderItem={async (product) => {
             //console.log('product', product)
