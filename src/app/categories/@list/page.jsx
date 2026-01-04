@@ -112,10 +112,7 @@ async function RenderProp(product, index) {
     /></Suspense>
 }
 async function List({ items, renderItem }) {
-    //-map()+ iterable DLL
-    //console.log('items', items)
-    for await (let item of items) {
-    }
+    console.log('items', items)
     /*const res = await Promise.all(items.map(async (item) => {
         //console.log('llpoiyt', item.visible)//linked list
         return await renderItem(item);
@@ -185,6 +182,7 @@ async function Row(props) {
     </Suspense>
 }
 let targetPage = { page: -1, data: null }
+const map = new Map()
 const pageProxy = new Proxy(targetPage, {
     get(target, prop) {
         //console.log('proxy get', target, prop)
@@ -198,7 +196,8 @@ const pageProxy = new Proxy(targetPage, {
         //console.log('proxy set', target, prop, val, target.data)
         if (typeof val == 'number') {//only page
             if (val !== target[prop]) {//singleton pattern by proxy
-                dll.append(target.data)
+                map.set(val, target.data)
+                //dll.append(target.data)
                 /*dll.append(target.data.prev)
                 dll.append(target.data.self)
                 dll.append(target.data.next)*/
@@ -261,7 +260,7 @@ export default async function Home({ searchParams }) {
         const arrObjects = Object.values(list)
         const newArr = arrObjects.flat()
         // {[...newArr, ...newArrNext]}
-        return <List items={dll} renderItem={async (product) => {
+        return <List items={map} renderItem={async (product) => {
             //console.log('product', product)
             const date = new Date(product.close_approach_data[0].epoch_date_close_approach)
             const prevDate = new Intl.DateTimeFormat("ru-RU", options).format(date);
