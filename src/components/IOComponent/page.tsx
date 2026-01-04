@@ -35,10 +35,10 @@ const IOComponent = () => {
         const [entry] = entries;
         if (entry.isIntersecting) {// && add) {
             //console.log('input')
-            setPage((page) => {
+            /*setPage((page) => {
                 let newPage = page + 1
                 return newPage
-            })
+            })*/
             setScroll(1)
         } 
     }, []);
