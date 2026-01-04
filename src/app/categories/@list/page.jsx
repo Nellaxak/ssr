@@ -295,7 +295,7 @@ export default async function Home({ searchParams }) {
             newArrNext = arrObjects1.flat()
         }*/
         if (Number(scroll) === 1) {
-            if (Number(page) > 0) {
+            //if (Number(page) > 0) {
                 const respPrev = await fetch(`${data.links.prev}`,
                     { cache: 'force-cache' },
                 );
@@ -303,7 +303,7 @@ export default async function Home({ searchParams }) {
                 const listPrev = dataPrev.near_earth_objects
                 const arrObjects2 = Object.values(listPrev)
                 newArrPrev = arrObjects2.flat()
-            }
+            //}
             //console.log('add nextpage')
             //console.log('data', data.links.next)//data.links.next/prev/self url for fetch
             const respNext = await fetch(`${data.links.next}`,
