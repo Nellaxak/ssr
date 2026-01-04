@@ -49,14 +49,38 @@ export class DoublyLinkedList implements INodeList {
   static count: number = 0
   //public *[Symbol.iterator](): Iterator<T> {
 
-  public *[Symbol.iterator](): any {
-    //return this.values();
+  public async *[Symbol.asyncIterator](): any {
     let current = this.head;
+    let nodes = []
     while (current !== null) {
       console.log('Symbol.iterator', current.value)
+      const self = await fetch(`${current.value}`,
+        { cache: 'force-cache' },
+      );
+      //function
+      const data = await self.json()
+      const list = data.near_earth_objects
+      const arrObjects = Object.values(list)
+      nodes.push(arrObjects)//concat
+      const next = await fetch(`${current.next}`,
+        { cache: 'force-cache' },
+      );
+      const data1 = await next.json()
+      const list1 = data1.near_earth_objects
+      const arrObjects1 = Object.values(list1)
+      nodes.push(arrObjects1)//concat
+      const prev = await fetch(`${current.previous}`,
+        { cache: 'force-cache' },
+      );
+      const data2 = await prev.json()
+      const list2 = data2.near_earth_objects
+      const arrObjects2 = Object.values(list2)
+      nodes.push(arrObjects2)//concat
       yield current.value;
       current = current.next;
     }
+    console.log('nodes', nodes.length)
+    return nodes
   }
   // Добавляем узел в начало списка.
   prepend(value: Value): DoublyLinkedList {
@@ -82,7 +106,7 @@ export class DoublyLinkedList implements INodeList {
 
   // Добавляем узел в конец списка.
   append(value: any): DoublyLinkedList {
-    console.log('before append', value)
+    //console.log('before append', value)
     const newNode = new DoublyLinkedListNode(value);
 
     if (this.tail) {
@@ -99,10 +123,6 @@ export class DoublyLinkedList implements INodeList {
     if (!this.head) {
       this.head = newNode;
     }
-    const startDate = '2026-01-04'
-    const ggg = fetch(`https://api.nasa.gov/neo/rest/v1/feed?start_date=${startDate}&end_date=${startDate}&api_key=3wa5hHgFuqhf6XiefvqzkcDQWZ01aOOK4vNZEXsP`,
-      { cache: 'force-cache' },
-    );
     DoublyLinkedList.count = DoublyLinkedList.count + 1
     console.log('after append', DoublyLinkedList.count)
     return this;

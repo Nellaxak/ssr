@@ -114,7 +114,7 @@ async function RenderProp(product, index) {
 async function List({ items, renderItem }) {
     //-map()+ iterable DLL
     //console.log('items', items)
-    for (let item of items) {
+    for await (let item of items) {
     }
     /*const res = await Promise.all(items.map(async (item) => {
         //console.log('llpoiyt', item.visible)//linked list
@@ -199,7 +199,7 @@ const pageProxy = new Proxy(targetPage, {
         if (typeof val == 'number') {//only page
             if (val !== target[prop]) {//singleton pattern by proxy
                 dll.append(target.data.self)//append one
-                console.log('dll', dll)
+                //console.log('dll', dll)
                 target[prop] = val;
                 //data.links.self,next,prev)
             }
@@ -222,8 +222,8 @@ export default async function Home({ searchParams }) {
         { cache: 'force-cache' },
         { next: { tags: ['items'] } }
     );
-    let newArrNext = []
-    let newArrPrev = []
+    //let newArrNext = []
+    //let newArrPrev = []
     if (Number(resp.status) === 200) {
         const data = await resp.json()
         pageProxy.data = data.links
