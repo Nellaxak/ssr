@@ -53,7 +53,7 @@ export class DoublyLinkedList implements INodeList {
     let current = this.head;
     let nodes = []
     while (current !== null) {
-      console.log('Symbol.iterator', current.next, current.previous)
+      console.log('Symbol.iterator', current.value)
       const self = await fetch(`${current.value}`,
         { cache: 'force-cache' },
       );
