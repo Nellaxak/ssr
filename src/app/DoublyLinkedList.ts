@@ -38,9 +38,9 @@ export interface INodeList {
   reverse(): DoublyLinkedList;
 }
 interface Iterator<T, TReturn = any, TNext = undefined> {
-    next(...args: [] | [TNext]): IteratorResult<T, TReturn>;
-    return?(value?: TReturn): IteratorResult<T, TReturn>;
-    throw?(e?: any): IteratorResult<T, TReturn>;
+  next(...args: [] | [TNext]): IteratorResult<T, TReturn>;
+  return?(value?: TReturn): IteratorResult<T, TReturn>;
+  throw?(e?: any): IteratorResult<T, TReturn>;
 }
 
 export class DoublyLinkedList implements INodeList {
@@ -51,9 +51,9 @@ export class DoublyLinkedList implements INodeList {
 
   public *[Symbol.iterator](): any {
     //return this.values();
-    console.log('Symbol.iterator')
     let current = this.head;
     while (current !== null) {
+      console.log('Symbol.iterator', current.value)
       yield current.value;
       current = current.next;
     }
