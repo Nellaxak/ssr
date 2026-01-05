@@ -54,7 +54,11 @@ const IOComponent = () => {
         router.push(`/categories?viewtype=${currentViewtype}&page=${page}&scroll=${scroll}`, { scroll: false });
         //router.refresh()
         const elem = document.querySelector('ol')
-        elem.scrollIntoView(true)
+        elem.scrollIntoView({
+            behavior: 'smooth', // Optional: smooth or auto
+            block: 'center',    // Required for vertical centering
+            //inline: 'center'    // Optional: for horizontal centering
+        })
     }, [page])
     return <p ref={ref}></p>
 }
