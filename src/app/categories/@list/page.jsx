@@ -189,12 +189,12 @@ const pageProxy = new Proxy(targetPage, {
             return -1; // значение по умолчанию
         }
     },
-    set(target, prop, val) {
+    async set(target, prop, val) {
         //console.log('proxy set', target, prop, val, target.data)
         if (typeof val == 'number') {//only page
             if (val !== target[prop]) {//singleton pattern by proxy
                 target[prop] = val;
-                dll.append(target.data.self, Number(target.page))//
+                await dll.append(target.data.self, Number(target.page))//
             }
         } else {
             target[prop] = val;

@@ -29,12 +29,12 @@ export interface INodeList {
   head: DoublyLinkedListNode | null;
   tail: DoublyLinkedListNode | null;
   //prepend(value: Value): DoublyLinkedList;
-  append(value: Value, index: number): DoublyLinkedList;
+  append(value: Value, index: number): Promise<any>;
   delete(value: Value): DoublyLinkedListNode | null;
   find(value?: Value | undefined): DoublyLinkedListNode | null;
   deleteTail(): DoublyLinkedListNode | null;
   deleteHead(): DoublyLinkedListNode | null;
-  fromArray(values: Array<Value>): DoublyLinkedList;
+  //fromArray(values: Array<Value>): DoublyLinkedList;
   //toArray(): DoublyLinkedListNode[];
   //toString(callback?: Fn): string;
   //reverse(): DoublyLinkedList;
@@ -109,7 +109,7 @@ export class DoublyLinkedList implements INodeList {
   }*/
 
   // Добавляем узел в конец списка.
-  append(value: any, index: number): DoublyLinkedList {
+  async append(value: any, index: number): Promise<any> {
     //console.log('before append', value)
     const newNode = new DoublyLinkedListNode(value, index);
 
@@ -127,8 +127,8 @@ export class DoublyLinkedList implements INodeList {
     if (!this.head) {
       this.head = newNode;
     }
-    DoublyLinkedList.count = DoublyLinkedList.count + 1
-    console.log('after append', DoublyLinkedList.count)
+    //DoublyLinkedList.count = DoublyLinkedList.count + 1
+    //console.log('after append', DoublyLinkedList.count)
     return this;
   }
 
@@ -240,11 +240,11 @@ export class DoublyLinkedList implements INodeList {
     return deletedHead;
   }
 
-  fromArray(values: Array<Value>): DoublyLinkedList {
+  /*fromArray(values: Array<Value>): DoublyLinkedList {
     values.forEach((value: Value, index) => this.append(value, index));
 
     return this;
-  }
+  }*/
 
   /*toArray(): DoublyLinkedListNode[] {
     const nodes = [];
