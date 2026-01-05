@@ -193,7 +193,7 @@ const pageProxy = new Proxy(targetPage, {
         //console.log('proxy set', target, prop, val, target.data)
         if (typeof val == 'number') {//only page
             if (val !== target[prop]) {//singleton pattern by proxy
-                dll.append(target.data.self)
+                dll.append(target.data.self,Number(target.page))//
                 target[prop] = val;
             }
         } else {
@@ -223,7 +223,7 @@ export default async function Home({ searchParams }) {
         const data = await resp.json()
         pageProxy.data = data.links
         pageProxy.page = Number(page)
-        const items = await dll.values()
+        const items = await dll.values(Number(page))
         return <List items={items} renderItem={async (product) => {
             //console.log('product', product)
             const date = new Date(product.close_approach_data[0].epoch_date_close_approach)

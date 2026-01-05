@@ -1,6 +1,7 @@
 export interface INode {
   value: Value;
   next: DoublyLinkedListNode | null;
+  index: number;
   previous: DoublyLinkedListNode | null;
   toString(fn?: Fn): string;
 }
@@ -12,6 +13,7 @@ export type Value = number | string | { [ket: string]: any };
 export class DoublyLinkedListNode implements INode {
   constructor(
     public value: Value,
+    public index: number,
     public next: DoublyLinkedListNode | null = null,
     public previous: DoublyLinkedListNode | null = null,
   ) { }
@@ -26,36 +28,31 @@ export class DoublyLinkedListNode implements INode {
 export interface INodeList {
   head: DoublyLinkedListNode | null;
   tail: DoublyLinkedListNode | null;
-  prepend(value: Value): DoublyLinkedList;
-  append(value: Value): DoublyLinkedList;
+  //prepend(value: Value): DoublyLinkedList;
+  append(value: Value, index: number): DoublyLinkedList;
   delete(value: Value): DoublyLinkedListNode | null;
   find(value?: Value | undefined): DoublyLinkedListNode | null;
   deleteTail(): DoublyLinkedListNode | null;
   deleteHead(): DoublyLinkedListNode | null;
   fromArray(values: Array<Value>): DoublyLinkedList;
-  toArray(): DoublyLinkedListNode[];
-  toString(callback?: Fn): string;
-  reverse(): DoublyLinkedList;
-}
-interface Iterator<T, TReturn = any, TNext = undefined> {
-  next(...args: [] | [TNext]): IteratorResult<T, TReturn>;
-  return?(value?: TReturn): IteratorResult<T, TReturn>;
-  throw?(e?: any): IteratorResult<T, TReturn>;
+  //toArray(): DoublyLinkedListNode[];
+  //toString(callback?: Fn): string;
+  //reverse(): DoublyLinkedList;
 }
 
 export class DoublyLinkedList implements INodeList {
   public head: DoublyLinkedListNode | null = null;
   public tail: DoublyLinkedListNode | null = null;
   static count: number = 0
-  //public *[Symbol.iterator](): Iterator<T> {
-
-  //public async *[Symbol.asyncIterator](): any {
-  async values(): Promise<any> {
+  async values(page: number): Promise<any> {
+    console.log('values call')
     let current = this.head;
     let nodes = []
 
     while (current !== null) {
-      //console.log('kkk', current)//next=null,prev=null
+      if (page === current.index) {
+        console.log('page === current.index', page, current.index)
+      }
       const self = await fetch(`${current.value}`,
         { cache: 'force-cache' },
       );
@@ -63,17 +60,13 @@ export class DoublyLinkedList implements INodeList {
       console.log('mlmlmlm', data.element_count)
       const list = data.near_earth_objects
       const arrObjects = Object.values(list).flat(2)
-      //console.log('arrObjects', arrObjects[0])
-      nodes = nodes.concat(arrObjects)//concat
-      //yield current.value;
+      nodes = nodes.concat(arrObjects)//arrObjects[0]//small data
       current = current.next;
     }
-    //console.log('nodes', nodes)
     return nodes
-    //return {next() {}}//iterable
   }
   // Добавляем узел в начало списка.
-  prepend(value: Value): DoublyLinkedList {
+  /*prepend(value: Value): DoublyLinkedList {
     // Создаем новый узел, который будет head.
     const newNode = new DoublyLinkedListNode(value, this.head);
 
@@ -92,12 +85,12 @@ export class DoublyLinkedList implements INodeList {
     }
 
     return this;
-  }
+  }*/
 
   // Добавляем узел в конец списка.
-  append(value: any): DoublyLinkedList {
+  append(value: any, index: number): DoublyLinkedList {
     //console.log('before append', value)
-    const newNode = new DoublyLinkedListNode(value);
+    const newNode = new DoublyLinkedListNode(value, index);
 
     if (this.tail) {
       // Присоединяем новый узел к концу связанного списка.
@@ -227,12 +220,12 @@ export class DoublyLinkedList implements INodeList {
   }
 
   fromArray(values: Array<Value>): DoublyLinkedList {
-    values.forEach((value: Value) => this.append(value));
+    values.forEach((value: Value, index) => this.append(value, index));
 
     return this;
   }
 
-  toArray(): DoublyLinkedListNode[] {
+  /*toArray(): DoublyLinkedListNode[] {
     const nodes = [];
 
     let currentNode = this.head;
@@ -242,15 +235,15 @@ export class DoublyLinkedList implements INodeList {
     }
 
     return nodes;
-  }
+  }*/
 
-  toString(callback?: Fn): string {
+  /*toString(callback?: Fn): string {
     return this.toArray()
       .map((node) => node.toString(callback))
       .toString();
-  }
+  }*/
 
-  reverse(): DoublyLinkedList {
+  /*reverse(): DoublyLinkedList {
     let currNode = this.head;
     let prevNode = null;
     let nextNode = null;
@@ -274,7 +267,7 @@ export class DoublyLinkedList implements INodeList {
     this.head = prevNode;
 
     return this;
-  }
+  }*/
 }
 const dll = new DoublyLinkedList()
 export default dll
