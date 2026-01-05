@@ -275,8 +275,8 @@ export default async function Home({ searchParams }) {
         // {[...newArr, ...newArrNext]}
         const items = await dll.values()
         return <List items={items} renderItem={async (product) => {
-            console.log('product', product)
-            const date = new Date(product.close_approach_data.epoch_date_close_approach)
+            console.log('product', product[0])
+            const date = new Date(product[0].close_approach_data.epoch_date_close_approach)
             const prevDate = new Intl.DateTimeFormat("ru-RU", options).format(date);
             const datSlice = prevDate.slice(0, -2)
             const dateString = datSlice.replace('.', '');
