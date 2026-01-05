@@ -66,7 +66,7 @@ export class DoublyLinkedList implements INodeList {
       //yield current.value;
       current = current.next;
     }
-    console.log('nodes', nodes.length)
+    console.log('nodes', nodes)
     return nodes
     //return {next() {}}//iterable
   }
