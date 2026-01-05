@@ -47,20 +47,39 @@ export class DoublyLinkedList implements INodeList {
   async values(page: number): Promise<any> {
     console.log('values call')
     let current = this.head;
-    let nodes = []
 
+    let nodes = []
     while (current !== null) {
       if (page === current.index) {
-        console.log('page === current.index', page, current.index)
+        nodes = []
+        //console.log('page === current.index', page, current.index)
+        const prev = await fetch(`${current.previous}`,
+          { cache: 'force-cache' },
+        );
+        const dataPrev = await prev.json()
+        //console.log('mlmlmlm', data.element_count)
+        const listPrev = dataPrev.near_earth_objects
+        const arrObjectsPrev = Object.values(listPrev).flat(2)
+        nodes = nodes.concat(arrObjectsPrev)//arrObjects[0]//small data
+        const self = await fetch(`${current.value}`,
+          { cache: 'force-cache' },
+        );
+        const data = await self.json()
+        //console.log('mlmlmlm', data.element_count)
+        const list = data.near_earth_objects
+        const arrObjects = Object.values(list).flat(2)
+        nodes = nodes.concat(arrObjects)//arrObjects[0]//small data
+        const next = await fetch(`${current.value}`,
+          { cache: 'force-cache' },
+        );
+        const dataNext = await next.json()
+        //console.log('mlmlmlm', data.element_count)
+        const listNext = dataNext.near_earth_objects
+        const arrObjectsNext = Object.values(listNext).flat(2)
+        nodes = nodes.concat(arrObjectsNext)//arrObjects[0]//small data
+        //current=null //break while
       }
-      const self = await fetch(`${current.value}`,
-        { cache: 'force-cache' },
-      );
-      const data = await self.json()
-      console.log('mlmlmlm', data.element_count)
-      const list = data.near_earth_objects
-      const arrObjects = Object.values(list).flat(2)
-      nodes = nodes.concat(arrObjects)//arrObjects[0]//small data
+
       current = current.next;
     }
     return nodes
