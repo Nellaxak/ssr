@@ -50,8 +50,8 @@ export class DoublyLinkedList implements INodeList {
 
     let nodes = []
     while (current !== null) {
-      if (page === current.index) {
-        nodes = []
+      //if (page === current.index) {
+        //nodes = []
         console.log('ppppp', current.previous, current.next)
         /*const prev = await fetch(`${current.previous}`,
           { cache: 'force-cache' },
@@ -80,7 +80,7 @@ export class DoublyLinkedList implements INodeList {
         nodes = nodes.concat(arrObjectsNext)//arrObjects[0]//small data
         */
         //current=null //break while
-      }
+     // }
 
       current = current.next;
     }
