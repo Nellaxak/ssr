@@ -50,9 +50,9 @@ export class DoublyLinkedList implements INodeList {
     let nodes = []
 
     while (current !== null) {
-      if (page === current.index) {
+      //if (page === current.index) {
         console.log('page === current.index', page, current.index)
-      }
+      //}
       const self = await fetch(`${current.value}`,
         { cache: 'force-cache' },
       );
