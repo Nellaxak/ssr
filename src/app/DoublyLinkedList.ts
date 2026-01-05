@@ -61,9 +61,9 @@ export class DoublyLinkedList implements INodeList {
       );
       const data = await self.json()
       const list = data.near_earth_objects
-      const arrObjects = Object.values(list).flat(3)
-      console.log('arrObjects', arrObjects)
-      nodes.push(arrObjects)//concat
+      const arrObjects = Object.values(list).flat(2)
+      console.log('arrObjects', arrObjects[0])
+      nodes.push(arrObjects[0])//concat
       //yield current.value;
       current = current.next;
     }
