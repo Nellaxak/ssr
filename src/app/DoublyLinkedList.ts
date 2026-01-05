@@ -50,18 +50,19 @@ export class DoublyLinkedList implements INodeList {
 
     let nodes = []
     while (current !== null) {
-      //if (page === current.index) {
-        //nodes = []
-        console.log('ppppp', current.previous, current.next)
-        /*const prev = await fetch(`${current.previous}`,
-          { cache: 'force-cache' },
-        );
-        const dataPrev = await prev.json()
-        //console.log('mlmlmlm', data.element_count)
-        const listPrev = dataPrev.near_earth_objects
-        const arrObjectsPrev = Object.values(listPrev).flat(2)
-        nodes = nodes.concat(arrObjectsPrev)//arrObjects[0]//small data
-        */
+      if (page === current.index) {
+        nodes = []
+        //console.log('ppppp', current.previous, current.next)
+        if (current.previous) {
+          const prev = await fetch(`${current.previous}`,
+            { cache: 'force-cache' },
+          );
+          const dataPrev = await prev.json()
+          //console.log('mlmlmlm', data.element_count)
+          const listPrev = dataPrev.near_earth_objects
+          const arrObjectsPrev = Object.values(listPrev).flat(2)
+          nodes = nodes.concat(arrObjectsPrev)//arrObjects[0]//small data
+        }
         const self = await fetch(`${current.value}`,
           { cache: 'force-cache' },
         );
@@ -70,18 +71,19 @@ export class DoublyLinkedList implements INodeList {
         const list = data.near_earth_objects
         const arrObjects = Object.values(list).flat(2)
         nodes = nodes.concat(arrObjects)//arrObjects[0]//small data
-        /*const next = await fetch(`${current.next}`,
-          { cache: 'force-cache' },
-        );
-        const dataNext = await next.json()
-        //console.log('mlmlmlm', data.element_count)
-        const listNext = dataNext.near_earth_objects
-        const arrObjectsNext = Object.values(listNext).flat(2)
-        nodes = nodes.concat(arrObjectsNext)//arrObjects[0]//small data
-        */
-        //current=null //break while
-     // }
+        if (current.next) {
 
+          const next = await fetch(`${current.next}`,
+            { cache: 'force-cache' },
+          );
+          const dataNext = await next.json()
+          //console.log('mlmlmlm', data.element_count)
+          const listNext = dataNext.near_earth_objects
+          const arrObjectsNext = Object.values(listNext).flat(2)
+          nodes = nodes.concat(arrObjectsNext)//arrObjects[0]//small data
+        }
+        //current=null //break while
+      }
       current = current.next;
     }
     return nodes
