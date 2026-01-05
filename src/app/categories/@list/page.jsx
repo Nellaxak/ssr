@@ -112,19 +112,10 @@ async function RenderProp(product, index) {
     /></Suspense>
 }
 async function List({ items, renderItem }) {
-    /*for await (let item of items) {
-        return await renderItem(item);
-    }*/
-    /*const res = await Promise.all(//for await (let item of items) {
-        items.
-        return await renderItem(item);
-    //}
-    )*/
     const res = await Promise.all(items.map(async (item) => {
         //console.log('llpoiyt', item.visible)//linked list
         return await renderItem(item);
     }))
-    //const res = ''
     return (<Suspense>{res}
     </Suspense>)
 }
@@ -189,7 +180,6 @@ async function Row(props) {
     </Suspense>
 }
 let targetPage = { page: -1, data: null }
-//const map = new Map()
 const pageProxy = new Proxy(targetPage, {
     get(target, prop) {
         //console.log('proxy get', target, prop)
@@ -204,15 +194,7 @@ const pageProxy = new Proxy(targetPage, {
         if (typeof val == 'number') {//only page
             if (val !== target[prop]) {//singleton pattern by proxy
                 dll.append(target.data.self)
-                //map.set(Number(val), target.data)
-                //dll.append(target.data)
-                /*dll.append(target.data.prev)
-                dll.append(target.data.self)
-                dll.append(target.data.next)*/
-
-                //console.log('dll', dll)
                 target[prop] = val;
-                //data.links.self,next,prev)
             }
         } else {
             target[prop] = val;
@@ -243,7 +225,7 @@ export default async function Home({ searchParams }) {
         pageProxy.page = Number(page)
         const items = await dll.values()
         return <List items={items} renderItem={async (product) => {
-            console.log('product', product)
+            //console.log('product', product)
             const date = new Date(product.close_approach_data[0].epoch_date_close_approach)
             const prevDate = new Intl.DateTimeFormat("ru-RU", options).format(date);
             const datSlice = prevDate.slice(0, -2)

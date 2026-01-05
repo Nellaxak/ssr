@@ -60,14 +60,15 @@ export class DoublyLinkedList implements INodeList {
         { cache: 'force-cache' },
       );
       const data = await self.json()
+      console.log('mlmlmlm', data.element_count)
       const list = data.near_earth_objects
       const arrObjects = Object.values(list).flat(2)
-      console.log('arrObjects', arrObjects[0])
+      //console.log('arrObjects', arrObjects[0])
       nodes.push(arrObjects[0])//concat
       //yield current.value;
       current = current.next;
     }
-    console.log('nodes', nodes)
+    //console.log('nodes', nodes)
     return nodes
     //return {next() {}}//iterable
   }
