@@ -49,7 +49,8 @@ export class DoublyLinkedList implements INodeList {
   static count: number = 0
   //public *[Symbol.iterator](): Iterator<T> {
 
-  public async *[Symbol.asyncIterator](): any {
+  //public async *[Symbol.asyncIterator](): any {
+  async values(): Promise<any> {
     let current = this.head;
     let nodes = []
 
@@ -62,11 +63,12 @@ export class DoublyLinkedList implements INodeList {
       const list = data.near_earth_objects
       const arrObjects = Object.values(list)
       nodes.push(arrObjects)//concat
-      yield current.value;
+      //yield current.value;
       current = current.next;
     }
     console.log('nodes', nodes.length)
     return nodes
+    //return {next() {}}//iterable
   }
   // Добавляем узел в начало списка.
   prepend(value: Value): DoublyLinkedList {

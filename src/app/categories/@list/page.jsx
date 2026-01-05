@@ -115,10 +115,10 @@ async function List({ items, renderItem }) {
     /*for await (let item of items) {
         return await renderItem(item);
     }*/
-    /*const res = await Promise.all(
-    for await (let item of items) {
-
-        return await renderItem(item);}
+    /*const res = await Promise.all(//for await (let item of items) {
+        items.
+        return await renderItem(item);
+    //}
     )*/
     const res = await Promise.all(items.map(async (item) => {
         //console.log('llpoiyt', item.visible)//linked list
@@ -273,7 +273,8 @@ export default async function Home({ searchParams }) {
         //}
         //const arrObjectsSelf = Object.values(listSelf)
         // {[...newArr, ...newArrNext]}
-        return <List items={dll} renderItem={async (product) => {
+        const items = await dll.values()
+        return <List items={items} renderItem={async (product) => {
             //console.log('product', product)
             const date = new Date(product.close_approach_data[0].epoch_date_close_approach)
             const prevDate = new Intl.DateTimeFormat("ru-RU", options).format(date);
