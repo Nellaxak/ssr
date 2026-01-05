@@ -72,7 +72,6 @@ export class DoublyLinkedList implements INodeList {
         const arrObjects = Object.values(list).flat(2)
         nodes = nodes.concat(arrObjects)//arrObjects[0]//small data
         if (current.next) {
-
           const next = await fetch(`${current.next}`,
             { cache: 'force-cache' },
           );
