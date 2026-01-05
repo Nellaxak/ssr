@@ -54,35 +54,19 @@ export class DoublyLinkedList implements INodeList {
     let nodes = []
 
     while (current !== null) {
-      console.log('kkk', current)//next=null,prev=null
+      //console.log('kkk', current)//next=null,prev=null
       const self = await fetch(`${current.value}`,
         { cache: 'force-cache' },
       );
-      //wrap function
       const data = await self.json()
       const list = data.near_earth_objects
       const arrObjects = Object.values(list)
       nodes.push(arrObjects)//concat
-      /*const next = await fetch(`${current.next}`,
-        { cache: 'force-cache' },
-      );
-      const data1 = await next.json()
-      const list1 = data1.near_earth_objects
-      const arrObjects1 = Object.values(list1)
-      nodes.push(arrObjects1)//concat
-      const prev = await fetch(`${current.previous}`,
-        { cache: 'force-cache' },
-      );
-      const data2 = await prev.json()
-      const list2 = data2.near_earth_objects
-      const arrObjects2 = Object.values(list2)
-      nodes.push(arrObjects2)//concat
-      */
       yield current.value;
       current = current.next;
     }
-      return nodes
-    //console.log('nodes', nodes.length)
+    console.log('nodes', nodes.length)
+    return nodes
   }
   // Добавляем узел в начало списка.
   prepend(value: Value): DoublyLinkedList {
