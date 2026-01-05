@@ -22,7 +22,7 @@ const IOComponent = () => {
     //path = usePathname()
     const searchParams = useSearchParams()
     const [page, setPage] = useState(0);
-    //const [scroll, setScroll] = useState(0);
+    const [scroll, setScroll] = useState(0);
 
     const currentViewtype = searchParams.get('viewtype')
     //const currentPage = searchParams.get('page')
@@ -44,14 +44,17 @@ const IOComponent = () => {
     useEffect(() => {
         const observer = new IntersectionObserver(callbackFunction, options);
         //as HTMLElement
+
         observer.observe(ref.current);
         return () => {
             observer.disconnect();
         };
     }, [])
     useEffect(() => {
-        router.push(`/categories?viewtype=${currentViewtype}&page=${page}&scroll=${scroll}`, { scroll: true });
+        router.push(`/categories?viewtype=${currentViewtype}&page=${page}&scroll=${scroll}`, { scroll: false });
         //router.refresh()
+        const elem = document.querySelector('ol')
+        elem.scrollIntoView(true)
     }, [page])
     return <p ref={ref}></p>
 }
