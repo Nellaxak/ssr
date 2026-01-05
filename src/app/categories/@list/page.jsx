@@ -241,38 +241,6 @@ export default async function Home({ searchParams }) {
         const data = await resp.json()
         pageProxy.data = data.links
         pageProxy.page = Number(page)
-        //dll.append(data.links.self)
-        /*const respSelf = await fetch(`${data.links.self}`,
-            { cache: 'force-cache' },
-        );
-        const dataSelf = await respSelf.json()
-        const listSelf = dataSelf.near_earth_objects
-        const arrObjectsSelf = Object.values(listSelf)
-        newArrSelf = arrObjectsSelf.flat()
-        const respPrev = await fetch(`${data.links.prev}`,
-            { cache: 'force-cache' },
-        );
-        const dataPrev = await respPrev.json()
-        const listPrev = dataPrev.near_earth_objects
-        const arrObjects2 = Object.values(listPrev)
-        newArrPrev = arrObjects2.flat()
-        //}
-        //console.log('add nextpage')
-        //console.log('data', data.links.next)//data.links.next/prev/self url for fetch
-        const respNext = await fetch(`${data.links.next}`,
-            { cache: 'force-cache' },
-        );
-        const data1 = await respNext.json()
-        const listNext = data1.near_earth_objects
-        const arrObjects1 = Object.values(listNext)
-        newArrNext = arrObjects1.flat()*/
-        //const listSelf = data.near_earth_objects
-        //console.log('element_count', data.element_count)
-        //if (Number(data.element_count) < 9) {
-
-        //}
-        //const arrObjectsSelf = Object.values(listSelf)
-        // {[...newArr, ...newArrNext]}
         const items = await dll.values()
         return <List items={items} renderItem={async (product) => {
             console.log('product', product[0][0])
