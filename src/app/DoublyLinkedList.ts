@@ -51,10 +51,10 @@ export class DoublyLinkedList implements INodeList {
 
   public async *[Symbol.asyncIterator](): any {
     let current = this.head;
-    //let nodes = []
-    console.log('kkk', current)
+    let nodes = []
 
     while (current !== null) {
+      console.log('kkk', current)//next=null,prev=null
       const self = await fetch(`${current.value}`,
         { cache: 'force-cache' },
       );
@@ -62,7 +62,7 @@ export class DoublyLinkedList implements INodeList {
       const data = await self.json()
       const list = data.near_earth_objects
       const arrObjects = Object.values(list)
-      //nodes.push(arrObjects)//concat
+      nodes.push(arrObjects)//concat
       /*const next = await fetch(`${current.next}`,
         { cache: 'force-cache' },
       );
@@ -80,8 +80,8 @@ export class DoublyLinkedList implements INodeList {
       */
       yield current.value;
       current = current.next;
-      //return nodes
     }
+      return nodes
     //console.log('nodes', nodes.length)
   }
   // Добавляем узел в начало списка.
