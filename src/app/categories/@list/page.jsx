@@ -218,7 +218,7 @@ export default async function Home({ searchParams }) {
         const data = await resp.json()
         pageProxy.data = data.links
         pageProxy.page = Number(page)
-        console.log('proxy items', page.items)
+        //console.log('proxy items', page.items)
         //const items = await dll.values(Number(page))
         return <List items={page.items} renderItem={async (product, index) => {
             //console.log('product', product)
