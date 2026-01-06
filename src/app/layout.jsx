@@ -67,7 +67,7 @@ export default async function Layout(props) {
               {props.children}
             </Suspense>
           </div>
-          <ScrollComponent />
+          <Suspense><ScrollComponent /></Suspense>
         </div>
       </body>
     </html >
