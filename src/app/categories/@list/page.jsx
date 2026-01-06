@@ -218,9 +218,9 @@ export default async function Home({ searchParams }) {
         const data = await resp.json()
         pageProxy.data = data.links
         pageProxy.page = Number(page)
-        console.log('proxy items', page.items)
+        console.log('proxy items', pageProxy.items)
         //const items = await dll.values(Number(page))
-        return <List items={page.items} renderItem={async (product, index) => {
+        return <List items={pageProxy.items} renderItem={async (product, index) => {
             //console.log('product', product)
             const date = new Date(product.close_approach_data[0].epoch_date_close_approach)
             const prevDate = new Intl.DateTimeFormat("ru-RU", options).format(date);
