@@ -219,8 +219,9 @@ export default async function Home({ searchParams }) {
     if (Number(resp.status) === 200) {
         const data = await resp.json()
         const list = data.near_earth_objects
-        const arrObjects = Object.values(list).flat(1)
-        console.log('arrObjects', arrObjects.length)
+        const arrObjects = Object.values(list)
+        const obj = arrObjects.flat(2)
+        console.log('arrObjects', obj)
         /*pageProxy.data = data.links
         pageProxy.page = Number(page)*/
         return <List items={arrObjects} renderItem={async (product) => {
