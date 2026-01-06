@@ -182,8 +182,10 @@ async function Row(props) {
 let targetPage = { page: -1, data: null, items: [] }
 const pageProxy = new Proxy(targetPage, {
     get(target, prop) {//async?
-        console.log('proxy get', target, prop, target[prop])
         if (prop in target) {
+            if (prop === 'items') {
+                console.log('proxy get', target, prop, target[prop])
+            }
             return target[prop];
         } else {
             return -1; // значение по умолчанию
