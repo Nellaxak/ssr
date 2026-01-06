@@ -207,24 +207,18 @@ export default async function Home({ searchParams }) {
     const page = await search.page
     let [startDate, endDate] = await CalcData(page)
     const viewtype = await search.viewtype
-    //const scroll = await search.scroll
-    //const links = { links: { next: {}, prev: {}, self: {} } }
-    //console.log('scroll', scroll)
     //try {
     const resp = await fetch(`https://api.nasa.gov/neo/rest/v1/feed?start_date=${startDate}&end_date=${endDate}&api_key=3wa5hHgFuqhf6XiefvqzkcDQWZ01aOOK4vNZEXsP`,
         { cache: 'force-cache' },
         { next: { tags: ['items'] } }
     );
-    /*let newArrNext = []
-    let newArrPrev = []
-    let newArrSelf = []*/
 
     if (Number(resp.status) === 200) {
         const data = await resp.json()
         pageProxy.data = data.links
         pageProxy.page = Number(page)
         const items = await dll.values(Number(page))
-        return <List items={items} renderItem={async (product) => {
+        return <List items={items} renderItem={async (product, index) => {
             //console.log('product', product)
             const date = new Date(product.close_approach_data[0].epoch_date_close_approach)
             const prevDate = new Intl.DateTimeFormat("ru-RU", options).format(date);
@@ -241,22 +235,6 @@ export default async function Home({ searchParams }) {
         }} />
     } else {
         console.log('resp', resp.status)
-        //return not empty render
-        /*return <List items={newArr} renderItem={async (product) => {
-            //console.log('product', product)
-            const date = new Date(product.close_approach_data[0].epoch_date_close_approach)
-            const prevDate = new Intl.DateTimeFormat("ru-RU", options).format(date);
-            const datSlice = prevDate.slice(0, -2)
-            const dateString = datSlice.replace('.', '');
-    
-            //new Item(Number(product.id))
-            return <Suspense><Row
-                key={product.id}
-                obj={product}
-                viewtype={viewtype}
-                dates={dateString}
-            /></Suspense>
-        }} />*/
     }
     /*}
     catch (err) {

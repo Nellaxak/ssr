@@ -7,8 +7,6 @@ function ButtonSubmit(props) {
   const handleClick = useCallback(async () => {
     await toggleClick(props.id)
   }, [])
-  
-  //onClick={handleClick}
   //onClick={()=>handleClick()}
   return <button type="button" onClick={handleClick} ><Suspense>{props.status}</Suspense></button>
 }

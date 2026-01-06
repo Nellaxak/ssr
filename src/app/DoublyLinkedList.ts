@@ -58,7 +58,6 @@ export class DoublyLinkedList implements INodeList {
             { cache: 'force-cache' },
           );
           const dataPrev = await prev.json()
-          //console.log('mlmlmlm', data.element_count)
           const listPrev = dataPrev.near_earth_objects
           const arrObjectsPrev = Object.values(listPrev).flat(2)
           nodes = nodes.concat(arrObjectsPrev)//arrObjects[0]//small data
@@ -67,7 +66,6 @@ export class DoublyLinkedList implements INodeList {
           { cache: 'force-cache' },
         );
         const data = await self.json()
-        //console.log('mlmlmlm', data.element_count)
         const list = data.near_earth_objects
         const arrObjects = Object.values(list).flat(2)
         nodes = nodes.concat(arrObjects)//arrObjects[0]//small data
@@ -76,11 +74,12 @@ export class DoublyLinkedList implements INodeList {
             { cache: 'force-cache' },
           );
           const dataNext = await next.json()
-          //console.log('mlmlmlm', data.element_count)
           const listNext = dataNext.near_earth_objects
           const arrObjectsNext = Object.values(listNext).flat(2)
           nodes = nodes.concat(arrObjectsNext)//arrObjects[0]//small data
         }
+        const lastItem = nodes.at(-1)//reduce?
+        //console.log('nodes', nodes.length)
         //current=null //break while
       }
       current = current.next;

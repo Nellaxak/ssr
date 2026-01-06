@@ -6,7 +6,7 @@ import dynamic from 'next/dynamic'
 
 const options = {
     root: null,//document.querySelector("#scrollArea"),
-    rootMargin: "100px",//-px not work
+    rootMargin: "0px 0px 100px 0px",//-px not work?
     //scrollMargin: "-80px",
     threshold: 1.0,
 }
@@ -51,14 +51,14 @@ const IOComponent = () => {
         };
     }, [])
     useEffect(() => {
-        router.push(`/categories?viewtype=${currentViewtype}&page=${page}&scroll=${scroll}`, { scroll: false });
+        router.push(`/categories?viewtype=${currentViewtype}&page=${page}&scroll=${scroll}`, { scroll: true });
         //router.refresh()
-        const elem = document.querySelector('ol')
-        elem.scrollIntoView({
+        /*const elem = document.querySelector('ol')
+        elem.scrollIntoView(true)/*{//mount scroll to center
             behavior: 'smooth', // Optional: smooth or auto
             block: 'center',    // Required for vertical centering
             //inline: 'center'    // Optional: for horizontal centering
-        })
+        })*/
     }, [page])
     return <p ref={ref}></p>
 }
