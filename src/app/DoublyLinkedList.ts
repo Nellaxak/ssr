@@ -78,7 +78,8 @@ export class DoublyLinkedList implements INodeList {
           const arrObjectsNext = Object.values(listNext).flat(2)
           nodes = nodes.concat(arrObjectsNext)//arrObjects[0]//small data
         }
-        const lastItem = nodes.at(-1)//reduce?
+        nodes = nodes.slice(0, 8)
+        //const lastItem = nodes.at(-1)//reduce?
         //console.log('nodes', nodes.length)
         //current=null //break while
       }
