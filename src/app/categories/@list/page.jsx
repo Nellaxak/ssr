@@ -220,11 +220,11 @@ export default async function Home({ searchParams }) {
         const data = await resp.json()
         const list = data.near_earth_objects
         const arrObjects = Object.values(list)
-        const obj = arrObjects.flat(2)
-        console.log('arrObjects', obj)
+        //const obj = arrObjects[0]//.flat(2)
+        console.log('arrObjects', arrObjects[0])
         /*pageProxy.data = data.links
         pageProxy.page = Number(page)*/
-        return <List items={arrObjects} renderItem={async (product) => {
+        return <List items={arrObjects[0]} renderItem={async (product) => {
             //console.log('product', product)
             const date = new Date(product.close_approach_data[0].epoch_date_close_approach)
             const prevDate = new Intl.DateTimeFormat("ru-RU", options).format(date);
