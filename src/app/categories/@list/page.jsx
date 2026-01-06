@@ -181,7 +181,7 @@ async function Row(props) {
 }
 let targetPage = { page: -1, data: null, items: [] }
 const pageProxy = new Proxy(targetPage, {
-    async get(target, prop) {
+    get(target, prop) {//async?
         //console.log('proxy get', target, prop)
         if (prop in target) {
             return target[prop];
