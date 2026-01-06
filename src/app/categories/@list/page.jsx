@@ -184,10 +184,6 @@ const pageProxy = new Proxy(targetPage, {
     async get(target, prop) {
         //console.log('proxy get', target, prop)
         if (prop in target) {
-            console.log('ppp', typeof prop)
-            if (prop === 'items') {
-                return await dll.values(Number(target.page))
-            }
             return target[prop];
         } else {
             return -1; // значение по умолчанию
@@ -199,6 +195,7 @@ const pageProxy = new Proxy(targetPage, {
             if (val !== target[prop]) {//singleton pattern by proxy
                 target[prop] = val;
                 await dll.append(target.data.self, Number(target.page))//
+                target.items = await dll.values(Number(target.page))
             }
         } else {
             target[prop] = val;
