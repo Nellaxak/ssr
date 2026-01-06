@@ -129,8 +129,8 @@ export class DoublyLinkedList implements INodeList {
     if (!this.head) {
       this.head = newNode;
     }
-    //DoublyLinkedList.count = DoublyLinkedList.count + 1
-    //console.log('after append', DoublyLinkedList.count)
+    DoublyLinkedList.count = DoublyLinkedList.count + 1
+    console.log('after append', DoublyLinkedList.count)
     return this;
   }
 
