@@ -6,7 +6,7 @@ import dynamic from 'next/dynamic'
 
 const options = {
     root: null,//document.querySelector("#scrollArea"),
-    rootMargin: "0px 0px 100px 0px",//-px not work?
+    rootMargin: "0px 0px -100px 0px",//-px not work?
     //scrollMargin: "-80px",
     threshold: 1.0,
 }
