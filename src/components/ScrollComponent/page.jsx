@@ -35,6 +35,7 @@ function ScrollComponent() {
     router = useRouter()
     const searchParams = useSearchParams()
     const currentPage = searchParams.get('page')
+    const currentViewtype = searchParams.get('viewtype')
     const [startRow, setStartRow] = useState(0)
     const [startAction, setStartAction] = useState('start')
 
@@ -65,7 +66,7 @@ function ScrollComponent() {
     }, [])
     useEffect(() => {
         //console.log('startRow', startRow)
-        router.push(`?&page=${currentPage}action=${startAction}&col=${startRow}`, { scroll: false });
+        router.push(`?viewtype=${currentViewtype}&page=${currentPage}action=${startAction}&col=${startRow}`, { scroll: false });
     }, [startRow, startAction])
     useEffect(() => {
         const elem = document.querySelector('#header')
