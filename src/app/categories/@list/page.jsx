@@ -182,7 +182,7 @@ async function Row(props) {
 let targetPage = { page: -1, data: null, items: [] }
 const pageProxy = new Proxy(targetPage, {
     get(target, prop) {//async?
-        //console.log('proxy get', target, prop)
+        console.log('proxy get', target, prop, target[prop])
         if (prop in target) {
             return target[prop];
         } else {
@@ -191,7 +191,7 @@ const pageProxy = new Proxy(targetPage, {
     },
     async set(target, prop, val) {
         //console.log('proxy set', target, prop, val, target.data)
-        if (typeof val == 'number') {//only page
+        if (typeof val === 'number') {//only page
             if (val !== target[prop]) {//singleton pattern by proxy
                 target[prop] = val;
                 await dll.append(target.data.self, Number(target.page))//
@@ -218,9 +218,9 @@ export default async function Home({ searchParams }) {
         const data = await resp.json()
         pageProxy.data = data.links
         pageProxy.page = Number(page)
-        console.log('proxy items', pageProxy.items)
+        //console.log('proxy items', pageProxy.items)
         //const items = await dll.values(Number(page))
-        return <List items={pageProxy.items} renderItem={async (product, index) => {
+        return <List items={pageProxy.items} renderItem={async (product) => {
             //console.log('product', product)
             const date = new Date(product.close_approach_data[0].epoch_date_close_approach)
             const prevDate = new Intl.DateTimeFormat("ru-RU", options).format(date);
