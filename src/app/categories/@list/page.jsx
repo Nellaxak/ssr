@@ -197,7 +197,7 @@ const pageProxy = new Proxy(targetPage, {
             if (val !== target[prop]) {//singleton pattern by proxy
                 target[prop] = val;
                 await dll.append(target.data.self, Number(target.page))//
-                pageProxy.items = await dll.values(Number(target.page))
+                target.items = await dll.values(Number(target.page))
             }
         } else {
             target[prop] = val;
@@ -218,11 +218,11 @@ export default async function Home({ searchParams }) {
 
     if (Number(resp.status) === 200) {
         const data = await resp.json()
-        pageProxy.data = data.links
-        pageProxy.page = Number(page)
-        //console.log('proxy items', pageProxy.items)
-        //const items = await dll.values(Number(page))
-        return <List items={pageProxy.items} renderItem={async (product) => {
+        const list = data.near_earth_objects
+        const arrObjects = Object.values(list).flat(2)
+        /*pageProxy.data = data.links
+        pageProxy.page = Number(page)*/
+        return <List items={arrObjects} renderItem={async (product) => {
             //console.log('product', product)
             const date = new Date(product.close_approach_data[0].epoch_date_close_approach)
             const prevDate = new Intl.DateTimeFormat("ru-RU", options).format(date);
