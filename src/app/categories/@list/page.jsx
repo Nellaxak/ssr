@@ -197,7 +197,7 @@ const pageProxy = new Proxy(targetPage, {
             if (val !== target[prop]) {//singleton pattern by proxy
                 target[prop] = val;
                 await dll.append(target.data.self, Number(target.page))//
-                target.items = await dll.values(Number(target.page))
+                pageProxy.items = await dll.values(Number(target.page))
             }
         } else {
             target[prop] = val;
