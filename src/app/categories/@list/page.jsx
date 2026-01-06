@@ -221,7 +221,7 @@ export default async function Home({ searchParams }) {
         const list = data.near_earth_objects
         const arrObjects = Object.values(list)
         //const obj = arrObjects[0]//.flat(2)
-        console.log('arrObjects', arrObjects[0])
+        console.log('arrObjects', arrObjects)
         /*pageProxy.data = data.links
         pageProxy.page = Number(page)*/
         return <List items={arrObjects[0]} renderItem={async (product) => {
