@@ -43,7 +43,7 @@ export interface INodeList {
 export class DoublyLinkedList implements INodeList {
   public head: DoublyLinkedListNode | null = null;
   public tail: DoublyLinkedListNode | null = null;
-  static count: number = 0
+  static count: number = 0;
   async values(page: number): Promise<any> {
     console.log('values call')
     let current = this.head;

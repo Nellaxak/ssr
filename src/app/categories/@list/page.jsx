@@ -184,7 +184,7 @@ const pageProxy = new Proxy(targetPage, {
     get(target, prop) {//async?
         if (prop in target) {
             if (prop === 'items') {
-                console.log('proxy get', target, prop, target[prop])
+                console.log('proxy get', prop, target[prop])
             }
             return target[prop];
         } else {
