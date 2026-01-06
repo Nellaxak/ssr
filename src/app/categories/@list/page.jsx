@@ -179,11 +179,15 @@ async function Row(props) {
         </li>
     </Suspense>
 }
-let targetPage = { page: -1, data: null }
+let targetPage = { page: -1, data: null, items: [] }
 const pageProxy = new Proxy(targetPage, {
-    get(target, prop) {
+    async get(target, prop) {
         //console.log('proxy get', target, prop)
         if (prop in target) {
+            console.log('ppp', typeof prop)
+            if (prop === 'items') {
+                return await dll.values(Number(target.page))
+            }
             return target[prop];
         } else {
             return -1; // значение по умолчанию
@@ -217,8 +221,9 @@ export default async function Home({ searchParams }) {
         const data = await resp.json()
         pageProxy.data = data.links
         pageProxy.page = Number(page)
-        const items = await dll.values(Number(page))
-        return <List items={items} renderItem={async (product, index) => {
+        console.log('proxy items', page.items)
+        //const items = await dll.values(Number(page))
+        return <List items={page.items} renderItem={async (product, index) => {
             //console.log('product', product)
             const date = new Date(product.close_approach_data[0].epoch_date_close_approach)
             const prevDate = new Intl.DateTimeFormat("ru-RU", options).format(date);
