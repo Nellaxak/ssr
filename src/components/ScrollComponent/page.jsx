@@ -33,8 +33,10 @@ let rowHeight = 85
 function ScrollComponent() {
     ref = useRef()
     router = useRouter()
+    const searchParams = useSearchParams()
+    const currentPage = searchParams.get('page')
     const [startRow, setStartRow] = useState(0)
-    const [startAction, setStartAction] = useState(null)
+    const [startAction, setStartAction] = useState('start')
 
     const handleScroll = useCallback(async (e) => {
         //console.log('target', e.target)
@@ -63,7 +65,7 @@ function ScrollComponent() {
     }, [])
     useEffect(() => {
         //console.log('startRow', startRow)
-        router.push(`?action=${startAction}&col=${startRow}`, { scroll: false });
+        router.push(`?&page=${currentPage}action=${startAction}&col=${startRow}`, { scroll: false });
     }, [startRow, startAction])
     useEffect(() => {
         const elem = document.querySelector('#header')
