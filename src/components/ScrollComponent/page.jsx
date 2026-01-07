@@ -40,7 +40,7 @@ function ScrollComponent() {
     const [startAction, setStartAction] = useState('start')
 
     const handleScroll = useCallback(async (e) => {
-        //console.log('target', e.target)
+        console.log('target', e.target)
         //console.log('scrollend')
         const elem = document.querySelector('#header')
         const rect = elem.getBoundingClientRect()
