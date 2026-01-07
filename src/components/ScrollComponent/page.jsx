@@ -40,8 +40,8 @@ function ScrollComponent() {
     const [startAction, setStartAction] = useState('start')
 
     const handleScroll = useCallback(async (e) => {
-        console.log('target', e.target)
-        //console.log('scrollend')
+        //console.log('target', e.target)
+        console.log('scrollend')
         const elem = document.querySelector('#header')
         const rect = elem.getBoundingClientRect()
         const hh = rect.height
@@ -70,11 +70,11 @@ function ScrollComponent() {
         router.push(`?viewtype=${currentViewtype}&page=${currentPage}&action=${startAction}&col=${startRow}`, { scroll: false });
     }, [startRow, startAction])
     useEffect(() => {
-        const elem = document.querySelector('#header')
-        console.log('elem', elem)
-        elem.addEventListener('scrollend', handleScroll)
+        //const elem = document.querySelector('#header')
+        //console.log('elem', elem)
+        document.addEventListener('scrollend', handleScroll)
         return () => {
-            elem.removeEventListener('scrollend', handleScroll)
+            document.removeEventListener('scrollend', handleScroll)
         };
     }, [])
     return (<p>
