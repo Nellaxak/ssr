@@ -49,6 +49,7 @@ function ScrollComponent() {
         let item = Math.abs(rect.y - vertical)
         //console.log('abs', item, hh)
         const col = Math.round(Math.abs((item - hh) / hh))
+        console.log('scroll col', col, rect.y)
         if (rect.y < vertical) {
             setStartRow(col)
             setStartAction('down')

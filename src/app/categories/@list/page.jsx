@@ -233,7 +233,7 @@ export default async function Home({ searchParams }) {
         }
         /*pageProxy.data = data.links
         pageProxy.page = Number(page)*/
-        console.log('arrObjects', arrObjects[0])
+        //console.log('arrObjects', arrObjects[0])
         return <List items={arrObjects[0]} renderItem={async (product) => {
             //console.log('product', product)
             const date = new Date(product.close_approach_data[0].epoch_date_close_approach)
