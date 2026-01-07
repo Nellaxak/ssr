@@ -41,15 +41,16 @@ function ScrollComponent() {
 
     const handleScroll = useCallback(async (e) => {
         //console.log('target', e.target)
-        console.log('scrollend')
+        //console.log('scrollend')
         const elem = document.querySelector('#header')
         const rect = elem.getBoundingClientRect()
-        const hh = rect.height
+        //const hh = rect.height
         //console.log('scrollend', rect, vertical, rect.y < vertical)
-        let item = Math.abs(rect.y - vertical)
+        //let item = Math.abs(rect.y - vertical)
         //console.log('abs', item, hh)
-        const col = Math.round(Math.abs((item - hh) / hh))
-        console.log('scroll col', col, rect.y)
+        const col = Math.ceil(rect.y/rowHeight)
+        //Math.round(Math.abs((item - hh) / hh))
+        console.log('scroll col', col)
         if (rect.y < vertical) {
             setStartRow(col)
             setStartAction('down')
