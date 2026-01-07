@@ -71,6 +71,7 @@ function ScrollComponent() {
     }, [startRow, startAction])
     useEffect(() => {
         const elem = document.querySelector('#header')
+        console.log('elem', elem)
         elem.addEventListener('scrollend', handleScroll)
         return () => {
             elem.removeEventListener('scrollend', handleScroll)
