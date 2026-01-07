@@ -229,11 +229,12 @@ export default async function Home({ searchParams }) {
             const data = await respN.json()
             const list = data.near_earth_objects
             arrObjects = Object.values(list)
+            //page increment
         }
         /*pageProxy.data = data.links
         pageProxy.page = Number(page)*/
-        console.log('arrObjects', arrObjects)
-        return <List items={arrObjects} renderItem={async (product) => {
+        console.log('arrObjects', arrObjects[0])
+        return <List items={arrObjects[0]} renderItem={async (product) => {
             //console.log('product', product)
             const date = new Date(product.close_approach_data[0].epoch_date_close_approach)
             const prevDate = new Intl.DateTimeFormat("ru-RU", options).format(date);
