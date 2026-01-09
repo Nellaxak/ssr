@@ -38,7 +38,7 @@ function ScrollComponent() {
     const currentViewtype = searchParams.get('viewtype')
     const [startRow, setStartRow] = useState(0)
     const [startAction, setStartAction] = useState('start')
-
+    const [page, setPage] = useState(0)
     const handleScroll = useCallback(async (e) => {
         //console.log('target', e.target)
         //console.log('scrollend')
@@ -53,6 +53,10 @@ function ScrollComponent() {
         if (maxScrollBottom <= 0) {
             //change url page increment
             //change col action
+            setPage((page) => {
+                let newPage = page + 1
+                return newPage
+            })
             const col = Math.ceil(Math.abs(rect.y / rowHeight))
             setStartRow(col)
             setStartAction('down')
@@ -73,8 +77,8 @@ function ScrollComponent() {
     }, [])
     useEffect(() => {
         //scrollEnd({ action: startAction, col: startRow })
-        router.push(`?viewtype=${currentViewtype}&page=${currentPage}&action=${startAction}&col=${startRow}`, { scroll: false });
-    }, [startRow, startAction])
+        router.push(`?viewtype=${currentViewtype}&page=${page}&action=${startAction}&col=${startRow}`, { scroll: false });
+    }, [startRow, startAction,page])
     useEffect(() => {
         //find first li , get Height
         //const elem = document.querySelector('#header')
