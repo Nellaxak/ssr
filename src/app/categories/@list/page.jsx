@@ -210,6 +210,8 @@ export default async function Home({ searchParams }) {
     const page = await search.page
     let [startDate, endDate] = await CalcData(page)
     const viewtype = await search.viewtype
+    const action = await search.action
+    const col = await search.col
     //try {
     const resp = await fetch(`https://api.nasa.gov/neo/rest/v1/feed?start_date=${startDate}&end_date=${endDate}&api_key=3wa5hHgFuqhf6XiefvqzkcDQWZ01aOOK4vNZEXsP`,
         { cache: 'force-cache' },
@@ -222,14 +224,20 @@ export default async function Home({ searchParams }) {
         if (Number(data.element_count) > 0) {
             const list = data.near_earth_objects
             arrObjects = Object.values(list)
-            //const obj = arrObjects[0]//.flat(2)
-            //console.log('arrObjects', arrObjects)
+            
         } else {
             const respN = await fetch(`${data.links.next}`, { cache: 'force-cache' })
             const data = await respN.json()
             const list = data.near_earth_objects
             arrObjects = Object.values(list)
             //page increment
+        }
+        if (action === 'down') {
+            const respN = await fetch(`${data.links.next}`, { cache: 'force-cache' })
+            const data = await respN.json()
+            const list = data.near_earth_objects
+            arrObjects = Object.values(list)
+            //slice(0,col)
         }
         /*pageProxy.data = data.links
         pageProxy.page = Number(page)*/
