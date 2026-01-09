@@ -49,7 +49,12 @@ function ScrollComponent() {
         //let item = Math.abs(rect.y - vertical)
         //console.log('abs', item, hh)
         let maxScrollBottom = document.documentElement.scrollHeight - window.scrollY - window.innerHeight;
-        console.log('maxScrollBottom', maxScrollBottom)//change url page increment
+        console.log('maxScrollBottom', maxScrollBottom)
+        if (maxScrollBottom <= 0) {
+            //change url page increment
+            //change col action
+
+        }
         const col = Math.ceil(Math.abs(rect.y / rowHeight))
         //Math.round(Math.abs((item - hh) / hh))
         //console.log('scroll col', col)
