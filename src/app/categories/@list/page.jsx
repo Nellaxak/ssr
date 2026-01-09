@@ -111,8 +111,9 @@ async function RenderProp(product, index) {
         dates={dateString}
     /></Suspense>
 }
-async function List({ items, renderItem }) {
-    const res = await Promise.all(items.slice(0, 8).map(async (item) => {
+async function List({ items, col, renderItem }) {
+    //slice -1,-5?
+    const res = await Promise.all(items.slice(col, 8).map(async (item) => {
         //console.log('llpoiyt', item.visible)//linked list
         return await renderItem(item);
     }))
@@ -300,7 +301,7 @@ export default async function Home({ searchParams }) {
         //console.log('arrObjects', arrObjects[0])
         //const resObj = arrObjects.flat()
         //console.log('llpaas', pageProxy.items)
-        return <List items={arrObjects} renderItem={async (product) => {
+        return <List items={arrObjects} col={col} renderItem={async (product) => {
             //console.log('product', product)
             const date = new Date(product.close_approach_data[0].epoch_date_close_approach)
             const prevDate = new Intl.DateTimeFormat("ru-RU", options).format(date);

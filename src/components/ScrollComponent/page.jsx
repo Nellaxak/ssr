@@ -65,8 +65,8 @@ function ScrollComponent() {
         ));*/
     }, [])
     useEffect(() => {
-        scrollEnd({ action: startAction, col: startRow })
-        //router.push(`?viewtype=${currentViewtype}&page=${currentPage}&action=${startAction}&col=${startRow}`, { scroll: false });
+        //scrollEnd({ action: startAction, col: startRow })
+        router.push(`?viewtype=${currentViewtype}&page=${currentPage}&action=${startAction}&col=${startRow}`, { scroll: false });
     }, [startRow, startAction])
     useEffect(() => {
         //find first li , get Height
