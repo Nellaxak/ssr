@@ -231,10 +231,10 @@ export default async function Home({ searchParams }) {
 
 
         } else if (action === 'start' && Number(data.element_count) > 9) {
-            const respN = await fetch(`${data.links.next}`, { cache: 'force-cache' })
+            /*const respN = await fetch(`${data.links.next}`, { cache: 'force-cache' })
             const dataN = await respN.json()
             const listN = dataN.near_earth_objects
-            arrObjects = Object.values(listN)
+            arrObjects = Object.values(listN)*/
             //page increment
         }
         else if (action === 'down' || action === 'up') {
