@@ -193,11 +193,12 @@ const pageProxy = new Proxy(targetPage, {
     },
     async set(target, prop, val) {
         //console.log('proxy set', target, prop, val, target.data)
-        if (typeof val === 'number') {//only page
+        if (typeof val === 'number') {//once page
             if (val !== target[prop]) {//singleton pattern by proxy
                 target[prop] = val;
-                await dll.append(target.data.self, Number(target.page))//
-                target.items = await dll.values(Number(target.page))
+                target.items.push(target.data)
+                //await dll.append(target.data.self, Number(target.page))//
+                //target.items = await dll.values(Number(target.page))
             }
         } else {
             target[prop] = val;
@@ -206,7 +207,42 @@ const pageProxy = new Proxy(targetPage, {
     }
 })
 let arrObjects = []
+const targetArray = [];
 
+const uniquePushHandler = {
+    get: function (target, prop, receiver) {
+        if (prop === 'push') {
+            // Return a new function that acts as the custom 'push' method
+            return function (...args) {
+                let itemsAdded = 0;
+                for (const item of args) {
+                    // Check if the item already exists in the array
+                    if (!target.includes(item)) {
+                        // Use Reflect.apply to call the original push method safely
+                        // or simply call target.push(item)
+                        Reflect.apply(target.push, target, [item]);
+                        itemsAdded++;
+                    }
+                }
+                // Return the new length of the array, consistent with the native push method
+                return target.length;
+            };
+        }
+        // Use Reflect for all other properties to maintain default behavior
+        return Reflect.get(target, prop, receiver);
+    }
+};
+
+const proxyArray = new Proxy(targetArray, uniquePushHandler);
+
+// Test cases
+/*proxyArray.push('apple');
+proxyArray.push('banana', 'apple'); // 'apple' is a duplicate, so only 'banana' is added
+proxyArray.push('orange');
+
+console.log(proxyArray); // Output: [ 'apple', 'banana', 'orange' ]
+console.log(targetArray); // Output: [ 'apple', 'banana', 'orange' ]
+*/
 export default async function Home({ searchParams }) {
     const search = await searchParams;
     const page = await search.page
@@ -225,8 +261,11 @@ export default async function Home({ searchParams }) {
         const list = data.near_earth_objects
         const arrObjects22 = Object.values(list)
         const resObj2 = arrObjects22.flat()
-        arrObjects.push(resObj2)
-        console.log('llllllooo', data.element_count)
+        //arrObjects.push(resObj2)
+        //console.log('llllllooo', data.element_count)
+        pageProxy.data = resObj2
+        pageProxy.page = Number(page)
+
         if ((action === 'start') && (Number(data.element_count) <= 9)) {
 
 
@@ -251,8 +290,9 @@ export default async function Home({ searchParams }) {
         /*pageProxy.data = data.links
         pageProxy.page = Number(page)*/
         //console.log('arrObjects', arrObjects[0])
-        const resObj = arrObjects.flat()
-        return <List items={resObj} renderItem={async (product) => {
+        //const resObj = arrObjects.flat()
+        console.log('llpaas', pageProxy.items)
+        return <List items={pageProxy.items} renderItem={async (product) => {
             //console.log('product', product)
             const date = new Date(product.close_approach_data[0].epoch_date_close_approach)
             const prevDate = new Intl.DateTimeFormat("ru-RU", options).format(date);

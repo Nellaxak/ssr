@@ -67,7 +67,7 @@ function ScrollComponent() {
         ));*/
     }, [])
     useEffect(() => {
-        //console.log('startRow', startRow)
+        //replace->server action->not view change URL
         router.push(`?viewtype=${currentViewtype}&page=${currentPage}&action=${startAction}&col=${startRow}`, { scroll: false });
     }, [startRow, startAction])
     useEffect(() => {
