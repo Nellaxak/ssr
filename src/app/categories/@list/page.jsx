@@ -228,16 +228,16 @@ export default async function Home({ searchParams }) {
 
         } else if (action === 'start' && Number(data.element_count) > 9) {
             const respN = await fetch(`${data.links.next}`, { cache: 'force-cache' })
-            const data = await respN.json()
-            const list = data.near_earth_objects
-            arrObjects = Object.values(list)
+            const dataN = await respN.json()
+            const listN = dataN.near_earth_objects
+            arrObjects = Object.values(listN)
             //page increment
         }
         else if (action === 'down') {
-            const respN = await fetch(`${data.links.next}`, { cache: 'force-cache' })
-            const data = await respN.json()
-            const list = data.near_earth_objects
-            arrObjects = Object.values(list)
+            const respD = await fetch(`${data.links.next}`, { cache: 'force-cache' })
+            const dataD = await respD.json()
+            const listD = dataD.near_earth_objects
+            arrObjects = Object.values(listD)
             //slice(0,col)
         }
         /*pageProxy.data = data.links
