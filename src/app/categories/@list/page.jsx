@@ -238,9 +238,11 @@ export default async function Home({ searchParams }) {
             const dataD = await respD.json()
             const listD = dataD.near_earth_objects
             arrObjects = Object.values(listD)
-            const obj = arrObjects.slice(0, col)
+            const resObj1 = arrObjects.flat()
+            console.log('arrObjects', resObj1)
+            const obj = resObj1.slice(0, col)
             arrObjects.push(obj)
-            //delete upitems
+            //delete up items
         }
         /*pageProxy.data = data.links
         pageProxy.page = Number(page)*/
