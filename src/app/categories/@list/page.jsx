@@ -179,7 +179,7 @@ async function Row(props) {
         </li>
     </Suspense>
 }
-let targetPage = { page: -1, data: null, items: [] }
+let targetPage = { action: '-1', data: null, items: [] }
 const pageProxy = new Proxy(targetPage, {
     get(target, prop) {//async?
         if (prop in target) {
@@ -193,17 +193,19 @@ const pageProxy = new Proxy(targetPage, {
     },
     async set(target, prop, val) {
         //console.log('proxy set', target, prop, val, target.data)
-        if (typeof val === 'number') {//once page
+        if (typeof val === 'string') {//once action
             if (val !== target[prop]) {//singleton pattern by proxy
                 target[prop] = val;
-                target.items.push(...target.data)
-                //await dll.append(target.data.self, Number(target.page))//
-                //target.items = await dll.values(Number(target.page))
+                if (val === 'down') {
+                    target.items.push(...target.data)
+                } else {
+
+                }
+            } else {
+                target[prop] = val;
             }
-        } else {
-            target[prop] = val;
+            return true
         }
-        return true
     }
 })
 let arrObjects = []
@@ -262,9 +264,9 @@ export default async function Home({ searchParams }) {
         const arrObjects22 = Object.values(list)
         const resObj2 = arrObjects22.flat()
         //arrObjects.push(resObj2)
-        console.log('llllllooo', resObj2)
+        //console.log('llllllooo', resObj2)
         pageProxy.data = resObj2
-        pageProxy.page = Number(page)
+        pageProxy.action = action
 
         if ((action === 'start') && (Number(data.element_count) <= 9)) {
 
@@ -282,16 +284,18 @@ export default async function Home({ searchParams }) {
             const listD = dataD.near_earth_objects
             arrObjects = Object.values(listD)
             const resObj1 = arrObjects.flat()
-            console.log('arrObjects', resObj1)
+            //console.log('arrObjects', resObj1)
             const obj = resObj1.slice(0, col)
-            arrObjects.push(obj)
+            //arrObjects.push(obj)
+            pageProxy.data = obj
+            pageProxy.action = action
             //delete up items
         }
         /*pageProxy.data = data.links
         pageProxy.page = Number(page)*/
         //console.log('arrObjects', arrObjects[0])
         //const resObj = arrObjects.flat()
-        console.log('llpaas', pageProxy.items)
+        //console.log('llpaas', pageProxy.items)
         return <List items={pageProxy.items} renderItem={async (product) => {
             //console.log('product', product)
             const date = new Date(product.close_approach_data[0].epoch_date_close_approach)
