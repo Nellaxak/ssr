@@ -2,7 +2,7 @@
 import { useRouter, useParams, useSearchParams } from 'next/navigation';
 import { useCallback, useEffect, useRef, useState, useTransition, Suspense } from "react";
 //import { buttonIO } from "@/app/actions/IntersectionButton";
-
+import { scrollEnd } from '../../app/lib/actions'
 //import { throttle } from 'lodash';
 //import io from 'socket.io-client';
 //import {  } from 'next/navigation-types';
@@ -48,7 +48,7 @@ function ScrollComponent() {
         //console.log('scrollend', rect, vertical, rect.y < vertical)
         //let item = Math.abs(rect.y - vertical)
         //console.log('abs', item, hh)
-        const col = Math.ceil(Math.abs(rect.y/rowHeight))
+        const col = Math.ceil(Math.abs(rect.y / rowHeight))
         //Math.round(Math.abs((item - hh) / hh))
         //console.log('scroll col', col)
         if (rect.y < vertical) {
@@ -68,7 +68,8 @@ function ScrollComponent() {
     }, [])
     useEffect(() => {
         //replace->server action->not view change URL
-        router.push(`?viewtype=${currentViewtype}&page=${currentPage}&action=${startAction}&col=${startRow}`, { scroll: false });
+        scrollEnd({ action: startAction, col: startRow })
+        //router.push(`?viewtype=${currentViewtype}&page=${currentPage}&action=${startAction}&col=${startRow}`, { scroll: false });
     }, [startRow, startAction])
     useEffect(() => {
         //find first li , get Height

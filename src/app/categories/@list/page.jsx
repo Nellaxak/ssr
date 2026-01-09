@@ -179,7 +179,7 @@ async function Row(props) {
         </li>
     </Suspense>
 }
-let targetPage = { action: '-1', data: null, items: [] }
+let targetPage = { action: -1, data: null, items: [] }
 const pageProxy = new Proxy(targetPage, {
     get(target, prop) {//async?
         if (prop in target) {
@@ -193,14 +193,10 @@ const pageProxy = new Proxy(targetPage, {
     },
     async set(target, prop, val) {
         console.log('proxy set', Array.isArray(target.items), Array.isArray(target['items']))
-        if (typeof val === 'string') {//once action
+        if (typeof val === 'number') {//once page
             if (val !== target[prop]) {//singleton pattern by proxy
                 target[prop] = val;
-                if ((val === 'down') || (val === 'start')) {
-                    target.items.push(...target.data)
-                    //delete first items
-                } else {
-                }
+                target.items.push(...target.data)
             } else {
                 target[prop] = val;
             }
@@ -266,7 +262,7 @@ export default async function Home({ searchParams }) {
         //arrObjects.push(resObj2)
         //console.log('llllllooo', resObj2)
         pageProxy.data = resObj2
-        pageProxy.action = action
+        pageProxy.page = Number(page)
 
         if ((action === 'start') && (Number(data.element_count) <= 9)) {
 
@@ -287,8 +283,8 @@ export default async function Home({ searchParams }) {
             //console.log('arrObjects', resObj1)
             const obj = resObj1.slice(0, col)
             //arrObjects.push(obj)
-            pageProxy.data = obj
-            pageProxy.action = action
+            //pageProxy.data = obj
+            //pageProxy.action = action
             //delete up items
         }
         /*pageProxy.data = data.links

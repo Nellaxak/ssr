@@ -85,6 +85,16 @@ export async function pagination(index) {
     //array3.splice(index,1)
     //revalidateTag('items')
 }
+export async function scrollEnd(params) {
+    //const id = Number(params)
+    //const item = instanceItem.get(id)
+    //const item = Item.arrObj.get(id)
+    //await item.setStatus()
+    console.log('scrollend', params)
+    //statusMap.set(id, !statusMap.get(id))
+    //revalidateTag('items', 'max')
+    //return item.status
+}
 export async function toggleClick(params) {
     const id = Number(params)
     //const item = instanceItem.get(id)
