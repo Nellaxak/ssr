@@ -238,7 +238,7 @@ export default async function Home({ searchParams }) {
             const dataD = await respD.json()
             const listD = dataD.near_earth_objects
             arrObjects = Object.values(listD)
-            const obj = slice(0, col)
+            const obj = arrObjects.slice(0, col)
             arrObjects.push(obj)
             //delete upitems
         }
