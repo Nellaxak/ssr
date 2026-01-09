@@ -205,6 +205,8 @@ const pageProxy = new Proxy(targetPage, {
         return true
     }
 })
+let arrObjects = []
+
 export default async function Home({ searchParams }) {
     const search = await searchParams;
     const page = await search.page
@@ -217,7 +219,6 @@ export default async function Home({ searchParams }) {
         { cache: 'force-cache' },
         { next: { tags: ['items'] } }
     );
-    let arrObjects = []
 
     if (Number(resp.status) === 200) {
         const data = await resp.json()
@@ -234,7 +235,7 @@ export default async function Home({ searchParams }) {
             arrObjects = Object.values(listN)
             //page increment
         }
-        else if (action === 'down') {
+        else if (action === 'down' || action === 'up') {
             const respD = await fetch(`${data.links.next}`, { cache: 'force-cache' })
             const dataD = await respD.json()
             const listD = dataD.near_earth_objects
