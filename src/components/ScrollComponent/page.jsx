@@ -12,11 +12,11 @@ import { useCallback, useEffect, useRef, useState, useTransition, Suspense } fro
 //const socket = io('ws://localhost:3456')
 //import Li from '@/app/api/Li'
 import dynamic from 'next/dynamic'
-const options = {
+/*const options = {
     root: null,
     rootMargin: "100px",//height li item
     threshold: 1.0,
-}
+}*/
 let observer
 let target
 let ref
@@ -31,8 +31,8 @@ let vertical = 0
 let visibleRows = 6
 let rowHeight = 85
 function ScrollComponent() {
-    ref = useRef()
-    router = useRouter()
+    //ref = useRef()
+    const router = useRouter()
     const searchParams = useSearchParams()
     const currentPage = searchParams.get('page')
     const currentViewtype = searchParams.get('viewtype')

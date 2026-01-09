@@ -217,15 +217,15 @@ export default async function Home({ searchParams }) {
         { cache: 'force-cache' },
         { next: { tags: ['items'] } }
     );
+    let arrObjects = []
 
     if (Number(resp.status) === 200) {
         const data = await resp.json()
-        let arrObjects = []
-        if (Number(data.element_count) > 0) {
+        if (action === 'start' && Number(data.element_count) <= 9) {
             const list = data.near_earth_objects
             arrObjects = Object.values(list)
-            
-        } else {
+
+        } else if (action === 'start' && Number(data.element_count) > 9) {
             const respN = await fetch(`${data.links.next}`, { cache: 'force-cache' })
             const data = await respN.json()
             const list = data.near_earth_objects
