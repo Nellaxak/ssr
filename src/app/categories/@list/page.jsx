@@ -68,7 +68,7 @@ async function CalcData(params) {
     //const count = await CountPage.getCount();
     let currentDate = new Date()
     currentDate.setDate(currentDate.getDate());
-    const page = params
+    const page = pageProxy.page//params
 
     //if (Number(page) > 0) {
     const newPage = Number(currentDate.getDate()) + Number(page)
@@ -179,12 +179,17 @@ async function Row(props) {
         </li>
     </Suspense>
 }
-let targetPage = { action: -1, data: null, items: [] }
+let targetPage = { page: 0, data: null, items: [] }
 const pageProxy = new Proxy(targetPage, {
     get(target, prop) {//async?
         if (prop in target) {
             if (prop === 'items') {
                 console.log('proxy get', prop, target[prop])
+                if (target[prop].length > 8) {
+                    //page increment
+                    target.page = target.page + 1
+                    return target[prop].slice(0, 8);//must be 6
+                }
             }
             return target[prop];
         } else {
@@ -192,7 +197,7 @@ const pageProxy = new Proxy(targetPage, {
         }
     },
     async set(target, prop, val) {
-        console.log('proxy set', Array.isArray(target.items), Array.isArray(target['items']))
+        //console.log('proxy set', Array.isArray(target.items), Array.isArray(target['items']))
         if (typeof val === 'number') {//once page
             if (val !== target[prop]) {//singleton pattern by proxy
                 target[prop] = val;
@@ -243,8 +248,8 @@ console.log(targetArray); // Output: [ 'apple', 'banana', 'orange' ]
 */
 export default async function Home({ searchParams }) {
     const search = await searchParams;
-    const page = await search.page
-    let [startDate, endDate] = await CalcData(page)
+    //const page = 0//await search.page
+    let [startDate, endDate] = await CalcData()
     const viewtype = await search.viewtype
     const action = await search.action
     const col = await search.col
@@ -261,8 +266,8 @@ export default async function Home({ searchParams }) {
         const resObj2 = arrObjects22.flat()
         //arrObjects.push(resObj2)
         //console.log('llllllooo', resObj2)
-        pageProxy.data = resObj2
-        pageProxy.page = Number(page)
+        //pageProxy.data = resObj2
+        //pageProxy.page = Number(page)
 
         if ((action === 'start') && (Number(data.element_count) <= 9)) {
 
@@ -281,7 +286,7 @@ export default async function Home({ searchParams }) {
             arrObjects = Object.values(listD)
             const resObj1 = arrObjects.flat()
             //console.log('arrObjects', resObj1)
-            const obj = resObj1.slice(0, col)
+            //const obj = resObj1.slice(0, col)
             //arrObjects.push(obj)
             //pageProxy.data = obj
             //pageProxy.action = action

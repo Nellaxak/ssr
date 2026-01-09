@@ -54,9 +54,7 @@ function ScrollComponent() {
         if (rect.y < vertical) {
             setStartRow(col)
             setStartAction('down')
-            //router.push(`?action=down&col=${col}`, { scroll: false });
         } else {
-            //router.push(`?action=up&col=${col}`, { scroll: false });
             setStartRow(col)
             setStartAction('up')
         }
@@ -67,7 +65,6 @@ function ScrollComponent() {
         ));*/
     }, [])
     useEffect(() => {
-        //replace->server action->not view change URL
         scrollEnd({ action: startAction, col: startRow })
         //router.push(`?viewtype=${currentViewtype}&page=${currentPage}&action=${startAction}&col=${startRow}`, { scroll: false });
     }, [startRow, startAction])
