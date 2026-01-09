@@ -48,6 +48,8 @@ function ScrollComponent() {
         //console.log('scrollend', rect, vertical, rect.y < vertical)
         //let item = Math.abs(rect.y - vertical)
         //console.log('abs', item, hh)
+        let maxScrollBottom = document.documentElement.scrollHeight - window.scrollY - window.innerHeight;
+        console.log('maxScrollBottom', maxScrollBottom)//change url page increment
         const col = Math.ceil(Math.abs(rect.y / rowHeight))
         //Math.round(Math.abs((item - hh) / hh))
         //console.log('scroll col', col)
@@ -71,7 +73,8 @@ function ScrollComponent() {
     useEffect(() => {
         //find first li , get Height
         //const elem = document.querySelector('#header')
-        //console.log('elem', elem)
+
+
         document.addEventListener('scrollend', handleScroll)
         return () => {
             document.removeEventListener('scrollend', handleScroll)

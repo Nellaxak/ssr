@@ -112,7 +112,7 @@ async function RenderProp(product, index) {
     /></Suspense>
 }
 async function List({ items, col, renderItem }) {
-    //slice -1,-5?
+    //slice -1,-5?scroll up
     const res = await Promise.all(items.slice(col, col + 8).map(async (item) => {
         //console.log('llpoiyt', item.visible)//linked list
         return await renderItem(item);
@@ -267,7 +267,7 @@ export default async function Home({ searchParams }) {
         const list = data.near_earth_objects
         const arrObjects22 = Object.values(list)
         const resObj2 = arrObjects22.flat()
-        arrObjects = arrObjects.concat(resObj2)
+        arrObjects = arrObjects.concat(resObj2)//double//wrapped proxy
         //arrObjects.push(resObj2)
         //console.log('llllllooo', resObj2)
         //pageProxy.data = resObj2
