@@ -262,7 +262,7 @@ export default async function Home({ searchParams }) {
         const arrObjects22 = Object.values(list)
         const resObj2 = arrObjects22.flat()
         //arrObjects.push(resObj2)
-        //console.log('llllllooo', data.element_count)
+        console.log('llllllooo', resObj2)
         pageProxy.data = resObj2
         pageProxy.page = Number(page)
 
