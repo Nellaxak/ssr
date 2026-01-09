@@ -68,7 +68,7 @@ async function CalcData(params) {
     //const count = await CountPage.getCount();
     let currentDate = new Date()
     currentDate.setDate(currentDate.getDate());
-    const page = pageProxy.page//params
+    const page = params
 
     //if (Number(page) > 0) {
     const newPage = Number(currentDate.getDate()) + Number(page)
@@ -112,7 +112,7 @@ async function RenderProp(product, index) {
     /></Suspense>
 }
 async function List({ items, renderItem }) {
-    const res = await Promise.all(items.map(async (item) => {
+    const res = await Promise.all(items.slice(0, 8).map(async (item) => {
         //console.log('llpoiyt', item.visible)//linked list
         return await renderItem(item);
     }))
@@ -179,17 +179,19 @@ async function Row(props) {
         </li>
     </Suspense>
 }
-let targetPage = { page: 0, data: null, items: [] }
+let targetPage = { page: 0, data: null, items: [], tail: [] }
 const pageProxy = new Proxy(targetPage, {
     get(target, prop) {//async?
         if (prop in target) {
             if (prop === 'items') {
                 console.log('proxy get', prop, target[prop])
-                if (target[prop].length > 8) {
-                    //page increment
-                    target.page = target.page + 1
-                    return target[prop].slice(0, 8);//must be 6
-                }
+                //if (target[prop].length > 8) {
+                //page increment
+                //target.page = target.page + 1
+                //const tail = target[prop].slice(0, 8);//must be 6
+                //target.tail = tail.slice(0, tail.length)
+                //return target[prop]//tail
+                //}
             }
             return target[prop];
         } else {
@@ -248,8 +250,8 @@ console.log(targetArray); // Output: [ 'apple', 'banana', 'orange' ]
 */
 export default async function Home({ searchParams }) {
     const search = await searchParams;
-    //const page = 0//await search.page
-    let [startDate, endDate] = await CalcData()
+    const page = await search.page
+    let [startDate, endDate] = await CalcData(page)
     const viewtype = await search.viewtype
     const action = await search.action
     const col = await search.col
@@ -264,6 +266,7 @@ export default async function Home({ searchParams }) {
         const list = data.near_earth_objects
         const arrObjects22 = Object.values(list)
         const resObj2 = arrObjects22.flat()
+        arrObjects = arrObjects.concat(resObj2)
         //arrObjects.push(resObj2)
         //console.log('llllllooo', resObj2)
         //pageProxy.data = resObj2
@@ -280,11 +283,11 @@ export default async function Home({ searchParams }) {
             //page increment
         }
         else if (action === 'down' || action === 'up') {
-            const respD = await fetch(`${data.links.next}`, { cache: 'force-cache' })
+            /*const respD = await fetch(`${data.links.next}`, { cache: 'force-cache' })
             const dataD = await respD.json()
             const listD = dataD.near_earth_objects
             arrObjects = Object.values(listD)
-            const resObj1 = arrObjects.flat()
+            const resObj1 = arrObjects.flat()*/
             //console.log('arrObjects', resObj1)
             //const obj = resObj1.slice(0, col)
             //arrObjects.push(obj)
@@ -297,7 +300,7 @@ export default async function Home({ searchParams }) {
         //console.log('arrObjects', arrObjects[0])
         //const resObj = arrObjects.flat()
         //console.log('llpaas', pageProxy.items)
-        return <List items={pageProxy.items} renderItem={async (product) => {
+        return <List items={arrObjects} renderItem={async (product) => {
             //console.log('product', product)
             const date = new Date(product.close_approach_data[0].epoch_date_close_approach)
             const prevDate = new Intl.DateTimeFormat("ru-RU", options).format(date);
