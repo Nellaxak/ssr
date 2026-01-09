@@ -53,18 +53,18 @@ function ScrollComponent() {
         if (maxScrollBottom <= 0) {
             //change url page increment
             //change col action
-
-        }
-        const col = Math.ceil(Math.abs(rect.y / rowHeight))
-        //Math.round(Math.abs((item - hh) / hh))
-        //console.log('scroll col', col)
-        if (rect.y < vertical) {
+            const col = Math.ceil(Math.abs(rect.y / rowHeight))
             setStartRow(col)
             setStartAction('down')
+        }
+        //Math.round(Math.abs((item - hh) / hh))
+        //console.log('scroll col', col)
+        /*if (rect.y < vertical) {
+            
         } else {
             setStartRow(col)
             setStartAction('up')
-        }
+        }*/
         vertical = rect.y
         /*setStartRow(Math.min(
             data.length - visibleRows - 1,
