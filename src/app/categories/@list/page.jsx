@@ -192,7 +192,7 @@ const pageProxy = new Proxy(targetPage, {
         }
     },
     async set(target, prop, val) {
-        console.log('proxy set', typeof val)
+        console.log('proxy set', typeof val, val)
         if (typeof val === 'string') {//once action
             if (val !== target[prop]) {//singleton pattern by proxy
                 target[prop] = val;
