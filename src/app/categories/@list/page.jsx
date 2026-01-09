@@ -196,7 +196,7 @@ const pageProxy = new Proxy(targetPage, {
         if (typeof val === 'string') {//once action
             if (val !== target[prop]) {//singleton pattern by proxy
                 target[prop] = val;
-                if (val === 'down') {
+                if (val === 'down' || val === 'start') {
                     target.items.push(...target.data)
                 } else {
 
