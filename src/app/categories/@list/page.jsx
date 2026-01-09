@@ -221,10 +221,11 @@ export default async function Home({ searchParams }) {
 
     if (Number(resp.status) === 200) {
         const data = await resp.json()
+        const list = data.near_earth_objects
+        arrObjects = Object.values(list)
         console.log('llllllooo', data.element_count)
         if ((action === 'start') && (Number(data.element_count) <= 9)) {
-            const list = data.near_earth_objects
-            arrObjects = Object.values(list)
+
 
         } else if (action === 'start' && Number(data.element_count) > 9) {
             const respN = await fetch(`${data.links.next}`, { cache: 'force-cache' })
