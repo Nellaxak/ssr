@@ -192,11 +192,11 @@ const pageProxy = new Proxy(targetPage, {
         }
     },
     async set(target, prop, val) {
-        console.log('proxy set', typeof val, val)
+        console.log('proxy set', val)
         if (typeof val === 'string') {//once action
             if (val !== target[prop]) {//singleton pattern by proxy
                 target[prop] = val;
-                if (val === 'down' || val === 'start') {
+                if ((val === 'down') || (val === 'start')) {
                     target.items.push(...target.data)
                 } else {
 
