@@ -180,20 +180,13 @@ async function Row(props) {
         </li>
     </Suspense>
 }
-let targetPage = { page: 0, data: [], items: [] }
+let targetPage = { page: 0 }
 const pageProxy = new Proxy(targetPage, {
     get(target, prop) {//async?
         if (prop in target) {
-            if (prop === 'items') {
+            /*if (prop === 'items') {
                 console.log('proxy get', prop, target[prop])
-                //if (target[prop].length > 8) {
-                //page increment
-                //target.page = target.page + 1
-                //const tail = target[prop].slice(0, 8);//must be 6
-                //target.tail = tail.slice(0, tail.length)
-                //return target[prop]//tail
-                //}
-            }
+            }*/
             return target[prop];
         } else {
             return -1; // значение по умолчанию
@@ -205,11 +198,40 @@ const pageProxy = new Proxy(targetPage, {
             if (val !== target[prop]) {//singleton pattern by proxy
                 target[prop] = val;
                 //target.items = target.data
-                Reflect.set(target,'items',target.data)
+            //Reflect.set(target,'items',target.data)
                 //target.items.push(...target.data)
-            } else {
+            }/* else {
                 target[prop] = val;
-            }
+            }*/
+        } else {
+            target[prop] = val;
+        }
+        return true
+    }
+})
+//let targetItems = []
+const itemsProxy = new Proxy(pageProxy, {
+    get(target, prop) {//async?
+        if (prop in target) {
+            /*if (prop === 'items') {
+                console.log('proxy get', prop, target[prop])
+            }*/
+            return target[prop];
+        } else {
+            return -1; // значение по умолчанию
+        }
+    },
+    async set(target, prop, val) {
+        console.log('proxy set', val)
+        if (typeof val === 'number') {//once page
+            if (val !== target[prop]) {//singleton pattern by proxy
+                target[prop] = val;
+                //target.items = target.data
+            //Reflect.set(target,'items',target.data)
+                //target.items.push(...target.data)
+            }/* else {
+                target[prop] = val;
+            }*/
         } else {
             target[prop] = val;
         }
@@ -253,6 +275,7 @@ proxyArray.push('orange');
 console.log(proxyArray); // Output: [ 'apple', 'banana', 'orange' ]
 console.log(targetArray); // Output: [ 'apple', 'banana', 'orange' ]
 */
+const single=new Map()
 export default async function Home({ searchParams }) {
     const search = await searchParams;
     const page = await search.page
@@ -275,9 +298,10 @@ export default async function Home({ searchParams }) {
         //arrObjects = arrObjects.concat()
         //arrObjects.push(...resObj2)//double//wrapped proxy
         //console.log('llllllooo', resObj2)
-        pageProxy.data = resObj2
-        pageProxy.page = Number(page)
-        return <List items={pageProxy.items} col={col} renderItem={async (product) => {
+        //pageProxy.data = resObj2
+        //pageProxy.page = Number(page)
+        single.set(page,resObj2)
+        return <List items={single.get(page)} col={col} renderItem={async (product) => {
             //console.log('product', product)
             const date = new Date(product.close_approach_data[0].epoch_date_close_approach)
             const prevDate = new Intl.DateTimeFormat("ru-RU", options).format(date);
