@@ -268,7 +268,8 @@ export default async function Home({ searchParams }) {
             const list = data.near_earth_objects
             const arrObjects22 = Object.values(list)
             const resObj2 = arrObjects22.flat()
-            arrObjects = arrObjects.concat(resObj2)//double//wrapped proxy
+            //arrObjects = 
+            arrObjects.push(...resObj2)//double//wrapped proxy
             //arrObjects.push(resObj2)
             //console.log('llllllooo', resObj2)
             //pageProxy.data = resObj2
