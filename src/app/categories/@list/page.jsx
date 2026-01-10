@@ -198,7 +198,7 @@ const pageProxy = new Proxy(targetPage, {
             if (val !== target[prop]) {//singleton pattern by proxy
                 target[prop] = val;
                 //target.items = target.data
-            //Reflect.set(target,'items',target.data)
+                //Reflect.set(target,'items',target.data)
                 //target.items.push(...target.data)
             }/* else {
                 target[prop] = val;
@@ -227,7 +227,7 @@ const itemsProxy = new Proxy(pageProxy, {
             if (val !== target[prop]) {//singleton pattern by proxy
                 target[prop] = val;
                 //target.items = target.data
-            //Reflect.set(target,'items',target.data)
+                //Reflect.set(target,'items',target.data)
                 //target.items.push(...target.data)
             }/* else {
                 target[prop] = val;
@@ -275,7 +275,7 @@ proxyArray.push('orange');
 console.log(proxyArray); // Output: [ 'apple', 'banana', 'orange' ]
 console.log(targetArray); // Output: [ 'apple', 'banana', 'orange' ]
 */
-const single=new Map()
+const single = new Map()
 export default async function Home({ searchParams }) {
     const search = await searchParams;
     const page = await search.page
@@ -300,7 +300,13 @@ export default async function Home({ searchParams }) {
         //console.log('llllllooo', resObj2)
         //pageProxy.data = resObj2
         //pageProxy.page = Number(page)
-        single.set(page,resObj2)
+        if (Number(page) > 0) {
+            const prev = single.get(page - 1)
+            const result = resObj2.concat(prev)
+            single.set(page, result)
+        } else {
+            single.set(page, resObj2)
+        }
         return <List items={single.get(page)} col={col} renderItem={async (product) => {
             //console.log('product', product)
             const date = new Date(product.close_approach_data[0].epoch_date_close_approach)
