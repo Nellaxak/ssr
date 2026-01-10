@@ -204,7 +204,7 @@ const pageProxy = new Proxy(targetPage, {
         if (typeof val === 'number') {//once page
             if (val !== target[prop]) {//singleton pattern by proxy
                 target[prop] = val;
-                target.items.push = target.data
+                target.items = target.data
                 //Reflect.set(target,'items',...target.data)
                 //target.items.push(...target.data)
             } else {
