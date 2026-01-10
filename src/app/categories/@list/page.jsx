@@ -302,7 +302,7 @@ export default async function Home({ searchParams }) {
             //console.log('arrObjects', arrObjects[0])
             //const resObj = arrObjects.flat()
             //console.log('llpaas', pageProxy.items)
-            return <List items={arrObjects} col={col} renderItem={async (product) => {
+            return <List items={pageProxy.items} col={col} renderItem={async (product) => {
                 //console.log('product', product)
                 const date = new Date(product.close_approach_data[0].epoch_date_close_approach)
                 const prevDate = new Intl.DateTimeFormat("ru-RU", options).format(date);
