@@ -267,13 +267,12 @@ export default async function Home({ searchParams }) {
             console.log('count', data.element_count)
             const list = data.near_earth_objects
             const arrObjects22 = Object.values(list)
-            const resObj2 = arrObjects22.flat()
-            //arrObjects = 
-            arrObjects.push(...resObj2)//double//wrapped proxy
-            //arrObjects.push(resObj2)
+            const resObj2 = arrObjects22.flat(resObj2)
+            //arrObjects = arrObjects.concat()
+            //arrObjects.push(...resObj2)//double//wrapped proxy
             //console.log('llllllooo', resObj2)
-            //pageProxy.data = resObj2
-            //pageProxy.page = Number(page)
+            pageProxy.data = resObj2
+            pageProxy.page = Number(page)
 
             if ((action === 'start') && (Number(data.element_count) <= 9)) {
 
