@@ -279,6 +279,7 @@ const single = new Map()
 export default async function Home({ searchParams }) {
     const search = await searchParams;
     const page = await search.page
+    console.log('n,mkmkmk', typeof page)
     let [startDate, endDate] = await CalcData(page)
     const viewtype = await search.viewtype
     const action = await search.action
@@ -295,8 +296,6 @@ export default async function Home({ searchParams }) {
         const list = data.near_earth_objects
         const arrObjects22 = Object.values(list)
         const resObj2 = arrObjects22.flat()
-        //arrObjects = arrObjects.concat()
-        //arrObjects.push(...resObj2)//double//wrapped proxy
         //console.log('llllllooo', resObj2)
         //pageProxy.data = resObj2
         //pageProxy.page = Number(page)
