@@ -180,7 +180,7 @@ async function Row(props) {
         </li>
     </Suspense>
 }
-let targetPage = { page: 0, data: null, items: [] }
+let targetPage = { page: 0, data: [], items: [] }
 const pageProxy = new Proxy(targetPage, {
     get(target, prop) {//async?
         if (prop in target) {
@@ -204,7 +204,8 @@ const pageProxy = new Proxy(targetPage, {
         if (typeof val === 'number') {//once page
             if (val !== target[prop]) {//singleton pattern by proxy
                 target[prop] = val;
-                Reflect.set(target,'items',...target.data)
+                target.items.push = target.data
+                //Reflect.set(target,'items',...target.data)
                 //target.items.push(...target.data)
             } else {
                 target[prop] = val;
