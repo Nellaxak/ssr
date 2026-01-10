@@ -180,7 +180,7 @@ async function Row(props) {
         </li>
     </Suspense>
 }
-let targetPage = { page: 0, data: null, items: [], tail: [] }
+let targetPage = { page: 0, data: null, items: [] }
 const pageProxy = new Proxy(targetPage, {
     get(target, prop) {//async?
         if (prop in target) {
@@ -256,72 +256,43 @@ export default async function Home({ searchParams }) {
     const viewtype = await search.viewtype
     const action = await search.action
     const col = await search.col
-    try {
-        const resp = await fetch(`https://api.nasa.gov/neo/rest/v1/feed?start_date=${startDate}&end_date=${endDate}&api_key=3wa5hHgFuqhf6XiefvqzkcDQWZ01aOOK4vNZEXsP`,
-            { cache: 'force-cache' },
-            { next: { tags: ['items'] } }
-        );
+    //try {
+    const resp = await fetch(`https://api.nasa.gov/neo/rest/v1/feed?start_date=${startDate}&end_date=${endDate}&api_key=3wa5hHgFuqhf6XiefvqzkcDQWZ01aOOK4vNZEXsP`,
+        { cache: 'force-cache' },
+        { next: { tags: ['items'] } }
+    );
 
-        if (Number(resp.status) === 200) {
-            const data = await resp.json()
-            console.log('count', data.element_count)
-            const list = data.near_earth_objects
-            const arrObjects22 = Object.values(list)
-            const resObj2 = arrObjects22.flat(resObj2)
-            //arrObjects = arrObjects.concat()
-            //arrObjects.push(...resObj2)//double//wrapped proxy
-            //console.log('llllllooo', resObj2)
-            pageProxy.data = resObj2
-            pageProxy.page = Number(page)
+    if (Number(resp.status) === 200) {
+        const data = await resp.json()
+        console.log('count', data.element_count)
+        const list = data.near_earth_objects
+        const arrObjects22 = Object.values(list)
+        const resObj2 = arrObjects22.flat()
+        //arrObjects = arrObjects.concat()
+        //arrObjects.push(...resObj2)//double//wrapped proxy
+        //console.log('llllllooo', resObj2)
+        pageProxy.data = resObj2
+        pageProxy.page = Number(page)
+        return <List items={pageProxy.items} col={col} renderItem={async (product) => {
+            //console.log('product', product)
+            const date = new Date(product.close_approach_data[0].epoch_date_close_approach)
+            const prevDate = new Intl.DateTimeFormat("ru-RU", options).format(date);
+            const datSlice = prevDate.slice(0, -2)
+            const dateString = datSlice.replace('.', '');
 
-            if ((action === 'start') && (Number(data.element_count) <= 9)) {
-
-
-            } else if (action === 'start' && Number(data.element_count) > 9) {
-                /*const respN = await fetch(`${data.links.next}`, { cache: 'force-cache' })
-                const dataN = await respN.json()
-                const listN = dataN.near_earth_objects
-                arrObjects = Object.values(listN)*/
-                //page increment
-            }
-            else if (action === 'down' || action === 'up') {
-                /*const respD = await fetch(`${data.links.next}`, { cache: 'force-cache' })
-                const dataD = await respD.json()
-                const listD = dataD.near_earth_objects
-                arrObjects = Object.values(listD)
-                const resObj1 = arrObjects.flat()*/
-                //console.log('arrObjects', resObj1)
-                //const obj = resObj1.slice(0, col)
-                //arrObjects.push(obj)
-                //pageProxy.data = obj
-                //pageProxy.action = action
-                //delete up items
-            }
-            /*pageProxy.data = data.links
-            pageProxy.page = Number(page)*/
-            //console.log('arrObjects', arrObjects[0])
-            //const resObj = arrObjects.flat()
-            //console.log('llpaas', pageProxy.items)
-            return <List items={pageProxy.items} col={col} renderItem={async (product) => {
-                //console.log('product', product)
-                const date = new Date(product.close_approach_data[0].epoch_date_close_approach)
-                const prevDate = new Intl.DateTimeFormat("ru-RU", options).format(date);
-                const datSlice = prevDate.slice(0, -2)
-                const dateString = datSlice.replace('.', '');
-
-                //new Item(Number(product.id))
-                return <Suspense><Row
-                    key={product.id}
-                    obj={product}
-                    viewtype={viewtype}
-                    dates={dateString}
-                /></Suspense>
-            }} />
-        } else {
-            console.log('resp', resp.status)
-        }
+            //new Item(Number(product.id))
+            return <Suspense><Row
+                key={product.id}
+                obj={product}
+                viewtype={viewtype}
+                dates={dateString}
+            /></Suspense>
+        }} />
+    } else {
+        console.log('resp', resp.status)
     }
+    /*}
     catch (err) {
         console.log(err)
-    }
+    }*/
 }
