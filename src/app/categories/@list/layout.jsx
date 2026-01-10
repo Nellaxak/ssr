@@ -4,12 +4,13 @@ import styles from "./page.module.css";
 
 //const inter = Inter({ subsets: ['latin'] })
 export default async function Layout({
-    children, 
+    children,
     searchParams,
 }/*: {
   children: React.ReactNode,
 }*/) {
-    const promiseParams = await searchParams;
+    //const promiseParams = await searchParams;
+    //console.log('promiseParams layout', searchParams, promiseParams)
     const viewtype = 'main'//await promiseParams.viewtype
     //const page = await promiseParams.page
     return (<Suspense>
@@ -25,5 +26,5 @@ export default async function Layout({
                 </nav></header> :
                 <h6 className={styles.h6}>Заказ отправлен!</h6>}
             <ol className={styles.row}>{children}</ol></main>
-            <div id='vs'></div></Suspense>)
+        </Suspense>)
 }

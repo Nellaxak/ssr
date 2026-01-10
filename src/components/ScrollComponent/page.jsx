@@ -28,7 +28,7 @@ let page = 0
 let myProps
 let vertical = 0
 //let start=0
-let visibleRows = 6
+let visibleRows = 8//must be 6
 let rowHeight = 85
 function ScrollComponent() {
     //ref = useRef()
@@ -39,6 +39,9 @@ function ScrollComponent() {
     const [startRow, setStartRow] = useState(0)
     const [startAction, setStartAction] = useState('start')
     const [page, setPage] = useState(0)
+    function getBottomHeight() {
+        return rowHeight * startRow //* (startRow + visibleRows + 1);
+    }
     const handleScroll = useCallback(async (e) => {
         //console.log('target', e.target)
         //console.log('scrollend')
@@ -78,20 +81,21 @@ function ScrollComponent() {
     useEffect(() => {
         //scrollEnd({ action: startAction, col: startRow })
         router.push(`?viewtype=${currentViewtype}&page=${page}&action=${startAction}&col=${startRow}`, { scroll: false });
-    }, [startRow, startAction,page])
+        //const elem = document.querySelector('#vs')
+        //85*8=680
+        //elem.style.height = "200px";
+    }, [startRow, startAction, page])
     useEffect(() => {
         //find first li , get Height
-        //const elem = document.querySelector('#header')
-
-
         document.addEventListener('scrollend', handleScroll)
         return () => {
             document.removeEventListener('scrollend', handleScroll)
         };
     }, [])
-    return (<p>
+    return (<div>
+        <div style={{ height: getBottomHeight() }}></div>
         <span className={isPending ? 'loader' : ''}></span>
-    </p>)
+    </div>)
     // }
 }
 export default ScrollComponent
