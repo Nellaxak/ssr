@@ -205,13 +205,15 @@ const pageProxy = new Proxy(targetPage, {
             if (val !== target[prop]) {//singleton pattern by proxy
                 target[prop] = val;
                 //target.items = target.data
-                Reflect.set(target,'items',target.data)
-                //target.items.push(...target.data)
+                //Reflect.set(target,'items',target.data)
+                target.items.push(...target.data)
             } else {
                 target[prop] = val;
             }
-            return true
+        } else {
+            target[prop] = val;
         }
+        return true
     }
 })
 let arrObjects = []
