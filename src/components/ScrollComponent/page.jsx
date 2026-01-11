@@ -15,6 +15,7 @@ import dynamic from 'next/dynamic'
 let isPending = false
 let vertical = 0
 let rowHeight = 85
+let visibleRows = 8
 function ScrollComponent() {
     //ref = useRef()
     const router = useRouter()
@@ -24,8 +25,10 @@ function ScrollComponent() {
     const [startRow, setStartRow] = useState(0)
     const [startAction, setStartAction] = useState('start')
     const [page, setPage] = useState(0)
+    const dataLength = scrollEnd()
     function getBottomHeight() {
-        return rowHeight * startRow //* (startRow + visibleRows + 1);
+        //return rowHeight * startRow //* (startRow + visibleRows + 1);
+        return rowHeight * (dataLength - (startRow + visibleRows + 1))
     }
     const handleScroll = useCallback(async (e) => {
         const elem = document.querySelector('#header')
@@ -57,7 +60,7 @@ function ScrollComponent() {
         };
     }, [])
     return (<div>
-        <div style={{ height: '80px' }}></div>
+        <div style={{ height: getBottomHeight() }}></div>
         <span className={isPending ? 'loader' : ''}></span>
     </div>)
     // }

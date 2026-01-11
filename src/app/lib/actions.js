@@ -1,6 +1,8 @@
 'use server'
 import { revalidateTag } from 'next/cache';
 import Item from '../Item';
+import DataLength from '../DataLength';
+
 import LinkedList, { linkedList } from '../LinkedList'
 import HFSM from '../HFSM'
 
@@ -93,7 +95,7 @@ export async function scrollEnd(params) {
     console.log('scrollend', params)
     //statusMap.set(id, !statusMap.get(id))
     //revalidateTag('items', 'max')
-    //return item.status
+    return DataLength.count
 }
 export async function toggleClick(params) {
     const id = Number(params)

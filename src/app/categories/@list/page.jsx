@@ -5,6 +5,8 @@ import statusMap from "../../statusMap";
 import ButtonSubmit from '../../../components/ButtonSubmit/page'
 //import LinkedList, { linkedList } from "../../../LinkedList";
 import Item from "../../Item";
+import DataLength from "../../DataLength";
+
 import dll from "../../DoublyLinkedList";
 //import { createLinkedListInstance } from '../../../lib/actions'
 
@@ -211,8 +213,8 @@ export default async function Home({ searchParams }) {
             single.set(Number(page), resObj2)
         }
         const data_items = single.get(Number(page))
-        //data_length={data_items.length}
-        return <List items={data_items} col={Number(col)} 
+        DataLength.count = data_items.length
+        return <List items={data_items} col={Number(col)}
             renderItem={async (product) => {
                 //console.log('product', product)
                 const date = new Date(product.close_approach_data[0].epoch_date_close_approach)
