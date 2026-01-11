@@ -15,23 +15,29 @@ import dynamic from 'next/dynamic'
 let isPending = false
 let vertical = 0
 let rowHeight = 85
-function ScrollComponent() {
+function ScrollComponentTop() {
     //ref = useRef()
     const router = useRouter()
     const searchParams = useSearchParams()
-    //const currentPage = searchParams.get('page')
+    const currentPage = searchParams.get('page')
     const currentViewtype = searchParams.get('viewtype')
     const [startRow, setStartRow] = useState(0)
     const [startAction, setStartAction] = useState('start')
     const [page, setPage] = useState(0)
-    function getBottomHeight() {
-        return rowHeight * startRow //* (startRow + visibleRows + 1);
+    function getTopHeight() {
+        return rowHeight * start;
     }
     const handleScroll = useCallback(async (e) => {
+        //console.log('target', e.target)
+        //console.log('scrollend')
         const elem = document.querySelector('#header')
         const rect = elem.getBoundingClientRect()
+        //const hh = rect.height
+        //console.log('scrollend', rect, vertical, rect.y < vertical)
+        //let item = Math.abs(rect.y - vertical)
+        //console.log('abs', item, hh)
         let maxScrollBottom = document.documentElement.scrollHeight - window.scrollY - window.innerHeight;
-        //console.log('maxScrollBottom', maxScrollBottom)
+        console.log('maxScrollBottom', maxScrollBottom)
         if (maxScrollBottom <= 0) {
             //change url page increment
             //change col action
@@ -43,7 +49,19 @@ function ScrollComponent() {
             setStartRow(col)
             setStartAction('down')
         }
+        //Math.round(Math.abs((item - hh) / hh))
+        //console.log('scroll col', col)
+        /*if (rect.y < vertical) {
+            
+        } else {
+            setStartRow(col)
+            setStartAction('up')
+        }*/
         vertical = rect.y
+        /*setStartRow(Math.min(
+            data.length - visibleRows - 1,
+            Math.floor(e.target.scrollTop / rowHeight)
+        ));*/
     }, [])
     useEffect(() => {
         //scrollEnd({ action: startAction, col: startRow })
@@ -56,11 +74,10 @@ function ScrollComponent() {
             document.removeEventListener('scrollend', handleScroll)
         };
     }, [])
-    //<div style={{ height: getBottomHeight() }}></div>
     return (<div>
-        <span className={isPending ? 'loader' : ''}></span>
+        <div style={{ height: getTopHeight() }}></div>
     </div>)
     // }
 }
-export default ScrollComponent
+export default ScrollComponentTop
 //export default dynamic(() => Promise.resolve(IOComponent), { ssr: false });

@@ -180,101 +180,6 @@ async function Row(props) {
         </li>
     </Suspense>
 }
-let targetPage = { page: 0 }
-const pageProxy = new Proxy(targetPage, {
-    get(target, prop) {//async?
-        if (prop in target) {
-            /*if (prop === 'items') {
-                console.log('proxy get', prop, target[prop])
-            }*/
-            return target[prop];
-        } else {
-            return -1; // значение по умолчанию
-        }
-    },
-    async set(target, prop, val) {
-        console.log('proxy set', val)
-        if (typeof val === 'number') {//once page
-            if (val !== target[prop]) {//singleton pattern by proxy
-                target[prop] = val;
-                //target.items = target.data
-                //Reflect.set(target,'items',target.data)
-                //target.items.push(...target.data)
-            }/* else {
-                target[prop] = val;
-            }*/
-        } else {
-            target[prop] = val;
-        }
-        return true
-    }
-})
-//let targetItems = []
-const itemsProxy = new Proxy(pageProxy, {
-    get(target, prop) {//async?
-        if (prop in target) {
-            /*if (prop === 'items') {
-                console.log('proxy get', prop, target[prop])
-            }*/
-            return target[prop];
-        } else {
-            return -1; // значение по умолчанию
-        }
-    },
-    async set(target, prop, val) {
-        console.log('proxy set', val)
-        if (typeof val === 'number') {//once page
-            if (val !== target[prop]) {//singleton pattern by proxy
-                target[prop] = val;
-                //target.items = target.data
-                //Reflect.set(target,'items',target.data)
-                //target.items.push(...target.data)
-            }/* else {
-                target[prop] = val;
-            }*/
-        } else {
-            target[prop] = val;
-        }
-        return true
-    }
-})
-let arrObjects = []
-const targetArray = [];
-
-const uniquePushHandler = {
-    get: function (target, prop, receiver) {
-        if (prop === 'push') {
-            // Return a new function that acts as the custom 'push' method
-            return function (...args) {
-                let itemsAdded = 0;
-                for (const item of args) {
-                    // Check if the item already exists in the array
-                    if (!target.includes(item)) {
-                        // Use Reflect.apply to call the original push method safely
-                        // or simply call target.push(item)
-                        Reflect.apply(target.push, target, [item]);
-                        itemsAdded++;
-                    }
-                }
-                // Return the new length of the array, consistent with the native push method
-                return target.length;
-            };
-        }
-        // Use Reflect for all other properties to maintain default behavior
-        return Reflect.get(target, prop, receiver);
-    }
-};
-
-//const proxyArray = new Proxy(targetArray, uniquePushHandler);
-
-// Test cases
-/*proxyArray.push('apple');
-proxyArray.push('banana', 'apple'); // 'apple' is a duplicate, so only 'banana' is added
-proxyArray.push('orange');
-
-console.log(proxyArray); // Output: [ 'apple', 'banana', 'orange' ]
-console.log(targetArray); // Output: [ 'apple', 'banana', 'orange' ]
-*/
 const single = new Map()
 let result = []
 export default async function Home({ searchParams }) {
@@ -297,33 +202,32 @@ export default async function Home({ searchParams }) {
         const list = data.near_earth_objects
         const arrObjects22 = Object.values(list)
         const resObj2 = arrObjects22.flat()
-        //console.log('llllllooo', resObj2)
-        //pageProxy.data = resObj2
-        //pageProxy.page = Number(page)
         if (Number(page) > 0) {
             const prev = single.get(Number(page) - 1)
-            //console.log('prev', Array.isArray(resObj2), Array.isArray(prev))
             result = result.concat(prev, resObj2)
-            console.log('result', result)
+            //console.log('result', result)
             single.set(Number(page), result)
         } else {
             single.set(Number(page), resObj2)
         }
-        return <List items={single.get(Number(page))} col={Number(col)} renderItem={async (product) => {
-            //console.log('product', product)
-            const date = new Date(product.close_approach_data[0].epoch_date_close_approach)
-            const prevDate = new Intl.DateTimeFormat("ru-RU", options).format(date);
-            const datSlice = prevDate.slice(0, -2)
-            const dateString = datSlice.replace('.', '');
+        const data_items = single.get(Number(page))
+        //data_length={data_items.length}
+        return <List items={data_items} col={Number(col)} 
+            renderItem={async (product) => {
+                //console.log('product', product)
+                const date = new Date(product.close_approach_data[0].epoch_date_close_approach)
+                const prevDate = new Intl.DateTimeFormat("ru-RU", options).format(date);
+                const datSlice = prevDate.slice(0, -2)
+                const dateString = datSlice.replace('.', '');
 
-            //new Item(Number(product.id))
-            return <Suspense><Row
-                key={product.id}
-                obj={product}
-                viewtype={viewtype}
-                dates={dateString}
-            /></Suspense>
-        }} />
+                //new Item(Number(product.id))
+                return <Suspense><Row
+                    key={product.id}
+                    obj={product}
+                    viewtype={viewtype}
+                    dates={dateString}
+                /></Suspense>
+            }} />
     } else {
         console.log('resp', resp.status)
     }
