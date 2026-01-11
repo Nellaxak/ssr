@@ -47,7 +47,7 @@ function ScrollComponent() {
     }, [])
     useEffect(() => {
         //scrollEnd({ action: startAction, col: startRow })
-        router.push(`?viewtype=${currentViewtype}&page=${page}&action=${startAction}&col=${startRow}`, { scroll: false });
+        router.push(`?viewtype=${currentViewtype}&page=${page}&action=${startAction}&col=${startRow}`, { scroll: true });
     }, [startRow, startAction, page])
     useEffect(() => {
         //find first li , get Height
