@@ -47,7 +47,7 @@ function ScrollComponent() {
     }, [])
     useEffect(() => {
         //scrollEnd({ action: startAction, col: startRow })
-        router.push(`?viewtype=${currentViewtype}&page=${page}&action=${startAction}&col=${startRow}`, { scroll: true });
+        router.push(`?viewtype=${currentViewtype}&page=${page}&action=${startAction}&col=${startRow}`, { scroll: false });
     }, [startRow, startAction, page])
     useEffect(() => {
         //find first li , get Height
@@ -56,8 +56,8 @@ function ScrollComponent() {
             document.removeEventListener('scrollend', handleScroll)
         };
     }, [])
-    //<div style={{ height: getBottomHeight() }}></div>
     return (<div>
+        <div style={{ height: '80px' }}></div>
         <span className={isPending ? 'loader' : ''}></span>
     </div>)
     // }
