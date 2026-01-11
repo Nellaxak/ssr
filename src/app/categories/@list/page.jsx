@@ -307,7 +307,7 @@ export default async function Home({ searchParams }) {
         } else {
             single.set(Number(page), resObj2)
         }
-        return <List items={single.get(Number(page))} col={col} renderItem={async (product) => {
+        return <List items={single.get(Number(page))} col={Number(col)} renderItem={async (product) => {
             //console.log('product', product)
             const date = new Date(product.close_approach_data[0].epoch_date_close_approach)
             const prevDate = new Intl.DateTimeFormat("ru-RU", options).format(date);
