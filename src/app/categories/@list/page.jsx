@@ -300,11 +300,11 @@ export default async function Home({ searchParams }) {
         //pageProxy.data = resObj2
         //pageProxy.page = Number(page)
         if (Number(page) > 0) {
-            const prev = single.get(page - 1)
+            const prev = single.get(Number(page) - 1)
             const result = resObj2.concat(prev)
-            single.set(page, result)
+            single.set(Number(page), result)
         } else {
-            single.set(page, resObj2)
+            single.set(Number(page), resObj2)
         }
         return <List items={single.get(page)} col={col} renderItem={async (product) => {
             //console.log('product', product)
