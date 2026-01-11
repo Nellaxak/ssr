@@ -301,6 +301,7 @@ export default async function Home({ searchParams }) {
         //pageProxy.page = Number(page)
         if (Number(page) > 0) {
             const prev = single.get(Number(page) - 1)
+            console.log('prev', prev)
             const result = resObj2.concat(prev)
             single.set(Number(page), result)
         } else {
