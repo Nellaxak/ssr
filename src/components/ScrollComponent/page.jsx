@@ -26,6 +26,7 @@ function ScrollComponent() {
     const [startAction, setStartAction] = useState('start')
     const [page, setPage] = useState(0)
     const dataLength = scrollEnd()
+    console.log('dataLength', dataLength)
     function getBottomHeight() {
         //return rowHeight * startRow //* (startRow + visibleRows + 1);
         return rowHeight * (dataLength - (startRow + visibleRows + 1))
