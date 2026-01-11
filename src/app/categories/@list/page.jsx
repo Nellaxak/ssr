@@ -265,7 +265,7 @@ const uniquePushHandler = {
     }
 };
 
-const proxyArray = new Proxy(targetArray, uniquePushHandler);
+//const proxyArray = new Proxy(targetArray, uniquePushHandler);
 
 // Test cases
 /*proxyArray.push('apple');
@@ -303,6 +303,7 @@ export default async function Home({ searchParams }) {
             const prev = single.get(Number(page) - 1)
             console.log('prev', prev)
             const result = resObj2.concat(prev)
+            console.log('result',result)
             single.set(Number(page), result)
         } else {
             single.set(Number(page), resObj2)
