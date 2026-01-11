@@ -276,7 +276,7 @@ console.log(proxyArray); // Output: [ 'apple', 'banana', 'orange' ]
 console.log(targetArray); // Output: [ 'apple', 'banana', 'orange' ]
 */
 const single = new Map()
-let resObj2
+let result
 export default async function Home({ searchParams }) {
     const search = await searchParams;
     const page = await search.page
@@ -296,14 +296,14 @@ export default async function Home({ searchParams }) {
         console.log('count', data.element_count)
         const list = data.near_earth_objects
         const arrObjects22 = Object.values(list)
-        resObj2 = arrObjects22.flat()
+        const resObj2 = arrObjects22.flat()
         //console.log('llllllooo', resObj2)
         //pageProxy.data = resObj2
         //pageProxy.page = Number(page)
         if (Number(page) > 0) {
             const prev = single.get(Number(page) - 1)
             console.log('prev', prev)
-            const result = resObj2.concat(prev)
+            result = result.concat(resObj2, prev)
             console.log('result', result)
             single.set(Number(page), result)
         } else {
