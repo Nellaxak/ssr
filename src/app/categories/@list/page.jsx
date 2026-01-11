@@ -279,7 +279,7 @@ const single = new Map()
 export default async function Home({ searchParams }) {
     const search = await searchParams;
     const page = await search.page
-    console.log('n,mkmkmk', typeof page)
+    //console.log('n,mkmkmk', typeof page)
     let [startDate, endDate] = await CalcData(page)
     const viewtype = await search.viewtype
     const action = await search.action
@@ -307,7 +307,7 @@ export default async function Home({ searchParams }) {
         } else {
             single.set(Number(page), resObj2)
         }
-        return <List items={single.get(page)} col={col} renderItem={async (product) => {
+        return <List items={single.get(Number(page))} col={col} renderItem={async (product) => {
             //console.log('product', product)
             const date = new Date(product.close_approach_data[0].epoch_date_close_approach)
             const prevDate = new Intl.DateTimeFormat("ru-RU", options).format(date);
