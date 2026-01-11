@@ -276,7 +276,7 @@ console.log(proxyArray); // Output: [ 'apple', 'banana', 'orange' ]
 console.log(targetArray); // Output: [ 'apple', 'banana', 'orange' ]
 */
 const single = new Map()
-let result
+let result = []
 export default async function Home({ searchParams }) {
     const search = await searchParams;
     const page = await search.page
