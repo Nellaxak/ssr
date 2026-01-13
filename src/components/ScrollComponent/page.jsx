@@ -25,8 +25,8 @@ function ScrollComponent() {
     const [startRow, setStartRow] = useState(0)
     const [startAction, setStartAction] = useState('start')
     const [page, setPage] = useState(0)
-    const dataLength = scrollEnd()
-    console.log('dataLength', dataLength)
+    //const [page, setPage] = useState(0)
+
     function getBottomHeight() {
         //return rowHeight * startRow //* (startRow + visibleRows + 1);
         return rowHeight * (dataLength - (startRow + visibleRows + 1))
@@ -51,6 +51,12 @@ function ScrollComponent() {
     }, [])
     useEffect(() => {
         //scrollEnd({ action: startAction, col: startRow })
+        (async () => {
+            // Your async logic here
+            const dataLength = await scrollEnd()
+            console.log('dataLength', dataLength)
+            // Update state, etc.
+        })();
         router.push(`?viewtype=${currentViewtype}&page=${page}&action=${startAction}&col=${startRow}`, { scroll: false });
     }, [startRow, startAction, page])
     useEffect(() => {
