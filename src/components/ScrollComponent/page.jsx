@@ -29,6 +29,7 @@ function ScrollComponent() {
 
     function getBottomHeight() {
         //return rowHeight * startRow //* (startRow + visibleRows + 1);
+        console.log('usestate',dataLength)
         return rowHeight * (dataLength - (startRow + visibleRows + 1))
     }
     const handleScroll = useCallback(async (e) => {
@@ -53,8 +54,8 @@ function ScrollComponent() {
         //scrollEnd({ action: startAction, col: startRow })
         (async () => {
             // Your async logic here
-            const dataLength = await scrollEnd()
-            setDataLength(dataLength)
+            const dataLength1 = await scrollEnd()
+            setDataLength(dataLength1)
             //console.log('dataLength', dataLength)
             // Update state, etc.
         })();

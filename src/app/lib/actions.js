@@ -92,7 +92,7 @@ export async function scrollEnd(params) {
     //const item = instanceItem.get(id)
     //const item = Item.arrObj.get(id)
     //await item.setStatus()
-    console.log('scrollend', params)
+    console.log('scrollend', DataLength.count)
     //statusMap.set(id, !statusMap.get(id))
     //revalidateTag('items', 'max')
     return DataLength.count
