@@ -3,7 +3,7 @@ import { useRouter, useParams, useSearchParams } from 'next/navigation';
 import { useCallback, useEffect, useRef, useState, useTransition, Suspense } from "react";
 //import { buttonIO } from "@/app/actions/IntersectionButton";
 import { scrollEnd } from '../../app/lib/actions'
-//import styles from "./page.module.css";
+import styles from "./page.module.css";
 
 //import { throttle } from 'lodash';
 //import io from 'socket.io-client';
