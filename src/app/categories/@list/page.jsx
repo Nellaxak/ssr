@@ -185,6 +185,7 @@ async function Row(props) {
 }
 const single = new Map()
 let result = []
+let data_items=[]
 export default async function Home({ searchParams }) {
     const search = await searchParams;
     const page = await search.page
@@ -213,7 +214,7 @@ export default async function Home({ searchParams }) {
         } else {
             single.set(Number(page), resObj2)
         }
-        const data_items = single.get(Number(page))
+        data_items = single.get(Number(page))
         DataLength.count = data_items.length
         return <List items={data_items} col={Number(col)}
             renderItem={async (product) => {
