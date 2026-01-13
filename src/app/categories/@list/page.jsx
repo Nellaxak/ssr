@@ -116,7 +116,7 @@ async function RenderProp(product, index) {
 async function List({ items, col, renderItem }) {
     //slice -1,-5?scroll up
     //slice must be 6
-    const res = await Promise.all(items.slice(col, col + 8).map(async (item) => {
+    const res = await Promise.all(items.slice(col, col + 6).map(async (item) => {
         //console.log('llpoiyt', item.visible)//linked list
         return await renderItem(item);
     }))
