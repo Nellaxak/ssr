@@ -16,7 +16,7 @@ let isPending = false
 let vertical = 0
 let rowHeight = 85
 let visibleRows = 8
-async function ScrollComponent() {
+function ScrollComponent() {
     //ref = useRef()
     const router = useRouter()
     const searchParams = useSearchParams()
@@ -25,7 +25,7 @@ async function ScrollComponent() {
     const [startRow, setStartRow] = useState(0)
     const [startAction, setStartAction] = useState('start')
     const [page, setPage] = useState(0)
-    const dataLength = await scrollEnd()
+    const dataLength = scrollEnd()
     console.log('dataLength', dataLength)
     function getBottomHeight() {
         //return rowHeight * startRow //* (startRow + visibleRows + 1);
