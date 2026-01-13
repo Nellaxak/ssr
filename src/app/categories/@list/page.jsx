@@ -117,8 +117,10 @@ async function List({ items, col, renderItem }) {
     //slice -1,-5?scroll up
     //slice must be 6
     const res = await Promise.all(items.slice(col, col + 8).map(async (item) => {
-        console.log('llpoiyt', item)//linked list
-        //return await renderItem(item);
+        //console.log('llpoiyt', item)//linked list
+        if (item) {
+            return await renderItem(item);
+        }
     }))
     return (<Suspense>{res}
     </Suspense>)
@@ -185,7 +187,7 @@ async function Row(props) {
 }
 const single = new Map()
 let result = []
-let data_items=[]
+let data_items = []
 export default async function Home({ searchParams }) {
     const search = await searchParams;
     const page = await search.page
