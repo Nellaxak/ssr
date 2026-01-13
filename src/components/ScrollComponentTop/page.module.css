@@ -14,6 +14,7 @@
   display: block;
   grid-area: s;
   height: 10px;
+  background-color: blue;
   animation: fade-in linear forwards;
   animation-timeline: scroll(root);
 }
