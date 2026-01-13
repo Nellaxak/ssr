@@ -87,7 +87,7 @@ export async function pagination(index) {
     //array3.splice(index,1)
     //revalidateTag('items')
 }
-export async function scrollEnd(params) {
+export function scrollEnd(params) {
     //const id = Number(params)
     //const item = instanceItem.get(id)
     //const item = Item.arrObj.get(id)
