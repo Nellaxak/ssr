@@ -115,6 +115,7 @@ async function RenderProp(product, index) {
 }
 async function List({ items, col, renderItem }) {
     //slice -1,-5?scroll up
+    //slice must be 6
     const res = await Promise.all(items.slice(col, col + 8).map(async (item) => {
         //console.log('llpoiyt', item.visible)//linked list
         return await renderItem(item);
@@ -200,7 +201,7 @@ export default async function Home({ searchParams }) {
 
     if (Number(resp.status) === 200) {
         const data = await resp.json()
-        console.log('count', data.element_count)
+        console.log('fetch count', data.element_count)
         const list = data.near_earth_objects
         const arrObjects22 = Object.values(list)
         const resObj2 = arrObjects22.flat()

@@ -29,7 +29,7 @@ function ScrollComponent() {
 
     function getBottomHeight() {
         //return rowHeight * startRow //* (startRow + visibleRows + 1);
-        console.log('usestate',dataLength)
+        console.log('usestate dataLength', dataLength)
         return rowHeight * (dataLength - (startRow + visibleRows + 1))
     }
     const handleScroll = useCallback(async (e) => {

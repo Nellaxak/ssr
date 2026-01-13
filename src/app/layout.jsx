@@ -3,6 +3,8 @@ import { Suspense, createElement } from 'react'
 import dynamic from 'next/dynamic'
 import IOComponent from '../components/IOComponent/page'
 import ScrollComponent from '../components/ScrollComponent/page'
+import ScrollComponentTop from '../components/ScrollComponentTop/page'
+
 import VirtualScrollComponent from '../components/VirtualScrollComponent/page'
 
 //import ToggleHeader from '../components/ToggleHeader/page';
@@ -63,6 +65,8 @@ export default async function Layout(props) {
             <div className={styles.hidden}>
               <Image src={bigImage} alt="Earth" priority />
             </div>
+          <Suspense><ScrollComponentTop /></Suspense>
+
             <Suspense fallback={<span className={'loader'}></span>}>
               {props.children}
             </Suspense>
