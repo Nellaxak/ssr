@@ -77,9 +77,9 @@ function ScrollComponentTop() {
         };
     }, [])
     //style={{ height: getTopHeight() }} 
-    return (<div>
+    return (
         <div className={styles.scroll_top}></div>
-    </div>)
+    )
     // }
 }
 export default ScrollComponentTop
