@@ -3,6 +3,8 @@ import { useRouter, useParams, useSearchParams } from 'next/navigation';
 import { useCallback, useEffect, useRef, useState, useTransition, Suspense } from "react";
 //import { buttonIO } from "@/app/actions/IntersectionButton";
 import { scrollEnd } from '../../app/lib/actions'
+//import styles from "./page.module.css";
+
 //import { throttle } from 'lodash';
 //import io from 'socket.io-client';
 //import {  } from 'next/navigation-types';
@@ -74,8 +76,9 @@ function ScrollComponentTop() {
             document.removeEventListener('scrollend', handleScroll)
         };
     }, [])
+    //style={{ height: getTopHeight() }} 
     return (<div>
-        <div style={{ height: getTopHeight() }}></div>
+        <div className={styles.scroll_top}></div>
     </div>)
     // }
 }
