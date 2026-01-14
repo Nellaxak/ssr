@@ -2,7 +2,7 @@ import styles from "./page.module.css";
 import React, { Suspense, Activity } from "react";
 import statusMap from "../../statusMap";
 //import { revalidateTag, revalidatePath } from 'next/cache';
-import ButtonSubmit from '../../../components/ButtonSubmit/page'
+import ButtonSubmit from '../../../components/ButtonSubmit/page11'
 //import LinkedList, { linkedList } from "../../../LinkedList";
 import Item from "../../Item";
 import DataLength from "../../DataLength";
@@ -116,7 +116,8 @@ async function RenderProp(product, index) {
 async function List({ items, col, renderItem }) {
     //slice -1,-5?scroll up
     //slice must be 6
-    const res = await Promise.all(items.slice(col, col + 10).map(async (item) => {
+    //const res = await Promise.all(items.slice(col, col + 10).map(async (item) => {
+    const res = await Promise.all(items.map(async (item) => {
         //console.log('llpoiyt', item)//linked list
         if (item) {
             return await renderItem(item);
