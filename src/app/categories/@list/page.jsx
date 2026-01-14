@@ -218,7 +218,7 @@ export default async function Home({ searchParams }) {
         }
         data_items = single.get(Number(page))
         await DataLength.setCount(Number(page), data_items.length)
-        return <List items={data_items} col={Number(col)}
+        return <List items={data_items} col={Math.abs(Number(col))}
             renderItem={async (product) => {
                 //console.log('product', product)
                 const date = new Date(product.close_approach_data[0].epoch_date_close_approach)
