@@ -77,8 +77,9 @@ function ScrollComponentTop() {
         };
     }, [])
     //style={{ height: getTopHeight() }} 
+    //className={styles.scroll_top}
     return (
-        <div className={styles.scroll_top} id='scroll_up'></div>
+        <div style={{ height: getTopHeight() }}  id='scroll_up'></div>
     )
     // }
 }
