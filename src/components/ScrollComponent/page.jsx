@@ -34,13 +34,16 @@ function ScrollComponent() {
         if (startAction === 'top' || startAction === 'start') {
             return 0
         }
-        return  rowHeight * Math.abs(startRow)
+        return rowHeight * Math.abs(startRow)
     }, [startRow])
     const handleScroll = useCallback(async (e) => {
         const elem = document.querySelector('#header')
         const rect = elem.getBoundingClientRect()
+        const col = Math.ceil(rect.y / rowHeight)
+        setStartRow(col)
+        setStartAction('down')
         let maxScrollBottom = document.documentElement.scrollHeight - window.scrollY - window.innerHeight;
-        console.log('maxScrollBottom', maxScrollBottom)
+        //console.log('maxScrollBottom', maxScrollBottom)
         if (maxScrollBottom <= 0) {
             //change url page increment
             //change col action
@@ -48,9 +51,7 @@ function ScrollComponent() {
                 let newPage = page + 1
                 return newPage
             })
-            const col = Math.ceil(rect.y / rowHeight)
-            setStartRow(col)
-            setStartAction('down')
+
         }
         vertical = rect.y
     }, [])

@@ -41,18 +41,18 @@ function ScrollComponentTop() {
         //console.log('scrollend', rect, vertical, rect.y < vertical)
         //let item = Math.abs(rect.y - vertical)
         //console.log('abs', item, hh)
+        /*const col = Math.ceil(rect.y / rowHeight)
+        setStartRow(col)
+        setStartAction('down')*/
         let maxScrollBottom = document.documentElement.scrollHeight - window.scrollY - window.innerHeight;
         //console.log('maxScrollBottom', maxScrollBottom)
         if (maxScrollBottom <= 0) {
             //change url page increment
             //change col action
-            setPage((page) => {
+            /*setPage((page) => {
                 let newPage = page + 1
                 return newPage
-            })
-            const col = Math.ceil(rect.y / rowHeight)
-            setStartRow(col)
-            setStartAction('down')
+            })*/
         }
         //Math.round(Math.abs((item - hh) / hh))
         //console.log('scroll col', col)
