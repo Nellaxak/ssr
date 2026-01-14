@@ -2,7 +2,7 @@ import styles from "./page.module.css";
 import React, { Suspense, Activity } from "react";
 import statusMap from "../../statusMap";
 //import { revalidateTag, revalidatePath } from 'next/cache';
-import ButtonSubmit from '../../../components/ButtonSubmit/page11'
+import ButtonSubmit from '../../../components/ButtonSubmit/page'
 //import LinkedList, { linkedList } from "../../../LinkedList";
 import Item from "../../Item";
 import DataLength from "../../DataLength";

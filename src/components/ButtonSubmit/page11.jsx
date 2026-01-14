@@ -46,7 +46,7 @@ function ButtonSubmit(props) {
     }
   }, []);
   useEffect(() => {
-    router.push(`?viewtype=${currentViewtype}&page=${page}&scroll=${page}`, { scroll: false });
+    router.push(`?viewtype=${currentViewtype}&page=${page}`, { scroll: false });
   }, [page])
   useEffect(() => {
     const fetchD = async () => {
