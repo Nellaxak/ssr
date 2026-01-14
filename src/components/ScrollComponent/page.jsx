@@ -34,7 +34,7 @@ function ScrollComponent() {
         if (startAction === 'top' || startAction === 'start') {
             return 0
         }
-        return  rowHeight * Math.max(startRow,0)
+        return  rowHeight * Math.abs(startRow)
     }, [startRow])
     const handleScroll = useCallback(async (e) => {
         const elem = document.querySelector('#header')
