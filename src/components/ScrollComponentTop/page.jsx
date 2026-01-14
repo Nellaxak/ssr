@@ -21,13 +21,16 @@ function ScrollComponentTop() {
     //ref = useRef()
     const router = useRouter()
     const searchParams = useSearchParams()
-    //const currentPage = searchParams.get('page')
+    const currentAction = searchParams.get('action')
     const currentViewtype = searchParams.get('viewtype')
     const [startRow, setStartRow] = useState(0)
     const [startAction, setStartAction] = useState('start')
     const [page, setPage] = useState(0)
     function getTopHeight() {
-        return rowHeight * Math.max(startRow,0);
+        if (currentAction === 'down' || currentAction === 'start') {
+            return 0
+        }
+        return rowHeight * Math.max(startRow, 0);
     }
     const handleScroll = useCallback(async (e) => {
         //console.log('target', e.target)
@@ -79,7 +82,7 @@ function ScrollComponentTop() {
     //style={{ height: getTopHeight() }} 
     //className={styles.scroll_top}
     return (
-        <div style={{ height: getTopHeight() }}  id='scroll_up'></div>
+        <div style={{ height: getTopHeight() }} id='scroll_up'></div>
     )
     // }
 }

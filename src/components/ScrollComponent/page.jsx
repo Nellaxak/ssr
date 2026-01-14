@@ -32,12 +32,12 @@ function ScrollComponent() {
         //console.log('usestate dataLength', dataLength)
         //(rowHeight * (dataLength - (startRow + visibleRows + 1)))
         return  (rowHeight * (Math.max(startRow,0)  + visibleRows + 1))
-    }, [dataLength, startRow])
+    }, [startRow])
     const handleScroll = useCallback(async (e) => {
         const elem = document.querySelector('#header')
         const rect = elem.getBoundingClientRect()
         let maxScrollBottom = document.documentElement.scrollHeight - window.scrollY - window.innerHeight;
-        //console.log('maxScrollBottom', maxScrollBottom)
+        console.log('maxScrollBottom', maxScrollBottom)
         if (maxScrollBottom <= 0) {
             //change url page increment
             //change col action
