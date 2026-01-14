@@ -32,7 +32,7 @@
   @media screen and (orientation: portrait) {
     .hidden {
       overflow: hidden;
-      grid-area: m;
+      grid-area: h;
       height: 100vh;
       position: sticky;
       top: 123px;
@@ -76,7 +76,7 @@
   @media screen and (orientation: landscape) {
     .hidden {
       overflow: hidden;
-      grid-area: m;
+      grid-area: h;
       height: 100vh;
       position: sticky;
       top: 0px;
