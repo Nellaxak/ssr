@@ -2,6 +2,8 @@ import { Suspense, createElement } from 'react'
 //import HeaderTop from '@/components/HeaderTop/page';
 import dynamic from 'next/dynamic'
 import IOComponent from '../components/IOComponent/page'
+import IOComponentLi from '../components/IOComponentLi/page'
+
 import ScrollComponent from '../components/ScrollComponent/page'
 import ScrollComponentTop from '../components/ScrollComponentTop/page'
 
@@ -46,6 +48,8 @@ export default async function Layout(props) {
   //<Suspense><IOComponent /></Suspense>
   //<ScrollComponent />
   //<VirtualScrollComponent>{props.children}</VirtualScrollComponent>
+  //        <Suspense><ScrollComponentTop /></Suspense>
+
   return (
     <html lang="ru">
       <body>
@@ -64,7 +68,6 @@ export default async function Layout(props) {
           <header className={styles.headerToggle}>
             <h6 className={styles.h6}>Ближайшие подлёты астероидов</h6>
           </header>
-          <Suspense><ScrollComponentTop /></Suspense>
           <div className='grid'>
             <div className={styles.hidden}>
               <Image src={bigImage} alt="Earth" priority />
@@ -73,7 +76,7 @@ export default async function Layout(props) {
               {props.children}
             </Suspense>
           </div>
-          <Suspense><ScrollComponent /></Suspense>
+          <Suspense><IOComponentLi /></Suspense>
         </div>
       </body>
     </html >
