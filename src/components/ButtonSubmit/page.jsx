@@ -57,8 +57,8 @@ function ButtonSubmit(props) {
       return () => {
         observer.unobserve(ref.current);
       };
-      fetchD()
     }
+    fetchD()
   }, [])
   //onClick={()=>handleClick()}
   return <button type="button" ref={ref} onClick={handleClick}><Suspense>444444</Suspense></button>
