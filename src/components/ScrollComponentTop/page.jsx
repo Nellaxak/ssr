@@ -27,7 +27,7 @@ function ScrollComponentTop() {
     const [startAction, setStartAction] = useState('start')
     const [page, setPage] = useState(0)
     function getTopHeight() {
-        return currentPage*rowHeight * startRow;
+        return currentPage * rowHeight * startRow;
     }
     const handleScroll = useCallback(async (e) => {
         //console.log('target', e.target)
@@ -39,7 +39,7 @@ function ScrollComponentTop() {
         //let item = Math.abs(rect.y - vertical)
         //console.log('abs', item, hh)
         let maxScrollBottom = document.documentElement.scrollHeight - window.scrollY - window.innerHeight;
-        console.log('maxScrollBottom', maxScrollBottom)
+        //console.log('maxScrollBottom', maxScrollBottom)
         if (maxScrollBottom <= 0) {
             //change url page increment
             //change col action

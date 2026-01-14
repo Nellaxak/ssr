@@ -29,14 +29,15 @@ function ScrollComponent() {
 
     const getBottomHeight = useCallback(() => {
         //return rowHeight * startRow //* (startRow + visibleRows + 1);
-        console.log('usestate dataLength', dataLength)
-        return currentPage * (rowHeight * (dataLength - (startRow + visibleRows + 1)))
+        //console.log('usestate dataLength', dataLength)
+        //(rowHeight * (dataLength - (startRow + visibleRows + 1)))
+        return currentPage * (rowHeight * (startRow + visibleRows + 1))
     }, [dataLength, startRow])
     const handleScroll = useCallback(async (e) => {
         const elem = document.querySelector('#header')
         const rect = elem.getBoundingClientRect()
         let maxScrollBottom = document.documentElement.scrollHeight - window.scrollY - window.innerHeight;
-        console.log('maxScrollBottom', maxScrollBottom)
+        //console.log('maxScrollBottom', maxScrollBottom)
         if (maxScrollBottom <= 0) {
             //change url page increment
             //change col action
