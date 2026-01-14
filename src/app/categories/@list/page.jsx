@@ -196,7 +196,7 @@ export default async function Home({ searchParams }) {
     const viewtype = await search.viewtype
     const action = await search.action
     const col = await search.col
-    try {
+    //try {
         const resp = await fetch(`https://api.nasa.gov/neo/rest/v1/feed?start_date=${startDate}&end_date=${endDate}&api_key=3wa5hHgFuqhf6XiefvqzkcDQWZ01aOOK4vNZEXsP`,
             { cache: 'force-cache' },
             { next: { tags: ['items'] } }
@@ -237,8 +237,8 @@ export default async function Home({ searchParams }) {
         } else {
             console.log('resp', resp.status)
         }
-    }
+   /* }
     catch (err) {
         console.log(err)
-    }
+    }*/
 }
