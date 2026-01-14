@@ -3,6 +3,7 @@ import { Suspense, createElement } from 'react'
 import dynamic from 'next/dynamic'
 import IOComponent from '../components/IOComponent/page'
 import IOComponentLi from '../components/IOComponentLi/page'
+import MOComponent from '../components/MOComponent/page'
 
 import ScrollComponent from '../components/ScrollComponent/page'
 import ScrollComponentTop from '../components/ScrollComponentTop/page'
@@ -44,7 +45,6 @@ export const metadata = {
 export default async function Layout(props) {
   /* <Suspense><IOComponent /></Suspense>
           <p id='forScroll'></p>*/
-  //<Suspense><MOComponent /></Suspense>
   //<Suspense><IOComponent /></Suspense>
   //<ScrollComponent />
   //<VirtualScrollComponent>{props.children}</VirtualScrollComponent>
@@ -76,7 +76,7 @@ export default async function Layout(props) {
               {props.children}
             </Suspense>
           </div>
-          <Suspense><IOComponent /></Suspense>
+          <Suspense><MOComponent /></Suspense>
         </div>
       </body>
     </html >

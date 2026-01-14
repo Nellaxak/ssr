@@ -8,27 +8,18 @@ import { pagination } from '../../app/lib/actions'
 //import io from 'socket.io-client';
 
 //const socket = io('ws://localhost:3456')
-/*const options = {
+const options = {
     root: null,
     rootMargin: "100px",
     threshold: 1.0,
-}*/
+}
 const config = {
     attributes: true,
     childList: true,
     subtree: true,
 };
 
-// Колбэк-функция при срабатывании мутации
-const callback = function (mutationsList: any, observer: any) {
-    for (let mutation of mutationsList) {
-        if (mutation.type === "childList") {
-            console.log("A child node has been added or removed.");
-        } else if (mutation.type === "attributes") {
-            console.log("The " + mutation.attributeName + " attribute was modified.");
-        }
-    }
-};
+
 const MOComponent = () => {
     const router = useRouter()
     const path = usePathname()
@@ -42,18 +33,37 @@ const MOComponent = () => {
         add = true
     }
 
-    /*const callbackFunction = useCallback(async (entries: IntersectionObserverEntry[]) => {
+    const callbackFunction = useCallback(async (entries: IntersectionObserverEntry[]) => {
         const [entry] = entries;
         if (entry.isIntersecting && add) {
             //const page = Number(currentPage) + 1
             //router.push(`?viewtype=${currentViewtype}&page=${page}`, { scroll: false });
             //socket.emit('addPage')
+            console.log('input')
             setPage((page) => {
                 const newPage = page + 1
                 return newPage
             })
+        } else {
+            console.log('output')
         }
-    }, []);*/
+    }, []);
+    // Колбэк-функция при срабатывании мутации
+    const callback = function (mutationsList: any, observer: any) {
+        const paragraphs = document.querySelectorAll('button')
+        const observerIO = new IntersectionObserver(callbackFunction, options);
+        paragraphs.forEach(el => {
+            //el.style.color = 'blue';
+            observerIO.observe(el);
+        });
+        for (let mutation of mutationsList) {
+            if (mutation.type === "childList") {
+                console.log("A child node has been added or removed.");
+            } else if (mutation.type === "attributes") {
+                console.log("The " + mutation.attributeName + " attribute was modified.");
+            }
+        }
+    };
     useEffect(() => {
         //socket.emit('addPage')
         const observer = new MutationObserver(callback)

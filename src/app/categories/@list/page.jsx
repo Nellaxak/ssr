@@ -177,7 +177,7 @@ async function Row(props) {
             <Suspense>
                 <output className={styles.padding}>{formatData}</output>
             </Suspense>
-            <ButtonSubmit id={props.obj.id} obj={props.obj} status={status} index={props.index}/>
+            <ButtonSubmit id={props.obj.id} obj={props.obj} status={status} index={props.index} />
             <div className={styles.flex_item}>
                 <div className={styles.flex_container_row}>
                     <span className={styles.danger}>{Danger}</span>
@@ -207,22 +207,25 @@ export default async function Home({ searchParams }) {
 
     if (Number(resp.status) === 200) {
         const data = await resp.json()
-        console.log('fetch count', data.element_count)
+        //console.log('fetch count', data.element_count)
         const list = data.near_earth_objects
         const arrObjects22 = Object.values(list)
         const resObj2 = arrObjects22.flat()
-        if (Number(page) > 0) {
-            const prev = single.get(Number(page) - 1)
-            result = result.concat(prev, resObj2)
-            //console.log('result', result)
-            single.set(Number(page), result)
-        } else {
-            single.set(Number(page), resObj2)
-        }
+        //if (Number(page) > 0) {
+        //  const prev = single.get(Number(page) - 1)
+        //if (single.get(Number(page)) !==
+        single.set(Number(page), resObj2)
+        const arr = single.get(Number(page))
+
+        //result = result.concat(prev, resObj2)
+        //console.log('result', result)
+        //} else {
+        //single.set(Number(page), resObj2)
+        //}
         data_items = single.get(Number(page))
-        await DataLength.setCount(Number(page), data_items.length)
+        //await DataLength.setCount(Number(page), data_items.length)
         return <List items={data_items} col={Number(scroll)}
-            renderItem={async (product,index) => {
+            renderItem={async (product, index) => {
                 //console.log('product', product)
                 const date = new Date(product.close_approach_data[0].epoch_date_close_approach)
                 const prevDate = new Intl.DateTimeFormat("ru-RU", options).format(date);
