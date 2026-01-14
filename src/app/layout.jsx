@@ -61,7 +61,9 @@ export default async function Layout(props) {
               </span>
             </div>
           </header>
-          <h6 className={styles.h6}>Ближайшие подлёты астероидов</h6>
+          <header className={styles.headerToggle}>
+            <h6 className={styles.h6}>Ближайшие подлёты астероидов</h6>
+          </header>
           <Suspense><ScrollComponentTop /></Suspense>
           <div className='grid'>
             <div className={styles.hidden}>

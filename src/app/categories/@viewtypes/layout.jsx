@@ -8,9 +8,5 @@ export default async function Layout({
 }/*: {
   children: React.ReactNode,
 }*/) {
-    //const promiseParams = await searchParams;
-    //console.log('promiseParams layout', searchParams, promiseParams)
-    const viewtype = 'main'//await promiseParams.viewtype
-    //const page = await promiseParams.page
     return (<Suspense>{children}</Suspense>)
 }

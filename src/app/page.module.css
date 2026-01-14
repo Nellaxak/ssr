@@ -134,7 +134,7 @@
   }
 
   .headerToggle {
-    grid-area: g;
+    grid-area: t;
     font-family: 'Helvetica';
     font-style: normal;
     font-weight: 700;
