@@ -12,7 +12,5 @@ export default async function Layout({
     //console.log('promiseParams layout', searchParams, promiseParams)
     const viewtype = 'main'//await promiseParams.viewtype
     //const page = await promiseParams.page
-    return (<Suspense>
-            <ol className={styles.row}>{children}</ol>
-        </Suspense>)
+    return (<Suspense>{children}</Suspense>)
 }
