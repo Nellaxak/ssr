@@ -217,7 +217,7 @@ export default async function Home({ searchParams }) {
                 single.set(Number(page), resObj2)
             }
             data_items = single.get(Number(page))
-            DataLength.count = data_items.length
+            DataLength.count = DataLength.count + data_items.length
             return <List items={data_items} col={Number(col)}
                 renderItem={async (product) => {
                     //console.log('product', product)
