@@ -3,7 +3,7 @@
 import { useEffect, useState, useCallback, Suspense, useRef, Activity } from 'react'
 import { useRouter, useSearchParams } from 'next/navigation'
 import Form from 'next/form'
-import { toggleClick, pagination, mountItemFSM, startFSM, scrollFSMDown, scrollFSMUp, scrollFSM } from '../../app/lib/actions'
+import { toggleClick, pagination, mountItem, startFSM, scrollFSMDown, scrollFSMUp, scrollFSM } from '../../app/lib/actions'
 
 import OutputItemsSet from '../../app/OutputItemsSet'
 //import CountPage from '../../app/CountPage'
@@ -50,7 +50,7 @@ function ButtonSubmit(props) {
   }, [page])
   useEffect(() => {
     //console.log('mount', props.index)//page increment -> new mount?
-    mountItemFSM(props.index)
+    mountItem(props.index)
     const observer = new IntersectionObserver(callbackFunction, options);
     observer.observe(ref.current);
     return () => {
