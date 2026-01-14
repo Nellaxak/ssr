@@ -22,7 +22,7 @@ const IOComponent = () => {
     //path = usePathname()
     const searchParams = useSearchParams()
     const [page, setPage] = useState(0);
-    const [scroll, setScroll] = useState(0);
+    //const [scroll, setScroll] = useState(0);
 
     const currentViewtype = searchParams.get('viewtype')
     //const currentPage = searchParams.get('page')
@@ -52,7 +52,7 @@ const IOComponent = () => {
     }, [])
     useEffect(() => {
         router.push(`/categories?viewtype=${currentViewtype}&page=${page}`, { scroll: false });
-        //router.refresh()
+        router.refresh()
         /*const elem = document.querySelector('ol')
         elem.scrollIntoView(true)/*{//mount scroll to center
             behavior: 'smooth', // Optional: smooth or auto
