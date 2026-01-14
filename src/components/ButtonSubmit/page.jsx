@@ -58,8 +58,8 @@ function ButtonSubmit(props) {
     };
   }, [])
   //onClick={()=>handleClick()}
-  return <Activity mode={mode}>
-  <button type="button" ref={ref} onClick={handleClick}><Suspense>444444</Suspense></button>
+  return <Activity mode={mode} ref={ref}>
+  <button type="button" onClick={handleClick}><Suspense>444444</Suspense></button>
   </Activity>
   /*<Form action={toggleClick} ref={ref}>
    <input type='number' name='id' defaultValue={props.id} hidden></input>*/
