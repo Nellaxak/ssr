@@ -39,7 +39,7 @@ function ButtonSubmit(props) {
           return newPage
         })
       }*/
-      //scrollFSM(props.index, 'input')
+      scrollFSM(props.index, 'input')
     } else {
       //setMode('hidden')
       scrollFSM(props.index, 'output')
@@ -59,8 +59,5 @@ function ButtonSubmit(props) {
   }, [])
   //onClick={()=>handleClick()}
   return <button type="button" ref={ref} onClick={handleClick}><Suspense>444444</Suspense></button>
-  /*<Form action={toggleClick} ref={ref}>
-   <input type='number' name='id' defaultValue={props.id} hidden></input>*/
-  //</Form>
 }
 export default ButtonSubmit

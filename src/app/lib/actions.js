@@ -10,11 +10,11 @@ const listInstances = new Map()
 const instanceItem = new Map()
 const instanceLinkedList = new Map()
 
-export async function createLinkedListInstance() {
+/*export async function createLinkedListInstance() {
     const ll = new LinkedList()
     instanceLinkedList.set(0, ll)
     return ll
-}
+}*/
 export async function mountItem(index, obj) {
     const instanceFSM = new HFSM({
         initial: "idle", // Камера по умолчанию неактивна
