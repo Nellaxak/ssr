@@ -30,7 +30,7 @@ function ScrollComponent() {
     const getBottomHeight = useCallback(() => {
         //return rowHeight * startRow //* (startRow + visibleRows + 1);
         console.log('usestate dataLength', dataLength)
-        return rowHeight * (dataLength - (startRow + visibleRows + 1))
+        return Math.abs(rowHeight * (dataLength - (startRow + visibleRows + 1)))
     }, [dataLength])
     const handleScroll = useCallback(async (e) => {
         const elem = document.querySelector('#header')
