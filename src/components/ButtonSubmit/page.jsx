@@ -23,7 +23,7 @@ function ButtonSubmit(props) {
   const router = useRouter()
   const searchParams = useSearchParams()
   currentViewtype = searchParams.get('viewtype')
-  const [mode, setMode] = useState('visible')
+  //const [mode, setMode] = useState('visible')
   //currentPage = Number(searchParams.get('page'))
 
   const handleClick = useCallback(async () => {
@@ -41,8 +41,8 @@ function ButtonSubmit(props) {
       }*/
       //scrollFSM(props.index, 'input')
     } else {
-      setMode('hidden')
-      //scrollFSM(props.index, 'output')
+      //setMode('hidden')
+      scrollFSM(props.index, 'output')
     }
   }, []);
   useEffect(() => {
@@ -50,7 +50,7 @@ function ButtonSubmit(props) {
   }, [page])
   useEffect(() => {
     //console.log('mount', props.index)//page increment -> new mount?
-    //mountItemFSM(props.index)
+    mountItemFSM(props.index)
     const observer = new IntersectionObserver(callbackFunction, options);
     observer.observe(ref.current);
     return () => {
@@ -58,9 +58,8 @@ function ButtonSubmit(props) {
     };
   }, [])
   //onClick={()=>handleClick()}
-  return <Activity mode={mode} ref={ref}>
-  <button type="button" onClick={handleClick}><Suspense>444444</Suspense></button>
-  </Activity>
+  return 
+  <button type="button" ref={ref} onClick={handleClick}><Suspense>444444</Suspense></button>
   /*<Form action={toggleClick} ref={ref}>
    <input type='number' name='id' defaultValue={props.id} hidden></input>*/
   //</Form>

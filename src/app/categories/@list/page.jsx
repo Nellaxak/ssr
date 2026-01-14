@@ -159,7 +159,6 @@ async function Row(props) {
     //console.log('item', item)
     //const status2 = await item.getStatus()
     //console.log('djkou', props.obj.id, statusMap.size, status1)
-    //    <li key={props.obj.id}>
     return <Suspense>
         <li key={props.obj.id}>
             <div className={styles.flex_item}>
@@ -177,7 +176,7 @@ async function Row(props) {
             <Suspense>
                 <output className={styles.padding}>{formatData}</output>
             </Suspense>
-            <ButtonSubmit id={props.obj.id} obj={props.obj} status={status} />
+            <ButtonSubmit id={props.obj.id} obj={props.obj} status={status} index={props.index}/>
             <div className={styles.flex_item}>
                 <div className={styles.flex_container_row}>
                     <span className={styles.danger}>{Danger}</span>
@@ -222,7 +221,7 @@ export default async function Home({ searchParams }) {
         data_items = single.get(Number(page))
         await DataLength.setCount(Number(page), data_items.length)
         return <List items={data_items} col={Number(scroll)}
-            renderItem={async (product) => {
+            renderItem={async (product,index) => {
                 //console.log('product', product)
                 const date = new Date(product.close_approach_data[0].epoch_date_close_approach)
                 const prevDate = new Intl.DateTimeFormat("ru-RU", options).format(date);
@@ -232,6 +231,7 @@ export default async function Home({ searchParams }) {
                 //new Item(Number(product.id))
                 return <Suspense><Row
                     key={product.id}
+                    index={index}
                     obj={product}
                     viewtype={viewtype}
                     dates={dateString}
