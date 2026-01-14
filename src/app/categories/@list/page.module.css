@@ -126,7 +126,7 @@
  }
 
  .column {
-   grid-area: q;
+   grid-area: t;
    display: flex;
    flex-direction: column;
    gap: 8px;
