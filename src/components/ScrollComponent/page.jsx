@@ -20,7 +20,7 @@ function ScrollComponent() {
     //ref = useRef()
     const router = useRouter()
     const searchParams = useSearchParams()
-    //const currentPage = searchParams.get('page')
+    const currentPage = searchParams.get('page')
     const currentViewtype = searchParams.get('viewtype')
     const [startRow, setStartRow] = useState(0)
     const [startAction, setStartAction] = useState('start')
@@ -30,7 +30,7 @@ function ScrollComponent() {
     const getBottomHeight = useCallback(() => {
         //return rowHeight * startRow //* (startRow + visibleRows + 1);
         console.log('usestate dataLength', dataLength)
-        return Math.abs(rowHeight * (dataLength - (startRow + visibleRows + 1)))
+        return currentPage*(rowHeight * (dataLength - (startRow + visibleRows + 1)))
     }, [dataLength])
     const handleScroll = useCallback(async (e) => {
         const elem = document.querySelector('#header')
