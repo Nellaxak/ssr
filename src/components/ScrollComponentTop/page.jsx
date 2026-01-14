@@ -21,7 +21,7 @@ function ScrollComponentTop() {
     //ref = useRef()
     const router = useRouter()
     const searchParams = useSearchParams()
-    const currentAction = searchParams.get('action')
+    //const currentAction = searchParams.get('action')
     const currentViewtype = searchParams.get('viewtype')
     const [startRow, setStartRow] = useState(0)
     const [startAction, setStartAction] = useState('start')
