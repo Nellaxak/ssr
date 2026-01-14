@@ -13,8 +13,9 @@ class DataLength {
     return DataLength.count
   }
   static async setCount(pageParam, lenthParams) {
-    if (pageParam !== page) {
+    if (pageParam !== DataLength.page) {
       DataLength.count = DataLength.count + Number(lenthParams)
+      DataLength.page = pageParam
     }
   }
 }
