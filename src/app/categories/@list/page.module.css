@@ -125,12 +125,12 @@
    }
  }
 
- /*.column {
-   grid-area: g;
+ .column {
+   grid-area: q;
    display: flex;
    flex-direction: column;
    gap: 8px;
- }*/
+ }
 
  .header {
    font-family: 'Helvetica';
