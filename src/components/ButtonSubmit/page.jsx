@@ -49,13 +49,16 @@ function ButtonSubmit(props) {
     router.push(`?viewtype=${currentViewtype}&page=${page}&scroll=${page}`, { scroll: false });
   }, [page])
   useEffect(() => {
-    //console.log('mount', props.index)//page increment -> new mount?
-    mountItem(props.index)
-    const observer = new IntersectionObserver(callbackFunction, options);
-    observer.observe(ref.current);
-    return () => {
-      observer.unobserve(ref.current);
-    };
+    const fetchD = async () => {
+      //console.log('mount', props.index)//page increment -> new mount?
+      await mountItem(props.index)
+      const observer = new IntersectionObserver(callbackFunction, options);
+      observer.observe(ref.current);
+      return () => {
+        observer.unobserve(ref.current);
+      };
+      fetchD()
+    }
   }, [])
   //onClick={()=>handleClick()}
   return <button type="button" ref={ref} onClick={handleClick}><Suspense>444444</Suspense></button>
