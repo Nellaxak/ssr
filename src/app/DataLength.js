@@ -9,10 +9,10 @@ class DataLength {
     //console.log('constructor', id, typeof id)
 
   }
-  async getCount() {
+  static async getCount() {
     return DataLength.count
   }
-  async setCount(pageParam, lenthParams) {
+  static async setCount(pageParam, lenthParams) {
     if (pageParam !== page) {
       DataLength.count = DataLength.count + Number(lenthParams)
     }

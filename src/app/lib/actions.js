@@ -95,7 +95,8 @@ export async function scrollEnd(params) {
     console.log('scrollend', DataLength.count)
     //statusMap.set(id, !statusMap.get(id))
     //revalidateTag('items', 'max')
-    return DataLength.count
+    const count = await DataLength.getCount()
+    return count
 }
 export async function toggleClick(params) {
     const id = Number(params)
