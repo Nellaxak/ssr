@@ -21,13 +21,13 @@ function ScrollComponentTop() {
     //ref = useRef()
     const router = useRouter()
     const searchParams = useSearchParams()
-    const currentPage = searchParams.get('page')
+    //const currentPage = searchParams.get('page')
     const currentViewtype = searchParams.get('viewtype')
     const [startRow, setStartRow] = useState(0)
     const [startAction, setStartAction] = useState('start')
     const [page, setPage] = useState(0)
     function getTopHeight() {
-        return currentPage * rowHeight * startRow;
+        return page * rowHeight * startRow;
     }
     const handleScroll = useCallback(async (e) => {
         //console.log('target', e.target)
