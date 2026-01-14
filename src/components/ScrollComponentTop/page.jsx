@@ -27,7 +27,7 @@ function ScrollComponentTop() {
     const [startAction, setStartAction] = useState('start')
     const [page, setPage] = useState(0)
     function getTopHeight() {
-        return page * rowHeight * startRow;
+        return rowHeight * startRow;
     }
     const handleScroll = useCallback(async (e) => {
         //console.log('target', e.target)
@@ -47,7 +47,7 @@ function ScrollComponentTop() {
                 let newPage = page + 1
                 return newPage
             })
-            const col = Math.ceil(Math.abs(rect.y / rowHeight))
+            const col = Math.ceil(rect.y / rowHeight)
             setStartRow(col)
             setStartAction('down')
         }

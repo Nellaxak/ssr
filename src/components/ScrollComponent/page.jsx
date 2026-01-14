@@ -31,7 +31,7 @@ function ScrollComponent() {
         //return rowHeight * startRow //* (startRow + visibleRows + 1);
         //console.log('usestate dataLength', dataLength)
         //(rowHeight * (dataLength - (startRow + visibleRows + 1)))
-        return page * (rowHeight * (startRow + visibleRows + 1))
+        return startRow * (rowHeight * (startRow + visibleRows + 1))
     }, [dataLength, startRow])
     const handleScroll = useCallback(async (e) => {
         const elem = document.querySelector('#header')
@@ -45,7 +45,7 @@ function ScrollComponent() {
                 let newPage = page + 1
                 return newPage
             })
-            const col = Math.ceil(Math.abs(rect.y / rowHeight))
+            const col = Math.ceil(rect.y / rowHeight)
             setStartRow(col)
             setStartAction('down')
         }
