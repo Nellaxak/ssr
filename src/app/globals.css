@@ -69,6 +69,7 @@ ul {
 @media screen and (orientation: landscape) {
 
   .grid {
+    position:relative;
     display: grid;
     grid-template-columns: minmax(48px, auto) minmax(279px, auto) repeat(10, 1fr);
     /*grid-template-rows: auto 1fr;*/
@@ -84,6 +85,7 @@ ul {
 
 @media screen and (orientation: portrait) {
   .grid {
+    position:relative;
     display: grid;
     grid-template-columns: minmax(48px, auto) minmax(279px, auto) repeat(10, 1fr);
     /*grid-template-rows: auto 1fr;*/

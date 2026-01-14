@@ -50,23 +50,23 @@ export default async function Layout(props) {
     <html lang="ru">
       <body>
         <div key='next' id='__next'>
+          <header className={styles.header} id='header'>
+            <h1 className={passion.className}>ARMAGEDDON 2023</h1>
+            <div className={styles.command}>
+              <span>
+                ООО “Команда им. Б. Уиллиса”.
+              </span>
+              <span>
+                Взрываем астероиды с 1998 года.
+              </span>
+            </div>
+          </header>
+          <h6 className={styles.h6}>Ближайшие подлёты астероидов</h6>
+          <Suspense><ScrollComponentTop /></Suspense>
           <div className='grid'>
-            <header className={styles.header} id='header'>
-              <h1 className={passion.className}>ARMAGEDDON 2023</h1>
-              <div className={styles.command}>
-                <span>
-                  ООО “Команда им. Б. Уиллиса”.
-                </span>
-                <span>
-                  Взрываем астероиды с 1998 года.
-                </span>
-              </div>
-            </header>
             <div className={styles.hidden}>
               <Image src={bigImage} alt="Earth" priority />
             </div>
-          <Suspense><ScrollComponentTop /></Suspense>
-
             <Suspense fallback={<span className={'loader'}></span>}>
               {props.children}
             </Suspense>

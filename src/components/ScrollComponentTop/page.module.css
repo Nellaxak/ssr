@@ -1,4 +1,4 @@
-@keyframes fade-in {
+/*@keyframes fade-in {
   from {
     opacity: 0;
     transform: scaleY(0);
@@ -8,13 +8,13 @@
     opacity: 1;
     transform: scaleY(6);
   }
-}
-
+}*/
 .scroll_top {
-  display: block;
-  grid-area: s;
-  height: 85px;
+  position: relative;
+  /*display: block;
+  /*grid-area: s;
+  /*height: 85px;
   background-color: blue;
   animation: fade-in linear forwards;
-  animation-timeline: scroll(root);
+  animation-timeline: scroll(root);*/
 }

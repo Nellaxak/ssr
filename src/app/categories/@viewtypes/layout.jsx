@@ -10,11 +10,9 @@ export default async function Layout({
 }*/) {
     //const promiseParams = await searchParams;
     //console.log('promiseParams layout', searchParams, promiseParams)
-    //const viewtype = 'main'//await promiseParams.viewtype
+    const viewtype = 'main'//await promiseParams.viewtype
     //const page = await promiseParams.page
     return (<Suspense>
-        <main className={styles.column}>
             <ol className={styles.row}>{children}</ol>
-        </main>
-    </Suspense>)
+        </Suspense>)
 }

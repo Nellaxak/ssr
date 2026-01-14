@@ -196,49 +196,49 @@ export default async function Home({ searchParams }) {
     const viewtype = await search.viewtype
     const action = await search.action
     const col = await search.col
-    //try {
-    const resp = await fetch(`https://api.nasa.gov/neo/rest/v1/feed?start_date=${startDate}&end_date=${endDate}&api_key=3wa5hHgFuqhf6XiefvqzkcDQWZ01aOOK4vNZEXsP`,
-        { cache: 'force-cache' },
-        { next: { tags: ['items'] } }
-    );
+    try {
+        const resp = await fetch(`https://api.nasa.gov/neo/rest/v1/feed?start_date=${startDate}&end_date=${endDate}&api_key=3wa5hHgFuqhf6XiefvqzkcDQWZ01aOOK4vNZEXsP`,
+            { cache: 'force-cache' },
+            { next: { tags: ['items'] } }
+        );
 
-    if (Number(resp.status) === 200) {
-        const data = await resp.json()
-        console.log('fetch count', data.element_count)
-        const list = data.near_earth_objects
-        const arrObjects22 = Object.values(list)
-        const resObj2 = arrObjects22.flat()
-        if (Number(page) > 0) {
-            const prev = single.get(Number(page) - 1)
-            result = result.concat(prev, resObj2)
-            //console.log('result', result)
-            single.set(Number(page), result)
+        if (Number(resp.status) === 200) {
+            const data = await resp.json()
+            console.log('fetch count', data.element_count)
+            const list = data.near_earth_objects
+            const arrObjects22 = Object.values(list)
+            const resObj2 = arrObjects22.flat()
+            if (Number(page) > 0) {
+                const prev = single.get(Number(page) - 1)
+                result = result.concat(prev, resObj2)
+                //console.log('result', result)
+                single.set(Number(page), result)
+            } else {
+                single.set(Number(page), resObj2)
+            }
+            data_items = single.get(Number(page))
+            DataLength.count = data_items.length
+            return <List items={data_items} col={Number(col)}
+                renderItem={async (product) => {
+                    //console.log('product', product)
+                    const date = new Date(product.close_approach_data[0].epoch_date_close_approach)
+                    const prevDate = new Intl.DateTimeFormat("ru-RU", options).format(date);
+                    const datSlice = prevDate.slice(0, -2)
+                    const dateString = datSlice.replace('.', '');
+
+                    //new Item(Number(product.id))
+                    return <Suspense><Row
+                        key={product.id}
+                        obj={product}
+                        viewtype={viewtype}
+                        dates={dateString}
+                    /></Suspense>
+                }} />
         } else {
-            single.set(Number(page), resObj2)
+            console.log('resp', resp.status)
         }
-        data_items = single.get(Number(page))
-        DataLength.count = data_items.length
-        return <List items={data_items} col={Number(col)}
-            renderItem={async (product) => {
-                //console.log('product', product)
-                const date = new Date(product.close_approach_data[0].epoch_date_close_approach)
-                const prevDate = new Intl.DateTimeFormat("ru-RU", options).format(date);
-                const datSlice = prevDate.slice(0, -2)
-                const dateString = datSlice.replace('.', '');
-
-                //new Item(Number(product.id))
-                return <Suspense><Row
-                    key={product.id}
-                    obj={product}
-                    viewtype={viewtype}
-                    dates={dateString}
-                /></Suspense>
-            }} />
-    } else {
-        console.log('resp', resp.status)
     }
-    /*}
     catch (err) {
         console.log(err)
-    }*/
+    }
 }

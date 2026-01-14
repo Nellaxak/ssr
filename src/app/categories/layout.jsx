@@ -7,18 +7,17 @@ import styles from "./page.module.css";
 //const inter = Inter({ subsets: ['latin'] })
 
 export default async function ParallelLayout({
-  children, //params,
-  list,//toggle,
+  children, viewtypes,
+  list,
   count,
 }/*: {
   children: React.ReactNode,
   count: React.ReactNode,
   list: React.ReactNode
 }*/) {
-  /*const paramsPromise = await params
-  const viewtype = paramsPromise.viewtype*/
   return (
     <Suspense>
+      <Suspense>{viewtypes}</Suspense>
       <Suspense>{list}</Suspense>
       <Suspense>{count}</Suspense>
       <Suspense>{children}</Suspense>
