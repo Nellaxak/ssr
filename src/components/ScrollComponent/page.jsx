@@ -31,7 +31,7 @@ function ScrollComponent() {
         //return rowHeight * startRow //* (startRow + visibleRows + 1);
         //console.log('usestate dataLength', dataLength)
         //(rowHeight * (dataLength - (startRow + visibleRows + 1)))
-        if (currentAction === 'down' || currentAction === 'start') {
+        if (startAction === 'top' || startAction === 'start') {
             return 0
         }
         return  (rowHeight * (Math.max(startRow,0)  + visibleRows + 1))
