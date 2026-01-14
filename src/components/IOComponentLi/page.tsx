@@ -1,6 +1,7 @@
 'use client'
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import { useCallback, useEffect, useState, useRef } from "react";
+import { mountItem, scrollFSM } from '../../app/lib/actions'
 import dynamic from 'next/dynamic'
 //import { notIO } from '../../app/lib/actions'
 
@@ -40,8 +41,12 @@ const IOComponent = () => {
                 return newPage
             })*/
         } else {
-            setScroll(1)
-            console.log(entry.target, 'is hidden!');
+            /*setScroll((page) => {
+                let newPage = page + 1
+                return newPage
+            })*/
+            //scrollFSM(props.index, 'output')//index for change url slice
+            //console.log(entry.target, 'is hidden!');
         }
     }, []);
     useEffect(() => {
@@ -49,6 +54,8 @@ const IOComponent = () => {
         //as HTMLElement
         const targetElements = document.querySelectorAll('li');
         targetElements.forEach(element => {
+            //fsm
+            //mountItem()
             observer.observe(element);
         });
         //observer.observe(ref.current);

@@ -159,6 +159,7 @@ async function Row(props) {
     //console.log('item', item)
     //const status2 = await item.getStatus()
     //console.log('djkou', props.obj.id, statusMap.size, status1)
+    //    <li key={props.obj.id}>
     return <Suspense>
         <li key={props.obj.id}>
             <div className={styles.flex_item}>

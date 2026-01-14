@@ -34,16 +34,16 @@ export async function mountItem(index, obj) {
                 // Что то делаем
                 if (from === 'outside') {
                     //tail.prev
-                    const ll = instanceLinkedList.get(0)
-                    console.log('scroll inside', index, ll)//, obj.id)
+                    //const ll = instanceLinkedList.get(0)
+                    console.log('scroll inside', index)//, obj.id)
                 }
                 //console.log('onAfterIoInput', index, from, to)
             },
             onAfterIoOutput: async (from, to) => {
                 // Что то делаем
                 if (from === 'inside') {
-                    const ll = instanceLinkedList.get(0)
-                    console.log('scroll outside', index, ll)
+                    //const ll = instanceLinkedList.get(0)
+                    console.log('scroll outside', index)
                     //ll.delete(obj)
                 }
                 //console.log('onAfterIoOutput', index, from, to)
