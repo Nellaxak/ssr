@@ -195,6 +195,8 @@ export default async function Home({ searchParams }) {
     let [startDate, endDate] = await CalcData(page)
     const viewtype = await search.viewtype
     const action = await search.action
+    const scroll = await search.scroll
+
     const col = await search.col
     //try {
     const resp = await fetch(`https://api.nasa.gov/neo/rest/v1/feed?start_date=${startDate}&end_date=${endDate}&api_key=3wa5hHgFuqhf6XiefvqzkcDQWZ01aOOK4vNZEXsP`,
@@ -218,7 +220,7 @@ export default async function Home({ searchParams }) {
         }
         data_items = single.get(Number(page))
         await DataLength.setCount(Number(page), data_items.length)
-        return <List items={data_items} col={Math.abs(Number(col))}
+        return <List items={data_items} col={Number(scroll)}
             renderItem={async (product) => {
                 //console.log('product', product)
                 const date = new Date(product.close_approach_data[0].epoch_date_close_approach)
