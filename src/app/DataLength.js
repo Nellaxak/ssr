@@ -15,6 +15,7 @@ class DataLength {
   }
   static async setArr(pageParam, arrParams) {
     if (pageParam !== DataLength.page) {
+      console.log('set arr')
       DataLength.arr = DataLength.arr.concat(arrParams)
       DataLength.page = pageParam
     }
