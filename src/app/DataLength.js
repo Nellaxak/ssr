@@ -3,18 +3,18 @@
 //import statusMap from "./statusMap";
 //proxy object
 class DataLength {
-  static count = 0;
+  static arr = [];
   static page = 0;
   constructor(id, obj) {
     //console.log('constructor', id, typeof id)
 
   }
-  static async getCount() {
-    return DataLength.count
+  static async getArr() {
+    return DataLength.arr
   }
-  static async setCount(pageParam, lenthParams) {
+  static async setArr(pageParam, arrParams) {
     if (pageParam !== DataLength.page) {
-      DataLength.count = DataLength.count + Number(lenthParams)
+      DataLength.arr = DataLength.arr.concat(arrParams)
       DataLength.page = pageParam
     }
   }

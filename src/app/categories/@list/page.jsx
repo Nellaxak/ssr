@@ -214,16 +214,17 @@ export default async function Home({ searchParams }) {
         //if (Number(page) > 0) {
         //  const prev = single.get(Number(page) - 1)
         //if (single.get(Number(page)) !==
-        single.set(Number(page), resObj2)
-        const arr = single.get(Number(page))
+        //single.set(Number(page), resObj2)
+        //const arr = single.get(Number(page))
 
         //result = result.concat(prev, resObj2)
         //console.log('result', result)
         //} else {
         //single.set(Number(page), resObj2)
         //}
-        data_items = single.get(Number(page))
-        //await DataLength.setCount(Number(page), data_items.length)
+        //data_items = single.get(Number(page))
+        await DataLength.setArr(Number(page), resObj2)
+        const data_items = await DataLength.getArr()
         return <List items={data_items} col={Number(scroll)}
             renderItem={async (product, index) => {
                 //console.log('product', product)
