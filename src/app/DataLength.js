@@ -4,7 +4,7 @@
 //proxy object
 class DataLength {
   static arr = [];
-  static page = 0;
+  static page = -1;
   constructor(id, obj) {
     //console.log('constructor', id, typeof id)
 
