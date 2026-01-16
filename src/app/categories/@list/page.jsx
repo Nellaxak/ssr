@@ -224,8 +224,10 @@ export default async function Home({ searchParams }) {
         //}
         //data_items = single.get(Number(page))
         //promise all
-        await DataLength.setArr(Number(page), resObj2)
-        const data_items = await DataLength.getArr()
+        const success = await DataLength.setArr(Number(page), resObj2)
+        if (success === true) {
+            data_items = await DataLength.getArr()
+        }
         return <List items={data_items} col={Number(scroll)}
             renderItem={async (product, index) => {
                 //console.log('product', product)

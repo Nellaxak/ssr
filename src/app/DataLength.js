@@ -20,6 +20,7 @@ class DataLength {
       DataLength.arr = DataLength.arr.concat(arrParams)
       DataLength.page = pageParam
     }
+    return true
   }
 }
 export default DataLength
