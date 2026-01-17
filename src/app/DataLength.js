@@ -13,7 +13,7 @@ class DataLength {
   static async setArr(pageParam, arrParams, linkParams) {
     if (pageParam !== DataLength.page) {
       //shift/unshift
-      if (linkParams === 'bottom') {
+      if (linkParams === 'start' || linkParams === 'bottom' ) {
         //DataLength.arr = DataLength.arr.concat(arrParams)//insert in head/tail arr
         DataLength.arr.shift(...arrParams)
       } else {
