@@ -143,7 +143,7 @@ async function Row(props) {
     /*<span>{props.obj.id}</span>
     <span>{props.key}</span>
     <span>{props.obj.absolute_magnitude_h}</span>*/
-    //console.log('qwasxz', props)
+    console.log('qwasxz', props)
 
     const dataViewtype = props.obj.close_approach_data[0].miss_distance
     const status = 0//Number(statusMap.get(Number(props.obj.id)))
@@ -189,16 +189,18 @@ async function Row(props) {
 const single = new Map()
 let result = []
 let data_items = []
+let scroll=0
+let col=0
 export default async function Home({ searchParams }) {
     const search = await searchParams;
     const page = await search.page
     //console.log('n,mkmkmk', typeof page)
     let [startDate, endDate] = await CalcData(page)
     const viewtype = await search.viewtype
-    const action = await search.action
-    const scroll = await search.scroll
+    //const action = await search.action
+    scroll = await search.scroll
 
-    const col = await search.col
+    col = await search.col
     //try {
     const resp = await fetch(`https://api.nasa.gov/neo/rest/v1/feed?start_date=${startDate}&end_date=${endDate}&api_key=3wa5hHgFuqhf6XiefvqzkcDQWZ01aOOK4vNZEXsP`,
         { cache: 'force-cache' },
@@ -217,7 +219,7 @@ export default async function Home({ searchParams }) {
         }
         return <List items={data_items} col={Number(scroll)}
             renderItem={async (product, index) => {
-                //console.log('product', product)
+                console.log('product', index)
                 const date = new Date(product.close_approach_data[0].epoch_date_close_approach)
                 const prevDate = new Intl.DateTimeFormat("ru-RU", options).format(date);
                 const datSlice = prevDate.slice(0, -2)
