@@ -49,7 +49,7 @@ const MOComponent = () => {
         }
     }, []);
     // Колбэк-функция при срабатывании мутации
-    const callback = function (mutationsList: any, observer: any) {
+    const callback = useCallback((mutationsList: any, observer: any) => {
         console.log('callbackMO', mutationsList)
         const paragraphs = document.querySelectorAll('button')
         console.log('paragraphs', paragraphs)
@@ -65,7 +65,7 @@ const MOComponent = () => {
                 console.log("The " + mutation.attributeName + " attribute was modified.");
             }
         }
-    };
+    }, []);
     useEffect(() => {
         //socket.emit('addPage')
         const observer = new MutationObserver(callback)
