@@ -17,6 +17,7 @@ const options = {
 let currentViewtype = ''
 let currentPage = 0
 let callbackFunction
+let handleClick
 function ButtonSubmit(props) {
   //console.log('ButtonSubmit props',props)
   const ref = useRef(null)
@@ -27,7 +28,7 @@ function ButtonSubmit(props) {
   //const [mode, setMode] = useState('visible')
   //currentPage = Number(searchParams.get('page'))
 
-  const handleClick = useCallback(async () => {
+  handleClick = useCallback(async () => {
     await toggleClick(props.id)
   }, [])
   //const callbackFunction = useCallback(async (entries: IntersectionObserverEntry[]) => {
@@ -55,7 +56,7 @@ function ButtonSubmit(props) {
   useEffect(() => {
     const fetchD = async () => {
       //console.log('mount', props.index)//page increment -> new mount?
-      await mountItem(props.index)
+      //await mountItem(props.index)
       const observer = new IntersectionObserver(callbackFunction, options);
       observer.observe(ref.current);
       return () => {
