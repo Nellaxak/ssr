@@ -214,7 +214,7 @@ export default async function Home({ searchParams }) {
         const list = data.near_earth_objects
         const arrObjects22 = Object.values(list)
         const resObj2 = arrObjects22.flat()
-        const success = await DataLength.setArr(String(page) + 'self', resObj2,'start')
+        const success = await DataLength.setArr(String(page) + 'self', resObj2, 'start')
         if (success === true) {
             data_items = await DataLength.getArr()
         }
