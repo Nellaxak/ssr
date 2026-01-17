@@ -39,13 +39,13 @@ const MOComponent = () => {
             //const page = Number(currentPage) + 1
             //router.push(`?viewtype=${currentViewtype}&page=${page}`, { scroll: false });
             //socket.emit('addPage')
-            console.log('input')
-            setPage((page) => {
+            console.log('input button')
+            /*setPage((page) => {
                 const newPage = page + 1
                 return newPage
-            })
+            })*/
         } else {
-            console.log('output')
+            console.log('output button')
         }
     }, []);
     // Колбэк-функция при срабатывании мутации
@@ -68,8 +68,8 @@ const MOComponent = () => {
         //socket.emit('addPage')
         const observer = new MutationObserver(callback)
         //const observer = new IntersectionObserver(callbackFunction, options);
-        //const el = document.querySelector("#forScroll") as HTMLElement;
-        observer.observe(ref.current, config);
+        const el = document.querySelector("ol") as HTMLElement;
+        observer.observe(el, config);
         //socket.on('page', data => {
         //router.refresh()
         //})
