@@ -62,7 +62,8 @@ const IOComponent = () => {
             //inline: 'center'    // Optional: for horizontal centering
         })*/
     }, [page])
-    return <p ref={ref} className={styles.main_footer}></p>
+    //className={styles.main_footer}
+    return <p ref={ref} ></p>
 }
 //export default IOComponent
 export default dynamic(() => Promise.resolve(IOComponent), { ssr: false });
