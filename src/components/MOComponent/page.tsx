@@ -40,10 +40,10 @@ const MOComponent = () => {
             //router.push(`?viewtype=${currentViewtype}&page=${page}`, { scroll: false });
             //socket.emit('addPage')
             console.log('input button')
-            /*setPage((page) => {
+            setPage((page) => {
                 const newPage = page + 1
                 return newPage
-            })*/
+            })
         } else {
             console.log('output button')
         }
