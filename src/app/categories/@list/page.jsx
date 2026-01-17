@@ -228,7 +228,7 @@ export default async function Home({ searchParams }) {
                 //new Item(Number(product.id))
                 return <Suspense><Row
                     key={product.id}
-                    //index={index}
+                    index={index}
                     obj={product}
                     viewtype={viewtype}
                     dates={dateString}
