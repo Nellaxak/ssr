@@ -92,11 +92,11 @@ export async function scrollEnd(params) {
     //const item = instanceItem.get(id)
     //const item = Item.arrObj.get(id)
     //await item.setStatus()
-    console.log('scrollend', DataLength.count)
+    console.log('scrollend')
     //statusMap.set(id, !statusMap.get(id))
     //revalidateTag('items', 'max')
-    const count = await DataLength.getCount()
-    return count
+    //const count = await DataLength.getCount()
+    return 0
 }
 export async function toggleClick(params) {
     const id = Number(params)

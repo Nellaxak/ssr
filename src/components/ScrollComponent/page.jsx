@@ -81,8 +81,8 @@ function ScrollComponent() {
         //scrollEnd({ action: startAction, col: startRow })
         (async () => {
             // Your async logic here
-            const dataLength1 = await scrollEnd()
-            setDataLength(dataLength1)
+            //const dataLength1 = await scrollEnd()
+            //setDataLength(dataLength1)
             //console.log('dataLength', dataLength)
             // Update state, etc.
         })();
