@@ -2,6 +2,8 @@
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import { useCallback, useEffect, useState, useRef } from "react";
 import dynamic from 'next/dynamic'
+import styles from "./page.module.css";
+
 //import { notIO } from '../../app/lib/actions'
 
 const options = {
@@ -60,7 +62,7 @@ const IOComponent = () => {
             //inline: 'center'    // Optional: for horizontal centering
         })*/
     }, [page])
-    return <p ref={ref}></p>
+    return <p ref={ref} className={styles.main_footer}></p>
 }
 //export default IOComponent
 export default dynamic(() => Promise.resolve(IOComponent), { ssr: false });
