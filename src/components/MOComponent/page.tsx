@@ -40,10 +40,10 @@ const MOComponent = () => {
             //router.push(`?viewtype=${currentViewtype}&page=${page}`, { scroll: false });
             //socket.emit('addPage')
             console.log('input button')
-            setPage((page) => {
+            /*setPage((page) => {
                 const newPage = page + 1
                 return newPage
-            })
+            })*/
         } else {
             console.log('output button')
         }
@@ -71,7 +71,7 @@ const MOComponent = () => {
         const observer = new MutationObserver(callbackF)
         //const observer = new IntersectionObserver(callbackFunction, options);
         const el = document.querySelector("ol") as HTMLElement;
-        console.log('el', el)
+        //console.log('el', el)
         observer.observe(el, config);
         //socket.on('page', data => {
         //router.refresh()
@@ -81,11 +81,11 @@ const MOComponent = () => {
             //socket.off('page')
         };*/
     }, [])
-    useEffect(() => {
+    /*useEffect(() => {
         //serverActions Post request nasa fetch add
         router.push(`?viewtype=${currentViewtype}&page=${page}`, { scroll: false });
         //router.refresh()
-    }, [page])
+    }, [page])*/
     return <p ref={ref}></p>
     /*return <Form action={pagination} ref={ref}>
         <input type='number' name='page' value={page} hidden></input>
