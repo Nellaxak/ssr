@@ -51,6 +51,7 @@ const MOComponent = () => {
     // Колбэк-функция при срабатывании мутации
     const callback = function (mutationsList: any, observer: any) {
         const paragraphs = document.querySelectorAll('button')
+        console.log('paragraphs', paragraphs)
         const observerIO = new IntersectionObserver(callbackFunction, options);
         paragraphs.forEach(el => {
             //el.style.color = 'blue';
@@ -69,7 +70,7 @@ const MOComponent = () => {
         const observer = new MutationObserver(callback)
         //const observer = new IntersectionObserver(callbackFunction, options);
         const el = document.querySelector("ol") as HTMLElement;
-        console.log('el',el)
+        console.log('el', el)
         observer.observe(el, config);
         //socket.on('page', data => {
         //router.refresh()
