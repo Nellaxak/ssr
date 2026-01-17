@@ -77,6 +77,7 @@ export default async function Layout(props) {
             </Suspense>
           </div>
           <Suspense><MOComponent /></Suspense>
+          <Suspense><IOComponent /></Suspense>
         </div>
       </body>
     </html >
