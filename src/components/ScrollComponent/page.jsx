@@ -16,6 +16,12 @@ let isPending = false
 let vertical = 0
 let rowHeight = 85
 let visibleRows = 8
+const options = {
+    root: null,//document.querySelector("#scrollArea"),
+    rootMargin: "0px 0px 10px 0px",//-px not work?
+    //scrollMargin: "-80px",
+    threshold: 1.0,
+}
 function ScrollComponent() {
     //ref = useRef()
     const router = useRouter()
@@ -26,7 +32,18 @@ function ScrollComponent() {
     const [startAction, setStartAction] = useState('start')
     const [page, setPage] = useState(0)
     const [dataLength, setDataLength] = useState(0)
-
+    const callbackFunction = useCallback(async (entries) => {
+        const [entry] = entries;
+        if (entry.isIntersecting) {// && add) {
+            console.log('input li', entry.target)
+            /*setPage((page) => {
+                let newPage = page + 1
+                return newPage
+            })*/
+        } else {
+            console.log('output li', entry.target)
+        }
+    }, []);
     const getBottomHeight = useCallback(() => {
         //return rowHeight * startRow //* (startRow + visibleRows + 1);
         //console.log('usestate dataLength', dataLength)
@@ -37,14 +54,19 @@ function ScrollComponent() {
         return rowHeight * Math.abs(startRow)
     }, [startRow])
     const handleScroll = useCallback(async (e) => {
-        const elem = document.querySelector('#header')
+        /*const elem = document.querySelector('#header')
         const rect = elem.getBoundingClientRect()
-        const col = Math.ceil(rect.y / rowHeight)
-        setStartRow(col)
-        setStartAction('down')
-        let maxScrollBottom = document.documentElement.scrollHeight - window.scrollY - window.innerHeight;
+        const col = Math.ceil(rect.y / rowHeight)*/
+        const paragraphs = document.querySelectorAll('li')
+        const observerIO = new IntersectionObserver(callbackFunction, options);
+        paragraphs.forEach(el => {
+            observerIO.observe(el);
+        });
+        //setStartRow(col)
+        //setStartAction('down')
+        //let maxScrollBottom = document.documentElement.scrollHeight - window.scrollY - window.innerHeight;
         //console.log('maxScrollBottom', maxScrollBottom)
-        if (maxScrollBottom <= 0) {
+        /*if (maxScrollBottom <= 0) {
             //change url page increment
             //change col action
             setPage((page) => {
@@ -52,8 +74,8 @@ function ScrollComponent() {
                 return newPage
             })
 
-        }
-        vertical = rect.y
+        }*/
+        //vertical = rect.y
     }, [])
     useEffect(() => {
         //scrollEnd({ action: startAction, col: startRow })
