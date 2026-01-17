@@ -15,9 +15,9 @@ class DataLength {
       //shift/unshift
       if (linkParams === 'bottom') {
         //DataLength.arr = DataLength.arr.concat(arrParams)//insert in head/tail arr
-        DataLength.arr.shift(arrParams)
+        DataLength.arr.shift(...arrParams)
       } else {
-        DataLength.arr.unshift(arrParams)
+        DataLength.arr.unshift(...arrParams)
       }
       DataLength.page = pageParam
     }
