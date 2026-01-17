@@ -54,7 +54,7 @@ export async function mountItem(index, obj) {
             }
         }
     });
-    //listInstances.set(index, instanceFSM)
+    listInstances.set(index, instanceFSM)
     //console.log('listInstances set', index)
     //const item = new Item(Number(obj.id), obj)
     //instanceItem.set(Number(obj.id), item)

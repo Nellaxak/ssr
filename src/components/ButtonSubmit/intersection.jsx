@@ -19,7 +19,7 @@ let currentPage = 0
 let callbackFunction
 let handleClick
 function ButtonSubmit(props) {
-  console.log('ButtonSubmit props',props)
+  //console.log('ButtonSubmit props',props)
   const ref = useRef(null)
   const [page, setPage] = useState(0);
   const router = useRouter()

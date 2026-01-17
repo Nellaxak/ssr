@@ -143,7 +143,7 @@ async function Row(props) {
     /*<span>{props.obj.id}</span>
     <span>{props.key}</span>
     <span>{props.obj.absolute_magnitude_h}</span>*/
-    console.log('qwasxz', props)
+    //console.log('qwasxz', props)
 
     const dataViewtype = props.obj.close_approach_data[0].miss_distance
     const status = 0//Number(statusMap.get(Number(props.obj.id)))
