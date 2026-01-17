@@ -33,19 +33,22 @@ function ButtonSubmit(props) {
   const callbackFunction = useCallback(async (entries) => {
     const [entry] = entries;
     if (entry.isIntersecting) {
+      console.log('button input',props.index)
       /*if ((Number(props.index) + 1) === Number(props.length)) {
         setPage((page) => {
           let newPage = page + 1
           return newPage
         })
       }*/
-      scrollFSM(props.index, 'input')
+      //scrollFSM(props.index, 'input')
     } else {
       //setMode('hidden')
-      scrollFSM(props.index, 'output')
+      console.log('button output',props.index)
+      //scrollFSM(props.index, 'output')
     }
   }, []);
   useEffect(() => {
+    //url col change
     router.push(`?viewtype=${currentViewtype}&page=${page}`, { scroll: false });
   }, [page])
   useEffect(() => {

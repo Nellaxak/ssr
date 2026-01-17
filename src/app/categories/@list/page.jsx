@@ -2,7 +2,7 @@ import styles from "./page.module.css";
 import React, { Suspense, Activity } from "react";
 import statusMap from "../../statusMap";
 //import { revalidateTag, revalidatePath } from 'next/cache';
-import ButtonSubmit from '../../../components/ButtonSubmit/page'
+import ButtonSubmit from '../../../components/ButtonSubmit/intersection'
 //import LinkedList, { linkedList } from "../../../LinkedList";
 import Item from "../../Item";
 import DataLength from "../../DataLength";
@@ -211,19 +211,6 @@ export default async function Home({ searchParams }) {
         const list = data.near_earth_objects
         const arrObjects22 = Object.values(list)
         const resObj2 = arrObjects22.flat()
-        //if (Number(page) > 0) {
-        //  const prev = single.get(Number(page) - 1)
-        //if (single.get(Number(page)) !==
-        //single.set(Number(page), resObj2)
-        //const arr = single.get(Number(page))
-
-        //result = result.concat(prev, resObj2)
-        //console.log('result', result)
-        //} else {
-        //single.set(Number(page), resObj2)
-        //}
-        //data_items = single.get(Number(page))
-        //promise all
         const success = await DataLength.setArr(Number(page), resObj2)
         if (success === true) {
             data_items = await DataLength.getArr()
