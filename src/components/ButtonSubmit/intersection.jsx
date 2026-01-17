@@ -19,7 +19,7 @@ let currentPage = 0
 let callbackFunction
 let handleClick
 function ButtonSubmit(props) {
-  //console.log('ButtonSubmit props',props)
+  console.log('ButtonSubmit props',props)
   const ref = useRef(null)
   const [page, setPage] = useState(0);
   const router = useRouter()
@@ -35,18 +35,18 @@ function ButtonSubmit(props) {
   callbackFunction = useCallback(async (entries) => {
     const [entry] = entries;
     if (entry.isIntersecting) {
-      console.log('button input',props.index)
+      //console.log('button input',props.index)
       /*if ((Number(props.index) + 1) === Number(props.length)) {
         setPage((page) => {
           let newPage = page + 1
           return newPage
         })
       }*/
-      //scrollFSM(props.index, 'input')
+      scrollFSM(props.index, 'input')
     } else {
       //setMode('hidden')
-      console.log('button output',props.index)
-      //scrollFSM(props.index, 'output')
+      //console.log('button output',props.index)
+      scrollFSM(props.index, 'output')
     }
   }, []);
   useEffect(() => {
@@ -54,16 +54,16 @@ function ButtonSubmit(props) {
     router.push(`?viewtype=${currentViewtype}&page=${page}`, { scroll: false });
   }, [page])
   useEffect(() => {
-    const fetchD = async () => {
+    //const fetchD = async () => {
       //console.log('mount', props.index)//page increment -> new mount?
-      //await mountItem(props.index)
+      mountItem(props.index)
       const observer = new IntersectionObserver(callbackFunction, options);
       observer.observe(ref.current);
       return () => {
         observer.unobserve(ref.current);
       };
-    }
-    fetchD()
+    //}
+    //fetchD()
   }, [])
   //onClick={()=>handleClick()}
   return <button type="button" ref={ref} onClick={handleClick}><Suspense>444444</Suspense></button>
