@@ -42,6 +42,8 @@ const IOComponent = () => {
                 let newPage = page + 1
                 return newPage
             })*/
+        } else {
+            console.log('output')//not scrollTop
         }
     }, []);
     useEffect(() => {

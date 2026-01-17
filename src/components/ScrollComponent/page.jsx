@@ -32,6 +32,7 @@ function ScrollComponent() {
     const [startRow, setStartRow] = useState(0)
     const [startAction, setStartAction] = useState('start')
     const [page, setPage] = useState(0)
+    const [scroll, setScroll] = useState('start');
     const [dataLength, setDataLength] = useState(0)
     callbackFunction = useCallback(async (entries) => {
         const [entry] = entries;
@@ -55,41 +56,41 @@ function ScrollComponent() {
         return rowHeight * Math.abs(startRow)
     }, [startRow])
     const handleScroll = useCallback(async (e) => {
-        /*const elem = document.querySelector('#header')
+        const elem = document.querySelector('#header')
         const rect = elem.getBoundingClientRect()
-        const col = Math.ceil(rect.y / rowHeight)*/
-        const paragraphs = document.querySelectorAll('li')
+        const col = Math.ceil(rect.y / rowHeight)
+        /*const paragraphs = document.querySelectorAll('li')
         console.log('paragraphs', paragraphs)
         const observerIO = new IntersectionObserver(callbackFunction, options);
         paragraphs.forEach(el => {
             observerIO.observe(el);
-        });
+        });*/
         //setStartRow(col)
         //setStartAction('down')
-        //let maxScrollBottom = document.documentElement.scrollHeight - window.scrollY - window.innerHeight;
+        let maxScrollBottom = document.documentElement.scrollHeight - window.scrollY - window.innerHeight;
         //console.log('maxScrollBottom', maxScrollBottom)
-        /*if (maxScrollBottom <= 0) {
+        if (maxScrollBottom <= 0) {
             //change url page increment
             //change col action
-            setPage((page) => {
+            /*setPage((page) => {
                 let newPage = page + 1
                 return newPage
-            })
-
-        }*/
-        //vertical = rect.y
+            })*/
+            setScroll('bottom')
+        } 
+        vertical = rect.y
     }, [])
     useEffect(() => {
         //scrollEnd({ action: startAction, col: startRow })
-        (async () => {
+        /*(async () => {
             // Your async logic here
             //const dataLength1 = await scrollEnd()
             //setDataLength(dataLength1)
             //console.log('dataLength', dataLength)
             // Update state, etc.
-        })();
-        router.push(`?viewtype=${currentViewtype}&page=${page}&action=${startAction}&col=${startRow}`, { scroll: false });
-    }, [startRow, startAction, page])
+        })();*/
+        router.push(`?viewtype=${currentViewtype}&page=${page}&action=${startAction}&scroll=${scroll}`, { scroll: false });
+    }, [startRow, startAction, page, scroll])
     useEffect(() => {
         //find first li , get Height
         document.addEventListener('scrollend', handleScroll)
