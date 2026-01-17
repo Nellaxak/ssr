@@ -113,14 +113,14 @@ async function RenderProp(product, index) {
         dates={dateString}
     /></Suspense>
 }
-async function List({ items, col, renderItem }) {
+async function List({ items, renderItem }) {
     //slice -1,-5?scroll up
     //slice must be 6
     //const res = await Promise.all(items.slice(col, col + 10).map(async (item) => {
-    const res = await Promise.all(items.map(async (item) => {
+    const res = await Promise.all(items.map(async (item,index) => {
         //console.log('llpoiyt', item)//linked list
         if (item) {
-            return await renderItem(item);
+            return await renderItem(item,index);
         }
     }))
     return (<Suspense>{res}
@@ -217,9 +217,9 @@ export default async function Home({ searchParams }) {
         if (success === true) {
             data_items = await DataLength.getArr()
         }
-        return <List items={data_items} col={Number(scroll)}
+        return <List items={data_items} //col={Number(scroll)}
             renderItem={async (product, index) => {
-                console.log('product', index)
+                //console.log('product', index)
                 const date = new Date(product.close_approach_data[0].epoch_date_close_approach)
                 const prevDate = new Intl.DateTimeFormat("ru-RU", options).format(date);
                 const datSlice = prevDate.slice(0, -2)
@@ -228,7 +228,7 @@ export default async function Home({ searchParams }) {
                 //new Item(Number(product.id))
                 return <Suspense><Row
                     key={product.id}
-                    index={index}
+                    //index={index}
                     obj={product}
                     viewtype={viewtype}
                     dates={dateString}
