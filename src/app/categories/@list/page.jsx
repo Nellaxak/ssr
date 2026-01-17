@@ -214,7 +214,7 @@ export default async function Home({ searchParams }) {
         const list = data.near_earth_objects
         const arrObjects22 = Object.values(list)
         const resObj2 = arrObjects22.flat()
-        const success = await DataLength.setArr(Number(page), resObj2)
+        const success = await DataLength.setArr(String(page)+'self', resObj2)
         if (success === true) {
             data_items = await DataLength.getArr()
         }
@@ -227,7 +227,7 @@ export default async function Home({ searchParams }) {
             const listNext = dataNext.near_earth_objects
             const arrObjects22Next = Object.values(listNext)
             const resObj2Next = arrObjects22Next.flat()
-            const success = await DataLength.setArr(Number(page), resObj2Next)
+            const success = await DataLength.setArr(String(page)+'next', resObj2Next)
             if (success === true) {
                 data_items = await DataLength.getArr()
             }

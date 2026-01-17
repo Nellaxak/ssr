@@ -1,10 +1,8 @@
 'use server'
-//import { Suspense } from "react";//
-//import statusMap from "./statusMap";
-//proxy object
+
 class DataLength {
   static arr = [];
-  static page = -1;
+  static page = '-1';
   constructor(id, obj) {
     //console.log('constructor', id, typeof id)
 
