@@ -39,32 +39,31 @@ const MOComponent = () => {
             //const page = Number(currentPage) + 1
             //router.push(`?viewtype=${currentViewtype}&page=${page}`, { scroll: false });
             //socket.emit('addPage')
-            console.log('input button')
+            console.log('input button',entry.target)
             /*setPage((page) => {
                 const newPage = page + 1
                 return newPage
             })*/
         } else {
-            console.log('output button')
+            console.log('output button',entry.target)
         }
     }, []);
     // Колбэк-функция при срабатывании мутации
     const callbackF = useCallback((mutationsList: any) => {
-        console.log('callbackMO', mutationsList)
+        console.log('callbackMO', mutationsList.length)//mutationsList.length slice
         const paragraphs = document.querySelectorAll('button')
-        console.log('paragraphs', paragraphs)
+        //console.log('paragraphs', paragraphs)
         const observerIO = new IntersectionObserver(callbackFunction, options);
         paragraphs.forEach(el => {
-            //el.style.color = 'blue';
             observerIO.observe(el);
         });
-        for (let mutation of mutationsList) {
+        /*for (let mutation of mutationsList) {
             if (mutation.type === "childList") {
                 console.log("A child node has been added or removed.");
             } else if (mutation.type === "attributes") {
                 console.log("The " + mutation.attributeName + " attribute was modified.");
             }
-        }
+        }*/
     }, []);
     useEffect(() => {
         //socket.emit('addPage')
@@ -76,10 +75,10 @@ const MOComponent = () => {
         //socket.on('page', data => {
         //router.refresh()
         //})
-        /*return () => {
+        return () => {
             observer.disconnect();
             //socket.off('page')
-        };*/
+        };
     }, [])
     /*useEffect(() => {
         //serverActions Post request nasa fetch add
