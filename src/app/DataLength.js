@@ -14,12 +14,12 @@ class DataLength {
     //console.log(linkParams,'mmmm',arrParams.length)
     if (pageParam !== DataLength.page) {
       //shift/unshift
-      if (linkParams === 'start' || linkParams === 'bottom') {
+      if (linkParams === 'start' || linkParams === 'next') {
         //console.log('start',...arrParams)
         //DataLength.arr = DataLength.arr.concat(arrParams)//insert in head/tail arr
         DataLength.arr.push(...arrParams)
       } else {
-        console.log('startllll', linkParams)
+        //console.log('startllll', linkParams)
         DataLength.arr.unshift(...arrParams)
       }
       DataLength.page = pageParam
