@@ -214,7 +214,7 @@ export default async function Home({ searchParams }) {
         const list = data.near_earth_objects
         const arrObjects22 = Object.values(list)
         const resObj2 = arrObjects22.flat()
-        const success = await DataLength.setArr(String(page)+'self', resObj2)
+        const success = await DataLength.setArr(String(page) + 'self', resObj2)
         if (success === true) {
             data_items = await DataLength.getArr()
         }
@@ -227,7 +227,21 @@ export default async function Home({ searchParams }) {
             const listNext = dataNext.near_earth_objects
             const arrObjects22Next = Object.values(listNext)
             const resObj2Next = arrObjects22Next.flat()
-            const success = await DataLength.setArr(String(page)+'next', resObj2Next)
+            const success = await DataLength.setArr(String(page) + 'next', resObj2Next, 'next')
+            if (success === true) {
+                data_items = await DataLength.getArr()
+            }
+        }
+        if (scroll === 'top') {
+            const respPrev = await fetch(`${data.links.prev}`,
+                { cache: 'force-cache' },
+                { next: { tags: ['items'] } }
+            );
+            const dataPrev = await respPrev.json()
+            const listPrev = dataPrev.near_earth_objects
+            const arrObjects22Prev = Object.values(listPrev)
+            const resObj2Prev = arrObjects22Prev.flat()
+            const success = await DataLength.setArr(String(page) + 'prev', resObj2Prev, 'prev')
             if (success === true) {
                 data_items = await DataLength.getArr()
             }
