@@ -11,13 +11,13 @@ class DataLength {
     return DataLength.arr
   }
   static async setArr(pageParam, arrParams, linkParams) {
-    console.log(linkParams,'mmmm',arrParams.length)
+    //console.log(linkParams,'mmmm',arrParams.length)
     if (pageParam !== DataLength.page) {
       //shift/unshift
       if (linkParams === 'start' || linkParams === 'bottom' ) {
-        console.log('start')
+        //console.log('start',...arrParams)
         //DataLength.arr = DataLength.arr.concat(arrParams)//insert in head/tail arr
-        DataLength.arr.shift(...arrParams)
+        DataLength.arr.push(...arrParams)
       } else {
         DataLength.arr.unshift(...arrParams)
       }
