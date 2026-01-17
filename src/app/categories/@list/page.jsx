@@ -2,7 +2,7 @@ import styles from "./page.module.css";
 import React, { Suspense, Activity } from "react";
 import statusMap from "../../statusMap";
 //import { revalidateTag, revalidatePath } from 'next/cache';
-import ButtonSubmit from '../../../components/ButtonSubmit/intersection'
+import ButtonSubmit from '../../../components/ButtonSubmit/page'
 //import LinkedList, { linkedList } from "../../../LinkedList";
 import Item from "../../Item";
 import DataLength from "../../DataLength";
@@ -190,7 +190,7 @@ async function Row(props) {
 const single = new Map()
 let result = []
 let data_items = []
-let scroll = 0
+let scroll = 'start'
 let col = 0
 export default async function Home({ searchParams }) {
     const search = await searchParams;
@@ -217,6 +217,20 @@ export default async function Home({ searchParams }) {
         const success = await DataLength.setArr(Number(page), resObj2)
         if (success === true) {
             data_items = await DataLength.getArr()
+        }
+        if (scroll === 'bottom') {
+            const respNext = await fetch(`${data.links.next}`,
+                { cache: 'force-cache' },
+                { next: { tags: ['items'] } }
+            );
+            const dataNext = await respNext.json()
+            const listNext = dataNext.near_earth_objects
+            const arrObjects22Next = Object.values(listNext)
+            const resObj2Next = arrObjects22Next.flat()
+            const success = await DataLength.setArr(Number(page), resObj2Next)
+            if (success === true) {
+                data_items = await DataLength.getArr()
+            }
         }
         return <List items={data_items} //col={Number(scroll)}
             renderItem={async (product, index) => {

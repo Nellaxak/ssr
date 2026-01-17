@@ -24,7 +24,7 @@ const IOComponent = () => {
     //path = usePathname()
     const searchParams = useSearchParams()
     const [page, setPage] = useState(0);
-    //const [scroll, setScroll] = useState(0);
+    const [scroll, setScroll] = useState('start');
 
     const currentViewtype = searchParams.get('viewtype')
     //const currentPage = searchParams.get('page')
@@ -37,10 +37,11 @@ const IOComponent = () => {
         const [entry] = entries;
         if (entry.isIntersecting) {// && add) {
             //console.log('input')
-            setPage((page) => {
+            setScroll('bottom')
+            /*setPage((page) => {
                 let newPage = page + 1
                 return newPage
-            })
+            })*/
         }
     }, []);
     useEffect(() => {
@@ -53,7 +54,7 @@ const IOComponent = () => {
         };
     }, [])
     useEffect(() => {
-        router.push(`/categories?viewtype=${currentViewtype}&page=${page}`, { scroll: false });
+        router.push(`/categories?viewtype=${currentViewtype}&page=${page}&scroll=${scroll}`, { scroll: false });
         //router.refresh()
         /*const elem = document.querySelector('ol')
         elem.scrollIntoView(true)/*{//mount scroll to center
@@ -61,7 +62,7 @@ const IOComponent = () => {
             block: 'center',    // Required for vertical centering
             //inline: 'center'    // Optional: for horizontal centering
         })*/
-    }, [page])
+    }, [page, scroll])
     //className={styles.main_footer}
     return <p ref={ref} ></p>
 }

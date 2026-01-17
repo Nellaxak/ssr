@@ -45,7 +45,6 @@ export const metadata = {
 export default async function Layout(props) {
   /* <Suspense><IOComponent /></Suspense>
           <p id='forScroll'></p>*/
-  //<Suspense><IOComponent /></Suspense>
   //<ScrollComponent />
   //<VirtualScrollComponent>{props.children}</VirtualScrollComponent>
   //        <Suspense><ScrollComponentTop /></Suspense>
@@ -76,6 +75,7 @@ export default async function Layout(props) {
               {props.children}
             </Suspense>
           </div>
+          <Suspense><IOComponent /></Suspense>
         </div>
       </body>
     </html >
