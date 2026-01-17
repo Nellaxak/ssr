@@ -69,6 +69,7 @@ const MOComponent = () => {
         const observer = new MutationObserver(callback)
         //const observer = new IntersectionObserver(callbackFunction, options);
         const el = document.querySelector("ol") as HTMLElement;
+        console.log('el',el)
         observer.observe(el, config);
         //socket.on('page', data => {
         //router.refresh()
