@@ -67,6 +67,7 @@ function ScrollComponent() {
         });*/
         //setStartRow(col)
         //setStartAction('down')
+        let maxScrollTop = document.documentElement.scrollHeight - window.innerHeight;
         let maxScrollBottom = document.documentElement.scrollHeight - window.scrollY - window.innerHeight;
         console.log('maxScrollBottom', maxScrollBottom, document.documentElement.scrollHeight, window.scrollY, window.innerHeight)
         if (maxScrollBottom <= 0) {
