@@ -16,6 +16,7 @@ const options = {
 }
 let currentViewtype = ''
 let currentPage = 0
+let callbackFunction
 function ButtonSubmit(props) {
   //console.log('ButtonSubmit props',props)
   const ref = useRef(null)
@@ -30,7 +31,7 @@ function ButtonSubmit(props) {
     await toggleClick(props.id)
   }, [])
   //const callbackFunction = useCallback(async (entries: IntersectionObserverEntry[]) => {
-  const callbackFunction = useCallback(async (entries) => {
+  callbackFunction = useCallback(async (entries) => {
     const [entry] = entries;
     if (entry.isIntersecting) {
       console.log('button input',props.index)
