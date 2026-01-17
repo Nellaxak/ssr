@@ -49,7 +49,7 @@ const MOComponent = () => {
         }
     }, []);
     // Колбэк-функция при срабатывании мутации
-    const callback = useCallback((mutationsList: any, observer: any) => {
+    const callbackF = useCallback((mutationsList: any) => {
         console.log('callbackMO', mutationsList)
         const paragraphs = document.querySelectorAll('button')
         console.log('paragraphs', paragraphs)
@@ -68,7 +68,7 @@ const MOComponent = () => {
     }, []);
     useEffect(() => {
         //socket.emit('addPage')
-        const observer = new MutationObserver(callback)
+        const observer = new MutationObserver(callbackF)
         //const observer = new IntersectionObserver(callbackFunction, options);
         const el = document.querySelector("ol") as HTMLElement;
         console.log('el', el)
@@ -76,11 +76,10 @@ const MOComponent = () => {
         //socket.on('page', data => {
         //router.refresh()
         //})
-        return () => {
+        /*return () => {
             observer.disconnect();
             //socket.off('page')
-        };
-
+        };*/
     }, [])
     useEffect(() => {
         //serverActions Post request nasa fetch add
