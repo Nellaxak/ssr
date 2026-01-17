@@ -118,7 +118,7 @@ async function List({ items, renderItem }) {
     //slice must be 6
     let col = 0
     //const res = await Promise.all(items.slice(col, col + 10).map(async (item) => {
-    const res = await Promise.all(items.slice.map(async (item, index) => {
+    const res = await Promise.all(items.map(async (item, index) => {
         //console.log('llpoiyt', item)//linked list
         if (item) {
             return await renderItem(item, index);
