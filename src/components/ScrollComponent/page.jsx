@@ -22,6 +22,7 @@ const options = {
     //scrollMargin: "-80px",
     threshold: 1.0,
 }
+let callbackFunction
 function ScrollComponent() {
     //ref = useRef()
     const router = useRouter()
@@ -32,7 +33,7 @@ function ScrollComponent() {
     const [startAction, setStartAction] = useState('start')
     const [page, setPage] = useState(0)
     const [dataLength, setDataLength] = useState(0)
-    const callbackFunction = useCallback(async (entries) => {
+    callbackFunction = useCallback(async (entries) => {
         const [entry] = entries;
         if (entry.isIntersecting) {// && add) {
             console.log('input li', entry.target)
