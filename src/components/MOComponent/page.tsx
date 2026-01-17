@@ -51,7 +51,7 @@ const MOComponent = () => {
     // Колбэк-функция при срабатывании мутации
     const callbackF = useCallback((mutationsList: any) => {
         console.log('callbackMO', mutationsList.length)//mutationsList.length slice
-        const paragraphs = document.querySelectorAll('button')
+        const paragraphs = document.querySelectorAll('li')
         //console.log('paragraphs', paragraphs)
         const observerIO = new IntersectionObserver(callbackFunction, options);
         paragraphs.forEach(el => {
