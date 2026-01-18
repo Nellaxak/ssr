@@ -196,9 +196,10 @@ export class DoublyLinkedList implements INodeList {
     let currentNode: DoublyLinkedListNode | null = this.head;
 
     while (currentNode) {
-      console.log('zxzxz', currentNode.value, value)
+      //console.log('zxzxz', currentNode.value, value)
       // Если указано значение, пробуем сравнить по значению.
       if (value !== undefined && currentNode.value === value) {
+        //fetch
         return currentNode;
       }
 
@@ -243,21 +244,14 @@ export class DoublyLinkedList implements INodeList {
 
     return deletedHead;
   }
-
-  /*fromArray(values: Array<Value>): DoublyLinkedList {
-    values.forEach((value: Value, index) => this.append(value, index));
-
-    return this;
-  }*/
-
-  async toArray(): Promise<any> {
+  async toArray(self: any): Promise<any> {
     const nodes = [];
 
-    let currentNode = this.head;
+    let currentNode = self//this.head;
     while (currentNode) {
-      console.log('pmjb', currentNode.value)//url?
-      //fetch self/prev/next
-      const resp = await fetch(`${this.dataNode.self}`,
+      //const resp = await fetch(`${this.dataNode.self}`,
+      console.log('self', currentNode)
+      const resp = await fetch(`${currentNode}`,
         { cache: 'force-cache' }
       );
       const data = await resp.json()
@@ -265,17 +259,21 @@ export class DoublyLinkedList implements INodeList {
       const arrObjects22 = Object.values(list)
       const resObj2 = arrObjects22.flat()
       nodes.push(...resObj2);
+
+      /*const respN = await fetch(`${currentNode.next}`,
+        { cache: 'force-cache' }
+      );
+      const dataN = await respN.json()
+      const listN = dataN.near_earth_objects
+      const arrObjects22N = Object.values(listN)
+      const resObj2N = arrObjects22N.flat()
+      nodes.push(...resObj2N);*/
+
       currentNode = currentNode.next;
     }
 
     return nodes;
   }
-
-  /*toString(callback?: Fn): string {
-    return this.toArray()
-      .map((node) => node.toString(callback))
-      .toString();
-  }*/
 
   /*reverse(): DoublyLinkedList {
     let currNode = this.head;
