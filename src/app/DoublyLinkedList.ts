@@ -196,7 +196,7 @@ export class DoublyLinkedList implements INodeList {
     let currentNode: DoublyLinkedListNode | null = this.head;
 
     while (currentNode) {
-      console.log('zxzxz', currentNode)
+      console.log('zxzxz', currentNode.value, value)
       // Если указано значение, пробуем сравнить по значению.
       if (value !== undefined && currentNode.value === value) {
         return currentNode;
