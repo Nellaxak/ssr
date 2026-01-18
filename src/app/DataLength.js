@@ -17,10 +17,13 @@ class DataLength {
     //doubleLinkedList
     if (pageParam !== DataLength.page) {
       dll.dataNode = links
-      if (linkParams === 'start' || linkParams === 'next') {
+      if (linkParams === 'start') {
         await dll.append(nodeDll)
+      }
+      else if (linkParams === 'next') {
+        await dll.append(nodeDll.next)
       } else {
-        await dll.prepend(nodeDll)
+        await dll.prepend(nodeDll.prev)
       }
       DataLength.page = pageParam
     }

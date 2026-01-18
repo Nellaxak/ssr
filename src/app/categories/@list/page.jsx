@@ -218,13 +218,13 @@ export default async function Home({ searchParams }) {
             data_items = await DataLength.getArr(data.links.self)
         }
         if (scroll === 'bottom') {
-            const success = await DataLength.setArr(String(page) + 'next', 'next', data.links, data.links.next)
+            const success = await DataLength.setArr(String(page) + 'next', 'next', data.links, data.links.self)
             if (success === true) {
                 data_items = await DataLength.getArr(data.links.self)
             }
         }
         if (scroll === 'top') {
-            const success = await DataLength.setArr(String(page) + 'prev', 'prev', data.links, data.links.prev)
+            const success = await DataLength.setArr(String(page) + 'prev', 'prev', data.links, data.links.self)
             if (success === true) {
                 data_items = await DataLength.getArr(data.links.self)
             }
