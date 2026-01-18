@@ -17,11 +17,8 @@ class DataLength {
       dll.dataNode = links
       if (linkParams === 'start' || linkParams === 'next') {
         await dll.append(nodeDll)
-        //DataLength.arr = DataLength.arr.concat(arrParams)//insert in head/tail arr
-        //DataLength.arr.push(...arrParams)
       } else {
         await dll.prepend(nodeDll)
-        //DataLength.arr.unshift(...arrParams)
       }
       DataLength.page = pageParam
     }

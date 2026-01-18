@@ -254,6 +254,7 @@ export class DoublyLinkedList implements INodeList {
 
     let currentNode = this.head;
     while (currentNode) {
+      console.log('pmjb', currentNode.value)//url?
       //fetch self/prev/next
       const resp = await fetch(`${this.dataNode.self}`,
         { cache: 'force-cache' }
