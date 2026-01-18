@@ -28,10 +28,10 @@ export class DoublyLinkedListNode implements INode {
 export interface INodeList {
   head: DoublyLinkedListNode | null;
   tail: DoublyLinkedListNode | null;
-  //prepend(value: Value): DoublyLinkedList;
+  prepend(value: Value): Promise<any>;
   append(value: Value): Promise<any>;
   delete(value: Value): DoublyLinkedListNode | null;
-  find(value?: Value | undefined): DoublyLinkedListNode | null;
+  find(value?: Value | undefined): Promise<any> | null;
   deleteTail(): DoublyLinkedListNode | null;
   deleteHead(): DoublyLinkedListNode | null;
   //fromArray(values: Array<Value>): DoublyLinkedList;
@@ -188,7 +188,7 @@ export class DoublyLinkedList implements INodeList {
     return deletedNode;
   }
 
-  find(value?: Value | undefined): DoublyLinkedListNode | null {
+  async find(value?: Value | undefined): Promise<any> | null {
     if (!this.head) {
       return null;
     }

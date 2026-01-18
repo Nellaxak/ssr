@@ -203,13 +203,16 @@ export default async function Home({ searchParams }) {
 
     col = await search.col
     //try {
-    const resp = await fetch(`https://api.nasa.gov/neo/rest/v1/feed?start_date=${startDate}&end_date=${endDate}&api_key=3wa5hHgFuqhf6XiefvqzkcDQWZ01aOOK4vNZEXsP`,
+    const url = `https://api.nasa.gov/neo/rest/v1/feed?start_date=${startDate}&end_date=${endDate}&api_key=3wa5hHgFuqhf6XiefvqzkcDQWZ01aOOK4vNZEXsP`
+    const resp = await fetch(url,
         { cache: 'force-cache' },
         { next: { tags: ['items'] } }
     );
 
     if (Number(resp.status) === 200) {
         const data = await resp.json()
+        const find = await dll.find(url)
+        console.log('find', find)
         const success = await DataLength.setArr(String(page) + 'self', 'start', data.links, data.links.self)
         if (success === true) {
             data_items = await DataLength.getArr()
