@@ -215,18 +215,18 @@ export default async function Home({ searchParams }) {
         //console.log('find', find)
         const success = await DataLength.setArr(String(page) + 'self', 'start', data.links, data.links.self)
         if (success === true) {
-            data_items = await DataLength.getArr(url)
+            data_items = await DataLength.getArr(data.links.self)
         }
         if (scroll === 'bottom') {
             const success = await DataLength.setArr(String(page) + 'next', 'next', data.links, data.links.next)
             if (success === true) {
-                data_items = await DataLength.getArr(url)
+                data_items = await DataLength.getArr(data.links.self)
             }
         }
         if (scroll === 'top') {
             const success = await DataLength.setArr(String(page) + 'prev', 'prev', data.links, data.links.prev)
             if (success === true) {
-                data_items = await DataLength.getArr(url)
+                data_items = await DataLength.getArr(data.links.self)
             }
         }
         return <List items={data_items} //col={Number(scroll)}
