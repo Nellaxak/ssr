@@ -212,9 +212,11 @@ export default async function Home({ searchParams }) {
         const data = await resp.json()
         //console.log('fetch count', data.element_count)
         const list = data.near_earth_objects
+        //data.links.self,next,prev
+
         const arrObjects22 = Object.values(list)
         const resObj2 = arrObjects22.flat()
-        const success = await DataLength.setArr(String(page) + 'self', resObj2, 'start')
+        const success = await DataLength.setArr(String(page) + 'self', resObj2, 'start', data.links, data.links.self)
         if (success === true) {
             data_items = await DataLength.getArr()
         }
@@ -227,7 +229,7 @@ export default async function Home({ searchParams }) {
             const listNext = dataNext.near_earth_objects
             const arrObjects22Next = Object.values(listNext)
             const resObj2Next = arrObjects22Next.flat()
-            const success = await DataLength.setArr(String(page) + 'next', resObj2Next, 'next')
+            const success = await DataLength.setArr(String(page) + 'next', resObj2Next, 'next', data.links, data.links.next)
             if (success === true) {
                 data_items = await DataLength.getArr()
             }
@@ -241,7 +243,7 @@ export default async function Home({ searchParams }) {
             const listPrev = dataPrev.near_earth_objects
             const arrObjects22Prev = Object.values(listPrev)
             const resObj2Prev = arrObjects22Prev.flat()
-            const success = await DataLength.setArr(String(page) + 'prev', resObj2Prev, 'prev')
+            const success = await DataLength.setArr(String(page) + 'prev', resObj2Prev, 'prev', data.links, data.links.prev)
             if (success === true) {
                 data_items = await DataLength.getArr()
             }

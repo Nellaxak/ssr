@@ -1,7 +1,7 @@
 export interface INode {
   value: Value;
   next: DoublyLinkedListNode | null;
-  index: number;
+  //index: number;
   previous: DoublyLinkedListNode | null;
   toString(fn?: Fn): string;
 }
@@ -13,7 +13,7 @@ export type Value = number | string | { [ket: string]: any };
 export class DoublyLinkedListNode implements INode {
   constructor(
     public value: Value,
-    public index: number,
+    //public index: number,
     public next: DoublyLinkedListNode | null = null,
     public previous: DoublyLinkedListNode | null = null,
   ) { }
@@ -29,7 +29,7 @@ export interface INodeList {
   head: DoublyLinkedListNode | null;
   tail: DoublyLinkedListNode | null;
   //prepend(value: Value): DoublyLinkedList;
-  append(value: Value, index: number): Promise<any>;
+  append(value: Value): Promise<any>;
   delete(value: Value): DoublyLinkedListNode | null;
   find(value?: Value | undefined): DoublyLinkedListNode | null;
   deleteTail(): DoublyLinkedListNode | null;
@@ -44,52 +44,53 @@ export class DoublyLinkedList implements INodeList {
   public head: DoublyLinkedListNode | null = null;
   public tail: DoublyLinkedListNode | null = null;
   static count: number = 0;
+  dataNode: any;
   async values(page: number): Promise<any> {
     console.log('values call')
     let current = this.head;
 
     let nodes = []
     while (current !== null) {
-      if (page === current.index) {
-        nodes = []
-        //console.log('ppppp', current.previous, current.next)
-        if (current.previous) {
-          const prev = await fetch(`${current.previous}`,
-            { cache: 'force-cache' },
-          );
-          const dataPrev = await prev.json()
-          const listPrev = dataPrev.near_earth_objects
-          const arrObjectsPrev = Object.values(listPrev).flat(2)
-          nodes = nodes.concat(arrObjectsPrev)//arrObjects[0]//small data
-        }
-        const self = await fetch(`${current.value}`,
+      //if (page === current.index) {
+      nodes = []
+      //console.log('ppppp', current.previous, current.next)
+      if (current.previous) {
+        const prev = await fetch(`${current.previous}`,
           { cache: 'force-cache' },
         );
-        const data = await self.json()
-        const list = data.near_earth_objects
-        const arrObjects = Object.values(list).flat(2)
-        nodes = nodes.concat(arrObjects)//arrObjects[0]//small data
-        if (current.next) {
-          const next = await fetch(`${current.next}`,
-            { cache: 'force-cache' },
-          );
-          const dataNext = await next.json()
-          const listNext = dataNext.near_earth_objects
-          const arrObjectsNext = Object.values(listNext).flat(2)
-          nodes = nodes.concat(arrObjectsNext)//arrObjects[0]//small data
-        }
-        nodes = nodes.slice(0, 8)
-        //const lastNodes=nodes.pop()
-        //const lastItem = nodes.at(-1)//reduce?
-        //console.log('nodes', nodes.length)
-        //current=null //break while
+        const dataPrev = await prev.json()
+        const listPrev = dataPrev.near_earth_objects
+        const arrObjectsPrev = Object.values(listPrev).flat(2)
+        nodes = nodes.concat(arrObjectsPrev)//arrObjects[0]//small data
       }
+      const self = await fetch(`${current.value}`,
+        { cache: 'force-cache' },
+      );
+      const data = await self.json()
+      const list = data.near_earth_objects
+      const arrObjects = Object.values(list).flat(2)
+      nodes = nodes.concat(arrObjects)//arrObjects[0]//small data
+      if (current.next) {
+        const next = await fetch(`${current.next}`,
+          { cache: 'force-cache' },
+        );
+        const dataNext = await next.json()
+        const listNext = dataNext.near_earth_objects
+        const arrObjectsNext = Object.values(listNext).flat(2)
+        nodes = nodes.concat(arrObjectsNext)//arrObjects[0]//small data
+      }
+      nodes = nodes.slice(0, 8)
+      //const lastNodes=nodes.pop()
+      //const lastItem = nodes.at(-1)//reduce?
+      //console.log('nodes', nodes.length)
+      //current=null //break while
+      // }
       current = current.next;
     }
     return nodes
   }
   // Добавляем узел в начало списка.
-  /*prepend(value: Value): DoublyLinkedList {
+  async prepend(value: Value): Promise<any> {
     // Создаем новый узел, который будет head.
     const newNode = new DoublyLinkedListNode(value, this.head);
 
@@ -108,12 +109,12 @@ export class DoublyLinkedList implements INodeList {
     }
 
     return this;
-  }*/
+  }
 
   // Добавляем узел в конец списка.
-  async append(value: any, index: number): Promise<any> {
+  async append(value: any): Promise<any> {
     //console.log('before append', value)
-    const newNode = new DoublyLinkedListNode(value, index);
+    const newNode = new DoublyLinkedListNode(value);
 
     if (this.tail) {
       // Присоединяем новый узел к концу связанного списка.
@@ -248,17 +249,29 @@ export class DoublyLinkedList implements INodeList {
     return this;
   }*/
 
-  /*toArray(): DoublyLinkedListNode[] {
+  async toArray(): Promise<any> {
     const nodes = [];
 
     let currentNode = this.head;
     while (currentNode) {
-      nodes.push(currentNode);
+      //fetch self/prev/next
+      const resp = await fetch(`${this.dataNode.next}`,
+        { cache: 'force-cache' }
+      );
+      const data = await resp.json()
+      const list = data.near_earth_objects
+      const arrObjects22 = Object.values(list)
+      const resObj2 = arrObjects22.flat()
+      //const success = await DataLength.setArr(String(page) + 'self', resObj2, 'start', data.links.self)
+      //if (success === true) {
+        //data_items = await DataLength.getArr()
+      //}
+      nodes.push(...resObj2);
       currentNode = currentNode.next;
     }
 
     return nodes;
-  }*/
+  }
 
   /*toString(callback?: Fn): string {
     return this.toArray()

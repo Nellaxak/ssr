@@ -1,5 +1,5 @@
 'use server'
-
+import dll from "./DoublyLinkedList";
 class DataLength {
   static arr = [];
   static page = '-1';
@@ -10,16 +10,16 @@ class DataLength {
   static async getArr() {
     return DataLength.arr
   }
-  static async setArr(pageParam, arrParams, linkParams) {
-    //console.log(linkParams,'mmmm',arrParams.length)
+  static async setArr(pageParam, arrParams, linkParams, links, nodeDll) {
+    //doubleLinkedList
     if (pageParam !== DataLength.page) {
-      //shift/unshift
+      dll.dataNode = links
       if (linkParams === 'start' || linkParams === 'next') {
-        //console.log('start',...arrParams)
+        await dll.append(nodeDll)
         //DataLength.arr = DataLength.arr.concat(arrParams)//insert in head/tail arr
         DataLength.arr.push(...arrParams)
       } else {
-        //console.log('startllll', linkParams)
+        await dll.prepend(nodeDll)
         DataLength.arr.unshift(...arrParams)
       }
       DataLength.page = pageParam
