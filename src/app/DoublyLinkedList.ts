@@ -255,7 +255,7 @@ export class DoublyLinkedList implements INodeList {
     let currentNode = this.head;
     while (currentNode) {
       //fetch self/prev/next
-      const resp = await fetch(`${this.dataNode.next}`,
+      const resp = await fetch(`${this.dataNode.self}`,
         { cache: 'force-cache' }
       );
       const data = await resp.json()
