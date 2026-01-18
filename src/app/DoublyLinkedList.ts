@@ -262,10 +262,6 @@ export class DoublyLinkedList implements INodeList {
       const list = data.near_earth_objects
       const arrObjects22 = Object.values(list)
       const resObj2 = arrObjects22.flat()
-      //const success = await DataLength.setArr(String(page) + 'self', resObj2, 'start', data.links.self)
-      //if (success === true) {
-        //data_items = await DataLength.getArr()
-      //}
       nodes.push(...resObj2);
       currentNode = currentNode.next;
     }

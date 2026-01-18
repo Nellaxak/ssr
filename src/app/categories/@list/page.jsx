@@ -211,39 +211,39 @@ export default async function Home({ searchParams }) {
     if (Number(resp.status) === 200) {
         const data = await resp.json()
         //console.log('fetch count', data.element_count)
-        const list = data.near_earth_objects
+        /*const list = data.near_earth_objects
         //data.links.self,next,prev
 
         const arrObjects22 = Object.values(list)
-        const resObj2 = arrObjects22.flat()
-        const success = await DataLength.setArr(String(page) + 'self', resObj2, 'start', data.links, data.links.self)
+        const resObj2 = arrObjects22.flat()*/
+        const success = await DataLength.setArr(String(page) + 'self', 'start', data.links, data.links.self)
         if (success === true) {
             data_items = await DataLength.getArr()
         }
         if (scroll === 'bottom') {
-            const respNext = await fetch(`${data.links.next}`,
+            /*const respNext = await fetch(`${data.links.next}`,
                 { cache: 'force-cache' },
                 { next: { tags: ['items'] } }
             );
             const dataNext = await respNext.json()
             const listNext = dataNext.near_earth_objects
             const arrObjects22Next = Object.values(listNext)
-            const resObj2Next = arrObjects22Next.flat()
-            const success = await DataLength.setArr(String(page) + 'next', resObj2Next, 'next', data.links, data.links.next)
+            const resObj2Next = arrObjects22Next.flat()*/
+            const success = await DataLength.setArr(String(page) + 'next', 'next', data.links, data.links.next)
             if (success === true) {
                 data_items = await DataLength.getArr()
             }
         }
         if (scroll === 'top') {
-            const respPrev = await fetch(`${data.links.prev}`,
+            /*const respPrev = await fetch(`${data.links.prev}`,
                 { cache: 'force-cache' },
                 { next: { tags: ['items'] } }
             );
             const dataPrev = await respPrev.json()
             const listPrev = dataPrev.near_earth_objects
             const arrObjects22Prev = Object.values(listPrev)
-            const resObj2Prev = arrObjects22Prev.flat()
-            const success = await DataLength.setArr(String(page) + 'prev', resObj2Prev, 'prev', data.links, data.links.prev)
+            const resObj2Prev = arrObjects22Prev.flat()*/
+            const success = await DataLength.setArr(String(page) + 'prev', 'prev', data.links, data.links.prev)
             if (success === true) {
                 data_items = await DataLength.getArr()
             }

@@ -8,19 +8,20 @@ class DataLength {
 
   }
   static async getArr() {
-    return DataLength.arr
+    const arr = await dll.toArray()
+    return arr
   }
-  static async setArr(pageParam, arrParams, linkParams, links, nodeDll) {
+  static async setArr(pageParam, linkParams, links, nodeDll) {
     //doubleLinkedList
     if (pageParam !== DataLength.page) {
       dll.dataNode = links
       if (linkParams === 'start' || linkParams === 'next') {
         await dll.append(nodeDll)
         //DataLength.arr = DataLength.arr.concat(arrParams)//insert in head/tail arr
-        DataLength.arr.push(...arrParams)
+        //DataLength.arr.push(...arrParams)
       } else {
         await dll.prepend(nodeDll)
-        DataLength.arr.unshift(...arrParams)
+        //DataLength.arr.unshift(...arrParams)
       }
       DataLength.page = pageParam
     }
