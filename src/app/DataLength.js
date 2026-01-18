@@ -7,7 +7,9 @@ class DataLength {
     //console.log('constructor', id, typeof id)
 
   }
-  static async getArr() {
+  static async getArr(url) {
+    const find = await dll.find(url)
+    console.log('find', find)
     const arr = await dll.toArray()
     return arr
   }
