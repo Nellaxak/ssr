@@ -261,16 +261,16 @@ export class DoublyLinkedList implements INodeList {
       const arrObjects22 = Object.values(list)
       const resObj2 = arrObjects22.flat()
       nodes.push(...resObj2);
-
-      const respN = await fetch(`${currentNode.next}`,
-        { cache: 'force-cache' }
-      );
-      const dataN = await respN.json()
-      const listN = dataN.near_earth_objects
-      const arrObjects22N = Object.values(listN)
-      const resObj2N = arrObjects22N.flat()
-      nodes.push(...resObj2N);
-
+      if (currentNode.next) {
+        const respN = await fetch(`${currentNode.next}`,
+          { cache: 'force-cache' }
+        );
+        const dataN = await respN.json()
+        const listN = dataN.near_earth_objects
+        const arrObjects22N = Object.values(listN)
+        const resObj2N = arrObjects22N.flat()
+        nodes.push(...resObj2N);
+      }
       currentNode = currentNode.next;
     }
 
