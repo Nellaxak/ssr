@@ -113,26 +113,28 @@ export class DoublyLinkedList implements INodeList {
 
   // Добавляем узел в конец списка.
   async append(value: any): Promise<any> {
-    console.log('before append', value)
-    const newNode = new DoublyLinkedListNode(value);
+    //console.log('before append', value)
+    if (value !== undefined) {
+      const newNode = new DoublyLinkedListNode(value);
 
-    if (this.tail) {
-      // Присоединяем новый узел к концу связанного списка.
-      this.tail.next = newNode;
+      if (this.tail) {
+        // Присоединяем новый узел к концу связанного списка.
+        this.tail.next = newNode;
+      }
+
+      // Присоединяем текущий tail к предыдущей (previous) ссылке нового узла.
+      newNode.previous = this.tail;
+
+      // Переназначаем tail на новый узел.
+      this.tail = newNode;
+
+      if (!this.head) {
+        this.head = newNode;
+      }
+      DoublyLinkedList.count = DoublyLinkedList.count + 1
+      console.log('after append', DoublyLinkedList.count)
+      return this;
     }
-
-    // Присоединяем текущий tail к предыдущей (previous) ссылке нового узла.
-    newNode.previous = this.tail;
-
-    // Переназначаем tail на новый узел.
-    this.tail = newNode;
-
-    if (!this.head) {
-      this.head = newNode;
-    }
-    DoublyLinkedList.count = DoublyLinkedList.count + 1
-    console.log('after append', DoublyLinkedList.count)
-    return this;
   }
 
   delete(value: Value): DoublyLinkedListNode | null {
