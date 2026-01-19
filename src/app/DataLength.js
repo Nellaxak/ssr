@@ -17,14 +17,16 @@ class DataLength {
     console.log('linkParams',linkParams)
     if (pageParam !== DataLength.page) {
       dll.dataNode = links
+      //switch case
       if (linkParams === 'start') {
         await dll.append(nodeDll)
       }
       if (linkParams === 'next') {
+        console.log('bottom scroll')
         await dll.append(nodeDll.next)
-      } else {
+      } /*else {
         await dll.prepend(nodeDll.prev)
-      }
+      }*/
       DataLength.page = pageParam
     }
     return true
