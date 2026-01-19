@@ -16,7 +16,7 @@ class DataLength {
   static async setArr(pageParam, linkParams, nodeDll) {
     console.log('linkParams', linkParams)
     if (pageParam !== DataLength.page) {
-      dll.dataNode = links
+      dll.dataNode = nodeDll
       //switch case
       if (linkParams === 'start') {
         await dll.append(nodeDll.self)
