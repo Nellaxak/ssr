@@ -14,7 +14,7 @@ class DataLength {
     return arr
   }
   static async setArr(pageParam, linkParams, links, nodeDll) {
-    console.log('linkParams',linkParams)
+    console.log('linkParams', linkParams)
     if (pageParam !== DataLength.page) {
       dll.dataNode = links
       //switch case
@@ -22,11 +22,12 @@ class DataLength {
         await dll.append(nodeDll)
       }
       if (linkParams === 'next') {
-        console.log('bottom scroll')
+        console.log('bottom scroll', nodeDll.next)
         await dll.append(nodeDll.next)
-      } /*else {
+      }
+      if (linkParams === 'prev') {
         await dll.prepend(nodeDll.prev)
-      }*/
+      }
       DataLength.page = pageParam
     }
     return true
