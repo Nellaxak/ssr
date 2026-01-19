@@ -261,8 +261,8 @@ export class DoublyLinkedList implements INodeList {
       const arrObjects22 = Object.values(list)
       const resObj2 = arrObjects22.flat()
       nodes.push(...resObj2);
+      console.log('currentNode.next', currentNode.next)
       if (currentNode.next) {
-        console.log('currentNode.next',currentNode.next)
         const respN = await fetch(`${currentNode.next}`,
           { cache: 'force-cache' }
         );
