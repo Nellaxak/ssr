@@ -14,7 +14,7 @@ class DataLength {
     return arr
   }
   static async setArr(pageParam, linkParams, links, nodeDll) {
-    //doubleLinkedList
+    console.log('linkParams',linkParams)
     if (pageParam !== DataLength.page) {
       dll.dataNode = links
       if (linkParams === 'start') {
