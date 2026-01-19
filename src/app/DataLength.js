@@ -19,7 +19,7 @@ class DataLength {
       dll.dataNode = links
       //switch case
       if (linkParams === 'start') {
-        await dll.append(nodeDll)
+        await dll.append(nodeDll.self)
       }
       if (linkParams === 'next') {
         console.log('bottom scroll', nodeDll, nodeDll.next)
