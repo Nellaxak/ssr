@@ -20,7 +20,7 @@ class DataLength {
       if (linkParams === 'start') {
         await dll.append(nodeDll)
       }
-      else if (linkParams === 'next') {
+      if (linkParams === 'next') {
         await dll.append(nodeDll.next)
       } else {
         await dll.prepend(nodeDll.prev)
