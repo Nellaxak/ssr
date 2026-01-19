@@ -13,7 +13,7 @@ class DataLength {
     const arr = await dll.toArray(find)
     return arr
   }
-  static async setArr(pageParam, linkParams, links, nodeDll) {
+  static async setArr(pageParam, linkParams, nodeDll) {
     console.log('linkParams', linkParams)
     if (pageParam !== DataLength.page) {
       dll.dataNode = links
@@ -22,7 +22,7 @@ class DataLength {
         await dll.append(nodeDll)
       }
       if (linkParams === 'next') {
-        console.log('bottom scroll', nodeDll.next)
+        console.log('bottom scroll', nodeDll, nodeDll.next)
         await dll.append(nodeDll.next)
       }
       if (linkParams === 'prev') {

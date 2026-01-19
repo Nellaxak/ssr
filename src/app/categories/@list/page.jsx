@@ -213,18 +213,18 @@ export default async function Home({ searchParams }) {
         const data = await resp.json()
         //const find = await dll.find(url)
         //console.log('find', find)
-        const success = await DataLength.setArr(String(page) + 'self', 'start', data.links, data.links.self)
+        const success = await DataLength.setArr(String(page) + 'self', 'start', data.links)
         if (success === true) {
             data_items = await DataLength.getArr(data.links.self)
         }
         if (scroll === 'bottom') {
-            const success = await DataLength.setArr(String(page) + 'next', 'next', data.links, data.links.self)
+            const success = await DataLength.setArr(String(page) + 'next', 'next', data.links)
             if (success === true) {
                 data_items = await DataLength.getArr(data.links.self)
             }
         }
         if (scroll === 'top') {
-            const success = await DataLength.setArr(String(page) + 'prev', 'prev', data.links, data.links.self)
+            const success = await DataLength.setArr(String(page) + 'prev', 'prev', data.links)
             if (success === true) {
                 data_items = await DataLength.getArr(data.links.self)
             }
