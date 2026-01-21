@@ -34,6 +34,7 @@ function ScrollComponent() {
     const [page, setPage] = useState(0)
     const [scroll, setScroll] = useState('start');
     const [dataLength, setDataLength] = useState(0)
+    const [countScroll, setCountScroll] = useState(0)
     callbackFunction = useCallback(async (entries) => {
         const [entry] = entries;
         if (entry.isIntersecting) {// && add) {
@@ -73,10 +74,10 @@ function ScrollComponent() {
         if (maxScrollBottom <= 0) {
             //change url page increment
             //change col action
-            /*setPage((page) => {
+            setCountScroll((page) => {
                 let newPage = page + 1
                 return newPage
-            })*/
+            })
             //scrollBottom(0)
             setScroll('bottom')
         }
@@ -91,9 +92,9 @@ function ScrollComponent() {
             //console.log('dataLength', dataLength)
             // Update state, etc.
         })();*/
-        router.push(`?viewtype=${currentViewtype}&page=${page}&scroll=${scroll}`, { scroll: true });
+        router.push(`?viewtype=${currentViewtype}&page=${page}&scroll=${scroll}&col=${countScroll}`, { scroll: true });
         //router.refresh()
-    }, [startRow, startAction, page, scroll])
+    }, [startRow, startAction, page, scroll, countScroll])
     useEffect(() => {
         //find first li , get Height
         //scrollStart(0)
