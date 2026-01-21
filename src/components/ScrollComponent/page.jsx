@@ -77,7 +77,7 @@ function ScrollComponent() {
                 let newPage = page + 1
                 return newPage
             })*/
-           scrollBottom()
+           scrollBottom(0)
            // setScroll('bottom')
         }
         vertical = rect.y

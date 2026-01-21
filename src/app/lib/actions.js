@@ -114,8 +114,8 @@ export async function getStatus(params) {
 export async function scrollStart(page) {
     await DataLength.setArr(String(page) + 'self', 'start', DoublyLinkedList.links)
 }
-export async function scrollBottom() {
-
+export async function scrollBottom(page) {
+    await DataLength.setArr(String(page) + 'next', 'next', DoublyLinkedList.links)
 }
 export async function scrollTop() {
     //dll.prepend()
