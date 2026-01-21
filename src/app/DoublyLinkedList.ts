@@ -107,7 +107,7 @@ export class DoublyLinkedList implements INodeList {
     if (!this.tail) {
       this.tail = newNode;
     }
-    DoublyLinkedList.dataNode = this
+    DoublyLinkedList.dataNode = newNode
 
     return this;
   }
@@ -133,7 +133,7 @@ export class DoublyLinkedList implements INodeList {
         this.head = newNode;
       }
       DoublyLinkedList.count = DoublyLinkedList.count + 1
-      DoublyLinkedList.dataNode = this
+      DoublyLinkedList.dataNode = newNode
       console.log('after append', DoublyLinkedList.count)
       return this;
     }
@@ -256,8 +256,8 @@ export class DoublyLinkedList implements INodeList {
     //while (currentNode) {
     //const resp = await fetch(`${this.dataNode.self}`,
 
-    if (currentNode.head !== null) {
-      const respP = await fetch(`${currentNode.head.value}`,
+    if (currentNode.previous !== null) {
+      const respP = await fetch(`${currentNode.previous.value}`,
         { cache: 'force-cache' }
       );
       const dataP = await respP.json()
@@ -266,8 +266,8 @@ export class DoublyLinkedList implements INodeList {
       const resObj2P = arrObjects22P.flat()
       nodes.push(...resObj2P);
     }
-    console.log('self', currentNode)
-    const resp = await fetch(`${currentNode.value}`,
+    //console.log('selfqqq', currentNode)
+    const resp = await fetch(`${currentNode.self.value}`,
       { cache: 'force-cache' }
     );
     const data = await resp.json()
@@ -275,9 +275,9 @@ export class DoublyLinkedList implements INodeList {
     const arrObjects22 = Object.values(list)
     const resObj2 = arrObjects22.flat()
     nodes.push(...resObj2);
-    console.log('currentNode.next', currentNode.next)
-    if (currentNode.tail !== null) {
-      const respN = await fetch(`${currentNode.tail.value}`,
+    //console.log('currentNode.next', currentNode.next)
+    if (currentNode.next !== null) {
+      const respN = await fetch(`${currentNode.next.value}`,
         { cache: 'force-cache' }
       );
       const dataN = await respN.json()
