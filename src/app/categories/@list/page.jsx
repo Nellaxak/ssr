@@ -212,7 +212,7 @@ export default async function Home({ searchParams }) {
     if (Number(resp.status) === 200) {
         const data = await resp.json()
         //const find = await dll.find(url)
-        //console.log('find', find)
+        console.log('links', data.element_count, data.links)
         const success = await DataLength.setArr(String(page) + 'self', 'start', data.links)
         if (success === true) {
             data_items = await DataLength.getArr(data.links.self)
