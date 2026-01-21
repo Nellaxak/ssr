@@ -92,7 +92,7 @@ function ScrollComponent() {
             // Update state, etc.
         })();*/
         router.push(`?viewtype=${currentViewtype}&page=${page}&scroll=${scroll}`, { scroll: true });
-        router.refresh()
+        //router.refresh()
     }, [startRow, startAction, page, scroll])
     useEffect(() => {
         //find first li , get Height
