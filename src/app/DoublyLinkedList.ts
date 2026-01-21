@@ -45,7 +45,15 @@ export class DoublyLinkedList implements INodeList {
   public tail: DoublyLinkedListNode | null = null;
   static count: number = 0;
   static dataNode: any;//async change
-  static links:any;
+  static links: any;
+  static get value() {
+    return DoublyLinkedList.dataNode;
+  }
+
+  // Use an async method to set the value asynchronously
+  static async setValueAsync(newValue: any) {
+    DoublyLinkedList.links = newValue;
+  }
   async values(page: number): Promise<any> {
     console.log('values call')
     let current = this.head;
@@ -252,7 +260,7 @@ export class DoublyLinkedList implements INodeList {
   async toArray(): Promise<any> {
     const nodes = [];
 
-    let currentNode = DoublyLinkedList.dataNode//self
+    let currentNode = DoublyLinkedList.value//dataNode//self
     console.log('vcvcvc', currentNode)
     //while (currentNode) {
     //const resp = await fetch(`${this.dataNode.self}`,

@@ -213,7 +213,8 @@ export default async function Home({ searchParams }) {
         const data = await resp.json()
         //const find = await dll.find(url)
         console.log('links', data.element_count, data.links)
-        DoublyLinkedList.links = data.links
+        //await DoublyLinkedList.links = data.links//then
+        await DoublyLinkedList.setValueAsync(data.links)
         /*const success = await DataLength.setArr(String(page) + 'self', 'start', data.links)
         if (success === true) {
             data_items = await DataLength.getArr(data.links.self)
@@ -222,7 +223,7 @@ export default async function Home({ searchParams }) {
             scroll = 'bottom'
             //change data.links.self=data.links.next
         }*/
-        data_items = await DataLength.getArr(DoublyLinkedList.links.self)
+        data_items = await DataLength.getArr()
 
         /*if (scroll === 'bottom') {
             const success = await DataLength.setArr(String(page) + 'next', 'next', data.links)
@@ -230,12 +231,12 @@ export default async function Home({ searchParams }) {
                 data_items = await DataLength.getArr(data.links.self)
             }
         }*/
-        if (scroll === 'top') {
+        /*if (scroll === 'top') {
             const success = await DataLength.setArr(String(page) + 'prev', 'prev', data.links)
             if (success === true) {
                 data_items = await DataLength.getArr(data.links.self)
             }
-        }
+        }*/
         return <List items={data_items} //col={Number(scroll)}
             renderItem={async (product, index) => {
                 //console.log('product', index)
