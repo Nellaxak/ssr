@@ -19,6 +19,7 @@ class DataLength {
       //switch case/object literals
       if (linkParams === 'start') {
         const self = await dll.append(nodeDll.self)
+        console.log('vvvvv', self)
         dll.dataNode = self
       }
       if (linkParams === 'next') {
