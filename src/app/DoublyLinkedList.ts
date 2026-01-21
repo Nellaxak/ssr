@@ -267,7 +267,7 @@ export class DoublyLinkedList implements INodeList {
       nodes.push(...resObj2P);
     }
     //console.log('selfqqq', currentNode)
-    const resp = await fetch(`${currentNode.self.value}`,
+    const resp = await fetch(`${currentNode.value}`,
       { cache: 'force-cache' }
     );
     const data = await resp.json()
