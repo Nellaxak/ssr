@@ -216,13 +216,13 @@ export default async function Home({ searchParams }) {
         DoublyLinkedList.links = data.links//then
         //await DoublyLinkedList.setValueAsync(data.links)//.then(
         //data_items = await DataLength.getArr()//)
-        if (scroll === 'start') {
-            data_items = []
+        //if (scroll === 'start') {
+          //  data_items = []
             const success = await DataLength.setArr(String(col) + 'self', 'start', data.links)
             if (success === true) {
                 data_items = await DataLength.getArr(data.links.self)
             }
-        }
+       // }
         /*if (Number(data.element_count < 9)) {
             scroll = 'bottom'
             //change data.links.self=data.links.next
