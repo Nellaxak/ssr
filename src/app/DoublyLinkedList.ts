@@ -250,30 +250,40 @@ export class DoublyLinkedList implements INodeList {
     const nodes = [];
 
     let currentNode = self//this.head;
-    while (currentNode) {
-      //const resp = await fetch(`${this.dataNode.self}`,
-      console.log('self', currentNode)
-      const resp = await fetch(`${currentNode.value}`,
+    //while (currentNode) {
+    //const resp = await fetch(`${this.dataNode.self}`,
+    if (currentNode.prev) {
+      const respP = await fetch(`${currentNode.next}`,
         { cache: 'force-cache' }
       );
-      const data = await resp.json()
-      const list = data.near_earth_objects
-      const arrObjects22 = Object.values(list)
-      const resObj2 = arrObjects22.flat()
-      nodes.push(...resObj2);
-      /*console.log('currentNode.next', currentNode.next)
-      if (currentNode.next) {
-        const respN = await fetch(`${currentNode.next}`,
-          { cache: 'force-cache' }
-        );
-        const dataN = await respN.json()
-        const listN = dataN.near_earth_objects
-        const arrObjects22N = Object.values(listN)
-        const resObj2N = arrObjects22N.flat()
-        nodes.push(...resObj2N);
-      }*/
-      currentNode = currentNode.next;
+      const dataP = await respP.json()
+      const listP = dataP.near_earth_objects
+      const arrObjects22P = Object.values(listP)
+      const resObj2P = arrObjects22P.flat()
+      nodes.push(...resObj2P);
     }
+    console.log('self', currentNode)
+    const resp = await fetch(`${currentNode.value}`,
+      { cache: 'force-cache' }
+    );
+    const data = await resp.json()
+    const list = data.near_earth_objects
+    const arrObjects22 = Object.values(list)
+    const resObj2 = arrObjects22.flat()
+    nodes.push(...resObj2);
+    console.log('currentNode.next', currentNode.next)
+    if (currentNode.next) {
+      const respN = await fetch(`${currentNode.next}`,
+        { cache: 'force-cache' }
+      );
+      const dataN = await respN.json()
+      const listN = dataN.near_earth_objects
+      const arrObjects22N = Object.values(listN)
+      const resObj2N = arrObjects22N.flat()
+      nodes.push(...resObj2N);
+    }
+    //currentNode = currentNode.next;
+    //}
 
     return nodes;
   }
