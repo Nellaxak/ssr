@@ -2,7 +2,7 @@
 import { useRouter, useParams, useSearchParams } from 'next/navigation';
 import { useCallback, useEffect, useRef, useState, useTransition, Suspense } from "react";
 //import { buttonIO } from "@/app/actions/IntersectionButton";
-import { scrollEnd } from '../../app/lib/actions'
+import { scrollStart, scrollBottom } from '../../app/lib/actions'
 //import { throttle } from 'lodash';
 //import io from 'socket.io-client';
 //import {  } from 'next/navigation-types';
@@ -77,11 +77,12 @@ function ScrollComponent() {
                 let newPage = page + 1
                 return newPage
             })*/
-            setScroll('bottom')
+           scrollBottom()
+           // setScroll('bottom')
         }
         vertical = rect.y
     }, [])
-    useEffect(() => {
+    //useEffect(() => {
         //scrollEnd({ action: startAction, col: startRow })
         /*(async () => {
             // Your async logic here
@@ -90,10 +91,11 @@ function ScrollComponent() {
             //console.log('dataLength', dataLength)
             // Update state, etc.
         })();*/
-        router.push(`?viewtype=${currentViewtype}&page=${page}&scroll=${scroll}`, { scroll: false });
-    }, [startRow, startAction, page, scroll])
+        /*router.push(`?viewtype=${currentViewtype}&page=${page}&scroll=${scroll}`, { scroll: false });
+    }, [startRow, startAction, page, scroll])*/
     useEffect(() => {
         //find first li , get Height
+        scrollStart(0)
         document.addEventListener('scrollend', handleScroll)
         return () => {
             document.removeEventListener('scrollend', handleScroll)

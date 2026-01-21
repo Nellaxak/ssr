@@ -7,7 +7,7 @@ import ButtonSubmit from '../../../components/ButtonSubmit/page'
 import Item from "../../Item";
 import DataLength from "../../DataLength";
 
-import dll from "../../DoublyLinkedList";
+import dll, { DoublyLinkedList } from "../../DoublyLinkedList";
 //import { createLinkedListInstance } from '../../../lib/actions'
 
 let resp
@@ -213,10 +213,11 @@ export default async function Home({ searchParams }) {
         const data = await resp.json()
         //const find = await dll.find(url)
         console.log('links', data.element_count, data.links)
-        const success = await DataLength.setArr(String(page) + 'self', 'start', data.links)
+        DoublyLinkedList.links = data.links
+        /*const success = await DataLength.setArr(String(page) + 'self', 'start', data.links)
         if (success === true) {
             data_items = await DataLength.getArr(data.links.self)
-        }
+        }*/
         /*if (Number(data.element_count < 9)) {
             scroll = 'bottom'
             //change data.links.self=data.links.next

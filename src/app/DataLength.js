@@ -19,13 +19,13 @@ class DataLength {
       //switch case/object literals
       if (linkParams === 'start') {
         await dll.append(nodeDll.self)
-        console.log('vvvvv', DoublyLinkedList.dataNode)
+        //console.log('vvvvv', DoublyLinkedList.dataNode)
         //dll.dataNode = self
       }
       if (linkParams === 'next') {
         //console.log('bottom scroll', nodeDll, nodeDll.next)
         await dll.append(nodeDll.next)
-        console.log('vvvvvN', DoublyLinkedList.dataNode)
+        //console.log('vvvvvN', DoublyLinkedList.dataNode)
         //console.log('vvvvvN', self)
         //dll.dataNode = next
       }

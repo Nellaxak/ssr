@@ -5,7 +5,7 @@ import DataLength from '../DataLength';
 
 import LinkedList, { linkedList } from '../LinkedList'
 import HFSM from '../HFSM'
-import dll from '../DoublyLinkedList';
+import dll, { DoublyLinkedList } from '../DoublyLinkedList';
 const listInstances = new Map()
 const instanceItem = new Map()
 const instanceLinkedList = new Map()
@@ -111,12 +111,14 @@ export async function toggleClick(params) {
 export async function getStatus(params) {
     console.log('getStatus', params)
 }
-export async function scrollStar() {
-    console.log()
-    //dll.append()
+export async function scrollStart(page) {
+    const success = await DataLength.setArr(String(page) + 'self', 'start', DoublyLinkedList.links)
+    if (success === true) {
+        data_items = await DataLength.getArr(data.links.self)
+    }
 }
 export async function scrollBottom() {
-    //dll.append()
+
 }
 export async function scrollTop() {
     //dll.prepend()
