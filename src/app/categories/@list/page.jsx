@@ -218,7 +218,7 @@ export default async function Home({ searchParams }) {
         //data_items = await DataLength.getArr()//)
         if (scroll === 'start') {
             data_items = []
-            const success = await DataLength.setArr(String(page) + 'self', 'start', data.links)
+            const success = await DataLength.setArr(String(col) + 'self', 'start', data.links)
             if (success === true) {
                 data_items = await DataLength.getArr(data.links.self)
             }
@@ -230,13 +230,13 @@ export default async function Home({ searchParams }) {
 
 
         if (scroll === 'bottom') {
-            const success = await DataLength.setArr(String(page) + 'next', 'next', data.links)
+            const success = await DataLength.setArr(String(col) + 'next', 'next', data.links)
             if (success === true) {
                 data_items = await DataLength.getArr(data.links.self)
             }
         }
         /*if (scroll === 'top') {
-            const success = await DataLength.setArr(String(page) + 'prev', 'prev', data.links)
+            const success = await DataLength.setArr(String(col) + 'prev', 'prev', data.links)
             if (success === true) {
                 data_items = await DataLength.getArr(data.links.self)
             }
