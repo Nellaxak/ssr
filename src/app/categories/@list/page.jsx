@@ -214,7 +214,8 @@ export default async function Home({ searchParams }) {
         //const find = await dll.find(url)
         console.log('links', data.element_count, data.links)
         //await DoublyLinkedList.links = data.links//then
-        await DoublyLinkedList.setValueAsync(data.links)
+        DoublyLinkedList.setValueAsync(data.links).then(
+            async () => data_items = await DataLength.getArr())
         /*const success = await DataLength.setArr(String(page) + 'self', 'start', data.links)
         if (success === true) {
             data_items = await DataLength.getArr(data.links.self)
@@ -223,7 +224,7 @@ export default async function Home({ searchParams }) {
             scroll = 'bottom'
             //change data.links.self=data.links.next
         }*/
-        data_items = await DataLength.getArr()
+
 
         /*if (scroll === 'bottom') {
             const success = await DataLength.setArr(String(page) + 'next', 'next', data.links)
@@ -237,7 +238,7 @@ export default async function Home({ searchParams }) {
                 data_items = await DataLength.getArr(data.links.self)
             }
         }*/
-        return <List items={data_items} //col={Number(scroll)}
+        return <List items={data_items}
             renderItem={async (product, index) => {
                 //console.log('product', index)
                 const date = new Date(product.close_approach_data[0].epoch_date_close_approach)
