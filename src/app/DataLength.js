@@ -8,25 +8,27 @@ class DataLength {
 
   }
   static async getArr(url) {
-    const find = await dll.find(url)
+    //const find = await dll.find(url)
     //console.log('find', find)
-    const arr = await dll.toArray(find)
+    const arr = await dll.toArray(dll.dataNode)
     return arr
   }
   static async setArr(pageParam, linkParams, nodeDll) {
     //console.log('linkParams', linkParams)
     if (pageParam !== DataLength.page) {
-      dll.dataNode = nodeDll
       //switch case/object literals
       if (linkParams === 'start') {
-        await dll.append(nodeDll.self)
+        const self = await dll.append(nodeDll.self)
+        dll.dataNode = self
       }
       if (linkParams === 'next') {
         //console.log('bottom scroll', nodeDll, nodeDll.next)
-        await dll.append(nodeDll.next)
+        const next = await dll.append(nodeDll.next)
+        dll.dataNode = next
       }
       if (linkParams === 'prev') {
-        await dll.prepend(nodeDll.prev)
+        const prev = await dll.prepend(nodeDll.prev)
+        dll.dataNode = prev
       }
       DataLength.page = pageParam
     }
