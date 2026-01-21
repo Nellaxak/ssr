@@ -73,10 +73,10 @@ function ScrollComponent() {
         if (maxScrollBottom <= 0) {
             //change url page increment
             //change col action
-            setPage((page) => {
+            /*setPage((page) => {
                 let newPage = page + 1
                 return newPage
-            })
+            })*/
             setScroll('bottom')
         }
         vertical = rect.y
