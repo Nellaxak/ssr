@@ -214,8 +214,8 @@ export default async function Home({ searchParams }) {
         //const find = await dll.find(url)
         console.log('links', data.element_count, data.links)
         //await DoublyLinkedList.links = data.links//then
-        DoublyLinkedList.setValueAsync(data.links).then(
-            async () => data_items = await DataLength.getArr())
+        await DoublyLinkedList.setValueAsync(data.links)//.then(
+        data_items = await DataLength.getArr()//)
         /*const success = await DataLength.setArr(String(page) + 'self', 'start', data.links)
         if (success === true) {
             data_items = await DataLength.getArr(data.links.self)

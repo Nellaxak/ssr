@@ -47,7 +47,7 @@ export class DoublyLinkedList implements INodeList {
   static dataNode: any;//async change
   static links: any;
   static get value() {
-    return DoublyLinkedList.dataNode;
+    return DoublyLinkedList.links;
   }
 
   // Use an async method to set the value asynchronously
