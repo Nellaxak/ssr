@@ -256,7 +256,7 @@ export class DoublyLinkedList implements INodeList {
     //while (currentNode) {
     //const resp = await fetch(`${this.dataNode.self}`,
 
-    if (currentNode.previous !== undefined) {
+    if (currentNode.previous !== null) {
       const respP = await fetch(`${currentNode.previous}`,
         { cache: 'force-cache' }
       );
@@ -276,7 +276,7 @@ export class DoublyLinkedList implements INodeList {
     const resObj2 = arrObjects22.flat()
     nodes.push(...resObj2);
     console.log('currentNode.next', currentNode.next)
-    if (currentNode.next !== undefined) {
+    if (currentNode.next !== null) {
       const respN = await fetch(`${currentNode.next}`,
         { cache: 'force-cache' }
       );
