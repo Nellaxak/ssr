@@ -217,6 +217,10 @@ export default async function Home({ searchParams }) {
         if (success === true) {
             data_items = await DataLength.getArr(data.links.self)
         }
+        if (Number(data.element_count < 9)) {
+            scroll = 'bottom'
+        }
+
         if (scroll === 'bottom') {
             const success = await DataLength.setArr(String(page) + 'next', 'next', data.links)
             if (success === true) {
