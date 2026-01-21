@@ -44,7 +44,7 @@ export class DoublyLinkedList implements INodeList {
   public head: DoublyLinkedListNode | null = null;
   public tail: DoublyLinkedListNode | null = null;
   static count: number = 0;
-  public dataNode: any;
+  static dataNode: any;
   async values(page: number): Promise<any> {
     console.log('values call')
     let current = this.head;
@@ -107,6 +107,7 @@ export class DoublyLinkedList implements INodeList {
     if (!this.tail) {
       this.tail = newNode;
     }
+    DoublyLinkedList.dataNode = this
 
     return this;
   }
@@ -132,6 +133,7 @@ export class DoublyLinkedList implements INodeList {
         this.head = newNode;
       }
       DoublyLinkedList.count = DoublyLinkedList.count + 1
+      DoublyLinkedList.dataNode = this
       console.log('after append', DoublyLinkedList.count)
       return this;
     }

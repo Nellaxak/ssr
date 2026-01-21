@@ -20,17 +20,17 @@ class DataLength {
       if (linkParams === 'start') {
         const self = await dll.append(nodeDll.self)
         console.log('vvvvv', self)
-        dll.dataNode = self
+        //dll.dataNode = self
       }
       if (linkParams === 'next') {
         //console.log('bottom scroll', nodeDll, nodeDll.next)
         const next = await dll.append(nodeDll.next)
         //console.log('vvvvvN', self)
-        dll.dataNode = next
+        //dll.dataNode = next
       }
       if (linkParams === 'prev') {
         const prev = await dll.prepend(nodeDll.prev)
-        dll.dataNode = prev
+        //dll.dataNode = prev
       }
       DataLength.page = pageParam
     }
