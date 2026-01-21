@@ -112,10 +112,7 @@ export async function getStatus(params) {
     console.log('getStatus', params)
 }
 export async function scrollStart(page) {
-    const success = await DataLength.setArr(String(page) + 'self', 'start', DoublyLinkedList.links)
-    if (success === true) {
-        data_items = await DataLength.getArr(DoublyLinkedList.links.self)
-    }
+    await DataLength.setArr(String(page) + 'self', 'start', DoublyLinkedList.links)
 }
 export async function scrollBottom() {
 

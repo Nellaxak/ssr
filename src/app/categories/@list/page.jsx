@@ -222,6 +222,7 @@ export default async function Home({ searchParams }) {
             scroll = 'bottom'
             //change data.links.self=data.links.next
         }*/
+        data_items = await DataLength.getArr(data.links.self)
 
         if (scroll === 'bottom') {
             const success = await DataLength.setArr(String(page) + 'next', 'next', data.links)
