@@ -77,12 +77,12 @@ function ScrollComponent() {
                 let newPage = page + 1
                 return newPage
             })*/
-           scrollBottom(0)
-           // setScroll('bottom')
+            //scrollBottom(0)
+            setScroll('bottom')
         }
         vertical = rect.y
     }, [])
-    //useEffect(() => {
+    useEffect(() => {
         //scrollEnd({ action: startAction, col: startRow })
         /*(async () => {
             // Your async logic here
@@ -91,11 +91,12 @@ function ScrollComponent() {
             //console.log('dataLength', dataLength)
             // Update state, etc.
         })();*/
-        /*router.push(`?viewtype=${currentViewtype}&page=${page}&scroll=${scroll}`, { scroll: false });
-    }, [startRow, startAction, page, scroll])*/
+        router.push(`?viewtype=${currentViewtype}&page=${page}&scroll=${scroll}`, { scroll: false });
+        router.refresh()
+    }, [startRow, startAction, page, scroll])
     useEffect(() => {
         //find first li , get Height
-        scrollStart(0)
+        //scrollStart(0)
         document.addEventListener('scrollend', handleScroll)
         return () => {
             document.removeEventListener('scrollend', handleScroll)

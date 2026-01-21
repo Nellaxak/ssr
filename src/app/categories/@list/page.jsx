@@ -213,25 +213,27 @@ export default async function Home({ searchParams }) {
         const data = await resp.json()
         //const find = await dll.find(url)
         console.log('links', data.element_count, data.links)
-        //await DoublyLinkedList.links = data.links//then
-        await DoublyLinkedList.setValueAsync(data.links)//.then(
-        data_items = await DataLength.getArr()//)
-        /*const success = await DataLength.setArr(String(page) + 'self', 'start', data.links)
-        if (success === true) {
-            data_items = await DataLength.getArr(data.links.self)
-        }*/
+        DoublyLinkedList.links = data.links//then
+        //await DoublyLinkedList.setValueAsync(data.links)//.then(
+        //data_items = await DataLength.getArr()//)
+        if (scroll === 'start') {
+            const success = await DataLength.setArr(String(page) + 'self', 'start', data.links)
+            if (success === true) {
+                data_items = await DataLength.getArr(data.links.self)
+            }
+        }
         /*if (Number(data.element_count < 9)) {
             scroll = 'bottom'
             //change data.links.self=data.links.next
         }*/
 
 
-        /*if (scroll === 'bottom') {
+        if (scroll === 'bottom') {
             const success = await DataLength.setArr(String(page) + 'next', 'next', data.links)
             if (success === true) {
                 data_items = await DataLength.getArr(data.links.self)
             }
-        }*/
+        }
         /*if (scroll === 'top') {
             const success = await DataLength.setArr(String(page) + 'prev', 'prev', data.links)
             if (success === true) {
