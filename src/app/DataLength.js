@@ -17,22 +17,22 @@ class DataLength {
     //console.log('linkParams', linkParams)
     if (pageParam !== DataLength.page) {
       //switch case/object literals
-      if (linkParams === 'start') {
+      //if (linkParams === 'start') {
         await dll.append(nodeDll.self)
+        await dll.prepend(nodeDll.prev)
         //console.log('vvvvv', DoublyLinkedList.dataNode)
         //dll.dataNode = self
-      }
-      if (linkParams === 'next') {
+      //}
+      //if (linkParams === 'next') {
         //console.log('bottom scroll', nodeDll, nodeDll.next)
         await dll.append(nodeDll.next)
         //console.log('vvvvvN', DoublyLinkedList.dataNode)
         //console.log('vvvvvN', self)
         //dll.dataNode = next
-      }
-      if (linkParams === 'prev') {
-        await dll.prepend(nodeDll.prev)
+      //}
+      //if (linkParams === 'prev') {
         //dll.dataNode = prev
-      }
+      //}
       DataLength.page = pageParam
     }
     return true

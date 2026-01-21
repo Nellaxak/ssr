@@ -57,8 +57,8 @@ function ScrollComponent() {
         return rowHeight * Math.abs(startRow)
     }, [startRow])
     const handleScroll = useCallback(async (e) => {
-        const elem = document.querySelector('#header')
-        const rect = elem.getBoundingClientRect()
+        /*const elem = document.querySelector('#header')
+        const rect = elem.getBoundingClientRect()*/
         //const col = Math.ceil(rect.y / rowHeight)
         /*const paragraphs = document.querySelectorAll('li')
         console.log('paragraphs', paragraphs)
@@ -81,7 +81,7 @@ function ScrollComponent() {
             //scrollBottom(0)
             setScroll('bottom')
         }
-        vertical = rect.y
+        //vertical = rect.y
     }, [])
     useEffect(() => {
         //scrollEnd({ action: startAction, col: startRow })
