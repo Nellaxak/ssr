@@ -125,7 +125,7 @@ export class DoublyLinkedList implements INodeList {
   // Добавляем узел в конец списка.
   async append(value: any, self: boolean): Promise<any> {
     //console.log('before append', value)
-    if (value !== undefined) {
+    if (!this.find(value)) {
       const newNode = new DoublyLinkedListNode(value);
 
       if (this.tail) {
@@ -144,7 +144,7 @@ export class DoublyLinkedList implements INodeList {
       }
       DoublyLinkedList.count = DoublyLinkedList.count + 1
       if (self === true) {
-        console.log('swswsw',newNode)
+        console.log('swswsw', newNode)
         DoublyLinkedList.dataNode = newNode
       }
       console.log('after append', DoublyLinkedList.count)
