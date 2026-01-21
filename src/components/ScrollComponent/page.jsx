@@ -91,7 +91,7 @@ function ScrollComponent() {
             //console.log('dataLength', dataLength)
             // Update state, etc.
         })();*/
-        router.push(`?viewtype=${currentViewtype}&page=${page}&scroll=${scroll}`, { scroll: false });
+        router.push(`?viewtype=${currentViewtype}&page=${page}&scroll=${scroll}`, { scroll: true });
         router.refresh()
     }, [startRow, startAction, page, scroll])
     useEffect(() => {
