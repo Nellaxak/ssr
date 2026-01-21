@@ -1,5 +1,5 @@
 'use server'
-import dll from "./DoublyLinkedList";
+import dll, { DoublyLinkedList } from "./DoublyLinkedList";
 class DataLength {
   static arr = [];
   static page = '-1';
