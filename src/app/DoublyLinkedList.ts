@@ -101,25 +101,27 @@ export class DoublyLinkedList implements INodeList {
   }
   // Добавляем узел в начало списка.
   async prepend(value: Value): Promise<any> {
-    // Создаем новый узел, который будет head.
-    const newNode = new DoublyLinkedListNode(value, this.head);
+    if (this.find(value) !== null) {
+      // Создаем новый узел, который будет head.
+      const newNode = new DoublyLinkedListNode(value, this.head);
 
-    // Если есть head, то он больше не будет head.
-    // Поэтому делаем его предыдущую (previous) ссылку на новый узел (new head).
-    // Затем делаем новый узел head.
+      // Если есть head, то он больше не будет head.
+      // Поэтому делаем его предыдущую (previous) ссылку на новый узел (new head).
+      // Затем делаем новый узел head.
 
-    if (this.head) {
-      this.head.previous = newNode;
+      if (this.head) {
+        this.head.previous = newNode;
+      }
+      this.head = newNode;
+
+      // Если еще нет tail, сделаем новый узел tail.
+      if (!this.tail) {
+        this.tail = newNode;
+      }
+      //DoublyLinkedList.dataNode = newNode
+
+      return this;
     }
-    this.head = newNode;
-
-    // Если еще нет tail, сделаем новый узел tail.
-    if (!this.tail) {
-      this.tail = newNode;
-    }
-    //DoublyLinkedList.dataNode = newNode
-
-    return this;
   }
 
   // Добавляем узел в конец списка.
