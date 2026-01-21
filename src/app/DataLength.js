@@ -10,7 +10,7 @@ class DataLength {
   static async getArr(url) {
     //const find = await dll.find(url)
     //console.log('find', find)
-    const arr = await dll.toArray(dll.dataNode.value)
+    const arr = await dll.toArray(dll.dataNode)
     return arr
   }
   static async setArr(pageParam, linkParams, nodeDll) {
