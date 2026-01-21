@@ -18,7 +18,7 @@ class DataLength {
     if (pageParam !== DataLength.page) {
       //switch case/object literals
       //if (linkParams === 'start') {
-        await dll.append(nodeDll.self)
+        await dll.append(nodeDll.self,true)
         await dll.prepend(nodeDll.prev)
         //console.log('vvvvv', DoublyLinkedList.dataNode)
         //dll.dataNode = self

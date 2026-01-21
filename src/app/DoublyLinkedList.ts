@@ -29,7 +29,7 @@ export interface INodeList {
   head: DoublyLinkedListNode | null;
   tail: DoublyLinkedListNode | null;
   prepend(value: Value): Promise<any>;
-  append(value: Value): Promise<any>;
+  append(value: Value, self: boolean): Promise<any>;
   delete(value: Value): DoublyLinkedListNode | null;
   find(value?: Value | undefined): Promise<any> | null;
   deleteTail(): DoublyLinkedListNode | null;
@@ -117,13 +117,13 @@ export class DoublyLinkedList implements INodeList {
     if (!this.tail) {
       this.tail = newNode;
     }
-    DoublyLinkedList.dataNode = newNode
+    //DoublyLinkedList.dataNode = newNode
 
     return this;
   }
 
   // Добавляем узел в конец списка.
-  async append(value: any): Promise<any> {
+  async append(value: any, self: boolean): Promise<any> {
     //console.log('before append', value)
     if (value !== undefined) {
       const newNode = new DoublyLinkedListNode(value);
@@ -143,7 +143,9 @@ export class DoublyLinkedList implements INodeList {
         this.head = newNode;
       }
       DoublyLinkedList.count = DoublyLinkedList.count + 1
-      DoublyLinkedList.dataNode = newNode
+      if (self === true) {
+        DoublyLinkedList.dataNode = newNode
+      }
       console.log('after append', DoublyLinkedList.count)
       return this;
     }
