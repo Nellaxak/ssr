@@ -249,10 +249,10 @@ export class DoublyLinkedList implements INodeList {
 
     return deletedHead;
   }
-  async toArray(self: any): Promise<any> {
+  async toArray(): Promise<any> {
     const nodes = [];
 
-    let currentNode = self//DoublyLinkedList.dataNode
+    let currentNode = DoublyLinkedList.dataNode//self
     console.log('vcvcvc', currentNode)
     //while (currentNode) {
     //const resp = await fetch(`${this.dataNode.self}`,

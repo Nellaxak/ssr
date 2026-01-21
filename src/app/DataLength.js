@@ -7,10 +7,10 @@ class DataLength {
     //console.log('constructor', id, typeof id)
 
   }
-  static async getArr(url) {
+  static async getArr() {
     //const find = await dll.find(url)
     //console.log('find', find)
-    const arr = await dll.toArray(DoublyLinkedList.dataNode)
+    const arr = await dll.toArray()
     return arr
   }
   static async setArr(pageParam, linkParams, nodeDll) {

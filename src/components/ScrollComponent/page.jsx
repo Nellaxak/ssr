@@ -58,7 +58,7 @@ function ScrollComponent() {
     const handleScroll = useCallback(async (e) => {
         const elem = document.querySelector('#header')
         const rect = elem.getBoundingClientRect()
-        const col = Math.ceil(rect.y / rowHeight)
+        //const col = Math.ceil(rect.y / rowHeight)
         /*const paragraphs = document.querySelectorAll('li')
         console.log('paragraphs', paragraphs)
         const observerIO = new IntersectionObserver(callbackFunction, options);
