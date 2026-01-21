@@ -25,6 +25,7 @@ class DataLength {
       if (linkParams === 'next') {
         //console.log('bottom scroll', nodeDll, nodeDll.next)
         const next = await dll.append(nodeDll.next)
+        //console.log('vvvvvN', self)
         dll.dataNode = next
       }
       if (linkParams === 'prev') {
