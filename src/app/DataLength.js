@@ -11,7 +11,7 @@ class DataLength {
     //const find = await dll.find(url)
     //console.log('find', find)
     //const arr = //await dll.toArray(find)
-    return arr
+    return DataLength.arr
   }
   static async setArr(pageParam, linkParams, nodeDll) {
     //console.log('linkParams', linkParams)
