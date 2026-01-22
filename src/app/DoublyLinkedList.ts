@@ -264,7 +264,7 @@ export class DoublyLinkedList implements INodeList {
     return deletedHead;
   }
   async toArray(): Promise<any> {
-    const nodes = [];
+    let nodes = [];
 
     let currentNode = DoublyLinkedList.dataNode//async
     console.log('vcvcvc', currentNode)
@@ -279,7 +279,7 @@ export class DoublyLinkedList implements INodeList {
       const listP = dataP.near_earth_objects
       const arrObjects22P = Object.values(listP)
       const resObj2P = arrObjects22P.flat()
-      nodes.push(...resObj2P);
+      nodes = nodes.concat(resObj2P);//concat
     }
     //console.log('selfqqq', currentNode)
     const resp = await fetch(`${currentNode.value}`,
@@ -289,7 +289,9 @@ export class DoublyLinkedList implements INodeList {
     const list = data.near_earth_objects
     const arrObjects22 = Object.values(list)
     const resObj2 = arrObjects22.flat()
-    nodes.push(...resObj2);
+    //nodes.push(...resObj2);//concat
+    nodes = nodes.concat(resObj2);//concat
+
     //console.log('currentNode.next', currentNode.next)
     if (currentNode.next !== null) {
       const respN = await fetch(`${currentNode.next.value}`,
@@ -299,7 +301,8 @@ export class DoublyLinkedList implements INodeList {
       const listN = dataN.near_earth_objects
       const arrObjects22N = Object.values(listN)
       const resObj2N = arrObjects22N.flat()
-      nodes.push(...resObj2N);
+      nodes = nodes.concat(resObj2N);//concat
+      //nodes.push(...resObj2N);//concat
     }
     //currentNode = currentNode.next;
     //}
