@@ -16,7 +16,7 @@ class DataLength {
   static async setArr(pageParam, linkParams, nodeDll) {
     //console.log('linkParams', linkParams)
     if (pageParam !== DataLength.page) {
-      await dll.append(nodeDll.self, true)
+      const self = await dll.append(nodeDll.self, true)
       await dll.prepend(nodeDll.prev)
       await dll.append(nodeDll.next)
       DataLength.page = pageParam

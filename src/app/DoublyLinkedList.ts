@@ -146,7 +146,7 @@ export class DoublyLinkedList implements INodeList {
       }
       DoublyLinkedList.count = DoublyLinkedList.count + 1
       if (self === true) {
-        console.log('swswsw', newNode)
+        console.log('swswsw', newNode.value)
         DoublyLinkedList.dataNode = newNode
       }
       console.log('after append', DoublyLinkedList.count)
