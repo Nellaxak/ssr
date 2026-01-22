@@ -16,6 +16,7 @@ class DataLength {
   static async setArr(pageParam, linkParams, nodeDll) {
     //console.log('linkParams', linkParams)
     if (pageParam !== DataLength.page) {
+      DataLength.arr = []
       const respP = await fetch(`${nodeDll.prev}`,
         { cache: 'force-cache' }
       );
