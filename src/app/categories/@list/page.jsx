@@ -232,7 +232,7 @@ export default async function Home({ searchParams }) {
         if (scroll === 'bottom') {
             const success = await DataLength.setArr(String(col) + 'next', 'next', data.links)
             if (success === true) {
-                data_items = await DataLength.getArr(data.links.self)
+                data_items = await DataLength.getArr(data.links.next)
             }
         }
         /*if (scroll === 'top') {
