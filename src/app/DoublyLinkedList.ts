@@ -269,7 +269,7 @@ export class DoublyLinkedList implements INodeList {
     let nodes = [];
 
     let currentNode = obj//DoublyLinkedList.dataNode//async
-    console.log('vcvcvc', currentNode)
+    console.log('vcvcvc', currentNode.value)
     //while (currentNode) {
     //const resp = await fetch(`${this.dataNode.self}`,
 
