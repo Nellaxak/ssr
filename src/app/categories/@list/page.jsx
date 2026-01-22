@@ -212,8 +212,8 @@ export default async function Home({ searchParams }) {
     if (Number(resp.status) === 200) {
         const data = await resp.json()
         //const find = await dll.find(url)
-        console.log('links', data.element_count)
-        DoublyLinkedList.links = data.links//then
+        console.log('links', page, data.element_count)
+        //DoublyLinkedList.links = data.links//then
         //await DoublyLinkedList.setValueAsync(data.links)//.then(
         //data_items = await DataLength.getArr()//)
         //if (scroll === 'start') {

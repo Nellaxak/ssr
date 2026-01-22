@@ -21,6 +21,7 @@ class DataLength {
         { cache: 'force-cache' }
       );
       const dataP = await respP.json()
+      console.log('prev', dataP.element_count)
       const listP = dataP.near_earth_objects
       const arrObjects22P = Object.values(listP)
       const resObj2P = arrObjects22P.flat()
@@ -29,6 +30,8 @@ class DataLength {
         { cache: 'force-cache' }
       );
       const data = await resp.json()
+      console.log('self', data.element_count)
+
       const list = data.near_earth_objects
       const arrObjects22 = Object.values(list)
       const resObj2 = arrObjects22.flat()
@@ -39,6 +42,7 @@ class DataLength {
         { cache: 'force-cache' }
       );
       const dataN = await respN.json()
+      console.log('next', dataN.element_count)
       const listN = dataN.near_earth_objects
       const arrObjects22N = Object.values(listN)
       const resObj2N = arrObjects22N.flat()
