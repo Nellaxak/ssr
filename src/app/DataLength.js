@@ -7,18 +7,45 @@ class DataLength {
     //console.log('constructor', id, typeof id)
 
   }
-  static async getArr(url) {
-    const find = await dll.find(url)
+  static async getArr() {
+    //const find = await dll.find(url)
     //console.log('find', find)
-    const arr = await dll.toArray(find)
+    //const arr = //await dll.toArray(find)
     return arr
   }
   static async setArr(pageParam, linkParams, nodeDll) {
     //console.log('linkParams', linkParams)
     if (pageParam !== DataLength.page) {
-      const self = await dll.append(nodeDll.self, true)
+      const respP = await fetch(`${nodeDll.prev}`,
+        { cache: 'force-cache' }
+      );
+      const dataP = await respP.json()
+      const listP = dataP.near_earth_objects
+      const arrObjects22P = Object.values(listP)
+      const resObj2P = arrObjects22P.flat()
+      DataLength.arr = DataLength.arr.concat(resObj2P);
+      const resp = await fetch(`${nodeDll.self}`,
+        { cache: 'force-cache' }
+      );
+      const data = await resp.json()
+      const list = data.near_earth_objects
+      const arrObjects22 = Object.values(list)
+      const resObj2 = arrObjects22.flat()
+      //nodes.push(...resObj2);//concat
+      DataLength.arr = DataLength.arr.concat(resObj2);//concat
+
+      const respN = await fetch(`${nodeDll.next}`,
+        { cache: 'force-cache' }
+      );
+      const dataN = await respN.json()
+      const listN = dataN.near_earth_objects
+      const arrObjects22N = Object.values(listN)
+      const resObj2N = arrObjects22N.flat()
+      //nodes = nodes.concat(resObj2N);//concat
+      DataLength.arr = DataLength.arr.concat(resObj2N);//concat
+      /*const self = await dll.append(nodeDll.self, true)
       await dll.prepend(nodeDll.prev)
-      await dll.append(nodeDll.next)
+      await dll.append(nodeDll.next)*/
       DataLength.page = pageParam
     }
     return true
