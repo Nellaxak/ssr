@@ -19,22 +19,22 @@ let visibleRows = 8
 function scrollElementToCenter(element) {
     const elementRect = element.getBoundingClientRect();
     const viewportHeight = window.innerHeight || document.documentElement.clientHeight;
-    const viewportWidth = window.innerWidth || document.documentElement.clientWidth;
+    //const viewportWidth = window.innerWidth || document.documentElement.clientWidth;
 
     // Calculate the adjustment needed to center the element
     const scrollTopAdjustment = elementRect.top - (viewportHeight / 2) + (elementRect.height / 2);
-    const scrollLeftAdjustment = elementRect.left - (viewportWidth / 2) + (elementRect.width / 2);
+    //const scrollLeftAdjustment = elementRect.left - (viewportWidth / 2) + (elementRect.width / 2);
 
     // Calculate the final scroll coordinates
     const currentScrollTop = window.scrollY || window.pageYOffset || document.documentElement.scrollTop;
-    const currentScrollLeft = window.scrollX || window.pageXOffset || document.documentElement.scrollLeft;
+    //const currentScrollLeft = window.scrollX || window.pageXOffset || document.documentElement.scrollLeft;
 
     const targetScrollTop = currentScrollTop + scrollTopAdjustment;
-    const targetScrollLeft = currentScrollLeft + scrollLeftAdjustment;
+    //const targetScrollLeft = currentScrollLeft + scrollLeftAdjustment;
 
     window.scrollTo({
         top: targetScrollTop,
-        left: targetScrollLeft,
+        //left: targetScrollLeft,
         behavior: 'smooth' // Optional: smooth scrolling
     });
 }
