@@ -35,28 +35,18 @@ function ButtonSubmit(props) {
   const callbackFunction = useCallback(async (entries) => {
     const [entry] = entries;
     if (entry.isIntersecting) {
-      //console.log('button input',props.index)
-      /*if ((Number(props.index) + 1) === Number(props.length)) {
-        setPage((page) => {
-          let newPage = page + 1
-          return newPage
-        })
-      }*/
-      scrollFSM(props.index, 'input')
+      console.log('button input',ref.current)
     } else {
-      //setMode('hidden')
-      //console.log('button output',props.index)
-      scrollFSM(props.index, 'output')
     }
   }, []);
-  useEffect(() => {
+  /*useEffect(() => {
     //url col change
     router.push(`?viewtype=${currentViewtype}&page=${page}`, { scroll: false });
-  }, [page])
+  }, [page])*/
   useEffect(() => {
     //const fetchD = async () => {
       //console.log('mount', props.index)//page increment -> new mount?
-      mountItem(props.index)
+      //mountItem(props.index)
       const observer = new IntersectionObserver(callbackFunction, options);
       observer.observe(ref.current);
       return () => {

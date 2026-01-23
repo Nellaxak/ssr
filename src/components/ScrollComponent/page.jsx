@@ -16,7 +16,7 @@ let isPending = false
 let vertical = 0
 let rowHeight = 85
 let visibleRows = 8
-function scrollElementToCenter(element) {
+/*function scrollElementToCenter(element) {
     const elementRect = element.getBoundingClientRect();
     const viewportHeight = window.innerHeight || document.documentElement.clientHeight;
     //const viewportWidth = window.innerWidth || document.documentElement.clientWidth;
@@ -37,7 +37,7 @@ function scrollElementToCenter(element) {
         //left: targetScrollLeft,
         behavior: 'smooth' // Optional: smooth scrolling
     });
-}
+}*/
 
 function ScrollComponent() {
     //ref = useRef()
@@ -96,8 +96,8 @@ function ScrollComponent() {
         })();*/
         router.push(`?viewtype=${currentViewtype}&page=${page}&scroll=${scroll}&col=${countScroll}`, { scroll: false });
         //router.refresh()
-        const element = document.querySelector('ol');
-        scrollElementToCenter(element);
+        /*const element = document.querySelector('ol');
+        scrollElementToCenter(element);*/
     }, [startRow, page, scroll, countScroll])
     useEffect(() => {
         //find first li , get Height
