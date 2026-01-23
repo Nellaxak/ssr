@@ -98,7 +98,7 @@ function ScrollComponent() {
         //router.refresh()
         const element = document.querySelector('ol');
         scrollElementToCenter(element);
-    }, [startRow, startAction, page, scroll, countScroll])
+    }, [startRow, page, scroll, countScroll])
     useEffect(() => {
         //find first li , get Height
         //scrollStart(0)
