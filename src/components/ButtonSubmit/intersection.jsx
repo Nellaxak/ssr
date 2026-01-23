@@ -35,7 +35,7 @@ function ButtonSubmit(props) {
   const callbackFunction = useCallback(async (entries) => {
     const [entry] = entries;
     if (entry.isIntersecting) {
-      console.log('button input',ref.current)
+      console.log('button input', ref.current)
     } else {
     }
   }, []);
@@ -45,13 +45,15 @@ function ButtonSubmit(props) {
   }, [page])*/
   useEffect(() => {
     //const fetchD = async () => {
-      //console.log('mount', props.index)//page increment -> new mount?
-      //mountItem(props.index)
-      const observer = new IntersectionObserver(callbackFunction, options);
-      observer.observe(ref.current);
-      return () => {
+    //console.log('mount', props.index)//page increment -> new mount?
+    //mountItem(props.index)
+    const observer = new IntersectionObserver(callbackFunction, options);
+    observer.observe(ref.current);
+    return () => {
+      if (ref.current) {
         observer.unobserve(ref.current);
-      };
+      }
+    };
     //}
     //fetchD()
   }, [])
