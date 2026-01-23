@@ -16,13 +16,29 @@ let isPending = false
 let vertical = 0
 let rowHeight = 85
 let visibleRows = 8
-const options = {
-    root: null,//document.querySelector("#scrollArea"),
-    rootMargin: "0px 0px 10px 0px",//-px not work?
-    //scrollMargin: "-80px",
-    threshold: 1.0,
+function scrollElementToCenter(element) {
+    const elementRect = element.getBoundingClientRect();
+    const viewportHeight = window.innerHeight || document.documentElement.clientHeight;
+    const viewportWidth = window.innerWidth || document.documentElement.clientWidth;
+
+    // Calculate the adjustment needed to center the element
+    const scrollTopAdjustment = elementRect.top - (viewportHeight / 2) + (elementRect.height / 2);
+    const scrollLeftAdjustment = elementRect.left - (viewportWidth / 2) + (elementRect.width / 2);
+
+    // Calculate the final scroll coordinates
+    const currentScrollTop = window.scrollY || window.pageYOffset || document.documentElement.scrollTop;
+    const currentScrollLeft = window.scrollX || window.pageXOffset || document.documentElement.scrollLeft;
+
+    const targetScrollTop = currentScrollTop + scrollTopAdjustment;
+    const targetScrollLeft = currentScrollLeft + scrollLeftAdjustment;
+
+    window.scrollTo({
+        top: targetScrollTop,
+        left: targetScrollLeft,
+        behavior: 'smooth' // Optional: smooth scrolling
+    });
 }
-let callbackFunction
+
 function ScrollComponent() {
     //ref = useRef()
     const router = useRouter()
@@ -30,20 +46,12 @@ function ScrollComponent() {
     //const currentPage = searchParams.get('page')
     const currentViewtype = searchParams.get('viewtype')
     const [startRow, setStartRow] = useState(0)
-    const [startAction, setStartAction] = useState('start')
+    //const [startAction, setStartAction] = useState('start')
     const [page, setPage] = useState(0)
     const [scroll, setScroll] = useState('start');
     const [dataLength, setDataLength] = useState(0)
     const [countScroll, setCountScroll] = useState(0)
-    /*callbackFunction = useCallback(async (entries) => {
-        const [entry] = entries;
-        if (entry.isIntersecting) {// && add) {
-            console.log('input li', entry.target)
-        } else {
-            console.log('output li', entry.target)
-        }
-    }, []);*/
-    const getBottomHeight = useCallback(() => {
+    /*const getBottomHeight = useCallback(() => {
         //return rowHeight * startRow //* (startRow + visibleRows + 1);
         //console.log('usestate dataLength', dataLength)
         //(rowHeight * (dataLength - (startRow + visibleRows + 1)))
@@ -51,21 +59,10 @@ function ScrollComponent() {
             return 0
         }
         return rowHeight * Math.abs(startRow)
-    }, [startRow])
+    }, [startRow])*/
     const handleScroll = useCallback(async (e) => {
-        /*const elem = document.querySelector('#header')
-        const rect = elem.getBoundingClientRect()*/
-        //const col = Math.ceil(rect.y / rowHeight)
-        /*const paragraphs = document.querySelectorAll('li')
-        console.log('paragraphs', paragraphs)
-        const observerIO = new IntersectionObserver(callbackFunction, options);
-        paragraphs.forEach(el => {
-            observerIO.observe(el);
-        });*/
-        //setStartRow(col)
-        //setStartAction('down')
         let maxScrollTop = window.scrollY;
-        console.log('maxScrollTop', maxScrollTop)
+        //console.log('maxScrollTop', maxScrollTop)
         let maxScrollBottom = document.documentElement.scrollHeight - window.scrollY - window.innerHeight;
         //console.log('maxScrollBottom', maxScrollBottom, document.documentElement.scrollHeight, window.scrollY, window.innerHeight)
         if (maxScrollBottom <= 0) {
@@ -99,6 +96,8 @@ function ScrollComponent() {
         })();*/
         router.push(`?viewtype=${currentViewtype}&page=${page}&scroll=${scroll}&col=${countScroll}`, { scroll: false });
         //router.refresh()
+        const element = document.querySelector('ol');
+        scrollElementToCenter(element);
     }, [startRow, startAction, page, scroll, countScroll])
     useEffect(() => {
         //find first li , get Height
@@ -108,10 +107,10 @@ function ScrollComponent() {
             document.removeEventListener('scrollend', handleScroll)
         };
     }, [])
-    return (<div>
-        <div style={{ height: getBottomHeight() }}></div>
+    //<div style={{ height: getBottomHeight() }}></div>
+    return (
         <span className={isPending ? 'loader' : ''}></span>
-    </div>)
+    )
     // }
 }
 export default ScrollComponent
