@@ -35,18 +35,14 @@ function ScrollComponent() {
     const [scroll, setScroll] = useState('start');
     const [dataLength, setDataLength] = useState(0)
     const [countScroll, setCountScroll] = useState(0)
-    callbackFunction = useCallback(async (entries) => {
+    /*callbackFunction = useCallback(async (entries) => {
         const [entry] = entries;
         if (entry.isIntersecting) {// && add) {
             console.log('input li', entry.target)
-            /*setPage((page) => {
-                let newPage = page + 1
-                return newPage
-            })*/
         } else {
             console.log('output li', entry.target)
         }
-    }, []);
+    }, []);*/
     const getBottomHeight = useCallback(() => {
         //return rowHeight * startRow //* (startRow + visibleRows + 1);
         //console.log('usestate dataLength', dataLength)
@@ -68,9 +64,10 @@ function ScrollComponent() {
         });*/
         //setStartRow(col)
         //setStartAction('down')
-        let maxScrollTop = document.documentElement.scrollHeight - window.innerHeight;
+        let maxScrollTop = window.scrollY;
+        console.log('maxScrollTop', maxScrollTop)
         let maxScrollBottom = document.documentElement.scrollHeight - window.scrollY - window.innerHeight;
-        console.log('maxScrollBottom', maxScrollBottom, document.documentElement.scrollHeight, window.scrollY, window.innerHeight)
+        //console.log('maxScrollBottom', maxScrollBottom, document.documentElement.scrollHeight, window.scrollY, window.innerHeight)
         if (maxScrollBottom <= 0) {
             //change url page increment
             //change col action
@@ -80,6 +77,14 @@ function ScrollComponent() {
             })
             //scrollBottom(0)
             setScroll('bottom')
+        }
+        if (maxScrollTop <= 0) {
+            //change url page increment
+            //change col action
+            setPage((page) => {
+                let newPage = page - 1
+                return newPage
+            })
         }
         //vertical = rect.y
     }, [])
