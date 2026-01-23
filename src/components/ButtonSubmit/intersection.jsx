@@ -25,6 +25,8 @@ function ButtonSubmit(props) {
   const router = useRouter()
   const searchParams = useSearchParams()
   currentViewtype = searchParams.get('viewtype')
+  currentPage = searchParams.get('page')
+
   //const [mode, setMode] = useState('visible')
   //currentPage = Number(searchParams.get('page'))
 
@@ -35,7 +37,7 @@ function ButtonSubmit(props) {
   const callbackFunction = useCallback(async (entries) => {
     const [entry] = entries;
     if (entry.isIntersecting) {
-      console.log('button input', ref.current)
+      console.log('button input', page, ref.current)
     } else {
     }
   }, []);
