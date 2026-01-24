@@ -12,7 +12,7 @@ export class CircularLinkedList {
     }
 
     // Добавление элемента в конец
-    append(value) {
+    async append(value) {
         const newNode = new Node(value);
         if (!this.head) {
             this.head = newNode;

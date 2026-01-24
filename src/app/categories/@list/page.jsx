@@ -214,14 +214,15 @@ export default async function Home({ searchParams }) {
         const data = await resp.json()
         console.log('links', page, data.element_count)
         data_items = []
+        let arr = []
         const success = await DataLength.setArr(String(page) + 'self', 'start', data.links)
         if (success === true) {
-            data_items = await DataLength.getArr(data.links.self)
-            
+            //data_items = await DataLength.getArr(data.links.self)
+            arr = await cll.toArray()
+            console.log('arr', arr.length)
         }
-        //const arr = await cll.toArray()
-        //console.log('arr', arr.length)
-        return <List items={data_items}
+
+        return <List items={arr}
             renderItem={async (product, index) => {
                 //console.log('product', index)
                 const date = new Date(product.close_approach_data[0].epoch_date_close_approach)
@@ -234,7 +235,7 @@ export default async function Home({ searchParams }) {
                     key={product.id}
                     index={index}
                     obj={product}
-                    length={data_items.length}
+                    length={arr.length}
                     viewtype={viewtype}
                     dates={dateString}
                 /></Suspense>

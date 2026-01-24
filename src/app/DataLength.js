@@ -49,17 +49,9 @@ class DataLength {
       const resObj2N = arrObjects22N.flat()
       //nodes = nodes.concat(resObj2N);//concat
       DataLength.arr = DataLength.arr.concat(resObj2N);//concat
-      cll.append(DataLength.arr[0]);
-      cll.append(DataLength.arr[1]);
-      cll.append(DataLength.arr[2]);
-      cll.append(DataLength.arr[3]);
-      cll.append(DataLength.arr[4]);
-      cll.append(DataLength.arr[5]);
-      cll.append(DataLength.arr[6]);
-      cll.append(DataLength.arr[7]);
-      cll.append(DataLength.arr[8]);
-      cll.append(DataLength.arr[9]);
-      cll.append(DataLength.arr[10]);
+      for (let i = 0; i < 10; i++) {
+        await cll.append(DataLength.arr[i]);
+      }
       DataLength.page = pageParam
     }
     return true
