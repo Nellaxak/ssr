@@ -43,8 +43,8 @@ export class CircularLinkedList {
         let current = this.head;
         do {
             console.log(current.value);
+            nodes.push(current);
             current = current.next;
-            nodes.push(currentNode);
         } while (current !== this.head);
         /*let currentNode = this.head;
         while (currentNode) {
