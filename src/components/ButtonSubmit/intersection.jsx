@@ -43,12 +43,12 @@ function ButtonSubmit(props) {
           return newPage
         })
         //console.log('button input', currentPage, ref.current)//index
-      } else if (props.index === 0) {
+      } /*else if (props.index === 0) {//default
         setPage((page) => {
           let newPage = page - 1
           return newPage
         })
-      }
+      }*/
     } else {
     }
   }, [page]);
