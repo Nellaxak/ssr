@@ -52,8 +52,7 @@ const IOComponent = () => {
     }, [])
     useEffect(() => {
         router.push(`/categories?viewtype=${currentViewtype}&page=${page}`, { scroll: false });
-        //router.refresh()
-        const elem = document.querySelector('ol')//.firstElementChild
+        const elem = document.querySelector('ol').firstElementChild
         elem.scrollIntoView(true)
         /*const elem = document.querySelector('ol')
         elem.scrollIntoView(true)/*{//mount scroll to center
