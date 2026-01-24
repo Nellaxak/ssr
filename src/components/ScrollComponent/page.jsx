@@ -16,7 +16,7 @@ let isPending = false
 let vertical = 0
 let rowHeight = 85
 let visibleRows = 8
-/*function scrollElementToCenter(element) {
+function scrollElementToCenter(element) {
     const elementRect = element.getBoundingClientRect();
     const viewportHeight = window.innerHeight || document.documentElement.clientHeight;
     //const viewportWidth = window.innerWidth || document.documentElement.clientWidth;
@@ -37,7 +37,7 @@ let visibleRows = 8
         //left: targetScrollLeft,
         behavior: 'smooth' // Optional: smooth scrolling
     });
-}*/
+}
 
 function ScrollComponent() {
     //ref = useRef()
