@@ -55,7 +55,7 @@ const IOComponent = () => {
         const elem = document.querySelector('ol').firstElementChild
         elem.scrollIntoView({
             behavior: 'smooth', // Optional: animation effect
-            block: 'start', // Vertical alignment (MANDATORY for vertical scroll)
+            block: 'nearest', // Vertical alignment (MANDATORY for vertical scroll)
             inline: 'nearest' // Horizontal alignment
         })
         /*const elem = document.querySelector('ol')
