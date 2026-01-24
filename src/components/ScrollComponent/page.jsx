@@ -52,32 +52,21 @@ function ScrollComponent() {
     const [dataLength, setDataLength] = useState(0)
     const [countScroll, setCountScroll] = useState(0)
     const getBottomHeight = useCallback(() => {
-        //return rowHeight * startRow //* (startRow + visibleRows + 1);
-        //console.log('usestate dataLength', dataLength)
-        //(rowHeight * (dataLength - (startRow + visibleRows + 1)))
-        /*if (startAction === 'top' || startAction === 'start') {
-            return 0
-        }*/
         return rowHeight * Math.abs(startRow)
     }, [startRow])
     const handleScroll = useCallback(async (e) => {
         let maxScrollTop = window.scrollY;
-        //console.log('maxScrollTop', maxScrollTop)
         let maxScrollBottom = document.documentElement.scrollHeight - window.scrollY - window.innerHeight;
-        //console.log('maxScrollBottom', maxScrollBottom, document.documentElement.scrollHeight, window.scrollY, window.innerHeight)
         if (maxScrollBottom <= 0) {
-            //change url page increment
-            //change col action
             setPage((page) => {
                 let newPage = page + 1
                 return newPage
             })
-            //scrollBottom(0)
-            //setScroll('bottom')
         } else {
             const col = Math.round(window.scrollY / rowHeight)
+            //if (col
             setStartRow(col)
-            //console.log('col', col)//0..4
+            //console.log('col', col)//0..4 scroll bottom
         }
         /*if (maxScrollTop <= 0) {
             //change url page increment
@@ -87,7 +76,6 @@ function ScrollComponent() {
                 return newPage
             })
         }*/
-        //vertical = rect.y
     }, [])
     useEffect(() => {
         //router.push(`?viewtype=${currentViewtype}&page=${page}`, { scroll: true });

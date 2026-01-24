@@ -17,6 +17,7 @@ import dynamic from 'next/dynamic'
 let isPending = false
 let vertical = 0
 let rowHeight = 85
+let dataLength = 10
 function ScrollComponentTop() {
     //ref = useRef()
     const router = useRouter()
@@ -27,16 +28,14 @@ function ScrollComponentTop() {
     const [startAction, setStartAction] = useState('start')
     const [page, setPage] = useState(0)
     function getTopHeight() {
-        if (startAction === 'down' || startAction === 'start') {
-            return 0
-        }
-        return rowHeight * Math.max(startRow, 0);
+
+        return rowHeight * (dataLength - startRow);
     }
     const handleScroll = useCallback(async (e) => {
         //console.log('target', e.target)
         //console.log('scrollend')
-        const elem = document.querySelector('#header')
-        const rect = elem.getBoundingClientRect()
+        /*const elem = document.querySelector('#header')
+        const rect = elem.getBoundingClientRect()*/
         //const hh = rect.height
         //console.log('scrollend', rect, vertical, rect.y < vertical)
         //let item = Math.abs(rect.y - vertical)
@@ -53,6 +52,11 @@ function ScrollComponentTop() {
                 let newPage = page + 1
                 return newPage
             })*/
+        } else {
+            const col = Math.round(window.scrollY / rowHeight)
+
+            setStartRow(col)
+            //console.log('col', col)//0..4 scroll bottom
         }
         //Math.round(Math.abs((item - hh) / hh))
         //console.log('scroll col', col)
@@ -62,16 +66,16 @@ function ScrollComponentTop() {
             setStartRow(col)
             setStartAction('up')
         }*/
-        vertical = rect.y
+        //vertical = rect.y
         /*setStartRow(Math.min(
             data.length - visibleRows - 1,
             Math.floor(e.target.scrollTop / rowHeight)
         ));*/
     }, [])
-    useEffect(() => {
+    /*useEffect(() => {
         //scrollEnd({ action: startAction, col: startRow })
         router.push(`?viewtype=${currentViewtype}&page=${page}&action=${startAction}&col=${startRow}`, { scroll: false });
-    }, [startRow, startAction, page])
+    }, [startRow, startAction, page])*/
     useEffect(() => {
         //find first li , get Height
         document.addEventListener('scrollend', handleScroll)
