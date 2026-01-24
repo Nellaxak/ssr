@@ -75,14 +75,14 @@ function ScrollComponent() {
             //scrollBottom(0)
             //setScroll('bottom')
         }
-        if (maxScrollTop <= 0) {
+        /*if (maxScrollTop <= 0) {
             //change url page increment
             //change col action
             setPage((page) => {
                 let newPage = page - 1
                 return newPage
             })
-        }
+        }*/
         //vertical = rect.y
     }, [])
     useEffect(() => {
