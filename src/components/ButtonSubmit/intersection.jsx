@@ -38,12 +38,31 @@ function ButtonSubmit(props) {
     const [entry] = entries;
     if (entry.isIntersecting) {
       if ((props.index + 1) === props.length) {
-        //if (props.index===lastIndex)
+        setPage((page) => {
+          let newPage = page + 1
+          return newPage
+        })
+        //after scrollintoView(true)
+        ref.current.scrollIntoView(true);
         console.log('button input', currentPage, ref.current)//index
       }
     } else {
     }
   }, []);
+  useEffect(() => {
+    //scrollEnd({ action: startAction, col: startRow })
+    /*(async () => {
+        // Your async logic here
+        //const dataLength1 = await scrollEnd()
+        //setDataLength(dataLength1)
+        //console.log('dataLength', dataLength)
+        // Update state, etc.
+    })();*/
+    router.push(`?viewtype=${currentViewtype}&page=${page}`, { scroll: false });
+    //router.refresh()
+    /*const element = document.querySelector('ol');
+    scrollElementToCenter(element);*/
+  }, [page])
   useEffect(() => {
     //const fetchD = async () => {
     //console.log('mount', props.index)//page increment -> new mount?

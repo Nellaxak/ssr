@@ -73,7 +73,7 @@ function ScrollComponent() {
                 return newPage
             })
             //scrollBottom(0)
-            setScroll('bottom')
+            //setScroll('bottom')
         }
         if (maxScrollTop <= 0) {
             //change url page increment
