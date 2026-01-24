@@ -56,7 +56,7 @@ const IOComponent = () => {
         elem.scrollIntoView({
             behavior: 'smooth', // Optional: animation effect
             block: 'start', // Vertical alignment (MANDATORY for vertical scroll)
-            inline: 'start' // Horizontal alignment
+            inline: 'nearest' // Horizontal alignment
         })
         /*const elem = document.querySelector('ol')
         elem.scrollIntoView(true)/*{//mount scroll to center
