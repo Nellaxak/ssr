@@ -117,9 +117,8 @@ async function List({ items, page, renderItem }) {
     //slice -1,-5?scroll up
     //slice must be 6
     //const res = await Promise.all(items.slice(col, col + 10).map(async (item) => {
-        //-1 scrollbottom,+1 scrolltop
-        //items.slice(Math.max(page * 10 - 1, 0)
-    const res = await Promise.all(items.slice(Math.max((page * 10) - 1, 0), page * 10 + 10).map(async (item) => {
+        //-2 scrollbottom,+2 scrolltop
+    const res = await Promise.all(items.slice(Math.max((page * 10) - 2, 0), page * 10 + 10).map(async (item) => {
         if (item) {
             return await renderItem(item);
         }
@@ -208,23 +207,9 @@ export default async function Home({ searchParams }) {
 
     if (Number(resp.status) === 200) {
         const data = await resp.json()
-        //console.log('fetch count', data.element_count)
         const list = data.near_earth_objects
         const arrObjects22 = Object.values(list)
         const resObj2 = arrObjects22.flat()
-        //if (Number(page) > 0) {
-        //  const prev = single.get(Number(page) - 1)
-        //if (single.get(Number(page)) !==
-        //single.set(Number(page), resObj2)
-        //const arr = single.get(Number(page))
-
-        //result = result.concat(prev, resObj2)
-        //console.log('result', result)
-        //} else {
-        //single.set(Number(page), resObj2)
-        //}
-        //data_items = single.get(Number(page))
-        //promise all
         const success = await DataLength.setArr(Number(page), resObj2)
         if (success === true) {
             data_items = await DataLength.getArr()
