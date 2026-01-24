@@ -51,15 +51,15 @@ function ScrollComponent() {
     const [scroll, setScroll] = useState('start');
     const [dataLength, setDataLength] = useState(0)
     const [countScroll, setCountScroll] = useState(0)
-    /*const getBottomHeight = useCallback(() => {
+    const getBottomHeight = useCallback(() => {
         //return rowHeight * startRow //* (startRow + visibleRows + 1);
         //console.log('usestate dataLength', dataLength)
         //(rowHeight * (dataLength - (startRow + visibleRows + 1)))
-        if (startAction === 'top' || startAction === 'start') {
+        /*if (startAction === 'top' || startAction === 'start') {
             return 0
-        }
+        }*/
         return rowHeight * Math.abs(startRow)
-    }, [startRow])*/
+    }, [startRow])
     const handleScroll = useCallback(async (e) => {
         let maxScrollTop = window.scrollY;
         //console.log('maxScrollTop', maxScrollTop)
@@ -74,6 +74,9 @@ function ScrollComponent() {
             })
             //scrollBottom(0)
             //setScroll('bottom')
+        } else {
+            const col = Math.round(window.scrollY / rowHeight)
+            console.log('col', col)
         }
         /*if (maxScrollTop <= 0) {
             //change url page increment
@@ -86,17 +89,7 @@ function ScrollComponent() {
         //vertical = rect.y
     }, [])
     useEffect(() => {
-        //scrollEnd({ action: startAction, col: startRow })
-        /*(async () => {
-            // Your async logic here
-            //const dataLength1 = await scrollEnd()
-            //setDataLength(dataLength1)
-            //console.log('dataLength', dataLength)
-            // Update state, etc.
-        })();*/
         //router.push(`?viewtype=${currentViewtype}&page=${page}`, { scroll: true });
-        /*const element = document.querySelector('ol');
-        scrollElementToCenter(element);*/
     }, [page])
     useEffect(() => {
         //find first li , get Height
@@ -108,7 +101,10 @@ function ScrollComponent() {
     }, [])
     //<div style={{ height: getBottomHeight() }}></div>
     return (
-        <span className={isPending ? 'loader' : ''}></span>
+        <div>
+            <div style={{ height: getBottomHeight() }}></div>
+            <span className={isPending ? 'loader' : ''}></span>
+        </div>
     )
     // }
 }
