@@ -24,7 +24,7 @@ function ButtonSubmit(props) {
   const [page, setPage] = useState(0);
   const router = useRouter()
   const searchParams = useSearchParams()
-  //currentViewtype = searchParams.get('viewtype')
+  currentViewtype = searchParams.get('viewtype')
   currentPage = searchParams.get('page')
 
   //const [mode, setMode] = useState('visible')
