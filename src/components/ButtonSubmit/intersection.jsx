@@ -43,21 +43,25 @@ function ButtonSubmit(props) {
           return newPage
         })
         //console.log('button input', currentPage, ref.current)//index
+      } else if (props.index === 0) {
+        setPage((page) => {
+          let newPage = page - 1
+          return newPage
+        })
       }
     } else {
     }
   }, [page]);
   useEffect(() => {
-    router.push(`?viewtype=${currentViewtype}&page=${page}`, { scroll: false });
+    router.push(`?viewtype=${currentViewtype}&page=${page}`, { scroll: true });
     //router.refresh()
     //console.log('vvmmm', ref.current)
-    ref.current.scrollIntoView(true);
+    //ref.current.scrollIntoView(true);
   }, [page])
   useEffect(() => {
     //const fetchD = async () => {
     //console.log('mount', props.index)//page increment -> new mount?
     //mountItem(props.index)
-    //if (props.index===lastIndex)
     const observer = new IntersectionObserver(callbackFunction, options);
     observer.observe(ref.current);
     return () => {
@@ -67,7 +71,7 @@ function ButtonSubmit(props) {
     };
     //}
     //fetchD()
-  }, [page])
+  }, [])
   //onClick={()=>handleClick()}
   return <button type="button" ref={ref} onClick={handleClick}><Suspense>444444</Suspense></button>
 }
