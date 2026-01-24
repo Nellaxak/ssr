@@ -51,13 +51,13 @@ function ButtonSubmit(props) {
       }*/
     } else {
     }
-  }, [page]);
+  }, []);
   useEffect(() => {
     router.push(`?viewtype=${currentViewtype}&page=${page}`, { scroll: true });
     //router.refresh()
     //console.log('vvmmm', ref.current)
     //ref.current.scrollIntoView(true);
-  }, [page])
+  }, [])
   useEffect(() => {
     //const fetchD = async () => {
     //console.log('mount', props.index)//page increment -> new mount?
