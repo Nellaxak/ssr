@@ -48,6 +48,7 @@ export default async function Layout(props) {
     <html lang="ru">
       <body>
         <div key='next' id='__next'>
+          <Suspense><ScrollComponentTop /></Suspense>
           <header className={styles.header} id='header'>
             <h1 className={passion.className}>ARMAGEDDON 2023</h1>
             <div className={styles.command}>
@@ -62,7 +63,6 @@ export default async function Layout(props) {
           <header className={styles.headerToggle}>
             <h6 className={styles.h6}>Ближайшие подлёты астероидов</h6>
           </header>
-          <Suspense><ScrollComponentTop /></Suspense>
           <div className='grid'>
             <div className={styles.hidden}>
               <Image src={bigImage} alt="Earth" priority />
