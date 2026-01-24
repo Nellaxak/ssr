@@ -117,8 +117,7 @@ async function List({ items, page, renderItem }) {
     //slice -1,-5?scroll up
     //slice must be 6
     //const res = await Promise.all(items.slice(col, col + 10).map(async (item) => {
-    //    items.slice(page*10, page*10 + 10)
-    const res = await Promise.all(items.slice(page * 10, page * 10 + 10).map(async (item) => {
+    const res = await Promise.all(items.slice(Math.min(page * 10 - 1, 0), page * 10 + 10).map(async (item) => {
         //console.log('llpoiyt', item)//linked list
         if (item) {
             return await renderItem(item);

@@ -7,7 +7,7 @@ import dynamic from 'next/dynamic'
 const options = {
     root: null,//document.querySelector("#scrollArea"),
     rootMargin: "0px 0px 10px 0px",//-px not work?
-    //scrollMargin: "-80px",
+    scrollMargin: "-80px",//footer height
     threshold: 1.0,
 }
 let router: any
@@ -34,7 +34,7 @@ const IOComponent = () => {
     callbackFunction = useCallback(async (entries: IntersectionObserverEntry[]) => {
         const [entry] = entries;
         if (entry.isIntersecting) {// && add) {
-            console.log('input')
+            //console.log('input')
             setPage((page) => {
                 let newPage = page + 1
                 return newPage

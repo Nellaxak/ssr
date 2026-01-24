@@ -37,11 +37,10 @@ const IOComponentTop = () => {
         const [entry] = entries;
         if (entry.isIntersecting) {// && add) {
             //console.log('input')
-            setScroll('top')
-            /*setPage((page) => {
-                let newPage = page + 1
+            setPage((page) => {
+                let newPage = page - 1
                 return newPage
-            })*/
+            })
         }
     }, []);
     useEffect(() => {
@@ -54,7 +53,7 @@ const IOComponentTop = () => {
         };
     }, [])
     useEffect(() => {
-        router.push(`/categories?viewtype=${currentViewtype}&page=${page}&scroll=${scroll}`, { scroll: false });
+        router.push(`/categories?viewtype=${currentViewtype}&page=${page}`, { scroll: false });
         //router.refresh()
         /*const elem = document.querySelector('ol')
         elem.scrollIntoView(true)/*{//mount scroll to center
@@ -62,7 +61,7 @@ const IOComponentTop = () => {
             block: 'center',    // Required for vertical centering
             //inline: 'center'    // Optional: for horizontal centering
         })*/
-    }, [page, scroll])
+    }, [page])
     //className={styles.main_footer}
     return <p ref={ref} ></p>
 }
