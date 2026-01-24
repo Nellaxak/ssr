@@ -119,7 +119,7 @@ async function List({ items, page, renderItem }) {
     //const res = await Promise.all(items.slice(col, col + 10).map(async (item) => {
         //-1 scrollbottom,+1 scrolltop
         //items.slice(Math.max(page * 10 - 1, 0)
-    const res = await Promise.all(items.slice(page * 10 - 1, page * 10 + 10).map(async (item) => {
+    const res = await Promise.all(items.slice(page * 10, page * 10 + 10).map(async (item) => {
         if (item) {
             return await renderItem(item);
         }
