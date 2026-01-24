@@ -54,7 +54,7 @@ function ButtonSubmit(props) {
   }, []);
   useEffect(() => {
     router.push(`?viewtype=${currentViewtype}&page=${page}`, { scroll: true });
-    //router.refresh()
+    router.refresh()
     //console.log('vvmmm', ref.current)
     //ref.current.scrollIntoView(true);
   }, [page])
