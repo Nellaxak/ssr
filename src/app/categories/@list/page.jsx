@@ -178,7 +178,8 @@ async function Row(props) {
             <Suspense>
                 <output className={styles.padding}>{formatData}</output>
             </Suspense>
-            <ButtonSubmit id={props.obj.id} obj={props.obj} status={status} index={props.index} />
+            <ButtonSubmit id={props.obj.id} obj={props.obj} length={props.length} 
+            status={status} index={props.index} />
             <div className={styles.flex_item}>
                 <div className={styles.flex_container_row}>
                     <span className={styles.danger}>{Danger}</span>
@@ -216,10 +217,10 @@ export default async function Home({ searchParams }) {
         const success = await DataLength.setArr(String(page) + 'self', 'start', data.links)
         if (success === true) {
             data_items = await DataLength.getArr(data.links.self)
-            console.log('data_items length before', data_items.length)
-            const lastItem = data_items.at(-1);
-            console.log('lastItem', lastItem)
-            console.log('data_items length after', data_items.length)
+            //console.log('data_items length before', data_items.length)
+            //const lastItem = data_items.at(-1);
+            //console.log('lastItem', lastItem)
+            //console.log('data_items length after', data_items.length)
         }
         return <List items={data_items}
             renderItem={async (product, index) => {
@@ -234,6 +235,7 @@ export default async function Home({ searchParams }) {
                     key={product.id}
                     index={index}
                     obj={product}
+                    length={data_items.length}
                     viewtype={viewtype}
                     dates={dateString}
                 /></Suspense>

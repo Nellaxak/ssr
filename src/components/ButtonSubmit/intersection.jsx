@@ -37,7 +37,10 @@ function ButtonSubmit(props) {
   const callbackFunction = useCallback(async (entries) => {
     const [entry] = entries;
     if (entry.isIntersecting) {
-      console.log('button input', currentPage, ref.current)//index
+      if ((props.index + 1) === props.length) {
+        //if (props.index===lastIndex)
+        console.log('button input', currentPage, ref.current)//index
+      }
     } else {
     }
   }, []);
@@ -45,6 +48,7 @@ function ButtonSubmit(props) {
     //const fetchD = async () => {
     //console.log('mount', props.index)//page increment -> new mount?
     //mountItem(props.index)
+    //if (props.index===lastIndex)
     const observer = new IntersectionObserver(callbackFunction, options);
     observer.observe(ref.current);
     return () => {
