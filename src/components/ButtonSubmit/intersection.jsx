@@ -50,8 +50,8 @@ function ButtonSubmit(props) {
   useEffect(() => {
     router.push(`?viewtype=${currentViewtype}&page=${page}`, { scroll: false });
     //router.refresh()
-    console.log('vvmmm', ref.current)
-    //ref.current.scrollIntoView(true);
+    //console.log('vvmmm', ref.current)
+    ref.current.scrollIntoView(true);
   }, [page])
   useEffect(() => {
     //const fetchD = async () => {
