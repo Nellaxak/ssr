@@ -42,7 +42,7 @@ function ButtonSubmit(props) {
           let newPage = page + 1
           return newPage
         })
-        console.log('button input', currentPage, ref.current)//index
+        //console.log('button input', currentPage, ref.current)//index
       }
     } else {
     }
@@ -67,7 +67,7 @@ function ButtonSubmit(props) {
     };
     //}
     //fetchD()
-  }, [])
+  }, [page])
   //onClick={()=>handleClick()}
   return <button type="button" ref={ref} onClick={handleClick}><Suspense>444444</Suspense></button>
 }
