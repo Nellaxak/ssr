@@ -14,7 +14,7 @@ class DataLength {
     //const arr = //await dll.toArray(find)
     return DataLength.arr
   }
-  static async setArr(pageParam, linkParams, nodeDll) {
+  static async setArr(pageParam, linkParams, nodeDll, page) {
     //console.log('linkParams', linkParams)
     if (pageParam !== DataLength.page) {
       DataLength.arr = []

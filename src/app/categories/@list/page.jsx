@@ -215,11 +215,11 @@ export default async function Home({ searchParams }) {
         console.log('links', page, data.element_count)
         data_items = []
         let arr = []
-        const success = await DataLength.setArr(String(page) + 'self', 'start', data.links)
+        const success = await DataLength.setArr(String(page) + 'self', 'start', data.links, page)
         if (success === true) {
             //data_items = await DataLength.getArr(data.links.self)
             arr = await cll.toArray()
-            console.log('arr', arr, arr.length, Array.isArray(arr))
+            //console.log('arr', arr, arr.length, Array.isArray(arr))
         }
 
         return <List items={arr}

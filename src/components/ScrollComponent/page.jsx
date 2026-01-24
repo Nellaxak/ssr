@@ -94,8 +94,7 @@ function ScrollComponent() {
             //console.log('dataLength', dataLength)
             // Update state, etc.
         })();*/
-        router.push(`?viewtype=${currentViewtype}&page=${page}`, { scroll: true });
-        //router.refresh()
+        //router.push(`?viewtype=${currentViewtype}&page=${page}`, { scroll: true });
         /*const element = document.querySelector('ol');
         scrollElementToCenter(element);*/
     }, [page])
