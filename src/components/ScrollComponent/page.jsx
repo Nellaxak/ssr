@@ -94,11 +94,11 @@ function ScrollComponent() {
             //console.log('dataLength', dataLength)
             // Update state, etc.
         })();*/
-        router.push(`?viewtype=${currentViewtype}&page=${page}&scroll=${scroll}&col=${countScroll}`, { scroll: true });
+        router.push(`?viewtype=${currentViewtype}&page=${page}`, { scroll: true });
         //router.refresh()
         /*const element = document.querySelector('ol');
         scrollElementToCenter(element);*/
-    }, [startRow, page, scroll, countScroll])
+    }, [page])
     useEffect(() => {
         //find first li , get Height
         //scrollStart(0)
