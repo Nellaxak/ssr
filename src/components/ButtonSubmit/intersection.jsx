@@ -43,7 +43,7 @@ function ButtonSubmit(props) {
           let newPage = page + 1
           return newPage
         })
-      } /*else if (props.index === 0) {//default
+      } /*else if (props.index === 0) {//default=> page -1
         setPage((page) => {
           let newPage = page - 1
           return newPage
