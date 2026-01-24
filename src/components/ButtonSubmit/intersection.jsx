@@ -48,20 +48,10 @@ function ButtonSubmit(props) {
     }
   }, []);
   useEffect(() => {
-    //scrollEnd({ action: startAction, col: startRow })
-    /*(async () => {
-        // Your async logic here
-        //const dataLength1 = await scrollEnd()
-        //setDataLength(dataLength1)
-        //console.log('dataLength', dataLength)
-        // Update state, etc.
-    })();*/
     router.push(`?viewtype=${currentViewtype}&page=${page}`, { scroll: false });
     //router.refresh()
-    //after scrollintoView(true)
-    ref.current.scrollIntoView(true);
-    /*const element = document.querySelector('ol');
-    scrollElementToCenter(element);*/
+    console.log('vvmmm', ref.current)
+    //ref.current.scrollIntoView(true);
   }, [page])
   useEffect(() => {
     //const fetchD = async () => {
