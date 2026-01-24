@@ -5,7 +5,7 @@ import DataLength from '../DataLength';
 
 import LinkedList, { linkedList } from '../LinkedList'
 import HFSM from '../HFSM'
-import dll, { DoublyLinkedList } from '../DoublyLinkedList';
+
 const listInstances = new Map()
 const instanceItem = new Map()
 const instanceLinkedList = new Map()
@@ -54,7 +54,7 @@ export async function mountItem(index, obj) {
             }
         }
     });
-    listInstances.set(index, instanceFSM)
+    //listInstances.set(index, instanceFSM)
     //console.log('listInstances set', index)
     //const item = new Item(Number(obj.id), obj)
     //instanceItem.set(Number(obj.id), item)
@@ -92,11 +92,11 @@ export async function scrollEnd(params) {
     //const item = instanceItem.get(id)
     //const item = Item.arrObj.get(id)
     //await item.setStatus()
-    console.log('scrollend')
+    console.log('scrollend', DataLength.count)
     //statusMap.set(id, !statusMap.get(id))
     //revalidateTag('items', 'max')
-    //const count = await DataLength.getCount()
-    return 0
+    const count = await DataLength.getCount()
+    return count
 }
 export async function toggleClick(params) {
     const id = Number(params)
@@ -110,13 +110,4 @@ export async function toggleClick(params) {
 }
 export async function getStatus(params) {
     console.log('getStatus', params)
-}
-export async function scrollStart(page) {
-    await DataLength.setArr(String(page) + 'self', 'start', DoublyLinkedList.links)//async get links
-}
-export async function scrollBottom(page) {
-    await DataLength.setArr(String(page) + 'next', 'next', DoublyLinkedList.links)
-}
-export async function scrollTop() {
-    //dll.prepend()
 }

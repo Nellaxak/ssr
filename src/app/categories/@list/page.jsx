@@ -7,7 +7,7 @@ import ButtonSubmit from '../../../components/ButtonSubmit/page'
 import Item from "../../Item";
 import DataLength from "../../DataLength";
 
-import cll from "../../CircularLinkedList";
+import dll from "../../DoublyLinkedList";
 //import { createLinkedListInstance } from '../../../lib/actions'
 
 let resp
@@ -113,15 +113,15 @@ async function RenderProp(product, index) {
         dates={dateString}
     /></Suspense>
 }
-async function List({ items, renderItem }) {
+async function List({ items, page, renderItem }) {
     //slice -1,-5?scroll up
     //slice must be 6
-    let col = 0
     //const res = await Promise.all(items.slice(col, col + 10).map(async (item) => {
-    const res = await Promise.all(items.map(async (item, index) => {
+    //    items.slice(page*10, page*10 + 10)
+    const res = await Promise.all(items.slice(page * 10, page * 10 + 10).map(async (item) => {
         //console.log('llpoiyt', item)//linked list
         if (item) {
-            return await renderItem(item, index);
+            return await renderItem(item);
         }
     }))
     return (<Suspense>{res}
@@ -178,8 +178,7 @@ async function Row(props) {
             <Suspense>
                 <output className={styles.padding}>{formatData}</output>
             </Suspense>
-            <ButtonSubmit id={props.obj.id} obj={props.obj} length={props.length}
-                status={status} index={props.index} />
+            <ButtonSubmit id={props.obj.id} obj={props.obj} status={status} index={props.index} />
             <div className={styles.flex_item}>
                 <div className={styles.flex_container_row}>
                     <span className={styles.danger}>{Danger}</span>
@@ -191,40 +190,48 @@ async function Row(props) {
 const single = new Map()
 let result = []
 let data_items = []
-let scroll = 'start'
-let col = 0
 export default async function Home({ searchParams }) {
     const search = await searchParams;
     const page = await search.page
     //console.log('n,mkmkmk', typeof page)
     let [startDate, endDate] = await CalcData(page)
     const viewtype = await search.viewtype
-    //const action = await search.action
-    scroll = await search.scroll
+    const action = await search.action
+    const scroll = await search.scroll
 
-    col = await search.col
+    const col = await search.col
     //try {
-    const url = `http://api.nasa.gov/neo/rest/v1/feed?start_date=${startDate}&end_date=${endDate}&api_key=3wa5hHgFuqhf6XiefvqzkcDQWZ01aOOK4vNZEXsP`
-    const resp = await fetch(url,
+    const resp = await fetch(`https://api.nasa.gov/neo/rest/v1/feed?start_date=${startDate}&end_date=${endDate}&api_key=3wa5hHgFuqhf6XiefvqzkcDQWZ01aOOK4vNZEXsP`,
         { cache: 'force-cache' },
         { next: { tags: ['items'] } }
     );
 
     if (Number(resp.status) === 200) {
         const data = await resp.json()
-        console.log('links', page, data.element_count)
-        data_items = []
-        let arr = []
-        const success = await DataLength.setArr(String(page) + 'self', 'start', data.links, page)
-        if (success === true) {
-            //data_items = await DataLength.getArr(data.links.self)
-            arr = await cll.toArray()
-            //console.log('arr', arr, arr.length, Array.isArray(arr))
-        }
+        //console.log('fetch count', data.element_count)
+        const list = data.near_earth_objects
+        const arrObjects22 = Object.values(list)
+        const resObj2 = arrObjects22.flat()
+        //if (Number(page) > 0) {
+        //  const prev = single.get(Number(page) - 1)
+        //if (single.get(Number(page)) !==
+        //single.set(Number(page), resObj2)
+        //const arr = single.get(Number(page))
 
-        return <List items={arr}
+        //result = result.concat(prev, resObj2)
+        //console.log('result', result)
+        //} else {
+        //single.set(Number(page), resObj2)
+        //}
+        //data_items = single.get(Number(page))
+        //promise all
+        const success = await DataLength.setArr(Number(page), resObj2)
+        if (success === true) {
+            data_items = await DataLength.getArr()
+        }
+        return <List items={data_items} page={Number(page)}
             renderItem={async (product, index) => {
-                //console.log('product', index)
+                //console.log('product', product)
                 const date = new Date(product.close_approach_data[0].epoch_date_close_approach)
                 const prevDate = new Intl.DateTimeFormat("ru-RU", options).format(date);
                 const datSlice = prevDate.slice(0, -2)
@@ -235,7 +242,6 @@ export default async function Home({ searchParams }) {
                     key={product.id}
                     index={index}
                     obj={product}
-                    length={arr.length}
                     viewtype={viewtype}
                     dates={dateString}
                 /></Suspense>

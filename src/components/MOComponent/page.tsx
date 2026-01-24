@@ -39,39 +39,37 @@ const MOComponent = () => {
             //const page = Number(currentPage) + 1
             //router.push(`?viewtype=${currentViewtype}&page=${page}`, { scroll: false });
             //socket.emit('addPage')
-            console.log('input button',entry.target)
-            /*setPage((page) => {
+            console.log('input')
+            setPage((page) => {
                 const newPage = page + 1
                 return newPage
-            })*/
+            })
         } else {
-            console.log('output button',entry.target)
+            console.log('output')
         }
     }, []);
     // Колбэк-функция при срабатывании мутации
-    const callbackF = useCallback((mutationsList: any) => {
-        console.log('callbackMO', mutationsList.length)//mutationsList.length slice
-        const paragraphs = document.querySelectorAll('li')
-        //console.log('paragraphs', paragraphs)
+    const callback = function (mutationsList: any, observer: any) {
+        const paragraphs = document.querySelectorAll('button')
         const observerIO = new IntersectionObserver(callbackFunction, options);
         paragraphs.forEach(el => {
+            //el.style.color = 'blue';
             observerIO.observe(el);
         });
-        /*for (let mutation of mutationsList) {
+        for (let mutation of mutationsList) {
             if (mutation.type === "childList") {
                 console.log("A child node has been added or removed.");
             } else if (mutation.type === "attributes") {
                 console.log("The " + mutation.attributeName + " attribute was modified.");
             }
-        }*/
-    }, []);
+        }
+    };
     useEffect(() => {
         //socket.emit('addPage')
-        const observer = new MutationObserver(callbackF)
+        const observer = new MutationObserver(callback)
         //const observer = new IntersectionObserver(callbackFunction, options);
-        const el = document.querySelector("ol") as HTMLElement;
-        //console.log('el', el)
-        observer.observe(el, config);
+        //const el = document.querySelector("#forScroll") as HTMLElement;
+        observer.observe(ref.current, config);
         //socket.on('page', data => {
         //router.refresh()
         //})
@@ -79,12 +77,13 @@ const MOComponent = () => {
             observer.disconnect();
             //socket.off('page')
         };
+
     }, [])
-    /*useEffect(() => {
+    useEffect(() => {
         //serverActions Post request nasa fetch add
         router.push(`?viewtype=${currentViewtype}&page=${page}`, { scroll: false });
         //router.refresh()
-    }, [page])*/
+    }, [page])
     return <p ref={ref}></p>
     /*return <Form action={pagination} ref={ref}>
         <input type='number' name='page' value={page} hidden></input>

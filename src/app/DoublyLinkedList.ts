@@ -1,7 +1,7 @@
 export interface INode {
   value: Value;
   next: DoublyLinkedListNode | null;
-  //index: number;
+  index: number;
   previous: DoublyLinkedListNode | null;
   toString(fn?: Fn): string;
 }
@@ -13,7 +13,7 @@ export type Value = number | string | { [ket: string]: any };
 export class DoublyLinkedListNode implements INode {
   constructor(
     public value: Value,
-    //public index: number,
+    public index: number,
     public next: DoublyLinkedListNode | null = null,
     public previous: DoublyLinkedListNode | null = null,
   ) { }
@@ -28,10 +28,10 @@ export class DoublyLinkedListNode implements INode {
 export interface INodeList {
   head: DoublyLinkedListNode | null;
   tail: DoublyLinkedListNode | null;
-  prepend(value: Value): Promise<any>;
-  append(value: Value, self: boolean): Promise<any>;
+  //prepend(value: Value): DoublyLinkedList;
+  append(value: Value, index: number): Promise<any>;
   delete(value: Value): DoublyLinkedListNode | null;
-  find(value?: Value | undefined): Promise<any> | null;
+  find(value?: Value | undefined): DoublyLinkedListNode | null;
   deleteTail(): DoublyLinkedListNode | null;
   deleteHead(): DoublyLinkedListNode | null;
   //fromArray(values: Array<Value>): DoublyLinkedList;
@@ -44,116 +44,94 @@ export class DoublyLinkedList implements INodeList {
   public head: DoublyLinkedListNode | null = null;
   public tail: DoublyLinkedListNode | null = null;
   static count: number = 0;
-  static dataNode: any;//async change
-  static links: any;
-  /*static get value() {
-    return DoublyLinkedList.links;
-  }*/
-
-  // Use an async method to set the value asynchronously
-  static async setValueAsync(newValue: any) {
-    DoublyLinkedList.links = newValue;
-    //DoublyLinkedList.dataNode=newValue.self;//append/prepend
-  }
   async values(page: number): Promise<any> {
     console.log('values call')
     let current = this.head;
 
     let nodes = []
     while (current !== null) {
-      //if (page === current.index) {
-      nodes = []
-      //console.log('ppppp', current.previous, current.next)
-      if (current.previous) {
-        const prev = await fetch(`${current.previous}`,
+      if (page === current.index) {
+        nodes = []
+        //console.log('ppppp', current.previous, current.next)
+        if (current.previous) {
+          const prev = await fetch(`${current.previous}`,
+            { cache: 'force-cache' },
+          );
+          const dataPrev = await prev.json()
+          const listPrev = dataPrev.near_earth_objects
+          const arrObjectsPrev = Object.values(listPrev).flat(2)
+          nodes = nodes.concat(arrObjectsPrev)//arrObjects[0]//small data
+        }
+        const self = await fetch(`${current.value}`,
           { cache: 'force-cache' },
         );
-        const dataPrev = await prev.json()
-        const listPrev = dataPrev.near_earth_objects
-        const arrObjectsPrev = Object.values(listPrev).flat(2)
-        nodes = nodes.concat(arrObjectsPrev)//arrObjects[0]//small data
+        const data = await self.json()
+        const list = data.near_earth_objects
+        const arrObjects = Object.values(list).flat(2)
+        nodes = nodes.concat(arrObjects)//arrObjects[0]//small data
+        if (current.next) {
+          const next = await fetch(`${current.next}`,
+            { cache: 'force-cache' },
+          );
+          const dataNext = await next.json()
+          const listNext = dataNext.near_earth_objects
+          const arrObjectsNext = Object.values(listNext).flat(2)
+          nodes = nodes.concat(arrObjectsNext)//arrObjects[0]//small data
+        }
+        nodes = nodes.slice(0, 8)
+        //const lastNodes=nodes.pop()
+        //const lastItem = nodes.at(-1)//reduce?
+        //console.log('nodes', nodes.length)
+        //current=null //break while
       }
-      const self = await fetch(`${current.value}`,
-        { cache: 'force-cache' },
-      );
-      const data = await self.json()
-      const list = data.near_earth_objects
-      const arrObjects = Object.values(list).flat(2)
-      nodes = nodes.concat(arrObjects)//arrObjects[0]//small data
-      if (current.next) {
-        const next = await fetch(`${current.next}`,
-          { cache: 'force-cache' },
-        );
-        const dataNext = await next.json()
-        const listNext = dataNext.near_earth_objects
-        const arrObjectsNext = Object.values(listNext).flat(2)
-        nodes = nodes.concat(arrObjectsNext)//arrObjects[0]//small data
-      }
-      nodes = nodes.slice(0, 8)
-      //const lastNodes=nodes.pop()
-      //const lastItem = nodes.at(-1)//reduce?
-      //console.log('nodes', nodes.length)
-      //current=null //break while
-      // }
       current = current.next;
     }
     return nodes
   }
   // Добавляем узел в начало списка.
-  async prepend(value: Value): Promise<any> {
-    if (this.find(value) !== null) {
-      // Создаем новый узел, который будет head.
-      const newNode = new DoublyLinkedListNode(value, this.head);
+  /*prepend(value: Value): DoublyLinkedList {
+    // Создаем новый узел, который будет head.
+    const newNode = new DoublyLinkedListNode(value, this.head);
 
-      // Если есть head, то он больше не будет head.
-      // Поэтому делаем его предыдущую (previous) ссылку на новый узел (new head).
-      // Затем делаем новый узел head.
+    // Если есть head, то он больше не будет head.
+    // Поэтому делаем его предыдущую (previous) ссылку на новый узел (new head).
+    // Затем делаем новый узел head.
 
-      if (this.head) {
-        this.head.previous = newNode;
-      }
-      this.head = newNode;
-
-      // Если еще нет tail, сделаем новый узел tail.
-      if (!this.tail) {
-        this.tail = newNode;
-      }
-      //DoublyLinkedList.dataNode = newNode
-
-      return this;
+    if (this.head) {
+      this.head.previous = newNode;
     }
-  }
+    this.head = newNode;
+
+    // Если еще нет tail, сделаем новый узел tail.
+    if (!this.tail) {
+      this.tail = newNode;
+    }
+
+    return this;
+  }*/
 
   // Добавляем узел в конец списка.
-  async append(value: any, self: boolean): Promise<any> {
+  async append(value: any, index: number): Promise<any> {
     //console.log('before append', value)
-    if (this.find(value) !== null) {
-      const newNode = new DoublyLinkedListNode(value);
+    const newNode = new DoublyLinkedListNode(value, index);
 
-      if (this.tail) {
-        // Присоединяем новый узел к концу связанного списка.
-        this.tail.next = newNode;
-      }
-
-      // Присоединяем текущий tail к предыдущей (previous) ссылке нового узла.
-      newNode.previous = this.tail;
-
-      // Переназначаем tail на новый узел.
-      this.tail = newNode;
-
-      if (!this.head) {
-        this.head = newNode;
-      }
-      DoublyLinkedList.count = DoublyLinkedList.count + 1
-      if (self === true) {
-        //scroll bottom => next
-        DoublyLinkedList.dataNode = newNode
-        console.log('swswsw', DoublyLinkedList.dataNode.value)
-
-      }
-      console.log('after append', DoublyLinkedList.count)
-      return this;
+    if (this.tail) {
+      // Присоединяем новый узел к концу связанного списка.
+      this.tail.next = newNode;
     }
+
+    // Присоединяем текущий tail к предыдущей (previous) ссылке нового узла.
+    newNode.previous = this.tail;
+
+    // Переназначаем tail на новый узел.
+    this.tail = newNode;
+
+    if (!this.head) {
+      this.head = newNode;
+    }
+    DoublyLinkedList.count = DoublyLinkedList.count + 1
+    console.log('after append', DoublyLinkedList.count)
+    return this;
   }
 
   delete(value: Value): DoublyLinkedListNode | null {
@@ -209,7 +187,7 @@ export class DoublyLinkedList implements INodeList {
     return deletedNode;
   }
 
-  async find(value?: Value | undefined): Promise<any> | null {
+  find(value?: Value | undefined): DoublyLinkedListNode | null {
     if (!this.head) {
       return null;
     }
@@ -217,10 +195,8 @@ export class DoublyLinkedList implements INodeList {
     let currentNode: DoublyLinkedListNode | null = this.head;
 
     while (currentNode) {
-      //console.log('zxzxz', currentNode.value, value)
       // Если указано значение, пробуем сравнить по значению.
       if (value !== undefined && currentNode.value === value) {
-        //fetch
         return currentNode;
       }
 
@@ -265,52 +241,30 @@ export class DoublyLinkedList implements INodeList {
 
     return deletedHead;
   }
-  async toArray(obj:any): Promise<any> {
-    let nodes = [];
 
-    let currentNode = obj//DoublyLinkedList.dataNode//async
-    console.log('vcvcvc', currentNode.value)
-    //while (currentNode) {
-    //const resp = await fetch(`${this.dataNode.self}`,
+  /*fromArray(values: Array<Value>): DoublyLinkedList {
+    values.forEach((value: Value, index) => this.append(value, index));
 
-    if (currentNode.previous !== null) {
-      const respP = await fetch(`${currentNode.previous.value}`,
-        { cache: 'force-cache' }
-      );
-      const dataP = await respP.json()
-      const listP = dataP.near_earth_objects
-      const arrObjects22P = Object.values(listP)
-      const resObj2P = arrObjects22P.flat()
-      nodes = nodes.concat(resObj2P);//concat
+    return this;
+  }*/
+
+  /*toArray(): DoublyLinkedListNode[] {
+    const nodes = [];
+
+    let currentNode = this.head;
+    while (currentNode) {
+      nodes.push(currentNode);
+      currentNode = currentNode.next;
     }
-    //console.log('selfqqq', currentNode)
-    const resp = await fetch(`${currentNode.value}`,
-      { cache: 'force-cache' }
-    );
-    const data = await resp.json()
-    const list = data.near_earth_objects
-    const arrObjects22 = Object.values(list)
-    const resObj2 = arrObjects22.flat()
-    //nodes.push(...resObj2);//concat
-    nodes = nodes.concat(resObj2);//concat
-
-    //console.log('currentNode.next', currentNode.next)
-    if (currentNode.next !== null) {
-      const respN = await fetch(`${currentNode.next.value}`,
-        { cache: 'force-cache' }
-      );
-      const dataN = await respN.json()
-      const listN = dataN.near_earth_objects
-      const arrObjects22N = Object.values(listN)
-      const resObj2N = arrObjects22N.flat()
-      nodes = nodes.concat(resObj2N);//concat
-      //nodes.push(...resObj2N);//concat
-    }
-    //currentNode = currentNode.next;
-    //}
 
     return nodes;
-  }
+  }*/
+
+  /*toString(callback?: Fn): string {
+    return this.toArray()
+      .map((node) => node.toString(callback))
+      .toString();
+  }*/
 
   /*reverse(): DoublyLinkedList {
     let currNode = this.head;

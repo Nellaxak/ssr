@@ -2,8 +2,6 @@
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import { useCallback, useEffect, useState, useRef } from "react";
 import dynamic from 'next/dynamic'
-import styles from "./page.module.css";
-
 //import { notIO } from '../../app/lib/actions'
 
 const options = {
@@ -24,7 +22,7 @@ const IOComponent = () => {
     //path = usePathname()
     const searchParams = useSearchParams()
     const [page, setPage] = useState(0);
-    const [scroll, setScroll] = useState('start');
+    //const [scroll, setScroll] = useState(0);
 
     const currentViewtype = searchParams.get('viewtype')
     //const currentPage = searchParams.get('page')
@@ -36,14 +34,11 @@ const IOComponent = () => {
     callbackFunction = useCallback(async (entries: IntersectionObserverEntry[]) => {
         const [entry] = entries;
         if (entry.isIntersecting) {// && add) {
-            //console.log('input')
-            setScroll('bottom')
-            /*setPage((page) => {
+            console.log('input')
+            setPage((page) => {
                 let newPage = page + 1
                 return newPage
-            })*/
-        } else {
-            console.log('output')//not scrollTop
+            })
         }
     }, []);
     useEffect(() => {
@@ -56,7 +51,7 @@ const IOComponent = () => {
         };
     }, [])
     useEffect(() => {
-        router.push(`/categories?viewtype=${currentViewtype}&page=${page}&scroll=${scroll}`, { scroll: false });
+        router.push(`/categories?viewtype=${currentViewtype}&page=${page}`, { scroll: false });
         //router.refresh()
         /*const elem = document.querySelector('ol')
         elem.scrollIntoView(true)/*{//mount scroll to center
@@ -64,9 +59,8 @@ const IOComponent = () => {
             block: 'center',    // Required for vertical centering
             //inline: 'center'    // Optional: for horizontal centering
         })*/
-    }, [page, scroll])
-    //className={styles.main_footer}
-    return <p ref={ref} ></p>
+    }, [page])
+    return <p ref={ref}></p>
 }
 //export default IOComponent
 export default dynamic(() => Promise.resolve(IOComponent), { ssr: false });
