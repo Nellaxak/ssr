@@ -38,11 +38,11 @@ function ButtonSubmit(props) {
     const [entry] = entries;
     if (entry.isIntersecting) {
       if ((props.index + 1) === props.length) {
+        //console.log('button input', page)//index
         setPage((page) => {
           let newPage = page + 1
           return newPage
         })
-        //console.log('button input', currentPage, ref.current)//index
       } /*else if (props.index === 0) {//default
         setPage((page) => {
           let newPage = page - 1
@@ -57,7 +57,7 @@ function ButtonSubmit(props) {
     //router.refresh()
     //console.log('vvmmm', ref.current)
     //ref.current.scrollIntoView(true);
-  }, [])
+  }, [page])
   useEffect(() => {
     //const fetchD = async () => {
     //console.log('mount', props.index)//page increment -> new mount?
