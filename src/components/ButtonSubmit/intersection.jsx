@@ -37,14 +37,10 @@ function ButtonSubmit(props) {
   const callbackFunction = useCallback(async (entries) => {
     const [entry] = entries;
     if (entry.isIntersecting) {
-      console.log('button input', currentPage, ref.current)
+      console.log('button input', currentPage, ref.current)//index
     } else {
     }
   }, []);
-  /*useEffect(() => {
-    //url col change
-    router.push(`?viewtype=${currentViewtype}&page=${page}`, { scroll: false });
-  }, [page])*/
   useEffect(() => {
     //const fetchD = async () => {
     //console.log('mount', props.index)//page increment -> new mount?

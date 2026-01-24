@@ -96,8 +96,8 @@ function ScrollComponent() {
         })();*/
         router.push(`?viewtype=${currentViewtype}&page=${page}&scroll=${scroll}&col=${countScroll}`, { scroll: false });
         //router.refresh()
-        /*const element = document.querySelector('ol');
-        scrollElementToCenter(element);*/
+        const element = document.querySelector('ol');
+        scrollElementToCenter(element);
     }, [startRow, page, scroll, countScroll])
     useEffect(() => {
         //find first li , get Height
