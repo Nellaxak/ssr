@@ -214,24 +214,13 @@ export default async function Home({ searchParams }) {
         const data = await resp.json()
         console.log('links', page, data.element_count)
         data_items = []
-
         const success = await DataLength.setArr(String(page) + 'self', 'start', data.links)
         if (success === true) {
             data_items = await DataLength.getArr(data.links.self)
-            cll.append(data_items[0]);
-            cll.append(data_items[1]);
-            cll.append(data_items[2]);
-            cll.append(data_items[3]);
-            cll.append(data_items[4]);
-            cll.append(data_items[5]);
-            cll.append(data_items[6]);
-            cll.append(data_items[7]);
-            cll.append(data_items[8]);
-            cll.append(data_items[9]);
-            cll.append(data_items[10]);
+            
         }
-        const arr = await cll.toArray()
-        console.log('arr', arr.length)
+        //const arr = await cll.toArray()
+        //console.log('arr', arr.length)
         return <List items={data_items}
             renderItem={async (product, index) => {
                 //console.log('product', index)

@@ -1,5 +1,6 @@
 'use server'
-import dll, { DoublyLinkedList } from "./DoublyLinkedList";
+//import dll, { DoublyLinkedList } from "./DoublyLinkedList";
+import cll from './CircularLinkedList'
 class DataLength {
   static arr = [];
   static page = '-1';
@@ -48,9 +49,17 @@ class DataLength {
       const resObj2N = arrObjects22N.flat()
       //nodes = nodes.concat(resObj2N);//concat
       DataLength.arr = DataLength.arr.concat(resObj2N);//concat
-      /*const self = await dll.append(nodeDll.self, true)
-      await dll.prepend(nodeDll.prev)
-      await dll.append(nodeDll.next)*/
+      cll.append(DataLength.arr[0]);
+      cll.append(DataLength.arr[1]);
+      cll.append(DataLength.arr[2]);
+      cll.append(DataLength.arr[3]);
+      cll.append(DataLength.arr[4]);
+      cll.append(DataLength.arr[5]);
+      cll.append(DataLength.arr[6]);
+      cll.append(DataLength.arr[7]);
+      cll.append(DataLength.arr[8]);
+      cll.append(DataLength.arr[9]);
+      cll.append(DataLength.arr[10]);
       DataLength.page = pageParam
     }
     return true
