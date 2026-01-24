@@ -46,7 +46,7 @@ function ButtonSubmit(props) {
       }
     } else {
     }
-  }, []);
+  }, [page]);
   useEffect(() => {
     router.push(`?viewtype=${currentViewtype}&page=${page}`, { scroll: false });
     //router.refresh()
