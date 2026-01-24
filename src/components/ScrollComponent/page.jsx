@@ -76,7 +76,8 @@ function ScrollComponent() {
             //setScroll('bottom')
         } else {
             const col = Math.round(window.scrollY / rowHeight)
-            console.log('col', col)
+            setStartRow(col)
+            //console.log('col', col)//0..4
         }
         /*if (maxScrollTop <= 0) {
             //change url page increment
