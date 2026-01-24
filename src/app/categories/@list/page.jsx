@@ -219,7 +219,7 @@ export default async function Home({ searchParams }) {
         if (success === true) {
             //data_items = await DataLength.getArr(data.links.self)
             arr = await cll.toArray()
-            console.log('arr', arr.length)
+            console.log('arr', arr.length, Array.isArray(arr))
         }
 
         return <List items={arr}

@@ -1,8 +1,8 @@
 class Node {
-  constructor(value) {
-    this.value = value;
-    this.next = null; // Изначально null
-  }
+    constructor(value) {
+        this.value = value;
+        this.next = null; // Изначально null
+    }
 }
 
 export class CircularLinkedList {
@@ -42,16 +42,10 @@ export class CircularLinkedList {
         if (!this.head) return;
         let current = this.head;
         do {
-            console.log(current.value);
+            //console.log(current.value);
             nodes.push(current);
             current = current.next;
         } while (current !== this.head);
-        /*let currentNode = this.head;
-        while (currentNode) {
-          nodes.push(currentNode);
-          currentNode = currentNode.next;
-        }*/
-
         return nodes;
     }
 }

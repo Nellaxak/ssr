@@ -49,7 +49,7 @@ class DataLength {
       const resObj2N = arrObjects22N.flat()
       //nodes = nodes.concat(resObj2N);//concat
       DataLength.arr = DataLength.arr.concat(resObj2N);//concat
-      for (let i = 0; i < 10; i++) {
+      for (let i = 0; i < 10; i++) {//page*9
         await cll.append(DataLength.arr[i]);
       }
       DataLength.page = pageParam
