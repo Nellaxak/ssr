@@ -7,7 +7,7 @@ import dynamic from 'next/dynamic'
 const options = {
     root: null,//document.querySelector("#scrollArea"),
     rootMargin: "0px 0px 10px 0px",//-px not work?
-    scrollMargin: "-80px",//footer height
+    //scrollMargin: "-80px",//footer height
     threshold: 1.0,
 }
 let router: any
