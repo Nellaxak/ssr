@@ -42,8 +42,6 @@ function ButtonSubmit(props) {
           let newPage = page + 1
           return newPage
         })
-        //after scrollintoView(true)
-        ref.current.scrollIntoView(true);
         console.log('button input', currentPage, ref.current)//index
       }
     } else {
@@ -60,6 +58,8 @@ function ButtonSubmit(props) {
     })();*/
     router.push(`?viewtype=${currentViewtype}&page=${page}`, { scroll: false });
     //router.refresh()
+    //after scrollintoView(true)
+    ref.current.scrollIntoView(true);
     /*const element = document.querySelector('ol');
     scrollElementToCenter(element);*/
   }, [page])
