@@ -61,7 +61,7 @@ export default async function Layout(props) {
           <header className={styles.headerToggle}>
             <h6 className={styles.h6}>Ближайшие подлёты астероидов</h6>
           </header>
-          <Suspense><IOComponentTop /></Suspense>
+          <Suspense><ScrollComponentTop /></Suspense>
           <div className='grid'>
             <div className={styles.hidden}>
               <Image src={bigImage} alt="Earth" priority />
