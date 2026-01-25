@@ -27,7 +27,7 @@ function ScrollComponentTop() {
     const handleScroll = useCallback(async (e) => {
         let maxScrollTop = window.scrollY// + 239//+header height
         console.log('maxScrollTop', maxScrollTop)
-        if (maxScrollTop <= 239) {
+        if (maxScrollTop <= 0) {
             setPage((page) => {
                 let newPage = page - 1
                 return newPage
