@@ -116,7 +116,15 @@ async function RenderProp(product, index) {
 async function List({ items, page, scroll, renderItem }) {
     //slice must be 6
     let res
-    if (scroll === 'bottom') {
+    if (scroll === 'start') {
+        res = await Promise.all(
+            items.slice(page * 10, page * 10 + 10).map(async (item) => {
+                if (item) {
+                    return await renderItem(item);
+                }
+            }))
+    }
+    else if (scroll === 'bottom') {
         res = await Promise.all(
             items.slice(Math.max((page * 10) - 2, 0), page * 10 + 10).map(async (item) => {
                 if (item) {
@@ -126,13 +134,6 @@ async function List({ items, page, scroll, renderItem }) {
     } else if (scroll === 'top') {
         res = await Promise.all(
             items.slice(page * 10, page * 10 + 10 + 2).map(async (item) => {
-                if (item) {
-                    return await renderItem(item);
-                }
-            }))
-    } else {
-        res = await Promise.all(
-            items.slice(page * 10, page * 10 + 10).map(async (item) => {
                 if (item) {
                     return await renderItem(item);
                 }
