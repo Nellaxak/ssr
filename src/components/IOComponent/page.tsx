@@ -85,6 +85,12 @@ const IOComponent = () => {
                 inline: 'start' // Horizontal alignment nearest
             })
         }
+        const img = document.querySelector('img')//parent?
+        img.scrollIntoView({
+            behavior: 'smooth', // Optional: animation effect
+            block: 'start', // Vertical alignment (MANDATORY for vertical scroll)
+            inline: 'start' // Horizontal alignment nearest
+        })
     }, [page])
     return <p ref={ref}></p>
 }
