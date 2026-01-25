@@ -34,7 +34,8 @@
       overflow: hidden;
       grid-area: s;
       height: 100vh;
-      position: sticky;
+      position: fixed;/*sticky;*/
+      left:0;
       top: 123px;
     }
 
@@ -78,7 +79,8 @@
       overflow: hidden;
       grid-area: s;
       height: 100vh;
-      position: sticky;
+      position: fixed;/*sticky;*/
+      left:0;
       top: 0px;
     }
 

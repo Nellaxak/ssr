@@ -116,9 +116,8 @@ async function RenderProp(product, index) {
 async function List({ items, page, renderItem }) {
     //slice -1,-5?scroll up
     //slice must be 6
-    //const res = await Promise.all(items.slice(col, col + 10).map(async (item) => {
     //-2 scrollbottom,+2 scrolltop
-    console.log('pioioi', items.slice(Math.max((page * 10) - 2, 0), page * 10 + 10))
+    //get scrolldirection from url
     const res = await Promise.all(
         items.slice(Math.max((page * 10) - 2, 0), page * 10 + 10).map(async (item) => {
             if (item) {

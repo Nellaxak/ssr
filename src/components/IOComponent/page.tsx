@@ -31,7 +31,8 @@ const IOComponent = () => {
         add = true
     }*/
     const handleScroll = useCallback(async () => {
-        let maxScrollTop = window.scrollY// + 239=header height
+        let maxScrollTop = window.scrollY
+        //let maxScrollBottom = document.documentElement.scrollHeight - window.scrollY - window.innerHeight;
         //console.log('maxScrollTop', maxScrollTop)
         if (maxScrollTop <= 0) {
             setPage((page) => {
@@ -67,7 +68,7 @@ const IOComponent = () => {
         router.push(`/categories?viewtype=${currentViewtype}&page=${page}`, { scroll: false });
         const elem = document.querySelector('ol').firstElementChild//lastElementChild
         //console.log('elem scrollIntoView', elem)
-        if (elem && page > 0) {
+        if (elem && page > 0) {//scrollDirection
             elem.scrollIntoView({
                 behavior: 'smooth', // Optional: animation effect
                 block: 'start', // Vertical alignment (MANDATORY for vertical scroll)
@@ -75,7 +76,6 @@ const IOComponent = () => {
             })
         }
     }, [page])
-    //heigth li for output scrollTop
     return <p ref={ref}></p>
 }
 //export default IOComponent
