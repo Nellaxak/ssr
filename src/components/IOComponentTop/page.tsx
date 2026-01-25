@@ -36,7 +36,7 @@ const IOComponentTop = () => {
 
     callbackFunction = useCallback(async (entries: IntersectionObserverEntry[]) => {
         const [entry] = entries;
-        if (entry.isIntersecting) {// && add) {
+        if (!entry.isIntersecting) {// && add) {
             //console.log('input')
             setPage((page) => {
                 let newPage = page - 1
