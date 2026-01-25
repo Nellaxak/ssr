@@ -22,6 +22,8 @@
 body {
   background-color: #000000;
   color: white;
+  display: block;
+  overflow-y: auto;
   /*overflow-x: hidden;/*stop scrollIntoView Horizontal after pagination*/
 }
 
