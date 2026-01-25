@@ -34,8 +34,9 @@
       overflow: hidden;
       grid-area: s;
       height: 100vh;
-      position: sticky;
-      top: 123px;
+      align-items: center;
+      /*position: sticky;
+      top: 123px;*/
       /*scroll-margin-left: 48px;*/
     }
 
@@ -79,8 +80,9 @@
       overflow: hidden;
       grid-area: s;
       height: 100vh;
-      position: sticky;
-      top: 0px;
+      align-items: center;
+      /*position: sticky;
+      top: 0px;*/
       /*scroll-margin-left: 48px;*/
     }
 
