@@ -85,7 +85,7 @@ const IOComponent = () => {
                 inline: 'start' // Horizontal alignment nearest
             })
         }
-        const img = document.querySelector('img')//parent? small li images
+        const img = document.querySelector('img').parentElement//parent? small li images
         if (page > 0) {
             img.scrollIntoView({
                 behavior: 'smooth', // Optional: animation effect
