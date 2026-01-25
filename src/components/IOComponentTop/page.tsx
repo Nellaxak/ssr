@@ -54,13 +54,15 @@ const IOComponentTop = () => {
     }, [])
     useEffect(() => {
         router.push(`/categories?viewtype=${currentViewtype}&page=${page}`, { scroll: false });
-        //router.refresh()
-        /*const elem = document.querySelector('ol')
-        elem.scrollIntoView(true)/*{//mount scroll to center
-            behavior: 'smooth', // Optional: smooth or auto
-            block: 'center',    // Required for vertical centering
-            //inline: 'center'    // Optional: for horizontal centering
-        })*/
+        const elem = document.querySelector('ol').lastElementChild
+        //console.log('elem scrollIntoView', elem)
+        if (elem) {
+            elem.scrollIntoView({
+                behavior: 'smooth', // Optional: animation effect
+                block: 'end', // Vertical alignment (MANDATORY for vertical scroll)
+                inline: 'nearest' // Horizontal alignment
+            })
+        }
     }, [page])
     //className={styles.main_footer}
     return <p ref={ref} ></p>

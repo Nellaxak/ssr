@@ -53,7 +53,7 @@ const IOComponent = () => {
     useEffect(() => {
         router.push(`/categories?viewtype=${currentViewtype}&page=${page}`, { scroll: false });
         const elem = document.querySelector('ol').firstElementChild
-        console.log('elem scrollIntoView', elem)
+        //console.log('elem scrollIntoView', elem)
         if (elem) {
             elem.scrollIntoView({
                 behavior: 'smooth', // Optional: animation effect
@@ -61,12 +61,6 @@ const IOComponent = () => {
                 inline: 'nearest' // Horizontal alignment
             })
         }
-        /*const elem = document.querySelector('ol')
-        elem.scrollIntoView(true)/*{//mount scroll to center
-            behavior: 'smooth', // Optional: smooth or auto
-            block: 'center',    // Required for vertical centering
-            //inline: 'center'    // Optional: for horizontal centering
-        })*/
     }, [page])
     return <p ref={ref}></p>
 }
