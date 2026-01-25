@@ -32,7 +32,7 @@ const IOComponent = () => {
     }*/
     const handleScroll = useCallback(async () => {
         let maxScrollTop = window.scrollY// + 239=header height
-        console.log('maxScrollTop', maxScrollTop)
+        //console.log('maxScrollTop', maxScrollTop)
         if (maxScrollTop <= 0) {
             setPage((page) => {
                 let newPage = page - 1
@@ -50,7 +50,7 @@ const IOComponent = () => {
                 return newPage
             })
             setScroll('bottom')
-        } 
+        }
     }, []);
     useEffect(() => {
         const observer = new IntersectionObserver(callbackFunction, options);
@@ -67,7 +67,7 @@ const IOComponent = () => {
         router.push(`/categories?viewtype=${currentViewtype}&page=${page}`, { scroll: false });
         const elem = document.querySelector('ol').firstElementChild//lastElementChild
         //console.log('elem scrollIntoView', elem)
-        if (elem) {
+        if (elem && page > 0) {
             elem.scrollIntoView({
                 behavior: 'smooth', // Optional: animation effect
                 block: 'start', // Vertical alignment (MANDATORY for vertical scroll)
