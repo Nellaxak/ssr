@@ -32,6 +32,7 @@ const IOComponent = () => {
     }*/
     const handleScroll = useCallback(async () => {
         let maxScrollTop = window.scrollY
+        console.log('www', window.scrollX)
         //let maxScrollBottom = document.documentElement.scrollHeight - window.scrollY - window.innerHeight;
         //console.log('maxScrollTop', maxScrollTop)
         if (maxScrollTop <= 0) {
