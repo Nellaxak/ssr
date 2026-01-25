@@ -35,8 +35,10 @@
       grid-area: s;
       height: 100vh;
       align-self: center;
-      /*position: sticky;
-      top: 123px;*/
+      /*max-width: 48px;
+      overflow: hidden;*/
+      position: sticky;
+      top: 123px;
       /*scroll-margin-left: 48px;*/
     }
 
@@ -81,8 +83,8 @@
       grid-area: s;
       height: 100vh;
       align-self: center;
-      /*position: sticky;
-      top: 0px;*/
+      position: sticky;
+      top: 0px;
       /*scroll-margin-left: 48px;*/
     }
 
