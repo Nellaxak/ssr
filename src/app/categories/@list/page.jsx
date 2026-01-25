@@ -114,7 +114,6 @@ async function RenderProp(product, index) {
     /></Suspense>
 }
 async function List({ items, page, scroll, renderItem }) {
-    //slice -1,-5?scroll up
     //slice must be 6
     let res
     if (scroll === 'bottom') {
@@ -127,6 +126,13 @@ async function List({ items, page, scroll, renderItem }) {
     } else if (scroll === 'top') {
         res = await Promise.all(
             items.slice(page * 10, page * 10 + 10 + 2).map(async (item) => {
+                if (item) {
+                    return await renderItem(item);
+                }
+            }))
+    } else {
+        res = await Promise.all(
+            items.slice(page * 10, page * 10 + 10).map(async (item) => {
                 if (item) {
                     return await renderItem(item);
                 }
