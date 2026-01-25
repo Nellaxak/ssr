@@ -113,17 +113,25 @@ async function RenderProp(product, index) {
         dates={dateString}
     /></Suspense>
 }
-async function List({ items, page, renderItem }) {
+async function List({ items, page, scroll, renderItem }) {
     //slice -1,-5?scroll up
     //slice must be 6
-    //-2 scrollbottom,+2 scrolltop
-    //get scrolldirection from url
-    const res = await Promise.all(
-        items.slice(Math.max((page * 10) - 2, 0), page * 10 + 10).map(async (item) => {
-            if (item) {
-                return await renderItem(item);
-            }
-        }))
+    let res
+    if (scroll === 'bottom') {
+        res = await Promise.all(
+            items.slice(Math.max((page * 10) - 2, 0), page * 10 + 10).map(async (item) => {
+                if (item) {
+                    return await renderItem(item);
+                }
+            }))
+    } else if (scroll === 'top') {
+        res = await Promise.all(
+            items.slice(page * 10, page * 10 + 10 + 2).map(async (item) => {
+                if (item) {
+                    return await renderItem(item);
+                }
+            }))
+    }
     return (<Suspense>{res}
     </Suspense>)
 }
@@ -196,10 +204,7 @@ export default async function Home({ searchParams }) {
     //console.log('n,mkmkmk', typeof page)
     let [startDate, endDate] = await CalcData(page)
     const viewtype = await search.viewtype
-    const action = await search.action
     const scroll = await search.scroll
-
-    const col = await search.col
     //try {
     const resp = await fetch(`https://api.nasa.gov/neo/rest/v1/feed?start_date=${startDate}&end_date=${endDate}&api_key=3wa5hHgFuqhf6XiefvqzkcDQWZ01aOOK4vNZEXsP`,
         { cache: 'force-cache' },
@@ -215,7 +220,7 @@ export default async function Home({ searchParams }) {
         if (success === true) {
             data_items = await DataLength.getArr()
         }
-        return <List items={data_items} page={Number(page)}
+        return <List items={data_items} page={Number(page)} scroll={scroll}
             renderItem={async (product, index) => {
                 //console.log('product', product)
                 const date = new Date(product.close_approach_data[0].epoch_date_close_approach)

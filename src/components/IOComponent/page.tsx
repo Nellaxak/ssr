@@ -65,13 +65,22 @@ const IOComponent = () => {
         };
     }, [])
     useEffect(() => {
-        router.push(`/categories?viewtype=${currentViewtype}&page=${page}`, { scroll: false });
-        const elem = document.querySelector('ol').firstElementChild//lastElementChild
+        router.push(`/categories?viewtype=${currentViewtype}&page=${page}&scroll=${scrollDirection}`, { scroll: false });
         //console.log('elem scrollIntoView', elem)
-        if (elem && page > 0) {//scrollDirection
-            elem.scrollIntoView({
+        const elem = document.querySelector('ol')//lastElementChild
+
+        if (elem && page > 0 && scrollDirection === 'bottom') {//scrollDirection
+            const el = elem.firstElementChild
+            el.scrollIntoView({
                 behavior: 'smooth', // Optional: animation effect
                 block: 'start', // Vertical alignment (MANDATORY for vertical scroll)
+                inline: 'start' // Horizontal alignment nearest
+            })
+        } else if (elem && page > 0 && scrollDirection === 'top') {
+            const el = elem.lastElementChild
+            el.scrollIntoView({
+                behavior: 'smooth', // Optional: animation effect
+                block: 'end', // Vertical alignment (MANDATORY for vertical scroll)
                 inline: 'start' // Horizontal alignment nearest
             })
         }
