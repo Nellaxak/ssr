@@ -22,7 +22,7 @@ const IOComponent = () => {
     //path = usePathname()
     const searchParams = useSearchParams()
     const [page, setPage] = useState(0);
-    //const [scroll, setScroll] = useState(0);
+    const [scrollDirection, setScroll] = useState('start');//set in url
 
     const currentViewtype = searchParams.get('viewtype')
     //const currentPage = searchParams.get('page')
@@ -30,7 +30,17 @@ const IOComponent = () => {
     /*if (!path.includes('items')) {
         add = true
     }*/
-
+    const handleScroll = useCallback(async () => {
+        let maxScrollTop = window.scrollY// + 239=header height
+        console.log('maxScrollTop', maxScrollTop)
+        if (maxScrollTop <= 0) {
+            setPage((page) => {
+                let newPage = page - 1
+                return newPage
+            })
+            setScroll('top')
+        }
+    }, [])
     callbackFunction = useCallback(async (entries: IntersectionObserverEntry[]) => {
         const [entry] = entries;
         if (entry.isIntersecting) {// && add) {
@@ -39,20 +49,23 @@ const IOComponent = () => {
                 let newPage = page + 1
                 return newPage
             })
-        }
+            setScroll('bottom')
+        } 
     }, []);
     useEffect(() => {
         const observer = new IntersectionObserver(callbackFunction, options);
         //as HTMLElement
+        document.addEventListener('scrollend', handleScroll)
 
         observer.observe(ref.current);
         return () => {
             observer.disconnect();
+            document.removeEventListener('scrollend', handleScroll)
         };
     }, [])
     useEffect(() => {
         router.push(`/categories?viewtype=${currentViewtype}&page=${page}`, { scroll: false });
-        const elem = document.querySelector('ol').firstElementChild
+        const elem = document.querySelector('ol').firstElementChild//lastElementChild
         //console.log('elem scrollIntoView', elem)
         if (elem) {
             elem.scrollIntoView({
@@ -62,6 +75,7 @@ const IOComponent = () => {
             })
         }
     }, [page])
+    //heigth li for output scrollTop
     return <p ref={ref}></p>
 }
 //export default IOComponent

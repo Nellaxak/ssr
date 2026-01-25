@@ -25,7 +25,7 @@ function ScrollComponentTop() {
     const currentViewtype = searchParams.get('viewtype')
     const [page, setPage] = useState(Number(currentPage))
     const handleScroll = useCallback(async (e) => {
-        let maxScrollTop = window.scrollY// + 239//+header height
+        let maxScrollTop = window.scrollY// + 239=header height
         console.log('maxScrollTop', maxScrollTop)
         if (maxScrollTop <= 0) {
             setPage((page) => {
