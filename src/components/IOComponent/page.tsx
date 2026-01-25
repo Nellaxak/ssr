@@ -52,12 +52,12 @@ const IOComponent = () => {
     }, [])
     useEffect(() => {
         router.push(`/categories?viewtype=${currentViewtype}&page=${page}`, { scroll: false });
-        /*const elem = document.querySelector('ol').firstElementChild
+        const elem = document.querySelector('ol').firstElementChild
         elem.scrollIntoView({
             behavior: 'smooth', // Optional: animation effect
-            block: 'nearest', // Vertical alignment (MANDATORY for vertical scroll)
+            block: 'start', // Vertical alignment (MANDATORY for vertical scroll)
             inline: 'nearest' // Horizontal alignment
-        })*/
+        })
         /*const elem = document.querySelector('ol')
         elem.scrollIntoView(true)/*{//mount scroll to center
             behavior: 'smooth', // Optional: smooth or auto
