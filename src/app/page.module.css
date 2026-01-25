@@ -36,6 +36,7 @@
       height: 100vh;
       position: sticky;
       top: 123px;
+      scroll-margin-left: 48px;
     }
 
     .hidden>img {
@@ -80,6 +81,7 @@
       height: 100vh;
       position: sticky;
       top: 0px;
+      scroll-margin-left: 48px;
     }
 
     .hidden>img {
