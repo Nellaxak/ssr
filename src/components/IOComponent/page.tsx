@@ -58,7 +58,7 @@ const IOComponent = () => {
             elem.scrollIntoView({
                 behavior: 'smooth', // Optional: animation effect
                 block: 'start', // Vertical alignment (MANDATORY for vertical scroll)
-                inline: 'nearest' // Horizontal alignment
+                inline: 'start' // Horizontal alignment nearest
             })
         }
     }, [page])

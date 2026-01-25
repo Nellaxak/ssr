@@ -21,57 +21,23 @@ function ScrollComponentTop() {
     //ref = useRef()
     const router = useRouter()
     const searchParams = useSearchParams()
-    //const currentAction = searchParams.get('action')
+    const currentPage = searchParams.get('page')
     const currentViewtype = searchParams.get('viewtype')
-    const [startRow, setStartRow] = useState(0)
-    const [startAction, setStartAction] = useState('start')
-    const [page, setPage] = useState(0)
-    function getTopHeight() {
-        if (startAction === 'down' || startAction === 'start') {
-            return 0
-        }
-        return rowHeight * Math.max(startRow, 0);
-    }
+    const [page, setPage] = useState(Number(currentPage))
     const handleScroll = useCallback(async (e) => {
-        //console.log('target', e.target)
-        //console.log('scrollend')
-        const elem = document.querySelector('#header')
-        const rect = elem.getBoundingClientRect()
-        //const hh = rect.height
-        //console.log('scrollend', rect, vertical, rect.y < vertical)
-        //let item = Math.abs(rect.y - vertical)
-        //console.log('abs', item, hh)
-        /*const col = Math.ceil(rect.y / rowHeight)
-        setStartRow(col)
-        setStartAction('down')*/
-        let maxScrollBottom = document.documentElement.scrollHeight - window.scrollY - window.innerHeight;
+        let maxScrollTop = window.scrollY//+header height
         //console.log('maxScrollBottom', maxScrollBottom)
-        if (maxScrollBottom <= 0) {
-            //change url page increment
-            //change col action
-            /*setPage((page) => {
-                let newPage = page + 1
+        if (maxScrollTop <= 0) {
+            setPage((page) => {
+                let newPage = page - 1
                 return newPage
-            })*/
+            })
         }
-        //Math.round(Math.abs((item - hh) / hh))
-        //console.log('scroll col', col)
-        /*if (rect.y < vertical) {
-            
-        } else {
-            setStartRow(col)
-            setStartAction('up')
-        }*/
-        vertical = rect.y
-        /*setStartRow(Math.min(
-            data.length - visibleRows - 1,
-            Math.floor(e.target.scrollTop / rowHeight)
-        ));*/
     }, [])
     useEffect(() => {
         //scrollEnd({ action: startAction, col: startRow })
-        router.push(`?viewtype=${currentViewtype}&page=${page}&action=${startAction}&col=${startRow}`, { scroll: false });
-    }, [startRow, startAction, page])
+        router.push(`?viewtype=${currentViewtype}&page=${page}`, { scroll: false });
+    }, [page])
     useEffect(() => {
         //find first li , get Height
         document.addEventListener('scrollend', handleScroll)
@@ -82,7 +48,7 @@ function ScrollComponentTop() {
     //style={{ height: getTopHeight() }} 
     //className={styles.scroll_top}
     return (
-        <div style={{ height: getTopHeight() }} id='scroll_up'></div>
+        <div id='scroll_up'></div>
     )
     // }
 }

@@ -23,8 +23,9 @@ const IOComponentTop = () => {
     const router = useRouter()
     //path = usePathname()
     const searchParams = useSearchParams()
-    const [page, setPage] = useState(0);
-    const [scroll, setScroll] = useState('start');
+    const currentPage = searchParams.get('page')
+    const [page, setPage] = useState(Number(currentPage));
+    //const [scroll, setScroll] = useState('start');
 
     const currentViewtype = searchParams.get('viewtype')
     //const currentPage = searchParams.get('page')
