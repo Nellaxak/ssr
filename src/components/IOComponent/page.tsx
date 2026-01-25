@@ -72,22 +72,22 @@ const IOComponent = () => {
 
         if (elem && page > 0 && scrollDirection === 'bottom') {//scrollDirection
             const el = elem.firstElementChild
-            /*el.scrollIntoView({
+            el.scrollIntoView({
                 behavior: 'smooth', // Optional: animation effect
                 block: 'start', // Vertical alignment (MANDATORY for vertical scroll)
                 inline: 'start' // Horizontal alignment nearest
-            })*/
-            let position = el.getBoundingClientRect();
-            window.scrollTo(position.left, position.top + window.scrollY - 20);
+            })
+            /*let position = el.getBoundingClientRect();
+            window.scrollTo(0, position.top + window.scrollY - 20);*/
         } else if (elem && page > 0 && scrollDirection === 'top') {
             const el = elem.lastElementChild
-            /*el.scrollIntoView({
+            el.scrollIntoView({
                 behavior: 'smooth', // Optional: animation effect
                 block: 'end', // Vertical alignment (MANDATORY for vertical scroll)
                 inline: 'start' // Horizontal alignment nearest
-            })*/
-            let position = el.getBoundingClientRect();
-            window.scrollTo(position.left, position.bottom - 85);
+            })
+            /*let position = el.getBoundingClientRect();
+            window.scrollTo(position.left, position.bottom - 85);*/
         }
         /*const img = document.querySelector('img').parentElement//parent? small li images
         if (page > 0) {
