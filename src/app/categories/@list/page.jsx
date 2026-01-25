@@ -117,12 +117,14 @@ async function List({ items, page, renderItem }) {
     //slice -1,-5?scroll up
     //slice must be 6
     //const res = await Promise.all(items.slice(col, col + 10).map(async (item) => {
-        //-2 scrollbottom,+2 scrolltop
-    const res = await Promise.all(items.slice(Math.max((page * 10) - 2, 0), page * 10 + 10).map(async (item) => {
-        if (item) {
-            return await renderItem(item);
-        }
-    }))
+    //-2 scrollbottom,+2 scrolltop
+    console.log('pioioi', items.slice(Math.max((page * 10) - 2, 0), page * 10 + 10))
+    const res = await Promise.all(
+        items.slice(Math.max((page * 10) - 2, 0), page * 10 + 10).map(async (item) => {
+            if (item) {
+                return await renderItem(item);
+            }
+        }))
     return (<Suspense>{res}
     </Suspense>)
 }

@@ -53,6 +53,7 @@ const IOComponent = () => {
     useEffect(() => {
         router.push(`/categories?viewtype=${currentViewtype}&page=${page}`, { scroll: false });
         const elem = document.querySelector('ol').firstElementChild
+        console.log('elem scrollIntoView', elem)
         if (elem) {
             elem.scrollIntoView({
                 behavior: 'smooth', // Optional: animation effect
