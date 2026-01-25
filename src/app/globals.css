@@ -22,6 +22,7 @@
 body {
   background-color: #000000;
   color: white;
+  overflow-x: hidden;/*stop scrollIntoView after pagination*/
 }
 
 button {
