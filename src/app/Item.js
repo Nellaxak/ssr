@@ -5,8 +5,10 @@ import statusMap from "./statusMap";
 class Item {
   static count = 0;
   static arrObj = new Map();
-  constructor(id,obj) {
-    Object.entries(obj).map(([key, value]) => this[key] = value);
+  constructor(id, obj) {
+    if (obj) {
+      Object.entries(obj).map(([key, value]) => this[key] = value);
+    }
     this.id = id
     this.status = 0
     statusMap.set(id, 0)
