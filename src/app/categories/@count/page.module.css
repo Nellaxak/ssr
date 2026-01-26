@@ -8,7 +8,7 @@
    .footer {
      grid-area: f;
      margin-right: 1em;
-     flex: 0 0 150px;
+     /*flex: 0 0 150px;*/
      height: 80px;
      width: 100vw;
      /*top: 76px;*/
@@ -28,9 +28,10 @@
  @media screen and (orientation: landscape) {
    .footer {
      grid-area: z;
-     /*margin-right: 1em;*/
-     flex: 0 0 150px;
+     margin-right: 1em;
+     /*flex: 0 0 150px;*/
      height: 161px;
+     width: 150px;
      /*top: 76px;*/
      /*position: fixed;*/
      /*sticky;*/
