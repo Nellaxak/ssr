@@ -229,13 +229,13 @@ export default async function Home({ searchParams }) {
         }
         return <List items={data_items} page={Number(page)} scroll={scroll}
             renderItem={async (product, index) => {
-                console.log('product', product.id)
+                //console.log('product', product.id)
                 const date = new Date(product.close_approach_data[0].epoch_date_close_approach)
                 const prevDate = new Intl.DateTimeFormat("ru-RU", options).format(date);
                 const datSlice = prevDate.slice(0, -2)
                 const dateString = datSlice.replace('.', '');
 
-                //new Item(Number(product.id))
+                new Item(Number(product.id,product))
                 return <Suspense><Row
                     key={product.id}
                     index={index}
