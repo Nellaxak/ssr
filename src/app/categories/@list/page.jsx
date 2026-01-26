@@ -118,7 +118,7 @@ async function List({ items, page, scroll, renderItem }) {
     let res
     if (scroll === 'start') {
         res = await Promise.all(
-            items.slice(page * 10, page * 10 + 10).map(async (item) => {
+            items.slice(page * 10, page * 10 + 12).map(async (item) => {
                 if (item) {
                     return await renderItem(item);
                 }
@@ -133,7 +133,7 @@ async function List({ items, page, scroll, renderItem }) {
             }))
     } else if (scroll === 'top') {
         res = await Promise.all(
-            items.slice(page * 10, page * 10 + 10 + 2).map(async (item) => {
+            items.slice(page * 10, page * 10 + 12).map(async (item) => {
                 if (item) {
                     return await renderItem(item);
                 }
@@ -162,9 +162,9 @@ async function Row(props) {
     //console.log('qwasxz', props)
 
     const dataViewtype = props.obj.close_approach_data[0].miss_distance
-    const status = 0//Number(statusMap.get(Number(props.obj.id)))
+    //const status = Number(statusMap.get(Number(props.obj.id)))
     //console.log('id', props.obj.id, 'status', status)
-    //await FormatStatus(props.obj.id)
+    const status =await FormatStatus(props.obj.id)
     const formatData = await DataFormat(dataViewtype, props.viewtype)
     let Danger = ''
     if (Number(props.obj.is_potentially_hazardous_asteroid) === 1) {
@@ -235,7 +235,7 @@ export default async function Home({ searchParams }) {
                 const datSlice = prevDate.slice(0, -2)
                 const dateString = datSlice.replace('.', '');
 
-                //new Item(Number(product.id))
+                new Item(Number(product.id))
                 return <Suspense><Row
                     key={product.id}
                     index={index}

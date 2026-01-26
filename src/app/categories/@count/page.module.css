@@ -1,5 +1,5 @@
  @media screen and (orientation: portrait) {
-   .wrapLayout {
+   /*.wrapLayout {
      grid-area: m;
      max-width: 100%;
      display: grid;
@@ -20,7 +20,7 @@
      height: 65vh;
      top: 0px;
      flex: 1 1 48px;
-   }
+   }*/
 
    .h6 {
      /*column-count: 1;*/
@@ -49,22 +49,22 @@
  }
 
  @media screen and (orientation: landscape) {
-   .wrapLayout {
-     grid-area: m;
+   /*.wrapLayout {
+     grid-area: z;
      max-width: 100%;
      display: grid;
      grid-template-columns: minmax(48px, 1fr) 402px 150px;
      grid-template-rows: 9px 1fr;
      column-gap: 24px;
-   }
+   }*/
 
    .footer {
-     grid-area: u;
+     grid-area: z;
      margin-right: 1em;
      flex: 0 0 150px;
      height: 161px;
      /*top: 76px;*/
-     position: fixed;
+     /*position: fixed;*/
      /*sticky;*/
      top: 123px;
      right: 90px;
@@ -76,7 +76,7 @@
      border-radius: 24px;
    }
 
-   .wrapRowRight {
+   /*.wrapRowRight {
      grid-column: 2 / 3;
      grid-row: 1 / 3;
      display: flex;
@@ -90,7 +90,7 @@
      max-width: 100%;
      height: calc(100vmin - 123px - 2em);
      top: 0px;
-   }
+   }*/
 
    .h6 {
      /*column-count: 1;*/

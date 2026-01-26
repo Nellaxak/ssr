@@ -32,15 +32,17 @@ const IOComponent = () => {
     }*/
     const handleScroll = useCallback(async () => {
         let maxScrollTop = window.scrollY
-        console.log('www', window.scrollX)
         //let maxScrollBottom = document.documentElement.scrollHeight - window.scrollY - window.innerHeight;
-        //console.log('maxScrollTop', maxScrollTop)
         if (maxScrollTop <= 0) {
             setPage((page) => {
                 let newPage = page - 1
                 return newPage
             })
-            setScroll('top')
+            if (page > 0) {
+                setScroll('top')
+            } else {
+                setScroll('start')
+            }
         }
     }, [])
     callbackFunction = useCallback(async (entries: IntersectionObserverEntry[]) => {
@@ -72,11 +74,13 @@ const IOComponent = () => {
 
         if (elem && page > 0 && scrollDirection === 'bottom') {//scrollDirection
             const el = elem.firstElementChild
-            el.scrollIntoView({
-                behavior: 'smooth', // Optional: animation effect
-                block: 'start', // Vertical alignment (MANDATORY for vertical scroll)
-                inline: 'start' // Horizontal alignment nearest
-            })
+            if (el) {
+                el.scrollIntoView({
+                    behavior: 'smooth', // Optional: animation effect
+                    block: 'start', // Vertical alignment (MANDATORY for vertical scroll)
+                    inline: 'start' // Horizontal alignment nearest
+                })
+            }
             /*let position = el.getBoundingClientRect();
             window.scrollTo(0, position.top + window.scrollY - 20);*/
         } else if (elem && page > 0 && scrollDirection === 'top') {

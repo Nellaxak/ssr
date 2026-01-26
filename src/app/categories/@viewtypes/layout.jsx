@@ -8,5 +8,7 @@ export default async function Layout({
 }/*: {
   children: React.ReactNode,
 }*/) {
-    return (<Suspense>{children}</Suspense>)
+    return (<Suspense>
+        <header className={styles.header}>
+            {children}</header></Suspense>)
 }

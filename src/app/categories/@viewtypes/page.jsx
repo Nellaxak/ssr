@@ -13,15 +13,14 @@ export default async function Home({ searchParams }) {
                     query: { page: page, action: action, col: col },
                 }}*/
     if (viewtype !== 'marked') {
-        return <header className={styles.header}>
-            <nav className={styles.labelWrapper}>
+        return <nav className={styles.labelWrapper}>
                 <Link href='/categories?viewtype=main' scroll={false} prefetch={false}
                     className={(viewtype === 'main') ? 'km' : 'moon'}>в километрах</Link>
                 <span className={styles.space}>|</span>
                 <Link href='/categories?viewtype=moon'
                     scroll={false} prefetch={false}
                     className={(viewtype === 'main') ? 'moon' : 'km'}>в лунных орбитах</Link>
-            </nav></header>
+            </nav>
     }
     return <h6 className={styles.h6}>Заказ отправлен!</h6>
 }
