@@ -6,12 +6,12 @@ class Item {
   static count = 0;
   static arrObj = new Map();
   constructor(id,obj) {
-    console.log('constructor', id)
     Object.entries(obj).map(([key, value]) => this[key] = value);
     this.id = id
     this.status = 0
     statusMap.set(id, 0)
     Item.arrObj.set(id, this)
+    console.log('constructor', id)
   }
   /*async getStatus() {
     console.log('getStatus', this.id, this.status, typeof this.status)
