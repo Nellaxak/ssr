@@ -160,7 +160,7 @@ async function Row(props) {
     const dataViewtype = props.obj.close_approach_data[0].miss_distance
     //const status = Number(statusMap.get(Number(props.obj.id)))
     //console.log('id', props.obj.id, 'status', status)
-    const status =await FormatStatus(props.obj.id)
+    const status = await FormatStatus(props.obj.id)
     const formatData = await DataFormat(dataViewtype, props.viewtype)
     let Danger = ''
     if (Number(props.obj.is_potentially_hazardous_asteroid) === 1) {
@@ -231,7 +231,7 @@ export default async function Home({ searchParams }) {
                 const datSlice = prevDate.slice(0, -2)
                 const dateString = datSlice.replace('.', '');
 
-                new Item(Number(product.id,product))
+                new Item(Number(product.id, product))
                 return <Suspense><Row
                     key={product.id}
                     index={index}

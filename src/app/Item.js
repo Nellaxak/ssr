@@ -26,7 +26,7 @@ class Item {
     }
   }*/
   async setStatus() {
-    //console.log('setStatus', this.id, Number(!this.status))
+    console.log('setStatus', this.id, Number(!this.status))
     if (this.status === 0) {
       await Item.setCount(1)
     }

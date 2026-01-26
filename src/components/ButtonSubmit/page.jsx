@@ -4,6 +4,7 @@ import { useCallback, Suspense, useEffect, useState, useRef } from 'react'
 import { toggleClick, getStatus } from '../../app/lib/actions'
 
 function ButtonSubmit(props) {
+  console.log('ButtonSubmit', props)
   const handleClick = useCallback(async () => {
     await toggleClick(props.id)
   }, [])
