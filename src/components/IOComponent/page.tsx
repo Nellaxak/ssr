@@ -5,9 +5,8 @@ import dynamic from 'next/dynamic'
 //import { notIO } from '../../app/lib/actions'
 
 const options = {
-    root: null,//document.querySelector("#scrollArea"),
-    rootMargin: "0px 0px 10px 0px",//-px not work?
-    //scrollMargin: "-80px",//footer height
+    root: null,
+    rootMargin: "0px 0px 10px 0px",
     threshold: 1.0,
 }
 let router: any
@@ -22,10 +21,8 @@ const IOComponent = () => {
     //path = usePathname()
     const searchParams = useSearchParams()
     const [page, setPage] = useState(0);
-    const [scrollDirection, setScroll] = useState('start');//set in url
-
+    const [scrollDirection, setScroll] = useState('start');
     const currentViewtype = searchParams.get('viewtype')
-    //const currentPage = searchParams.get('page')
     const ref = useRef(null)
     /*if (!path.includes('items')) {
         add = true
@@ -69,10 +66,9 @@ const IOComponent = () => {
     }, [])
     useEffect(() => {
         router.push(`/categories?viewtype=${currentViewtype}&page=${page}&scroll=${scrollDirection}`, { scroll: false });
-        //console.log('elem scrollIntoView', elem)
-        const elem = document.querySelector('ol')//lastElementChild
+        const elem = document.querySelector('ol')
 
-        if (elem && page > 0 && scrollDirection === 'bottom') {//scrollDirection
+        if (elem && page > 0 && scrollDirection === 'bottom') {
             const el = elem.firstElementChild
             if (el) {
                 el.scrollIntoView({
@@ -81,26 +77,14 @@ const IOComponent = () => {
                     inline: 'start' // Horizontal alignment nearest
                 })
             }
-            /*let position = el.getBoundingClientRect();
-            window.scrollTo(0, position.top + window.scrollY - 20);*/
         } else if (elem && page > 0 && scrollDirection === 'top') {
             const el = elem.lastElementChild
             el.scrollIntoView({
-                behavior: 'smooth', // Optional: animation effect
-                block: 'end', // Vertical alignment (MANDATORY for vertical scroll)
-                inline: 'start' // Horizontal alignment nearest
+                behavior: 'smooth',
+                block: 'end', 
+                inline: 'start' 
             })
-            /*let position = el.getBoundingClientRect();
-            window.scrollTo(position.left, position.bottom - 85);*/
         }
-        /*const img = document.querySelector('img').parentElement//parent? small li images
-        if (page > 0) {
-            img.scrollIntoView({
-                behavior: 'smooth', // Optional: animation effect
-                block: 'start', // Vertical alignment (MANDATORY for vertical scroll)
-                inline: 'start' // Horizontal alignment nearest
-            })
-        }*/
     }, [page])
     return <p ref={ref}></p>
 }

@@ -13,7 +13,7 @@ class Item {
     this.status = 0
     statusMap.set(id, 0)
     Item.arrObj.set(id, this)
-    console.log('constructor', id)
+    //console.log('constructor', id)
   }
   /*async getStatus() {
     console.log('getStatus', this.id, this.status, typeof this.status)
