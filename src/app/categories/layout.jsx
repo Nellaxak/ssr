@@ -15,11 +15,12 @@ export default async function ParallelLayout({
   count: React.ReactNode,
   list: React.ReactNode
 }*/) {
+  //className={styles.toggleViewtype}
   return (
-    <Suspense>
-      <Suspense>{viewtypes}</Suspense>
+    <Suspense className={styles.subrid}>
+      <Suspense className={styles.toggleViewtype}>{viewtypes}</Suspense>
       <Suspense>{list}</Suspense>
-      <Suspense>{count}</Suspense>
+      <Suspense className={styles.footer}>{count}</Suspense>
       <Suspense>{children}</Suspense>
     </Suspense>
   )

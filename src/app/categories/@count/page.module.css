@@ -18,6 +18,7 @@
      left: 0;
      padding: 16px;
      display: flex;
+     justify-content: space-between; 
      /*flex-direction: column;*/
      gap: 32px;
      background: var(--bg-grey);
@@ -27,7 +28,7 @@
 
  @media screen and (orientation: landscape) {
    .footer {
-     grid-area: z;
+     grid-area: v;
      margin-right: 1em;
      /*flex: 0 0 150px;*/
      height: 161px;
@@ -38,19 +39,21 @@
      top: 123px;
      right: 90px;
      padding: 16px;
-     display: flex;
-     flex-direction: column;
+     /*display: flex;
+     flex-direction: column;*/
      gap: 32px;
      background: var(--bg-grey);
      border-radius: 24px;
    }
+
    .h6 {
      /*column-count: 1;*/
      padding-top: 8px;
      width: 200px;
    }
  }
-/*
+
+ /*
  @media screen and (orientation: landscape) and (min-width: 1025px) {
    .wrapLayout {
      grid-area: m;
@@ -72,7 +75,7 @@
      column-gap: 128px;
    }
  }*/
- 
+
 
  .column {
    grid-area: g;
