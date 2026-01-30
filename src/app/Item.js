@@ -10,7 +10,7 @@ class Item {
       Object.entries(obj).map(([key, value]) => this[key] = value);
     }
     this.id = id
-    this.status = 0
+    this.status = false
     statusMap.set(Number(id), 0)
     Item.arrObj.set(Number(id), this)
     //console.log('constructor', id)
@@ -27,7 +27,7 @@ class Item {
   }*/
   async setStatus() {
     console.log('setStatus old', this.id, this.status)
-    this.status = Number(!this.status)
+    this.status = !this.status
     if (Number(this.status) === 1) {
       await Item.setCount(1)
     }
@@ -35,7 +35,7 @@ class Item {
       await Item.setCount(-1)
     }
    // Item.arrObj.set(Number(id), this)
-    statusMap.set(Number(this.id), this.status)
+    statusMap.set(Number(this.id), Number(this.status))
   }
   static async findById(ppp) {
     //console.log('findById', ppp, typeof ppp)
