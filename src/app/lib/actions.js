@@ -24,10 +24,7 @@ export async function toggleClick(params) {
     //const item = instanceItem.get(id)
     const item = Item.arrObj.get(id)
     await item.setStatus()
-    //console.log('count', Item.count)
-    //statusMap.set(id, !statusMap.get(id))
-    //revalidateTag('items', 'max')
-    //return item.status
+    revalidateTag('items', 'max')
 }
 export async function getStatus(params) {
     console.log('getStatus', params)
