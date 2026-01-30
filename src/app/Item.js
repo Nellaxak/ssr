@@ -34,7 +34,7 @@ class Item {
       await Item.setCount(-1)
     }
     this.status = Number(!this.status)
-    statusMap.set(this.id, Number(!statusMap.get(this.id)))
+    statusMap.set(this.id, this.status)
   }
   static async findById(ppp) {
     //console.log('findById', ppp, typeof ppp)
