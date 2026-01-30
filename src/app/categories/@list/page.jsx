@@ -210,7 +210,7 @@ export default async function Home({ searchParams }) {
     const scroll = await search.scroll
     //try {
     const resp = await fetch(`https://api.nasa.gov/neo/rest/v1/feed?start_date=${startDate}&end_date=${endDate}&api_key=3wa5hHgFuqhf6XiefvqzkcDQWZ01aOOK4vNZEXsP`,
-        { cache: 'no-cache'},//server actions->Post request
+        { cache: 'no-store' },//server actions->Post request
         { next: { tags: ['items'] } }
     );
 
@@ -230,8 +230,9 @@ export default async function Home({ searchParams }) {
                 const prevDate = new Intl.DateTimeFormat("ru-RU", options).format(date);
                 const datSlice = prevDate.slice(0, -2)
                 const dateString = datSlice.replace('.', '');
-
-                new Item(Number(product.id, product))
+                if (statusMap.get(Number(product.id)) === undefined) {
+                    new Item(Number(product.id, product))
+                }
                 return <Suspense><Row
                     key={product.id}
                     index={index}
