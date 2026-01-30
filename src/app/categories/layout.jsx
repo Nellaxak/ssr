@@ -2,8 +2,8 @@
 //import SVG from "@/components/SVG/page";
 import React, { createElement, Suspense } from "react";
 
-import Link from "next/link";
-import styles from "./page.module.css";
+//import Link from "next/link";
+//import styles from "./page.module.css";
 //const inter = Inter({ subsets: ['latin'] })
 
 export default async function ParallelLayout({
@@ -19,7 +19,7 @@ export default async function ParallelLayout({
     <Suspense>
       <Suspense>{viewtypes}</Suspense>
       <Suspense>{list}</Suspense>
-      <Suspense className={styles.footer}>{count}</Suspense>
+      <Suspense>{count}</Suspense>
       <Suspense>{children}</Suspense>
     </Suspense>
   )
