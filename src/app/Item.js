@@ -27,13 +27,13 @@ class Item {
   }*/
   async setStatus() {
     console.log('setStatus old', this.id, this.status)
+    this.status = Number(!this.status)
     if (Number(this.status) === 1) {
       await Item.setCount(1)
     }
     else {
       await Item.setCount(-1)
     }
-    this.status = Number(!this.status)
    // Item.arrObj.set(Number(id), this)
     statusMap.set(Number(this.id), this.status)
   }
