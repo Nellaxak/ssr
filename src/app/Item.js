@@ -12,7 +12,7 @@ class Item {
     this.id = id
     this.status = 0
     statusMap.set(Number(id), 0)
-    Item.arrObj.set(Number(id), this)
+    //Item.arrObj.set(Number(id), this)
     //console.log('constructor', id)
   }
   /*async getStatus() {
@@ -34,7 +34,8 @@ class Item {
       await Item.setCount(-1)
     }
     this.status = Number(!this.status)
-    statusMap.set(this.id, this.status)
+    //Item.arrObj.set(Number(id), this)
+    statusMap.set(Number(this.id), this.status)
   }
   static async findById(ppp) {
     //console.log('findById', ppp, typeof ppp)

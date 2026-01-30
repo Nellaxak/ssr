@@ -2,6 +2,7 @@
 import { revalidateTag } from 'next/cache';
 import Item from '../Item';
 import DataLength from '../DataLength';
+import statusMap from '../statusMap';
 
 export async function scrollDirection(params) {
     console.log('scrollDirection', DataLength.count)
@@ -10,7 +11,7 @@ export async function scrollDirection(params) {
 }
 export async function toggleClick(params) {
     const id = Number(params)
-    const item = Item.arrObj.get(id)
+    const item = statusMap.get(id)
     console.log('toggle status', id, item)
     if (item !== undefined) {
         await item.setStatus()
