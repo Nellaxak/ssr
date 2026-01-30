@@ -11,8 +11,8 @@ class Item {
     }
     this.id = id
     this.status = 0
-    statusMap.set(id, 0)
-    Item.arrObj.set(id, this)
+    statusMap.set(Number(id), 0)
+    Item.arrObj.set(Number(id), this)
     //console.log('constructor', id)
   }
   /*async getStatus() {
