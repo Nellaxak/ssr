@@ -15,7 +15,6 @@ export default async function ParallelLayout({
   count: React.ReactNode,
   list: React.ReactNode
 }*/) {
-  //className={styles.toggleViewtype}
   return (
     <Suspense className={styles.subrid}>
       <Suspense className={styles.toggleViewtype}>{viewtypes}</Suspense>

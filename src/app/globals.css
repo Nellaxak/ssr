@@ -85,10 +85,10 @@ ul {
     grid-template-areas:
       "h q v"
       "j w v"
-      "s t t"
+      "s t v"
       "m g u"
       "f f f";
-    /*column-gap: 24px;*/
+    column-gap: 24px;
   }
 }
 
@@ -110,7 +110,7 @@ ul {
       "s t t"
       "m g u"
       "f f f";
-    /*column-gap: 24px;*/
+    column-gap: 24px;
     /*row-gap: 17px;*/
   }
 }

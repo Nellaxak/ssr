@@ -43,10 +43,6 @@ export default async function Layout(props) {
             <div className={styles.hidden}>
               <Image src={bigImage} alt="Earth" priority />
             </div>
-            <header className={styles.headerBottom}>
-              <h6 className={styles.h6}>
-                Ближайшие подлёты астероидов</h6>
-            </header>
             <Suspense fallback={<span className={'loader'}></span>}>
               {props.children}
             </Suspense>
