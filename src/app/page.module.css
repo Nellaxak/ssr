@@ -29,14 +29,15 @@
   }
 
 
-  @media (max-width: 576px) and (orientation: portrait) {
+  @media screen and (orientation: portrait) {
 
     /*portrait*/
     .hidden {
-      overflow: hidden;
-      grid-area: s;
-      height: 100vh;
-      align-self: center;
+      /*width: 100%;*/
+      /*overflow: hidden;*/
+      grid-area: h;
+      /*height: 100vh;*/
+      /*align-self: center;*/
       /*max-width: 48px;
       overflow: hidden;*/
       position: sticky;
@@ -46,21 +47,21 @@
 
     .hidden>img {
       width: 100%;
-      object-fit: cover;
+      object-fit:cover;
       object-position: right 0px;
-      display: block;
+      /*display: block;*/
       /* Убирает лишний отступ под SVG */
     }
 
-    .subrid {
+   /* .subrid {
       display: grid;
       grid-template-columns: minmax(279px, auto);
       grid-template-areas:
         "hh"
-        "ff";
+        "ff";*/
       /*grid-template-columns: subgrid;
       grid-template-rows: subgrid;*/
-    }
+    /*}*/
 
     .footer {
       grid-area: f;
@@ -81,15 +82,7 @@
       /*border-radius: 24px;*/
     }
 
-    .h6 {
-      /*column-count: 1;*/
-      /*position: relative;*/
-      /*padding: 16px;*/
-      /*width: 150px; */
-      grid-area: q;
-      width: 10ch;
-      word-break: keep-all;
-    }
+   
 
     /*.textH6 {
       display: inline;
@@ -99,7 +92,7 @@
   @media screen and (orientation: landscape) {
     .hidden {
       overflow: hidden;
-      grid-area: s;
+      grid-area: h;
       height: 100vh;
       align-self: center;
       position: sticky;
@@ -115,15 +108,15 @@
 
     }
 
-    .subrid {
+   /* .subrid {
       display: grid;
       grid-template-columns: minmax(279px, auto) repeat(1, 1fr);
       grid-template-areas:
         "hh kk"
-        "uu zz";
+        "uu zz";*/
       /*grid-template-columns: subgrid;
       grid-template-rows: subgrid;*/
-    }
+    /*}*/
 
     .footer {
 
@@ -144,21 +137,12 @@
       border-radius: 24px;
     }
 
-    .h6 {
-
-      /*column-count: 1;*/
-      /*position: relative;*/
-      /*padding: 16px;*/
-      /*width: 18ch;
-
-      word-break: keep-all;*/
-      width: 200px;
-    }
+   
 
   }
 
 
-  .buttonItem {
+  /*.buttonItem {
     height: 48px;
     width: 120px;
     border: none;
@@ -172,9 +156,9 @@
 
   .main {
     grid-area: g;
-  }
+  }*/
 
-  .headerToggle {
+  /*.headerToggle {
     grid-area: q;
     font-family: 'Helvetica';
     font-style: normal;
@@ -184,10 +168,9 @@
     color: var(--color-to-basket);
     gap: 25px;
     display: grid;
-    /*flex-direction: column;*/
-  }
+  }*/
 
-  .headerBottom {
+ /* .headerBottom {
     grid-area: q;
     font-family: 'Helvetica';
     font-style: normal;
@@ -195,7 +178,7 @@
     font-size: 28px;
     line-height: 36px;
     color: var(--color-to-basket);
-  }
+  }*/
 
   /* .h6 {
     width: 200px;

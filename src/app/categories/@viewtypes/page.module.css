@@ -83,7 +83,7 @@
  }*/
  .dddd {
    display: grid;
-   grid-area: w;
+   /*grid-area: w;*/
  }
 
  .header {

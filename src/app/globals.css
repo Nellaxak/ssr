@@ -83,9 +83,9 @@ ul {
       "m g g g g g g g g g g u"
       "f f f f f f f f f f f f";*/
     grid-template-areas:
-      "h q v"
-      "j w v"
-      "s t v"
+      "h w v"
+      "h w v"
+      "h t v"
       "m g u"
       "f f f";
     column-gap: 24px;
@@ -96,7 +96,7 @@ ul {
   .grid {
     position: relative;
     display: grid;
-    grid-template-columns: minmax(48px, auto) minmax(279px, auto) repeat(1, 1fr);/*10*/
+    grid-template-columns: minmax(48px,auto) minmax(279px, auto) repeat(1, 1fr);/*10*/
     /*grid-template-rows: 100px 1fr;*/
     /*height: 100vh;*/
     /*grid-template-areas:
@@ -105,9 +105,9 @@ ul {
       "m g g g g g g g g g g u"
       "f f f f f f f f f f f f";*/
     grid-template-areas:
-      "h q v"
-      "j w v"
-      "s t t"
+      "h w v"
+      "h w v"
+      "h t t"
       "m g u"
       "f f f";
     column-gap: 24px;
