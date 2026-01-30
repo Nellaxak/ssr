@@ -11,6 +11,7 @@ export async function scrollDirection(params) {
 }
 export async function toggleClick(params) {
     const id = Number(params)
+    console.log(params, 'Item.arrObj', Item.arrObj)
     const item = Item.arrObj.get(id)
     console.log('toggle status', id, item)
     if (item !== undefined) {
