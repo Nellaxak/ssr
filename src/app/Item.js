@@ -36,7 +36,7 @@ class Item {
     }
     // Item.arrObj.set(Number(id), this)
    // if (statusMap.get(Number(this.id)) === undefined) {
-      statusMap.set(Number(this.id), Number(this.status))
+      //statusMap.set(Number(this.id), Number(this.status))
    // }
   }
   static async findById(ppp) {
