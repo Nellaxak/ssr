@@ -11,7 +11,7 @@ export async function scrollDirection(params) {
 }
 export async function toggleClick(params) {
     const id = Number(params)
-    const item = statusMap.get(id)
+    const item = Item.arrObj.get(id)
     console.log('toggle status', id, item)
     if (item !== undefined) {
         await item.setStatus()
