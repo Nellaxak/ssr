@@ -149,7 +149,7 @@ async function FormatStatus(params) {
         statusItem = 'В КОРЗИНЕ'
     }
     //console.log('format return', params, statusItem)
-    return statusItem
+    return status//Item
 }
 async function Row(props) {
     /*<span>{props.obj.id}</span>
