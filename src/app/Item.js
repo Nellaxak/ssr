@@ -10,17 +10,17 @@ class Item {
       Object.entries(obj).map(([key, value]) => this[key] = value);
     }
     this.id = id
-    this.status = 0//new Status()
+    this.status = false//new Status()
     statusMap.set(Number(id), this.status)
     Item.arrObj.set(Number(id), this)
     //console.log('constructor', id)
   }
-  static async getStaticProperty(){
+  /*static async getStaticProperty(){
     return Item.arrObj
   }
   static async setStaticProperty(newValue){
     return Item.arrObj.set(Number(id), newValue)
-  }
+  }*/
   /*async getStatus() {
     console.log('getStatus', this.id, this.status, typeof this.status)
     if (this.status === 1) {
