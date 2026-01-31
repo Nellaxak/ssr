@@ -6,9 +6,9 @@ class Item {
   static count = 0;
   static arrObj = new Map();
   constructor(id, obj) {
-    if (obj) {
+    /*if (obj) {
       Object.entries(obj).map(([key, value]) => this[key] = value);
-    }
+    }*/
     this.id = id
     this.status = false//new Status()
     statusMap.set(Number(id), this.status)
