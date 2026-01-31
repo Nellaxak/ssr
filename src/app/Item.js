@@ -34,12 +34,12 @@ class Item {
   async setStatus() {
     console.log('setStatus old', this.id, this.status)
     this.status = !this.status
-    if (Number(this.status) === 1) {
+    /*if (Number(this.status) === 1) {
       await Item.setCount(1)
     }
     else {
       await Item.setCount(-1)
-    }
+    }*/
     // Item.arrObj.set(Number(id), this)
    // if (statusMap.get(Number(this.id)) === undefined) {
       statusMap.set(Number(this.id), Number(this.status))
