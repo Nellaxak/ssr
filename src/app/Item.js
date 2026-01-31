@@ -10,7 +10,7 @@ class Item {
       Object.entries(obj).map(([key, value]) => this[key] = value);
     }
     this.id = id
-    this.status = false//new Status()
+    this.status = 0//new Status()
     statusMap.set(Number(id), this.status)
     Item.arrObj.set(Number(id), this)
     //console.log('constructor', id)
