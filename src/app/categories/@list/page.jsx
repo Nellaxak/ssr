@@ -231,7 +231,8 @@ export default async function Home({ searchParams }) {
                 const datSlice = prevDate.slice(0, -2)
                 const dateString = datSlice.replace('.', '');
                 if (statusMap.get(Number(product.id)) === undefined) {
-                    new Item(Number(product.id, product))
+                    const fff = new Item(Number(product.id, product))
+                    //fff.status=new Status()
                 }
                 return <Suspense><Row
                     key={product.id}
