@@ -9,6 +9,6 @@ function ButtonSubmit(props) {
     await toggleClick(props.id)
   }, [])
   //onClick={()=>handleClick()}
-  return <button type="button" onClick={handleClick} ><Suspense>{props.status}</Suspense></button>
+  return <button type="button" onClick={() => handleClick()} ><Suspense>{props.status}</Suspense></button>
 }
 export default ButtonSubmit
