@@ -1,5 +1,3 @@
-//import Item from "./Item";
-//'use server'
 class LinkedListNode {
   constructor(value, visible = 1, next = null, prev = null) {
     console.log('LinkedListNode', value)
@@ -13,19 +11,9 @@ class LinkedListNode {
   async setStatus() {
     this.status = !this.status
   }
-  /*get value() {
-    console.log("Getting the radius value");
-    return this.value;
-  }
-  set value(newValue) {
-    //console.log("Getting the radius value");
-    this.value = newValue;
-  }*/
 }
 export default class LinkedList {
-  //static arrObj = new Map();
   static instance = null;
-  //static length1 = 0;
   static head = null;
   constructor() {
     if (LinkedList.instance) {
