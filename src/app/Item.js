@@ -9,13 +9,19 @@ class Item {
     /*if (obj) {
       Object.entries(obj).map(([key, value]) => this[key] = value);
     }*/
-    if (Item.arrObj.get(Number(id)) === undefined) {
-      this.id = id
-      this.status = false//new Status()
-      statusMap.set(Number(id), this.status)
-      Item.arrObj.set(Number(id), this)
-      //console.log('constructor', id)
+    if (Item.instance) {
+      return Item.instance; // Возвращаем уже созданный экземпляр
     }
+    //this.data = "Я единственный экземпляр";
+    //Item.arrObj.size===0?
+    // if (Item.arrObj.get(Number(id)) === undefined) {
+    this.id = id
+    this.status = false//new Status()
+    statusMap.set(Number(id), this.status)
+    Item.arrObj.set(Number(id), this)
+    //console.log('constructor', id)
+    // }
+    Item.instance = this; // Сохраняем экземпляр
   }
   /*static async getStaticProperty(){
     return Item.arrObj
