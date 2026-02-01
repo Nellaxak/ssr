@@ -34,12 +34,12 @@ export default class LinkedList {
       this.tail = null;
     }
   }
-  find(id) {
+  async find(id) {
     let current = this.head; // Start at the beginning
 
     // Traverse until the end of the list (current becomes null)
     while (current !== null) {
-      if (current.data === id) {
+      if (current.value.id === id) {
         return current; // Return the node if a match is found
       }
       current = current.next; // Move to the next node

@@ -3,6 +3,7 @@ import { revalidateTag } from 'next/cache';
 import Item from '../Item';
 import DataLength from '../DataLength';
 import statusMap from '../statusMap';
+import { linkedList } from '../LinkedList';
 
 export async function scrollDirection(params) {
     console.log('scrollDirection', DataLength.count)
@@ -11,10 +12,11 @@ export async function scrollDirection(params) {
 }
 export async function toggleClick(params) {
     const id = Number(params)
-    console.log(params, 'Item.arrObj', statusMap.size)
-    const oldStatus = statusMap.get(id)
+    const find = await linkedList.find(id)
+    console.log(params, find)
+    //const oldStatus = statusMap.get(id)
     //console.log('toggle status', id, item)
-    statusMap.set(id,!oldStatus)
+    //statusMap.set(id,!oldStatus)
     /*if (item !== undefined) {
         await item.setStatus()
     }*/
