@@ -12,8 +12,10 @@ export async function scrollDirection(params) {
 }
 export async function toggleClick(params) {
     const find = await linkedList.find(params)//LinkedListNode
-    await find.setStatus() 
     console.log('server action', params, find)
+    if (find) {
+        await find.setStatus()
+    }
     revalidateTag('items', 'max')
 }
 export async function getStatus(params) {
