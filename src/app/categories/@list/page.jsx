@@ -160,7 +160,7 @@ async function Row(props) {
 
     const dataViewtype = props.obj.close_approach_data[0].miss_distance
     //const status = Number(statusMap.get(Number(props.obj.id)))
-    //console.log('id', props.obj.id, 'status', status)
+    console.log('iddddd', props.obj)
     const status = await FormatStatus(props.obj.status)
     const formatData = await DataFormat(dataViewtype, props.viewtype)
     let Danger = ''
