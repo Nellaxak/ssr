@@ -2,13 +2,16 @@
 //'use server'
 class LinkedListNode {
   constructor(value, visible = 1, next = null, prev = null) {
-    console.log('LinkedListNode',value)
+    console.log('LinkedListNode', value)
     this.value = value;
-    this.visible = visible;
+    //this.visible = visible;
     //this.error = error;
     this.next = next;
     //this.prev = prev;
     this.status = false;
+  }
+  async setStatus() {
+    this.status = !this.status
   }
   /*get value() {
     console.log("Getting the radius value");

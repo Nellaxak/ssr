@@ -11,15 +11,9 @@ export async function scrollDirection(params) {
     return true//count
 }
 export async function toggleClick(params) {
-    //const id = Number(params)
     const find = await linkedList.find(params)
+    await find.setStatus() 
     console.log('server action', params, find)
-    //const oldStatus = statusMap.get(id)
-    //console.log('toggle status', id, item)
-    //statusMap.set(id,!oldStatus)
-    /*if (item !== undefined) {
-        await item.setStatus()
-    }*/
     revalidateTag('items', 'max')
 }
 export async function getStatus(params) {
