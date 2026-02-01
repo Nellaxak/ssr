@@ -230,10 +230,9 @@ export default async function Home({ searchParams }) {
                 const prevDate = new Intl.DateTimeFormat("ru-RU", options).format(date);
                 const datSlice = prevDate.slice(0, -2)
                 const dateString = datSlice.replace('.', '');
-                /*if (statusMap.get(Number(product.id)) === undefined) {
-                    new Item(Number(product.id, product))
-                }*/
-                //new Item(Number(product.id, product))
+                //if (statusMap.get(Number(product.id)) === undefined) {
+                new Item(Number(product.id, product))
+                //}
                 return <Suspense><Row
                     key={product.id}
                     index={index}

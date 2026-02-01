@@ -1,10 +1,12 @@
 'use server'
 //import { Suspense } from "react";//
 import statusMap from "./statusMap";
+import Singleton from './Singleton'
 //proxy object
 class Item {
   static count = 0;
   static arrObj = new Map();
+  //static instance=null
   constructor(id, obj) {
     /*if (obj) {
       Object.entries(obj).map(([key, value]) => this[key] = value);
@@ -15,6 +17,7 @@ class Item {
     //this.data = "Я единственный экземпляр";
     //Item.arrObj.size===0?
     // if (Item.arrObj.get(Number(id)) === undefined) {
+    this = new Singleton();
     this.id = id
     this.status = false//new Status()
     statusMap.set(Number(id), this.status)
