@@ -5,6 +5,7 @@ import statusMap from "../../statusMap";
 import ButtonSubmit from '../../../components/ButtonSubmit/page'
 import Item from "../../Item";
 import DataLength from "../../DataLength";
+import { linkedList } from "@/app/LinkedList";
 
 let resp
 let endDate
@@ -221,7 +222,8 @@ export default async function Home({ searchParams }) {
         const resObj2 = arrObjects22.flat()
         const success = await DataLength.setArr(Number(page), resObj2)
         if (success === true) {
-            data_items = await DataLength.getArr()
+            //data_items = await DataLength.getArr()
+            data_items = await linkedList.toArray()
         }
         return <List items={data_items} page={Number(page)} scroll={scroll}
             renderItem={async (product, index) => {

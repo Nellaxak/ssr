@@ -27,12 +27,15 @@ class CacheHandler {
       tags: ctx.tags || [],
     });
     console.log('store', store)
-    // ...
   }
 
   async revalidateTag(tag) {
-    // ...
+    /*const tags = Array.isArray(tags) ? tags : [tags];
+    for (const [key, rec] of this.store) {
+      if (rec.tags.some(tag => tags.includes(tag))) {
+        store.delete(key);//delete all data of key
+      }
+    }*/
   }
 }
-//const fff = new CacheHandler()
 module.exports = CacheHandler;

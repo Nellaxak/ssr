@@ -1,6 +1,7 @@
 'use server'
 //import { Suspense } from "react";//
 import Item from "./Item";
+import { linkedList } from "./LinkedList";
 //proxy object
 class DataLength {
   static arr = [];
@@ -14,8 +15,9 @@ class DataLength {
   }
   static async setArr(pageParam, arrParams) {
     if (pageParam !== DataLength.page) {
-      arrParams.map(data => new Item(Number(data.id)));
-      DataLength.arr = DataLength.arr.concat(arrParams)
+      // arrParams.map(data => new Item(Number(data.id)));
+      linkedList.fromArray(arrParams)
+      //DataLength.arr = DataLength.arr.concat(arrParams)
       DataLength.page = pageParam
     }
     return true
