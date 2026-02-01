@@ -120,7 +120,7 @@ async function List({ items, page, scroll, renderItem }) {
             items.slice(page * 10, page * 10 + 12).map(async (item) => {
                 if (item) {
                     //console.log('itemR', item)
-                    return await renderItem(item.value);
+                    return await renderItem(item);
                 }
             }))
     }
@@ -128,14 +128,14 @@ async function List({ items, page, scroll, renderItem }) {
         res = await Promise.all(
             items.slice(Math.max((page * 10) - 2, 0), page * 10 + 10).map(async (item) => {
                 if (item) {
-                    return await renderItem(item.value);
+                    return await renderItem(item);
                 }
             }))
     } else if (scroll === 'top') {
         res = await Promise.all(
             items.slice(page * 10, page * 10 + 12).map(async (item) => {
                 if (item) {
-                    return await renderItem(item.value);
+                    return await renderItem(item);
                 }
             }))
     }
