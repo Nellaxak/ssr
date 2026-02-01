@@ -1,6 +1,6 @@
 import worker_threads from 'node:worker_threads';
-//const { Worker, isMainThread, parentPort } from 'node:worker_threads';
-console.log('worker_threads', worker_threads)
+const { Worker, isMainThread, parentPort } = require('worker_threads');
+console.log('worker_threads', worker_threads, Worker)
 class LinkedListNode {
   constructor(value, visible = 1, next = null, prev = null) {
     console.log('LinkedListNode', this)

@@ -1,5 +1,7 @@
 import styles from "./page.module.css";
 import React, { Suspense, Activity } from "react";
+import worker_threads from 'node:worker_threads';
+const { Worker, isMainThread, parentPort } = require('worker_threads');
 import statusMap from "../../statusMap";
 //import { revalidateTag, revalidatePath } from 'next/cache';
 import ButtonSubmit from '../../../components/ButtonSubmit/page'
@@ -114,10 +116,12 @@ async function List({ items, page, scroll, renderItem }) {
     //slice must be 6
     let res
     if (scroll === 'start') {
-        res = await Promise.race(
+        res = await Promise.all(
             items.slice(page * 10, page * 10 + 12).map(async (item) => {
                 if (item) {
-                    return await renderItem(item);
+                    setTimeout(async () => {
+                        return await renderItem(item);
+                    })
                 }
             }))
     }
