@@ -233,7 +233,7 @@ export default async function Home({ searchParams }) {
                 /*if (statusMap.get(Number(product.id)) === undefined) {
                     new Item(Number(product.id, product))
                 }*/
-                new Item(Number(product.id, product))
+                //new Item(Number(product.id, product))
                 return <Suspense><Row
                     key={product.id}
                     index={index}

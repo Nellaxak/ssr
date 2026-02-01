@@ -14,7 +14,7 @@ class DataLength {
   }
   static async setArr(pageParam, arrParams) {
     if (pageParam !== DataLength.page) {
-      //new Item(Number(product.id, product))
+      arrParams.map(data => new Item(Number(data.id, data)));
       DataLength.arr = DataLength.arr.concat(arrParams)
       DataLength.page = pageParam
     }

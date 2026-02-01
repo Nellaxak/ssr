@@ -9,9 +9,9 @@ class Item {
     /*if (obj) {
       Object.entries(obj).map(([key, value]) => this[key] = value);
     }*/
-    if (Item.instance) {
+    /*if (Item.instance) {
       return Item.instance; // Возвращаем уже созданный экземпляр
-    }
+    }*/
     //this.data = "Я единственный экземпляр";
     //Item.arrObj.size===0?
     // if (Item.arrObj.get(Number(id)) === undefined) {
@@ -21,7 +21,7 @@ class Item {
     Item.arrObj.set(Number(id), this)
     //console.log('constructor', id)
     // }
-    Item.instance = this; // Сохраняем экземпляр
+   // Item.instance = this; // Сохраняем экземпляр
   }
   /*static async getStaticProperty(){
     return Item.arrObj
