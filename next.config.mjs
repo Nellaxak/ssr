@@ -4,8 +4,8 @@ const require = createRequire(import.meta.url);
 const nextConfig = {
     distDir: 'build',
     reactStrictMode: false,
-    /*cacheHandler: require.resolve('./src/cache-handler.js'),
-    cacheMaxMemorySize: 100, */
+    cacheHandler: require.resolve('./src/cache-handler.js'),
+    cacheMaxMemorySize: 100, //mb
     /*basePath: '/categories',*/
     /*experimental: {
         exposeBusinessErrors: true,
