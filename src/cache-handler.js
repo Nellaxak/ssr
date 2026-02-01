@@ -17,10 +17,16 @@ class CacheHandler {
     console.log('dddd', key, 'data', data, 'ctx', ctx)
     //prev chunk=store.get(key)
     //add new chunk-data.data.body uint8array readable stream
-    if (store.get(key) === undefined) {
+    /*if (store.get(key) === undefined) {
       store.set(key, data)
       console.log('getter', store.get(key))
-    }
+    }*/
+    this.store.set(key, {
+      value: data,
+      lastModified: Date.now(),
+      tags: ctx.tags || [],
+    });
+    console.log('store', this.store)
     // ...
   }
 
