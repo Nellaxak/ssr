@@ -1,6 +1,6 @@
 'use server'
 //import { Suspense } from "react";//
-//import statusMap from "./statusMap";
+import Item from "./Item";
 //proxy object
 class DataLength {
   static arr = [];
@@ -14,6 +14,7 @@ class DataLength {
   }
   static async setArr(pageParam, arrParams) {
     if (pageParam !== DataLength.page) {
+      //new Item(Number(product.id, product))
       DataLength.arr = DataLength.arr.concat(arrParams)
       DataLength.page = pageParam
     }

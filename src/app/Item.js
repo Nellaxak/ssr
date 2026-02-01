@@ -9,11 +9,13 @@ class Item {
     /*if (obj) {
       Object.entries(obj).map(([key, value]) => this[key] = value);
     }*/
-    this.id = id
-    this.status = false//new Status()
-    statusMap.set(Number(id), this.status)
-    Item.arrObj.set(Number(id), this)
-    //console.log('constructor', id)
+    if (Item.arrObj.get(Number(id)) === undefined) {
+      this.id = id
+      this.status = false//new Status()
+      statusMap.set(Number(id), this.status)
+      Item.arrObj.set(Number(id), this)
+      //console.log('constructor', id)
+    }
   }
   /*static async getStaticProperty(){
     return Item.arrObj
@@ -41,9 +43,9 @@ class Item {
       await Item.setCount(-1)
     }*/
     // Item.arrObj.set(Number(id), this)
-   // if (statusMap.get(Number(this.id)) === undefined) {
-      statusMap.set(Number(this.id), this.status)
-   // }
+    // if (statusMap.get(Number(this.id)) === undefined) {
+    statusMap.set(Number(this.id), this.status)
+    // }
   }
   static async findById(ppp) {
     //console.log('findById', ppp, typeof ppp)
