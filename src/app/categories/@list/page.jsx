@@ -160,8 +160,8 @@ async function Row(props) {
 
     const dataViewtype = props.obj.close_approach_data[0].miss_distance
     //const status = Number(statusMap.get(Number(props.obj.id)))
-    console.log('iddddd', props.obj)
-    const status = await FormatStatus(props.obj.status)
+    //console.log('iddddd', props.obj)
+    const status = await FormatStatus(props.status)
     const formatData = await DataFormat(dataViewtype, props.viewtype)
     let Danger = ''
     if (Number(props.obj.is_potentially_hazardous_asteroid) === 1) {
@@ -228,14 +228,15 @@ export default async function Home({ searchParams }) {
         return <List items={data_items} page={Number(page)} scroll={scroll}
             renderItem={async (product, index) => {
                 //console.log('product', product.id)
-                const date = new Date(product.close_approach_data[0].epoch_date_close_approach)
+                const date = new Date(product.value.close_approach_data[0].epoch_date_close_approach)
                 const prevDate = new Intl.DateTimeFormat("ru-RU", options).format(date);
                 const datSlice = prevDate.slice(0, -2)
                 const dateString = datSlice.replace('.', '');
                 return <Suspense><Row
-                    key={product.id}
+                    key={product.value.id}
                     index={index}
-                    obj={product}
+                    obj={product.value}
+                    status={product.status}
                     viewtype={viewtype}
                     dates={dateString}
                 /></Suspense>
