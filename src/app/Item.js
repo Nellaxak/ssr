@@ -1,4 +1,4 @@
-'use server'
+//'use server'
 //import { Suspense } from "react";//
 import statusMap from "./statusMap";
 import Singleton from './Singleton'
@@ -17,7 +17,7 @@ class Item {
     //this.data = "Я единственный экземпляр";
     //Item.arrObj.size===0?
     // if (Item.arrObj.get(Number(id)) === undefined) {
-    this = new Singleton();
+    //this = new Singleton();
     this.id = id
     this.status = false//new Status()
     statusMap.set(Number(id), this.status)
