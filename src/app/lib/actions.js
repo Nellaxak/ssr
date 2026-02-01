@@ -11,12 +11,13 @@ export async function scrollDirection(params) {
 }
 export async function toggleClick(params) {
     const id = Number(params)
-    console.log(params, 'Item.arrObj', Item.arrObj.size)
-    const item = Item.arrObj.get(id)
-    console.log('toggle status', id, item)
-    if (item !== undefined) {
+    console.log(params, 'Item.arrObj', statusMap.size)
+    const oldStatus = statusMap.get(id)
+    //console.log('toggle status', id, item)
+    statusMap.set(id,!oldStatus)
+    /*if (item !== undefined) {
         await item.setStatus()
-    }
+    }*/
     revalidateTag('items', 'max')
 }
 export async function getStatus(params) {
