@@ -116,7 +116,7 @@ async function List({ items, page, scroll, renderItem }) {
     //slice must be 6
     let res
     if (scroll === 'start') {
-        res = await Promise.allSettled(
+        res = await Promise.all(
             items.slice(page * 10, page * 10 + 12).map(async (item) => {
                 if (item) {
                         return await renderItem(item);
