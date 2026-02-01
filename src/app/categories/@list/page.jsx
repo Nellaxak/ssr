@@ -119,7 +119,8 @@ async function List({ items, page, scroll, renderItem }) {
         res = await Promise.allSettled(//allSettled
             items.slice(page * 10, page * 10 + 12).map(async (item) => {
                 if (item) {
-                        return await renderItem(item.value);
+                    console.log('itemR', item)
+                    return await renderItem(item.value);
                 }
             }))
     }
