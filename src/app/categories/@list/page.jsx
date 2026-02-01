@@ -114,7 +114,7 @@ async function List({ items, page, scroll, renderItem }) {
     //slice must be 6
     let res
     if (scroll === 'start') {
-        res = await Promise.all(
+        res = await Promise.race(
             items.slice(page * 10, page * 10 + 12).map(async (item) => {
                 if (item) {
                     return await renderItem(item);
@@ -201,8 +201,6 @@ async function Row(props) {
         </li>
     </Suspense>
 }
-const single = new Map()
-let result = []
 let data_items = []
 export default async function Home({ searchParams }) {
     const search = await searchParams;

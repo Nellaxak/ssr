@@ -1,3 +1,6 @@
+import worker_threads from 'node:worker_threads';
+//const { Worker, isMainThread, parentPort } from 'node:worker_threads';
+console.log('worker_threads', worker_threads)
 class LinkedListNode {
   constructor(value, visible = 1, next = null, prev = null) {
     console.log('LinkedListNode', this)
@@ -7,7 +10,22 @@ class LinkedListNode {
     this.next = next;
     //this.prev = prev;
     this.status = false;
+    this.getStatus = this.getStatus.bind(this);
     this.setStatus = this.setStatus.bind(this);
+  }
+  async getStatus() {
+    //console.log('setStatus', this.value.id, this.status)
+    let statusItem = 'ЗАКАЗАТЬ'
+    if (this.status === false) {
+      statusItem = 'ЗАКАЗАТЬ'
+    }
+    else if (this.status === true) {
+      statusItem = 'В КОРЗИНЕ'
+    } else {
+      console.log('err status', params)
+    }
+    //console.log('format return', params, statusItem)
+    return statusItem
   }
   async setStatus() {
     console.log('setStatus', this.value.id, this.status)
