@@ -10,6 +10,7 @@ class LinkedListNode {
     this.setStatus = this.setStatus.bind(this);
   }
   async setStatus() {
+    console.log('setStatus', this.value.id, this.status)
     this.status = !this.status
   }
 }
