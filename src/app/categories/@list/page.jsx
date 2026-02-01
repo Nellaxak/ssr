@@ -5,7 +5,7 @@ import statusMap from "../../statusMap";
 import ButtonSubmit from '../../../components/ButtonSubmit/page'
 import Item from "../../Item";
 import DataLength from "../../DataLength";
-import { linkedList } from "@/app/LinkedList";
+import { linkedList } from "../../LinkedList";
 
 let resp
 let endDate
