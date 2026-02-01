@@ -7,6 +7,7 @@ class LinkedListNode {
     this.next = next;
     //this.prev = prev;
     this.status = false;
+    this.setStatus = this.setStatus.bind(this);
   }
   async setStatus() {
     this.status = !this.status
