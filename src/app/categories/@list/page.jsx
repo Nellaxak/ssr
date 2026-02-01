@@ -115,7 +115,7 @@ async function List({ items, page, scroll, renderItem }) {
     let res
     if (scroll === 'start') {
         res = await Promise.all(
-            items.slice(page * 10, page * 10 + 12).forEach(async (item) => {
+            items.slice(page * 10, page * 10 + 12).map(async (item) => {
                 if (item) {
                     return await renderItem(item);
                 }
@@ -123,14 +123,14 @@ async function List({ items, page, scroll, renderItem }) {
     }
     else if (scroll === 'bottom') {
         res = await Promise.all(
-            items.slice(Math.max((page * 10) - 2, 0), page * 10 + 10).forEach(async (item) => {
+            items.slice(Math.max((page * 10) - 2, 0), page * 10 + 10).map(async (item) => {
                 if (item) {
                     return await renderItem(item);
                 }
             }))
     } else if (scroll === 'top') {
         res = await Promise.all(
-            items.slice(page * 10, page * 10 + 12).forEach(async (item) => {
+            items.slice(page * 10, page * 10 + 12).map(async (item) => {
                 if (item) {
                     return await renderItem(item);
                 }
