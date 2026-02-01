@@ -29,7 +29,7 @@ class LinkedListNode {
   }
   async setStatus() {
     console.log('setStatus', this.value.id, this.status)
-    this.status = !this.status
+    setTimeout(() => { this.status = !this.status }, 0)
   }
 }
 export default class LinkedList {
