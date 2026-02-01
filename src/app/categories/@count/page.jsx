@@ -9,7 +9,7 @@ import Item from '../../Item'
 }*/
 async function Page({ searchParams }) {
   //await http<Count>('http://localhost:3456/count') as Count;
-  const count = await Item.getCount()
+  const count = 0//await Item.getCount()
   //console.log('count', count)
   //const paramsPromise = await searchParams
   //const viewtype = paramsPromise.viewtype
