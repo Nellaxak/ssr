@@ -16,7 +16,7 @@ class LinkedListNode {
 }
 export default class LinkedList {
   static instance = null;
-  static head = null;
+  //static head = null;
   constructor() {
     if (LinkedList.instance) {
       //console.log('double call')
@@ -26,6 +26,10 @@ export default class LinkedList {
       this.head = null;
       this.tail = null;
     }
+    this.find = this.find.bind(this);
+    this.append = this.append.bind(this);
+    this.fromArray = this.fromArray.bind(this);
+    this.toArray = this.toArray.bind(this);
   }
   async find(id) {
     let current = this.head; // Start at the beginning
@@ -48,7 +52,7 @@ export default class LinkedList {
     const newNode = new LinkedListNode(value);
     if (!this.head || !this.tail) {
       this.head = newNode;
-      LinkedList.head = this.head;
+      //LinkedList.head = this.head;
       this.tail = newNode;
       return this;
     }

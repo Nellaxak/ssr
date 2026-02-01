@@ -3,7 +3,7 @@ import { revalidateTag } from 'next/cache';
 import Item from '../Item';
 import DataLength from '../DataLength';
 import statusMap from '../statusMap';
-import { linkedList } from '../LinkedList';
+import LinkedList, { linkedList } from '../LinkedList';
 
 export async function scrollDirection(params) {
     console.log('scrollDirection', DataLength.count)
