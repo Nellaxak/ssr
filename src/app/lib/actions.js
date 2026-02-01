@@ -15,8 +15,8 @@ export async function toggleClick(params) {
     console.log('server action', params, find)
     if (find) {
         await find.setStatus()
+        revalidateTag('items', 'max')
     }
-    revalidateTag('items', 'max')
 }
 export async function getStatus(params) {
     console.log('getStatus', params)
