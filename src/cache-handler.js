@@ -21,7 +21,7 @@ class CacheHandler {
       store.set(key, data)
       console.log('getter', store.get(key))
     }*/
-    this.store.set(key, {
+    store.set(key, {
       value: data,
       lastModified: Date.now(),
       tags: ctx.tags || [],
