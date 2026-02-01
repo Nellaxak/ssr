@@ -28,5 +28,5 @@ class CacheHandler {
     // ...
   }
 }
-const fff = new CacheHandler()
-module.exports = fff//CacheHandler;
+//const fff = new CacheHandler()
+module.exports = CacheHandler;
