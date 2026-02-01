@@ -140,7 +140,7 @@ async function List({ items, page, scroll, renderItem }) {
     </Suspense>)
 }
 async function FormatStatus(params) {
-    console.log('FormatStatus', params)
+    //console.log('FormatStatus', params)
     //const status = Number(statusMap.get(Number(params)))
     let statusItem = 'ЗАКАЗАТЬ'
     if (params === false) {
