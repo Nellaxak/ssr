@@ -26,7 +26,7 @@ class CacheHandler {
       lastModified: Date.now(),
       tags: ctx.tags || [],
     });
-    console.log('store', this.store)
+    console.log('store', store)
     // ...
   }
 
