@@ -1,13 +1,13 @@
 const store = new Map();
 class CacheHandler {
   constructor(options) {
-    console.log('CacheHandler constructor options', options)
+    //console.log('CacheHandler constructor options', options)
     this.options = options
     //this.data
   }
 
   async get(key) {
-    console.log('cache get', key, store.get(key))
+    //console.log('cache get', key, store.get(key))
     //prev chunk=store.get(key)
     //return store.get(key)//err
     // ...
