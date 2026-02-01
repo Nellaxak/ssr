@@ -1,6 +1,6 @@
 class LinkedListNode {
   constructor(value, visible = 1, next = null, prev = null) {
-    console.log('LinkedListNode', value)
+    console.log('LinkedListNode', this)
     this.value = value;
     //this.visible = visible;
     //this.error = error;
