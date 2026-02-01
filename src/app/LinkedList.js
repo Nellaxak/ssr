@@ -119,7 +119,9 @@ export default class LinkedList {
 
     // Перебираем все узлы и добавляем в массив.
     while (currentNode) {
-      nodes.push(currentNode.value);
+      //add currentNode.status
+      //nodes.push(currentNode.value);
+      nodes.push(currentNode);
       currentNode = currentNode.next;
     }
 
