@@ -25,7 +25,10 @@ let data
 let arrObjects22
 let resObj2
 let success
-
+let date
+let prevDate
+let datSlice
+let dateString
 const options = {
     /*era: 'long',*/
     year: 'numeric',
@@ -235,10 +238,10 @@ export default async function Home({ searchParams }) {
         return <List items={data_items} page={Number(page)} scroll={scroll}
             renderItem={async (product, index) => {
                 //console.log('product', product.id)
-                let date = new Date(product.close_approach_data[0].epoch_date_close_approach)
-                let prevDate = new Intl.DateTimeFormat("ru-RU", options).format(date);
-                let datSlice = prevDate.slice(0, -2)
-                let dateString = datSlice.replace('.', '');
+                date = new Date(product.close_approach_data[0].epoch_date_close_approach)
+                prevDate = new Intl.DateTimeFormat("ru-RU", options).format(date);
+                datSlice = prevDate.slice(0, -2)
+                dateString = datSlice.replace('.', '');
                 new Item(product.id)
                 //    status={product.status}
                 return <Suspense><Row
