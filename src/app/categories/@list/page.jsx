@@ -155,7 +155,7 @@ async function FormatStatus(params) {
     //console.log('FormatStatus', params, statusMap.get(Number(params)))
     const status = Number(statusMap.get(Number(params)))
     let statusItem = 'ЗАКАЗАТЬ'
-    if (status === 0) {
+    if (status === false) {
         statusItem = 'ЗАКАЗАТЬ'
     }
     else {
