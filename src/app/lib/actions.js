@@ -20,7 +20,7 @@ export async function toggleClick(params) {
     if (find !== undefined) {
         //statusMap.set(id, !oldStatus)
         await find.setStatus()
-        console.log('new status', id, statusMap.get(id))
+        console.log('new status', id, find.status)
         /*if (find) {
             await find.setStatus()*/
         revalidateTag('items', 'max')
