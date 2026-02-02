@@ -13,10 +13,10 @@ export async function scrollDirection(params) {
 export async function toggleClick(params) {
     //const find = await linkedList.find(params)//LinkedListNode
     //console.log('server action', params)
-    console.log(params, 'Item.arrObj', statusMap.size)
+    //console.log(params, 'Item.arrObj', statusMap.size)
     const id = Number(params)
     const oldStatus = statusMap.get(id)
-    //console.log('toggle status', id, item)
+    console.log('toggle status', id, oldStatus)
     statusMap.set(id, !oldStatus)
     /*if (find) {
         await find.setStatus()*/
