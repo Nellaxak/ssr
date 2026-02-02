@@ -152,7 +152,7 @@ async function List({ items, page, scroll, renderItem }) {
 async function FormatStatus(params) {
     //console.log('FormatStatus', params)
     //const status = Number(statusMap.get(Number(params)))
-    console.log('FormatStatus', params, statusMap.get(Number(params)))
+    //console.log('FormatStatus', params, statusMap.get(Number(params)))
     const status = Number(statusMap.get(Number(params)))
     let statusItem = 'ЗАКАЗАТЬ'
     if (status === 0) {
@@ -173,7 +173,7 @@ async function Row(props) {
     const dataViewtype = props.obj.close_approach_data[0].miss_distance
     //const status = Number(statusMap.get(Number(props.obj.id)))
     //console.log('iddddd', props.obj)
-    const status = await FormatStatus(props.status)
+    const status = await FormatStatus(props.obj.id)
     const formatData = await DataFormat(dataViewtype, props.viewtype)
     let Danger = ''
     if (Number(props.obj.is_potentially_hazardous_asteroid) === 1) {
