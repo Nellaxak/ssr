@@ -21,6 +21,7 @@ class Item {
     this.id = id
     this.status = false//new Status()
     //statusMap.set(Number(id), this.status)
+    this.getStatus = this.getStatus.bind(this);
     this.setStatus = this.setStatus.bind(this);
     Item.arrObj.set(Number(id), this)
     //console.log('constructor', id)
@@ -33,16 +34,16 @@ class Item {
   static async setStaticProperty(newValue){
     return Item.arrObj.set(Number(id), newValue)
   }*/
-  /*async getStatus() {
-    console.log('getStatus', this.id, this.status, typeof this.status)
-    if (this.status === 1) {
+  async getStatus() {
+    console.log('getStatus', this.id, this.status)
+    if (this.status === true) {
       //await Item.setCount(1)
       return 'В КОРЗИНЕ'
     } else {
       //await Item.setCount(-1)
       return 'ЗАКАЗАТЬ'
     }
-  }*/
+  }
   //this.fullName = function() {
   async setStatus() {
     console.log('setStatus old', this.id, this.status)
@@ -70,5 +71,5 @@ class Item {
     return Item.count
   }
 }
-Item.arrObj = new Map();
+//Item.arrObj = new Map();
 export default Item
