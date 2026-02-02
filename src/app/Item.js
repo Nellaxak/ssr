@@ -35,7 +35,7 @@ class Item {
     return Item.arrObj.set(Number(id), newValue)
   }*/
   async getStatus() {
-    console.log('getStatus', this.id, this.status)
+    //console.log('getStatus', this.id, this.status)
     if (this.status === true) {
       //await Item.setCount(1)
       return 'В КОРЗИНЕ'
@@ -46,9 +46,9 @@ class Item {
   }
   //this.fullName = function() {
   async setStatus() {
-    console.log('setStatus old', this.id, this.status)
+    //console.log('setStatus old', this.id, this.status)
     this.status = !this.status
-    console.log('setStatus new', this.id, this.status)
+    //console.log('setStatus new', this.id, this.status)
     /*if (Number(this.status) === 1) {
       await Item.setCount(1)
     }
