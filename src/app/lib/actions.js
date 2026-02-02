@@ -15,10 +15,11 @@ export async function toggleClick(params) {
     //console.log('server action', params)
     //console.log(params, 'Item.arrObj', statusMap.size)
     const id = Number(params)
-    const oldStatus = statusMap.get(id)
-    console.log('toggle status', id, oldStatus)
-    if (oldStatus !== undefined) {
-        statusMap.set(id, !oldStatus)
+    const find = Item.arrObj.get(id)//statusMap.get(id)
+    console.log('toggle status', id, find)
+    if (find !== undefined) {
+        //statusMap.set(id, !oldStatus)
+        await find.setStatus()
         console.log('new status', id, statusMap.get(id))
         /*if (find) {
             await find.setStatus()*/
