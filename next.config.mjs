@@ -1,6 +1,6 @@
 /** @type {import('next').NextConfig} */
 import { createRequire } from 'module';
-import { NextScript } from 'next/document';
+//import { NextScript } from 'next/document';
 const require = createRequire(import.meta.url);
 const nextConfig = {
     distDir: 'build',
