@@ -7,11 +7,11 @@ import statusMap from "../../statusMap";
 import ButtonSubmit from '../../../components/ButtonSubmit/page'
 import Item from "../../Item";
 import DataLength from "../../DataLength";
-import { linkedList } from "../../LinkedList";
+//import { linkedList } from "../../LinkedList";
+//import generator from "../../Generator";
 
-let resp
-let endDate
-let startPage
+let resp=''
+let startPage=''
 let res = ''
 let search = ''
 let page = 0
@@ -20,6 +20,7 @@ let array3 = [];
 let list
 let newArr
 let offset = []
+let scroll
 //const ll = await createLinkedListInstance()
 
 const options = {
@@ -87,14 +88,14 @@ async function CalcData(params) {
     let startDate = currentDate.getFullYear() + '-' +
         (currentDate.getMonth() + 1) + '-' +
         currentDate.getDate();
-    let endDate = tomorrow.getFullYear() + '-' +
+    /*let endDate = tomorrow.getFullYear() + '-' +
         (tomorrow.getMonth() + 1) + '-' +
-        tomorrow.getDate();
+        tomorrow.getDate();*/
     //console.log('return data', startDate, endDate)
     /*return new Promise((resolve) => {
         resolve([startDate, endDate])
     })*/
-    return [startDate, endDate]
+    return startDate//, endDate]
 }
 async function RenderProp(product, index) {
     console.log('RenderProp', product)
@@ -206,14 +207,14 @@ async function Row(props) {
 }
 let data_items = []
 export default async function Home({ searchParams }) {
-    const search = await searchParams;
-    const page = await search.page
+    search = await searchParams;
+    page = await search.page
     //console.log('n,mkmkmk', typeof page)
-    let [startDate, endDate] = await CalcData(page)
-    const viewtype = await search.viewtype
-    const scroll = await search.scroll
+    startDate= await CalcData(page)
+    viewtype = await search.viewtype
+    scroll = await search.scroll
     //try {
-    const resp = await fetch(`https://api.nasa.gov/neo/rest/v1/feed?start_date=${startDate}&end_date=${endDate}&api_key=3wa5hHgFuqhf6XiefvqzkcDQWZ01aOOK4vNZEXsP`,
+    resp = await fetch(`https://api.nasa.gov/neo/rest/v1/feed?start_date=${startDate}&end_date=${startDate}&api_key=3wa5hHgFuqhf6XiefvqzkcDQWZ01aOOK4vNZEXsP`,
         { cache: 'force-cache' },//server actions->Post request
         { next: { tags: ['items'] } }
     );
@@ -225,21 +226,22 @@ export default async function Home({ searchParams }) {
         const resObj2 = arrObjects22.flat()
         const success = await DataLength.setArr(Number(page), resObj2)
         if (success === true) {
-            //data_items = await DataLength.getArr()
-            data_items = await linkedList.toArray()
+            data_items = await DataLength.getArr()
+            //data_items = await linkedList.toArray()
         }
         return <List items={data_items} page={Number(page)} scroll={scroll}
             renderItem={async (product, index) => {
                 //console.log('product', product.id)
-                const date = new Date(product.value.close_approach_data[0].epoch_date_close_approach)
-                const prevDate = new Intl.DateTimeFormat("ru-RU", options).format(date);
-                const datSlice = prevDate.slice(0, -2)
-                const dateString = datSlice.replace('.', '');
+                let date = new Date(product.close_approach_data[0].epoch_date_close_approach)
+                let prevDate = new Intl.DateTimeFormat("ru-RU", options).format(date);
+                let datSlice = prevDate.slice(0, -2)
+                let dateString = datSlice.replace('.', '');
+                new Item(product.id)
+                //    status={product.status}
                 return <Suspense><Row
-                    key={product.value.id}
+                    key={product.id}
                     index={index}
-                    obj={product.value}
-                    status={product.status}
+                    obj={product}
                     viewtype={viewtype}
                     dates={dateString}
                 /></Suspense>
