@@ -1,4 +1,4 @@
-//'use server'
+'use server'
 //import { Suspense } from "react";//
 import statusMap from "./statusMap";
 import Singleton from './Singleton'
