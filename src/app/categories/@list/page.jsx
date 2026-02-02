@@ -152,7 +152,9 @@ async function List({ items, page, scroll, renderItem }) {
 async function FormatStatus(params) {
     //console.log('FormatStatus', params)
     //const status = Number(statusMap.get(Number(params)))
-    const status = Item.arrObj.get(Number(params)).status;
+    const find = Item.arrObj.get(Number(params))
+    console.log('find', find)
+    const status = find.status;
     //statusMap.get(Number(params))
     console.log('FormatStatus', params, status)
     let statusItem = 'ЗАКАЗАТЬ'
