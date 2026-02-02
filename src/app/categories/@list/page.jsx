@@ -152,7 +152,8 @@ async function List({ items, page, scroll, renderItem }) {
 async function FormatStatus(params) {
     //console.log('FormatStatus', params)
     //const status = Number(statusMap.get(Number(params)))
-    const find = Item.arrObj.get(Number(params))
+    const gg = await Item.staticReturn()
+    const find = gg.get(Number(params))
     //console.log('find', find)
     const status = find.status;
     //statusMap.get(Number(params))
@@ -161,7 +162,7 @@ async function FormatStatus(params) {
     if (status === false) {
         statusItem = 'ЗАКАЗАТЬ'
     }
-    else if(status === true) {
+    else if (status === true) {
         statusItem = 'В КОРЗИНЕ'
     } else {
         statusItem = 'err'

@@ -60,10 +60,10 @@ class Item {
     //statusMap.set(Number(this.id), this.status)
     // }
   }
-  /*static async findById(ppp) {
+  static async staticReturn() {
     //console.log('findById', ppp, typeof ppp)
-    return this//Item.arrObj.get(ppp);
-  }*/
+    return Item.arrObj;
+  }
   static async setCount(value) {
     Item.count = Item.count + value
   }
@@ -71,5 +71,4 @@ class Item {
     return Item.count
   }
 }
-//Item.arrObj = new Map();
 export default Item
