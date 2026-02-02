@@ -19,6 +19,7 @@ export async function toggleClick(params) {
     //console.log(params, 'Item.arrObj', statusMap.size)
     const id = Number(params)
     const find = Item.arrObj.get(id)//statusMap.get(id)
+    //main.js
     const worker = new Worker('../worker.js');
     worker.postMessage(id);
     worker.on('message', (result) => {

@@ -1,5 +1,6 @@
 /** @type {import('next').NextConfig} */
 import { createRequire } from 'module';
+import { NextScript } from 'next/document';
 const require = createRequire(import.meta.url);
 const nextConfig = {
     distDir: 'build',
@@ -7,9 +8,9 @@ const nextConfig = {
     /*cacheHandler: require.resolve('./src/cache-handler.js'),
     cacheMaxMemorySize: 100, *///Mb
     /*basePath: '/categories',*/
-    /*experimental: {
-        exposeBusinessErrors: true,
-    },*/
+    experimental: {
+        nextScriptWorkers: true,
+    },
     //destination: '/categories?viewtype=main&page=0',
     async redirects() {
         return [
