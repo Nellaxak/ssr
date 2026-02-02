@@ -14,6 +14,7 @@ export async function toggleClick(params) {
     //const find = await linkedList.find(params)//LinkedListNode
     //console.log('server action', params)
     console.log(params, 'Item.arrObj', statusMap.size)
+    const id = Number(params)
     const oldStatus = statusMap.get(id)
     //console.log('toggle status', id, item)
     statusMap.set(id, !oldStatus)
