@@ -16,10 +16,10 @@ class DataLength {
   }
   static async setArr(pageParam, arrParams) {
     if (pageParam !== DataLength.page) {
-      let generator = generateSequence();
-      // arrParams.map(data => new Item(Number(data.id)));
-      generator.next('start')
-      generator.next(pageParam, arrParams) 
+      //let generator = generateSequence();
+      arrParams.map(data => new Item(Number(data.id)));
+      /*generator.next('start')
+      generator.next(pageParam, arrParams) */
       //linkedList.fromArray(arrParams)
       DataLength.arr = DataLength.arr.concat(arrParams)
       DataLength.page = pageParam

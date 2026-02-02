@@ -245,7 +245,7 @@ export default async function Home({ searchParams }) {
                 prevDate = new Intl.DateTimeFormat("ru-RU", options).format(date);
                 datSlice = prevDate.slice(0, -2)
                 dateString = datSlice.replace('.', '');
-                new Item(product.id)
+                //new Item(product.id)
                 //    status={product.status}
                 return <Suspense><Row
                     key={product.id}
