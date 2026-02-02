@@ -153,10 +153,10 @@ async function FormatStatus(params) {
     //console.log('FormatStatus', params)
     //const status = Number(statusMap.get(Number(params)))
     const find = Item.arrObj.get(Number(params))
-    console.log('find', find)
+    //console.log('find', find)
     const status = find.status;
     //statusMap.get(Number(params))
-    console.log('FormatStatus', params, status)
+    //console.log('FormatStatus', params, status)
     let statusItem = 'ЗАКАЗАТЬ'
     if (status === false) {
         statusItem = 'ЗАКАЗАТЬ'
@@ -245,8 +245,6 @@ export default async function Home({ searchParams }) {
                 prevDate = new Intl.DateTimeFormat("ru-RU", options).format(date);
                 datSlice = prevDate.slice(0, -2)
                 dateString = datSlice.replace('.', '');
-                //new Item(product.id)
-                //    status={product.status}
                 return <Suspense><Row
                     key={product.id}
                     index={index}
