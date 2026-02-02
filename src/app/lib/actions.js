@@ -17,11 +17,13 @@ export async function toggleClick(params) {
     const id = Number(params)
     const oldStatus = statusMap.get(id)
     console.log('toggle status', id, oldStatus)
-    statusMap.set(id, !oldStatus)
-    /*if (find) {
-        await find.setStatus()*/
-    revalidateTag('items', 'max')
-    //}
+    if (oldStatus) {
+        statusMap.set(id, !oldStatus)
+        console.log('new status', id, statusMap.get(id))
+        /*if (find) {
+            await find.setStatus()*/
+        revalidateTag('items', 'max')
+    }
 }
 export async function getStatus(params) {
     console.log('getStatus', params)
