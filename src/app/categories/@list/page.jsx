@@ -21,7 +21,10 @@ let list
 let newArr
 let offset = []
 let scroll
-//const ll = await createLinkedListInstance()
+let data
+let arrObjects22
+let resObj2
+let success
 
 const options = {
     /*era: 'long',*/
@@ -220,11 +223,11 @@ export default async function Home({ searchParams }) {
     );
 
     if (Number(resp.status) === 200) {
-        const data = await resp.json()
-        const list = data.near_earth_objects
-        const arrObjects22 = Object.values(list)
-        const resObj2 = arrObjects22.flat()
-        const success = await DataLength.setArr(Number(page), resObj2)
+        data = await resp.json()
+        list = data.near_earth_objects
+        arrObjects22 = Object.values(list)
+        resObj2 = arrObjects22.flat()
+        success = await DataLength.setArr(Number(page), resObj2)
         if (success === true) {
             data_items = await DataLength.getArr()
             //data_items = await linkedList.toArray()
