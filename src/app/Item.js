@@ -52,7 +52,7 @@ class Item {
     else {
       await Item.setCount(-1)
     }*/
-    Item.arrObj.set(Number(id), this)
+    Item.arrObj.set(Number(this.id), this)
     // if (statusMap.get(Number(this.id)) === undefined) {
     //statusMap.set(Number(this.id), this.status)
     // }
