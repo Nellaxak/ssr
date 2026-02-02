@@ -152,14 +152,14 @@ async function List({ items, page, scroll, renderItem }) {
 async function FormatStatus(params) {
     //console.log('FormatStatus', params)
     //const status = Number(statusMap.get(Number(params)))
+    console.log('FormatStatus', params, statusMap.get(Number(params)))
+    const status = Number(statusMap.get(Number(params)))
     let statusItem = 'ЗАКАЗАТЬ'
-    if (params === false) {
+    if (status === 0) {
         statusItem = 'ЗАКАЗАТЬ'
     }
-    else if (params === true) {
+    else {
         statusItem = 'В КОРЗИНЕ'
-    } else {
-        console.log('err status', params)
     }
     //console.log('format return', params, statusItem)
     return statusItem
