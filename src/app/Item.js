@@ -8,21 +8,22 @@ class Item {
   static arrObj = new Map();
   //static instance=null
   constructor(id) {
-  /*if (obj) {
-    Object.entries(obj).map(([key, value]) => this[key] = value);
-  }*/
-  /*if (Item.instance) {
-    return Item.instance; // Возвращаем уже созданный экземпляр
-  }*/
-  //this.data = "Я единственный экземпляр";
-  //Item.arrObj.size===0?
-  // if (Item.arrObj.get(Number(id)) === undefined) {
-  //this = new Singleton();
-  this.id = id
-  this.status = false//new Status()
-  statusMap.set(Number(id), this.status)
-  Item.arrObj.set(Number(id), this)
-  //console.log('constructor', id)
+    /*if (obj) {
+      Object.entries(obj).map(([key, value]) => this[key] = value);
+    }*/
+    /*if (Item.instance) {
+      return Item.instance; // Возвращаем уже созданный экземпляр
+    }*/
+    //this.data = "Я единственный экземпляр";
+    //Item.arrObj.size===0?
+    // if (Item.arrObj.get(Number(id)) === undefined) {
+    //this = new Singleton();
+    this.id = id
+    this.status = false//new Status()
+    //statusMap.set(Number(id), this.status)
+    this.setStatus = this.setStatus.bind(this);
+    Item.arrObj.set(Number(id), this)
+    //console.log('constructor', id)
   }
   // Item.instance = this; // Сохраняем экземпляр
   //}
@@ -43,9 +44,10 @@ class Item {
     }
   }*/
   //this.fullName = function() {
-  async setStatus () {
+  async setStatus() {
     console.log('setStatus old', this.id, this.status)
     this.status = !this.status
+    console.log('setStatus new', this.id, this.status)
     /*if (Number(this.status) === 1) {
       await Item.setCount(1)
     }
