@@ -17,7 +17,7 @@ export async function toggleClick(params) {
     const id = Number(params)
     const oldStatus = statusMap.get(id)
     console.log('toggle status', id, oldStatus)
-    if (oldStatus) {
+    if (oldStatus !== undefined) {
         statusMap.set(id, !oldStatus)
         console.log('new status', id, statusMap.get(id))
         /*if (find) {
