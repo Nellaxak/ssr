@@ -161,8 +161,10 @@ async function FormatStatus(params) {
     if (status === false) {
         statusItem = 'ЗАКАЗАТЬ'
     }
-    else {
+    else if(status === true) {
         statusItem = 'В КОРЗИНЕ'
+    } else {
+        statusItem = 'err'
     }
     //console.log('format return', params, statusItem)
     return statusItem
