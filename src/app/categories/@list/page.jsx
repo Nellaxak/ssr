@@ -10,8 +10,8 @@ import DataLength from "../../DataLength";
 //import { linkedList } from "../../LinkedList";
 //import generator from "../../Generator";
 
-let resp=''
-let startPage=''
+let resp = ''
+let startDate = ''
 let res = ''
 let search = ''
 let page = 0
@@ -210,7 +210,7 @@ export default async function Home({ searchParams }) {
     search = await searchParams;
     page = await search.page
     //console.log('n,mkmkmk', typeof page)
-    startDate= await CalcData(page)
+    startDate = await CalcData(page)
     viewtype = await search.viewtype
     scroll = await search.scroll
     //try {
