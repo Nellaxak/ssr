@@ -6,7 +6,7 @@ import { NextResponse, NextRequest } from 'next/server';
 export function proxy(request) { // Function might be named 'proxy' in Next.js 16+
     // Assume a cookie is set for authenticated users
     //const isAuthenticated = request.cookies.has('authenticated');
-    console.log('middleware request.method', request.method)
+    //console.log('middleware request.method', request.method)
 
     // If user is not authenticated and trying to access a protected route, redirect to login
     /*if (!isAuthenticated && request.nextUrl.pathname.startsWith('/dashboard')) {
