@@ -15,7 +15,9 @@ export async function scrollDirection(params) {
 }
 export async function toggleClick(params) {
     //queueMicrotask(async () => {
-        //console.log('executing microtask');
+    //console.log('executing microtask');
+    queue.addTask(async () => {
+        console.log('Item.arrObj.size', Item.arrObj.size)
         const id = Number(params)
         const find = Item.arrObj.get(id)//statusMap.get(id)
         //console.log('toggle status', id, find)
@@ -27,6 +29,7 @@ export async function toggleClick(params) {
                 await find.setStatus()*/
             revalidateTag('items', 'max')
         }
+    }
    // });
 
 }
