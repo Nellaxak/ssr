@@ -207,7 +207,7 @@ class DataLength {
         resObj2.map(data => new Item(Number(data.id))))
       //linkedList.fromArray(arrParams)
       DataLength.arr = DataLength.arr.concat(resObj2)
-      result = <List items={data_items} page={Number(page)} scroll={scroll}
+      result = <List items={data_items} page={Number(pageParam)} scroll={scroll}
         renderItem={async (product, index) => {
           //console.log('product', product.id)
           const date = new Date(product.close_approach_data[0].epoch_date_close_approach)
