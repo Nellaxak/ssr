@@ -5,7 +5,7 @@ import Item from './app/Item';
 //import { NextRequest } from 'next/server';
 
 
-export function middleware(request) { // Function might be named 'proxy' in Next.js 16+
+export function proxy(request) { // Function might be named 'proxy' in Next.js 16+
     // Assume a cookie is set for authenticated users
     //const isAuthenticated = request.cookies.has('authenticated');
     console.log('middleware request.method', request.method, Item.arrObj.size)
