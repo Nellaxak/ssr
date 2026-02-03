@@ -3,7 +3,7 @@
 import Item from "./Item";
 import { linkedList } from "./LinkedList";
 import generateSequence from "./Generator";
-import queue from "./TaskQueue";
+import {queue} from "./TaskQueue";
 async function CalcData(params) {
   //console.log('CalcData', await params)
   //const count = await CountPage.getCount();

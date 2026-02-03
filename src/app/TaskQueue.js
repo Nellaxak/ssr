@@ -20,7 +20,7 @@ class TaskQueue {
         }
     }
 
-    addTask(task) {
+    addTask(task) {//async?
         return this.runTask(task);
     }
 }
