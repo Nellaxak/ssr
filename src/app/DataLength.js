@@ -65,7 +65,7 @@ class DataLength {
       }
       )
       await Promise.all(//allSettled
-        arrParams.map(data => new Item(Number(data.id))))
+        resObj2.map(data => new Item(Number(data.id))))
       /*generator.next('start')
       generator.next(pageParam, arrParams) */
       //linkedList.fromArray(arrParams)
