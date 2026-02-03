@@ -20,11 +20,11 @@ export async function toggleClick(params) {
     const id = Number(params)
     const find = Item.arrObj.get(id)//statusMap.get(id)
     //main.js
-    const worker = new Worker('../worker.js');
+    /*const worker = new Worker('../worker.js');
     worker.postMessage(id);
     worker.on('message', (result) => {
         console.log(`Result from worker: ${result}`); // 42
-    });
+    });*/
     console.log('toggle status', id, find)
     if (find !== undefined) {
         //statusMap.set(id, !oldStatus)
