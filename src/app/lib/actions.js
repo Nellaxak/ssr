@@ -7,6 +7,7 @@ import Item from '../Item';
 import DataLength from '../DataLength';
 import statusMap from '../statusMap';
 import LinkedList, { linkedList } from '../LinkedList';
+import { queue } from '../TaskQueue';
 
 export async function scrollDirection(params) {
     console.log('scrollDirection', DataLength.count)
