@@ -14,29 +14,21 @@ export async function scrollDirection(params) {
     return true//count
 }
 export async function toggleClick(params) {
-    queueMicrotask(() => {
-        console.log('executing microtask');
+    queueMicrotask(async () => {
+        //console.log('executing microtask');
+        const id = Number(params)
+        const find = Item.arrObj.get(id)//statusMap.get(id)
+        console.log('toggle status', id, find)
+        if (find !== undefined) {
+            //statusMap.set(id, !oldStatus)
+            await find.setStatus()
+            console.log('new status', id, find.status)
+            /*if (find) {
+                await find.setStatus()*/
+            revalidateTag('items', 'max')
+        }
     });
-    //const find = await linkedList.find(params)//LinkedListNode
-    //console.log('server action', params)
-    //console.log(params, 'Item.arrObj', statusMap.size)
-    const id = Number(params)
-    const find = Item.arrObj.get(id)//statusMap.get(id)
-    //main.js
-    /*const worker = new Worker('../worker.js');
-    worker.postMessage(id);
-    worker.on('message', (result) => {
-        console.log(`Result from worker: ${result}`); // 42
-    });*/
-    console.log('toggle status', id, find)
-    if (find !== undefined) {
-        //statusMap.set(id, !oldStatus)
-        await find.setStatus()
-        console.log('new status', id, find.status)
-        /*if (find) {
-            await find.setStatus()*/
-        revalidateTag('items', 'max')
-    }
+
 }
 export async function getStatus(params) {
     console.log('getStatus', params)
