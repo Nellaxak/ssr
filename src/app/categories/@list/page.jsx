@@ -8,6 +8,7 @@ import ButtonSubmit from '../../../components/ButtonSubmit/page'
 import Item from "../../Item";
 import DataLength from "../../DataLength";
 import Script from 'next/script'
+import {queue} from '../../TaskQueue'
 //import { linkedList } from "../../LinkedList";
 //import generator from "../../Generator";
 
@@ -223,21 +224,15 @@ export default async function Home({ searchParams }) {
     search = await searchParams;
     page = await search.page
     //console.log('n,mkmkmk', typeof page)
-    startDate = await CalcData(page)
+    //startDate = await CalcData(page)
     viewtype = await search.viewtype
     scroll = await search.scroll
     //try {
-    resp = await fetch(`https://api.nasa.gov/neo/rest/v1/feed?start_date=${startDate}&end_date=${startDate}&api_key=3wa5hHgFuqhf6XiefvqzkcDQWZ01aOOK4vNZEXsP`,
-        { cache: 'force-cache' },//server actions->Post request
-        { next: { tags: ['items'] } }
-    );
+    
 
-    if (Number(resp.status) === 200) {
-        data = await resp.json()
-        list = data.near_earth_objects
-        arrObjects22 = Object.values(list)
-        resObj2 = arrObjects22.flat()
-        success = await DataLength.setArr(Number(page), resObj2)
+   // if (Number(resp.status) === 200) {
+        
+        success = await DataLength.setArr(Number(page))
         if (success === true) {
             data_items = await DataLength.getArr()
             //data_items = await linkedList.toArray()
@@ -257,9 +252,9 @@ export default async function Home({ searchParams }) {
                         dates={dateString}
                     /></Suspense>
                 }} />
-    } else {
+    /*} else {
         console.log('resp', resp.status)   
-    }
+    }*/
     /* }
      catch (err) {
          console.log(err)
