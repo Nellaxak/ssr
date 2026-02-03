@@ -14,7 +14,7 @@ export async function scrollDirection(params) {
     return true//count
 }
 export async function toggleClick(params) {
-    pq.enqueue(async () => {
+    //pq.enqueue(async () => {
         console.log('Item.arrObj.size', Item.arrObj.size)
         const id = Number(params)
         const find = Item.arrObj.get(id)//statusMap.get(id)
@@ -27,7 +27,7 @@ export async function toggleClick(params) {
                 await find.setStatus()*/
             revalidateTag('items', 'max')
         }
-    }, 1);
+    //}, 1);
 }
 export async function getStatus(params) {
     console.log('getStatus', params)

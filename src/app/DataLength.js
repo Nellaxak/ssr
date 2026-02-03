@@ -193,7 +193,7 @@ class DataLength {
       let resObj2
       let result
       const startDate = await CalcData(pageParam)
-      pq.enqueue(async () => {
+      //pq.enqueue(async () => {
         console.log('fetch')
         const resp = await fetch(`https://api.nasa.gov/neo/rest/v1/feed?start_date=${startDate}&end_date=${startDate}&api_key=3wa5hHgFuqhf6XiefvqzkcDQWZ01aOOK4vNZEXsP`,
           { cache: 'force-cache' },
@@ -223,11 +223,11 @@ class DataLength {
                     /></Suspense>
                 }} />
         return result
-      }, 2);
+      //}, 2);
       /*pq.enqueue(async () => {
         return DataLength.arr
       }, 3)*/
-      await pq.process();
+      //await pq.process();
       DataLength.page = pageParam
     }
     return true
