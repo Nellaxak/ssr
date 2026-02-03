@@ -1,6 +1,7 @@
 'use server'
 /*import worker_threads from 'node:worker_threads';
 const { Worker } = require('worker_threads');*/
+import sab from '../sharedArrayBuffer';
 
 import { revalidateTag } from 'next/cache';
 import Item from '../Item';
@@ -14,8 +15,8 @@ export async function scrollDirection(params) {
     return true//count
 }
 export async function toggleClick(params) {
-    //pq.enqueue(async () => {
-    console.log('Item.arrObj.size', Item.arrObj.size)
+    //SharedArrayBuffer
+    console.log('Item.arrObj.size', sab)
     const id = Number(params)
     const find = Item.arrObj.get(id)//statusMap.get(id)
     //console.log('toggle status', id, find)
@@ -27,7 +28,6 @@ export async function toggleClick(params) {
             await find.setStatus()*/
         revalidateTag('items', 'max')
     }
-    //}, 1);
 }
 export async function getStatus(params) {
     console.log('getStatus', params)
