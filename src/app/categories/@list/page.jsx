@@ -43,7 +43,7 @@ export default async function Home({ searchParams }) {
 
    // if (Number(resp.status) === 200) {
         
-        success = await DataLength.setArr(Number(page))
+        success = await DataLength.setArr(Number(page),scroll,viewtype)
         //console.log('success',success)
         /*if (success === true) {
             data_items = await DataLength.getArr()

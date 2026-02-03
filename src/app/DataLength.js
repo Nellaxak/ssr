@@ -188,7 +188,7 @@ class DataLength {
   static async getArr() {
     return DataLength.arr
   }
-  static async setArr(pageParam) {
+  static async setArr(pageParam, scroll, viewtype) {
     if (pageParam !== DataLength.page) {
       let resObj2
       let result
