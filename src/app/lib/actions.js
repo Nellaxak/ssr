@@ -7,7 +7,7 @@ import Item from '../Item';
 import DataLength from '../DataLength';
 import statusMap from '../statusMap';
 import LinkedList, { linkedList } from '../LinkedList';
-import { queue } from '../TaskQueue';
+import PriorityQueue,{ pq } from '../TaskQueue';
 
 export async function scrollDirection(params) {
     console.log('scrollDirection', DataLength.count)
@@ -17,7 +17,7 @@ export async function scrollDirection(params) {
 export async function toggleClick(params) {
     //queueMicrotask(async () => {
     //console.log('executing microtask');
-    queue.addTask(async () => {
+    pq.enqueue(async () => {
         console.log('Item.arrObj.size', Item.arrObj.size)
         const id = Number(params)
         const find = Item.arrObj.get(id)//statusMap.get(id)
@@ -30,8 +30,10 @@ export async function toggleClick(params) {
                 await find.setStatus()*/
             revalidateTag('items', 'max')
         }
-    })
-   // });
+    }, 1);
+
+    //queue.addTask()
+    // });
 
 }
 export async function getStatus(params) {

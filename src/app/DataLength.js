@@ -3,7 +3,7 @@
 import Item from "./Item";
 import { linkedList } from "./LinkedList";
 import generateSequence from "./Generator";
-import { queue } from "./TaskQueue";
+import PriorityQueue, { pq } from "./TaskQueue";
 async function CalcData(params) {
   //console.log('CalcData', await params)
   //const count = await CountPage.getCount();
@@ -53,7 +53,7 @@ class DataLength {
       let resObj2
       //let generator = generateSequence();
       const startDate = await CalcData(pageParam)
-      queue.addTask(async () => {
+      pq.enqueue(async () => {
         console.log('fetch')
         const resp = await fetch(`https://api.nasa.gov/neo/rest/v1/feed?start_date=${startDate}&end_date=${startDate}&api_key=3wa5hHgFuqhf6XiefvqzkcDQWZ01aOOK4vNZEXsP`,
           { cache: 'force-cache' },
@@ -69,8 +69,8 @@ class DataLength {
         generator.next(pageParam, arrParams) */
         //linkedList.fromArray(arrParams)
         DataLength.arr = DataLength.arr.concat(resObj2)
-      }
-      )
+      }, 10);
+      pq.process();
       DataLength.page = pageParam
     }
     return true

@@ -1,4 +1,4 @@
-class TaskQueue {
+/*class TaskQueue {
     constructor(concurrency) {
         this.queue = [];
         this.concurrency = concurrency;
@@ -25,4 +25,37 @@ class TaskQueue {
     }
 }
 export const queue = new TaskQueue(2);
-export default TaskQueue
+export default TaskQueue*/
+class PriorityQueue {
+    constructor() {
+        this.queue = [];
+    }
+
+    // Добавление задачи: чем меньше число, тем выше приоритет (0 - самый высокий)
+    enqueue(task, priority) {
+        this.queue.push({ task, priority });
+        this.queue.sort((a, b) => a.priority - b.priority); // Сортировка по приоритету
+    }
+
+    async process() {
+        while (this.queue.length > 0) {
+            const { task } = this.queue.shift(); // Берем задачу с наивысшим приоритетом
+            await task(); // Ожидаем выполнение асинхронной задачи
+        }
+    }
+    static asyncTask = (name, time) => () => new Promise(resolve => {
+        console.log(`Начало: ${name}`);
+        setTimeout(() => {
+            console.log(`Конец: ${name}`);
+            resolve();
+        }, time);
+    });
+}
+
+// Использование
+export const pq = new PriorityQueue();
+export default PriorityQueue
+
+/*pq.enqueue(asyncTask("Низкий приоритет", 1000), 10);
+pq.process();*/
+// Сначала выполнится "Высокий приоритет", затем "Низкий приоритет"
