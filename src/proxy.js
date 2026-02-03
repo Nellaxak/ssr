@@ -21,5 +21,5 @@ export function proxy(request) { // Function might be named 'proxy' in Next.js 1
 
 // Configuration to specify which paths the middleware should apply to
 export const config = {
-    matcher: ['/','/dashboard/:path*', '/about/:path*'], // Applies to /dashboard and /about pages
+    matcher: ['/:path*','/dashboard/:path*', '/about/:path*'], // Applies to /dashboard and /about pages
 };
