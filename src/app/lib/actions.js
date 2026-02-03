@@ -15,18 +15,18 @@ export async function scrollDirection(params) {
 }
 export async function toggleClick(params) {
     //pq.enqueue(async () => {
-        console.log('Item.arrObj.size', Item.arrObj.size)
-        const id = Number(params)
-        const find = Item.arrObj.get(id)//statusMap.get(id)
-        //console.log('toggle status', id, find)
-        if (find !== undefined) {
-            //statusMap.set(id, !oldStatus)
-            await find.setStatus()
-            //console.log('new status', id, find.status)
-            /*if (find) {
-                await find.setStatus()*/
-            revalidateTag('items', 'max')
-        }
+    console.log('Item.arrObj.size', Item.arrObj.size)
+    const id = Number(params)
+    const find = Item.arrObj.get(id)//statusMap.get(id)
+    //console.log('toggle status', id, find)
+    if (find !== undefined) {
+        //statusMap.set(id, !oldStatus)
+        await find.setStatus()
+        //console.log('new status', id, find.status)
+        /*if (find) {
+            await find.setStatus()*/
+        revalidateTag('items', 'max')
+    }
     //}, 1);
 }
 export async function getStatus(params) {
