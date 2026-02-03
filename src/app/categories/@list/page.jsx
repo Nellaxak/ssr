@@ -8,7 +8,7 @@ import ButtonSubmit from '../../../components/ButtonSubmit/page'
 import Item from "../../Item";
 import DataLength from "../../DataLength";
 import Script from 'next/script'
-import {queue} from '../../TaskQueue'
+import { queue } from '../../TaskQueue'
 //import { linkedList } from "../../LinkedList";
 //import generator from "../../Generator";
 
@@ -22,7 +22,7 @@ let array3 = [];
 let list
 let newArr
 let offset = []
-let scroll
+let scroll='start'
 let data
 let arrObjects22
 let resObj2
@@ -39,17 +39,17 @@ export default async function Home({ searchParams }) {
     viewtype = await search.viewtype
     scroll = await search.scroll
     //try {
-    
 
-   // if (Number(resp.status) === 200) {
-        
-        success = await DataLength.setArr(Number(page),scroll,viewtype)
-        //console.log('success',success)
-        /*if (success === true) {
-            data_items = await DataLength.getArr()
-            //data_items = await linkedList.toArray()
-        }*/
-        return  success
+
+    // if (Number(resp.status) === 200) {
+
+    success = await DataLength.setArr(Number(page), scroll, viewtype)
+    //console.log('success',success)
+    /*if (success === true) {
+        data_items = await DataLength.getArr()
+        //data_items = await linkedList.toArray()
+    }*/
+    return success
     /*} else {
         console.log('resp', resp.status)   
     }*/
