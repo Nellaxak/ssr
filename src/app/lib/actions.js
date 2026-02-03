@@ -1,6 +1,6 @@
 'use server'
-import worker_threads from 'node:worker_threads';
-const { Worker } = require('worker_threads');
+/*import worker_threads from 'node:worker_threads';
+const { Worker } = require('worker_threads');*/
 
 import { revalidateTag } from 'next/cache';
 import Item from '../Item';
