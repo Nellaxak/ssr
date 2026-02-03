@@ -7,6 +7,7 @@ import statusMap from "../../statusMap";
 import ButtonSubmit from '../../../components/ButtonSubmit/page'
 import Item from "../../Item";
 import DataLength from "../../DataLength";
+import Script from 'next/script'
 //import { linkedList } from "../../LinkedList";
 //import generator from "../../Generator";
 
@@ -241,23 +242,23 @@ export default async function Home({ searchParams }) {
             data_items = await DataLength.getArr()
             //data_items = await linkedList.toArray()
         }
-        return <List items={data_items} page={Number(page)} scroll={scroll}
-            renderItem={async (product, index) => {
-                //console.log('product', product.id)
-                date = new Date(product.close_approach_data[0].epoch_date_close_approach)
-                prevDate = new Intl.DateTimeFormat("ru-RU", options).format(date);
-                datSlice = prevDate.slice(0, -2)
-                dateString = datSlice.replace('.', '');
-                return <Suspense><Row
-                    key={product.id}
-                    index={index}
-                    obj={product}
-                    viewtype={viewtype}
-                    dates={dateString}
-                /></Suspense>
-            }} />
+        return  <List items={data_items} page={Number(page)} scroll={scroll}
+                renderItem={async (product, index) => {
+                    //console.log('product', product.id)
+                    date = new Date(product.close_approach_data[0].epoch_date_close_approach)
+                    prevDate = new Intl.DateTimeFormat("ru-RU", options).format(date);
+                    datSlice = prevDate.slice(0, -2)
+                    dateString = datSlice.replace('.', '');
+                    return <Suspense><Row
+                        key={product.id}
+                        index={index}
+                        obj={product}
+                        viewtype={viewtype}
+                        dates={dateString}
+                    /></Suspense>
+                }} />
     } else {
-        console.log('resp', resp.status)
+        console.log('resp', resp.status)   
     }
     /* }
      catch (err) {

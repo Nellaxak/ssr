@@ -8,9 +8,10 @@ const nextConfig = {
     /*cacheHandler: require.resolve('./src/cache-handler.js'),
     cacheMaxMemorySize: 100, *///Mb
     /*basePath: '/categories',*/
-    experimental: {
+    /*experimental: {
         nextScriptWorkers: true,
-    },
+        webpackBuildWorker: true,
+    },*/
     //destination: '/categories?viewtype=main&page=0',
     async redirects() {
         return [
