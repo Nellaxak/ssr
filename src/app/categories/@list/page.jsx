@@ -215,6 +215,8 @@ export default async function Home({ searchParams }) {
     );
 
     if (Number(resp.status) === 200) {
+        const body = resp.body
+        console.log('body',body)
         const data = await resp.json()
         const list = data.near_earth_objects
         const arrObjects22 = Object.values(list)
