@@ -222,7 +222,7 @@ async function Row(props) {
 let data_items = []
 export default async function Home({ searchParams }) {
     search = await searchParams;
-    const page = await search.page
+    page = await search.page
     //console.log('n,mkmkmk', typeof page)
     //startDate = await CalcData(page)
     viewtype = await search.viewtype
