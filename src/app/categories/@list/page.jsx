@@ -1,7 +1,7 @@
 import styles from "./page.module.css";
 import React, { Suspense, Activity } from "react";
 import worker_threads from 'node:worker_threads';
-const { Worker, isMainThread, parentPort } = require('worker_threads');
+//const { Worker, isMainThread, parentPort } = require('worker_threads');
 import statusMap from "../../statusMap";
 //import { revalidateTag, revalidatePath } from 'next/cache';
 import ButtonSubmit from '../../../components/ButtonSubmit/page'
