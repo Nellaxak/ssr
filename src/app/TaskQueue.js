@@ -33,11 +33,13 @@ class PriorityQueue {
 
     // Добавление задачи: чем меньше число, тем выше приоритет (0 - самый высокий)
     enqueue(task, priority) {
+        console.log('vnvnvn', priority)
         this.queue.push({ task, priority });
         this.queue.sort((a, b) => a.priority - b.priority); // Сортировка по приоритету
     }
 
     async process() {
+        console.log('this.queue.length', this.queue.length)
         while (this.queue.length > 0) {
             const { task } = this.queue.shift(); // Берем задачу с наивысшим приоритетом
             await task(); // Ожидаем выполнение асинхронной задачи

@@ -70,7 +70,7 @@ class DataLength {
         //linkedList.fromArray(arrParams)
         DataLength.arr = DataLength.arr.concat(resObj2)
       }, 10);
-      pq.process();
+      await pq.process();
       DataLength.page = pageParam
     }
     return true
