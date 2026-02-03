@@ -29,7 +29,7 @@ export async function toggleClick(params) {
                 await find.setStatus()*/
             revalidateTag('items', 'max')
         }
-    }
+    })
    // });
 
 }
