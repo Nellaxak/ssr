@@ -1,6 +1,6 @@
 import { Worker, workerData, isMainThread, parentPort } from 'node:worker_threads';
 //const { Worker, workerData, isMainThread, parentPort } = require('worker_threads');
-//const { parentPort, workerData } = require('worker_threads');
+import { toggleClick } from '../../app/lib/actions'
 /*parentPort.on('message', (msg) => {
     console.log('in_worker', msg)
     const result = msg * 2;
@@ -8,6 +8,8 @@ import { Worker, workerData, isMainThread, parentPort } from 'node:worker_thread
 });*/
 self.onmessage = async (e: MessageEvent<string>) => {
     console.log('worker222', e.data)
+    await toggleClick(e.data)
+
     //const url = `https://dog.ceo/api/breeds/image/random/${e.data}`;
 
     //const response = await fetch(url).then((res) => res.json());
