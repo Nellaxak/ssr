@@ -216,8 +216,27 @@ export default async function Home({ searchParams }) {
 
     if (Number(resp.status) === 200) {
         const body = resp.body
-        console.log('body',body)
-        const data = await resp.json()
+        const reader = body.getReader();
+        console.log('body', body)
+        const iii= new ReadableStream({
+            start(controller) {
+                return pump();
+                function pump() {
+                    return reader.read().then(({ done, value }) => {
+                        console.log('value',value)
+                        // When no more data needs to be consumed, close the stream
+                        if (done) {
+                            controller.close();
+                            return;
+                        }
+                        // Enqueue the next data chunk into our target stream
+                        controller.enqueue(value);
+                        return pump();
+                    });
+                }
+            },
+        });
+        /*const data = await resp.json()
         const list = data.near_earth_objects
         const arrObjects22 = Object.values(list)
         const resObj2 = arrObjects22.flat()
@@ -242,7 +261,8 @@ export default async function Home({ searchParams }) {
                     viewtype={viewtype}
                     dates={dateString}
                 /></Suspense>
-            }} />
+            }} />*/
+        return 'ggggg'
     } else {
         console.log('resp', resp.status)
     }
