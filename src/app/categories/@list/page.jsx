@@ -44,7 +44,7 @@ export default async function Home({ searchParams }) {
    // if (Number(resp.status) === 200) {
         
         success = await DataLength.setArr(Number(page))
-        console.log('success',success)
+        //console.log('success',success)
         /*if (success === true) {
             data_items = await DataLength.getArr()
             //data_items = await linkedList.toArray()
