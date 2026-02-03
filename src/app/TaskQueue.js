@@ -55,8 +55,8 @@ class PriorityQueue {
 }
 
 // Использование
-export const pq = new PriorityQueue();
-export default PriorityQueue
+const pq = new PriorityQueue();
+export default pq//PriorityQueue
 
 /*pq.enqueue(asyncTask("Низкий приоритет", 1000), 10);
 pq.process();*/
