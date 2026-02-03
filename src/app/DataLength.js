@@ -3,7 +3,7 @@
 import Item from "./Item";
 import { linkedList } from "./LinkedList";
 import generateSequence from "./Generator";
-import {queue} from "./TaskQueue";
+import { queue } from "./TaskQueue";
 async function CalcData(params) {
   //console.log('CalcData', await params)
   //const count = await CountPage.getCount();
@@ -62,14 +62,14 @@ class DataLength {
         const list = data.near_earth_objects
         const arrObjects22 = Object.values(list)
         resObj2 = arrObjects22.flat()
+        await Promise.all(//allSettled
+          resObj2.map(data => new Item(Number(data.id))))
+        /*generator.next('start')
+        generator.next(pageParam, arrParams) */
+        //linkedList.fromArray(arrParams)
+        DataLength.arr = DataLength.arr.concat(resObj2)
       }
       )
-      await Promise.all(//allSettled
-        resObj2.map(data => new Item(Number(data.id))))
-      /*generator.next('start')
-      generator.next(pageParam, arrParams) */
-      //linkedList.fromArray(arrParams)
-      DataLength.arr = DataLength.arr.concat(resObj2)
       DataLength.page = pageParam
     }
     return true
