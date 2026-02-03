@@ -14,6 +14,9 @@ export async function scrollDirection(params) {
     return true//count
 }
 export async function toggleClick(params) {
+    queueMicrotask(() => {
+        console.log('executing microtask');
+    });
     //const find = await linkedList.find(params)//LinkedListNode
     //console.log('server action', params)
     //console.log(params, 'Item.arrObj', statusMap.size)

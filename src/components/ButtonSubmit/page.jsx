@@ -5,7 +5,7 @@ import { toggleClick } from '../../app/lib/actions'
 
 function ButtonSubmit(props) {
   //console.log('ButtonSubmit', props)
-  const workerRef = useRef(null)
+  /*const workerRef = useRef(null)
   useEffect(() => {
 
         workerRef.current = new Worker(new URL("./worker.ts", import.meta.url));
@@ -18,12 +18,12 @@ function ButtonSubmit(props) {
 
         };
 
-    }, []);
+    }, []);*/
   const handleClick = useCallback(async () => {
-    //await toggleClick(props.id)
-    workerRef.current.postMessage(props.id);
+    await toggleClick(props.id)
+    //workerRef.current.postMessage(props.id);
   }, [])
   //onClick={()=>handleClick()}
-  return <button type="button" onClick={handleClick} ref={workerRef}><Suspense>{props.status}</Suspense></button>
+  return <button type="button" onClick={handleClick}><Suspense>{props.status}</Suspense></button>
 }
 export default ButtonSubmit

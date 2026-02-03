@@ -31,7 +31,7 @@
     "middleware.ts",
     "src/app/types/[marked]/default.jsx",
     "build/dev/types/**/*.ts"
-  ],
+, "src/components/ButtonSubmit/worker.js"  ],
   "exclude": [
     "node_modules"
   ]

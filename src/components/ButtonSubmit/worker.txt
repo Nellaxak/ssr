@@ -1,3 +1,4 @@
+'use server'
 import { Worker, workerData, isMainThread, parentPort } from 'node:worker_threads';
 //const { Worker, workerData, isMainThread, parentPort } = require('worker_threads');
 import { toggleClick } from '../../app/lib/actions'
@@ -6,7 +7,7 @@ import { toggleClick } from '../../app/lib/actions'
     const result = msg * 2;
     parentPort.postMessage(result);
 });*/
-self.onmessage = async (e: MessageEvent<string>) => {
+self.onmessage = async (e) => {
     console.log('worker222', e.data)
     await toggleClick(e.data)
 
