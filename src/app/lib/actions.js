@@ -6,7 +6,6 @@ import { revalidateTag } from 'next/cache';
 import Item from '../Item';
 import DataLength from '../DataLength';
 import statusMap from '../statusMap';
-import LinkedList, { linkedList } from '../LinkedList';
 import pq from '../TaskQueue';
 
 export async function scrollDirection(params) {
@@ -15,8 +14,6 @@ export async function scrollDirection(params) {
     return true//count
 }
 export async function toggleClick(params) {
-    //queueMicrotask(async () => {
-    //console.log('executing microtask');
     pq.enqueue(async () => {
         console.log('Item.arrObj.size', Item.arrObj.size)
         const id = Number(params)
@@ -31,10 +28,6 @@ export async function toggleClick(params) {
             revalidateTag('items', 'max')
         }
     }, 1);
-
-    //queue.addTask()
-    // });
-
 }
 export async function getStatus(params) {
     console.log('getStatus', params)
