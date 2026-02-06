@@ -20,12 +20,15 @@ class Item {
     //Item.arrObj.size===0?
     // if (Item.arrObj.get(Number(id)) === undefined) {
     //this = new Singleton();
-    this.id = id
-    this.status = false//new Status()
-    //statusMap.set(Number(id), this.status)
-    this.getStatus = this.getStatus.bind(this);
-    this.setStatus = this.setStatus.bind(this);
-    Item.arrObj.set(Number(id), this)
+    if (Item.arrObj.get(Number(id)) === undefined) {
+      this.id = id
+      this.status = false//new Status()
+      //statusMap.set(Number(id), this.status)
+      this.getStatus = this.getStatus.bind(this);
+      this.setStatus = this.setStatus.bind(this);
+      Item.arrObj.set(Number(id), this)
+      statusMap.set(Number(this.id), this.status)
+    }
     //console.log('constructor', id)
   }
   // Item.instance = this; // Сохраняем экземпляр
@@ -59,7 +62,7 @@ class Item {
     }*/
     //Item.arrObj.set(Number(this.id), this)
     // if (statusMap.get(Number(this.id)) === undefined) {
-    //statusMap.set(Number(this.id), this.status)
+    statusMap.set(Number(this.id), this.status)
     // }
   }
   static async staticReturn() {
